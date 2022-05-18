@@ -1,0 +1,2019 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{4.
+ Transition Path
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Jeppe Druedahl 
+\backslash
+& Patrick Moran}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2022}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below right=0.5cm and 0.8cm of current page.north west] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/CEBI.png}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above right=0.5cm and 0.8cm of current page.south west] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/DNRF.png}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Previously: 
+\series default
+Stationary equilibrium
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today:
+\series default
+ Transition path
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Model:
+\series default
+ Heterogeneous Agent Neo-Classical (HANC) model
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Code:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Based on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelTools"
+target "https://github.com/NumEconCopenhagen/GEModelTools"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ package
+\end_layout
+
+\begin_layout Enumerate
+Examples from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelToolsNotebooks/HANC"
+target "https://github.com/NumEconCopenhagen/GEModelToolsNotebooks"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(except stuff on 
+\emph on
+linearized solution
+\emph default
+ + 
+\emph on
+simulation
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Literature: 
+\series default
+Auclert et.
+ al.
+ (2021), 
+\begin_inset Quotes ald
+\end_inset
+
+Using the Sequence-Space Jacobian to Solve and Estimate Heterogeneous-Agent
+ Models
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Transition path
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Transition path - close to verbal definition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size small
+For a given 
+\begin_inset Formula $\boldsymbol{\underline{D}}_{0}$
+\end_inset
+
+ and a path 
+\begin_inset Formula $\{\Gamma_{t}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Quantities 
+\begin_inset Formula $\{K_{t}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{L_{t}\}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+prices 
+\begin_inset Formula $\{r_{t}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{w_{t}\}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+the distributions 
+\begin_inset Formula $\{\boldsymbol{D}_{t}\}$
+\end_inset
+
+ over 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{t-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+and the policy functions 
+\begin_inset Formula $\{a_{t}^{\ast}(z_{t},a_{t-1})\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{c_{t}^{\ast}(z_{t},a_{t-1})\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+are such that
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Household maximize expected utility (policy functions) in all periods
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Firms maximize profits (prices) in all periods
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+ is implied by simulating the household problem forwards from 
+\begin_inset Formula $\boldsymbol{\underline{D}}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The labor market clears in all periods
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The capital market clears in all periods
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The goods market clears in all periods
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The model can be written as an 
+\series bold
+equation system
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+r_{t}-\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+L_{t}-1\\
+\boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+\forall t\in\{0,1,\dots\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left\{ \Gamma_{t}\right\} _{t\geq0}$
+\end_inset
+
+ is a given technology path and 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Remember: 
+\series default
+Policies and choice transitions depend on prices
+\end_layout
+
+\begin_layout Enumerate
+Policy function: 
+\begin_inset Formula $a_{t}^{\ast}=a^{\ast}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Choice transition: 
+\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Truncated, reduced vector form
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Truncated, reduced vector form:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\,\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{K}=(K_{0},K_{1},\dots,K_{T-1})$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{\Gamma}=(\Gamma_{0},\Gamma_{1},\dots,\Gamma_{T-1})$
+\end_inset
+
+ and
+\begin_inset Formula 
+\begin{align*}
+L_{t} & =1\\
+r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+ & \forall t\in\{0,1,\dots,T-1\}
+\end{align*}
+
+\end_inset
+
+
+\series bold
+Truncation:
+\series default
+ 
+\begin_inset Formula $T<\infty$
+\end_inset
+
+ fine when 
+\begin_inset Formula $\Gamma_{t}=\Gamma_{ss}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t\ll T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Could we solve it with a Newton method?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Guess 
+\begin_inset Formula $\boldsymbol{K}^{0}$
+\end_inset
+
+ and set 
+\begin_inset Formula $i=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Stop if 
+\begin_inset Formula $\left|\boldsymbol{H}^{i}\right|_{\infty}$
+\end_inset
+
+ below chosen tolerance
+\end_layout
+
+\begin_layout Enumerate
+Calculate the Jacobian 
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{0},\boldsymbol{\Gamma})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Update guess by 
+\begin_inset Formula $\boldsymbol{K}^{i+1}=\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Increment 
+\begin_inset Formula $i$
+\end_inset
+
+ and return to step 2
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Question:
+\series default
+ What is the problem?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Alternative: Use Broydens method?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Guess 
+\begin_inset Formula $\boldsymbol{K}^{0}$
+\end_inset
+
+ and set 
+\begin_inset Formula $i=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate the steady state Jacobian 
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K,}ss}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}_{ss},\boldsymbol{\Gamma}_{ss})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Calculate Jacobian by 
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\begin{cases}
+\boldsymbol{H}_{\boldsymbol{K,}ss} & \text{if }i=0\\
+\boldsymbol{H}_{\boldsymbol{K}}^{i-1}+\frac{(\boldsymbol{H}^{i}-\boldsymbol{H}^{i-1})-\boldsymbol{H}_{\boldsymbol{K}}^{i-1}(\boldsymbol{K}^{i}-\boldsymbol{K}^{i-1})}{\left|\boldsymbol{K}^{i}-\boldsymbol{K}^{i-1}\right|_{2}}\left(\boldsymbol{K}^{i}-\boldsymbol{K}^{i-1}\right)^{\prime} & \text{if }i>0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Stop if 
+\begin_inset Formula $\left|\boldsymbol{H}^{i}\right|_{\infty}$
+\end_inset
+
+ below tolerance
+\end_layout
+
+\begin_layout Enumerate
+Update guess by 
+\begin_inset Formula $\boldsymbol{K}^{i+1}=\boldsymbol{K}^{i}+\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Increment 
+\begin_inset Formula $i$
+\end_inset
+
+ and return to step 3
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Question:
+\series default
+ What are the benefits?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bottleneck: How do we find the Jacobian?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Naive approach: 
+\series default
+For each 
+\begin_inset Formula $s\in\{0,1,...,T-1\}$
+\end_inset
+
+ do
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $K_{t}=K_{ss}+\boldsymbol{1}\{t=s\}\cdot\Delta$
+\end_inset
+
+,
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $\Delta=10^{-4}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Find 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{w}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve household problem backwards along transition path
+\end_layout
+
+\begin_layout Enumerate
+Simulate household forwards along transition path
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(K_{t}-A_{t}^{hh})-(K_{ss}-A_{ss}^{hh})}{\Delta}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Bottleneck: 
+\series default
+We need 
+\begin_inset Formula $T^{2}$
+\end_inset
+
+ solution steps and simulation steps!
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Fake news algorithm: 
+\series default
+Only requires 
+\begin_inset Formula $T$
+\end_inset
+
+ solution steps and simulation steps 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph on
+explained later today
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What have we found?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Underlying assumption: 
+\series default
+No aggregate uncertainty
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+
+\begin_inset Quotes ald
+\end_inset
+
+Shock
+\begin_inset Quotes ard
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\Gamma}$
+\end_inset
+
+: 
+\series default
+A fully unexpected non-recurrent event 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ 
+\emph on
+MIT shock
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Transition path, 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+: 
+\series default
+Non-linear perfect foresight response to 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Initial distribution, 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{0}\neq\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Shock, 
+\begin_inset Formula $\Gamma_{t}\neq\Gamma_{ss}$
+\end_inset
+
+ for some 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Also called:
+\series default
+ 
+\emph on
+Non-linear impulse-response
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Decomposition of GE response
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+GE transition path:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{r}^{\ast}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{w}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+PE response of each:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $(\boldsymbol{r},\boldsymbol{w})\in\left\{ \left(\boldsymbol{r}^{\ast},\boldsymbol{w}_{ss}\right),\left(\boldsymbol{r}_{ss},\boldsymbol{w}^{\ast}\right)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve household problem backwards along transition path
+\end_layout
+
+\begin_layout Enumerate
+Simulate household forwards along transition path
+\end_layout
+
+\begin_layout Enumerate
+Calculate outcomes of interest
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Additionally: 
+\series default
+We can vary the initial distribution, 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+, to find the response of sub-groups
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+DAGs
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General model class I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Time is discrete (index 
+\begin_inset Formula $t$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+There is a continuum of households (index 
+\begin_inset Formula $i$
+\end_inset
+
+, when needed).
+\end_layout
+
+\begin_layout Enumerate
+There is 
+\emph on
+perfect foresight
+\emph default
+ wrt.
+ all aggregate variables, 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+, indexed by 
+\begin_inset Formula $\mathcal{N}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{X}=\{\boldsymbol{X}_{t}\}_{t=0}^{\infty}=\{\boldsymbol{X}^{j}\}_{j\in\mathcal{N}}=\{X_{t}^{j}\}_{t=0,j\in\mathcal{N}}^{\infty},$
+\end_inset
+
+ where 
+\begin_inset Formula $\mathcal{N}=\mathcal{Z}\cup\mathcal{U}\cup\mathcal{O}$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathcal{Z}$
+\end_inset
+
+ are 
+\emph on
+exogenous shocks, 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ 
+\emph default
+are
+\emph on
+ unknowns
+\emph default
+, 
+\begin_inset Formula $\mathcal{O}$
+\end_inset
+
+ are outputs, and 
+\begin_inset Formula $\mathcal{H\in\mathcal{O}}$
+\end_inset
+
+ are 
+\emph on
+targets.
+\end_layout
+
+\begin_layout Enumerate
+The model structure is described in terms of a set of 
+\emph on
+blocks 
+\emph default
+indexed by 
+\begin_inset Formula $\mathcal{B}$
+\end_inset
+
+, where each block has inputs, 
+\begin_inset Formula $\mathcal{I}_{b}\subset\mathcal{N}$
+\end_inset
+
+, and outputs, 
+\begin_inset Formula $\mathcal{O}_{b}\subset\mathcal{O}$
+\end_inset
+
+, and there exists functions 
+\begin_inset Formula $h^{o}(\{\boldsymbol{X}^{i}\}_{i\in\mathcal{I}_{b}})$
+\end_inset
+
+ for all 
+\begin_inset Formula $o\in\mathcal{O}_{b}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+The blocks are 
+\emph on
+ordered
+\emph default
+ such that (i) each output is 
+\emph on
+unique
+\emph default
+ to a block, (ii) the first block only have shocks and unknowns as inputs,
+ and (iii) later blocks only additionally take outputs of previous blocks
+ as inputs.
+ This implies the blocks can be structured as a 
+\emph on
+directed acyclical graph
+\emph default
+ (DAG).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General model class II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[6.]
+\end_layout
+
+\end_inset
+
+The number of targets are equal to the number of unknowns, and an 
+\emph on
+equilibrium
+\emph default
+ implies 
+\begin_inset Formula $\boldsymbol{X}^{o}=0$
+\end_inset
+
+ for all 
+\begin_inset Formula $o\in\mathcal{H}$
+\end_inset
+
+.
+ Equivalently, the model can be summarized by an 
+\emph on
+target equation system
+\emph default
+ from the unknowns and shocks to the targets,
+\begin_inset Formula 
+\[
+\boldsymbol{H(U,Z)=0},
+\]
+
+\end_inset
+
+and an 
+\emph on
+auxiliary model equation
+\emph default
+ to infer all variables 
+\begin_inset Formula 
+\[
+\boldsymbol{X=M(U,Z).}
+\]
+
+\end_inset
+
+A 
+\emph on
+steady state
+\emph default
+ satisfy
+\begin_inset Formula 
+\[
+\boldsymbol{H(\boldsymbol{U}_{ss},\boldsymbol{Z}_{ss})}=0\text{ and \boldsymbol{X}_{ss}=\boldsymbol{M(}\boldsymbol{U_{ss}}\boldsymbol{,}\boldsymbol{Z}_{ss}\boldsymbol{)}.}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General model class III
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[7.]
+\end_layout
+
+\end_inset
+
+The 
+\emph on
+discretized household block
+\emph default
+ can be written recursively as
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{v}_{t} & =v(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})\\
+\underline{\boldsymbol{v}}_{t} & =\Pi(\boldsymbol{X}_{t}^{hh})\boldsymbol{v}_{t}\\
+\boldsymbol{D}_{t} & =\Pi(\boldsymbol{X}_{t}^{hh})^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\boldsymbol{\underline{\boldsymbol{D}}}_{t+1} & =\Lambda(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})^{\text{\prime}}\boldsymbol{D}_{t}\\
+\boldsymbol{a}_{t}^{\ast} & =\boldsymbol{a}^{\ast}(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})\\
+\boldsymbol{Y}_{t}^{hh} & =\boldsymbol{y}(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})^{\prime}\boldsymbol{D}_{t}\\
+ & \boldsymbol{\underline{D}}_{0}\text{ is given},\,\\
+ & \boldsymbol{X}_{t}^{hh}=\{\boldsymbol{X}_{t}^{i}\}_{i\in\mathcal{I}_{hh}},\boldsymbol{Y}_{t}^{hh}=\{\boldsymbol{X}_{t}^{o}\}_{o\in\mathcal{O}_{hh}},
+\end{align*}
+
+\end_inset
+
+
+\size default
+where 
+\begin_inset Formula $\boldsymbol{Y}_{t}$
+\end_inset
+
+ is aggregated outputs with 
+\begin_inset Formula $y(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})$
+\end_inset
+
+ as individual level measures.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[8.]
+\end_layout
+
+\end_inset
+
+Given the sequence of shocks, 
+\begin_inset Formula $\boldsymbol{Z},$
+\end_inset
+
+there exists a 
+\emph on
+truncation period
+\emph default
+, 
+\begin_inset Formula $T$
+\end_inset
+
+, such all variables return to steady state beforehand.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DAG: Directed Acyclical Growth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+TBD
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Fake News Algorithm
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fake news algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+TBD
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exercises
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercises: Model extensions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Firms:
+\series default
+ Unchanged
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Households: 
+\series default
+Solve
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
+\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}(1-\tau_{t})z_{t}\geq0\\
+\log z_{t} & =\rho\log z_{t-1}+\varepsilon_{t}^{z}\,\,\,,\varepsilon_{t}^{z}\sim\mathcal{N}(\mu_{z},\sigma_{z}),\,\mathbb{E}[z_{t}]=1\,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ is the real-interest rate and 
+\begin_inset Formula $\tau_{t}$
+\end_inset
+
+ is a tax rate
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Government: 
+\series default
+Set taxes and government consumption, and government bonds follows the law-of-mo
+tion 
+\begin_inset Formula 
+\[
+B_{t+1}=(1+r_{t})B_{t}+G_{t}-\int\tau_{t}z_{t}d\boldsymbol{D}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Asset market clearing: 
+\series default
+
+\begin_inset Formula $K_{t}+B_{t}=\int a_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Define and find the stationary equilibrium and transition path 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+How does the models result to a persistent shock to 
+\begin_inset Formula $G_{t}?$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The concept of a transition path
+\end_layout
+
+\begin_layout Enumerate
+Details to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelTools"
+target "https://github.com/NumEconCopenhagen/GEModelTools"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ package
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Next week: 
+\series default
+More on interesting heterogeneous agent models
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Homework:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Work on completing the model extension exercise
+\end_layout
+
+\begin_layout Enumerate
+Read TBA
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

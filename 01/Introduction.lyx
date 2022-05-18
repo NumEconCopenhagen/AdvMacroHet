@@ -438,7 +438,7 @@ Central economic questions:
 
 \begin_deeper
 \begin_layout Enumerate
-What explain the level and dynamics of heterogeneity/inequality?
+What explains the level and dynamics of heterogeneity/inequality?
 \end_layout
 
 \begin_layout Enumerate
@@ -622,7 +622,7 @@ Incomplete
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- agents needs to 
+ agents need to 
 \emph on
 self-insure
 \end_layout
@@ -679,13 +679,39 @@ status open
 
 
 \series bold
+HANC: 
+\series default
+Heterogeneous Agent 
+\emph on
+Neo-Classical 
+\emph default
+model
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
 HANK: 
 \series default
 Heterogeneous Agent 
 \emph on
 New Keynesian
 \emph default
- model (i.e.
+ model
+\begin_inset Newline newline
+\end_inset
+
+(i.e.
  include price and wage setting frictions)
 \end_layout
 
@@ -834,8 +860,8 @@ textcolor{DarkRed}{
 
 \begin_inset CommandInset href
 LatexCommand href
-name "https://advmacrohet.netlify.app/"
-target "https://advmacrohet.netlify.app/"
+name "sites.google.com/view/numeconcph-advmacrohet/"
+target "https://sites.google.com/view/numeconcph-advmacrohet/"
 literal "false"
 
 \end_inset
@@ -877,8 +903,8 @@ textcolor{DarkRed}{
 
 \begin_inset CommandInset href
 LatexCommand href
-name "https://github.com/NumEconCopenhagen/Adv-Macro-Het-2022"
-target "https://github.com/NumEconCopenhagen/Adv-Macro-Het-2022"
+name "github.com/numeconcopenhagen/adv-macro-het"
+target "https://github.com/numeconcopenhagen/adv-macro-het"
 literal "false"
 
 \end_inset
@@ -937,7 +963,7 @@ textcolor{DarkRed}{
 \begin_inset CommandInset href
 LatexCommand href
 name "GEModelTools"
-target "https://github.com/NumEconCopenhagen/Adv-Macro-Het-2022"
+target "https://github.com/NumEconCopenhagen/GEModelTools"
 literal "false"
 
 \end_inset
@@ -1509,7 +1535,7 @@ Dynamic Programming
 status open
 
 \begin_layout Plain Layout
-From static to dynamic optimization
+From static to dynamic consumer optimization
 \end_layout
 
 \end_inset
@@ -1854,10 +1880,10 @@ terminal condition
 \begin_inset Formula $a_{T-1}=0$
 \end_inset
 
- with equality due utility maximization
+ (equality due utility max.)
 \begin_inset Formula 
 \begin{eqnarray*}
-(1+r)^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & b_{0}+h_{0}=\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}
+(1+r)^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & b_{0}+h_{0}-\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}=0
 \end{eqnarray*}
 
 \end_inset
@@ -1898,7 +1924,7 @@ Static solution: FOC and consumption function
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\mathcal{L}=\sum_{t=0}^{T-1}\beta^{t}\frac{c_{t}^{1-\rho}}{1-\rho}+\lambda\left[\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}-(1+r)a_{-1}-h_{0}\right]
+\mathcal{L}=\sum_{t=0}^{T-1}\beta^{t}\frac{c_{t}^{1-\rho}}{1-\rho}+\lambda\left[\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}-b_{0}-h_{0}\right]
 \]
 
 \end_inset
@@ -1978,11 +2004,7 @@ status open
 \series bold
 Question:
 \series default
- Is the solution correct? For all 
-\begin_inset Formula $b$
-\end_inset
-
-?
+ Is this the solution correct?
 \end_layout
 
 \end_deeper
@@ -2063,7 +2085,7 @@ Value function,
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wy-c_{t}\geq0
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
 \end{align*}
 
 \end_inset
@@ -2142,16 +2164,6 @@ Vocabulary
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2159,7 +2171,7 @@ status open
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0\\
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
 \end{align*}
 
 \end_inset
@@ -2240,6 +2252,107 @@ Parameters:
 status open
 
 \begin_layout Plain Layout
+Timing of shocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Realization of shocks:
+\series default
+ Happens first in the period before choices are made
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Beginning-of-period value function 
+\series default
+(before realization)
+\series bold
+:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{t}(z_{t-1},a_{t-1}) & =\mathbb{E}_{t-1}\left[v_{t}(z_{t},a_{t-1})\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+End-of-period value function 
+\series default
+(after realization)
+\series bold
+:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(z_{t},a_{t-1})\\
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Numerical value function iteration - basics
 \end_layout
 
@@ -2268,7 +2381,11 @@ All state variable belong to discrete monotonically increasing sets
 \begin_inset Formula $\equiv$
 \end_inset
 
- grids,
+ 
+\emph on
+grids
+\emph default
+,
 \begin_inset ERT
 status open
 
@@ -2309,7 +2426,7 @@ status open
 Transition probabilities: 
 \series default
 
-\begin_inset Formula $\pi_{i_{z},i_{z+}}=\text{Pr}[z_{t+1}=z^{i_{z+}}\,|\,z_{t}=z^{i_{z}}]$
+\begin_inset Formula $\pi_{i_{z-},i_{z}}=\text{Pr}[z_{t}=z^{i_{z}}\,|\,z_{t}=z^{i_{z-}}]$
 \end_inset
 
 
@@ -2362,19 +2479,19 @@ vspace{1mm}
 \begin_deeper
 \begin_layout Enumerate
 Assume 
-\begin_inset Formula $v_{t+1}$
+\begin_inset Formula $\underline{v}_{t+1}$
 \end_inset
 
  is known on 
 \begin_inset Formula $\mathcal{G}_{z}\times\mathcal{G}_{a}$
 \end_inset
 
-
+ (tensor product)
 \end_layout
 
 \begin_layout Enumerate
 Evaluate 
-\begin_inset Formula $v_{t+1}(z^{i_{z+1}},a)$
+\begin_inset Formula $\underline{v}_{t+1}(z^{i_{z}},a)$
 \end_inset
 
  for arbitrary 
@@ -2397,9 +2514,9 @@ vspace{-2mm}
 
 \begin_inset Formula 
 \begin{align*}
-\breve{v}_{t+1}(z^{i_{z+}},a) & =v_{t+1}(z^{i_{z+}},a^{i})+\omega_{i}\frac{a-a^{i}}{a^{i+1}-a^{i}}\\
-\omega_{i} & \equiv\frac{v_{t+1}(z^{i_{z+}},a^{i+1})-v_{t+1}(z^{i_{z+}},a^{i})}{a^{i+1}-a^{i}}\\
-i & \equiv\text{largest }\iota\in\{0,1,\dots,\#_{a}-2\}\text{ such that }a^{\iota}\leq a
+\breve{\underline{v}}_{t+1}(z^{i_{z}},a) & =\underline{v}_{t+1}(z^{i_{z}},a^{\iota})+\omega_{i}\frac{a-a^{\iota}}{a^{\iota+1}-a^{\iota}}\\
+\omega_{i} & \equiv\frac{v_{t+1}(z^{i_{z}},a^{\iota+1})-v_{t+1}(z^{\iota_{z}},a^{\iota})}{a^{\iota+1}-a^{\iota}}\\
+\iota & \equiv\text{largest }i_{a}\in\{0,1,\dots,\#_{a}-2\}\text{ such that }a^{i_{a}}\leq a
 \end{align*}
 
 \end_inset
@@ -2452,7 +2569,7 @@ where
 \end_inset
 
  is used to ensure 
-\begin_inset Formula $\mathbb{E}\,[z_{t}]=1$
+\begin_inset Formula $\mathbb{E}[z_{t}]=1$
 \end_inset
 
 
@@ -2469,7 +2586,15 @@ Tauchen (1986), Tauchen and Hussey (1991) and Rouwenhorst (1995) develops
 \end_inset
 
  and 
-\begin_inset Formula $\pi_{i_{z},i_{z+}}$
+\begin_inset Formula $\pi_{i_{z-},i_{z}}$
+\end_inset
+
+ given 
+\begin_inset Formula $\rho_{z}$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{\psi}$
 \end_inset
 
 , but we don't care about the details here
@@ -2498,13 +2623,47 @@ Numerical value function iteration - loops
 
 \begin_deeper
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 
 \series bold
-Value-of-choice :
+Beginning-of-period value function:
+\begin_inset Formula 
+\[
+\underline{v}_{t}(z^{i_{z-}},a^{i_{a-}})=\sum_{i_{z}=0}^{\#_{z}-1}\pi_{i_{z-},i_{z}}v_{t}(z^{i_{z}},a^{i_{a-}})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+End-of-period value-of-choice:
 \begin_inset Formula 
 \begin{align*}
-v_{t}(z^{i_{z}},a_{t-1}|c_{t}) & =u(c_{t})+\beta\sum_{i_{z+}=0}^{\#_{z}-1}\pi_{i_{z},i_{z+}}\breve{v}_{t+1}(z^{i_{z+1}},a_{t})\\
- & a_{t}=(1+r)a_{t-1}+wz^{i_{z}}-c_{t}
+v_{t}(z^{i_{z}},a^{i_{a-}}|c_{t}) & =u(c_{t})+\beta\sum_{i_{z+}=0}^{\#_{z}-1}\pi_{i_{z},i_{z+}}\breve{v}_{t+1}(z^{i_{z+1}},a_{t})\\
+ & a_{t}=(1+r)a^{i_{a-}}+wz^{i_{z}}-c_{t}
 \end{align*}
 
 \end_inset
@@ -2513,6 +2672,16 @@ v_{t}(z^{i_{z}},a_{t-1}|c_{t}) & =u(c_{t})+\beta\sum_{i_{z+}=0}^{\#_{z}-1}\pi_{i
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 
 \series bold
 Nested loops:
@@ -2529,7 +2698,7 @@ Backwards in time from
 \end_inset
 
  (note 
-\begin_inset Formula $v_{T}$
+\begin_inset Formula $\underline{v}_{T}$
 \end_inset
 
  is known)
@@ -2552,7 +2721,9 @@ For each grid point in
 \begin_inset Formula $v_{t}^{\star}(z_{t},a_{t-1})$
 \end_inset
 
- with a numerical optimizer
+ with a 
+\emph on
+numerical optimizer
 \end_layout
 
 \end_deeper
@@ -2594,7 +2765,7 @@ status open
 Initial distribution: 
 \series default
 Draw 
-\begin_inset Formula $z_{i,0}$
+\begin_inset Formula $z_{i,-1}$
 \end_inset
 
  and 
@@ -2632,15 +2803,11 @@ Forwards in time from
 
 \begin_deeper
 \begin_layout Enumerate
-If 
-\begin_inset Formula $t>0$
-\end_inset
-
-: Draw 
+Draw 
 \begin_inset Formula $z_{it}$
 \end_inset
 
-
+ given transition probabilities
 \end_layout
 
 \begin_layout Enumerate
@@ -2660,7 +2827,7 @@ vspace{-1mm}
  
 \begin_inset Formula 
 \begin{align*}
-c_{it} & =c_{t}^{\star}(z_{it},a_{it-1})\\
+c_{it} & =\breve{c}_{t}^{\star}(z_{it},a_{it-1})\\
 a_{it} & =(1+r)a_{it-1}+wz_{it}-c_{it}
 \end{align*}
 
@@ -2742,7 +2909,7 @@ status open
 Initial distribution: 
 \series default
 Choose 
-\begin_inset Formula $\boldsymbol{D}_{0}(z_{0},a_{-1})$
+\begin_inset Formula $\underline{\boldsymbol{D}}_{0}(z_{-1},a_{-1})$
 \end_inset
 
 , which is defined on 
@@ -2798,10 +2965,71 @@ status open
 
 
 \series bold
+Distribute stochastic mass:
+\series default
+ For each 
+\begin_inset Formula $i_{z}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{a-}$
+\end_inset
+
+ calculate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\boldsymbol{D}_{t}(z^{i_{z}},a^{i_{a-}})=\sum_{i_{z-}=0}^{\text{\#}_{z}-1}\pi_{i_{z-},i_{z}}\boldsymbol{\underline{\boldsymbol{D}}}_{t}(z^{i_{z-}},a^{i_{a-}})$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
 Initial zero mass:
 \series default
  Set 
-\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}(z^{i_{z+}},a^{i_{a}})=0$
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}(z^{i_{z}},a^{i_{a}})=0$
 \end_inset
 
  for all 
@@ -2820,7 +3048,7 @@ status open
 
 
 \backslash
-vspace{1mm}
+vspace{2mm}
 \end_layout
 
 \end_inset
@@ -2879,12 +3107,12 @@ status open
 
 \end_inset
 
-Find largest 
-\begin_inset Formula $i\in\{0,1,\dots,\#_{a}-2\}$
+Find 
+\begin_inset Formula $\iota\equiv\text{largest }i_{a}\in\{0,1,\dots,\#_{a}-2\}$
 \end_inset
 
  such that 
-\begin_inset Formula $a_{t}^{\star}(i_{z},i_{a-})\geq a^{i}$
+\begin_inset Formula $a^{i_{a}}\leq a_{t}^{\star}(z^{i_{z}},a^{i_{a-}})$
 \end_inset
 
 
@@ -2915,7 +3143,7 @@ status open
 \end_inset
 
 Calculate 
-\begin_inset Formula $\omega=\frac{a^{i+1}-a^{\ast}(i_{z\text{+}},i_{a-})}{a^{i+1}-a^{i}}\in[0,1]$
+\begin_inset Formula $\omega=\frac{a^{\iota+1}-a^{\ast}(z^{i_{z}},a^{i_{a-}})}{a^{\iota+1}-a^{\iota}}\in[0,1]$
 \end_inset
 
 
@@ -2946,7 +3174,7 @@ status open
 \end_inset
 
 Increment 
-\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}(z^{i_{z}},a^{i})$
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}(z^{i_{z}},a^{\iota})$
 \end_inset
 
  with 
@@ -2981,7 +3209,7 @@ status open
 \end_inset
 
 Increment 
-\begin_inset Formula $\boldsymbol{\underline{\boldsymbol{D}}}_{t+1}(z^{i_{z}},a^{i+1})$
+\begin_inset Formula $\boldsymbol{\underline{\boldsymbol{D}}}_{t+1}(z^{i_{z}},a^{\iota+1})$
 \end_inset
 
  with 
@@ -2996,57 +3224,9 @@ status open
 
 
 \backslash
-vspace{1mm}
+vspace{-1mm}
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Distribute stochastic mass:
-\series default
- For each 
-\begin_inset Formula $i_{z+}$
-\end_inset
-
- and 
-\begin_inset Formula $i_{a}$
-\end_inset
-
- calculate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{1mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Formula $\boldsymbol{D}_{t+1}(z^{i_{z+}},a^{i_{a}})=\sum_{i_{z}=0}^{\text{\#}_{z}-1}\pi_{i_{z},i_{z+}}\boldsymbol{\underline{\boldsymbol{D}}}_{t+1}(z^{i_{z}},a^{i_{a}})$
 \end_inset
 
 
@@ -3101,6 +3281,216 @@ Introduces a non-continuous distribution
 status open
 
 \begin_layout Plain Layout
+Side-note: Matrix formulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The histogram method can be written in 
+\series bold
+matrix form
+\series default
+:
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}\boldsymbol{D}_{t}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+where
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{3mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t}$
+\end_inset
+
+ is vector of length 
+\begin_inset Formula $\#_{z}\times\#_{a}$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+ is vector of length 
+\begin_inset Formula $\#_{z}\times\#_{a}$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Pi_{z}^{\prime}$
+\end_inset
+
+ is derived from the 
+\begin_inset Formula $\pi_{i_{z-},i_{z}}$
+\end_inset
+
+'s
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
+\series bold
+
+\begin_inset Formula $\Lambda_{t}^{\prime}$
+\end_inset
+
+ 
+\series default
+is derived from the 
+\begin_inset Formula $\iota$
+\end_inset
+
+'s and 
+\begin_inset Formula $\omega$
+\end_inset
+
+'s
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Note:
+\series default
+ Example showed in notebook.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Infinite horizon: 
 \begin_inset Formula $T\rightarrow\infty?$
 \end_inset
@@ -3115,6 +3505,19 @@ Infinite horizon:
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-4mm}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
@@ -3146,7 +3549,7 @@ If
 \begin_inset Formula $c^{\star}(z_{t},a_{t-1})$
 \end_inset
 
- so for large enough 
+ for large enough 
 \begin_inset Formula $T$
 \end_inset
 
@@ -3220,10 +3623,10 @@ status open
 Case I:
 \series default
  If 
-\begin_inset Formula $c_{t}^{-\rho}>\beta(1+r)\mathbb{E}_{t}\,\left[c_{t+1}^{-\rho}\right]$
+\begin_inset Formula $c_{t}^{-\rho}>\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
 \end_inset
 
-: 
+:
 \end_layout
 
 \begin_deeper
@@ -3265,7 +3668,7 @@ Feasible:
 Utility change:
 \series default
  
-\begin_inset Formula $\left(c_{t}^{-\rho}\right)+(1+r)\left(-\beta\mathbb{E}_{t}\,\left[c_{t+1}^{-\rho}\right]\right)>0$
+\begin_inset Formula $\left(c_{t}^{-\rho}\right)+\beta\left(-(1+r)\right)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]>0$
 \end_inset
 
 
@@ -3301,7 +3704,7 @@ status open
 Case II:
 \series default
  If 
-\begin_inset Formula $c_{t}^{-\rho}<\beta(1+r)\mathbb{E}_{t}\,\left[c_{t+1}^{-\rho}\right]$
+\begin_inset Formula $c_{t}^{-\rho}<\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
 \end_inset
 
 : 
@@ -3342,7 +3745,7 @@ Feasible:
 Utility change: 
 \series default
 
-\begin_inset Formula $\left(-c_{t}^{-\rho}\right)+(1+r)\left(\beta\mathbb{E}_{t}\,\left[c_{t+1}^{-\rho}\right]\right)>0$
+\begin_inset Formula $\left(-c_{t}^{-\rho}\right)+\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]>0$
 \end_inset
 
 
@@ -3375,7 +3778,9 @@ status open
 
 
 \series bold
-Conclusion:
+Conclusion: 
+\series default
+By contradiction
 \end_layout
 
 \begin_deeper
@@ -3389,7 +3794,7 @@ Constrained:
 \end_inset
 
  and 
-\begin_inset Formula $c_{t}^{-\rho}\geq\beta(1+r)\mathbb{E}_{t}\,\left[c_{t+1}^{-\rho}\right]$
+\begin_inset Formula $c_{t}^{-\rho}\geq\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
 \end_inset
 
 , or
@@ -3405,7 +3810,7 @@ Unconstrained:
 \end_inset
 
  and 
-\begin_inset Formula $c_{t}^{-\rho}=\beta(1+r)\mathbb{E}_{t}\,\left[c_{t+1}^{-\rho}\right]$
+\begin_inset Formula $c_{t}^{-\rho}=\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
 \end_inset
 
 
@@ -3678,14 +4083,14 @@ Introduce transitory shock,
 \begin_inset Formula $\xi_{t}$
 \end_inset
 
-
+ (hardest)
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
 
 \series bold
-Extended model:
+Full extended model:
 \series default
 
 \begin_inset Formula 
@@ -3716,7 +4121,7 @@ v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1}
 status open
 
 \begin_layout Plain Layout
-Details: Gauss-Hermite I
+Extra: Gauss-Hermite I
 \end_layout
 
 \end_inset
@@ -3844,6 +4249,14 @@ weights
 
 )?
 \series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Answer:
+\series default
  Guassian quadrature
 \end_layout
 
@@ -3860,7 +4273,7 @@ weights
 status open
 
 \begin_layout Plain Layout
-Details: Gauss-Hermite II
+Extra: Gauss-Hermite II
 \end_layout
 
 \end_inset
@@ -4015,7 +4428,8 @@ Dynamic programming in practice
 \series bold
 Next week: 
 \series default
-More on consumption-saving models in partial equilibrium
+More on consumption-saving models and precautionary savings in partial equilibri
+um
 \end_layout
 
 \begin_layout Itemize
