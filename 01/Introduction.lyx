@@ -571,7 +571,11 @@ Idiosyncratic and aggregate risk
 \end_layout
 
 \begin_layout Enumerate
-Information flows (who knows what when)
+Information flows (who knows what when 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ often everything)
 \end_layout
 
 \begin_layout Enumerate
@@ -791,6 +795,10 @@ Content:
 
 \begin_deeper
 \begin_layout Enumerate
+Explanation of computational methods
+\end_layout
+
+\begin_layout Enumerate
 Discussion of research papers
 \end_layout
 
@@ -800,7 +808,7 @@ Examples of code for central mechanisms
 
 \begin_deeper
 \begin_layout Standard
-(you should run the notebook code simultaneously)
+(you should run the notebook codes simultaneously)
 \end_layout
 
 \end_deeper
@@ -1037,7 +1045,7 @@ status open
 
 Assignment based on a 
 \series bold
-Aiygari-model
+HANC-model
 \series default
 )
 \end_layout
@@ -1232,7 +1240,7 @@ textcolor{DarkRed}{
 \begin_inset CommandInset href
 LatexCommand href
 name "Introduction to Programming and Numerical Analysis"
-target "https://numeconcopenhagen.netlify.app/"
+target "https://sites.google.com/view/numeconcph-introprog/home"
 literal "false"
 
 \end_inset
@@ -1281,56 +1289,36 @@ Updated Python:
 
 \series bold
 Packages:
-\series default
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
 \family typewriter
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
+\series default
+ 
+\size small
 pip install quantecon, EconModel, consav
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
 
+\series bold
+GEMoodel tools:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Clone the 
 \family typewriter
-\begin_inset space ~
-\end_inset
+GEModelTools
+\family default
+ repositoy
+\end_layout
 
+\begin_layout Enumerate
+Locate repository in command prompt 
+\end_layout
 
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-pip install GEModelTools
+\begin_layout Enumerate
+Run 
+\family typewriter
+pip install -e .
 \end_layout
 
 \end_deeper
@@ -1356,7 +1344,9 @@ Course plan
 \end_layout
 
 \begin_layout Frame
-TBA
+
+\emph on
+See CoursePlan.pdf
 \end_layout
 
 \begin_layout Standard
@@ -2073,6 +2063,16 @@ In math:
 
 \begin_deeper
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 
 \series bold
 Value function, 
@@ -2124,6 +2124,16 @@ vspace{2mm}
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 
 \series bold
 Policy function, 
@@ -2276,7 +2286,7 @@ status open
 \series bold
 Realization of shocks:
 \series default
- Happens first in the period before choices are made
+ First in the period before choices are made
 \end_layout
 
 \begin_layout Itemize
@@ -2559,7 +2569,7 @@ Specification:
  follows the AR(1) process
 \begin_inset Formula 
 \[
-\log z_{t+1}=\rho_{z}\log z_{t}+\psi_{t+1},\,\,\,\psi_{t+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}^{2})
+\log z_{t+1}=\rho_{z}\log z_{t}+\psi_{t+1},\,\,\,\psi_{t+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi})
 \]
 
 \end_inset
@@ -2724,6 +2734,52 @@ For each grid point in
  with a 
 \emph on
 numerical optimizer
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+In practice
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Example-notebook:
+\series default
+ 
+\family typewriter
+Introduction.ipynb
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Introduces 
+\family typewriter
+EconModel
+\family default
+ package
+\end_layout
+
+\begin_layout Enumerate
+Show implementation of solution and simulation methods
 \end_layout
 
 \end_deeper
@@ -4015,7 +4071,7 @@ vspace{-1mm}
 Consumption function:
 \series default
  
-\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-1}})$
+\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})$
 \end_inset
 
  = interpolation of function from 
@@ -4098,7 +4154,7 @@ Full extended model:
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
  & \text{s.t. }\\
  & a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}+\xi_{t}\\
- & \log z_{t}=\rho_{z}\,\log z_{t-1}+\psi_{t},\,\,\mathbb{E}[z_{t}]=1,\text{Var}[\psi_{t}]=\sigma_{\psi}^{2}\\
+ & \log z_{t+1}=\rho_{z}\,\log z_{t}+\psi_{t+1},\,\,\mathbb{E}[z_{t}]=1,\text{Var}[\psi_{t}]=\sigma_{\psi}^{2}\\
  & \xi_{t}\sim\mathcal{N}(0,\sigma_{\xi}^{2})\\
  & a_{t}\geq-b
 \end{align*}
@@ -4444,7 +4500,7 @@ Work on completing the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
-Read TBA
+Read: TBA
 \end_layout
 
 \end_deeper

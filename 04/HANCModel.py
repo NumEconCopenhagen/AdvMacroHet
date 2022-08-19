@@ -12,7 +12,7 @@ class HANCModelClass(EconModelClass,GEModelClass):
         """ fundamental settings """
 
         # a. namespaces (typically not changed)
-        self.namespaces = ['par','sim','ss','path']
+        self.namespaces = ['par','ini','ss','path','sim'] # not used today: 'ini', 'path', 'sim'
 
         # not used today: .sim and .path
         
@@ -69,8 +69,6 @@ class HANCModelClass(EconModelClass,GEModelClass):
         par.w_ss_target = 1.0
 
         # h. misc.
-        par.T = 0 # not used today
-        
         par.max_iter_solve = 50_000 # maximum number of iterations when solving household problem
         par.max_iter_simulate = 50_000 # maximum number of iterations when simulating household problem
         

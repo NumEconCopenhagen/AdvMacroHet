@@ -147,7 +147,7 @@ status open
 
 
 \backslash
-title{4.
+title{7.
  Transition Path
 \backslash
 vspace{-2mm}}
@@ -417,6 +417,7 @@ status open
 \series bold
 Previously: 
 \series default
+\emph on
 Stationary equilibrium
 \end_layout
 
@@ -435,7 +436,9 @@ status open
 \series bold
 Today:
 \series default
- Transition path
+ 
+\emph on
+Transition path
 \end_layout
 
 \begin_layout Itemize
@@ -554,7 +557,7 @@ status open
 \emph on
 linearized solution
 \emph default
- + 
+ and 
 \emph on
 simulation
 \emph default
@@ -576,7 +579,10 @@ status open
 
 \series bold
 Literature: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
 Auclert et.
  al.
  (2021), 
@@ -591,6 +597,15 @@ Using the Sequence-Space Jacobian to Solve and Estimate Heterogeneous-Agent
 
 \end_layout
 
+\begin_layout Enumerate
+Documentation for GEModelTools (except stuff on simulation)
+\end_layout
+
+\begin_layout Enumerate
+Kirkby (2017)
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1364,6 +1379,62 @@ Non-linear impulse-response
 status open
 
 \begin_layout Plain Layout
+The HANC example from GEModelToolsNotebooks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Presentation: 
+\series default
+I go through the code
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+In-class exercise:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Look at the code and talk about it with the person next to you for 10 minutes
+ 
+\end_layout
+
+\begin_layout Enumerate
+Write at least one question on 
+\begin_inset CommandInset href
+LatexCommand href
+name "https://padlet.com/jeppe_druedahl/advmacrohet"
+target "https://padlet.com/jeppe_druedahl/advmacrohet"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Decomposition of GE response
 \end_layout
 
@@ -1770,7 +1841,20 @@ DAG: Directed Acyclical Growth
 
 \begin_deeper
 \begin_layout Standard
-TBD
+
+\series bold
+From Auclert et al.
+ (2021):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/DAG_KS.png
+	width 90text%
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1800,7 +1884,9 @@ Fake news algorithm
 
 \begin_deeper
 \begin_layout Standard
-TBD
+
+\emph on
+Go through Section 3 of the documentation for GEModelTools
 \end_layout
 
 \end_deeper
@@ -1830,6 +1916,18 @@ Exercises: Model extensions
 
 \begin_deeper
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-4mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
 Firms:
@@ -1843,11 +1941,24 @@ Firms:
 Households: 
 \series default
 Solve
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
 \text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}(1-\tau_{t})z_{t}\geq0\\
-\log z_{t} & =\rho\log z_{t-1}+\varepsilon_{t}^{z}\,\,\,,\varepsilon_{t}^{z}\sim\mathcal{N}(\mu_{z},\sigma_{z}),\,\mathbb{E}[z_{t}]=1\,
+\log z_{t} & =\rho\log z_{t-1}+\psi_{t}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
 \end{align*}
 
 \end_inset
@@ -1946,7 +2057,7 @@ The concept of a transition path
 \end_layout
 
 \begin_layout Enumerate
-Details to the 
+Details of the 
 \begin_inset ERT
 status open
 
@@ -2003,7 +2114,7 @@ Work on completing the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
-Read TBA
+Read: TBA
 \end_layout
 
 \end_deeper

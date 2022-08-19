@@ -71,7 +71,7 @@ def obj_ss(K_ss,model,do_print=False):
     model.solve_hh_ss(do_print=do_print)
     model.simulate_hh_ss(do_print=do_print)
 
-    ss.A_hh = np.sum(ss.a*ss.D)
+    ss.A_hh = np.sum(ss.a*ss.D) # hint: is actually computed automatically
     ss.C_hh = np.sum(ss.c*ss.D)
 
     if do_print: print(f'implied {ss.A_hh = :.4f}')

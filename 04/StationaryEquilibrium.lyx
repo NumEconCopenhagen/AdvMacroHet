@@ -147,7 +147,7 @@ status open
 
 
 \backslash
-title{3.
+title{4.
  Stationary Equilibrium
 \backslash
 vspace{-2mm}}
@@ -551,6 +551,24 @@ You can help to add features
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Literature:
+\series default
+ Aiyagari (1994) 
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -699,7 +717,7 @@ status open
 
 \end_inset
 
-The Aiygari-model
+The Aiyagari-model
 \end_layout
 
 \begin_layout Enumerate
@@ -944,7 +962,7 @@ Profit maximization:
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Enumerate
 Rental rate: 
 \begin_inset Formula $\frac{\partial\Pi_{t}}{\partial r_{t}^{k}}=0\Leftrightarrow$
 \end_inset
@@ -956,7 +974,7 @@ Rental rate:
 
 \end_layout
 
-\begin_layout Itemize
+\begin_layout Enumerate
 Real wage: 
 \begin_inset Formula $\frac{\partial\Pi_{t}}{\partial w}=0\Leftrightarrow w_{t}=(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}$
 \end_inset
@@ -978,7 +996,7 @@ Real wage:
 status open
 
 \begin_layout Plain Layout
-Households
+Households - formulation
 \end_layout
 
 \end_inset
@@ -1003,9 +1021,9 @@ vspace{-7mm}
 
 \begin_inset Formula 
 \begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\\
 \text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}z_{t}\geq0\\
-\log z_{t} & =\rho\log z_{t-1}+\varepsilon_{t}^{z}\,\,\,,\varepsilon_{t}^{z}\sim\mathcal{N}(\mu_{z},\sigma_{z}),\,\mathbb{E}[z_{t}]=1\,
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
 \end{align*}
 
 \end_inset
@@ -1156,6 +1174,122 @@ Choices:
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households - solution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Beginning-of-period value function:
+\begin_inset Formula 
+\[
+\underline{v}_{t}(z_{t-1},a_{t-1})=\mathbb{E}\left[v_{t}(z_{t},a_{t-1})\,|\,z_{t-1},a_{t-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ This re-formulation will be useful later in the course
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Envelope theorem: 
+\series default
+Differentiate with fixed 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ choice
+\series bold
+
+\begin_inset Formula 
+\[
+\underline{v}_{a,t}\equiv\frac{\partial\underline{v}_{t}}{\partial a_{t-1}}=\underline{\mathbb{E}}_{t}\left[(1+r_{t})c_{t}^{-\sigma}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+EGM: 
+\series default
+Find solution by
+\series bold
+
+\begin_inset Formula 
+\[
+c_{t}=\left(\beta\underline{v}_{a,t+1}\right)^{\frac{1}{\sigma}}\Rightarrow m_{t}=a_{t}+c_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2087,7 +2221,7 @@ Solve
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
 \text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+(1-\tau_{t})z_{t}\geq0\\
-\log z_{t} & =\rho\log z_{t-1}+\varepsilon_{t}^{z}\,\,\,,\varepsilon_{t}^{z}\sim\mathcal{N}(\mu_{z},\sigma_{z}),\,\mathbb{E}[z_{t}]=1\,
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
 \end{align*}
 
 \end_inset
@@ -2108,7 +2242,7 @@ where
 \series bold
 Government: 
 \series default
-Set taxes and government bonds follows the law-of-motion 
+Set taxes and government bonds follows 
 \begin_inset Formula 
 \[
 B_{t+1}=(1+r_{t})B_{t}-\int\tau_{t}z_{t}d\boldsymbol{D}_{t}
@@ -2242,7 +2376,7 @@ Work on completing the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
-Read TBA
+Read: TBA
 \end_layout
 
 \end_deeper
