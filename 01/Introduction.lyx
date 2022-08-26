@@ -417,7 +417,7 @@ status open
 \series bold
 Teachers: 
 \series default
-Jeppe Druedahl and Patrick Moran
+Jeppe Druedahl & Patrick Moran
 \end_layout
 
 \begin_layout Itemize
@@ -597,7 +597,7 @@ status open
 
 
 \series bold
-Insurance:
+Insurance/markets:
 \end_layout
 
 \begin_deeper
@@ -1046,8 +1046,6 @@ status open
 Assignment based on a 
 \series bold
 HANC-model
-\series default
-)
 \end_layout
 
 \begin_deeper
@@ -1517,7 +1515,7 @@ Discuss and assess the importance of how heterogeneity and risk is modeled
 \end_layout
 
 \begin_layout Section
-Dynamic Programming
+Dynamic programming
 \end_layout
 
 \begin_layout Frame
@@ -4496,11 +4494,27 @@ Homework:
 
 \begin_deeper
 \begin_layout Enumerate
-Work on completing the model extension exercise
+
+\series bold
+Work on:
+\series default
+ Ccompleting the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
-Read: TBA
+
+\series bold
+Read:
+\series default
+ Kaplan and Violante, 2014, 
+\begin_inset Quotes ald
+\end_inset
+
+A Model of the Consumption Response to Fiscal Stimulus Payments
+\begin_inset Quotes ard
+\end_inset
+
+
 \end_layout
 
 \end_deeper
