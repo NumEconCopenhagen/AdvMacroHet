@@ -173,8 +173,7 @@ class ConSavModelClass(EconModelClass):
             sol = model.sol
 
             # prepare
-            if algo == 'hist':
-                find_i_and_w(par,sol,sol.pol_indices,sol.pol_weights)
+            if algo == 'hist': find_i_and_w(par,sol,sol.pol_indices,sol.pol_weights)
 
             # time loop
             for t in range(par.simT):
