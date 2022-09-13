@@ -1969,7 +1969,7 @@ into
 \begin_inset Formula 
 \begin{eqnarray*}
 \sum_{t=0}^{T-1}(1+r)^{-t}(\beta(1+r))^{t/\rho}c_{0} & = & b_{0}+h_{0}\Leftrightarrow\\
-c_{0} & = & \frac{1-(\beta(1+r))^{1/\rho}/(1+r)}{1-((\beta(1+r))/(1+r))^{T}}(b_{0}+h_{0})
+c_{0} & = & \frac{1-(\beta(1+r))^{1/\rho}/(1+r)}{1-((\beta(1+r))^{1/\rho}/(1+r))^{T}}(b_{0}+h_{0})
 \end{eqnarray*}
 
 \end_inset
@@ -2339,7 +2339,7 @@ End-of-period value function
 
 \begin_inset Formula 
 \begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(z_{t},a_{t-1})\\
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(z_{t},a_{t})\\
  & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
 \end{align*}
 
@@ -2522,7 +2522,7 @@ vspace{-2mm}
 
 \begin_inset Formula 
 \begin{align*}
-\breve{\underline{v}}_{t+1}(z^{i_{z}},a) & =\underline{v}_{t+1}(z^{i_{z}},a^{\iota})+\omega_{i}\frac{a-a^{\iota}}{a^{\iota+1}-a^{\iota}}\\
+\breve{\underline{v}}_{t+1}(z^{i_{z}},a) & =\underline{v}_{t+1}(z^{i_{z}},a^{\iota})+\omega_{i}(a-a^{\iota})\\
 \omega_{i} & \equiv\frac{v_{t+1}(z^{i_{z}},a^{\iota+1})-v_{t+1}(z^{\iota_{z}},a^{\iota})}{a^{\iota+1}-a^{\iota}}\\
 \iota & \equiv\text{largest }i_{a}\in\{0,1,\dots,\#_{a}-2\}\text{ such that }a^{i_{a}}\leq a
 \end{align*}
@@ -3087,7 +3087,7 @@ Initial zero mass:
 \end_inset
 
  for all 
-\begin_inset Formula $i_{z+}$
+\begin_inset Formula $i_{z}$
 \end_inset
 
  and 
@@ -4149,7 +4149,7 @@ Full extended model:
 
 \begin_inset Formula 
 \begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
+v_{t}(z_{t},a_{t-1},\xi_{t}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t},\xi_{t+1})]\\
  & \text{s.t. }\\
  & a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}+\xi_{t}\\
  & \log z_{t+1}=\rho_{z}\,\log z_{t}+\psi_{t+1},\,\,\mathbb{E}[z_{t}]=1,\text{Var}[\psi_{t}]=\sigma_{\psi}^{2}\\
@@ -4498,7 +4498,7 @@ Homework:
 \series bold
 Work on:
 \series default
- Ccompleting the model extension exercise
+ Completing the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
