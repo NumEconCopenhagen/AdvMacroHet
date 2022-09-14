@@ -1457,6 +1457,16 @@ Takeaways:
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 As 
 \begin_inset Formula $x\rightarrow\infty$
 \end_inset
@@ -1570,9 +1580,6 @@ status open
 \end_inset
 
 Aggregate MPC:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 \overline{\mathrm{m}}=\int_{B\times Y}\mathfrak{m}(b,y)d\mu(b,y)
@@ -2168,10 +2175,30 @@ Two-Asset HA Model
 
 \begin_deeper
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 Continuum of households 
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 Face uninsurable idiosyncratic income shocks 
 \end_layout
 
@@ -2205,7 +2232,7 @@ status open
 \end_inset
 
 Two assets: liquid (
-\begin_inset Formula $b$
+\begin_inset Formula $m$
 \end_inset
 
 ) and illiquid (
@@ -2213,7 +2240,7 @@ Two assets: liquid (
 \end_inset
 
 ) with 
-\begin_inset Formula $r^{a}>r^{b}$
+\begin_inset Formula $r^{a}>r^{m}$
 \end_inset
 
  
@@ -2240,7 +2267,11 @@ status open
 
 \end_inset
 
-Fixed transaction cost to move funds into / out of illiquid account 
+Fixed transaction cost 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ to move funds into / out of illiquid account 
 \end_layout
 
 \end_deeper
@@ -2256,7 +2287,346 @@ Fixed transaction cost to move funds into / out of illiquid account
 status open
 
 \begin_layout Plain Layout
-Emergence of Wealthy HtM Households 
+Two-Asset HA Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Value function is the max of the value if you do not (
+\begin_inset Formula $N$
+\end_inset
+
+) or do adjust (
+\begin_inset Formula $A$
+\end_inset
+
+) illiquid assets
+\begin_inset Formula 
+\[
+V_{j}\left(a_{j},m_{j},z_{j}\right)=max\left\{ V_{j}^{N}\left(a_{j},m_{j},z_{j}\right),\;V_{j}^{A}\left(a_{j},m_{j},z_{j}\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Value function if you do not adjust:
+\begin_inset Formula 
+\[
+\begin{aligned}V_{j}^{N}\left(a_{j},m_{j},z_{j}\right)= & \max_{c_{j},m_{j+1}}u\left(c_{j}\right)+\beta\mathbb{E}_{j}\left[V_{j+1}\left(a_{j+1},m_{j+1},z_{j+1}\right)\right]\\
+ & \text{ subject to }\\
+ & c_{j}+m_{j+1}\leq m_{j}\left(1+r^{m}\right)+y_{j}\left(z_{j}\right)\\
+ & a_{j+1}=a_{j}(1+r^{a})\\
+ & m_{j+1}\geq\underline{m}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+States: 
+\begin_inset Formula $\left(a_{j},m_{j},z_{j}\right)$
+\end_inset
+
+ = illiquid assets, liquid assets, productivity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Choices: 
+\begin_inset Formula $\left(c_{j},m_{j+1}\right)$
+\end_inset
+
+ = consumption, liquid asset tmrw
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Two-Asset HA Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Value function if you adjust:
+\begin_inset Formula 
+\[
+\begin{aligned}V_{j}^{A}\left(a_{j},m_{j},z_{j}\right)= & \max_{c_{j},a_{j+1},m_{j+1}}u\left(c_{j}\right)+\beta\mathbb{E}_{j}\left[v_{j+1}\left(a_{j+1},m_{j+1},z_{j+1}\right)\right]\\
+ & \text{ subject to }\\
+ & c_{j}+a_{j+1}+m_{j+1}\leq a_{j}(1+r^{a})+m_{j}(1+r^{m})-\kappa+y_{j}\left(z_{j}\right)\\
+ & a_{j+1}\geq0,m_{j+1}\geq\underline{m}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choices: 
+\begin_inset Formula $\left(c_{j},a_{j+1},m_{j+1}\right)$
+\end_inset
+
+ = consumption, illiquid asset tmrw, liquid asset tmrw
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Result: Two different Euler equations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Short-Run Euler Equation - governed by saving vs dissaving in the liquid
+ asset
+\begin_inset Formula 
+\[
+u'(c_{j})=\beta(1+r^{m})u'(c_{j+1})
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Long-Run Euler Equation - governed by saving vs dissaving in the illiquid
+ assets
+\begin_inset Formula 
+\[
+u'(c_{j})=\beta(1+r^{m})^{N}u'(c_{j+N})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of periods between adjustment
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/PHtM-HH.JPG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Agent exhibits poor hand-to-mouth behavior between periods 40-60, when she
+ consumes all of her income and holds zero liquid assets
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/WHtM-HH.JPG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Agent exhibits wealthy hand-to-mouth behavior between periods 55 to 100,
+ when she owns illiquid wealth, but zero liquid wealth
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Result: Emergence of Wealthy HtM Households 
 \end_layout
 
 \end_inset
@@ -2362,7 +2732,7 @@ If gains exceeds costs
 status open
 
 \begin_layout Plain Layout
-Wealthy HtM Households
+Wealthy HtM households in the data
 \end_layout
 
 \end_inset
@@ -2394,7 +2764,7 @@ Wealthy HtM Households
 status open
 
 \begin_layout Plain Layout
-Wealthy HtM Households
+Wealthy HtM households in the data
 \end_layout
 
 \end_inset
@@ -2612,18 +2982,41 @@ Can macro models generate a high MPC, and if so, how?
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
-RA model: No 
+\begin_layout Itemize
+RA model: No.
+ 
 \end_layout
 
-\begin_layout Enumerate
-One-asset HA model: only by neglecting the majority of wealth
+\begin_deeper
+\begin_layout Itemize
+MPC = 0.05%
 \end_layout
 
-\begin_layout Enumerate
-Two-asset HA model: successful, while also matching wealth holdings
+\end_deeper
+\begin_layout Itemize
+One-asset HA model: 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Realistic wealth calibration: MPC = 0.5%
+\end_layout
+
+\begin_layout Itemize
+Low wealth calibration: MPC = 15%
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Two-asset HA model: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Realistic wealth calibration: MPC = 15%
+\end_layout
+
+\end_deeper
 \end_deeper
 \end_deeper
 \begin_layout Standard
@@ -3167,6 +3560,16 @@ Summary and next week
 
 \begin_deeper
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 
 \series bold
 Today: 
@@ -3203,6 +3606,16 @@ vfill
 
 \end_deeper
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 
 \series bold
 Next week: 
@@ -3211,6 +3624,16 @@ Life-cycle consumption-saving models with deviations from full rationality
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 
 \series bold
 Homework exercises:
@@ -3218,12 +3641,17 @@ Homework exercises:
 
 \begin_deeper
 \begin_layout Enumerate
-Plot the MPC function in the one-asset HA model
+Plot the MPC function in the model from the previous lecture
 \end_layout
 
 \begin_layout Enumerate
-As you adjust average wealth holdings in the HA model, how does the average
- MPC change?
+Adjust beta to target different levels of average wealth.
+ How does it change the average MPC?
+\end_layout
+
+\begin_layout Enumerate
+Add unemployment risk to the income process you saw last week.
+ How does it change average savings? 
 \end_layout
 
 \end_deeper
