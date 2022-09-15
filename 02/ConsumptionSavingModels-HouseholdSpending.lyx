@@ -1678,7 +1678,7 @@ Uninsurable income risk
 \begin_deeper
 \begin_layout Itemize
 Prudence (
-\begin_inset Formula $u''>0$
+\begin_inset Formula $u'''>0$
 \end_inset
 
 ) 
@@ -2521,7 +2521,7 @@ Long-Run Euler Equation - governed by saving vs dissaving in the illiquid
  assets
 \begin_inset Formula 
 \[
-u'(c_{j})=\beta(1+r^{m})^{N}u'(c_{j+N})
+u'(c_{j})=\beta(1+r^{a})^{N}u'(c_{j+N})
 \]
 
 \end_inset
@@ -2989,7 +2989,7 @@ RA model: No.
 
 \begin_deeper
 \begin_layout Itemize
-MPC = 0.05%
+MPC ~= 0.5%
 \end_layout
 
 \end_deeper
@@ -2999,7 +2999,7 @@ One-asset HA model:
 
 \begin_deeper
 \begin_layout Itemize
-Realistic wealth calibration: MPC = 0.5%
+Realistic wealth calibration: MPC = 4.6%
 \end_layout
 
 \begin_layout Itemize
