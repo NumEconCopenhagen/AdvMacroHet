@@ -1604,8 +1604,14 @@ vspace{-2mm}
 
 
 \series bold
-Borrowing constraint: 
-\begin_inset Formula $\text{\ensuremath{a_{t}\geq0}}$
+Borrowing constraints: 
+\begin_inset Formula $\text{\ensuremath{a_{t}\geq b}}$
+\end_inset
+
+ 
+\series default
+and 
+\begin_inset Formula $a_{T}\geq0$
 \end_inset
 
 
@@ -2083,7 +2089,7 @@ Value function,
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
 \end{align*}
 
 \end_inset
@@ -2144,7 +2150,7 @@ Is the same as
 \begin_inset Formula 
 \begin{align*}
 c_{t}^{\star}(z_{t},a_{t-1}) & =\arg\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
 \end{align*}
 
 \end_inset
@@ -2179,7 +2185,7 @@ Vocabulary
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
 \end{align*}
 
 \end_inset
@@ -2361,6 +2367,257 @@ v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(z_{t},a_{t
 status open
 
 \begin_layout Plain Layout
+Infinite horizon: 
+\begin_inset Formula $T\rightarrow\infty?$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-4mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Contraction mapping result:
+\series default
+ 
+\emph on
+If 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is low enough (strong enough impatience) then the value and policy function
+ converge to 
+\begin_inset Formula $v(z_{t},a_{t-1})$
+\end_inset
+
+ and 
+\begin_inset Formula $c^{\star}(z_{t},a_{t-1})$
+\end_inset
+
+ for large enough 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Maximum upper limit for 
+\begin_inset Formula $\beta$
+\end_inset
+
+:
+\series default
+ 
+\begin_inset Formula $\frac{1}{1+r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+In practice:
+\series default
+ Solve backwards until value and policy functions does not change anymore
+ (given some tolerance)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The natural borrowing limit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Minimum income: 
+\begin_inset Formula $\underline{y}=\min_{z\in\mathcal{G}_{z}}wz$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Thought experiment: 
+\series default
+Assumptions
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $a_{t-1}=-\frac{\underline{y}}{r}+\Delta$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y_{t}=\underline{y}$
+\end_inset
+
+, 
+\begin_inset Formula $\forall t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $c_{t}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\forall t$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Implication:
+\series default
+ For 
+\begin_inset Formula $\Delta<0$
+\end_inset
+
+ assets will be 
+\emph on
+decreasing without bound!
+\emph default
+
+\begin_inset Formula 
+\begin{align*}
+a_{t} & =\left(1+r\right)\left(-\frac{\underline{y}}{r}+\Delta\right)+\underline{y}=-\frac{\underline{y}}{r}+(1+r)\Delta\\
+a_{t+1} & =-\frac{\underline{y}}{r}+(1+r)^{2}\Delta\\
+ & \dots\\
+a_{t+k} & =-\frac{\underline{y}}{r}+(1+r)^{k}\Delta\rightarrow-\infty
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Natural borrowing constraint: 
+\begin_inset Formula $a_{t}>\max\left\{ b,-\frac{\underline{y}}{r}\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Numerical value function iteration - basics
 \end_layout
 
@@ -2385,7 +2642,7 @@ status open
 \series bold
 Discretization: 
 \series default
-All state variable belong to discrete monotonically increasing sets 
+All state variables belong to discrete sets 
 \begin_inset Formula $\equiv$
 \end_inset
 
@@ -2560,24 +2817,33 @@ Deriving transition probabilities
 \series bold
 Specification:
 \series default
- Assume 
-\begin_inset Formula $\log z_{t}$
-\end_inset
-
- follows the AR(1) process
+ Assume
 \begin_inset Formula 
-\[
-\log z_{t+1}=\rho_{z}\log z_{t}+\psi_{t+1},\,\,\,\psi_{t+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi})
-\]
+\begin{align*}
+z_{t} & =\tilde{z}_{t}\xi_{t},\,\,\,\log\xi_{t}\sim\mathcal{N}(\mu_{\xi},\sigma_{\xi})\\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1},\,\,\,\psi_{t+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi})
+\end{align*}
 
 \end_inset
 
 where 
+\begin_inset Formula $\mu_{\xi}$
+\end_inset
+
+ and 
 \begin_inset Formula $\mu_{\psi}$
 \end_inset
 
- is used to ensure 
-\begin_inset Formula $\mathbb{E}[z_{t}]=1$
+ ensures 
+\begin_inset Formula $\mathbb{E}[\xi_{t}]=1$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbb{E}[\tilde{z}_{t}]=1$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{\mathbb{E}}[z_{t}]=1$
 \end_inset
 
 
@@ -2586,15 +2852,22 @@ where
 \begin_layout Itemize
 
 \series bold
-Literature: 
+Discretization of 
+\begin_inset Formula $\tilde{z}_{t}$
+\end_inset
+
+: 
 \series default
-Tauchen (1986), Tauchen and Hussey (1991) and Rouwenhorst (1995) develops
- method for deriving 
-\begin_inset Formula $\mathcal{G}_{z}$
+Derive
+\series bold
+ 
+\series default
+
+\begin_inset Formula $\mathcal{G}_{\tilde{z}}$
 \end_inset
 
  and 
-\begin_inset Formula $\pi_{i_{z-},i_{z}}$
+\begin_inset Formula $\pi_{i_{\tilde{z}-},i_{\tilde{z}}}$
 \end_inset
 
  given 
@@ -2605,7 +2878,320 @@ Tauchen (1986), Tauchen and Hussey (1991) and Rouwenhorst (1995) develops
 \begin_inset Formula $\sigma_{\psi}$
 \end_inset
 
-, but we don't care about the details here
+ (using a method such as Tauchen (1986) or Rouwenhorst (1995))
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Discratization of 
+\begin_inset Formula $\xi_{t}$
+\end_inset
+
+: 
+\series default
+Derive 
+\begin_inset Formula $\mathcal{G}_{\xi}$
+\end_inset
+
+ and 
+\begin_inset Formula $\pi_{i_{\xi-},i_{\xi}}$
+\end_inset
+
+ given 
+\begin_inset Formula $\sigma_{\xi}$
+\end_inset
+
+ (using Gauss-Hermite quadrature, see next slides)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Combined:
+\series default
+ Derive 
+\begin_inset Formula $\mathcal{G}_{z}=\mathcal{G}_{\tilde{z}}\times\mathcal{G_{\xi}}$
+\end_inset
+
+ and use independence of 
+\begin_inset Formula $\tilde{z}_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{t}$
+\end_inset
+
+ to get transition probabilities 
+\begin_inset Formula $\pi_{i_{z-},i_{z}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Details: Gauss-Hermite I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+General problem: 
+\series default
+How can we calculate
+\begin_inset Formula 
+\[
+\mathbb{E}(f(x))=\int f(x)g(x)dx
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $f:\mathbb{R}\rightarrow\mathbb{R}$
+\end_inset
+
+ some function
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $g(x)$
+\end_inset
+
+ is the
+\emph on
+ 
+\emph default
+probability distribution
+\emph on
+ 
+\emph default
+function (PDF) for 
+\begin_inset Formula $x$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+General solution: 
+\series default
+Turn it into a discrete sum
+\begin_inset Formula 
+\[
+\mathbb{E}(f(x))\approx\sum_{i=1}^{S}\omega_{i}f(x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+How to choose 
+\begin_inset Formula $S$
+\end_inset
+
+ and the 
+\emph on
+nodes
+\emph default
+ (
+\begin_inset Formula $x_{i}$
+\end_inset
+
+) and 
+\emph on
+weights
+\emph default
+ (
+\begin_inset Formula $\omega_{i}$
+\end_inset
+
+)?
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Answer:
+\series default
+ Guassian quadrature
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Details: Gauss-Hermite II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Gauss-Hermite
+\series default
+ quadrature uses that 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}f(x)e^{-x^{2}}dx=\sum_{i=1}^{S}\omega_{i}f(x_{i})+\frac{S!\sqrt{\pi}}{s^{S}(2S)!}f^{(2S)}(\epsilon)
+\]
+
+\end_inset
+
+for some 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ and where the 
+\begin_inset Formula $(x_{i},\omega_{i})$
+\end_inset
+
+'s can be easily found
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Well behaved function:
+\series default
+ For 
+\begin_inset Formula $S\rightarrow\infty$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\[
+\int_{-\infty}^{\infty}f(x)e^{-x^{2}}dx\approx\sum_{i=1}^{S}\omega_{i}f(x_{i})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Example: Random normal variable: 
+\begin_inset Formula $Y\sim\mathcal{N}(\mu,\sigma^{2})$
+\end_inset
+
+ 
+\series default
+so that
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}[f(Y)] & =\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty}f(y)e^{-\frac{(y-\mu)^{2}}{2\sigma^{2}}}dy\\
+ & \approx\frac{1}{\sqrt{\pi}}\sum_{i=1}^{S}\omega_{i}f(\sqrt{2}\sigma x_{i}+\mu)
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -2760,11 +3346,7 @@ In practice
 \begin_layout Itemize
 
 \series bold
-Example-notebook:
-\series default
- 
-\family typewriter
-Introduction.ipynb
+Example-notebooks:
 \end_layout
 
 \begin_deeper
@@ -3353,7 +3935,7 @@ matrix form
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
-\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}\boldsymbol{D}_{t}
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}
 \end{align*}
 
 \end_inset
@@ -3529,110 +4111,15 @@ is derived from the
 \series bold
 Note:
 \series default
- Example showed in notebook.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Infinite horizon: 
-\begin_inset Formula $T\rightarrow\infty?$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-4mm}
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
-\end{align*}
-
-\end_inset
-
-
+ Example shown in notebook
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Contraction mapping result:
+Further details: 
 \series default
- 
-\emph on
-If 
-\begin_inset Formula $\beta$
-\end_inset
-
- is low enough (strong enough impatience) then the value and policy function
- converge to 
-\begin_inset Formula $v(z_{t},a_{t-1})$
-\end_inset
-
- and 
-\begin_inset Formula $c^{\star}(z_{t},a_{t-1})$
-\end_inset
-
- for large enough 
-\begin_inset Formula $T$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Maximum upper limit for 
-\begin_inset Formula $\beta$
-\end_inset
-
-:
-\series default
- 
-\begin_inset Formula $\frac{1}{1+r}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-In practice:
-\series default
- Solve backwards until value and policy functions does not change anymore
- (given some tolerance)
+Young (2010), Tan (2020), Ocampo and Robinson (2022)
 \end_layout
 
 \end_deeper
@@ -3710,7 +4197,7 @@ Increase
 Feasible:
 \series default
  Yes, if 
-\begin_inset Formula $a_{t}>0$
+\begin_inset Formula $a_{t}>b$
 \end_inset
 
 
@@ -3844,7 +4331,7 @@ By contradiction
 Constrained:
 \series default
  
-\begin_inset Formula $a_{t}=0$
+\begin_inset Formula $a_{t}=b$
 \end_inset
 
  and 
@@ -3860,7 +4347,7 @@ Constrained:
 Unconstrained:
 \series default
  
-\begin_inset Formula $a_{t}>0$
+\begin_inset Formula $a_{t}>b$
 \end_inset
 
  and 
@@ -4068,11 +4555,32 @@ vspace{-1mm}
 \series bold
 Consumption function:
 \series default
- 
-\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})$
+ Calculate 
+\begin_inset Formula $m=(1+r)a^{i_{a-}}+wz^{i_{z}}$
 \end_inset
 
- = interpolation of function from 
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+If 
+\begin_inset Formula $m\leq m(z^{i_{z}},a^{0})$
+\end_inset
+
+: 
+\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})=m$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Else: 
+\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})=$
+\end_inset
+
+ interpolate 
 \begin_inset Formula $m(z^{i_{z}},:)$
 \end_inset
 
@@ -4081,356 +4589,13 @@ Consumption function:
 \end_inset
 
  at 
-\begin_inset Formula $m=(1+r)a^{i_{a-}}+wz^{i_{z}}$
+\begin_inset Formula $m$
 \end_inset
 
 
 \end_layout
 
 \end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Exercises
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Exercises: Model extensions
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Three exercises for you to do:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Ensure the stationary distribution is found in the simulation
-\end_layout
-
-\begin_layout Enumerate
-Make some borrowing allowed, 
-\begin_inset Formula $b$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Introduce transitory shock, 
-\begin_inset Formula $\xi_{t}$
-\end_inset
-
- (hardest)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Full extended model:
-\series default
-
-\begin_inset Formula 
-\begin{align*}
-v_{t}(z_{t},a_{t-1},\xi_{t}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t},\xi_{t+1})]\\
- & \text{s.t. }\\
- & a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}+\xi_{t}\\
- & \log z_{t+1}=\rho_{z}\,\log z_{t}+\psi_{t+1},\,\,\mathbb{E}[z_{t}]=1,\text{Var}[\psi_{t}]=\sigma_{\psi}^{2}\\
- & \xi_{t}\sim\mathcal{N}(0,\sigma_{\xi}^{2})\\
- & a_{t}\geq-b
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Extra: Gauss-Hermite I
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-General problem: 
-\series default
-How can we calculate
-\begin_inset Formula 
-\[
-\mathbb{E}(f(x))=\int f(x)g(x)dx
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset Formula $f:\mathbb{R}\rightarrow\mathbb{R}$
-\end_inset
-
- some function
-\end_layout
-
-\begin_layout Itemize
-\begin_inset Formula $g(x)$
-\end_inset
-
- is the
-\emph on
- 
-\emph default
-probability distribution
-\emph on
- 
-\emph default
-function (PDF) for 
-\begin_inset Formula $x$
-\end_inset
-
- and 
-\begin_inset Formula $G(x)$
-\end_inset
-
- is the CDF
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-General solution: 
-\series default
-Turn it into a discrete sum
-\begin_inset Formula 
-\[
-\mathbb{E}(f(x))\approx\sum_{i=1}^{S}\omega_{i}f(x_{i})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-How to choose 
-\begin_inset Formula $S$
-\end_inset
-
- and the 
-\emph on
-nodes
-\emph default
- (
-\begin_inset Formula $x_{i}$
-\end_inset
-
-) and 
-\emph on
-weights
-\emph default
- (
-\begin_inset Formula $\omega_{i}$
-\end_inset
-
-)?
-\series default
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Answer:
-\series default
- Guassian quadrature
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Extra: Gauss-Hermite II
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Gauss-Hermite
-\series default
- quadrature uses that 
-\begin_inset Formula 
-\[
-\int_{-\infty}^{\infty}f(x)e^{-x^{2}}dx=\sum_{i=1}^{S}\omega_{i}f(x_{i})+\frac{S!\sqrt{\pi}}{s^{S}(2S)!}f^{(2S)}(\epsilon)
-\]
-
-\end_inset
-
-for some 
-\begin_inset Formula $\epsilon$
-\end_inset
-
- and where the 
-\begin_inset Formula $(x_{i},\omega_{i})$
-\end_inset
-
-'s can be easily found
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Well behaved function:
-\series default
- For 
-\begin_inset Formula $S\rightarrow\infty$
-\end_inset
-
- we have 
-\begin_inset Formula 
-\[
-\int_{-\infty}^{\infty}f(x)e^{-x^{2}}dx\approx\sum_{i=1}^{S}\omega_{i}f(x_{i})
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Example: Random normal variable: 
-\begin_inset Formula $Y\sim\mathcal{N}(\mu,\sigma^{2})$
-\end_inset
-
- 
-\series default
-so that
-\begin_inset Formula 
-\begin{align*}
-\mathbb{E}[f(Y)] & =\frac{1}{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty}f(y)e^{-\frac{(y-\mu)^{2}}{2\sigma^{2}}}dy\\
- & \approx\frac{1}{\sqrt{\pi}}\sum_{i=1}^{S}\omega_{i}f(\sqrt{2}\sigma x_{i}+\mu)
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -4498,7 +4663,7 @@ Homework:
 \series bold
 Work on:
 \series default
- Completing the model extension exercise
+ Familiarize your self with the code
 \end_layout
 
 \begin_layout Enumerate

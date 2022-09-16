@@ -7,7 +7,8 @@ import quantecon as qe
 from EconModel import EconModelClass, jit
 
 from consav.grids import equilogspace
-from consav.markov import log_rouwenhorst, choice
+from consav.markov import log_rouwenhorst, find_ergodic, choice
+from consav.quadrature import log_normal_gauss_hermite
 from consav.linear_interp import binary_search, interp_1d
 from consav.misc import elapsed
 
@@ -29,12 +30,17 @@ class ConSavModelClass(EconModelClass):
 
         # income
         par.w = 1.0 # wage level
-        par.rho_z = 0.96 # AR(1) parameter
-        par.sigma_psi = 0.10 # std. of shock
-        par.Nz = 7 # number of grid points
+        
+        par.rho_zt = 0.96 # AR(1) parameter
+        par.sigma_psi = 0.10 # std. of persistent shock
+        par.Nzt = 5 # number of grid points for zt
+        
+        par.sigma_xi = 0.10 # std. of transitory shock
+        par.Nxi = 2 # number of grid points for xi
 
         # saving
         par.r = 0.02 # interest rate
+        par.b = -0.10 # borrowing constraint
 
         # grid
         par.a_max = 100.0 # maximum point in grid
@@ -45,8 +51,10 @@ class ConSavModelClass(EconModelClass):
         par.simN = 100_000 # number of individuals (mc)
 
         # tolerances
-        par.max_iter_solve = 10_000 # maximum number of iteration
-        par.tol_solve = 1e-8 # tolerance
+        par.max_iter_solve = 10_000 # maximum number of iterations
+        par.max_iter_simulate = 10_000 # maximum number of iterations
+        par.tol_solve = 1e-8 # tolerance when solving
+        par.tol_simulate = 1e-8 # tolerance when simulating
 
     def allocate(self):
         """ allocate model """
@@ -54,13 +62,39 @@ class ConSavModelClass(EconModelClass):
         par = self.par
         sol = self.sol
         sim = self.sim
-
-        # a. asset grid
-        par.a_grid = equilogspace(0.0,par.w*par.a_max,par.Na)
         
-        # b. productivity grid and transition matrix
-        _out = log_rouwenhorst(par.rho_z,par.sigma_psi,par.Nz)
-        par.z_grid,par.z_trans,par.z_ergodic,par.z_trans_cumsum,par.z_ergodic_cumsum = _out
+        # a. transition matrix
+        
+        # persistent
+        _out = log_rouwenhorst(par.rho_zt,par.sigma_psi,par.Nzt)
+        par.zt_grid,par.zt_trans,par.zt_ergodic,par.zt_trans_cumsum,par.zt_ergodic_cumsum = _out
+        
+        # transitory
+        if par.sigma_xi > 0 and par.Nxi > 1:
+            par.xi_grid,par.xi_weights = log_normal_gauss_hermite(par.sigma_xi,par.Nxi)
+            par.xi_trans = np.broadcast_to(par.xi_weights,(par.Nxi,par.Nxi))
+        else:
+            par.xi_grid = np.ones(1)
+            par.xi_weights = np.ones(1)
+            par.xi_trans = np.ones((1,1))
+
+        # combined
+        par.Nz = par.Nxi*par.Nzt
+        par.z_grid = np.repeat(par.xi_grid,par.Nzt)*np.tile(par.zt_grid,par.Nxi)
+        par.z_trans = np.kron(par.xi_trans,par.zt_trans)
+        par.z_trans_cumsum = np.cumsum(par.z_trans,axis=1)
+        par.z_ergodic = find_ergodic(par.z_trans)
+        par.z_ergodic_cumsum = np.cumsum(par.z_ergodic)
+        par.z_trans_T = par.z_trans.T
+
+        # b. asset grid
+        assert par.b <= 0.0, f'{par.b = :.1f} > 0, should be negative'
+        b_min = -par.w*par.z_grid.min()/par.r
+        if par.b < b_min:
+            print(f'parameter changed: {par.b = :.1f} -> {b_min = :.1f}') 
+            par.b = b_min + 1e-8
+
+        par.a_grid = equilogspace(par.b,par.w*par.a_max,par.Na)
 
         # c. solution arrays
         sol.c = np.zeros((par.Nz,par.Na))
@@ -84,9 +118,11 @@ class ConSavModelClass(EconModelClass):
         # hist
         sim.Dbeg = np.zeros((par.simT,*sol.a.shape))
         sim.D = np.zeros((par.simT,*sol.a.shape))
+        sim.Dbeg_ = np.zeros(sol.a.shape)
+        sim.D_ = np.zeros(sol.a.shape)
 
     def solve(self,do_print=True,algo='vfi'):
-        """ solve model using value function iteration """
+        """ solve model using value function iteration or egm """
 
         t0 = time.time()
 
@@ -103,8 +139,10 @@ class ConSavModelClass(EconModelClass):
 
                 # a. next-period value function
                 if it == 0: # guess on consuming everything
-
-                    c_plus = m_plus = (1+par.r)*par.a_grid[np.newaxis,:] + par.w*par.z_grid[:,np.newaxis]
+                    
+                    m_plus = (1+par.r)*par.a_grid[np.newaxis,:] + par.w*par.z_grid[:,np.newaxis]
+                    c_plus_max = m_plus - par.a_grid[0]
+                    c_plus = 0.99*c_plus_max # arbitary factor
                     v_plus = c_plus**(1-par.sigma)/(1-par.sigma)
                     vbeg_plus = par.z_trans@v_plus
 
@@ -116,19 +154,20 @@ class ConSavModelClass(EconModelClass):
                 # b. solve this period
                 if algo == 'vfi':
                     solve_hh_backwards_vfi(par,vbeg_plus,c_plus,sol.vbeg,sol.c,sol.a)  
+                    max_abs_diff = np.max(np.abs(sol.vbeg-vbeg_plus))
                 elif algo == 'egm':
                     solve_hh_backwards_egm(par,c_plus,sol.c,sol.a)
+                    max_abs_diff = np.max(np.abs(sol.c-c_plus))
                 else:
                     raise NotImplementedError
 
                 # c. check convergence
-                max_abs_diff = np.max(np.abs(sol.c-c_plus))
                 converged = max_abs_diff < par.tol_solve
                 
                 # d. break
                 if do_print and (converged or it < 10 or it%100 == 0):
-                    print(f'iteration {it:4d} solved in {elapsed(t0_it)}',end='')              
-                    print(f' [max abs. diff. in c {max_abs_diff:5.2e}]')
+                    print(f'iteration {it:4d} solved in {elapsed(t0_it):10s}',end='')              
+                    print(f' [max abs. diff. {max_abs_diff:5.2e}]')
 
                 if converged: break
 
@@ -154,6 +193,7 @@ class ConSavModelClass(EconModelClass):
         elif algo == 'hist':
 
             sim.Dbeg[0,:,0] = par.z_ergodic
+            sim.Dbeg_[:,0] = par.z_ergodic
 
         else:
             
@@ -173,7 +213,7 @@ class ConSavModelClass(EconModelClass):
             sol = model.sol
 
             # prepare
-            if algo == 'hist': find_i_and_w(par,sol,sol.pol_indices,sol.pol_weights)
+            if algo == 'hist': find_i_and_w(par,sol)
 
             # time loop
             for t in range(par.simT):
@@ -187,8 +227,48 @@ class ConSavModelClass(EconModelClass):
                 else:
                     raise NotImplementedError
 
-        if do_print: print(f'model simulated in {time.time()-t0:.1f} secs')
+        if do_print: print(f'model simulated in {elapsed(t0)} secs')
+            
+    def simulate_hist_alt(self,do_print=True):
+        """ simulate model """
 
+        t0 = time.time()
+
+
+        with jit(self) as model:
+
+            par = model.par
+            sim = model.sim
+            sol = model.sol
+
+            Dbeg = sim.Dbeg_
+            D = sim.D_
+
+            # a. prepare
+            find_i_and_w(par,sol)
+
+            # b. iterate
+            it = 0 
+            while True:
+
+                Dbeg_old = Dbeg.copy()
+                simulate_hh_forwards_stochastic(par,Dbeg,D)
+                simulate_hh_forwards_choice(par,sol,D,Dbeg)
+
+                max_abs_diff = np.max(np.abs(Dbeg-Dbeg_old))
+                if max_abs_diff < par.tol_simulate: 
+                    Dbeg = Dbeg_old
+                    break
+
+                it += 1
+                if it > par.max_iter_simulate: raise ValueError('too many iterations in simulate()')
+
+        if do_print: 
+            print(f'model simulated in {elapsed(t0)} [{it} iterations]')
+
+##################
+# solution - vfi #
+##################
 
 @nb.njit
 def value_of_choice(c,par,i_z,m,vbeg_plus):
@@ -214,19 +294,20 @@ def solve_hh_backwards_vfi(par,vbeg_plus,c_plus,vbeg,c,a):
     v = np.zeros(vbeg_plus.shape)
 
     # a. solution step
-    for i_z in range(par.Nz):
+    for i_z in nb.prange(par.Nz):
         for i_a_lag in nb.prange(par.Na):
 
-            # i. cash-on-hand
+            # i. cash-on-hand and maximum consumption
             m = (1+par.r)*par.a_grid[i_a_lag] + par.w*par.z_grid[i_z]
-            
+            c_max = m - par.b
+
             # ii. initial consumption and bounds
             c_guess = np.zeros((1,1))
             bounds = np.zeros((1,2))
 
             c_guess[0] = c_plus[i_z,i_a_lag]
             bounds[0,0] = 1e-8 
-            bounds[0,1] = m
+            bounds[0,1] = c_max
 
             # iii. optimize
             results = qe.optimize.nelder_mead(value_of_choice,
@@ -241,6 +322,41 @@ def solve_hh_backwards_vfi(par,vbeg_plus,c_plus,vbeg,c,a):
 
     # b. expectation step
     vbeg[:,:] = par.z_trans@v
+
+##################
+# solution - egm #
+##################
+
+@nb.njit(parallel=True)
+def solve_hh_backwards_egm(par,c_plus,c,a):
+    """ solve backwards with c_plus from previous iteration """
+
+    for i_z in nb.prange(par.Nz):
+
+        # a. post-decision marginal value of cash
+        q_vec = np.zeros(par.Na)
+        for i_z_plus in range(par.Nz):
+            q_vec += par.z_trans[i_z,i_z_plus]*c_plus[i_z_plus,:]**(-par.sigma)
+        
+        # b. implied consumption function
+        c_vec = (par.beta*(1+par.r)*q_vec)**(-1.0/par.sigma)
+        m_vec = par.a_grid+c_vec
+
+        # c. interpolate from (m,c) to (a_lag,c)
+        for i_a_lag in range(par.Na):
+            
+            m = (1+par.r)*par.a_grid[i_a_lag] + par.w*par.z_grid[i_z]
+            
+            if m <= m_vec[0]: # constrained (lower m than choice with a = 0)
+                c[i_z,i_a_lag] = m - par.b
+                a[i_z,i_a_lag] = par.b
+            else: # unconstrained
+                c[i_z,i_a_lag] = interp_1d(m_vec,c_vec,m) 
+                a[i_z,i_a_lag] = m-c[i_z,i_a_lag] 
+
+############################
+# simulation - monte carlo #
+############################
 
 @nb.njit(parallel=True)
 def simulate_forwards_mc(t,par,sim,sol):
@@ -272,31 +388,16 @@ def simulate_forwards_mc(t,par,sim,sol):
         m = (1+par.r)*a_lag + par.w*par.z_grid[i_z_]
         a[t,i] = m-c[t,i]
 
-@nb.njit(parallel=True)
-def solve_hh_backwards_egm(par,c_plus,c,a):
-    """ solve backwards with c_plus from previous iteration """
-
-    for i_z in nb.prange(par.Nz):
-
-        # a. post-decision marginal value of cash
-        q_vec = np.zeros(par.Na)
-        for i_z_plus in range(par.Nz):
-            q_vec += par.z_trans[i_z,i_z_plus]*c_plus[i_z_plus,:]**(-par.sigma)
-        
-        # b. implied consumption function
-        c_vec = (par.beta*(1+par.r)*q_vec)**(-1.0/par.sigma)
-        m_vec = par.a_grid+c_vec
-
-        # c. interpolate from (m,c) to (a_lag,c)
-        for i_a_lag in range(par.Na):
-            m = (1+par.r)*par.a_grid[i_a_lag] + par.w*par.z_grid[i_z]
-            c[i_z,i_a_lag] = interp_1d(m_vec,c_vec,m) 
-            c[i_z,i_a_lag] = np.fmin(c[i_z,i_a_lag],m) # bound
-            a[i_z,i_a_lag] = m-c[i_z,i_a_lag] 
+##########################
+# simulation - histogram #
+##########################
 
 @nb.njit(parallel=True) 
-def find_i_and_w(par,sol,i,w):
+def find_i_and_w(par,sol):
     """ find pol_indices and pol_weights for simulation """
+
+    i = sol.pol_indices
+    w = sol.pol_weights
 
     for i_z in nb.prange(par.Nz):
         for i_a_lag in nb.prange(par.Na):
@@ -314,21 +415,26 @@ def find_i_and_w(par,sol,i,w):
             w[i_z,i_a_lag] = np.fmin(w[i_z,i_a_lag],1.0)
             w[i_z,i_a_lag] = np.fmax(w[i_z,i_a_lag],0.0)
 
+@nb.njit
+def simulate_hh_forwards_stochastic(par,Dbeg,D):
+    D[:,:] = par.z_trans_T@Dbeg
+
 @nb.njit(parallel=True)   
-def simulate_hh_forwards_choice(par,sol,D,Dbar_plus):
+def simulate_hh_forwards_choice(par,sol,D,Dbeg_plus):
     """ simulate choice transition """
 
     for i_z in nb.prange(par.Nz):
     
-        Dbar_plus[i_z,:] = 0.0
+        Dbeg_plus[i_z,:] = 0.0
 
         for i_a_lag in range(par.Na):
             
             # i. from
             D_ = D[i_z,i_a_lag]
+            if D_ <= 1e-12: continue
 
             # ii. to
-            i = sol.pol_indices[i_z,i_a_lag]            
+            i_a = sol.pol_indices[i_z,i_a_lag]            
             w = sol.pol_weights[i_z,i_a_lag]
-            Dbar_plus[i_z,i] += D_*w
-            Dbar_plus[i_z,i+1] += D_*(1.0-w)
+            Dbeg_plus[i_z,i_a] += D_*w
+            Dbeg_plus[i_z,i_a+1] += D_*(1.0-w)

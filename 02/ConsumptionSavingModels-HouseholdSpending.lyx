@@ -3636,22 +3636,24 @@ status open
 
 
 \series bold
-Homework exercises:
+Homework exercises: 
+\series default
+Start with the model from week 1
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Plot the MPC function in the model from the previous lecture
+Adjust the discount factor, 
+\begin_inset Formula $\beta$
+\end_inset
+
+, to target 3 different levels of average wealth.
+ How does the average MPC change across calibrations?
 \end_layout
 
 \begin_layout Enumerate
-Adjust beta to target different levels of average wealth.
- How does it change the average MPC?
-\end_layout
-
-\begin_layout Enumerate
-Add unemployment risk to the income process you saw last week.
- How does it change average savings? 
+Add unemployment risk and unemployment benefits to the model.
+ How does it change average savings?
 \end_layout
 
 \end_deeper
