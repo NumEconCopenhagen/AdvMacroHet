@@ -40,7 +40,7 @@ class ConSavModelClass(EconModelClass):
 
         # saving
         par.r = 0.02 # interest rate
-        par.b = -0.10 # borrowing constraint
+        par.b = -0.10 # borrowing constraint relative to wage
 
         # grid
         par.a_max = 100.0 # maximum point in grid
@@ -89,12 +89,12 @@ class ConSavModelClass(EconModelClass):
 
         # b. asset grid
         assert par.b <= 0.0, f'{par.b = :.1f} > 0, should be negative'
-        b_min = -par.w*par.z_grid.min()/par.r
+        b_min = -par.z_grid.min()/par.r
         if par.b < b_min:
             print(f'parameter changed: {par.b = :.1f} -> {b_min = :.1f}') 
             par.b = b_min + 1e-8
 
-        par.a_grid = equilogspace(par.b,par.w*par.a_max,par.Na)
+        par.a_grid = par.w*equilogspace(par.b,par.a_max,par.Na)
 
         # c. solution arrays
         sol.c = np.zeros((par.Nz,par.Na))
@@ -141,7 +141,7 @@ class ConSavModelClass(EconModelClass):
                 if it == 0: # guess on consuming everything
                     
                     m_plus = (1+par.r)*par.a_grid[np.newaxis,:] + par.w*par.z_grid[:,np.newaxis]
-                    c_plus_max = m_plus - par.a_grid[0]
+                    c_plus_max = m_plus - par.w*par.b
                     c_plus = 0.99*c_plus_max # arbitary factor
                     v_plus = c_plus**(1-par.sigma)/(1-par.sigma)
                     vbeg_plus = par.z_trans@v_plus
@@ -299,7 +299,7 @@ def solve_hh_backwards_vfi(par,vbeg_plus,c_plus,vbeg,c,a):
 
             # i. cash-on-hand and maximum consumption
             m = (1+par.r)*par.a_grid[i_a_lag] + par.w*par.z_grid[i_z]
-            c_max = m - par.b
+            c_max = m - par.b*par.w
 
             # ii. initial consumption and bounds
             c_guess = np.zeros((1,1))
@@ -348,8 +348,8 @@ def solve_hh_backwards_egm(par,c_plus,c,a):
             m = (1+par.r)*par.a_grid[i_a_lag] + par.w*par.z_grid[i_z]
             
             if m <= m_vec[0]: # constrained (lower m than choice with a = 0)
-                c[i_z,i_a_lag] = m - par.b
-                a[i_z,i_a_lag] = par.b
+                c[i_z,i_a_lag] = m - par.b*par.w
+                a[i_z,i_a_lag] = par.b*par.w
             else: # unconstrained
                 c[i_z,i_a_lag] = interp_1d(m_vec,c_vec,m) 
                 a[i_z,i_a_lag] = m-c[i_z,i_a_lag] 

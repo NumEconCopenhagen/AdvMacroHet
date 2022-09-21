@@ -1605,7 +1605,7 @@ vspace{-2mm}
 
 \series bold
 Borrowing constraints: 
-\begin_inset Formula $\text{\ensuremath{a_{t}\geq b}}$
+\begin_inset Formula $\text{\ensuremath{a_{t}\geq wb}}$
 \end_inset
 
  
@@ -1877,13 +1877,13 @@ terminal condition
  (equality due utility max.)
 \begin_inset Formula 
 \begin{eqnarray*}
-(1+r)^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & b_{0}+h_{0}-\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}=0
+(1+r)^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & s_{0}+h_{0}-\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}=0
 \end{eqnarray*}
 
 \end_inset
 
 where 
-\begin_inset Formula $b_{0}=(1+r)a_{-1}$
+\begin_inset Formula $s_{0}=(1+r)a_{-1}$
 \end_inset
 
  and 
@@ -1918,7 +1918,7 @@ Static solution: FOC and consumption function
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\mathcal{L}=\sum_{t=0}^{T-1}\beta^{t}\frac{c_{t}^{1-\rho}}{1-\rho}+\lambda\left[\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}-b_{0}-h_{0}\right]
+\mathcal{L}=\sum_{t=0}^{T-1}\beta^{t}\frac{c_{t}^{1-\rho}}{1-\rho}+\lambda\left[\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}-s_{0}-h_{0}\right]
 \]
 
 \end_inset
@@ -1974,8 +1974,8 @@ into
  to get consumption choice
 \begin_inset Formula 
 \begin{eqnarray*}
-\sum_{t=0}^{T-1}(1+r)^{-t}(\beta(1+r))^{t/\rho}c_{0} & = & b_{0}+h_{0}\Leftrightarrow\\
-c_{0} & = & \frac{1-(\beta(1+r))^{1/\rho}/(1+r)}{1-((\beta(1+r))^{1/\rho}/(1+r))^{T}}(b_{0}+h_{0})
+\sum_{t=0}^{T-1}(1+r)^{-t}(\beta(1+r))^{t/\rho}c_{0} & = & s_{0}+h_{0}\Leftrightarrow\\
+c_{0} & = & \frac{1-(\beta(1+r))^{1/\rho}/(1+r)}{1-((\beta(1+r))^{1/\rho}/(1+r))^{T}}(s_{0}+h_{0})
 \end{eqnarray*}
 
 \end_inset
@@ -2089,7 +2089,7 @@ Value function,
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
 \end{align*}
 
 \end_inset
@@ -2150,7 +2150,7 @@ Is the same as
 \begin_inset Formula 
 \begin{align*}
 c_{t}^{\star}(z_{t},a_{t-1}) & =\arg\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
 \end{align*}
 
 \end_inset
@@ -2185,7 +2185,7 @@ Vocabulary
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
 \end{align*}
 
 \end_inset
@@ -2346,7 +2346,7 @@ End-of-period value function
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(z_{t},a_{t})\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq0
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
 \end{align*}
 
 \end_inset
@@ -2397,7 +2397,7 @@ vspace{-4mm}
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq b
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
 \end{align*}
 
 \end_inset
@@ -2493,7 +2493,7 @@ status open
 
 \series bold
 Minimum income: 
-\begin_inset Formula $\underline{y}=\min_{z\in\mathcal{G}_{z}}wz$
+\begin_inset Formula $\underline{z}=\min_{z\in\mathcal{G}_{z}}z$
 \end_inset
 
 
@@ -2519,14 +2519,14 @@ Assumptions
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset Formula $a_{t-1}=-\frac{\underline{y}}{r}+\Delta$
+\begin_inset Formula $a_{t-1}=-\frac{w\underline{z}}{r}+\Delta$
 \end_inset
 
  
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $y_{t}=\underline{y}$
+\begin_inset Formula $z_{t}=\underline{z}$
 \end_inset
 
 , 
@@ -2574,10 +2574,10 @@ decreasing without bound!
 
 \begin_inset Formula 
 \begin{align*}
-a_{t} & =\left(1+r\right)\left(-\frac{\underline{y}}{r}+\Delta\right)+\underline{y}=-\frac{\underline{y}}{r}+(1+r)\Delta\\
-a_{t+1} & =-\frac{\underline{y}}{r}+(1+r)^{2}\Delta\\
+a_{t} & =\left(1+r\right)\left(-\frac{w\underline{z}}{r}+\Delta\right)+w\underline{z}=-\frac{w\underline{z}}{r}+(1+r)\Delta\\
+a_{t+1} & =-\frac{w\underline{z}}{r}+(1+r)^{2}\Delta\\
  & \dots\\
-a_{t+k} & =-\frac{\underline{y}}{r}+(1+r)^{k}\Delta\rightarrow-\infty
+a_{t+k} & =-\frac{w\underline{z}}{r}+(1+r)^{k}\Delta\rightarrow-\infty
 \end{align*}
 
 \end_inset
@@ -2599,7 +2599,7 @@ status open
 
 \series bold
 Natural borrowing constraint: 
-\begin_inset Formula $a_{t}>\max\left\{ b,-\frac{\underline{y}}{r}\right\} $
+\begin_inset Formula $a_{t}>\max\left\{ wb,-\frac{w\underline{y}}{r}\right\} $
 \end_inset
 
 
@@ -4197,7 +4197,7 @@ Increase
 Feasible:
 \series default
  Yes, if 
-\begin_inset Formula $a_{t}>b$
+\begin_inset Formula $a_{t}>wb$
 \end_inset
 
 
@@ -4331,7 +4331,7 @@ By contradiction
 Constrained:
 \series default
  
-\begin_inset Formula $a_{t}=b$
+\begin_inset Formula $a_{t}=wb$
 \end_inset
 
  and 
@@ -4347,7 +4347,7 @@ Constrained:
 Unconstrained:
 \series default
  
-\begin_inset Formula $a_{t}>b$
+\begin_inset Formula $a_{t}>wb$
 \end_inset
 
  and 
@@ -4569,7 +4569,7 @@ If
 \end_inset
 
 : 
-\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})=m$
+\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})=m+wb$
 \end_inset
 
 
