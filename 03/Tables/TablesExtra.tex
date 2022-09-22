@@ -1,0 +1,38 @@
+\input{./econtexRoot}\input{\econtexRoot/econtexPaths}\documentclass{\econtex}\usepackage{\econtexSetup}\usepackage{\econtexShortcuts}\input{\econtexRoot/Switches.tex}\newcommand{\texname}{Tables}
+  
+% This brings in several tables, which need to know that they are not being executed in StandAlone mode
+% StandAloneOff.command makes the necessary changes so that the same file will compile standalone or as an input
+% The boolean variable is used to make adjustments within the file depending on which mode it is compiling in
+\immediate\write18{\TabsDir/StandAloneOff.command}
+\provideboolean{StandAlone}
+\setboolean{StandAlone}{false}
+
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\providecommand{\YLevBF}{\ensuremath{\textbf{Y}}}
+
+\begin{document}\bibliographystyle{\econtexBibStyle}
+
+% The tables below need \TableWidth to have been defined 
+
+\newlength\TableWidth 
+
+\input \eq/CGrowCross.tex
+\input \TabsDir/CGrowCrossDSGE.tex
+
+\input \TabsDir/SOEmrkvSimRegNoMeasErr.tex
+
+\input \TabsDir/DSGEmrkvSimRegNoMeasErr.tex
+
+\input \TabsDir/RepAgentMrkvSimRegNoMeasErr.tex
+
+\input \TabsDir/SOEmrkvSimRegLong.tex
+
+\input \TabsDir/DSGEmrkvSimRegLong.tex
+
+\input \TabsDir/RepAgentMrkvSimRegLong.tex
+
+
+\bibliography{economics,\texname,\texname-Add}
+
+\end{document}
+

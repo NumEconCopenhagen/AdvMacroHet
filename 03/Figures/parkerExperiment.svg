@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- This is a Stata 15.0 generated SVG file (http://www.stata.com) -->
+
+<svg version="1.1" width="5.50in" height="4.00in" viewBox="0 0 3960 2880" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>Stata Graph - Graph</desc>
+	<rect x="0" y="0" width="3960" height="2880" style="fill:#EAF2F3;stroke:none"/>
+	<rect x="0.00" y="0.00" width="3959.88" height="2880.00" style="fill:#FFFFFF"/>
+	<rect x="2.88" y="2.88" width="3954.12" height="2874.24" style="fill:none;stroke:#FFFFFF;stroke-width:5.76"/>
+	<rect x="578.78" y="100.86" width="3280.24" height="2373.85" style="fill:#FFFFFF"/>
+	<rect x="581.66" y="103.74" width="3274.48" height="2368.09" style="fill:none;stroke:#FFFFFF;stroke-width:5.76"/>
+	<line x1="578.78" y1="2474.71" x2="3859.02" y2="2474.71" style="stroke:#EAF2F3;stroke-width:8.64"/>
+	<line x1="578.78" y1="2027.21" x2="3859.02" y2="2027.21" style="stroke:#EAF2F3;stroke-width:8.64"/>
+	<line x1="578.78" y1="1579.72" x2="3859.02" y2="1579.72" style="stroke:#EAF2F3;stroke-width:8.64"/>
+	<line x1="578.78" y1="1132.35" x2="3859.02" y2="1132.35" style="stroke:#EAF2F3;stroke-width:8.64"/>
+	<line x1="578.78" y1="684.85" x2="3859.02" y2="684.85" style="stroke:#EAF2F3;stroke-width:8.64"/>
+	<line x1="578.78" y1="237.36" x2="3859.02" y2="237.36" style="stroke:#EAF2F3;stroke-width:8.64"/>
+	<rect x="701.79" y="291.07" width="110.88" height="2183.64" style="fill:#9999FF"/>
+	<rect x="704.67" y="293.95" width="105.12" height="2177.88" style="fill:none;stroke:#9999FF;stroke-width:5.76"/>
+	<rect x="812.67" y="1928.70" width="111.00" height="546.00" style="fill:#0000D5"/>
+	<rect x="815.55" y="1931.58" width="105.24" height="540.24" style="fill:none;stroke:#0000D5;stroke-width:5.76"/>
+	<rect x="1219.93" y="998.07" width="110.88" height="1476.63" style="fill:#9999FF"/>
+	<rect x="1222.81" y="1000.95" width="105.12" height="1470.87" style="fill:none;stroke:#9999FF;stroke-width:5.76"/>
+	<rect x="1330.81" y="443.16" width="111.00" height="2031.54" style="fill:#0000D5"/>
+	<rect x="1333.69" y="446.04" width="105.24" height="2025.78" style="fill:none;stroke:#0000D5;stroke-width:5.76"/>
+	<rect x="1552.69" y="201.60" width="111.00" height="2273.11" style="fill:#000033"/>
+	<rect x="1555.57" y="204.47" width="105.24" height="2267.35" style="fill:none;stroke:#000033;stroke-width:5.76"/>
+	<rect x="1737.94" y="1427.62" width="111.00" height="1047.08" style="fill:#9999FF"/>
+	<rect x="1740.82" y="1430.50" width="105.24" height="1041.32" style="fill:none;stroke:#9999FF;stroke-width:5.76"/>
+	<rect x="1848.95" y="1096.46" width="110.88" height="1378.25" style="fill:#0000D5"/>
+	<rect x="1851.83" y="1099.34" width="105.12" height="1372.49" style="fill:none;stroke:#0000D5;stroke-width:5.76"/>
+	<rect x="2070.83" y="1078.64" width="110.88" height="1396.07" style="fill:#000033"/>
+	<rect x="2073.71" y="1081.52" width="105.12" height="1390.31" style="fill:none;stroke:#000033;stroke-width:5.76"/>
+	<rect x="2256.09" y="1696.05" width="111.00" height="778.66" style="fill:#9999FF"/>
+	<rect x="2258.97" y="1698.93" width="105.24" height="772.90" style="fill:none;stroke:#9999FF;stroke-width:5.76"/>
+	<rect x="2367.09" y="1481.33" width="110.88" height="993.37" style="fill:#0000D5"/>
+	<rect x="2369.97" y="1484.21" width="105.12" height="987.61" style="fill:none;stroke:#0000D5;stroke-width:5.76"/>
+	<rect x="2774.23" y="1892.94" width="110.88" height="581.77" style="fill:#9999FF"/>
+	<rect x="2777.11" y="1895.82" width="105.12" height="576.01" style="fill:none;stroke:#9999FF;stroke-width:5.76"/>
+	<rect x="2885.11" y="1740.85" width="111.00" height="733.86" style="fill:#0000D5"/>
+	<rect x="2887.99" y="1743.73" width="105.24" height="728.10" style="fill:none;stroke:#0000D5;stroke-width:5.76"/>
+	<rect x="3292.37" y="2027.21" width="110.88" height="447.49" style="fill:#9999FF"/>
+	<rect x="3295.25" y="2030.09" width="105.12" height="441.73" style="fill:none;stroke:#9999FF;stroke-width:5.76"/>
+	<rect x="3403.25" y="1910.88" width="111.00" height="563.82" style="fill:#0000D5"/>
+	<rect x="3406.13" y="1913.76" width="105.24" height="558.06" style="fill:none;stroke:#0000D5;stroke-width:5.76"/>
+	<text x="757.23" y="239.14" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">24.4</text>
+	<text x="868.23" y="1876.77" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">6.1</text>
+	<text x="1090.11" y="2422.65" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">~0</text>
+	<text x="1275.37" y="946.14" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">16.5</text>
+	<text x="1386.25" y="391.23" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">22.7</text>
+	<text x="1608.13" y="149.66" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">25.4</text>
+	<text x="1793.51" y="1375.69" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">11.7</text>
+	<text x="1904.39" y="1044.53" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">15.4</text>
+	<text x="2126.27" y="1026.71" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">15.6</text>
+	<text x="2311.53" y="1644.11" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">8.7</text>
+	<text x="2422.53" y="1429.40" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">11.1</text>
+	<text x="2644.41" y="2422.65" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">#N/A</text>
+	<text x="2829.67" y="1841.01" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">6.5</text>
+	<text x="2940.67" y="1688.91" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">8.2</text>
+	<text x="3162.55" y="2422.65" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">#N/A</text>
+	<text x="3347.81" y="1975.28" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">5.0</text>
+	<text x="3458.69" y="1858.95" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">6.3</text>
+	<text x="3680.57" y="2422.65" style="font-family:'Helvetica';font-size:79.94px;fill:#000000" text-anchor="middle">#N/A</text>
+	<line x1="578.78" y1="2474.71" x2="578.78" y2="100.86" style="stroke:#000000;stroke-width:5.76"/>
+	<line x1="578.78" y1="2474.71" x2="538.81" y2="2474.71" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="488.70" y="2474.71" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 488.70,2474.71)" text-anchor="middle">0</text>
+	<line x1="578.78" y1="2027.21" x2="538.81" y2="2027.21" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="488.70" y="2027.21" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 488.70,2027.21)" text-anchor="middle">5</text>
+	<line x1="578.78" y1="1579.72" x2="538.81" y2="1579.72" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="488.70" y="1579.72" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 488.70,1579.72)" text-anchor="middle">10</text>
+	<line x1="578.78" y1="1132.35" x2="538.81" y2="1132.35" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="488.70" y="1132.35" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 488.70,1132.35)" text-anchor="middle">15</text>
+	<line x1="578.78" y1="684.85" x2="538.81" y2="684.85" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="488.70" y="684.85" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 488.70,684.85)" text-anchor="middle">20</text>
+	<line x1="578.78" y1="237.36" x2="538.81" y2="237.36" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="488.70" y="237.36" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 488.70,237.36)" text-anchor="middle">25</text>
+	<text x="190.71" y="1287.78" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" transform="rotate(-90 190.71,1287.78)" text-anchor="middle">Percent of Payment Spent in Quarter</text>
+	<line x1="578.78" y1="2474.71" x2="3859.02" y2="2474.71" style="stroke:#000000;stroke-width:5.76"/>
+	<text x="923.67" y="2584.61" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">-1</text>
+	<text x="1441.81" y="2584.61" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">0</text>
+	<text x="1959.83" y="2584.61" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">1</text>
+	<text x="2477.97" y="2584.61" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">2</text>
+	<text x="2996.11" y="2584.61" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">3</text>
+	<text x="3514.25" y="2584.61" style="font-family:'Helvetica';font-size:99.99px;fill:#000000" text-anchor="middle">4</text>
+	<text x="2218.96" y="2728.87" style="font-family:'Helvetica';font-size:110.01px;fill:#000000" text-anchor="middle">Quarter Relative to Receipt of Payment</text>
+	<rect x="2166.24" y="135.39" width="1658.25" height="466.30" style="fill:#FFFFFF"/>
+	<rect x="2169.12" y="138.27" width="1652.49" height="460.54" style="fill:none;stroke:#000000;stroke-width:5.76"/>
+	<rect x="2209.43" y="178.58" width="374.47" height="99.99" style="fill:#9999FF"/>
+	<rect x="2212.31" y="181.46" width="368.71" height="94.23" style="fill:none;stroke:#9999FF;stroke-width:5.76"/>
+	<rect x="2209.43" y="318.54" width="374.47" height="99.99" style="fill:#0000D5"/>
+	<rect x="2212.31" y="321.42" width="368.71" height="94.23" style="fill:none;stroke:#0000D5;stroke-width:5.76"/>
+	<rect x="2209.43" y="458.51" width="374.47" height="99.99" style="fill:#000033"/>
+	<rect x="2212.31" y="461.39" width="368.71" height="94.23" style="fill:none;stroke:#000033;stroke-width:5.76"/>
+	<text x="2643.92" y="263.60" style="font-family:'Helvetica';font-size:99.99px;fill:#000000">Frictionless Expectations</text>
+	<text x="2643.92" y="403.57" style="font-family:'Helvetica';font-size:99.99px;fill:#000000">Sticky Expectations</text>
+	<text x="2643.92" y="543.53" style="font-family:'Helvetica';font-size:99.99px;fill:#000000">Data</text>
+</svg>

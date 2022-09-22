@@ -1,0 +1,19 @@
+\input{./econtexRoot}\input{\econtexRoot/econtexPaths}\documentclass{\econtex}\usepackage{\econtexSetup}\usepackage{\econtexShortcuts}\provideboolean{StandAlone}\setboolean{StandAlone}{true}\input{\econtexRoot/Switches.tex}%\usepackage{endfloat}
+\begin{document}
+% \begin{table} \caption{Aggregate Consumption Dynamics in US Data}  \label{table:USCampManVsStickyE}
+% \centerline{$\Delta\log\mathbf{C}_{t+1}=\varsigma+\chi\Delta\log\mathbf{C}_t+\eta\Ex_t[\Delta\log\mathbf{Y}_{t+1}]+\alpha A_t+\epsilon_{t+1}$ }
+%   \begin{tabular}{d{4}d{4}d{5}cd{4}d{5}}
+% \toprule
+% \multicolumn{3}{c}{Measure of Consumption} & OLS &  \multicolumn{1}{c}{2${}^{\text{nd}}$ Stage}  &  \multicolumn{1}{c}{KP $p$-val}
+% \\ \multicolumn{3}{c}{Independent Variables} & or IV & \multicolumn{1}{c}{$ \bar{R}^{2} $} & \multicolumn{1}{c}{Hansen J $p$ val}
+% \\ \midrule
+% \multicolumn{6}{l}{Nondurables and Services }
+% \\ \multicolumn{1}{c}{$\Delta \log \mathbf{C}_{t} $} & \multicolumn{1}{c}{$\Delta \log \mathbf{Y}_{t+1}$}& \multicolumn{1}{c}{$ A_{t}  $} & & & \\
+% \input{\econtexRoot/Tables/CampManVsStickyEinner.tex}\\
+%   \end{tabular}
+% {\footnotesize   \textbf{Notes:} Robust standard errors are in parentheses.  Instruments $\textbf{Z}_t = \{\Delta \log \mathbf{C}_{t-2}, \Delta \log \mathbf{C}_{t-3}, \Delta \log \mathbf{Y}_{t-2}, \Delta \log \mathbf{Y}_{t-3}, A_{t-2}, A_{t-3}, \Delta_8 \log \mathbf{C}_{t-2}$, $\Delta_8 \log \mathbf{Y}_{t-2}$, lags 2 and 3 of differenced Fed funds rate, lags 2 and 3 of the Michigan Index of Consumer Sentiment Expectations.  The penultimate column reports the $\bar{R}^2$ from a regression of the dependent variable on the RHS variables (instrumented, when indicated); the final column reports two tests of instrument validity: The $p$-value from the Kleibergen--Paap Wald $rk$ F statistic of first-stage instrument validity (top), and the $p$-value from the Hansen--Sargan overidentification test (bottom).
+% Data sources are NIPA and US Financial Accounts, 1960Q1--2016Q4. Income ($\mathbf{Y}_t$) is measured as as wages, salaries and transfers, net of social insurance. Wealth--income ratio ($A_t$) is measured as the ratio of net worth to income. 
+%  }
+% \end{table}
+\input{./CampManVsStickyE.tex}
+\end{document}
