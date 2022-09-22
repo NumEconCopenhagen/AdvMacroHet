@@ -1,0 +1,44 @@
+\begin{minipage}{\textwidth}
+  \begin{table}
+    \centering
+    \caption{Aggregate Consumption Dynamics in RA Model} \label{tRAsimNoMeasErr} 
+  \centerline{$ \Delta \log \mathbf{C}_{t+1} = \varsigma + \chi \Delta \log \mathbf{C}_t + \eta \mathbb{E}_t[\Delta \log \mathbf{Y}_{t+1}] + \alpha A_t + \epsilon_{t+1} $}
+\begin{tabular}{d{4}d{4}d{5}cd{4}c}
+ \toprule 
+\multicolumn{3}{c}{Expectations : Dep Var} & OLS &  \multicolumn{1}{c}{2${}^{\text{nd}}$ Stage}  &  \multicolumn{1}{c}{Hansen J } 
+\\ \multicolumn{3}{c}{Independent Variables} & or IV & \multicolumn{1}{c}{$\bar{R}^{2} $} & \multicolumn{1}{c}{$p$-val} 
+\\ \midrule \multicolumn{6}{l}{Frictionless : $\Delta \log \mathbf{C}_{t+1}$ (no measurement error)} 
+\\ \multicolumn{1}{c}{$\Delta \log \mathbf{C}_{t}$} & \multicolumn{1}{c}{$\Delta \log \mathbf{Y}_{t+1}$} & \multicolumn{1}{c}{$A_{t}$} & & & 
+\\ 0.017 & & & OLS & 0.003 & 
+\\ (0.078) & & & & & 
+\\ 0.400 & & & IV & 0.016 & 0.561
+\\ (0.376) & & & & &
+\\ & 0.372 & & IV & 0.017 & 0.460
+\\ & (0.297) & & & &
+\\ & & -0.27\text{e--4} & IV & 0.017 & 0.479
+\\ & & (1.08\text{e--4}) & & &
+\\ 0.119 & 0.210 & 0.23\text{e--4} & IV & 0.021 & 0.586
+\\ (0.513) & (0.555) & (2.07\text{e--4}) & & & 
+\\ \multicolumn{6}{l}{Memo: For instruments $\mathbf{Z}_{t}$, $\Delta \log \mathbf{C}_{t}$ $= \mathbf{Z}_{t} \zeta, ~\bar{R}^{2}=$ 0.020 }  
+\\ \midrule \multicolumn{6}{l}{Sticky : $\Delta \log \mathbf{C}_{t+1}$ (no measurement error)} 
+\\ \multicolumn{1}{c}{$\Delta \log \mathbf{C}_{t}$} & \multicolumn{1}{c}{$\Delta \log \mathbf{Y}_{t+1}$} & \multicolumn{1}{c}{$A_{t}$} & & & 
+\\ 0.790 & & & OLS & 0.625 & 
+\\ (0.044) & & & & & 
+\\ 0.826 & & & IV & 0.306 & 0.411
+\\ (0.070) & & & & &
+\\ & 0.673 & & IV & 0.191 & 0.094
+\\ & (0.147) & & & &
+\\ & & -0.47\text{e--4} & IV & 0.106 & 0.003
+\\ & & (0.42\text{e--4}) & & &
+\\ 0.728 & 0.072 & 0.15\text{e--4} & IV & 0.305 & 0.437
+\\ (0.113) & (0.143) & (0.41\text{e--4}) & & & 
+\\ \multicolumn{6}{l}{Memo: For instruments $\mathbf{Z}_{t}$, $\Delta \log \mathbf{C}_{t}$ $= \mathbf{Z}_{t} \zeta, ~\bar{R}^{2}=$ 0.298 }  
+\\ \bottomrule 
+\end{tabular}
+\begin{flushleft}
+  \footnotesize \textbf{Notes:} Reported statistics are the average values for 100 samples of 200 simulated quarters each.  Instruments $\textbf{Z}_t = \{\Delta \log \mathbf{C}_{t-2}, \Delta \log \mathbf{C}_{t-3}, \Delta \log \mathbf{Y}_{t-2}, \Delta \log \mathbf{Y}_{t-3}, A_{t-2}, A_{t-3}, \Delta_8 \log \mathbf{C}_{t-2}, \Delta_8 \log \mathbf{Y}_{t-2}   \}$.\normalsize
+\end{flushleft}
+
+\end{table}
+\medskip\medskip
+\end{minipage}
