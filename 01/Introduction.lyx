@@ -1605,7 +1605,7 @@ vspace{-2mm}
 
 \series bold
 Borrowing constraints: 
-\begin_inset Formula $\text{\ensuremath{a_{t}\geq wb}}$
+\begin_inset Formula $\text{\ensuremath{a_{t}\geq w\cdot b}}$
 \end_inset
 
  
@@ -1746,7 +1746,7 @@ Target:
 Expected
 \emph default
  discounted utility, 
-\begin_inset Formula $\sum_{t=0}^{T-1}\beta^{t}\mathbb{E}_{t}[u(c_{t})]$
+\begin_inset Formula $\mathbb{E}_{0}\left[\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\right]$
 \end_inset
 
 ,
@@ -2599,7 +2599,7 @@ status open
 
 \series bold
 Natural borrowing constraint: 
-\begin_inset Formula $a_{t}>\max\left\{ wb,-\frac{w\underline{y}}{r}\right\} $
+\begin_inset Formula $a_{t}>w\cdot\max\left\{ b,-\frac{\underline{z}}{r}\right\} $
 \end_inset
 
 
@@ -2821,7 +2821,7 @@ Specification:
 \begin_inset Formula 
 \begin{align*}
 z_{t} & =\tilde{z}_{t}\xi_{t},\,\,\,\log\xi_{t}\sim\mathcal{N}(\mu_{\xi},\sigma_{\xi})\\
-\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1},\,\,\,\psi_{t+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi})
+\log\tilde{z}_{t+1} & =\rho_{z}\log\tilde{z}_{t}+\psi_{t+1},\,\,\,\psi_{t+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi})
 \end{align*}
 
 \end_inset
@@ -2914,7 +2914,7 @@ Combined:
 \begin_inset Formula $\mathcal{G}_{z}=\mathcal{G}_{\tilde{z}}\times\mathcal{G_{\xi}}$
 \end_inset
 
- and use independence of 
+ (tensor product) and use independence of 
 \begin_inset Formula $\tilde{z}_{t}$
 \end_inset
 
@@ -2926,7 +2926,7 @@ Combined:
 \begin_inset Formula $\pi_{i_{z-},i_{z}}$
 \end_inset
 
-
+ (kronecker product)
 \end_layout
 
 \end_deeper
