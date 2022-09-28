@@ -257,7 +257,7 @@ class ConSavModelClass(EconModelClass):
 
                 max_abs_diff = np.max(np.abs(Dbeg-Dbeg_old))
                 if max_abs_diff < par.tol_simulate: 
-                    Dbeg = Dbeg_old
+                    Dbeg[:,:] = Dbeg_old
                     break
 
                 it += 1

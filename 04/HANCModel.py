@@ -20,19 +20,21 @@ class HANCModelClass(EconModelClass,GEModelClass):
         self.grids_hh = ['a'] # grids
         self.pols_hh = ['a'] # policy functions
         self.inputs_hh = ['r','w'] # direct inputs
-        self.inputs_hh_z = [] # transition matrix inputs (not used)
+        self.inputs_hh_z = [] # transition matrix inputs (not used today)
         self.outputs_hh = ['a','c'] # outputs
         self.intertemps_hh = ['vbeg_a'] # intertemporal variables
 
         # c. GE
-        self.shocks = ['Gamma'] # exogenous shocks
-        self.unknowns = ['K'] # endogenous unknowns
-        self.targets = ['clearing_A'] # targets = 0
+        self.shocks = [] # exogenous shocks (not used today)
+        self.unknowns = [] # endogenous unknowns (not used today)
+        self.targets = [] # targets = 0 (not used today)
 
         # d. all variables
         self.varlist = [
-            'A_hh','C_hh','C','clearing_A','clearing_C',
-            'Gamma','I','K','L','r','rk','w','Y']
+            'Y','C','I','Gamma','K','L',
+            'rk','w','r',
+            'A_hh','C_hh',
+            'clearing_A','clearing_C']
 
         # e. functions
         self.solve_hh_backwards = household_problem.solve_hh_backwards

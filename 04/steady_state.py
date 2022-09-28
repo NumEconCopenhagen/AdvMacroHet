@@ -97,15 +97,15 @@ def find_ss(model,method='direct',do_print=False):
     else:
         raise NotImplementedError
 
-    if do_print: print(f'found steady state {elapsed(t0)}')
+    if do_print: print(f'found steady state in {elapsed(t0)}')
 
-def find_ss_direct(model,do_print=False):
+def find_ss_direct(model,do_print=False,K_min=1.0,K_max=10.0,NK=10):
     """ find steady state using direct method """
 
     # a. broad search
     if do_print: print(f'### step 1: broad search ###\n')
 
-    K_ss_vec = np.linspace(1,10.0,10) # trial values
+    K_ss_vec = np.linspace(K_min,K_max,NK) # trial values
     clearing_A = np.zeros(K_ss_vec.size) # asset market errors
 
     for i,K_ss in enumerate(K_ss_vec):
@@ -152,7 +152,7 @@ def find_ss_indirect(model,do_print=False):
     model.simulate_hh_ss(do_print=do_print) # give us ss.D (steady state distribution)
     if do_print: print('')
 
-    ss.K = ss.A_hh = np.sum(ss.D*ss.a)
+    ss.K = ss.A_hh = np.sum(ss.a*ss.D)
     
     # c. back technology and depreciation rate
     ss.Gamma = ss.w / ((1-par.alpha)*(ss.K/ss.L)**par.alpha)

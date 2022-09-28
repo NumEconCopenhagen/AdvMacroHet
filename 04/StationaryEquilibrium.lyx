@@ -550,6 +550,47 @@ You can help to find bugs
 You can help to add features 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Documentation: 
+\series default
+See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelToolsNotebooks"
+target "https://github.com/NumEconCopenhagen/GEModelToolsNotebooks"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 \begin_inset ERT
@@ -762,7 +803,7 @@ The Standard Incomplete Market (SIM) model
 status open
 
 \begin_layout Plain Layout
-Notation - central variables
+Notation - aggregate variables
 \end_layout
 
 \end_inset
@@ -778,6 +819,30 @@ Aggregate variables (quantities and prices):
 \end_layout
 
 \begin_deeper
+\begin_layout Enumerate
+Output: 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Consumption: 
+\begin_inset Formula $C_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Investment: 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 Technology: 
 \begin_inset Formula $\Gamma_{t}$
@@ -803,22 +868,6 @@ Labor:
 \end_layout
 
 \begin_layout Enumerate
-Consumption: 
-\begin_inset Formula $C_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Investment: 
-\begin_inset Formula $I_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
 Rental rate: 
 \begin_inset Formula $r_{t}^{k}$
 \end_inset
@@ -834,7 +883,45 @@ Real wage:
 
 \end_layout
 
+\begin_layout Enumerate
+Real interest rate: 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Profit: 
+\begin_inset Formula $\Pi_{t}$
+\end_inset
+
+
+\end_layout
+
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Notation - idiosyncratic variables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1022,7 +1109,7 @@ vspace{-7mm}
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\\
-\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}z_{t}\geq0\\
+\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}z_{t}+\Pi_{t}\geq0\\
 \log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
 \end{align*}
 
@@ -1057,8 +1144,8 @@ Aggregates:
 
 \begin_inset Formula 
 \begin{align*}
-A_{t}^{hh} & =\int a_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}=A^{hh}\left(\underline{\boldsymbol{D}}_{t},\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)=\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
-C_{t}^{hh} & =\int c_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}=C^{hh}\left(\underline{\boldsymbol{D}}_{t},\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)=\boldsymbol{c}_{t}^{\ast\prime}\boldsymbol{D}_{t}
+A_{t}^{hh} & =\int a_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}=A^{hh}\left(\boldsymbol{D}_{t},\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)=\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+C_{t}^{hh} & =\int c_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}=C^{hh}\left(\boldsymbol{D}_{t},\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)=\boldsymbol{c}_{t}^{\ast\prime}\boldsymbol{D}_{t}
 \end{align*}
 
 \end_inset
@@ -1154,7 +1241,7 @@ Choices:
 \end_inset
 
 
-\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)$
 \end_inset
 
 
@@ -1254,7 +1341,7 @@ Differentiate with fixed
 
 \begin_inset Formula 
 \[
-\underline{v}_{a,t}\equiv\frac{\partial\underline{v}_{t}}{\partial a_{t-1}}=\underline{\mathbb{E}}_{t}\left[(1+r_{t})c_{t}^{-\sigma}\right]
+\underline{v}_{a,t}\equiv\frac{\partial\underline{v}_{t}}{\partial a_{t-1}}=\mathbb{E}\left[(1+r_{t})c_{t}^{-\sigma}\,|\,z_{t-1},a_{t-1}\right]
 \]
 
 \end_inset
@@ -1277,12 +1364,10 @@ status open
 \series bold
 EGM: 
 \series default
-Find solution by
-\series bold
-
+Find solution from FOC
 \begin_inset Formula 
 \[
-c_{t}=\left(\beta\underline{v}_{a,t+1}\right)^{\frac{1}{\sigma}}\Rightarrow m_{t}=a_{t}+c_{t}
+c_{t}^{-\sigma}=\beta\underline{v}_{a,t+1}\Leftrightarrow c_{t}=\left(\beta\underline{v}_{a,t+1}\right)^{-\frac{1}{\sigma}}\text{ and }m_{t}=a_{t}+c_{t}
 \]
 
 \end_inset
@@ -1337,7 +1422,7 @@ Market clearing:
 \begin_deeper
 \begin_layout Enumerate
 Labor market: 
-\begin_inset Formula $L_{t}=\int z_{t}dD_{t}=1$
+\begin_inset Formula $L_{t}=\int z_{t}d\boldsymbol{D}_{t}=1$
 \end_inset
 
 
@@ -1353,7 +1438,7 @@ Goods market:
 
 \begin_layout Enumerate
 Capital market: 
-\begin_inset Formula $K_{t}=\int a_{t}dD_{t}$
+\begin_inset Formula $K_{t}=\int a_{t}d\boldsymbol{D}_{t}$
 \end_inset
 
 
@@ -1373,7 +1458,7 @@ Capital market:
 status open
 
 \begin_layout Plain Layout
-Walras Law
+Walras's Law
 \end_layout
 
 \end_inset
@@ -1450,13 +1535,12 @@ status open
 
 \end_inset
 
-Aggregating across individual
+Aggregating across individuals
 \begin_inset Formula 
 \begin{align*}
-C_{t}+Y_{t} & =\int c_{t}dD_{t}+(K_{t}-(1-\delta)K_{t-1})\\
- & =\int\left[(1+r_{t})a_{t-1}+w_{t}z_{t}-a_{t}\right]d\boldsymbol{D}_{t}+K_{t}-(1-\delta)K_{t-1}\\
- & =(1+r_{t})K_{t-1}+w_{t}-K_{t}+K_{t}-(1-\delta)K_{t-1}\\
- & =w_{t}+(r_{t}+\delta)K_{t-1}
+C_{t} & =\int c_{t}dD_{t}\\
+ & =\int\left[(1+r_{t})a_{t-1}+w_{t}z_{t}-a_{t}\right]d\boldsymbol{D}_{t}\\
+ & =(1+r_{t})K_{t-1}+w_{t}-K_{t}
 \end{align*}
 
 \end_inset
@@ -1481,9 +1565,11 @@ the goods market clears
 \emph default
 
 \begin_inset Formula 
-\[
-Y_{t}=C_{t}+I_{t}
-\]
+\begin{align*}
+C_{t}+I_{t} & =\left[(1+r_{t})K_{t-1}+w_{t}-K_{t}\right]+\left[K_{t}-(1-\delta)K_{t-1}\right]\\
+ & =w_{t}+(r_{t}+\delta)K_{t-1}\\
+ & =Y_{t}
+\end{align*}
 
 \end_inset
 
@@ -1555,7 +1641,7 @@ Policies and choice transitions depend on prices
 
 \begin_layout Enumerate
 Policy function: 
-\begin_inset Formula $a_{t}^{\ast}=a^{\ast}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\begin_inset Formula $a_{t}^{\ast}=a^{\ast}\left(\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)$
 \end_inset
 
 
@@ -1563,7 +1649,7 @@ Policy function:
 
 \begin_layout Enumerate
 Choice transition: 
-\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)$
 \end_inset
 
 
@@ -1697,10 +1783,14 @@ prices
 \end_inset
 
  and 
-\begin_inset Formula $w_{ss},$
+\begin_inset Formula $w_{ss}$
 \end_inset
 
+ (always 
+\begin_inset Formula $\Pi_{ss}=0)$
+\end_inset
 
+,
 \end_layout
 
 \begin_layout Enumerate
@@ -2004,11 +2094,14 @@ status open
 
 \series bold
 Complete markets / representative agent: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 Derived from aggregate Euler-equation
 \begin_inset Formula 
 \[
-C_{t}^{-\rho}=\beta(1+r)C_{t+1}^{-\rho}\Rightarrow C_{ss}^{-\rho}=\beta(1+r)C_{ss}^{-\rho}\Leftrightarrow\beta=\frac{1}{1+r}
+C_{t}^{-\sigma}=\beta(1+r)C_{t+1}^{-\sigma}\Rightarrow C_{ss}^{-\sigma}=\beta(1+r)C_{ss}^{-\sigma}\Leftrightarrow\beta=\frac{1}{1+r}
 \]
 
 \end_inset
@@ -2016,6 +2109,7 @@ C_{t}^{-\rho}=\beta(1+r)C_{t+1}^{-\rho}\Rightarrow C_{ss}^{-\rho}=\beta(1+r)C_{s
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -2086,7 +2180,7 @@ status open
 \series bold
 External calibration: 
 \series default
-Set sub-set of parameters to the 
+Set subset of parameters to the 
 \emph on
 standard values in the literature
 \emph default
@@ -2117,7 +2211,7 @@ status open
 \series bold
 Internal calibration: 
 \series default
-Set remaining parameter so the model fit a number of chosen 
+Set remaining parameters so the model fit a number of chosen 
 \emph on
 macro-level and/or micro-level
 \emph default
@@ -2160,7 +2254,7 @@ Formal:
 \series bold
 Estimation: 
 \series default
-Formal with non-zero loss function + standard errors
+Formal with squared loss function + standard errors
 \end_layout
 
 \end_deeper
@@ -2376,7 +2470,8 @@ Work on completing the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
-Read: TBA
+Read: Hubmer et al.
+ (2021)
 \end_layout
 
 \end_deeper
