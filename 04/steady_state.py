@@ -85,13 +85,13 @@ def obj_ss(K_ss,model,do_print=False):
 
     return ss.clearing_A # target to hit
     
-def find_ss(model,method='direct',do_print=False):
+def find_ss(model,method='direct',do_print=False,K_min=1.0,K_max=10.0,NK=10):
     """ find steady state using the direct or indirect method """
 
     t0 = time.time()
 
     if method == 'direct':
-        find_ss_direct(model,do_print=do_print)
+        find_ss_direct(model,do_print=do_print,K_min=K_min,K_max=K_max,NK=NK)
     elif method == 'indirect':
         find_ss_indirect(model,do_print=do_print)
     else:
@@ -174,3 +174,46 @@ def find_ss_indirect(model,do_print=False):
         print(f'Implied K/Y = {ss.K/ss.Y:6.3f}') 
         print(f'Discrepancy in K-A_hh = {ss.K-ss.A_hh:12.8f}') # = 0 by construction
         print(f'Discrepancy in C-C_hh = {ss.C-ss.C_hh:12.8f}\n') # != 0 due to numerical error 
+
+def obj_ss_alt(r_ss,model,do_print=False):
+    """ objective when solving for steady state capital """
+
+    par = model.par
+    ss = model.ss
+
+    # a. set real interest rate and rental rate
+    ss.r = r_ss
+    ss.rk = ss.r+par.delta
+
+    # b. production
+    ss.Gamma = par.Gamma_ss # model user choice
+    ss.K = (ss.rk/par.alpha*ss.Gamma)**(1/(par.alpha-1))
+    ss.L = 1.0 # by assumption
+    ss.Y = ss.Gamma*ss.K**par.alpha*ss.L**(1-par.alpha)    
+
+    # b. implied wage
+    ss.w = (1.0-par.alpha)*ss.Gamma*(ss.K/ss.L)**par.alpha
+
+    # c. household behavior
+    if do_print:
+
+        print(f'guess {ss.K = :.4f}')    
+        print(f'implied {ss.r = :.4f}')
+        print(f'implied {ss.w = :.4f}')
+
+    model.solve_hh_ss(do_print=do_print)
+    model.simulate_hh_ss(do_print=do_print)
+
+    ss.A_hh = np.sum(ss.a*ss.D) # hint: is actually computed automatically
+    ss.C_hh = np.sum(ss.c*ss.D)
+
+    if do_print: print(f'implied {ss.A_hh = :.4f}')
+
+    # d. market clearing
+    ss.clearing_A = ss.A_hh-ss.K
+
+    ss.I = ss.K - (1-par.delta)*ss.K
+    ss.C = ss.Y - ss.I
+    ss.clearing_C = ss.C_hh-ss.C
+
+    return ss.clearing_A # target to hit

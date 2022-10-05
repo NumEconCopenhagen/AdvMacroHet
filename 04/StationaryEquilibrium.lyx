@@ -930,11 +930,11 @@ Idiosyncratic variables:
 
 \begin_deeper
 \begin_layout Enumerate
-Saving: 
+Savings: 
 \begin_inset Formula $a_{t}$
 \end_inset
 
-
+ (end-of-period)
 \end_layout
 
 \begin_layout Enumerate
@@ -1051,7 +1051,7 @@ Profit maximization:
 \begin_deeper
 \begin_layout Enumerate
 Rental rate: 
-\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial r_{t}^{k}}=0\Leftrightarrow$
+\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial K_{t-1}}=0\Leftrightarrow$
 \end_inset
 
 
@@ -1063,7 +1063,7 @@ Rental rate:
 
 \begin_layout Enumerate
 Real wage: 
-\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial w}=0\Leftrightarrow w_{t}=(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}$
+\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial L_{t}}=0\Leftrightarrow w_{t}=(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}$
 \end_inset
 
 
@@ -1363,11 +1363,14 @@ status open
 
 \series bold
 EGM: 
-\series default
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
 Find solution from FOC
 \begin_inset Formula 
 \[
-c_{t}^{-\sigma}=\beta\underline{v}_{a,t+1}\Leftrightarrow c_{t}=\left(\beta\underline{v}_{a,t+1}\right)^{-\frac{1}{\sigma}}\text{ and }m_{t}=a_{t}+c_{t}
+c_{t}^{-\sigma}=\beta\underline{v}_{a,t+1}\Leftrightarrow c_{t}=\left(\beta\underline{v}_{a,t+1}\right)^{-\frac{1}{\sigma}}
 \]
 
 \end_inset
@@ -1375,6 +1378,23 @@ c_{t}^{-\sigma}=\beta\underline{v}_{a,t+1}\Leftrightarrow c_{t}=\left(\beta\unde
 
 \end_layout
 
+\begin_layout Enumerate
+Calculate endogenous grid 
+\begin_inset Formula $m_{t}=a_{t}+c_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Interpolate at 
+\begin_inset Formula $m_{t}=(1+r_{t})a_{t-1}+w_{t}z_{t}+\Pi_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1438,7 +1458,7 @@ Goods market:
 
 \begin_layout Enumerate
 Capital market: 
-\begin_inset Formula $K_{t}=\int a_{t}d\boldsymbol{D}_{t}$
+\begin_inset Formula $K_{t-1}=\int a_{t-1}d\boldsymbol{D}_{t}$
 \end_inset
 
 
@@ -1609,9 +1629,9 @@ equation system
 \begin{align*}
 \boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
 K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
-r_{t}-\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
-w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 L_{t}-1\\
+r_{t}+\delta-\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
 \forall t\in\{0,1,\dots\}
@@ -1690,10 +1710,10 @@ satisfies
 \begin_inset Formula 
 \[
 H_{ss}\left(K_{ss},L_{ss};\Gamma_{ss}\right)=\left[\begin{array}{c}
-K_{t}-\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}\\
+K_{ss}-\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}\\
+L_{ss}-1\\
 r_{ss}-\alpha\Gamma_{ss}(K_{ss}/L_{ss})^{\alpha-1}\\
 w_{ss}-(1-\alpha)\Gamma_{ss}(K_{ss}/L_{ss})^{\alpha}\\
-L_{ss}-1\\
 \boldsymbol{D}_{ss}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{ss}\\
 \underline{\boldsymbol{D}}_{ss}-\Lambda_{ss}^{\prime}\boldsymbol{D}_{ss}
 \end{array}\right]=\boldsymbol{0}
@@ -1909,12 +1929,108 @@ Set
 \begin_inset Formula $L_{ss}=1$
 \end_inset
 
+ (and 
+\begin_inset Formula $\Pi_{ss}=0$
+\end_inset
 
+)
 \end_layout
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $r_{ss}=\alpha\Gamma_{ss}(K_{ss})^{\alpha-1}$
+\begin_inset Formula $r_{ss}=\alpha\Gamma_{ss}(K_{ss})^{\alpha-1}-\delta$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ss}=(1-\alpha)\Gamma_{ss}(K_{ss})^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve infinite horizon household problem 
+\emph on
+backwards
+\emph default
+, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{a}_{ss}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulate households 
+\emph on
+forwards
+\emph default
+ until convergence, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Return 
+\begin_inset Formula $K_{ss}-\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Direct implementation (alternative)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Root-finding problem
+\series default
+ in 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
+ with the objective function:
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $L_{ss}=1$
+\end_inset
+
+ (and 
+\begin_inset Formula $\Pi_{ss}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $K_{ss}=\left(\frac{r_{ss}+\delta}{\alpha\Gamma_{ss}}\right)^{\frac{1}{\alpha-1}}$
 \end_inset
 
  and 
@@ -2031,12 +2147,120 @@ Set
 \begin_inset Formula $L_{ss}=1$
 \end_inset
 
+ (and 
+\begin_inset Formula $\Pi_{ss}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $\Gamma_{ss}=\frac{w_{ss}}{(1-\alpha)(K_{ss})^{\alpha}}$
+\end_inset
+
 
 \end_layout
 
 \begin_layout Enumerate
 Set 
-\begin_inset Formula $\Gamma_{ss}=\frac{w_{ss}}{(1-\alpha)\Gamma_{ss}(K_{ss})^{\alpha}}$
+\begin_inset Formula $r_{ss}^{k}=\alpha\Gamma_{ss}(K_{ss})^{\alpha-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $\delta=r_{ss}^{k}-r_{ss}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Indirect implementation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Choose 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve infinite horizon household problem 
+\emph on
+backwards
+\emph default
+, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{a}_{ss}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulate households 
+\emph on
+forwards
+\emph default
+ until convergence, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $K_{ss}=\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $L_{ss}=1$
+\end_inset
+
+ (and 
+\begin_inset Formula $\Pi_{ss}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $\Gamma_{ss}=\frac{w_{ss}}{(1-\alpha)(K_{ss})^{\alpha}}$
 \end_inset
 
 
