@@ -1138,6 +1138,7 @@ $$
 
 
 \section{Sources of US Wealth Inequality}
+\subsection{Hubmer, Krusell, Smith (2020)}
 \begin{frame}
 \frametitle{Evolution of top wealth inequality in the U.S.}
 
@@ -1183,7 +1184,7 @@ $$
 %
 %\end{frame}
 
-
+\subsection{Model}
 \begin{frame}
   \frametitle{Quantitative model}
 	\begin{wideitemize}
@@ -1258,46 +1259,46 @@ $$K_t = \int a_t d \Gamma(a_t)$$
 \end{frame}
 
 
-\begin{frame} \frametitle{Multiplicative shocks and Pareto tails}
+%\begin{frame} \frametitle{Multiplicative shocks and Pareto tails}
+%
+%\begin{itemize}
+%\item linear savings rules as wealth grows large (Bewley 1977;
+%Carroll 2012; Benhabib et al.\ 2015):
+%$\lim_{x \rightarrow \infty} s(x,\beta) = \bar{s}_{\beta} x$.
+%\item
+%asset accumulation for large $x$:
+%\begin{eqnarray*}
+%a_{t+1} & = & s(x_t,\beta) \\
+%& = & s(a_t + y_t - T(y_t),\beta) \\
+%& \approx & \bar{s}_{\beta} a_t (1 + (1-\tau_{\max}) r) +
+%\bar{s}_{\beta} (1-\tau_{\max}) e_t \\
+%& \equiv & \hat{s} a_t + z_t,
+%\end{eqnarray*}
+%where $e_t$ is earnings.
+%\item $\beta$ and/or $r$ random $\rightarrow$ $\hat{s}$ is random.
+%\item with reflecting barrier (borrowing constraint) and/or
+%random earnings, the invariant distribution for wealth has a Pareto tail with coefficient $\zeta$ solving: $\mathbb{E}[\hat{s}^\zeta] = 1$.
+%\end{itemize}
+%
+%\end{frame}
 
-\begin{itemize}
-\item linear savings rules as wealth grows large (Bewley 1977;
-Carroll 2012; Benhabib et al.\ 2015):
-$\lim_{x \rightarrow \infty} s(x,\beta) = \bar{s}_{\beta} x$.
-\item
-asset accumulation for large $x$:
-\begin{eqnarray*}
-a_{t+1} & = & s(x_t,\beta) \\
-& = & s(a_t + y_t - T(y_t),\beta) \\
-& \approx & \bar{s}_{\beta} a_t (1 + (1-\tau_{\max}) r) +
-\bar{s}_{\beta} (1-\tau_{\max}) e_t \\
-& \equiv & \hat{s} a_t + z_t,
-\end{eqnarray*}
-where $e_t$ is earnings.
-\item $\beta$ and/or $r$ random $\rightarrow$ $\hat{s}$ is random.
-\item with reflecting barrier (borrowing constraint) and/or
-random earnings, the invariant distribution for wealth has a Pareto tail with coefficient $\zeta$ solving: $\mathbb{E}[\hat{s}^\zeta] = 1$.
-\end{itemize}
+%\begin{frame}
+% \frametitle{Stochastic-$\beta$ yields stochastic, linear savings decisions}
+%\begin{figure}[htbp]
+%	\centering
+%		 \includegraphics[width=0.95\textwidth]{HKS-Figs/2.png}
+%\end{figure}
+%\end{frame}
+%
+%\begin{frame}
+% \frametitle{Gives rise to a Pareto tail in the wealth distribution}
+%\begin{figure}[htbp]
+%	\centering
+%		\includegraphics[width=0.95\textwidth]{HKS-Figs/3.png}
+%\end{figure}
+%\end{frame}
 
-\end{frame}
-
-\begin{frame}
- \frametitle{Stochastic-$\beta$ yields stochastic, linear savings decisions}
-\begin{figure}[htbp]
-	\centering
-		 \includegraphics[width=0.95\textwidth]{HKS-Figs/2.png}
-\end{figure}
-\end{frame}
-
-\begin{frame}
- \frametitle{Gives rise to a Pareto tail in the wealth distribution}
-\begin{figure}[htbp]
-	\centering
-		\includegraphics[width=0.95\textwidth]{HKS-Figs/3.png}
-\end{figure}
-\end{frame}
-
-
+\subsection{Calibration Strategy}
 \begin{frame}
   \frametitle{Calibration strategy summary}
 \begin{enumerate}
@@ -1356,29 +1357,29 @@ random earnings, the invariant distribution for wealth has a Pareto tail with co
 \end{frame}
 
 
-\begin{frame}
-\frametitle{Public and private equity}
-\textbf{Public Equity}
-\begin{itemize}
-\item U.S. stock market return
-\end{itemize}
-\textbf{Private Equity}
-\begin{itemize}
-\item Kartashova (AER, 2014) documents private equity premium over stock market
-\item aggregate time series for U.S. starting in 1960
-\end{itemize}
-\end{frame}
+%\begin{frame}
+%\frametitle{Public and private equity}
+%\textbf{Public Equity}
+%\begin{itemize}
+%\item U.S. stock market return
+%\end{itemize}
+%\textbf{Private Equity}
+%\begin{itemize}
+%\item Kartashova (AER, 2014) documents private equity premium over stock market
+%\item aggregate time series for U.S. starting in 1960
+%\end{itemize}
+%\end{frame}
 
 
-\begin{frame}
-\frametitle{Housing details}
-\begin{itemize}
-\item financial return on housing as sum of capital gains term and rental income
-\item we set capital gains term to zero in steady states (in long run 0-0.5\% real price growth)
-\item over transition, use growth in aggregate house price index (Case-Shiller)
-\item rental income set to 5.33\% (average for U.S. from Jorda, Knoll, Kuvshinov, Schularick, Tayler "Rate of Return on Everything")
-\end{itemize}
-\end{frame}
+%\begin{frame}
+%\frametitle{Housing details}
+%\begin{itemize}
+%\item financial return on housing as sum of capital gains term and rental income
+%\item we set capital gains term to zero in steady states (in long run 0-0.5\% real price growth)
+%\item over transition, use growth in aggregate house price index (Case-Shiller)
+%\item rental income set to 5.33\% (average for U.S. from Jorda, Knoll, Kuvshinov, Schularick, Tayler "Rate of Return on Everything")
+%\end{itemize}
+%\end{frame}
 
 
 
@@ -1393,8 +1394,9 @@ Aggregate Excess Returns in 1967 steady state:
 \begin{itemize}
 \item public equity 0.067 (U.S., Kartashova 2014)
 \item private equity 0.129 (U.S., Kartashova 2014)
-\item housing  0.037 (incl. imputed rent; Jorda, Knoll, Kuvshinov, Schularick, Tayler 2017)
+\item housing  0.037 (incl. imputed rent; Jorda, et al, 2017)
 \end{itemize}
+\vfill
 \item and cross-sectional data from Bach, Calvet, Sodini (2019) implies
 \end{itemize}
 
@@ -1402,7 +1404,7 @@ Aggregate Excess Returns in 1967 steady state:
 \begin{table}[htbp]
   \centering
 
-\resizebox{0.9\textwidth}{!}{
+\resizebox{1.1\textwidth}{!}{
 
     \begin{tabular}{lrrrrrrrrrrrrr}
     \toprule
@@ -1414,23 +1416,23 @@ Aggregate Excess Returns in 1967 steady state:
     public equity & 0.113 & 0.189 & 0.165 & 0.147 & 0.153 & 0.170 & 0.189 & 0.207 & 0.219 & 0.232 & 0.230 & 0.185 & 0.179 \\
     private equity & 0.002 & 0.005 & 0.007 & 0.009 & 0.013 & 0.021 & 0.038 & 0.065 & 0.118 & 0.207 & 0.336 & 0.511 & 0.637 \\
     \midrule
-    \multicolumn{5}{l}{difference from aggregate return on asset class } &       &       &       &       &       &       &       &       &  \\
-\cmidrule{1-5}    risk-free  & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
-    housing & 0.000 & 0.000 & 0.002 & 0.004 & 0.005 & 0.007 & 0.009 & 0.010 & 0.010 & 0.011 & 0.010 & 0.010 & 0.011 \\
-    public equity & 0.000 & 0.000 & 0.001 & 0.002 & 0.003 & 0.005 & 0.008 & 0.012 & 0.014 & 0.015 & 0.016 & 0.016 & 0.016 \\
-    private equity & 0.000 & 0.000 & -0.019 & -0.030 & -0.054 & -0.055 & -0.049 & -0.066 & -0.064 & -0.063 & -0.063 & -0.059 & -0.060 \\
-    \midrule
-    \multicolumn{5}{l}{standard deviation of return on asset class} &       &       &       &       &       &       &       &       &  \\
-\cmidrule{1-5}    risk-free  & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
-    housing & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 \\
-    public equity & 0.035 & 0.035 & 0.031 & 0.031 & 0.031 & 0.031 & 0.032 & 0.033 & 0.035 & 0.038 & 0.042 & 0.046 & 0.053 \\
-    private equity & 0.664 & 0.664 & 0.621 & 0.595 & 0.544 & 0.525 & 0.518 & 0.480 & 0.474 & 0.470 & 0.474 & 0.492 & 0.443 \\
-    private equity (re-scaled) & 0.345 & 0.345 & 0.323 & 0.309 & 0.283 & 0.273 & 0.269 & 0.249 & 0.246 & 0.245 & 0.246 & 0.256 & 0.230 \\
-    \midrule
-    \multicolumn{5}{l}{excess return schedule in 1967} &       &       &       &       &       &       &       &       &  \\
-\cmidrule{1-5}    mean excess return & 0.000 & 0.011 & 0.017 & 0.020 & 0.022 & 0.026 & 0.031 & 0.035 & 0.041 & 0.050 & 0.062 & 0.079 & 0.091 \\
-    standard deviation & 0.023 & 0.056 & 0.081 & 0.093 & 0.095 & 0.095 & 0.094 & 0.093 & 0.098 & 0.119 & 0.167 & 0.254 & 0.283 \\
-    st. dev. (priv.equ. re-scaled) & 0.023 & 0.056 & 0.081 & 0.093 & 0.095 & 0.095 & 0.093 & 0.089 & 0.086 & 0.085 & 0.098 & 0.136 & 0.149 \\
+%    \multicolumn{5}{l}{difference from aggregate return on asset class } &       &       &       &       &       &       &       &       &  \\
+%\cmidrule{1-5}    risk-free  & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+%    housing & 0.000 & 0.000 & 0.002 & 0.004 & 0.005 & 0.007 & 0.009 & 0.010 & 0.010 & 0.011 & 0.010 & 0.010 & 0.011 \\
+%    public equity & 0.000 & 0.000 & 0.001 & 0.002 & 0.003 & 0.005 & 0.008 & 0.012 & 0.014 & 0.015 & 0.016 & 0.016 & 0.016 \\
+%    private equity & 0.000 & 0.000 & -0.019 & -0.030 & -0.054 & -0.055 & -0.049 & -0.066 & -0.064 & -0.063 & -0.063 & -0.059 & -0.060 \\
+%    \midrule
+%    \multicolumn{5}{l}{standard deviation of return on asset class} &       &       &       &       &       &       &       &       &  \\
+%\cmidrule{1-5}    risk-free  & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+%    housing & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 & 0.140 \\
+%    public equity & 0.035 & 0.035 & 0.031 & 0.031 & 0.031 & 0.031 & 0.032 & 0.033 & 0.035 & 0.038 & 0.042 & 0.046 & 0.053 \\
+%    private equity & 0.664 & 0.664 & 0.621 & 0.595 & 0.544 & 0.525 & 0.518 & 0.480 & 0.474 & 0.470 & 0.474 & 0.492 & 0.443 \\
+%    private equity (re-scaled) & 0.345 & 0.345 & 0.323 & 0.309 & 0.283 & 0.273 & 0.269 & 0.249 & 0.246 & 0.245 & 0.246 & 0.256 & 0.230 \\
+%    \midrule
+%    \multicolumn{5}{l}{excess return schedule in 1967} &       &       &       &       &       &       &       &       &  \\
+%\cmidrule{1-5}    mean excess return & 0.000 & 0.011 & 0.017 & 0.020 & 0.022 & 0.026 & 0.031 & 0.035 & 0.041 & 0.050 & 0.062 & 0.079 & 0.091 \\
+%    standard deviation & 0.023 & 0.056 & 0.081 & 0.093 & 0.095 & 0.095 & 0.094 & 0.093 & 0.098 & 0.119 & 0.167 & 0.254 & 0.283 \\
+%    st. dev. (priv.equ. re-scaled) & 0.023 & 0.056 & 0.081 & 0.093 & 0.095 & 0.095 & 0.093 & 0.089 & 0.086 & 0.085 & 0.098 & 0.136 & 0.149 \\
     \bottomrule
     \end{tabular}%
 
@@ -1458,7 +1460,7 @@ Aggregate Excess Returns in 1967 steady state:
 
 
 
-
+\subsection{Results}
 \begin{frame}
   \frametitle{Results, I: steady state (1967)}
 		
@@ -1495,7 +1497,7 @@ Aggregate Excess Returns in 1967 steady state:
 
 \begin{frame}
 \frametitle{Next step: transition}
-Now the authors feed in four different factors that have changed during the past 50 years
+The authors feed in four different factors that have changed during the past 50 years
 \begin{wideitemize}
 	\item Decrease in tax progressivity 
 	\item Increase in labor income risk
@@ -1688,11 +1690,11 @@ Note: in two weeks, we will learn more about the solution method for solving for
 Conclusion}
 
 \begin{wideitemize}
-\item<1-> the model does a very good job at accounting for the level of wealth inequality
+\item<1-> the model does a good job at accounting for the level of wealth inequality
 \begin{itemize}
 \item (realistic) return heterogeneity is key
 \end{itemize}
-\item<2-> the model also does a very good job at explaining its evolution over time
+\item<2-> the model does a good job at explaining its evolution over time
 \begin{itemize}
 \item declining tax progressivity most powerful force for generating increases in wealth inequality
 \item
@@ -1700,9 +1702,7 @@ asset-price movements account well for medium-run dynamics
 \end{itemize}
 \item<3-> cautious prediction: unless stronger tax progressivity restored, wealth concentration will continue to rise
 \item<4-> remaining questions from perspective of this paper:
-\begin{itemize}
-\item why are portfolios heterogeneous (both across and within wealth levels), what drives returns?
-\end{itemize}
+
 \end{wideitemize}
 \end{frame}
 
@@ -1711,18 +1711,14 @@ asset-price movements account well for medium-run dynamics
 \section{Summary}
 \begin{frame}{Summary and next week}
 \begin{wideitemize}
-	\item <+->\textbf{Today:} Discuss the predictions for wealth inequality arising from Bewley-Huggett-Aiyagari models and their various extensions
+	\item <+->\textbf{Today:} Discussed the predictions for wealth inequality arising from Bewley-Huggett-Aiyagari models and their various extensions
 	\begin{enumerate}
 		\item Difficult to match the fact that wealth more unequal than earnings
-		\item Heterogeneity in returns very important
+		\item Heterogeneity in returns seems very important
+		\item Then analyzed the rise in wealth inequality in the US
 	\end{enumerate}
 	\item <+->\textbf{Next week: } Learn to extend the workhorse model to include equilibrium in housing markets
-	\item <+->\textbf{Homework:}
-	\begin{enumerate}
-		%		\item 
-		\item Continue to work on previous exercises 
-		\item Begin work on the first assignment 
-	\end{enumerate}
+	\item <+->\textbf{Homework:} Begin work on the first assignment 
 \end{wideitemize}
 
 \end{frame}
