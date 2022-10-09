@@ -465,7 +465,7 @@ ex post
 The household problem is
 \begin_inset Formula 
 \begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi_{i}\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\\
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t},\ell_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi_{i}\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\\
 \text{s.t. }a_{t}+c_{t} & =(1+\tilde{r}_{t})a_{t-1}+\tilde{w}_{t}\ell_{t}\zeta_{i}z_{t}+\Pi_{t}\\
 \log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\\
 a_{t} & \geq0
@@ -852,7 +852,7 @@ If
 \end_inset
 
  holds and 
-\begin_inset Formula $c_{t}=(1+\tilde{r}_{t})a_{t-1}+\tilde{w}_{t}\ell_{t}^{\ast}\zeta_{i}z_{t}-c_{t}^{\ast}$
+\begin_inset Formula $c_{t}=(1+\tilde{r}_{t})a_{t-1}+\tilde{w}_{t}\ell_{t}\zeta_{i}z_{t}$
 \end_inset
 
 .
