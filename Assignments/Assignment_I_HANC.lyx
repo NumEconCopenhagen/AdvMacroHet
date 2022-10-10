@@ -765,7 +765,7 @@ The first order conditions imply
 \begin_inset Formula 
 \begin{align}
 c_{t} & =(\beta\underline{v}_{a,t+1}(z_{t},a_{t}))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
-\ell_{t} & =\left(\frac{\tilde{w}_{t}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}\label{eq:FOC_ell}
+\ell_{t} & =\left(\frac{\tilde{w}_{t}\zeta_{i}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}\label{eq:FOC_ell}
 \end{align}
 
 \end_inset
