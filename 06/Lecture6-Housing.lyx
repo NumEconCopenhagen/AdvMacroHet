@@ -1517,9 +1517,6 @@ Then observes its idiosyncratic wage shock,
 \end_inset
 
 , solves the problem:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 v(w,d,m,h)=\max_{c,s,h^{\prime}d^{\prime},m^{\prime}}U(c,s)+\beta\sum_{w^{\prime}\in\mathcal{W}}\pi\left(w^{\prime}\mid w\right)v\left(w^{\prime},d^{\prime},m^{\prime},h^{\prime}\right)
@@ -2031,19 +2028,6 @@ Deduction
 \end_inset
 
  allowed to vary for each group
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vfill
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_deeper
@@ -2075,6 +2059,16 @@ vfill
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 Homeowners can deduct property taxes 
 \begin_inset ERT
 status open
@@ -2755,7 +2749,7 @@ Properties of baseline model
 \begin_layout Standard
 \begin_inset Graphics
 	filename SommerSullivan2018/2.PNG
-	width 100page%
+	width 80page%
 
 \end_inset
 
@@ -2839,7 +2833,7 @@ Properties of baseline model
 \begin_layout Standard
 \begin_inset Graphics
 	filename SommerSullivan2018/3.PNG
-	width 100page%
+	width 80page%
 
 \end_inset
 
