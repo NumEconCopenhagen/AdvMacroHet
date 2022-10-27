@@ -876,7 +876,7 @@ Truncated, reduced vector form:
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\,\\
+K_{t}-A_{t}^{hh}\\
 \forall t\in\{0,1,\dots,T-1\}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
@@ -892,6 +892,8 @@ where
 \end_inset
 
  and
+\size small
+
 \begin_inset Formula 
 \begin{align*}
 L_{t} & =1\\
@@ -899,6 +901,7 @@ r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
  & \forall t\in\{0,1,\dots,T-1\}
 \end{align*}
 
@@ -906,6 +909,7 @@ w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 
 
 \series bold
+\size default
 Truncation:
 \series default
  
@@ -959,7 +963,7 @@ Guess
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 .
@@ -975,7 +979,7 @@ Stop if
 
 \begin_layout Enumerate
 Calculate the Jacobian 
-\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{0},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 
@@ -1049,7 +1053,7 @@ Calculate the steady state Jacobian
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 .
@@ -1192,7 +1196,7 @@ Solve household problem backwards along transition path
 \end_layout
 
 \begin_layout Enumerate
-Simulate household forwards along transition path
+Simulate households forward along transition path
 \end_layout
 
 \begin_layout Enumerate
@@ -1343,7 +1347,7 @@ Transition path,
 
 : 
 \series default
-Non-linear perfect foresight impulse-response to 
+Non-linear perfect foresight response to 
 \end_layout
 
 \begin_deeper
@@ -1364,7 +1368,8 @@ Shock,
 \begin_inset Formula $t$
 \end_inset
 
-
+ (i.e.
+ impulse-response)
 \end_layout
 
 \end_deeper
@@ -1918,18 +1923,6 @@ Exercises: Model extensions
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-4mm}
-\end_layout
-
-\end_inset
-
 
 \series bold
 Firms:
@@ -1995,11 +1988,11 @@ Define and find the stationary equilibrium and transition path
 \begin_layout Enumerate
 
 \series bold
-How does the models result to a persistent shock to 
-\begin_inset Formula $G_{t}?$
+What is the response to a persistent shock to 
+\begin_inset Formula $G_{t}$
 \end_inset
 
-
+ when the budget is balanced in all periods?
 \end_layout
 
 \end_deeper
