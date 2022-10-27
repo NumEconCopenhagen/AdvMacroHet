@@ -1968,6 +1968,67 @@ The rest of the model is given by
 status open
 
 \begin_layout Plain Layout
+As a DAG (from Auclert et al., 2021)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename DAG_HANK.png
+	lyxscale 30
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notation: 
+\series default
+
+\begin_inset Formula $\boldsymbol{\Gamma}=\boldsymbol{Z}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{i}^{\ast}=\boldsymbol{r}^{\ast}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\mu}$
+\end_inset
+
+ is a shock, 
+\begin_inset Formula $\boldsymbol{A}^{hh}=\mathcal{A}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{N}^{hh}=\mathcal{N}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steady state
 \end_layout
 
@@ -1980,6 +2041,22 @@ Steady state
 \begin_layout Itemize
 
 \series bold
+Chosen: 
+\series default
+
+\begin_inset Formula $B_{ss}$
+\end_inset
+
+, 
+\begin_inset Formula $G_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 Analytically:
 \end_layout
 
@@ -1988,7 +2065,7 @@ Analytically:
 
 \series bold
 Normalization: 
-\begin_inset Formula $Z_{ss}=N_{t}=1\Rightarrow Y_{ss}=1$
+\begin_inset Formula $Z_{ss}=N_{ss}=1\Rightarrow Y_{ss}=1$
 \end_inset
 
 
@@ -2016,7 +2093,7 @@ Phillips-curve:
  
 \series default
 and 
-\begin_inset Formula $d_{t}=1-w_{ss}$
+\begin_inset Formula $d_{ss}=Y_{ss}-w_{ss}N_{ss}$
 \end_inset
 
 
@@ -2028,7 +2105,19 @@ and
 Government:
 \series default
  
-\begin_inset Formula $\tau_{t}=G_{ss}$
+\begin_inset Formula $\tau_{ss}=r_{ss}B_{ss}+G_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Assets:
+\series default
+ 
+\begin_inset Formula $A_{ss}=B_{ss}$
 \end_inset
 
 
