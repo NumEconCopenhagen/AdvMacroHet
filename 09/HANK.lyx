@@ -2051,6 +2051,10 @@ Chosen:
 \begin_inset Formula $G_{ss}$
 \end_inset
 
+, 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
 
 \end_layout
 
@@ -2086,8 +2090,16 @@ Zero-inflation:
 \begin_layout Enumerate
 
 \series bold
-Phillips-curve: 
-\begin_inset Formula $w_{ss}=\frac{1}{\mu}$
+Firms: 
+\series default
+
+\begin_inset Formula $Y_{ss}=Z_{ss}N_{ss}$
+\end_inset
+
+,
+\series bold
+ 
+\begin_inset Formula $w_{ss}=\frac{Z_{ss}}{\mu}$
 \end_inset
 
  
