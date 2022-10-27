@@ -653,7 +653,7 @@ equation system
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-r_{t}-\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+r_{t}-(\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta)\\
 w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
@@ -876,7 +876,7 @@ Truncated, reduced vector form:
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-K_{t}-A_{t}^{hh}\\
+A_{t}^{hh}-K_{t}\\
 \forall t\in\{0,1,\dots,T-1\}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
@@ -897,7 +897,7 @@ where
 \begin_inset Formula 
 \begin{align*}
 L_{t} & =1\\
-r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
@@ -921,7 +921,11 @@ Truncation:
 \end_inset
 
  for all 
-\begin_inset Formula $t\ll T$
+\begin_inset Formula $t>\underline{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\underline{t}\ll T$
 \end_inset
 
 
@@ -987,7 +991,7 @@ Calculate the Jacobian
 
 \begin_layout Enumerate
 Update guess by 
-\begin_inset Formula $\boldsymbol{K}^{i+1}=\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
+\begin_inset Formula $\boldsymbol{K}^{i+1}=\boldsymbol{K}^{i}+\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
 \end_inset
 
 
@@ -1201,7 +1205,7 @@ Simulate households forward along transition path
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(K_{t}-A_{t}^{hh})-(K_{ss}-A_{ss}^{hh})}{\Delta}$
+\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(A_{t}^{hh}-K_{t})-(A_{ss}^{hh}-K_{ss})}{\Delta}$
 \end_inset
 
  for all 
@@ -1239,20 +1243,57 @@ status open
 \series bold
 Fake news algorithm: 
 \series default
-Only requires 
+From household Jacobian to full Jacobian
+\emph on
+
+\begin_inset Formula 
+\[
+\boldsymbol{H}_{\boldsymbol{K}}=\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}-\boldsymbol{I}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-5mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{J}^{r,K},\mathcal{J}^{w,K}$
+\end_inset
+
+: Fast from the onset - only involve aggregates
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{J}^{A^{hh},r},\mathcal{J}^{A^{hh},w}$
+\end_inset
+
+: Only requires 
 \begin_inset Formula $T$
 \end_inset
 
- solution steps and simulation steps 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- 
-\emph on
-explained later today
+ solution steps and simulation steps!
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -1347,7 +1388,7 @@ Transition path,
 
 : 
 \series default
-Non-linear perfect foresight response to 
+Non-linear perfect foresight response to
 \end_layout
 
 \begin_deeper
@@ -1356,7 +1397,9 @@ Initial distribution,
 \begin_inset Formula $\underline{\boldsymbol{D}}_{0}\neq\boldsymbol{D}_{ss}$
 \end_inset
 
-
+, 
+\emph on
+or to
 \end_layout
 
 \begin_layout Enumerate
@@ -1487,7 +1530,7 @@ Solve household problem backwards along transition path
 \end_layout
 
 \begin_layout Enumerate
-Simulate household forwards along transition path
+Simulate households forward along transition path
 \end_layout
 
 \begin_layout Enumerate
@@ -1942,7 +1985,7 @@ New budget constraint with labor taxes,
 
 \begin_inset Formula 
 \[
-a_{t}+c_{t}=(1+r_{t})a_{t-1}+w_{t}(1-\tau_{t})z_{t}\geq0
+a_{t}+c_{t}=(1+r_{t})a_{t-1}+(1-\tau_{t})w_{t}z_{t}\geq0
 \]
 
 \end_inset

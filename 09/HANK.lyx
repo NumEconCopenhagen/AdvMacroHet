@@ -147,7 +147,7 @@ status open
 
 
 \backslash
-title{10.
+title{9.
  A Baseline HANK Model
 \backslash
 vspace{-2mm}}
@@ -846,7 +846,7 @@ Static
 
 \begin_inset Formula 
 \begin{align*}
-\max_{y_{jt}\,\forall j}P_{t}Y_{t}-\int_{0}^{1}p_{jt}y_{jt}dj & \text{ s.t. }y_{t}=\left(\int_{0}^{1}y_{jt}^{\frac{1}{\mu}}dj\right)^{\mu}
+\max_{y_{jt}\,\forall j}P_{t}Y_{t}-\int_{0}^{1}p_{jt}y_{jt}dj & \text{ s.t. }Y_{t}=\left(\int_{0}^{1}y_{jt}^{\frac{1}{\mu}}dj\right)^{\mu}
 \end{align*}
 
 \end_inset
@@ -877,11 +877,7 @@ status open
 \series bold
 Demand curve 
 \series default
-derived from
-\begin_inset space ~
-\end_inset
-
-FOC wrt.
+derived from FOC wrt.
  
 \begin_inset Formula $y_{jt}$
 \end_inset
@@ -1460,7 +1456,7 @@ status open
 Beginning-of-period value function: 
 \begin_inset Formula 
 \[
-\underline{v}_{a,t}(z_{t-1},a_{t-1})=\mathbb{E}_{t}\left[v_{t}(z_{t},a_{t-1})\right]
+\underline{v}_{a,t}(z_{t-1},a_{t-1})=\mathbb{E}_{t}\left[v_{a,t}(z_{t},a_{t-1})\right]=\mathbb{E}\left[(1+r_{t})c_{t}^{-\rho}\right]
 \]
 
 \end_inset
@@ -1496,7 +1492,7 @@ Vary
 \begin{align*}
 c_{t} & =(\beta\underline{v}_{a,t+1}(z_{t},a_{t}))^{-\frac{1}{\sigma}}\\
 \ell_{t} & =\left(\frac{w_{t}z_{t}}{\varphi}c_{t}^{-\sigma}\right)^{\frac{1}{\nu}}\\
-m_{t} & =c_{t}+a_{t}-w_{t}\ell_{t}z_{t}-T_{t}
+m_{t} & =c_{t}+a_{t}-(w_{t}\ell_{t}-\tau_{t}+d_{t})z_{t}
 \end{align*}
 
 \end_inset
@@ -1697,7 +1693,7 @@ status open
 Set 
 \begin_inset Formula 
 \[
-\ell^{\ast}=f(\ell^{\ast})/f^{\prime}(\ell^{\ast})=f(\ell^{\ast})/\left(1-\left(\frac{w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\frac{\sigma}{\nu}\right)\left(c^{\ast}\right)^{-\frac{\sigma}{\nu}}w_{t}z_{t}\right)
+\ell^{\ast}=\frac{f(\ell^{\ast})}{f^{\prime}(\ell^{\ast})}=\frac{f(\ell^{\ast})}{1-\left(\frac{w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\frac{\sigma}{\nu}\right)\left(c^{\ast}\right)^{-\frac{\sigma}{\nu}}w_{t}z_{t}}
 \]
 
 \end_inset
@@ -1877,14 +1873,6 @@ vspace{-2mm}
 
 \begin_deeper
 \begin_layout Enumerate
-Goods: 
-\begin_inset Formula $Y_{t}=\int c_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
 Labor: 
 \begin_inset Formula $N_{t}=\int n_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
 \end_inset
@@ -1895,6 +1883,14 @@ Labor:
 \begin_layout Enumerate
 Assets: 
 \begin_inset Formula $B_{ss}=\int a_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Goods: 
+\begin_inset Formula $Y_{t}=\int c_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
 \end_inset
 
 
@@ -2800,7 +2796,11 @@ Sticky prices vs.
 
 \begin_deeper
 \begin_layout Enumerate
-Assume that labor supply and wages are chosen by union
+Assume that a union chooses labor supply (
+\begin_inset Formula $\ell_{t}=N_{t}$
+\end_inset
+
+) and set wages 
 \end_layout
 
 \begin_layout Enumerate
@@ -2907,13 +2907,12 @@ Work on completing the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
-Read: Broer et.
- al.
- (2022), 
+Read: Auclert et al.
+ (2018), 
 \begin_inset Quotes ald
 \end_inset
 
-The Unemployment-Risk Channel in Business-Cycle Fluctuations
+The Intertemporal Keynesian Cross
 \begin_inset Quotes ard
 \end_inset
 
