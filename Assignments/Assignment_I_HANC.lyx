@@ -125,7 +125,7 @@
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
-\suppress_date false
+\suppress_date true
 \justification true
 \use_refstyle 0
 \use_minted 0
@@ -236,19 +236,19 @@ project should consist of
 
 \begin_deeper
 \begin_layout Enumerate
-A self-contained pdf-file with all results
+A single self-contained pdf-file with all results
 \end_layout
 
 \begin_layout Enumerate
-A Jupyter notebook showing how the results are produced
+A single Jupyter notebook showing how the results are produced
 \end_layout
 
 \begin_layout Enumerate
-A well-documented 
+Well-documented 
 \emph on
 .py
 \emph default
- file
+ files
 \end_layout
 
 \end_deeper
@@ -257,7 +257,7 @@ A well-documented
 \series bold
 Hand-in: 
 \series default
-Upload zip-file on Absalon
+Upload a single zip-file on Absalon (and nothing else)
 \end_layout
 
 \begin_layout Itemize
@@ -328,6 +328,16 @@ Show aggregate quantities and prices
 Illustrate household behavior
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ 
+\emph on
+You can restrict attention to equilibria with a positive real interest rate
+\end_layout
+
 \end_deeper
 \begin_layout Enumerate
 
@@ -343,11 +353,21 @@ Discuss the social optimal level of taxation
 
 \begin_deeper
 \begin_layout Standard
-Begin with maximizing household utility as a social welfare criterion
+Begin with average household utility as a social welfare criterion
 \end_layout
 
 \begin_layout Standard
 Other aspects of social welfare can also be introduced
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ 
+\emph on
+Searching over a fixed grid of tax rates is fine
 \end_layout
 
 \end_deeper
@@ -379,7 +399,8 @@ improves
 \end_layout
 
 \begin_layout Section*
-Model
+1.
+ Model
 \end_layout
 
 \begin_layout Paragraph*
@@ -451,11 +472,11 @@ ex post
 
 .
  Interest-rate income is taxed with the rate 
-\begin_inset Formula $\tau_{t}^{a}\in(0,1)$
+\begin_inset Formula $\tau_{t}^{a}\in[0,1]$
 \end_inset
 
  and labor income is taxes with the rate 
-\begin_inset Formula $\tau_{t}^{\ell}\in(0,1)$
+\begin_inset Formula $\tau_{t}^{\ell}\in[0,1]$
 \end_inset
 
 .
@@ -482,6 +503,17 @@ where
 \end_inset
 
 .
+ Aggregate quantities are
+\begin_inset Formula 
+\begin{align*}
+L_{t}^{hh} & =\int\ell_{t}\zeta_{i}z_{t}d\boldsymbol{D}_{t}\\
+C_{t}^{hh} & =\int c_{t}d\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\int a_{t}d\boldsymbol{D}_{t}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph*
@@ -497,7 +529,7 @@ A representative firm rents capital,
 \begin_inset Formula $L_{t}$
 \end_inset
 
-, to produce goods, with the production function
+, to produce goods, with the production functio
 \begin_inset Formula 
 \begin{equation}
 Y_{t}=\Gamma K_{t-1}^{\alpha}L_{t}^{1-\alpha}\label{eq:production}
@@ -537,9 +569,6 @@ where
 
 \begin_layout Standard
 The law-of-motion for capital is
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 K_{t}=(1-\delta)K_{t-1}+I_{t}\label{eq:lom_K}
@@ -561,9 +590,10 @@ Government.
 \begin_layout Standard
 The budget constraint for the government is
 \begin_inset Formula 
-\begin{equation}
-B_{t}=(1+r_{t}^{B})B_{t-1}+G_{t}-\int\left[\tau_{t}^{a}r_{t}a_{t-1}+\tau_{t}^{\ell}w_{t}\ell_{t}\zeta_{i}z_{t}\right]d\boldsymbol{D}_{t}\label{eq:B}
-\end{equation}
+\begin{align}
+B_{t} & =(1+r_{t}^{B})B_{t-1}+G_{t}-\int\left[\tau_{t}^{a}r_{t}a_{t-1}+\tau_{t}^{\ell}w_{t}\ell_{t}\zeta_{i}z_{t}\right]d\boldsymbol{D}_{t}\label{eq:B}\\
+ & =(1+r_{t}^{B})B_{t-1}+G_{t}-\tau_{t}^{a}r_{t}A_{t}^{hh}-\tau_{t}^{\ell}w_{t}L_{t}^{hh}\nonumber 
+\end{align}
 
 \end_inset
 
@@ -604,7 +634,7 @@ Market clearing implies
 
 \begin_layout Enumerate
 Labor market: 
-\begin_inset Formula $L_{t}=\int\ell_{t}\zeta_{i}z_{t}d\boldsymbol{D}_{t}$
+\begin_inset Formula $L_{t}=L_{t}^{hh}$
 \end_inset
 
 
@@ -612,7 +642,7 @@ Labor market:
 
 \begin_layout Enumerate
 Goods market: 
-\begin_inset Formula $Y_{t}=\int c_{t}d\boldsymbol{D}_{t}+I_{t}$
+\begin_inset Formula $Y_{t}=C_{t}^{hh}+I_{t}+G_{t}$
 \end_inset
 
 
@@ -620,14 +650,15 @@ Goods market:
 
 \begin_layout Enumerate
 Asset market: 
-\begin_inset Formula $K_{t}+B_{t}=\int a_{t}d\boldsymbol{D}_{t}$
+\begin_inset Formula $K_{t}+B_{t}=A_{t}^{hh}$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Section*
-Calibration
+2.
+ Calibration
 \end_layout
 
 \begin_layout Standard
@@ -730,9 +761,141 @@ Government:
 \end_layout
 
 \begin_layout Section*
+3.
+ Finding the steady state
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{K}_{ss}=K_{ss}/L_{ss}$
+\end_inset
+
+ denote the steady state capital-labor ratio.
+\end_layout
+
+\begin_layout Standard
+From a guess on 
+\begin_inset Formula $\mathcal{K}_{ss}$
+\end_inset
+
+ we can derive:
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $r_{ss}=\alpha\Gamma\left(\mathcal{K}_{ss}\right)^{\alpha-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $w_{ss}=(1-\alpha)\Gamma\left(\mathcal{K}_{ss}\right)^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $r_{ss}=r_{ss}^{B}=r_{ss}^{K}-\delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve and simulate household problem to obtain 
+\begin_inset Formula $A_{ss}^{hh}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{ss}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate
+\begin_inset Formula $B_{ss}=\frac{\tau_{ss}^{a}r_{ss}A_{ss}^{hh}+\tau_{ss}^{\ell}w_{ss}L_{ss}^{hh}-G_{ss}}{r_{ss}^{B}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $L_{ss}=L_{ss}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $K_{ss}=\mathcal{K}_{ss}L_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We then only need to check the asset market clearing condition:
+\begin_inset Formula 
+\[
+K_{ss}+B_{ss}-A_{ss}^{hh}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can also derive a 
+\emph on
+lower 
+\emph default
+and an 
+\emph on
+upper 
+\emph default
+bound on 
+\begin_inset Formula $\mathcal{K}_{ss}$
+\end_inset
+
+.
+ From ensuring a positive real interest rate, we get
+\begin_inset Formula 
+\[
+r_{ss}>0\Leftrightarrow r_{ss}^{K}-\delta>0\Leftrightarrow\mathcal{K}_{ss}>\left(\frac{\delta}{\alpha\Gamma}\right)^{\frac{1}{\alpha-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From ensuring the real interest rate is not too high relative to the household
+ discount factor, we get
+\begin_inset Formula 
+\begin{align*}
+1+r_{ss} & <\frac{1}{\beta}\Leftrightarrow r_{ss}^{K}-\delta<\frac{1}{\beta}-1\Leftrightarrow\mathcal{K}_{ss}<\left(\frac{\frac{1}{\beta}-1+\delta}{\alpha\Gamma}\right)^{\frac{1}{\alpha-1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
 
 \series bold
-Solving the household problem
+4.
+ Solving the household problem
 \end_layout
 
 \begin_layout Standard
@@ -751,9 +914,6 @@ The following provides a recipe for solving the household problem for fixed
 
 \begin_layout Standard
 The envelope condition implies
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \underline{v}_{a,t+1}(z_{t-1},a_{t-1})=\mathbb{E}\left[(1+\tilde{r}_{t})c_{t}^{-\rho}\,|\,z_{t-1},a_{t-1}\right]\label{envelope}
@@ -864,7 +1024,7 @@ If
 \begin_inset Formula $j+1$
 \end_inset
 
- by 
+ by
 \begin_inset Formula 
 \begin{align*}
 \ell_{t}^{j+1} & =\ell_{t}^{j}-\frac{f(\ell_{t})}{f^{\prime}(\ell_{t})}\\
