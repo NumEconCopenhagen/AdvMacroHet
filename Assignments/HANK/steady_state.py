@@ -44,7 +44,7 @@ def prepare_hh_ss(model):
         for i_z in range(par.Nz):
 
             z = par.z_grid[i_z]
-            income = (1-ss.tau)*ss.w*ss.L*z
+            income = (1-ss.tau)*ss.w*ss.L*z ++ ss.chi
 
             c = (1+ss.ra)*par.a_grid + income
             v_a[i_fix,i_z,:] = c**(-par.sigma)

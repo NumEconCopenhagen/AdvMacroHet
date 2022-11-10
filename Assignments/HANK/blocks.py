@@ -11,6 +11,7 @@ def block_pre(par,ini,ss,path,ncols=1):
         # unpack
         A = path.A[ncol,:]
         B = path.B[ncol,:]
+        chi = path.chi[ncol,:]
         clearing_A = path.clearing_A[ncol,:]
         clearing_Y = path.clearing_Y[ncol,:]
         G = path.G[ncol,:]
@@ -43,6 +44,7 @@ def block_post(par,ini,ss,path,ncols=1):
         # unpack
         A = path.A[ncol,:]
         B = path.B[ncol,:]
+        chi = path.chi[ncol,:]
         clearing_A = path.clearing_A[ncol,:]
         clearing_Y = path.clearing_Y[ncol,:]
         G = path.G[ncol,:]

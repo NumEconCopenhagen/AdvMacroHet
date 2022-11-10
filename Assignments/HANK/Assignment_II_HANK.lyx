@@ -567,7 +567,7 @@ New Keynesian Wage Philips Curve
 ,
 \begin_inset Formula 
 \begin{align}
-\pi_{t}^{w} & =\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{W}\label{eq:NKPWC}
+\pi_{t}^{w} & =\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{w}\label{eq:NKPWC}
 \end{align}
 
 \end_inset
@@ -820,7 +820,7 @@ Preferences and abilities:
 \end_inset
 
 , 
-\begin_inset Formula $\nu=2.0$
+\begin_inset Formula $\nu=1.0$
 \end_inset
 
 
@@ -883,7 +883,7 @@ Central bank:
 \begin_inset Formula $\phi^{\pi}=1.5$
 \end_inset
 
- and 
+, 
 \begin_inset Formula $\rho_{i}=0.90$
 \end_inset
 
@@ -1014,7 +1014,7 @@ Check a remaining market clearing condition
 The model can be summarized by the following equation system
 \begin_inset Formula 
 \[
-\boldsymbol{H}(\boldsymbol{G},\boldsymbol{\chi},\boldsymbol{\Gamma},\boldsymbol{\pi^{w}},\boldsymbol{L})=\left[\begin{array}{c}
+\boldsymbol{H}(\boldsymbol{\pi^{w}},\boldsymbol{L},\boldsymbol{G},\boldsymbol{\chi},\boldsymbol{\Gamma})=\left[\begin{array}{c}
 w_{t}-\Gamma_{t}\\
 1+\pi_{t}-\frac{1+\pi_{t}^{w}}{\Gamma_{t}/\Gamma_{t-1}}\\
 Y_{t}-\Gamma_{t}L_{t}\\
