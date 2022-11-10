@@ -1367,7 +1367,7 @@ status open
 \series bold
 Taxes: 
 \series default
-Collect proportional to productivity (ad hoc)
+Collected proportional to productivity (ad hoc)
 \end_layout
 
 \begin_layout Itemize
@@ -1390,7 +1390,7 @@ Optimality conditions:
 \begin{align*}
 \text{FOC wrt. }c_{t}: & 0=c_{t}^{-\rho}-\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]\\
 \text{FOC wrt. }\ell_{t}: & 0=w_{t}z_{t}\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]-\varphi\ell_{t}^{\nu}\\
-\text{Envelope condition:} & 0=v_{a,t}(z_{t},a_{t-1})=(1+r_{t})c_{t}^{-\rho}
+\text{Envelope condition:} & \,0=v_{a,t}(z_{t},a_{t-1})=(1+r_{t})c_{t}^{-\rho}
 \end{align*}
 
 \end_inset
@@ -1766,7 +1766,7 @@ status open
 \series bold
 Monetary policy: 
 \series default
-Folow Taylor-rule: 
+Folow Taylor-rule:
 \begin_inset Formula 
 \[
 i_{t}=i_{t}^{\ast}+\phi\pi_{t}
@@ -1796,7 +1796,7 @@ status open
 \series bold
 Fisher relationship:
 \series default
- 
+
 \begin_inset Formula 
 \[
 r_{t}=(1+i_{t-1})/(1+\pi_{t})-1
@@ -1994,10 +1994,6 @@ As a DAG (from Auclert et al., 2021)
 Notation: 
 \series default
 
-\begin_inset Formula $\boldsymbol{\Gamma}=\boldsymbol{Z}$
-\end_inset
-
-, 
 \begin_inset Formula $\boldsymbol{i}^{\ast}=\boldsymbol{r}^{\ast}$
 \end_inset
 
@@ -2298,7 +2294,7 @@ status open
 Solve for IRFs for unknowns
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=\underset{\text{\ensuremath{\equiv\boldsymbol{G}_{\boldsymbol{U}}}}}{\underbrace{-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}}}d\boldsymbol{Z}
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=\underset{\text{\ensuremath{\equiv\boldsymbol{G}_{\boldsymbol{U}}}}}{\underbrace{-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}}}d\boldsymbol{Z}
 \end{align*}
 
 \end_inset
@@ -2320,7 +2316,7 @@ status open
 Derive all other IRFs for
 \begin_inset Formula 
 \begin{align*}
-d\boldsymbol{X} & =M_{\boldsymbol{U}}d\boldsymbol{U}+M_{\boldsymbol{Z}}d\boldsymbol{Z}\\
+\boldsymbol{X}=\boldsymbol{M}(\boldsymbol{U},\boldsymbol{Z})\Rightarrow d\boldsymbol{X} & =M_{\boldsymbol{U}}d\boldsymbol{U}+M_{\boldsymbol{Z}}d\boldsymbol{Z}\\
  & =\underset{\equiv\boldsymbol{G}}{\underbrace{(-M_{\boldsymbol{U}}\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}+M_{\boldsymbol{Z}})}}d\boldsymbol{Z}
 \end{align*}
 
@@ -2595,7 +2591,7 @@ Equivalence:
 
 \begin_deeper
 \begin_layout Enumerate
-Same result if we linearized all aggregated equations and write the model
+Same result if we linearize all aggregated equations and write the model
  in MA(
 \begin_inset Formula $\infty$
 \end_inset
@@ -2712,7 +2708,7 @@ where
 \begin_inset Formula $\partial\boldsymbol{a}_{i_{g}}^{\ast}/\partial X_{k}^{hh}$
 \end_inset
 
- to a 
+ is the derivative to a 
 \begin_inset Formula $k$
 \end_inset
 
@@ -2720,15 +2716,9 @@ where
 \begin_inset Formula $X^{hh}$
 \end_inset
 
- 
+ (calculated in fake news algorithm)
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-(calculated in fake news algorithm)
-\end_layout
-
-\end_deeper
 \begin_layout Enumerate
 \begin_inset ERT
 status open
@@ -2833,7 +2823,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-Exercises
+Exercise
 \end_layout
 
 \begin_layout Frame
@@ -2841,81 +2831,8 @@ Exercises
 status open
 
 \begin_layout Plain Layout
-Exercises: Model mechanism and extension
+Exercise = Assignment II
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Understand the model dynamics
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Illustrate through which channels tighter monetary policy affect aggregate
- consumption.
- 
-\end_layout
-
-\begin_layout Enumerate
-Illustrate the effect of tighter monetary policy on inequality.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Sticky prices vs.
- sticky wages: 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Assume that a union chooses labor supply (
-\begin_inset Formula $\ell_{t}=N_{t}$
-\end_inset
-
-) and set wages 
-\end_layout
-
-\begin_layout Enumerate
-Assume wage inflation, 
-\begin_inset Formula $\pi_{t}^{w}=\frac{w_{t}P_{t}}{w_{t-1}P_{t-1}}$
-\end_inset
-
-, solves
-\series bold
-
-\begin_inset Formula 
-\begin{align*}
-\log(1+\pi_{t}^{w}) & =\kappa_{w}\left(\varphi N_{t}^{1+\nu}-\frac{w_{t}N_{t}}{\mu_{w}}\int z_{it}c_{it}^{-\sigma}d\boldsymbol{D}_{t}\right)+\beta\log(1+\pi_{t+1}^{w})
-\end{align*}
 
 \end_inset
 
@@ -2925,27 +2842,10 @@ Assume wage inflation,
 \begin_deeper
 \begin_layout Standard
 
-\series bold
-Micro-foundation:
-\series default
- Based on unions maximizing average utility of household.
+\emph on
+You can start working on Assignment II: The HANK model
 \end_layout
 
-\end_deeper
-\begin_layout Enumerate
-Investigate how model dynamics change with changes in wage and price stickiness
- through 
-\begin_inset Formula $\kappa$
-\end_inset
-
- and 
-\begin_inset Formula $\kappa_{w}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2993,7 +2893,7 @@ Linearized IRFs and simulation
 \series bold
 Next week: 
 \series default
-Adding unemployment to the HANK model
+Analytical Properties of HANK models
 \end_layout
 
 \begin_layout Itemize
@@ -3004,7 +2904,7 @@ Homework:
 
 \begin_deeper
 \begin_layout Enumerate
-Work on completing the model extension exercise
+Work on Assignment II
 \end_layout
 
 \begin_layout Enumerate
