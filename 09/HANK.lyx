@@ -1388,9 +1388,9 @@ Optimality conditions:
 
 \begin_inset Formula 
 \begin{align*}
-\text{FOC wrt. }c_{t}: & 0=c_{t}^{-\rho}-\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]\\
+\text{FOC wrt. }c_{t}: & 0=c_{t}^{-\sigma}-\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]\\
 \text{FOC wrt. }\ell_{t}: & 0=w_{t}z_{t}\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]-\varphi\ell_{t}^{\nu}\\
-\text{Envelope condition:} & \,0=v_{a,t}(z_{t},a_{t-1})=(1+r_{t})c_{t}^{-\rho}
+\text{Envelope condition:} & \,0=v_{a,t}(z_{t},a_{t-1})=(1+r_{t})c_{t}^{-\sigma}
 \end{align*}
 
 \end_inset
@@ -1456,7 +1456,7 @@ status open
 Beginning-of-period value function: 
 \begin_inset Formula 
 \[
-\underline{v}_{a,t}(z_{t-1},a_{t-1})=\mathbb{E}_{t}\left[v_{a,t}(z_{t},a_{t-1})\right]=\mathbb{E}\left[(1+r_{t})c_{t}^{-\rho}\right]
+\underline{v}_{a,t}(z_{t-1},a_{t-1})=\mathbb{E}_{t}\left[v_{a,t}(z_{t},a_{t-1})\right]=\mathbb{E}\left[(1+r_{t})c_{t}^{-\sigma}\right]
 \]
 
 \end_inset
