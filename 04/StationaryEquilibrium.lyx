@@ -1628,12 +1628,12 @@ equation system
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
-L_{t}-1\\
-r_{t}+\delta-\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+r_{t}-(\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta)\\
 w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+L_{t}-1\\
 \forall t\in\{0,1,\dots\}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
@@ -1710,12 +1710,12 @@ satisfies
 \begin_inset Formula 
 \[
 H_{ss}\left(K_{ss},L_{ss};\Gamma_{ss}\right)=\left[\begin{array}{c}
-K_{ss}-\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}\\
-L_{ss}-1\\
-r_{ss}-\alpha\Gamma_{ss}(K_{ss}/L_{ss})^{\alpha-1}\\
+r_{ss}-(\alpha\Gamma_{ss}(K_{ss}/L_{ss})^{\alpha-1}-\delta)\\
 w_{ss}-(1-\alpha)\Gamma_{ss}(K_{ss}/L_{ss})^{\alpha}\\
 \boldsymbol{D}_{ss}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{ss}\\
-\underline{\boldsymbol{D}}_{ss}-\Lambda_{ss}^{\prime}\boldsymbol{D}_{ss}
+\underline{\boldsymbol{D}}_{ss}-\Lambda_{ss}^{\prime}\boldsymbol{D}_{ss}\\
+K_{ss}-\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}\\
+L_{ss}-1
 \end{array}\right]=\boldsymbol{0}
 \]
 

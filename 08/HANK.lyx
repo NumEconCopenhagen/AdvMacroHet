@@ -147,7 +147,7 @@ status open
 
 
 \backslash
-title{10.
+title{9.
  A Baseline HANK Model
 \backslash
 vspace{-2mm}}
@@ -846,7 +846,7 @@ Static
 
 \begin_inset Formula 
 \begin{align*}
-\max_{y_{jt}\,\forall j}P_{t}Y_{t}-\int_{0}^{1}p_{jt}y_{jt}dj & \text{ s.t. }y_{t}=\left(\int_{0}^{1}y_{jt}^{\frac{1}{\mu}}dj\right)^{\mu}
+\max_{y_{jt}\,\forall j}P_{t}Y_{t}-\int_{0}^{1}p_{jt}y_{jt}dj & \text{ s.t. }Y_{t}=\left(\int_{0}^{1}y_{jt}^{\frac{1}{\mu}}dj\right)^{\mu}
 \end{align*}
 
 \end_inset
@@ -877,11 +877,7 @@ status open
 \series bold
 Demand curve 
 \series default
-derived from
-\begin_inset space ~
-\end_inset
-
-FOC wrt.
+derived from FOC wrt.
  
 \begin_inset Formula $y_{jt}$
 \end_inset
@@ -1137,7 +1133,7 @@ status open
 
 \series bold
 Implied dividends: 
-\begin_inset Formula $d_{t}=Y_{t}-w_{t}N_{t}-\frac{\mu}{\mu-1}\frac{1}{2\kappa}\left[\log\left(1+\pi_{t}\right)\right]^{2}$
+\begin_inset Formula $d_{t}=Y_{t}-w_{t}N_{t}-\frac{\mu}{\mu-1}\frac{1}{2\kappa}\left[\log\left(1+\pi_{t}\right)\right]^{2}Y_{t}$
 \end_inset
 
 
@@ -1329,7 +1325,7 @@ vspace{-2mm}
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\\
-\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+(w_{t}\ell_{t}-\tau_{t}+d_{t})z_{t}\geq0\\
+\text{s.t. }a_{t} & =(1+r_{t})a_{t-1}+(w_{t}\ell_{t}-\tau_{t}+d_{t})z_{t}-c_{t}\geq0\\
 \log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
 \end{align*}
 
@@ -1371,7 +1367,7 @@ status open
 \series bold
 Taxes: 
 \series default
-Collect proportional to productivity (ad hoc)
+Collected proportional to productivity (ad hoc)
 \end_layout
 
 \begin_layout Itemize
@@ -1392,9 +1388,9 @@ Optimality conditions:
 
 \begin_inset Formula 
 \begin{align*}
-\text{FOC wrt. }c_{t}: & 0=c_{t}^{-\rho}-\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]\\
+\text{FOC wrt. }c_{t}: & 0=c_{t}^{-\sigma}-\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]\\
 \text{FOC wrt. }\ell_{t}: & 0=w_{t}z_{t}\beta\mathbb{E}_{t}\left[v_{a,t+1}(z_{t+1},a_{t})\right]-\varphi\ell_{t}^{\nu}\\
-\text{Envelope condition:} & 0=v_{a,t}(z_{t},a_{t-1})=(1+r_{t})c_{t}^{-\rho}
+\text{Envelope condition:} & \,v_{a,t}(z_{t},a_{t-1})=(1+r_{t})c_{t}^{-\sigma}
 \end{align*}
 
 \end_inset
@@ -1460,7 +1456,7 @@ status open
 Beginning-of-period value function: 
 \begin_inset Formula 
 \[
-\underline{v}_{a,t}(z_{t-1},a_{t-1})=\mathbb{E}_{t}\left[v_{t}(z_{t},a_{t-1})\right]
+\underline{v}_{a,t}(z_{t-1},a_{t-1})=\mathbb{E}_{t}\left[v_{a,t}(z_{t},a_{t-1})\right]=\mathbb{E}\left[(1+r_{t})c_{t}^{-\sigma}\right]
 \]
 
 \end_inset
@@ -1496,7 +1492,7 @@ Vary
 \begin{align*}
 c_{t} & =(\beta\underline{v}_{a,t+1}(z_{t},a_{t}))^{-\frac{1}{\sigma}}\\
 \ell_{t} & =\left(\frac{w_{t}z_{t}}{\varphi}c_{t}^{-\sigma}\right)^{\frac{1}{\nu}}\\
-m_{t} & =c_{t}+a_{t}-w_{t}\ell_{t}z_{t}-T_{t}
+m_{t} & =c_{t}+a_{t}-(w_{t}\ell_{t}-\tau_{t}+d_{t})z_{t}
 \end{align*}
 
 \end_inset
@@ -1697,7 +1693,7 @@ status open
 Set 
 \begin_inset Formula 
 \[
-\ell^{\ast}=f(\ell^{\ast})/f^{\prime}(\ell^{\ast})=f(\ell^{\ast})/\left(1-\left(\frac{w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\frac{\sigma}{\nu}\right)\left(c^{\ast}\right)^{-\frac{\sigma}{\nu}}w_{t}z_{t}\right)
+\ell^{\ast}=\frac{f(\ell^{\ast})}{f^{\prime}(\ell^{\ast})}=\frac{f(\ell^{\ast})}{1-\left(\frac{w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\frac{\sigma}{\nu}\right)\left(c^{\ast}\right)^{-\frac{\sigma}{\nu}}w_{t}z_{t}}
 \]
 
 \end_inset
@@ -1770,7 +1766,7 @@ status open
 \series bold
 Monetary policy: 
 \series default
-Folow Taylor-rule: 
+Folow Taylor-rule:
 \begin_inset Formula 
 \[
 i_{t}=i_{t}^{\ast}+\phi\pi_{t}
@@ -1800,7 +1796,7 @@ status open
 \series bold
 Fisher relationship:
 \series default
- 
+
 \begin_inset Formula 
 \[
 r_{t}=(1+i_{t-1})/(1+\pi_{t})-1
@@ -1877,14 +1873,6 @@ vspace{-2mm}
 
 \begin_deeper
 \begin_layout Enumerate
-Goods: 
-\begin_inset Formula $Y_{t}=\int c_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
 Labor: 
 \begin_inset Formula $N_{t}=\int n_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
 \end_inset
@@ -1895,6 +1883,14 @@ Labor:
 \begin_layout Enumerate
 Assets: 
 \begin_inset Formula $B_{ss}=\int a_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Goods: 
+\begin_inset Formula $Y_{t}=\int c_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}+G_{t}+\frac{\mu}{\mu-1}\frac{1}{2\kappa}\left[\log\left(1+\pi_{t}\right)\right]^{2}Y_{t}$
 \end_inset
 
 
@@ -1972,6 +1968,63 @@ The rest of the model is given by
 status open
 
 \begin_layout Plain Layout
+As a DAG (from Auclert et al., 2021)
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename DAG_HANK.png
+	lyxscale 30
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notation: 
+\series default
+
+\begin_inset Formula $\boldsymbol{i}^{\ast}=\boldsymbol{r}^{\ast}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\mu}$
+\end_inset
+
+ is a shock, 
+\begin_inset Formula $\boldsymbol{A}^{hh}=\mathcal{A}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{N}^{hh}=\mathcal{N}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Steady state
 \end_layout
 
@@ -1984,6 +2037,26 @@ Steady state
 \begin_layout Itemize
 
 \series bold
+Chosen: 
+\series default
+
+\begin_inset Formula $B_{ss}$
+\end_inset
+
+, 
+\begin_inset Formula $G_{ss}$
+\end_inset
+
+, 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 Analytically:
 \end_layout
 
@@ -1992,7 +2065,7 @@ Analytically:
 
 \series bold
 Normalization: 
-\begin_inset Formula $Z_{ss}=N_{t}=1\Rightarrow Y_{ss}=1$
+\begin_inset Formula $Z_{ss}=N_{ss}=1$
 \end_inset
 
 
@@ -2004,7 +2077,7 @@ Normalization:
 Zero-inflation:
 \series default
  
-\begin_inset Formula $\pi_{ss}=0\Rightarrow i_{ss}=i_{ss}^{\ast}=r_{ss}$
+\begin_inset Formula $\pi_{ss}=0\Rightarrow i_{ss}=i_{ss}^{\ast}=(1+r_{ss})(1+\pi_{ss})-1$
 \end_inset
 
 
@@ -2013,14 +2086,22 @@ Zero-inflation:
 \begin_layout Enumerate
 
 \series bold
-Phillips-curve: 
-\begin_inset Formula $w_{ss}=\frac{1}{\mu}$
+Firms: 
+\series default
+
+\begin_inset Formula $Y_{ss}=Z_{ss}N_{ss}$
+\end_inset
+
+,
+\series bold
+ 
+\begin_inset Formula $w_{ss}=\frac{Z_{ss}}{\mu}$
 \end_inset
 
  
 \series default
 and 
-\begin_inset Formula $d_{t}=1-w_{ss}$
+\begin_inset Formula $d_{ss}=Y_{ss}-w_{ss}N_{ss}$
 \end_inset
 
 
@@ -2032,7 +2113,19 @@ and
 Government:
 \series default
  
-\begin_inset Formula $\tau_{t}=G_{ss}$
+\begin_inset Formula $\tau_{ss}=r_{ss}B_{ss}+G_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Assets:
+\series default
+ 
+\begin_inset Formula $A_{ss}=B_{ss}$
 \end_inset
 
 
@@ -2201,7 +2294,7 @@ status open
 Solve for IRFs for unknowns
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=\underset{\text{\ensuremath{\equiv\boldsymbol{G}_{\boldsymbol{U}}}}}{\underbrace{-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}}}d\boldsymbol{Z}
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=\underset{\text{\ensuremath{\equiv\boldsymbol{G}_{\boldsymbol{U}}}}}{\underbrace{-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}}}d\boldsymbol{Z}
 \end{align*}
 
 \end_inset
@@ -2223,7 +2316,7 @@ status open
 Derive all other IRFs for
 \begin_inset Formula 
 \begin{align*}
-d\boldsymbol{X} & =M_{\boldsymbol{U}}d\boldsymbol{U}+M_{\boldsymbol{Z}}d\boldsymbol{Z}\\
+\boldsymbol{X}=\boldsymbol{M}(\boldsymbol{U},\boldsymbol{Z})\Rightarrow d\boldsymbol{X} & =M_{\boldsymbol{U}}d\boldsymbol{U}+M_{\boldsymbol{Z}}d\boldsymbol{Z}\\
  & =\underset{\equiv\boldsymbol{G}}{\underbrace{(-M_{\boldsymbol{U}}\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}+M_{\boldsymbol{Z}})}}d\boldsymbol{Z}
 \end{align*}
 
@@ -2498,7 +2591,7 @@ Equivalence:
 
 \begin_deeper
 \begin_layout Enumerate
-Same result if we linearized all aggregated equations and write the model
+Same result if we linearize all aggregated equations and write the model
  in MA(
 \begin_inset Formula $\infty$
 \end_inset
@@ -2615,7 +2708,7 @@ where
 \begin_inset Formula $\partial\boldsymbol{a}_{i_{g}}^{\ast}/\partial X_{k}^{hh}$
 \end_inset
 
- to a 
+ is the derivative to a 
 \begin_inset Formula $k$
 \end_inset
 
@@ -2623,15 +2716,9 @@ where
 \begin_inset Formula $X^{hh}$
 \end_inset
 
- 
+ (calculated in fake news algorithm)
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-(calculated in fake news algorithm)
-\end_layout
-
-\end_deeper
 \begin_layout Enumerate
 \begin_inset ERT
 status open
@@ -2736,7 +2823,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-Exercises
+Exercise
 \end_layout
 
 \begin_layout Frame
@@ -2744,77 +2831,8 @@ Exercises
 status open
 
 \begin_layout Plain Layout
-Exercises: Model mechanism and extension
+Exercise = Assignment II
 \end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Understand the model dynamics
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Illustrate through which channels tighter monetary policy affect aggregate
- consumption.
- 
-\end_layout
-
-\begin_layout Enumerate
-Illustrate the effect of tighter monetary policy on inequality.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Sticky prices vs.
- sticky wages: 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Assume that labor supply and wages are chosen by union
-\end_layout
-
-\begin_layout Enumerate
-Assume wage inflation, 
-\begin_inset Formula $\pi_{t}^{w}=\frac{w_{t}P_{t}}{w_{t-1}P_{t-1}}$
-\end_inset
-
-, solves
-\series bold
-
-\begin_inset Formula 
-\begin{align*}
-\log(1+\pi_{t}^{w}) & =\kappa_{w}\left(\varphi N_{t}^{1+\nu}-\frac{w_{t}N_{t}}{\mu_{w}}\int z_{it}c_{it}^{-\sigma}d\boldsymbol{D}_{t}\right)+\beta\log(1+\pi_{t+1}^{w})
-\end{align*}
 
 \end_inset
 
@@ -2824,27 +2842,10 @@ Assume wage inflation,
 \begin_deeper
 \begin_layout Standard
 
-\series bold
-Micro-foundation:
-\series default
- Based on unions maximizing average utility of household.
+\emph on
+You can start working on Assignment II: The HANK model
 \end_layout
 
-\end_deeper
-\begin_layout Enumerate
-Investigate how model dynamics change with changes in wage and price stickiness
- through 
-\begin_inset Formula $\kappa$
-\end_inset
-
- and 
-\begin_inset Formula $\kappa_{w}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2892,7 +2893,7 @@ Linearized IRFs and simulation
 \series bold
 Next week: 
 \series default
-Adding unemployment to the HANK model
+Analytical Properties of HANK models
 \end_layout
 
 \begin_layout Itemize
@@ -2903,17 +2904,16 @@ Homework:
 
 \begin_deeper
 \begin_layout Enumerate
-Work on completing the model extension exercise
+Work on Assignment II
 \end_layout
 
 \begin_layout Enumerate
-Read: Broer et.
- al.
- (2022), 
+Read: Auclert et al.
+ (2018), 
 \begin_inset Quotes ald
 \end_inset
 
-The Unemployment-Risk Channel in Business-Cycle Fluctuations
+The Intertemporal Keynesian Cross
 \begin_inset Quotes ard
 \end_inset
 

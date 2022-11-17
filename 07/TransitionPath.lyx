@@ -598,7 +598,19 @@ Using the Sequence-Space Jacobian to Solve and Estimate Heterogeneous-Agent
 \end_layout
 
 \begin_layout Enumerate
-Documentation for GEModelTools (except stuff on simulation)
+Documentation for GEModelTools
+\begin_inset Newline newline
+\end_inset
+
+(except stuff on 
+\emph on
+linearized solution
+\emph default
+ and 
+\emph on
+simulation
+\emph default
+)
 \end_layout
 
 \begin_layout Enumerate
@@ -616,6 +628,84 @@ Kirkby (2017)
 
 \begin_layout Section
 Transition path
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The model can be written as an 
+\series bold
+equation system
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+r_{t}-(\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta)\\
+w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+\boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+L_{t}-1\\
+\forall t\in\{0,1,\dots\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\left\{ \Gamma_{t}\right\} _{t\geq0}$
+\end_inset
+
+ is a given technology path and 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Remember: 
+\series default
+Policies and choice transitions depend on prices
+\end_layout
+
+\begin_layout Enumerate
+Policy function: 
+\begin_inset Formula $a_{t}^{\ast}=a^{\ast}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Choice transition: 
+\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
@@ -715,13 +805,13 @@ are such that
 \begin_layout Enumerate
 
 \size small
-Household maximize expected utility (policy functions) in all periods
+Firms maximize profits (prices) in all periods
 \end_layout
 
 \begin_layout Enumerate
 
 \size small
-Firms maximize profits (prices) in all periods
+Household maximize expected utility (policy functions) in all periods
 \end_layout
 
 \begin_layout Enumerate
@@ -740,97 +830,19 @@ Firms maximize profits (prices) in all periods
 \begin_layout Enumerate
 
 \size small
-The labor market clears in all periods
-\end_layout
-
-\begin_layout Enumerate
-
-\size small
 The capital market clears in all periods
 \end_layout
 
 \begin_layout Enumerate
 
 \size small
+The labor market clears in all periods
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
 The goods market clears in all periods
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Equation system
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-The model can be written as an 
-\series bold
-equation system
-\series default
-
-\begin_inset Formula 
-\begin{align*}
-\boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
-r_{t}-\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
-w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
-L_{t}-1\\
-\boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
-\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
-\forall t\in\{0,1,\dots\}
-\end{array}\right]=\boldsymbol{0}
-\end{align*}
-
-\end_inset
-
-where 
-\begin_inset Formula $\left\{ \Gamma_{t}\right\} _{t\geq0}$
-\end_inset
-
- is a given technology path and 
-\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Remember: 
-\series default
-Policies and choice transitions depend on prices
-\end_layout
-
-\begin_layout Enumerate
-Policy function: 
-\begin_inset Formula $a_{t}^{\ast}=a^{\ast}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Choice transition: 
-\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -864,7 +876,7 @@ Truncated, reduced vector form:
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\,\\
+A_{t}^{hh}-K_{t}\\
 \forall t\in\{0,1,\dots,T-1\}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
@@ -880,13 +892,16 @@ where
 \end_inset
 
  and
+\size small
+
 \begin_inset Formula 
 \begin{align*}
 L_{t} & =1\\
-r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
  & \forall t\in\{0,1,\dots,T-1\}
 \end{align*}
 
@@ -894,6 +909,7 @@ w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 
 
 \series bold
+\size default
 Truncation:
 \series default
  
@@ -905,7 +921,11 @@ Truncation:
 \end_inset
 
  for all 
-\begin_inset Formula $t\ll T$
+\begin_inset Formula $t>\underline{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\underline{t}\ll T$
 \end_inset
 
 
@@ -947,7 +967,7 @@ Guess
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 .
@@ -963,7 +983,7 @@ Stop if
 
 \begin_layout Enumerate
 Calculate the Jacobian 
-\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{0},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 
@@ -971,7 +991,7 @@ Calculate the Jacobian
 
 \begin_layout Enumerate
 Update guess by 
-\begin_inset Formula $\boldsymbol{K}^{i+1}=\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
+\begin_inset Formula $\boldsymbol{K}^{i+1}=\boldsymbol{K}^{i}+\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
 \end_inset
 
 
@@ -1037,7 +1057,7 @@ Calculate the steady state Jacobian
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 .
@@ -1180,12 +1200,12 @@ Solve household problem backwards along transition path
 \end_layout
 
 \begin_layout Enumerate
-Simulate household forwards along transition path
+Simulate households forward along transition path
 \end_layout
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(K_{t}-A_{t}^{hh})-(K_{ss}-A_{ss}^{hh})}{\Delta}$
+\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(A_{t}^{hh}-K_{t})-(A_{ss}^{hh}-K_{ss})}{\Delta}$
 \end_inset
 
  for all 
@@ -1223,20 +1243,57 @@ status open
 \series bold
 Fake news algorithm: 
 \series default
-Only requires 
+From household Jacobian to full Jacobian
+\emph on
+
+\begin_inset Formula 
+\[
+\boldsymbol{H}_{\boldsymbol{K}}=\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}-\boldsymbol{I}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-5mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\mathcal{J}^{r,K},\mathcal{J}^{w,K}$
+\end_inset
+
+: Fast from the onset - only involve aggregates
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathcal{J}^{A^{hh},r},\mathcal{J}^{A^{hh},w}$
+\end_inset
+
+: Only requires 
 \begin_inset Formula $T$
 \end_inset
 
- solution steps and simulation steps 
-\begin_inset Formula $\Rightarrow$
-\end_inset
-
- 
-\emph on
-explained later today
+ solution steps and simulation steps!
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -1331,7 +1388,7 @@ Transition path,
 
 : 
 \series default
-Non-linear perfect foresight response to 
+Non-linear perfect foresight response to
 \end_layout
 
 \begin_deeper
@@ -1340,7 +1397,9 @@ Initial distribution,
 \begin_inset Formula $\underline{\boldsymbol{D}}_{0}\neq\boldsymbol{D}_{ss}$
 \end_inset
 
-
+, 
+\emph on
+or to
 \end_layout
 
 \begin_layout Enumerate
@@ -1352,17 +1411,8 @@ Shock,
 \begin_inset Formula $t$
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Also called:
-\series default
- 
-\emph on
-Non-linear impulse-response
+ (i.e.
+ impulse-response)
 \end_layout
 
 \end_deeper
@@ -1480,7 +1530,7 @@ Solve household problem backwards along transition path
 \end_layout
 
 \begin_layout Enumerate
-Simulate household forwards along transition path
+Simulate households forward along transition path
 \end_layout
 
 \begin_layout Enumerate
@@ -1653,6 +1703,62 @@ directed acyclical graph
 status open
 
 \begin_layout Plain Layout
+DAG: Directed Acyclical Growth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+From Auclert et al.
+ (2021):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/DAG_KS.png
+	lyxscale 30
+	width 90text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Notation: 
+\series default
+
+\begin_inset Formula $\boldsymbol{\Gamma}=\boldsymbol{Z}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{A}^{hh}=\mathcal{K}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 General model class II
 \end_layout
 
@@ -1786,7 +1892,7 @@ where
 \end_inset
 
  is aggregated outputs with 
-\begin_inset Formula $y(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})$
+\begin_inset Formula $\boldsymbol{y}(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})$
 \end_inset
 
  as individual level measures.
@@ -1804,10 +1910,10 @@ status open
 \end_inset
 
 Given the sequence of shocks, 
-\begin_inset Formula $\boldsymbol{Z},$
+\begin_inset Formula $\boldsymbol{Z}$
 \end_inset
 
-there exists a 
+, there exists a 
 \emph on
 truncation period
 \emph default
@@ -1816,45 +1922,6 @@ truncation period
 \end_inset
 
 , such all variables return to steady state beforehand.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-DAG: Directed Acyclical Growth
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-
-\series bold
-From Auclert et al.
- (2021):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/DAG_KS.png
-	width 90text%
-
-\end_inset
-
-
 \end_layout
 
 \end_deeper
@@ -1916,18 +1983,6 @@ Exercises: Model extensions
 
 \begin_deeper
 \begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-4mm}
-\end_layout
-
-\end_inset
-
 
 \series bold
 Firms:
@@ -1940,38 +1995,19 @@ Firms:
 \series bold
 Households: 
 \series default
-Solve
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-2mm}
-\end_layout
-
+New budget constraint with labor taxes, 
+\begin_inset Formula $\tau_{t}$
 \end_inset
 
 
 \begin_inset Formula 
-\begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
-\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}(1-\tau_{t})z_{t}\geq0\\
-\log z_{t} & =\rho\log z_{t-1}+\psi_{t}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
-\end{align*}
+\[
+a_{t}+c_{t}=(1+r_{t})a_{t-1}+(1-\tau_{t})w_{t}z_{t}\geq0
+\]
 
 \end_inset
 
-where 
-\begin_inset Formula $r_{t}$
-\end_inset
 
- is the real-interest rate and 
-\begin_inset Formula $\tau_{t}$
-\end_inset
-
- is a tax rate
 \end_layout
 
 \begin_layout Enumerate
@@ -2012,11 +2048,11 @@ Define and find the stationary equilibrium and transition path
 \begin_layout Enumerate
 
 \series bold
-How does the models result to a persistent shock to 
-\begin_inset Formula $G_{t}?$
+What is the response to a persistent shock to 
+\begin_inset Formula $G_{t}$
 \end_inset
 
-
+ when the budget is balanced in all periods?
 \end_layout
 
 \end_deeper
@@ -2114,7 +2150,17 @@ Work on completing the model extension exercise
 \end_layout
 
 \begin_layout Enumerate
-Read: TBA
+Read: Auclert et.
+ al.
+ (2021), 
+\begin_inset Quotes ald
+\end_inset
+
+Demographics, Wealth, and Global Imbalances in the Twenty-First Century
+\begin_inset Quotes ard
+\end_inset
+
+
 \end_layout
 
 \end_deeper
