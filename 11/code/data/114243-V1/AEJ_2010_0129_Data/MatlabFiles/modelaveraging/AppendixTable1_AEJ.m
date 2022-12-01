@@ -1,0 +1,160 @@
+%%%   IC_MC1_open.m
+
+%%%   This file evaluates AIC and BIC, as well as 2-model-averaging approaches to study small-sample properties of implied IRF's.
+
+%function [] = IC_MC1_open(N,seedn)
+clear all
+
+%%%   This version draws from actual MP shocks and residuals with
+%%%   replacement.
+
+N=200;          % number of simulations used in Model-Averaging step
+its=1000;
+I=100;           % burn in period for simulations
+T=320;          % length of sample in simulations
+periods=36;     % length of IRF's for MSE calculatios
+TrueAR=12;
+TrueMA=12;
+levelindex=0;
+minindex=1;
+%N=200;           % number of simulations for bootstrap procedure.
+ARlags=[6 12 24];
+MAlags=[6 12 24 ];
+%rand('seed',1+seedn);
+%randn('seed',1+seedn);
+
+
+MPshockdata2;                       % loads data from 1965:1 1996:12
+IP2=makelags(IP,60); CPI2=makelags(CPI,60); UE2=makelags(UE,60); p=CPI2; uRR2=makelags(uRR,60); 
+Y=IP2(:,1)-IP2(:,2);
+X=[ones(length(uRR2),1) IP2(:,2:TrueAR+1)-IP2(:,3:TrueAR+2) uRR2(:,2:TrueMA+1)];
+Beta=inv(X'*X)*(X'*Y);
+ARcoefs=Beta(2:TrueAR+1); MAcoefs=Beta(1+TrueAR+1:length(Beta));
+resdip=Y-X*Beta;
+
+% calculate true IRF from specified coefs
+beta=[0;ARcoefs;MAcoefs]; Xa=zeros(1,length(beta)-1); z(1)=0; 
+shockpos=TrueAR+2; 
+for j=2:periods
+    Xa(j,1)=z(j-1,1);
+    for i=2:length(beta)-1
+        Xa(j,i)=Xa(j-1,i-1);
+    end
+    if j==2
+        Xa(j,shockpos-1)=1;
+    else
+        Xa(j,shockpos-1)=0;
+    end
+    z(j,1)=Xa(j,:)*beta(2:length(beta));
+end
+    irf(1)=z(1);
+    for j=2:length(z)
+        irf(j)=irf(j-1)+z(j);
+    end
+    % irf is true IRF
+    
+
+for it=1:its
+    rand('seed',1+it);
+    randn('seed',1+it);
+
+    clear mpshocks dip
+    it
+    
+    % make data, drawing shocks from residuals and actual policy shocks.
+    for j=1:I+T
+        e=ceil(length(resdip)*rand(1));
+        res(j)=resdip(e);
+        mpshocks(j,1)=uRR2(e,1);
+    end
+    
+    mpshocks=[zeros(max(TrueMA,TrueAR),1);mpshocks]; mpshocks=makelags(mpshocks,max(TrueMA,TrueAR));
+    dip=[IP2(1,2:max(TrueMA,TrueAR)+1)-IP2(1,3:max(TrueMA,TrueAR)+2) 0]';
+    dip=makelags(dip,max(TrueMA,TrueAR));
+    for j=1:I+T
+        dip(j,1)=Beta(1)+dip(j,2:TrueAR+1)*ARcoefs+mpshocks(j,2:TrueMA+1)*MAcoefs+res(j);
+        dip(j+1,2:max(TrueMA,TrueAR)+1)=dip(j,1:max(TrueMA,TrueAR));
+    end
+    
+    
+    % format data for estimation
+    dip1=dip(I+1-45:I+T,1); dip1=makelags(dip1,45);
+    mp1=mpshocks(I+1-45:I+T,1);   mp1=makelags(mp1,45);
+    
+    % AIC/BIC selection for simulated data
+    a1max=0; b1max=0; lagAIC=[1 1]; lagBIC=[1 1]; 
+    for j1=1:length(ARlags)
+        j=ARlags(j1);
+        for k1=1:length(MAlags)
+            k=MAlags(k1);
+            b1=bic(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+j) mp1(:,2:1+k)]);
+            a1=aic(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+j) mp1(:,2:1+k)]);
+            if b1>b1max   b1max=b1; lagBIC=[j k]; end
+            if a1>a1max   a1max=a1; lagAIC=[j k]; end
+        end
+    end
+    AIC(it,:)=lagAIC;
+    BIC(it,:)=lagBIC;
+    if lagAIC==[TrueAR TrueMA]    AICtrue(it)=1;  else AICtrue(it)=0; end
+    if lagBIC==[TrueAR TrueMA]    BICtrue(it)=1;  else BICtrue(it)=0; end
+
+    % bootstrap model averaging, using AIC: MA 
+    ind=1; 
+    for j1=1:length(ARlags)
+        j=ARlags(j1);
+        for k1=1:length(MAlags)
+            k=MAlags(k1);
+            p1=AICsimMA(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+j) mp1(:,2:1+k)],N,lagAIC,j,levelindex,periods,ARlags,MAlags,minindex);  
+            pa1(ind,1)=p1; 
+            irfMA(:,ind)=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+j) mp1(:,2:1+k)],periods,j+2,levelindex);
+            lag1(1,ind)=j;
+            lag2(1,ind)=k;
+            ind=ind+1;
+        end
+    end
+    pa=pa1/sum(pa1);
+        
+    fitMA1=irfMA*pa;                  % weighted IRF's: using simple MA
+    Lagsma1(it,:)=[lag1*pa  lag2*pa];     % weighted lag selection: using MA1
+    
+    % calculate peak responses:
+    fita=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+lagAIC(1)) mp1(:,2:1+lagAIC(2))],periods,lagAIC(1)+2,0);   % estimate of IRF given AIC
+    fitb=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+lagBIC(1)) mp1(:,2:1+lagBIC(2))],periods,lagBIC(1)+2,0);   % estimate of IRF given BIC
+    fit12=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+TrueAR) mp1(:,2:1+TrueMA)],periods,TrueAR+2,0);              % estimate of IRF given true lags
+    fit24=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+TrueAR) mp1(:,2:1+TrueMA+12)],periods,TrueAR+2,0);           % estimate of IRF given true lags+12
+    fit6=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+TrueAR) mp1(:,2:1+TrueMA-6)],periods,TrueAR+2,0);           % estimate of IRF given true lags-6
+    
+    minIPaic(it)=min(fita);         % solve for max effect of MP shock on IP from AIC spec
+    minIPbic(it)=min(fitb);         % solve for max effect of MP shock on IP from BIC spec
+    minIP12(it) =min(fit12);        % solve for max effect of MP shock on IP from true lags
+    minIP24(it) =min(fit24);        % solve for max effect of MP shock on IP from true lags + 12
+    minIP6(it) =min(fit6);        % solve for max effect of MP shock on IP from true lags -6
+    minIPMA1(it)=min(fitMA1);         % solve for max effect of MP shock on IP from simple model averaging
+    
+    if abs(minIPaic(it)-min(irf))/abs(min(irf))>.5   AIC50perc(it)=1; else AIC50perc(it)=0; end
+    if abs(minIPbic(it)-min(irf))/abs(min(irf))>.5   BIC50perc(it)=1; else BIC50perc(it)=0; end
+    if abs(minIP12(it)-min(irf))/abs(min(irf))>.5    IP1250perc(it)=1; else IP1250perc(it)=0; end
+    if abs(minIP24(it)-min(irf))/abs(min(irf))>.5    IP2450perc(it)=1; else IP2450perc(it)=0; end
+    if abs(minIP6(it)-min(irf))/abs(min(irf))>.5    IP650perc(it)=1; else IP650perc(it)=0; end
+    if abs(minIPMA1(it)-min(irf))/abs(min(irf))>.5    IPMA150perc(it)=1; else IPMA150perc(it)=0; end
+    
+    % calculate MSE of IRF's implied by different specifications.
+    fit1=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+TrueAR) mp1(:,2:1+TrueMA)],periods,TrueAR+2,0);   % estimate of IRF given correct specification
+    fit2=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+AIC(it,1)) mp1(:,2:1+AIC(it,2))],periods,AIC(it,1)+2,0);   % estimate of IRF given AIC selection
+    fit3=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+BIC(it,1)) mp1(:,2:1+BIC(it,2))],periods,BIC(it,1)+2,0);   % estimate of IRF given BIC selection
+    fit4=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+TrueAR) mp1(:,2:1+TrueMA+12)],periods,TrueAR+2,0);   % estimate of IRF given correct specification+12 lags
+    fit5=impulse(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+TrueAR) mp1(:,2:1+TrueMA-6)],periods,TrueAR+2,0);   % estimate of IRF given correct specification -6 lags
+    
+    mse12(it)=  sum((irf-fit1).^2);
+    mse24(it)=  sum((irf-fit4).^2);
+    mse6(it)=  sum((irf-fit5).^2);
+    mseAIC(it)= sum((irf-fit2).^2);
+    mseBIC(it)= sum((irf-fit3).^2);
+    mseMA1(it) = sum((irf-fitMA1').^2);
+    
+end
+
+clear IP2 IP UE2 UE CPI2 CPI p uRR2 uRR CPIc FFR PCOM PPI PiCPI PiCPIc PiPPI X Xa Y dip dip1 mpshocks mp1 res resdip
+
+save('AppendixTable1_AEJ')
+

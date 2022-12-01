@@ -1,0 +1,38 @@
+% shocksearch.m
+
+function J = shocksearch(x,input1);
+
+data=input1.data;
+irf=input1.irf;
+shockpos=input1.shockpos-1;
+periods=input1.periods;
+
+shocks=x;
+shocks=[shocks ; zeros(60-length(x),1)];
+
+[T,K]=size(data);
+Y=data(:,1);
+X=data(:,2:K);
+beta=inv(X'*X)*(X'*Y);                          % coefficients
+beta=beta(2:length(beta));
+
+
+Xa=zeros(1,length(beta)); 
+Xa(1,shockpos)=shocks(1);
+z(1)=Xa*beta;
+
+for j=2:periods
+    Xa(j,1)=z(j-1,1);
+    for i=2:length(beta)
+        Xa(j,i)=Xa(j-1,i-1);
+    end
+    Xa(j,shockpos)=shocks(j);
+
+    z(j,1)=Xa(j,:)*beta;
+end
+
+J=sum( (z-irf).^2 );
+
+
+
+

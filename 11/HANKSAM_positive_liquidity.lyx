@@ -1,0 +1,1768 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% general
+\usepackage[titletoc]{appendix}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{tikz}
+
+% algorithm
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\IncMargin{2.5cm}
+\DecMargin{2cm}
+\usepackage{fullwidth}
+\usepackage{enumitem}
+\setlist{leftmargin=1.7cm}
+
+% tables
+\usepackage{tabularx, siunitx, multirow, booktabs}
+\begingroup
+% Allow `_` and `:` in macro names (LaTeX3 style)
+\catcode`\_=11
+\catcode`\:=11
+% Internal code of `S`
+\gdef\tabularxcolumn#1{%
+    >{\__siunitx_table_collect_begin:Nn S{} }%
+    p{#1}%  <- this is different (is `c` in normal `S`)
+    <{\__siunitx_table_print:}%
+}
+\endgroup
+
+% figures
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfloat]{position=top}
+
+% footnotes
+\setlength{\skip\footins}{1cm}
+\usepackage[hang,splitrule]{footmisc}
+\setlength{\footnotemargin}{0.3cm} %.5
+\setlength{\footnotesep}{0.4cm}
+
+% identation
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+\end_preamble
+\use_default_options true
+\begin_modules
+theorems-ams-bytype
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 3cm
+\rightmargin 3cm
+\bottommargin 3cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\series bold
+The Unemployment-Risk Channel in Business-Cycle Fluctuations
+\end_layout
+
+\begin_layout Date
+December 2022
+\end_layout
+
+\begin_layout Author
+Tobias Broer
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Paris School of Economics and CEPR.
+ tobias.broer@psemail.eu.
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+Jeppe Druedahl
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+University of Copenhagen and CEBI.
+ jeppe.druedahl@econ.ku.dk.
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+Karl Harmenberg
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+University of Oslo.
+ karl.harmenberg@bi.no.
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+Erik Öberg
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Uppsala University and UCLS.
+ erik.oberg@nek.uu.se.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+
+\emph on
+This note describes the updated HANK-SAM model with positive liquidity.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{page}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Model
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Model"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Time is discrete and indexed by 
+\begin_inset Formula $t\in\{0,1,\dots\}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Demographics
+\end_layout
+
+\begin_layout Standard
+The economy is inhabited by infinitely-lived workers indexed by 
+\begin_inset Formula $i\in[0,1]$
+\end_inset
+
+, infinitely-lived capitalists, a government and a central bank.
+\end_layout
+
+\begin_layout Enumerate
+The workers supply labor exogenously and receive wages when working and
+ unemployment insurance when unemployed.
+ The workers choose consumption and can save in government bonds.
+ Borrowing is not allowed.
+\end_layout
+
+\begin_layout Enumerate
+The capitalists own all firms and consume the profits period-by-period.
+\end_layout
+
+\begin_layout Enumerate
+The government finances the unemployment insurance with taxes and debt.
+\end_layout
+
+\begin_layout Enumerate
+The central bank sets the nominal interest rate following a Taylor rule.
+\end_layout
+
+\begin_layout Subsection
+Production structure
+\end_layout
+
+\begin_layout Standard
+Production has three layers:
+\end_layout
+
+\begin_layout Enumerate
+Intermediate-good producers hire labor in a frictional labor market with
+ search and matching frictions.
+ Matches produce a homogeneous good sold in a perfectly competitive market.
+\end_layout
+
+\begin_layout Enumerate
+Wholesale firms buy intermediate goods and produce differentiated goods
+ that they sell in a market with monopolistic competition.
+ The wholesale firms set their prices subject to a Rotemberg adjustment
+ cost.
+\end_layout
+
+\begin_layout Enumerate
+Final-good firms buy goods from wholesale firms and bundle them in a final
+ good, which is sold in a perfectly competitive market.
+\end_layout
+
+\begin_layout Subsection
+Timing and labor-market dynamics
+\end_layout
+
+\begin_layout Paragraph
+Step 0: Stocks and productivity.
+\end_layout
+
+\begin_layout Standard
+At the beginning of each period 
+\begin_inset Formula $t$
+\end_inset
+
+, all aggregate shocks are revealed.
+ The endogenous state variables are the (beginning-of-period) stocks of
+ unemployed workers 
+\begin_inset Formula $u_{t-1}$
+\end_inset
+
+ and of vacancies 
+\begin_inset Formula $v_{t-1}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Step 1: Separations and entry.
+\end_layout
+
+\begin_layout Standard
+Firms are exposed to an idiosyncratic continuation cost shock.
+ After observing the shock they decide whether to continue or exit, which
+ implies an endogenous, time-varying separation rate 
+\begin_inset Formula $\delta_{t}$
+\end_inset
+
+ in a manner that we describe below.
+ Vacancies are destroyed with rate 
+\begin_inset Formula $\delta_{ss}$
+\end_inset
+
+, which for simplicity we assume to be constant and exogenous, and have
+ the same value as the steady state separation rate.
+ Firm-specific costs of entering the labor market are realized.
+ Firms that pay the cost post a new vacancy.
+ The endogenous, time-varying vacancy entry rate is denoted 
+\begin_inset Formula $\iota_{t}$
+\end_inset
+
+.
+ The resulting stocks of unemployment and vacancies are given by 
+\begin_inset Formula 
+\begin{align}
+\tilde{u}_{t} & =u_{t-1}+\delta_{t}(1-u_{t-1}),\label{eq:ut}\\
+\tilde{v}_{t} & =(1-\delta_{ss})v_{t-1}+\iota_{t}.\label{eq:vt}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Step 2: Search and match.
+\end_layout
+
+\begin_layout Standard
+Unemployed workers and vacancies randomly match.
+ The matching technology is Cobb-Douglas with matching elasticity 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Denoting market tightness by
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{equation}
+\theta_{t}=\frac{\tilde{v}_{t}}{\tilde{u}_{t}},\label{eq:theta}
+\end{equation}
+
+\end_inset
+
+the 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+job-filling rate 
+\begin_inset Formula $\lambda_{t}^{v}$
+\end_inset
+
+ and job-finding rate 
+\begin_inset Formula $\lambda_{t}^{u}$
+\end_inset
+
+ are
+\begin_inset Formula 
+\begin{align}
+\lambda_{t}^{v} & =A\theta_{t}^{-\alpha},\label{eq:lambda_v}\\
+\lambda_{t}^{u} & =A\theta_{t}^{1-\alpha}.\label{eq:lambda_u}
+\end{align}
+
+\end_inset
+
+ The labor-market stocks after matches are formed are 
+\begin_inset Formula 
+\begin{align}
+u_{t} & =(1-\lambda_{t}^{u})\tilde{u}_{t},\label{eq:u}\\
+v_{t} & =(1-\lambda_{t}^{v})\tilde{v}_{t}.\label{eq:v}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Step 3: Production.
+\end_layout
+
+\begin_layout Standard
+Production takes place.
+ Wages and profits are paid out.
+\end_layout
+
+\begin_layout Paragraph
+Step 4: Consumption and saving.
+\end_layout
+
+\begin_layout Standard
+All capitalists and workers, both employed and unemployed, make their consumptio
+n-and-saving decisions.
+\end_layout
+
+\begin_layout Subsection
+Intermediate-good firms, vacancy creation and job separations
+\end_layout
+
+\begin_layout Standard
+There is a continuum of intermediate-good firms producing a homogeneous
+ good 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ sold in a competitive market.
+ The real price of the intermediate good is 
+\begin_inset Formula $P_{t}^{x}$
+\end_inset
+
+ and one unit of labor produces 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ units of the intermediate good.
+ The total production of intermediate goods is thus given by 
+\begin_inset Formula 
+\begin{align}
+X_{t} & =Z_{t}(1-u_{t}),\label{eq:X}
+\end{align}
+
+\end_inset
+
+where the log of total factor productivity 
+\begin_inset Formula $Z_{t}$
+\end_inset
+
+ is subject to AR(1)-innovations 
+\begin_inset Formula $\nu_{t}^{Z}$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align}
+Z_{t} & =Z_{ss}\nu_{t}^{Z},\label{eq:A}\\
+\log\nu_{t}^{Z} & =\rho_{A}\log\nu_{t-1}^{Z}+\epsilon_{t}^{Z},\label{eq:shock_A}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma_{Z}$
+\end_inset
+
+ is the standard deviation of 
+\begin_inset Formula $\epsilon_{t}^{Z}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To hire labor the firms must post vacancies which are filled with probability
+ 
+\begin_inset Formula $\lambda_{t}^{v}$
+\end_inset
+
+, taken as given by each one-worker firm.
+ We denote by 
+\begin_inset Formula $V_{t}^{v}$
+\end_inset
+
+ the value of a vacancy and by 
+\begin_inset Formula $V_{t}^{j}$
+\end_inset
+
+ the value of a match for the firm.
+\end_layout
+
+\begin_layout Paragraph
+Separations.
+\end_layout
+
+\begin_layout Standard
+At the beginning of the period, a firm must pay a continuation cost 
+\begin_inset Formula $\chi_{t}\sim G$
+\end_inset
+
+ or else the job match is destroyed.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Following 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "mortensen_job_1994"
+literal "false"
+
+\end_inset
+
+, separation decisions are typically modeled as a result of idiosyncratic
+ productivity shocks, such that low-productivity firms optimally decide
+ to exit.
+ Our simplified assumptions have similar material consequences, but avoid
+ ex-post heterogeneity in firm outcomes.
+\end_layout
+
+\end_inset
+
+ There is no additional heterogeneity and consequently there exists a common
+ cost cutoff 
+\begin_inset Formula $\chi_{c,t}=V_{t}^{j}$
+\end_inset
+
+, such that for all 
+\begin_inset Formula $\chi_{t}>\chi_{c,t}$
+\end_inset
+
+, the firm chooses to separate.
+ Accordingly, the Bellman equation for the value of a job after the separation
+ decision is
+\begin_inset Formula 
+\begin{align}
+V_{t}^{j} & =p_{t}^{x}Z_{t}-(w_{t}-\text{wage subsidy}_{t})+\beta\mathbb{E}_{t}\left[\int^{\chi_{c,t+1}}(V_{t+1}^{j}-\chi_{t+1})dG(\chi_{t+1})\right]\label{eq:Vj}\\
+ & =p_{t}^{x}Z_{t}-(w_{t}-\text{wage subsidy}_{t})+\beta\mathbb{E}_{t}\left[(1-\delta_{t+1})V_{t+1}^{j}-\mu_{t+1}\right],\nonumber 
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ is the real wage, 
+\begin_inset Formula $\delta_{t+1}$
+\end_inset
+
+ is the endogenous separation probability given by 
+\begin_inset Formula $\delta_{t+1}=\int_{V_{t}^{j}}^{\infty}G(\chi_{t})d(\chi_{t})$
+\end_inset
+
+, and 
+\begin_inset Formula $\mu_{t+1}$
+\end_inset
+
+ is the average continuation cost paid.
+\end_layout
+
+\begin_layout Standard
+The continuation-cost distribution 
+\begin_inset Formula $G$
+\end_inset
+
+ is a mixture of a point mass and a Pareto distribution with shape parameter
+ 
+\begin_inset Formula $\psi$
+\end_inset
+
+, location parameter 
+\begin_inset Formula $\Upsilon$
+\end_inset
+
+ and mixture parameter 
+\begin_inset Formula $p$
+\end_inset
+
+.
+ We choose 
+\begin_inset Formula $p$
+\end_inset
+
+ and 
+\begin_inset Formula $\Upsilon$
+\end_inset
+
+ so that in steady state, job separations are 
+\begin_inset Formula $\delta_{ss}$
+\end_inset
+
+ and the continuation costs are small.
+ See Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Separation-decision"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ for details.
+ Out of steady state, the endogenous separation probability 
+\begin_inset Formula $\delta_{t}$
+\end_inset
+
+ are then given by
+\begin_inset Formula 
+\begin{eqnarray}
+\delta_{t} & = & \delta_{ss}\left(\frac{V_{t}^{j}}{V_{ss}^{j}}\right)^{-\psi},\label{eq:delta}
+\end{eqnarray}
+
+\end_inset
+
+and the average continuation cost, 
+\series bold
+
+\begin_inset Formula $\mu_{t}$
+\end_inset
+
+
+\series default
+, is a
+\series bold
+ 
+\series default
+non-negative increasing function of the job value
+\begin_inset Formula 
+\begin{equation}
+\mu_{t}=\mu(V_{t}^{j}),\,\,\,\mu(\bullet)\geq0,\mu^{\prime}(\bullet)\geq0.\label{eq:mu}
+\end{equation}
+
+\end_inset
+
+The idiosyncratic continuation cost implies that the elasticity of job separatio
+ns to the value of a job is 
+\begin_inset Formula $\psi$
+\end_inset
+
+.
+ In the special case where 
+\begin_inset Formula $\psi=0$
+\end_inset
+
+ separations occur exogenously at rate 
+\begin_inset Formula $\delta_{ss}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Vacancy creation.
+\end_layout
+
+\begin_layout Standard
+The Bellman equation for the value of a vacancy is given by 
+\begin_inset Formula 
+\begin{equation}
+V_{t}^{v}=-\kappa+\lambda_{t}^{v}(V_{t}^{j}+\text{hiring subsidy}_{t})+(1-\lambda_{t}^{v})(1-\delta_{ss})\beta\mathbb{E}_{t}[V_{t+1}^{v}],\label{eq:Vv}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is the flow cost of the vacancy, to be paid every period, and .
+ Vacancies are not subject to the stochastic continuation cost, and are
+ instead destroyed with exogenous probability 
+\begin_inset Formula $\delta_{ss}$
+\end_inset
+
+.
+ In contrast to the standard assumption of free entry to vacancy creation,
+ we assume that there is a constant mass 
+\begin_inset Formula $F$
+\end_inset
+
+ of prospective firms drawing a stochastic idiosyncratic entry cost 
+\begin_inset Formula $c$
+\end_inset
+
+ following a distribution 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ The prospective firm posts a vacancy if and only if the value of a vacancy
+ is larger than the entry cost.
+ The total number of vacancies created is therefore 
+\begin_inset Formula $\iota_{t}=F\cdot H(V_{t}^{v})$
+\end_inset
+
+.
+ Following 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "coles_job_2018"
+literal "false"
+
+\end_inset
+
+, the entry-cost distribution has a cumulative distribution function 
+\begin_inset Formula $H(c)=F\cdot(c/h)^{\xi}$
+\end_inset
+
+ on 
+\begin_inset Formula $c\in[0,h]$
+\end_inset
+
+.
+ With the parameter 
+\begin_inset Formula $h$
+\end_inset
+
+ sufficiently large so that 
+\begin_inset Formula $h>V_{t}^{v}$
+\end_inset
+
+, the resulting number of vacancies created is 
+\begin_inset Formula $\iota_{t}=F\cdot(V_{t}^{v})^{\xi}$
+\end_inset
+
+.
+ Expressing vacancy creation in relation to steady state gives us 
+\begin_inset Formula 
+\begin{equation}
+\iota_{t}=\iota_{ss}\left(\frac{V_{t}^{v}}{V_{ss}^{v}}\right)^{\xi}.\label{eq:iota}
+\end{equation}
+
+\end_inset
+
+The stochastic-cost entry assumption implies that the elasticity of vacancy
+ creation to the value of a vacancy is 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+ In the limit where 
+\begin_inset Formula $\xi\rightarrow\infty$
+\end_inset
+
+, we must have 
+\begin_inset Formula $V_{t}^{v}=V_{ss}^{v}$
+\end_inset
+
+ so that all entrants pay the same deterministic entry cost.
+ We set 
+\begin_inset Formula $V_{ss}^{v}=\kappa_{0}$
+\end_inset
+
+ and treat 
+\begin_inset Formula $\kappa_{0}$
+\end_inset
+
+ as a free parameter.
+ The free entry model is the double limit 
+\begin_inset Formula $\xi\rightarrow\infty$
+\end_inset
+
+ and 
+\begin_inset Formula $\kappa_{0}\rightarrow0$
+\end_inset
+
+, which implies 
+\begin_inset Formula $V_{t}^{v}=0$
+\end_inset
+
+.
+ To facilitate comparisons with the free entry model we fix 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ at a small positive value across all calibrations, 
+\begin_inset Formula $\kappa_{0}=0.1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Wage setting.
+\end_layout
+
+\begin_layout Standard
+We assume the real wage is determined by a fixed rule,
+\begin_inset Formula 
+\begin{equation}
+w_{t}=\left(\frac{u_{t}}{u_{ss}}\right)^{-\eta_{u}}.\label{eq:wage_rule}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the baseline model, we follow 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "hall_employment_2005"
+literal "false"
+
+\end_inset
+
+ and set 
+\begin_inset Formula $\eta_{u}=w$
+\end_inset
+
+ so the real wage is constant.
+ A recent body of research has documented that downward nominal wage rigidity
+ is pervasive in the US labor market 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "dupraz_plucking_2021,grigsby_aggregate_2021,hazell_downward_2022"
+literal "false"
+
+\end_inset
+
+.
+ A fixed real wage is therefore likely a weak assumption in the context
+ of studying contractionary shocks, as it implies more wage flexibility
+ than a fully rigid nominal wage with pro-cyclical inflation.
+\end_layout
+
+\begin_layout Subsection
+The final-good sector and the wholesale sector
+\end_layout
+
+\begin_layout Standard
+The representative final-good firm has the production function 
+\begin_inset Formula $Y_{t}=\left(\int Y_{kt}^{\frac{\epsilon_{p}-1}{\epsilon_{p}}}dk\right)^{\frac{\epsilon_{p}}{\epsilon_{p}-1}}$
+\end_inset
+
+ where 
+\begin_inset Formula $Y_{kt}$
+\end_inset
+
+ is the quantity of the input of wholesale firm 
+\begin_inset Formula $k$
+\end_inset
+
+'s output used in production.
+ The implied demand curve is 
+\begin_inset Formula $Y_{kt}=\left(\frac{P_{kt}}{P_{t}}\right)^{-\epsilon_{p}}Y_{t}$
+\end_inset
+
+ where 
+\begin_inset Formula $P_{t}=\left(\int P_{kt}^{1-\epsilon_{p}}dk\right)^{\frac{1}{1-\epsilon_{p}}}$
+\end_inset
+
+ is the aggregate price level.
+ There is a continuum of wholesale firms indexed by 
+\begin_inset Formula $k\in[0,1]$
+\end_inset
+
+ producing differentiated goods using the production function 
+\begin_inset Formula $Y_{kt}=X_{kt}$
+\end_inset
+
+ where 
+\begin_inset Formula $X_{kt}$
+\end_inset
+
+ is the amount of the intermediate good purchased by firm 
+\begin_inset Formula $k$
+\end_inset
+
+ at the intermediate-good price 
+\begin_inset Formula $P_{t}^{X}$
+\end_inset
+
+.
+ The wholesale firms face Rotemberg price adjustment costs, with scale factor
+ 
+\begin_inset Formula $\phi$
+\end_inset
+
+.
+ Since production is linear, the marginal cost of production is the input
+ price 
+\begin_inset Formula $P_{t}^{X}$
+\end_inset
+
+.
+ In a symmetric equilibrium, optimal price setting implies a standard Rotemberg
+ Phillips curve 
+\begin_inset Formula 
+\begin{equation}
+1-\epsilon_{p}+\epsilon_{p}\cdot p_{t}^{x}=\phi(\Pi_{t}-1)\Pi_{t}-\beta\phi\mathbb{E}_{t}\left[(\Pi_{t+1}-\Pi_{ss})\Pi_{t+1}\frac{Y_{t+1}}{Y_{t}}\right],\label{NKPC}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Pi_{t}=\frac{P_{t}}{P_{t-1}}$
+\end_inset
+
+ is the gross inflation rate, and total output is given by 
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=X_{t}=Z_{t}(1-u_{t}).\label{eq:Y}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Workers
+\end_layout
+
+\begin_layout Standard
+The workers are 
+\emph on
+ex ante
+\emph default
+ heterogeneous in terms of discount factors, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, and 
+\emph on
+ex post
+\emph default
+ heterogeneous in terms of months in unemployment, 
+\begin_inset Formula $u_{it}$
+\end_inset
+
+, and lagged savings, 
+\begin_inset Formula $a_{it-1}.$
+\end_inset
+
+ The employed have zero months in unemployment.
+ Income, 
+\begin_inset Formula $y_{t}$
+\end_inset
+
+, is determined by
+\begin_inset Formula 
+\begin{align}
+y_{t}= & \begin{cases}
+w_{t} & \text{if }u_{it}=0\\
+\text{UI}_{it}\overline{\phi}_{t}w_{t}+(1-\text{UI}_{it})\underline{\phi}w_{t} & \text{else}
+\end{cases}\label{eq:y}\\
+\text{UI}_{it}= & \begin{cases}
+1 & \text{if \ensuremath{u_{it}\leq\overline{u}_{t}} }\\
+u_{it}-\overline{u}_{t} & \text{if u_{it}\ensuremath{\in(}}\overline{u}_{t},\overline{u}_{t}+1)\\
+0 & \text{if }u_{it}\geq\overline{u}_{t}+1,
+\end{cases}\label{eq:UI}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\text{UI}_{it}=1$
+\end_inset
+
+ denotes high unemployment insurance of 
+\begin_inset Formula $\overline{\phi}_{t}$
+\end_inset
+
+, and 
+\begin_inset Formula $\text{UI}_{it}=0$
+\end_inset
+
+ denotes low unemployment insurance of 
+\begin_inset Formula $\underline{\phi}$
+\end_inset
+
+.
+ The maximum duration of unemployment is denoted 
+\begin_inset Formula $\overline{u}_{t}$
+\end_inset
+
+ and can take decimal values.
+\end_layout
+
+\begin_layout Standard
+The transition for 
+\begin_inset Formula $u_{it}$
+\end_inset
+
+ is exogenous, but time-varying, and given by
+\begin_inset Formula 
+\begin{align}
+\text{Pr}[u_{it+1}|u_{it}=0] & =\begin{cases}
+1-\delta_{t}(1-\lambda_{t}^{u}) & \text{if }u_{it+1}=0\\
+\delta_{t}(1-\lambda_{t}^{u})\pi^{\text{UI}} & \text{if }u_{it+1}=1\\
+\delta_{t}(1-\lambda_{t}^{u})(1-\pi^{\text{UI}}) & \text{if }u_{it+1}=\#_{u}\\
+0 & \text{else}
+\end{cases}\label{eq:separation}\\
+\text{Pr}[u_{it+1}|u_{it}>0] & =\begin{cases}
+\lambda_{t}^{u} & \text{if }u_{it+1}=0\\
+1-\lambda_{t}^{u} & \text{if }u_{it+1}=\min\{u_{it}+1,\#_{u}\}\\
+0 & \text{else},
+\end{cases}\label{eq:job-finding}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\#_{u}$
+\end_inset
+
+ is a technical maximum counted duration state.
+ With probability 
+\begin_inset Formula $\pi^{\text{UI}}$
+\end_inset
+
+ the worker transition directly to the maximum duration state, and thus
+ only receives low unemployment insurance.
+\end_layout
+
+\begin_layout Standard
+The recursive problem of the workers is,
+\begin_inset Formula 
+\begin{align*}
+V_{t}^{w}(\beta_{i},u_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta_{i}\mathbb{E}_{t}\left[V_{t+1}^{w}\left(\beta_{i},u_{it+1},a_{it}\right)\right]\\
+\text{s.t.}\,\,\,\,\,\,\,\,\,\,a_{it}+c_{it}= & R_{t}^{\text{real}}a_{it-1}+\text{transfer}_{t}+(1-\tau_{t})y_{t}\\
+a_{it} & \geq0,
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $R_{t}^{\text{real}}$
+\end_inset
+
+ is the real interest rate from 
+\begin_inset Formula $t-1$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+, and 
+\begin_inset Formula $\tau_{t}$
+\end_inset
+
+ is the tax rate.
+ The distribution of workers over 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $u_{it}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+ is denote 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+.
+ For later reference, aggregate household pre-tax income is
+\begin_inset Formula 
+\begin{equation}
+Y_{t}^{hh}=w_{t}(1-u_{t})+\overline{\phi}_{t}w_{t}\text{UI}_{t}^{hh}+\underline{\phi}w_{t}\left(u_{t}-\text{UI}_{t}^{hh}\right),\label{eq:Y_hh}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+where 
+\begin_inset Formula $\text{UI}_{t}^{hh}=\int\mathds{1}\{u_{it}>0\}\text{UI}_{it}d\boldsymbol{D}_{t}$
+\end_inset
+
+ is the aggregate share of workers receiving high unemployment insurance.
+\end_layout
+
+\begin_layout Subsection
+Government
+\end_layout
+
+\begin_layout Standard
+The government follows the fiscal tax rule
+\series bold
+
+\begin_inset Formula 
+\begin{equation}
+\tau_{t}=\tau_{ss}+\omega q_{ss}\frac{B_{t-1}-B_{ss}}{Y_{ss}^{hh}},\label{eq:tau}
+\end{equation}
+
+\end_inset
+
+
+\series default
+where 
+\begin_inset Formula $\omega$
+\end_inset
+
+ determines response of taxes to fluctuations in debt level, 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Government debt is long term with persistence 
+\begin_inset Formula $\delta_{q}\in[0,1]$
+\end_inset
+
+, and priced at 
+\begin_inset Formula $q_{t}$
+\end_inset
+
+.
+ This implies the following government budget equation
+\size small
+
+\begin_inset Formula 
+\begin{align}
+q_{t}(B_{t}-\delta_{q}B_{t-1})= & B_{t-1}\label{eq:government_budget}\\
+ & +(1-\tau_{t})\left(\overline{\phi}_{t}\text{UI}_{t}^{hh}+\underline{\phi}\left(u_{t}-\text{UI}_{t}^{hh}\right)\right)w_{t}\nonumber \\
+ & -\tau_{t}(1-u_{t})w_{t}\nonumber \\
+ & +\text{wage subsidy}_{t}\cdot(1-u_{t})\nonumber \\
+ & +\text{hiring subsidy}_{t}\cdot\lambda_{t}^{v}((1-\delta_{ss})v_{t-1}+\iota_{t})\nonumber \\
+ & +\text{public spending}_{t}\nonumber \\
+ & +\text{public transfer}_{t}.\nonumber 
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Central bank
+\end_layout
+
+\begin_layout Standard
+The central sets monetary policy according to the following Taylor rule,
+\begin_inset Formula 
+\begin{equation}
+R_{t}=R_{ss}\Pi_{t}^{\phi_{\pi}},\label{eq:taylor}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $R_{t}$
+\end_inset
+
+ is the nominal interest rate from period 
+\begin_inset Formula $t$
+\end_inset
+
+ to period 
+\begin_inset Formula $t+1$
+\end_inset
+
+.
+ The Fisher equation states,
+\begin_inset Formula 
+\begin{equation}
+R_{t}^{\text{real}}=R_{t-1}/\Pi_{t},\label{eq:Fisher}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $R_{t}^{\text{real}}$
+\end_inset
+
+ is the real return from period 
+\begin_inset Formula $t-1$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Equilibrium
+\end_layout
+
+\begin_layout Standard
+Arbitrage implies that the price of government bonds must imply
+\begin_inset Formula 
+\begin{equation}
+\frac{1+\delta_{q}q_{t+1}}{q_{t}}=R_{t+1}^{\text{real}}\label{eq:q}
+\end{equation}
+
+\end_inset
+
+The bond market must clear
+\begin_inset Formula 
+\begin{equation}
+q_{t}B_{t}=\int a_{t}^{\star}(\beta_{i},u_{it},a_{it-1})d\boldsymbol{D}_{t}\label{eq:bond_market}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Calibration
+\end_layout
+
+\begin_layout Standard
+The calibration method and the steady state is described in Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Steady-state"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "HANKSAM"
+options "apalike"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand
+\backslash
+thefigure{
+\backslash
+thesection.
+\backslash
+arabic{figure}} 
+\backslash
+setcounter{figure}{0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Separation decision
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Separation-decision"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Vj"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, we assume that 
+\begin_inset Formula $G$
+\end_inset
+
+ is a mixture of a point mass at 
+\begin_inset Formula $0$
+\end_inset
+
+ and a Pareto distribution with location parameter 
+\begin_inset Formula $\Upsilon>0$
+\end_inset
+
+ and shape parameter 
+\begin_inset Formula $\psi$
+\end_inset
+
+, 
+\begin_inset Formula 
+\begin{align}
+G(\chi_{t}) & =\begin{cases}
+0 & \chi_{t}<0,\\
+1-p & 0\le\chi_{t}<\Upsilon,\\
+(1-p)+p(1-(\chi_{t}/\Upsilon)^{-\psi}) & \chi_{t}\ge\Upsilon,
+\end{cases}\label{eq:G}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This implies
+\begin_inset Formula 
+\begin{align}
+\delta_{t} & =\int_{V_{t}^{j}}^{\infty}G(\chi_{t})d(\chi_{t})\label{eq:delta_app}\\
+ & =\begin{cases}
+p & \text{if }V_{t}^{j}\leq\Upsilon\\
+p\left(\frac{V_{t}^{j}}{\Upsilon}\right)^{-\psi} & \text{else,}
+\end{cases}\nonumber 
+\end{align}
+
+\end_inset
+
+and
+\begin_inset Formula 
+\begin{align}
+\mu_{t} & =\int_{0}^{V_{t}^{j}}\chi_{t}dG(\chi_{t})\\
+ & =\frac{\mathbb{E}[\chi_{t}]-\text{Prob.}[\chi_{t}>V_{t}^{j}]\mathbb{E}[\chi_{t}|\chi_{t}>V_{t}^{j}]}{1-\text{Prob.}[\chi_{t}>V_{t}^{j}]}\nonumber \\
+ & =\begin{cases}
+0 & \text{if }V_{t}^{j}\leq\Upsilon\\
+\frac{p\frac{\psi\Upsilon}{\psi-1}-p\left(\frac{V_{t}^{j}}{\Upsilon}\right)^{-\psi}\frac{\psi V_{t}^{j}}{\psi-1}}{(1-p)+p(1-(\chi_{t}/\Upsilon)^{-\psi})} & \text{else}
+\end{cases}\nonumber \\
+ & =\begin{cases}
+0 & \text{if }V_{t}^{j}\leq\Upsilon\\
+\frac{p\frac{\psi}{\psi-1}\Upsilon\left[1-\left(\frac{V_{t}^{j}}{\Upsilon}\right)^{1-\psi}\right]}{1-p\left(\frac{V_{t}^{j}}{\Upsilon}\right)^{-\psi}} & \text{else}
+\end{cases}\nonumber \\
+ & =\mu(V_{t}^{j}).\nonumber 
+\end{align}
+
+\end_inset
+
+We always choose 
+\begin_inset Formula $\Upsilon=\left(\frac{\delta_{ss}}{p}\right)^{\frac{1}{\psi}}V_{ss}^{j}$
+\end_inset
+
+, which then implies Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:delta"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ in the main text.
+ Furthermore, with 
+\begin_inset Formula $p=\delta_{ss}$
+\end_inset
+
+ we have 
+\begin_inset Formula $\Upsilon=V_{ss}^{j}$
+\end_inset
+
+ which implies 
+\begin_inset Formula $\delta_{t}=\delta_{ss}$
+\end_inset
+
+ when 
+\begin_inset Formula $V_{t}^{j}\leq V_{ss}^{j}$
+\end_inset
+
+.
+ Instead we set 
+\begin_inset Formula $p=(1+\Delta_{\delta})\delta_{ss}$
+\end_inset
+
+ where 
+\begin_inset Formula $\Delta_{\delta}>0$
+\end_inset
+
+ is a small positive number.
+ This implies that 
+\begin_inset Formula $\delta_{t}$
+\end_inset
+
+ can rise above 
+\begin_inset Formula $\delta_{ss}$
+\end_inset
+
+ when 
+\begin_inset Formula $V_{t}^{j}$
+\end_inset
+
+ falls below 
+\begin_inset Formula $V_{ss}^{j}$
+\end_inset
+
+.
+ It also implies that 
+\begin_inset Formula $\mu_{ss}$
+\end_inset
+
+ is a small positive number.
+\end_layout
+
+\begin_layout Section
+Steady state
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Steady-state"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The following parameters and steady state variables are chosen:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+SAM-parameters: 
+\series default
+
+\begin_inset Formula $\beta^{\text{firm }}$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
+\begin_inset Formula $\rho_{Z}$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{Z}$
+\end_inset
+
+, 
+\begin_inset Formula $\psi$
+\end_inset
+
+, 
+\begin_inset Formula $\xi$
+\end_inset
+
+, 
+\begin_inset Formula $\eta_{u}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+HANK-parameters: 
+\series default
+
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $\text{Pr}[\beta_{i}]$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon_{p}$
+\end_inset
+
+, 
+\begin_inset Formula $\phi$
+\end_inset
+
+, 
+\begin_inset Formula $\delta_{\pi}$
+\end_inset
+
+, 
+\begin_inset Formula $\omega$
+\end_inset
+
+, 
+\begin_inset Formula $\delta_{q}$
+\end_inset
+
+, 
+\begin_inset Formula $\pi^{\text{UI}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Government:
+\series default
+ 
+\begin_inset Formula $\overline{\phi}_{ss}$
+\end_inset
+
+, 
+\begin_inset Formula $\underline{\phi}$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{u}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Steady state targets from data:
+\series default
+ 
+\begin_inset Formula $\delta_{ss}$
+\end_inset
+
+, 
+\begin_inset Formula $\lambda_{ss}^{u}$
+\end_inset
+
+, 
+\begin_inset Formula $\theta_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Steady state choices:
+\series default
+ 
+\begin_inset Formula $w_{ss}$
+\end_inset
+
+, 
+\begin_inset Formula $qB_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Auxiliary parameters:
+\series default
+ 
+\begin_inset Formula $\kappa_{0}=0.1$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta_{\delta}=0.2$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Technology shock, polices and inflation are
+\begin_inset Formula 
+\begin{align}
+Z_{ss} & =1\label{eq:Zss}\\
+\text{wage subsidy}_{t}=\text{hiring subsidy}_{t}=\text{public}\text{tranfser}_{t}=\text{public spending}_{t} & =0\label{eq:policies_ss}\\
+\Pi_{ss} & =1,\label{eq:inflation_ss}
+\end{align}
+
+\end_inset
+
+From the matching function, we directly have
+\begin_inset Formula 
+\begin{equation}
+A=\frac{\lambda_{ss}^{u}}{\theta_{ss}^{\alpha}}.\label{eq:A_ss}
+\end{equation}
+
+\end_inset
+
+This implies that the steady states of labor markets stocks and flows can
+ be found by
+\begin_inset Formula 
+\begin{align}
+\lambda_{ss}^{v} & =A\theta_{ss}^{-\alpha},\label{eq:lambda_v_ss}\\
+u_{ss} & =\frac{\delta_{ss}(1-\lambda_{ss}^{u})}{\lambda_{ss}^{u}+\delta_{ss}(1-\lambda_{ss}^{u})},\label{eq:u_ss}\\
+\tilde{u}_{ss} & =\frac{u_{ss}}{1-\lambda_{ss}^{u}},\label{eq:ut_ss}\\
+\tilde{v}_{ss} & =\tilde{u}_{ss}\theta_{ss},\label{eq:vt_ss}\\
+v_{ss} & =(1-\lambda_{ss}^{v})\tilde{v}_{ss},\label{eq:v_ss}\\
+\iota_{ss} & =\tilde{v}_{ss}-(1-\delta_{ss})v_{ss}.\label{eq:entry_ss}
+\end{align}
+
+\end_inset
+
+From the Philips curve we have
+\begin_inset Formula 
+\begin{equation}
+p_{ss}^{x}=\frac{\epsilon_{p}-1}{\epsilon_{p}},\label{eq:px_ss}
+\end{equation}
+
+\end_inset
+
+and can then infer 
+\begin_inset Formula $p$
+\end_inset
+
+, 
+\begin_inset Formula $\Upsilon$
+\end_inset
+
+, 
+\begin_inset Formula $V_{ss}^{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu_{ss}$
+\end_inset
+
+ by
+\begin_inset Formula 
+\begin{align}
+p & =(1+\Delta_{\delta})\delta_{ss}\label{eq:p}\\
+\tilde{\Upsilon} & \equiv\left(\frac{\delta_{ss}}{p}\right)^{\frac{1}{\psi}}\label{eq:Vj_Upsilon}\\
+\tilde{\mu} & \equiv\frac{p\tilde{\Upsilon}^{-1}}{\frac{\psi}{\psi-1}\left(1-\tilde{\Upsilon}\right)^{1-\psi}}\label{eq:mu_Vj}\\
+V_{ss}^{j} & =\frac{P_{ss}^{X}Z_{ss}-(w_{ss}-\text{wage subsidy}_{ss})}{1+\beta^{\text{firm}}\overline{\mu}-\beta^{\text{firm}}(1-\delta_{ss})}\label{eq:Vj_ss}\\
+\Upsilon & =\frac{V_{ss}^{j}}{\tilde{\Upsilon}}\label{eq:Upsilon}\\
+\mu_{ss} & =\overline{\mu}V_{ss}^{j}.\label{eq:mu_ss}
+\end{align}
+
+\end_inset
+
+We can also infer 
+\begin_inset Formula $V_{ss}^{v}$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ and 
+\begin_inset Formula $F$
+\end_inset
+
+ by
+\begin_inset Formula 
+\begin{align}
+V_{ss}^{v} & =\kappa_{0}\label{eq:Vv_ss}\\
+\kappa & =\lambda_{ss}^{v}(V_{ss}^{j}+\text{hiring subsidy}_{ss})-(1-\beta(1-\lambda_{ss}^{u})(1-\delta_{ss}))V_{ss}^{v}\label{eq:kappa}\\
+F & =\iota_{ss}(V_{ss}^{v})^{-\xi}.\label{eq:F}
+\end{align}
+
+\end_inset
+
+Finally, guess on 
+\begin_inset Formula $R_{ss}^{\text{real}}$
+\end_inset
+
+ and calculate
+\begin_inset Formula 
+\begin{align}
+R_{ss} & =R_{ss}^{\text{real}}\label{eq:R_ss}\\
+q_{ss} & =\frac{1}{R_{ss}^{\text{real}}-\delta_{q}}\label{eq:q_ss}\\
+B_{ss} & =\frac{qB_{ss}}{q_{ss}}\label{B_ss}\\
+\tau_{ss} & =\frac{(1+\delta_{q}q_{ss})B_{ss}+w_{ss}(1-u_{ss})+\overline{\phi}w_{ss}\text{UI}_{ss}+\underline{\phi}w_{ss}(u_{ss}-\text{UI}_{ss})-q_{ss}B_{ss}}{w_{ss}(1-u_{ss})+\overline{\phi}w_{ss}\text{UI}_{ss}+\underline{\phi}w_{ss}(u_{ss}-\text{UI}_{ss})}.\label{eq:tau_ss}
+\end{align}
+
+\end_inset
+
+Update guess of 
+\begin_inset Formula $R_{ss}^{\text{real}}$
+\end_inset
+
+ until the bond market clears by
+\begin_inset Formula 
+\begin{equation}
+q_{ss}B_{ss}=\int a_{ss}^{\star}(\beta_{i},u_{it},a_{it-1})d\boldsymbol{D}_{ss}\label{eq:bond_clearing_ss}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

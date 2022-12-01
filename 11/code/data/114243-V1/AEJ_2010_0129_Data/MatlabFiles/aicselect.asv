@@ -1,0 +1,41 @@
+% function file that simulates specified equation and calculates average
+% lag length selected by AIC, includes
+% constant term.
+
+function lagaic = aicselect(Y,X,N,K)
+
+[T,Z] = size(X);    % T is length of data
+J=(Z-1-K)           % number of lags in shocks
+
+beta=inv(X'*X)*(X'*Y);
+sigres=std(Y-X*beta);   % std of residuals
+sigmp=std(X(:,1+K+1));  % std of mp shocks
+beta=beta(2:length(beta)); % drop constant
+
+% simulate data
+for it=1:N
+    mpshocks=sigmp*randn(100+T,1); mpshocks=[zeros(max(J,K),1);mpshocks]; mpshocks=makelags(mpshocks,max(J,);
+    res=sigres*randn(100+T,1);
+    dip=zeros(K+1,1);
+    dip=makelags(dip,K);
+    for j=1:100+T
+        dip(j,1)=dip(j,2:K+1)*beta(1:K)+mpshocks(j,2:K+1)*beta(K+1:2*K)+res(j);
+        dip(j+1,2:K+1)=dip(j,1:K);
+    end
+        
+    % format data for estimation
+    dip1=dip(100+1-45:100+T,1);       dip1=makelags(dip1,45);
+    mp1=mpshocks(100+1-45:100+T,1);   mp1=makelags(mp1,45);
+    
+    % do AIC selection given generated data
+    a1max=0; lagAIC=[1]; ind=1;
+    for j=1:36
+        a1=aic(dip1(:,1),[ones(length(dip1),1) dip1(:,2:1+j) mp1(:,2:1+j)]);
+        if a1>a1max   a1max=a1; lagAIC=[K]; end
+    end
+    AIC(it)=lagAIC;
+end
+
+lagaic=mean(AIC);
+
+return

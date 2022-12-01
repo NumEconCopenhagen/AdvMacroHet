@@ -1,0 +1,37 @@
+% se.m
+
+% This file calculates the standard deviation of impulse responses of
+% exogenous shocks in X to Y.
+
+% Based on impulse.m, which takes Y, regresses on X.  Then, assuming X is ordered with
+% constant, then lags of X, then lags of exogenous shock (shockpos
+% indicates when shock lags enter X), constructs impulse response to a
+% one-unit innovation in exogenous shock.  Levelindex=0 means calculate
+% irf's in sums, if 1 set in levels.
+
+% NOTE THIS SPECIFICATION ASSUMES CONTEMPORANEOUS SHOCK HAS NO EFFECT ON Y
+
+function z = seA(Y,X,periods,shockpos,its,levelindex);
+
+[T,K]=size(X);
+%beta=inv(X'*X)*(X'*Y);
+%res=Y-X*beta;
+%imp1=impulse1(beta,periods,shockpos,levelindex);      % generates impulse response given new coefficients
+
+ivopt.linear=1;
+ivopt.lags=12;
+
+out = iv(zeros(length(X),1),ivopt,Y,X,X);       % this generates estimates of coefficients and var-cov matrix of parameter estimates.
+V=out.betacov;                                  % this is variance covariance matrix of parameter estimates.
+imp=[];
+
+for it=1:its
+    beta1=out.beta+(V^.5)*randn(K,1);   % generate new coefficients drawn from empirical distribution of estimated coefficients
+    imp1=impulse1A(beta1,periods,shockpos,levelindex);      % generates impulse response given new coefficients
+    imp=[imp ; imp1];
+end
+
+z=std(imp);
+
+return
+

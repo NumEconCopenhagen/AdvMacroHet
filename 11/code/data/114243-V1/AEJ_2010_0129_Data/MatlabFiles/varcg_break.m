@@ -1,0 +1,229 @@
+% varcg.m
+% May 2009
+
+function out  =  varcg_break(data,VARlags,options,data1)
+ 
+%===================================================================
+% NOTE: this version does estimation using coefficients of data, but
+% generates fitted values to data1
+%===================================================================
+
+ % This file takes data and runs VAR with VARlags # of lags.  It spits out:
+ % 1- coefficients:                 out.beta
+ % 2- residuals:                    out.eps
+ % 3- var-cov matrix of residuals:  out.omega
+ % 4- structural shocks:            out.u  [Choleski is default, options.LR=1 uses LR restrictions]
+ % 5- IRF's to each structural sh.  out.irf [1 unit is default,  options.stdshock=1 uses 1 std deviation shock, default horizon is 20, else options.irfhor=X]
+ % 6- VAR decomposition             out.vdec [default horizon is 20, else options.vdechor=X]
+ % 7- counterfactuals               out.counter [default starting date is 1, else options.counterst=X, default horizon is to end of sample, else options.counterhor=X]
+ % 8- stdev of irf's                out.sdirf (only if options.irfstd=1, select number of draws via options.Nirfstd=X, else 100)
+ 
+ % other options:
+ % options.const: default adds a constant (=0 no constant, 1 constant, 2 linear time trend, 3 quadratic time trend]
+ 
+ %%% data must be in form [x1(t) x1(t-1) ... x1(t-VARlags) x2(t)... xK(t-VARlags)]
+ K=cols(data)/(VARlags+1);              % solve for number of variables
+ 
+ for j=1:K
+     Y(:,j)=data(:,(j-1)*(VARlags+1)+1);
+     X(:,(j-1)*VARlags+1:(j-1)*VARlags+VARlags) = data(:,(j-1)*(VARlags+1)+2:(j-1)*(VARlags+1)+1+VARlags);
+ end
+ 
+ if ~isfield(options,'const')
+     options.const=1;               % include a constant term as default
+ end
+% add constant, time trend, quadratic time trend if required.
+ if options.const==1    X=[X ones(length(X),1)]; elseif options.const==2 X=[X ones(length(X),1) (1:length(X))']; elseif options.const==3 X=[X ones(length(X),1) (1:length(X))' ((1:length(X)).^2)']; end
+ 
+ %%% BASELINE ESTIMATES OF VAR
+ for j=1:K
+    eps(:,j)=Y(:,j)-X*( inv(X'*X)*(X'*Y(:,j)) );                        % residuals
+    Beta(:,j)=inv(X'*X)*(X'*Y(:,j));                                    % coefficients
+end
+Omega=cov(eps);                           % VAR-COV matrix of residuals
+Xfull=X;
+
+%%% RECOVER STRUCURAL SHOCKS.
+if ~isfield(options,'LR') options.LR=0;   end
+if options.LR==0                            % get structural shocks via Choleski decomposition as baseline.
+    [A, D] = triang(Omega);
+    u=(inv(A)*eps')';                       % matrix of orthogonalized structural shocks
+else                                        % get structural shocks via LR restrictions...  [ADD THIS AT SOME POINT]
+end
+
+%%% RECOVER IRF's TO STRUCTURAL SHOCKS
+if ~isfield(options,'irfhor') nplot=20;  else nplot=options.irfhor; end                     % select horizon for irf's
+for j=1:K
+    shocks=zeros(1,K);  
+    if ~isfield(options,'stdshock') shocks(1,j)=1;  
+    elseif options.stdshock==1      shocks(1,j)=std(u(:,j)); 
+    else shocks(1,j)=1;  end                                                                % select one-standard deviation or unit shocks
+    Y1=((A*shocks(1,:)'))'; Y=Y1; X1=zeros(1,K*VARlags);
+    for i=2:2*nplot
+        X=[];
+        for k=1:K
+            X=[X Y1(k) X1(1,(k-1)*VARlags+1:(k-1)*VARlags+VARlags-1)];
+        end
+        X1=X;
+        Y1=X*Beta(1:K*VARlags,:);
+        Y=[Y; Y1];
+    end
+    irf(:,:,j)=Y; 
+end
+
+%%% RECOVER VARIANCE DECOMPOSITION OF EACH VARIABLE FROM STRUCTURAL SHOCKS
+if isfield(options,'stdshock') & options.stdshock==1  irf1=irf;
+else irf1=irf; for j=1:K irf1(:,:,j)=irf1(:,:,j)*std(u(:,j)); end
+end
+if isfield(options,'vdechor') hor=options.vdechor; else hor=20; end
+irf1=irf1.*irf1; vartotal=zeros(hor,K); 
+for j=2:hor
+    irf1(j,:,:)=irf1(j-1,:,:)+irf1(j,:,:);
+end
+for j=1:K   vartotal=vartotal+irf1(1:hor,:,j);  end
+for j=1:K                   % for each variable
+    for i=1:K               % for each shock
+        vardec(:,i,j)=100*irf1(1:hor,j,i)./vartotal(:,j); 
+    end
+end
+
+%%% PERFORM COUNTERFACTUAL SIMULATIONS FOR EACH SHOCK
+if isfield(options,'counterst') start=options.counterst; else start=1; end  % set initial period
+if isfield(options,'counterhor') hor=options.counterhor; else hor=length(data1); end   % set horizon
+
+%===========================================
+% this is where we apply estimated coefficients to new data
+%===========================================
+ K=cols(data1)/(VARlags+1);              % solve for number of variables
+ clear Y X eps
+ for j=1:K
+     Y(:,j)=data1(:,(j-1)*(VARlags+1)+1);
+     X(:,(j-1)*VARlags+1:(j-1)*VARlags+VARlags) = data1(:,(j-1)*(VARlags+1)+2:(j-1)*(VARlags+1)+1+VARlags);
+ end
+ 
+ if ~isfield(options,'const')      options.const=1;   end            % include a constant term as default
+ if options.const==1    X=[X ones(length(X),1)]; elseif options.const==2 X=[X ones(length(X),1) (1:length(X))']; elseif options.const==3 X=[X ones(length(X),1) (1:length(X))' ((1:length(X)).^2)']; end
+ 
+ for j=1:K
+    eps(:,j)=Y(:,j)-X*Beta(:,j);                        % residuals based on coefficients from initial VAR.
+ end
+%Omega=cov(eps);                           % VAR-COV matrix of residuals
+ [A, D] = triang(Omega);                            % triangular decomposition is based on initial data sets
+ u=(inv(A)*eps')';                                  % get structural shocks using residuals from second data.
+Xfull=X;
+%===============================================
+% end of special section
+%===============================================
+
+final=start+hor-1;
+Xinit=Xfull(start,:);
+for j=1:K
+    shocks=zeros(hor,K);  shocks(:,j)=u(start:final,j); X1=Xinit;
+    Y1=X1*Beta+((A*shocks(1,:)'))'; Y=Y1; 
+    for i=2:hor
+        X=[];
+        for k=1:K
+            X=[X Y1(k) X1(1,(k-1)*VARlags+1:(k-1)*VARlags+VARlags-1)];
+        end
+        if options.const==1 X=[X 1]; elseif options.const==2 X=[X 1 X1(cols(X1))+1]; elseif options.const==3 X=[X 1 X1(cols(X1)-1)+1 ((X1(cols(X1)))^.5+1)]; end
+        X1=X;
+        Y1=X*Beta+((A*shocks(i,:)'))';
+        Y=[Y; Y1];
+    end
+    counter(:,:,j)=Y; 
+end
+
+
+%%% RECOVER STD of IRF's TO STRUCTURAL SHOCKS
+if isfield(options,'irfstd') 
+    X=Xfull;
+    T=length(X);
+    
+    % get var-cov matrix of parameters
+    CovB=kron(Omega,inv( X'*X /length(X)))/T;
+
+    % covariance matrix of the covariance matrix of residuals
+    Dplus=inv(duplication(length(Omega))'*duplication(length(Omega)))*duplication(length(Omega))';
+    CovOmega=2*Dplus*kron(Omega,Omega)*Dplus'/T;
+
+    if isfield(options,'Nirfstd') 
+        its=options.Nirfstd;
+    else
+        its=100;
+    end
+    
+    for it=1:its
+%        beta_error = mvnrnd(zeros(length(CovB),1),CovB)';
+        beta_error=(CovB^.5)*randn(length(CovB));
+        Omega_error = mvnrnd(zeros(length(CovOmega),1),CovOmega)';
+            
+            % unVECtorize into the matrix: matrix BETA
+            [n1m,n2m]=size(Beta);
+            beta_error_unvec=[];
+            for i_vec=1:n2m
+                beta_error_unvec=[beta_error_unvec beta_error(1+(i_vec-1)*n1m:i_vec*n1m,1)];
+            end
+            beta_mod=Beta+beta_error_unvec;     % this is new matrix of coefficients
+            
+            % unVECHtorize into the matrix: matrix OMEGA
+            [n1m,n2m]=size(Omega);    CovOmega_error_unvec=[];        counterA=1;
+            for i_vec=1:n2m
+                vec_temp=[zeros(i_vec-1,1); Omega_error(counterA:counterA+n2m-i_vec,1)];
+                counterA=counterA+n2m-i_vec+1;
+                CovOmega_error_unvec=[CovOmega_error_unvec vec_temp];
+            end
+            for i_vec=1:n2m-1
+                for j_vec=i_vec:n1m
+                    CovOmega_error_unvec(i_vec,j_vec)=CovOmega_error_unvec(j_vec,i_vec);
+                end
+            end
+            omega=Omega+CovOmega_error_unvec; 
+            [A_mod, D_mod] = triang(omega);     % these are new matrices for Choleski decomposition
+            
+            for j=1:K                           % calculate IRF's for all variables and all shocks for each iteration
+                shocks=zeros(1,K);  
+                if ~isfield(options,'stdshock') shocks(1,j)=1;  
+                elseif options.stdshock==1      shocks(1,j)=std(u(:,j)); 
+                else shocks(1,j)=1;  end                                                                % select one-standard deviation or unit shocks
+                Y1=((A_mod*shocks(1,:)'))'; Y=Y1; X1=zeros(1,K*VARlags);
+                for i=2:nplot
+                    X=[];
+                    for k=1:K
+                        X=[X Y1(k) X1(1,(k-1)*VARlags+1:(k-1)*VARlags+VARlags-1)];
+                    end
+                    X1=X;
+                    Y1=X*beta_mod(1:K*VARlags,:);
+                    Y=[Y; Y1];
+                end
+                irfX(:,:,j,it)=Y; 
+            end
+    end  % end loop across iterations
+    
+    for i=1:K      
+        for j=1:K
+            imp=[];
+            for it=1:its
+                imp=[imp irfX(:,i,j,it)];
+            end
+            irfstd(:,i,j)=std(imp');
+        end
+    end
+
+    out.irfstd=irfstd;
+end
+
+
+%%% Output
+out.beta=Beta;
+out.eps=eps;
+out.omega=Omega;
+out.u=u;
+out.irf=irf(1:nplot,:,:);
+out.vdec=vardec;
+out.counter=counter;
+
+return
+ 
+
+     
+ 
