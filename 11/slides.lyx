@@ -299,7 +299,7 @@ Unemployment-risk channel (URC):
 \series default
  
 \emph on
-Re-inforcing feedback loop
+Reinforcing feedback loop
 \end_layout
 
 \begin_deeper
@@ -308,7 +308,7 @@ Re-inforcing feedback loop
 \series bold
 Households:
 \series default
- Unemployment 
+ Unemployment (risk) 
 \begin_inset Formula $\uparrow$
 \end_inset
 
@@ -580,6 +580,17 @@ status open
 
 \begin_layout Plain Layout
 
+[1.]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
 
 \backslash
 vspace{-4mm}
@@ -589,29 +600,29 @@ vspace{-4mm}
 
 
 \series bold
-3 central propagation steps:
-\end_layout
+Search-and-matching 
+\series default
+(endo.
+ separations, 
+\series bold
 
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[1.]
-\end_layout
-
+\begin_inset Formula $\psi$
 \end_inset
 
 
-\series bold
-Search-and-matching 
 \series default
-(endogenous separations and sluggish entry)
+, sluggish entry, 
+\series bold
+
+\begin_inset Formula $\xi$
+\end_inset
+
+
+\series default
+)
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 \begin_inset ERT
 status open
 
@@ -627,10 +638,14 @@ status open
 Bond demand 
 \series default
 (incomplete markets + income process with separation and duration risk +
- heterogeneous discount factors)
+ heterogeneous discount factors, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+)
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 \begin_inset ERT
 status open
 
@@ -645,10 +660,14 @@ status open
 \series bold
 Bond supply 
 \series default
-(fiscal rule)
+(fiscal rule, 
+\begin_inset Formula $\omega$
+\end_inset
+
+)
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 \begin_inset ERT
 status open
 
@@ -663,34 +682,44 @@ status open
 \series bold
 Sticky prices 
 \series default
-(phillips curve + taylor rule)
-\end_layout
+(phillips curve, 
+\begin_inset Formula $\phi$
+\end_inset
 
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Our model:
-\series default
- Each step can be varied in a flexible manner
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Limitation:
-\series default
- Fixed supply of labor and capital
-\begin_inset Note Note
-status collapsed
+, taylor rule)
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-the dynamics here are still relevant in larger models
+
+
+\backslash
+vspace{3mm}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
+\series bold
+Limitation:
+\series default
+ 
+\emph on
+Fixed supply of labor and capital
 \end_layout
 
 \end_deeper
@@ -706,7 +735,7 @@ the dynamics here are still relevant in larger models
 status open
 
 \begin_layout Plain Layout
-Results
+Results (so far)
 \end_layout
 
 \end_inset
@@ -741,8 +770,8 @@ status open
 
 \end_inset
 
-Larger share of hand-to-mouth households is strongly dampening despite larger
- drop of consumption in unemployment
+Duration risk increases bond demand more than separation risk for a fixed
+ path of unemployment
 \end_layout
 
 \begin_layout Enumerate
@@ -756,7 +785,8 @@ status open
 
 \end_inset
 
-More debt-financing is strongly dampening due to larger bond supply response
+Larger share of hand-to-mouth households is dampening, despite larger MPCs
+ and larger drop of consumption in unemployment
 \end_layout
 
 \begin_layout Enumerate
@@ -770,11 +800,51 @@ status open
 
 \end_inset
 
-UI extensions is the most cost-effective fiscal stabilization tool at the
- margin across a range of calibrations - higher UI level or transfers are
- the worst
+More debt-financing is dampening due to a larger increase in the supply
+ of government bonds
 \end_layout
 
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Fiscal stabilization policies can be almost self-financing
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+Best: UI extensions (at the margin)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Worst: Public transfers and UI level
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -798,6 +868,18 @@ Literature
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
 Improve our understanding of existing HANK-SAM models 
@@ -814,7 +896,32 @@ status open
 
 \end_inset
 
-Steps in propagation mechanism
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+More general (
+\begin_inset Formula $\psi\neq0$
+\end_inset
+
+, 
+\begin_inset Formula $\xi\neq\infty$
+\end_inset
+
+, 
+\begin_inset Formula $\omega\neq1$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Enumerate
@@ -828,7 +935,7 @@ status open
 
 \end_inset
 
-Best calibration strategy
+Clarify the propagation mechanism
 \end_layout
 
 \begin_layout Enumerate
@@ -842,6 +949,20 @@ status open
 
 \end_inset
 
+Importance of calibration targets
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[d)]
+\end_layout
+
+\end_inset
+
 Effectiveness of policy tools
 \end_layout
 
@@ -851,29 +972,12 @@ Effectiveness of policy tools
 Gorneman et al.
  (2016), Den Haan et.
  al.
- (2018), McKay-Reis (2020), Challe (2020), Ravn and Sterk (2021), Kekre
- (2022), Graves (2022), Cho (2022)
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
+ (2018), Challe (2020), McKay-Reis (2020), Ravn and Sterk (2021), Bilbiie
+ (2021), Bibilie et.
+ al.
+ (2022), Cho (2022), Graves (2022), Kekre (2022)
 \size scriptsize
+
 \begin_inset ERT
 status open
 
@@ -887,7 +991,12 @@ vspace{1mm}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
 \series bold
+\size tiny
 SAM - sluggish entry:
 \series default
  Coles-Kelishomi (2018), Fujita-Ramey (2007), Haefke-Reiter (2020), Leduc
@@ -913,6 +1022,7 @@ vspace{-1mm}
 
 
 \series bold
+\size tiny
 SAM - endogenous separations: 
 \series default
 Mortesen-Pissarides (1994), Den Haan et.
@@ -930,22 +1040,20 @@ status open
 
 
 \backslash
-vspace{-2mm}
+vspace{-1mm}
 \end_layout
 
 \end_inset
 
 
 \series bold
+\size tiny
 RANK-SAM:
 \series default
  Walsh (2005), Gertler et.
  al.
- (2008), Trigari (2009), Gali (2010),
-\begin_inset Newline newline
-\end_inset
-
-Christiano et al.
+ (2008), Trigari (2009), Gali (2010), Ravenna and Walsh (2012), Christiano
+ et al.
  (2016)
 \end_layout
 
@@ -966,6 +1074,7 @@ vspace{-1mm}
 
 
 \series bold
+\size tiny
 HANK - fiscal rule
 \series default
 s
@@ -998,11 +1107,17 @@ vspace{-1mm}
 
 
 \series bold
-Consumption in unemployment: 
+\size tiny
+Consumption effects wrt.
+ unemployment: 
 \series default
-Aguiar and Hurst (2005), Eusepi and Preston (2015), Chodorow-Reich and Karabarbo
-unis (2016), Harmenberg and Öberg (2021), Graves (2022), Ganong et al.
- (2019)
+Gruber (1997), Aguiar and Hurst (2005), Eusepi and Preston (2015), Chodorow-Reic
+h and Karabarbounis (2016), Kolsrud et.
+ al.
+ (2018), Harmenberg and Öberg (2021), Graves (2022), Ganong et al.
+ (2019), Ganong et.
+ al.
+ (2022)
 \end_layout
 
 \end_deeper
@@ -1220,16 +1335,6 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Job value 
@@ -1250,7 +1355,7 @@ separation rate
 \begin_inset Formula 
 \begin{align*}
 V_{t}^{j} & =p_{t}^{x}Z_{t}-(w_{t}-\text{wage subsidy}_{t})+\beta^{\text{firm}}\mathbb{E}_{t}\left[(1-\delta_{t+1})(V_{t+1}^{j}-\mu_{t+1})\right]\\
-\delta_{t} & =\delta_{ss}\left(\frac{V_{t}^{j}}{V_{ss}^{j}}\right)^{-\psi},\,\,\,\mu_{t+1}\text{continuation cost}
+\delta_{t} & =\delta_{ss}\left(\frac{V_{t}^{j}}{V_{ss}^{j}}\right)^{-\psi},\,\,\,\mu_{t+1}\text{ is continuation cost}
 \end{align*}
 
 \end_inset
@@ -1259,16 +1364,6 @@ V_{t}^{j} & =p_{t}^{x}Z_{t}-(w_{t}-\text{wage subsidy}_{t})+\beta^{\text{firm}}\
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Vacancy value 
@@ -1306,16 +1401,6 @@ V_{t}^{v} & =-\kappa+\lambda_{t}^{v}(V_{t}^{j}+\text{hiring subidy}_{t})+(1-\lam
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Tightness: 
@@ -1326,16 +1411,6 @@ Tightness:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Matching function: 
@@ -1346,20 +1421,10 @@ Matching function:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Wage rule: 
-\begin_inset Formula $w_{t}=(u_{t}/u_{ss})^{\eta_{u}}$
+\begin_inset Formula $w_{t}=w_{ss}(u_{t}/u_{ss})^{\eta_{u}}$
 \end_inset
 
 
@@ -1496,25 +1561,53 @@ status collapsed
 \begin_layout Itemize
 
 \series bold
-High unemployment insurance :
+High UI, 
+\begin_inset Formula $\overline{\phi}_{t}$
+\end_inset
+
+:
 \series default
+ First 
+\begin_inset Formula $\overline{u}_{t}$
+\end_inset
+
+ months and 
+\begin_inset Formula $\mathds{1}_{\text{it}}^{\text{UI}}=1$
+\end_inset
+
+ with prob.
  
-\begin_inset Formula $\text{UI}_{it}$
+\begin_inset Formula $\pi^{\text{UI}}$
 \end_inset
 
-
+ at EU
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Eligibility probability: 
-\begin_inset Formula $\text{Pr}[\mathds{1}_{\text{it}}^{\text{UI}}=1]=\pi^{\text{UI}}$
+\begin_layout Itemize
+
+\series bold
+Low UI, 
+\begin_inset Formula $\underline{\phi}$
 \end_inset
 
- (at EU transition)
+: 
+\series default
+After 
+\begin_inset Formula $\overline{u}_{t}$
+\end_inset
+
+ months or 
+\begin_inset Formula $\mathds{1}_{\text{it}}^{\text{UI}}=0$
+\end_inset
+
+ with prob.
+ 
+\begin_inset Formula $1-\pi^{\text{UI}}$
+\end_inset
+
+ at EU
 \end_layout
 
-\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1563,16 +1656,6 @@ status collapsed
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Fiscal rule:
@@ -1593,16 +1676,6 @@ where
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Government budget with long term bonds:
@@ -1611,7 +1684,7 @@ Government budget with long term bonds:
 
 \begin_inset Formula 
 \begin{align*}
-q_{t}(B_{t}-\delta B_{t-1})= & B_{t-1}\\
+q_{t}(B_{t}-\delta_{q}B_{t-1})= & B_{t-1}\\
  & +(1-\tau_{t})\left(\overline{\phi}_{t}\text{UI}_{t}^{hh}+\underline{\phi}\left(u_{t}-\text{UI}_{t}^{hh}\right)\right)w_{t}\\
  & -\tau_{t}(1-u_{t})w_{t}\\
  & +\text{wage subsidy}_{t}\cdot(1-u_{t})\\
@@ -1662,7 +1735,7 @@ with Rotemburg adjustment costs
 
 \begin_inset Formula 
 \begin{eqnarray*}
-1-\epsilon_{p}+\epsilon_{p}p_{t}^{x} & = & \phi(\Pi_{t}-1)\Pi_{t}-\phi\beta\mathbb{E}_{t}\left[(\Pi_{t+1}-1)\Pi_{t+1}\frac{Z_{t+1}(1-u_{t+1})}{Z_{t}(1-u_{t})}\right]
+1-\epsilon_{p}+\epsilon_{p}p_{t}^{x} & = & \varphi(\Pi_{t}-1)\Pi_{t}-\varphi\beta\mathbb{E}_{t}\left[(\Pi_{t+1}-1)\Pi_{t+1}\frac{Z_{t+1}(1-u_{t+1})}{Z_{t}(1-u_{t})}\right]
 \end{eqnarray*}
 
 \end_inset
@@ -1678,7 +1751,7 @@ Taylor rule:
 
 \begin_inset Formula 
 \begin{eqnarray*}
-R_{t} & = & R_{ss}\Pi_{t}^{\phi}
+R_{t} & = & R_{ss}\Pi_{t}^{\delta_{\pi}}
 \end{eqnarray*}
 
 \end_inset
@@ -1765,7 +1838,7 @@ q_{t}B_{t}=\int a_{t}^{\star}(\beta_{i},u_{it},a_{it-1})d\boldsymbol{D}_{t}
 \end_layout
 
 \begin_layout Section
-Stylized facts
+Calibration
 \end_layout
 
 \begin_layout Frame
@@ -1882,7 +1955,7 @@ vspace{5mm}
 \begin_layout Itemize
 
 \series bold
-Stylized Fact #1: 
+Stylized Fact #1:
 \series default
 \emph on
 
@@ -1898,6 +1971,27 @@ Same pattern true in unconditional time-series data (see the paper)
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+Note:
+\series default
+ See also Trigari (2009) and Oh and Picco (2020) for uncertainty shocks.
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2036,6 +2130,27 @@ Same pattern true in unconditional time-series data (see the paper)
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+Note:
+\series default
+ See also Trigari (2009) and Oh and Picco (2020) for uncertainty shocks.
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2049,7 +2164,7 @@ Same pattern true in unconditional time-series data (see the paper)
 status open
 
 \begin_layout Plain Layout
-Consumption effect of unemployment
+Consumption effects of unemployment
 \end_layout
 
 \end_inset
@@ -2088,24 +2203,23 @@ Drop at UI exhaustion of ~45% of income drop
 
 \end_layout
 
-\end_deeper
-\begin_layout Frame
+\begin_layout Standard
 
+\series bold
 \size footnotesize
-Source: Ganong et.
+Source:
+\series default
+ Ganong et.
  al.
  (2019)
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Calibration
 \end_layout
 
 \begin_layout Frame
@@ -2125,6 +2239,34 @@ Calibration targets
 \begin_layout Itemize
 
 \series bold
+Simplifications: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Only TFP shocks
+\end_layout
+
+\begin_layout Enumerate
+Fixed real wage (
+\begin_inset Formula $\epsilon_{u}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Unit unemployment variance with flexible prices (
+\begin_inset Formula $w_{ss}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
 Targets:
 \end_layout
 
@@ -2138,7 +2280,11 @@ EU share of unemployment volatility
 \begin_inset Formula $\sim40$
 \end_inset
 
+ (
+\begin_inset Formula $\psi$
+\end_inset
 
+)
 \end_layout
 
 \begin_layout Enumerate
@@ -2146,7 +2292,11 @@ UE lag relative to EU
 \begin_inset Formula $\sim6$
 \end_inset
 
- months
+ months (
+\begin_inset Formula $\xi$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Enumerate
@@ -2154,7 +2304,11 @@ Unemployed have
 \begin_inset Formula $\sim20$
 \end_inset
 
- percent lower consumption
+ percent lower consumption (
+\begin_inset Formula $q_{ss}B_{ss}$
+\end_inset
+
+)
 \end_layout
 
 \end_deeper
@@ -2166,35 +2320,26 @@ Baseline:
 
 \begin_deeper
 \begin_layout Enumerate
-15% HtM households 
+15 percent with 
+\begin_inset Formula $\beta_{i}=0.0$
+\end_inset
+
+ 
 \emph on
-(more later)
+(more later) 
+\emph default
+[qtr.
+ MPC of 25%]
 \end_layout
 
 \begin_layout Enumerate
-Tax-financing 
+Tax-financing, 
+\begin_inset Formula $\omega=0.90$
+\end_inset
+
+ 
 \emph on
 (more debt-financing later)
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Simplifications: 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Only TFP shocks
-\end_layout
-
-\begin_layout Enumerate
-Unit unemployment variance with flexible prices
-\end_layout
-
-\begin_layout Enumerate
-Fixed real wage
 \end_layout
 
 \end_deeper
@@ -2352,7 +2497,7 @@ Firm discount factor,
 \begin_layout Plain Layout
 
 \size footnotesize
-\begin_inset Formula $0.98^{1/12}$
+\begin_inset Formula $0.98^{\frac{1}{12}}$
 \end_inset
 
 
@@ -2761,7 +2906,7 @@ Wage level,
 
 \size footnotesize
 Wage elasticity, 
-\begin_inset Formula $\eta_{w}$
+\begin_inset Formula $\eta_{u}$
 \end_inset
 
 
@@ -3433,7 +3578,7 @@ Standard
 
 \size footnotesize
 Rotemberg cost, 
-\begin_inset Formula $\phi$
+\begin_inset Formula $\varphi$
 \end_inset
 
 
@@ -4002,6 +4147,10 @@ Quantitatively illustrate the propagation in each step
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
 \begin_layout Frame
 \begin_inset Argument 4
 status collapsed
@@ -4021,7 +4170,7 @@ status collapsed
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
 <features tabularvalignment="middle">
@@ -4075,7 +4224,7 @@ Controls overall volatility of unemployment (risk)
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
 \end_inset
 
@@ -4101,7 +4250,7 @@ status collapsed
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="1" columns="2">
 <features tabularvalignment="middle">
@@ -4155,8 +4304,13 @@ Higher elasticity dampens fluctuations
 \end_layout
 
 \end_deeper
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
@@ -4231,7 +4385,7 @@ status collapsed
 \series bold
 Result I: 
 \series default
-Higher elasticity amplified fluctuations
+Higher separation elasticity amplifies fluctuations
 \end_layout
 
 \begin_layout Itemize
@@ -4239,7 +4393,32 @@ Higher elasticity amplified fluctuations
 \series bold
 Result II:
 \series default
- Separations play larger role
+ Separations play relatively larger role
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+Note:
+\series default
+ Labor revenue product, 
+\begin_inset Formula $p_{t}^{x}Z_{t}$
+\end_inset
+
+, is at the equilibrium path.
 \end_layout
 
 \end_deeper
@@ -4319,7 +4498,7 @@ status collapsed
 \series bold
 Result I: 
 \series default
-More sluggishness amplifies fluctuations
+Higher entry elasticity dampens fluctuations
 \end_layout
 
 \begin_layout Itemize
@@ -4327,7 +4506,32 @@ More sluggishness amplifies fluctuations
 \series bold
 Result II:
 \series default
- Job-finding play larger role later on
+ The lag of UE relative to EU is reduced
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+Note:
+\series default
+ Labor revenue product, 
+\begin_inset Formula $p_{t}^{x}Z_{t}$
+\end_inset
+
+, is at the equilibrium path.
 \end_layout
 
 \end_deeper
@@ -4356,10 +4560,18 @@ status collapsed
 \begin_layout Itemize
 
 \series bold
-Result:
+Result I:
 \series default
- Much lower volatility of unemployment with exogenous fluctuations and free
- entry.
+ Much lower volatility of unemployment with exogenous separations and free
+ entry
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Result II:
+\series default
+ Smaller amplification from sticky prices with free entry 
 \end_layout
 
 \begin_layout Standard
@@ -4449,7 +4661,8 @@ status collapsed
 
 \begin_layout Plain Layout
 2a.
- Bond demand: Type of unemployment risk I
+ Bond demand: Separation vs.
+ duration risk (1/3)
 \end_layout
 
 \end_inset
@@ -4464,32 +4677,10 @@ status collapsed
 Experiment: 
 \series default
 \emph on
-Dampen equilibrium path of separation rate and adjust job-finding rate to
- keep unemployment fixed
+Dampen equilibrium path of separation rate (EU) and adjust job-finding rate
+ (UE) to keep unemployment fixed
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-Result I:
-\series default
- Lower consumption and higher saving
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
 \begin_layout Standard
 \begin_inset Tabular
 <lyxtabular version="3" rows="2" columns="2">
@@ -4503,7 +4694,7 @@ vspace{2mm}
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/PE_deltas_titled.pdf
-	width 45line%
+	width 50line%
 
 \end_inset
 
@@ -4518,7 +4709,7 @@ vspace{2mm}
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/PE_lambda_us_titled.pdf
-	width 45line%
+	width 50line%
 
 \end_inset
 
@@ -4529,13 +4720,13 @@ vspace{2mm}
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename results/PE_C_hhs_titled.pdf
-	width 45line%
+	filename results/PE_us_titled.pdf
+	width 40line%
 
 \end_inset
 
@@ -4544,16 +4735,10 @@ vspace{2mm}
 
 \end_inset
 </cell>
-<cell alignment="left" valignment="top" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/PE_A_hhs_titled.pdf
-	width 45line%
-
-\end_inset
-
 
 \end_layout
 
@@ -4568,7 +4753,6 @@ vspace{2mm}
 \end_layout
 
 \end_deeper
-\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -4582,7 +4766,8 @@ status collapsed
 
 \begin_layout Plain Layout
 2a.
- Bond demand: Type of unemployment risk II
+ Bond demand: Separation vs.
+ duration risk (2/3)
 \end_layout
 
 \end_inset
@@ -4594,19 +4779,9 @@ status collapsed
 \begin_layout Itemize
 
 \series bold
-Experiment: 
+Result I:
 \series default
-\emph on
-Dampen equilibrium path of separation rate and adjust job-finding rate to
- keep unemployment fixed
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Result II:
-\series default
- Consumption higher for employed, lower for unemployed
+ Lower consumption and higher savings
 \begin_inset ERT
 status open
 
@@ -4622,10 +4797,9 @@ vspace{2mm}
 
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
+<lyxtabular version="3" rows="1" columns="2">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="left" valignment="top">
@@ -4635,8 +4809,8 @@ vspace{2mm}
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename results/PE_C_hhs_employed_titled.pdf
-	width 45line%
+	filename results/PE_C_hhs_titled.pdf
+	width 50line%
 
 \end_inset
 
@@ -4650,40 +4824,8 @@ vspace{2mm}
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename results/PE_C_hhs_unemployed_titled.pdf
-	width 45line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/PE_C_hhs_employed_only_behavior_titled.pdf
-	width 45line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/PE_C_hhs_unemployed_only_behavior_titled.pdf
-	width 45line%
+	filename results/PE_A_hhs_titled.pdf
+	width 50line%
 
 \end_inset
 
@@ -4701,6 +4843,128 @@ vspace{2mm}
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+2a.
+ Bond demand: Separation vs.
+ duration risk (3/3)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Result II:
+\series default
+ Both due to employed and unemployed
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename results/PE_C_hhs_employed_only_behavior_diff_titled.pdf
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename results/PE_C_hhs_unemployed_only_behavior_diff_titled.pdf
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+Note:
+\series default
+ 
+\begin_inset Quotes ald
+\end_inset
+
+only behavior
+\begin_inset Quotes ard
+\end_inset
+
+ 
+\begin_inset Formula $=$
+\end_inset
+
+ distribution fixed at steady state
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -4715,7 +4979,7 @@ status collapsed
 
 \begin_layout Plain Layout
 2a.
- Bond demand: Job-finding rate matters most
+ Bond demand: Job-finding rate matters most (1/3)
 \end_layout
 
 \end_inset
@@ -4727,19 +4991,10 @@ status collapsed
 \begin_layout Itemize
 
 \series bold
-Experiment: 
-\series default
-\emph on
-Feed in the equilibrium path(s) of the separation rate and/or the job-finding
- rate
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 Result: 
 \series default
-Job-finding rate more important than separation rate
+The job-finding rate (UE) matter more than the separation rate (EU) feeding
+ in equilibrium paths of each or both
 \end_layout
 
 \begin_layout Standard
@@ -4755,7 +5010,7 @@ Job-finding rate more important than separation rate
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/bond_demand_EU_vs_UE_baseline_dC_hh_titled.pdf
-	width 40line%
+	width 50line%
 
 \end_inset
 
@@ -4770,7 +5025,7 @@ Job-finding rate more important than separation rate
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/bond_demand_EU_vs_UE_baseline_dA_hh_titled.pdf
-	width 40line%
+	width 50line%
 
 \end_inset
 
@@ -4827,7 +5082,7 @@ status collapsed
 
 \begin_layout Plain Layout
 2a.
- Bond demand: Behavioral response matters most
+ Bond demand: Job-finding rate matters most (2/3)
 \end_layout
 
 \end_inset
@@ -4839,19 +5094,15 @@ status collapsed
 \begin_layout Itemize
 
 \series bold
-Experiment: 
-\series default
-\emph on
-Simulate with only change in behavior and lower wage path to get same aggregate
- household income path
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
 Result:
 \series default
- Behavioral response and aggregate income effect is key
+ Response can be explained by 
+\emph on
+change in behavior
+\emph default
+ + 
+\emph on
+lower wage path implying same aggregate household income path 
 \end_layout
 
 \begin_layout Standard
@@ -4867,7 +5118,7 @@ Result:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/bond_demand_behavior_baseline_dC_hh_titled.pdf
-	width 40line%
+	width 50line%
 
 \end_inset
 
@@ -4882,7 +5133,7 @@ Result:
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/bond_demand_behavior_baseline_dA_hh_titled.pdf
-	width 40line%
+	width 50line%
 
 \end_inset
 
@@ -4939,7 +5190,7 @@ status collapsed
 
 \begin_layout Plain Layout
 2a.
- Bond demand: Behavior of employed matters most
+ Bond demand: Job-finding rate matters most (3/3)
 \end_layout
 
 \end_inset
@@ -4951,20 +5202,11 @@ status collapsed
 \begin_layout Itemize
 
 \series bold
-Experiment: 
+Result:
 \series default
+ Behavioral response can be explained by 
 \emph on
-Simulate with only change in behavior 
-\bar under
-of employed
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Result: 
-\series default
-Behavior of unemployed 
+change in behavior of employed
 \end_layout
 
 \begin_layout Standard
@@ -4980,7 +5222,7 @@ Behavior of unemployed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/bond_demand_behavior_emp_baseline_dC_hh_titled.pdf
-	width 45line%
+	width 50line%
 
 \end_inset
 
@@ -4995,7 +5237,7 @@ Behavior of unemployed
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/bond_demand_behavior_emp_baseline_dA_hh_titled.pdf
-	width 45line%
+	width 50line%
 
 \end_inset
 
@@ -5026,7 +5268,7 @@ status collapsed
 
 \begin_layout Plain Layout
 2a.
- Bond demand: Hand-to-mouth households
+ Bond demand: Hand-to-mouth households (1/2)
 \end_layout
 
 \end_inset
@@ -5090,6 +5332,14 @@ Larger drop at exhaustion:
  % of income drop
 \end_layout
 
+\begin_layout Enumerate
+Quarterly MPC: 
+\begin_inset Formula $25.1\rightarrow40.1$
+\end_inset
+
+ %
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Graphics
@@ -5115,136 +5365,15 @@ status collapsed
 
 \begin_layout Plain Layout
 2a.
- Bond demand: Higher and more homogenous MPCs
+ Bond demand: Hand-to-mouth households (2/2)
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-1mm}
-\end_layout
-
-\end_inset
-
-
-\series bold
-Result: 
-\series default
-MPCs narrows between employed and unemployed.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-(a) baseline calibration
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-(b) hand-to-mouth calibration
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/baseline_MPC_titled.pdf
-	width 50line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/HtM_MPC_titled.pdf
-	width 50line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
 \end_inset
 
 
 \end_layout
 
 \begin_layout Frame
-\begin_inset Argument 4
-status collapsed
-
-\begin_layout Plain Layout
-2a.
- Bond demand: Smaller savings response
-\end_layout
-
-\end_inset
-
 
 \end_layout
 
@@ -5266,7 +5395,7 @@ vspace{-1mm}
 \series bold
 Result: 
 \series default
-HtM households dampen the savings response a lot.
+HtM households dampen the savings response a lot
 \end_layout
 
 \begin_layout Standard
@@ -5403,106 +5532,6 @@ HtM households dampen the savings response a lot.
 status collapsed
 
 \begin_layout Plain Layout
-2a.
- Bond demand: Behavior still matters most
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="2" columns="2">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="left" valignment="top">
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/bond_demand_behavior_HtM_dC_hh_titled.pdf
-	width 50line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/bond_demand_behavior_HtM_dA_hh_titled.pdf
-	width 50line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/bond_demand_behavior_emp_HtM_dC_hh_titled.pdf
-	width 50line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename results/bond_demand_behavior_emp_HtM_dA_hh_titled.pdf
-	width 50line%
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status collapsed
-
-\begin_layout Plain Layout
 2b.
  Bond Supply: Tax vs.
  debt-financing
@@ -5524,28 +5553,16 @@ Feed in equilibrium path of unemployment for fixed real interest rate and
 \begin_inset Formula $B_{-1}=B_{ss}$
 \end_inset
 
-:
+,
 \begin_inset Formula 
 \begin{align*}
 \tau_{t} & =\tau_{ss}+\omega q_{ss}\frac{B_{t-1}-B_{ss}}{w_{ss}(1-u_{t})}\\
-B_{t} & =\frac{(1+\delta q_{ss})B_{t-1}+\phi w_{ss}u_{t}-\tau_{t}w_{ss}(1-u_{t})}{q_{ss}}
+B_{t} & =\frac{(1+\delta q_{ss})B_{t-1}+(1-\tau_{t})\left(\overline{\phi}_{ss}\text{UI}_{t}^{hh}+\underline{\phi}\left(u_{t}-\text{UI}_{t}^{hh}\right)\right)w_{ss})}{q_{ss}}
 \end{align*}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Interpretation: 
-\series default
-
-\begin_inset Formula $\omega$
-\end_inset
-
- controls the speed of tax adjustment
 \end_layout
 
 \begin_layout Itemize
@@ -5616,56 +5633,8 @@ Result:
 status collapsed
 
 \begin_layout Plain Layout
-3.
- Sticky prices: Closing the loop 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-From real interest rate, 
-\begin_inset Formula $R_{t}^{\text{real}}$
-\end_inset
-
-, intermediary goods prices, 
-\begin_inset Formula $P_{t}^{x}$
-\end_inset
-
-:
-\series default
-
-\begin_inset Formula 
-\begin{align*}
- & \text{Fisher:} & R_{t} & =R_{t}^{\text{real}}\Pi_{t+1}\\
- & \text{Taylor:} & \Pi_{t} & =\left(\frac{R_{t}}{R_{ss}}\right)^{\frac{1}{\delta_{\pi}}}\\
- & \text{NKPC:} & p_{t}^{x} & =\frac{\phi\left((\Pi_{t}-1)\Pi_{t}-\beta\left[(\Pi_{t+1}-1)\Pi_{t+1}\frac{Z_{t+1}(1-u_{t+1})}{Z_{t}(1-u_{t})}\right]\right)+\epsilon_{p}-1}{\epsilon_{p}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status collapsed
-
-\begin_layout Plain Layout
-Bringing all together it all together
+2.
+ Bond market: Bringing it all together
 \end_layout
 
 \end_inset
@@ -5702,7 +5671,11 @@ Debt-financing:
 \series bold
 Both:
 \series default
- Less volatility than with flexible prices
+ 
+\emph on
+Less volatility than with flexible prices
+\emph default
+
 \begin_inset ERT
 status open
 
@@ -5841,7 +5814,76 @@ Underlying model dynamics
 status collapsed
 
 \begin_layout Plain Layout
-Varying Price stickiness
+3.
+ Sticky prices: Closing the loop 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+From real interest rate, 
+\begin_inset Formula $R_{t}^{\text{real}}$
+\end_inset
+
+, intermediary goods prices, 
+\begin_inset Formula $P_{t}^{x}$
+\end_inset
+
+:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+ & \text{Fisher:} & R_{t} & =R_{t}^{\text{real}}\Pi_{t+1}\\
+ & \text{Taylor:} & \Pi_{t} & =\left(\frac{R_{t}}{R_{ss}}\right)^{\frac{1}{\delta_{\pi}}}\\
+ & \text{NKPC:} & p_{t}^{x} & =\frac{\varphi\left((\Pi_{t}-1)\Pi_{t}-\beta\left[(\Pi_{t+1}-1)\Pi_{t+1}\frac{Z_{t+1}(1-u_{t+1})}{Z_{t}(1-u_{t})}\right]\right)+\epsilon_{p}-1}{\epsilon_{p}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Result:
+\series default
+ Response converges to the response under flexible prices for 
+\begin_inset Formula $\varphi\rightarrow0$
+\end_inset
+
+ or 
+\begin_inset Formula $\delta_{\pi}\rightarrow0$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Varying price stickiness, 
+\begin_inset Formula $\varphi$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -6051,7 +6093,7 @@ Adjust other policy paths to get same unemployment path
 status collapsed
 
 \begin_layout Plain Layout
-Baseline: UI duration extension is most cost-effective
+Baseline calibration
 \end_layout
 
 \end_inset
@@ -6063,16 +6105,70 @@ Baseline: UI duration extension is most cost-effective
 \begin_layout Itemize
 
 \series bold
-Result:
+Result I:
 \series default
- UI duration extension is most cost-effective in terms of least accumulation
- of government debt
+ Some fiscal policies are almost self-financing
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Result II:
+\series default
+ Public transfer and UI level is 
+\emph on
+worst
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Result III:
+\series default
+ UI duration is 
+\emph on
+best
 \end_layout
 
 \begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename results/pol_baseline_tau_titled.pdf
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/pol_baseline_qB_titled.pdf
-	width 85line%
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -6092,7 +6188,7 @@ Result:
 status collapsed
 
 \begin_layout Plain Layout
-HtM+Debt: UI duration extension is most cost-effective
+HtM+debt calibration
 \end_layout
 
 \end_inset
@@ -6104,16 +6200,58 @@ HtM+Debt: UI duration extension is most cost-effective
 \begin_layout Itemize
 
 \series bold
-Result:
+Result I:
 \series default
- UI duration extension is most cost-effective in terms of least accumulation
- of government debt
+ Further away from self-financing
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Result II:
+\series default
+ Same order of policy tools
 \end_layout
 
 \begin_layout Standard
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename results/pol_HtM_debt_tau_titled.pdf
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
 \begin_inset Graphics
 	filename results/pol_HtM_debt_qB_titled.pdf
-	width 85line%
+	width 50line%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
 
 \end_inset
 
@@ -6151,7 +6289,7 @@ Conclusion
 \series bold
 Endogenous separations and sluggish entry: 
 \series default
-Amplification under flexible prices and shapes unemployment risk
+Amplify unemployment fluctuations and shape unemployment risk
 \end_layout
 
 \begin_layout Enumerate
@@ -6159,8 +6297,11 @@ Amplification under flexible prices and shapes unemployment risk
 \series bold
 HtM households: 
 \series default
-Dampening due to weaker bond demand response, despite larger consumption
- drop in unemployment
+Dampening due to 
+\emph on
+weaker bond demand
+\emph default
+, despite larger MPCs and larger consumption drop in unemployment
 \end_layout
 
 \begin_layout Enumerate
@@ -6168,7 +6309,11 @@ Dampening due to weaker bond demand response, despite larger consumption
 \series bold
 Debt-financing: 
 \series default
-Dampening due to stronger bond supply response
+Dampening due to 
+\emph on
+stronger bond supply
+\emph default
+
 \begin_inset ERT
 status open
 
@@ -6198,31 +6343,53 @@ vspace{2mm}
 \begin_layout Frame
 
 \series bold
-Policy: 
+Fiscal policy: 
 \series default
-UI extensions is the most cost-effective fiscal stabilization tool at the
- margin across range of calibrations
+Can be close to self-financing.
+ UI extensions is most cost-effective at the margin across range of calibrations
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
 \begin_layout Standard
 
 \series bold
+\size footnotesize
 On the agenda:
-\series default
- 
 \end_layout
 
-\begin_layout Enumerate
-Detailed calibration / estimation
+\begin_layout Standard
+
+\size footnotesize
+1.
+ Supply of labor and capital
 \end_layout
 
-\begin_layout Enumerate
-Welfare considerations
+\begin_layout Standard
+
+\size footnotesize
+2.
+ Detailed calibration / estimation (incl.
+ capitalists behavior)
 \end_layout
 
-\begin_layout Enumerate
-Supply of labor and capital
+\begin_layout Standard
+
+\size footnotesize
+3.
+ Welfare considerations
 \end_layout
 
 \end_deeper
