@@ -2212,6 +2212,260 @@ literal "false"
 
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Transmission mechanism to monetary policy shock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Monetary policy shock: 
+\begin_inset Formula $i_{t}^{\ast}\downarrow\,\Rightarrow\,i_{t}=i_{t}^{\ast}+\phi\pi_{t}\downarrow$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Real interest rate:
+\series default
+ 
+\begin_inset Formula $r_{t}=\frac{1+i_{t-1}}{1+\pi_{t}}\downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Taxes:
+\series default
+ 
+\begin_inset Formula $\tau_{t}=r_{t}B_{ss}\downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Household consumption
+\series default
+, 
+\begin_inset Formula $C_{t}^{hh}$
+\end_inset
+
+ 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+,
+\series bold
+ 
+\series default
+due to 
+\begin_inset Formula $r_{t}\downarrow$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{t}\downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Firms production, 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+
+\series default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+, and
+\series bold
+ labor demand
+\series default
+,
+\series bold
+ 
+\begin_inset Formula $N_{t}$
+\end_inset
+
+
+\series default
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Inflation, 
+\begin_inset Formula $\pi_{t}\uparrow$
+\end_inset
+
+
+\series default
+,
+\series bold
+ 
+\series default
+and 
+\series bold
+wage
+\series default
+,
+\series bold
+ 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\series default
+and 
+\series bold
+dividends
+\series default
+,
+\series bold
+ 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+
+\begin_inset Formula $\downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Household labor supply
+\series default
+,
+\series bold
+ 
+\begin_inset Formula $N_{t}^{hh}$
+\end_inset
+
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\series default
+, due to 
+\begin_inset Formula $w_{t}\uparrow$
+\end_inset
+
+ and 
+\begin_inset Formula $d_{t}\downarrow$
+\end_inset
+
+,
+\begin_inset Newline newline
+\end_inset
+
+but dampened 
+\begin_inset Formula $\tau_{t}\downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Nominal rate
+\series default
+, 
+\begin_inset Formula $i_{t}\uparrow$
+\end_inset
+
+ due to 
+\begin_inset Formula $\pi_{t}\uparrow$
+\end_inset
+
+ implying 
+\begin_inset Formula $r_{t}\uparrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Household consumption
+\series default
+, 
+\begin_inset Formula $C_{t}^{hh}$
+\end_inset
+
+
+\begin_inset Formula $\uparrow$
+\end_inset
+
+,
+\series bold
+ 
+\series default
+due to 
+\begin_inset Formula $w_{t}\uparrow$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+but dampened by 
+\begin_inset Formula $d_{t}\downarrow$
+\end_inset
+
+ and 
+\begin_inset Formula $r_{t}\uparrow$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 IRFs and simulation
 \end_layout
