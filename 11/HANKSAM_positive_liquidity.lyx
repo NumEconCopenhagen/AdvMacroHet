@@ -942,7 +942,7 @@ The representative final-good firm has the production function
  Phillips curve 
 \begin_inset Formula 
 \begin{equation}
-1-\epsilon_{p}+\epsilon_{p}\cdot p_{t}^{x}=\varphi(\Pi_{t}-1)\Pi_{t}-\beta\phi\mathbb{E}_{t}\left[(\Pi_{t+1}-\Pi_{ss})\Pi_{t+1}\frac{Y_{t+1}}{Y_{t}}\right],\label{NKPC}
+1-\epsilon_{p}+\epsilon_{p}\cdot p_{t}^{x}=\varphi(\Pi_{t}-1)\Pi_{t}-\beta\varphi\mathbb{E}_{t}\left[(\Pi_{t+1}-\Pi_{ss})\Pi_{t+1}\frac{Y_{t+1}}{Y_{t}}\right],\label{NKPC}
 \end{equation}
 
 \end_inset
