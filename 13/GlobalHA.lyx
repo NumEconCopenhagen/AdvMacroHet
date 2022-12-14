@@ -636,9 +636,9 @@ vspace{-5mm}
 
 \begin_inset Formula 
 \begin{align*}
-v(Z_{t},\boldsymbol{D}_{t},z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t},\boldsymbol{D}_{t+1},z_{it+1},a_{it})\right]\\
+v(Z_{t},\boldsymbol{D}_{t},z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t+1},\boldsymbol{D}_{t+1},z_{it+1},a_{it})\right]\\
 \text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\geq0\\
-\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\\
 K_{t-1} & =\int a_{it-1}d\boldsymbol{D}_{t}\\
 L_{t} & =\int z_{it}d\boldsymbol{D}_{t}=1\\
 r_{t} & =\alpha Z_{t}(K_{t-1}/L_{t})^{\text{\alpha-1}}-\delta\\
@@ -696,13 +696,41 @@ vspace{-5mm}
 \begin{align*}
 v(Z_{t},K_{t-1},z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t+1},K_{t},z_{it+1},a_{it})\right]\\
 \text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\geq0\\
-\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\\
-K_{t} & =\text{PLM}(K_{t-1},Z_{t})\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\\
 r_{t} & =\alpha\Gamma_{t}(K_{t-1})^{\text{\alpha-1}}-\delta\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1})^{\alpha}\\
+K_{t} & =\text{PLM}(Z_{t},K_{t-1})\\
 Z_{t+1} & \sim\Gamma_{Z}(Z_{t})
 \end{align*}
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+PLM 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ 
+\begin_inset Quotes ald
+\end_inset
+
+perceived law of motion
+\begin_inset Quotes ard
 \end_inset
 
 
@@ -752,12 +780,12 @@ vspace{-7mm}
 
 \begin_inset Formula 
 \begin{align*}
-\tilde{v}(\boldsymbol{Z}_{t},\boldsymbol{S}_{t-1},\boldsymbol{z}_{t},a_{t-1}) & =\max_{a_{t},c_{t}}u(c_{t})+\beta\mathbb{E}_{t}\left[\tilde{v}(\boldsymbol{Z}_{t+1},\boldsymbol{S}_{t},\boldsymbol{z}_{t+1},a_{t})\right]\\
+v(\boldsymbol{Z}_{t},\boldsymbol{S}_{t-1},\boldsymbol{z}_{t},a_{t-1}) & =\max_{a_{t},c_{t}}u(c_{t})+\beta\mathbb{E}_{t}\left[v(\boldsymbol{Z}_{t+1},\boldsymbol{S}_{t},\boldsymbol{z}_{t+1},a_{t})\right]\\
 \text{s.t. }\boldsymbol{S}_{t},\boldsymbol{P}_{t} & =\text{PLM}(\boldsymbol{Z}_{t},\boldsymbol{S}_{t-1})\\
 a_{t}+c_{t} & =m(\boldsymbol{z}_{t},a_{t-1},\boldsymbol{P}_{t})\\
 \boldsymbol{z}_{t+1} & \sim\Gamma_{z}(\boldsymbol{z}_{t})\\
 \boldsymbol{Z}_{t+1} & \sim\Gamma_{Z}(\boldsymbol{Z}_{t})\\
-a_{t} & \geq-b,
+a_{t} & \geq-b
 \end{align*}
 
 \end_inset
@@ -1501,7 +1529,7 @@ Technology shocks:
 
 \begin_inset Formula 
 \[
-Z_{t+1}-Z_{ss}=\rho_{Z}(Z_{t}-Z_{ss})+\epsilon_{t+1}^{Z},\,\,\,\epsilon_{t}^{Z}\sim\mathcal{N}(0,\sigma_{Z}^{2})
+Z_{t+1}-Z_{ss}=\rho_{Z}(Z_{t}-Z_{ss})+\epsilon_{t+1}^{Z},\,\,\,\epsilon_{t+1}^{Z}\sim\mathcal{N}(0,\sigma_{Z}^{2})
 \]
 
 \end_inset
@@ -1654,14 +1682,11 @@ vspace{-5mm}
 \begin{align*}
 v(Z_{t},K_{t-1},I_{t-1},z_{t},a_{t-1}) & =\max_{a_{t},c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t+1},K_{t},I_{t},z_{t+1},a_{t})\right]\\
  & \text{s.t.}\\
-L_{t} & =1\\
-K_{t-1} & =\int a_{t-1}dD_{t}\\
 r_{t},w_{t},K_{t},I_{t} & =\text{PLM}(Z_{t},K_{t-1},I_{t-1})\\
 a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}z_{t}\\
 \log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t+1}]=1\\
 Z_{t+1} & =Z_{ss}+\rho_{Z}(Z_{t}-Z_{ss})+\epsilon_{t+1}^{Z},\,\,\,\epsilon_{t+1}^{Z}\sim\mathcal{N}(0,\sigma_{Z}^{2})\\
-D_{t+1} & =\Lambda(Z_{t},D_{t})\\
-a_{t} & \geq0.
+a_{t} & \geq0
 \end{align*}
 
 \end_inset
