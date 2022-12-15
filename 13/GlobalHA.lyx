@@ -637,7 +637,7 @@ vspace{-5mm}
 \begin_inset Formula 
 \begin{align*}
 v(Z_{t},\boldsymbol{D}_{t},z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t+1},\boldsymbol{D}_{t+1},z_{it+1},a_{it})\right]\\
-\text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\geq0\\
+\text{s.t. }a_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}-c_{it}\geq0\\
 \log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\\
 K_{t-1} & =\int a_{it-1}d\boldsymbol{D}_{t}\\
 L_{t} & =\int z_{it}d\boldsymbol{D}_{t}=1\\
@@ -695,10 +695,10 @@ vspace{-5mm}
 \begin_inset Formula 
 \begin{align*}
 v(Z_{t},K_{t-1},z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t+1},K_{t},z_{it+1},a_{it})\right]\\
-\text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\geq0\\
+\text{s.t. }a_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}-c_{it}\geq0\\
 \log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\\
-r_{t} & =\alpha\Gamma_{t}(K_{t-1})^{\text{\alpha-1}}-\delta\\
-w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1})^{\alpha}\\
+r_{t} & =\alpha Z_{t}(K_{t-1})^{\text{\alpha-1}}-\delta\\
+w_{t} & =(1-\alpha)Z_{t}(K_{t-1})^{\alpha}\\
 K_{t} & =\text{PLM}(Z_{t},K_{t-1})\\
 Z_{t+1} & \sim\Gamma_{Z}(Z_{t})
 \end{align*}
@@ -780,7 +780,7 @@ vspace{-7mm}
 
 \begin_inset Formula 
 \begin{align*}
-v(\boldsymbol{Z}_{t},\boldsymbol{S}_{t-1},\boldsymbol{z}_{t},a_{t-1}) & =\max_{a_{t},c_{t}}u(c_{t})+\beta\mathbb{E}_{t}\left[v(\boldsymbol{Z}_{t+1},\boldsymbol{S}_{t},\boldsymbol{z}_{t+1},a_{t})\right]\\
+v(\boldsymbol{Z}_{t},\boldsymbol{S}_{t-1},\boldsymbol{z}_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}\left[v(\boldsymbol{Z}_{t+1},\boldsymbol{S}_{t},\boldsymbol{z}_{t+1},a_{t})\right]\\
 \text{s.t. }\boldsymbol{S}_{t},\boldsymbol{P}_{t} & =\text{PLM}(\boldsymbol{Z}_{t},\boldsymbol{S}_{t-1})\\
 a_{t}+c_{t} & =m(\boldsymbol{z}_{t},a_{t-1},\boldsymbol{P}_{t})\\
 \boldsymbol{z}_{t+1} & \sim\Gamma_{z}(\boldsymbol{z}_{t})\\
@@ -1680,7 +1680,7 @@ vspace{-5mm}
 
 \begin_inset Formula 
 \begin{align*}
-v(Z_{t},K_{t-1},I_{t-1},z_{t},a_{t-1}) & =\max_{a_{t},c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t+1},K_{t},I_{t},z_{t+1},a_{t})\right]\\
+v(Z_{t},K_{t-1},I_{t-1},z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v(Z_{t+1},K_{t},I_{t},z_{t+1},a_{t})\right]\\
  & \text{s.t.}\\
 r_{t},w_{t},K_{t},I_{t} & =\text{PLM}(Z_{t},K_{t-1},I_{t-1})\\
 a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}z_{t}\\
@@ -2009,8 +2009,16 @@ RBF much more precise (2/3)
 \begin_layout Standard
 
 \series bold
-Pure PLM simulation:
+Pure PLM simulation
 \series default
+ from 
+\begin_inset Formula $K_{-1}^{\text{PLM}}=K_{-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $I_{-1}^{\text{PLM}}=I_{-1}$
+\end_inset
+
 
 \begin_inset Formula 
 \[

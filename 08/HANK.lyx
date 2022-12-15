@@ -819,7 +819,7 @@ status open
 \end_inset
 
 Intermediary goods indexed by 
-\begin_inset Formula $j\in(0,1)$
+\begin_inset Formula $j\in[0,1]$
 \end_inset
 
 
@@ -1326,7 +1326,7 @@ vspace{-2mm}
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\\
 \text{s.t. }a_{t} & =(1+r_{t})a_{t-1}+(w_{t}\ell_{t}-\tau_{t}+d_{t})z_{t}-c_{t}\geq0\\
-\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1
 \end{align*}
 
 \end_inset
@@ -1518,7 +1518,7 @@ Consumption and labor supply:
  Use linear interpolation to find 
 \begin_inset Formula 
 \[
-c^{\ast}(z_{t},a_{t-1})\text{ and }\ell^{\ast}(z_{t},a_{t-1})\text{ with }m_{t}=(1+r_{t})a_{t-1}+(w_{t}\ell_{t}^{\ast}-\tau_{t}+d_{t})z_{t}
+c^{\ast}(z_{t},a_{t-1})\text{ and }\ell^{\ast}(z_{t},a_{t-1})\text{ with }m_{t}=(1+r_{t})a_{t-1}
 \]
 
 \end_inset
