@@ -1,0 +1,742 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% general
+\usepackage[titletoc]{appendix}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{tikz}
+
+% algorithm
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\IncMargin{2.5cm}
+\DecMargin{2cm}
+\usepackage{fullwidth}
+\usepackage{enumitem}
+\setlist{leftmargin=1.7cm}
+
+% tables
+\usepackage{tabularx, siunitx, multirow, booktabs}
+\begingroup
+% Allow `_` and `:` in macro names (LaTeX3 style)
+\catcode`\_=11
+\catcode`\:=11
+% Internal code of `S`
+\gdef\tabularxcolumn#1{%
+    >{\__siunitx_table_collect_begin:Nn S{} }%
+    p{#1}%  <- this is different (is `c` in normal `S`)
+    <{\__siunitx_table_print:}%
+}
+\endgroup
+
+% figures
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfloat]{position=top}
+
+% footnotes
+\setlength{\skip\footins}{1cm}
+\usepackage[hang,splitrule]{footmisc}
+\setlength{\footnotemargin}{0.3cm} %.5
+\setlength{\footnotesep}{0.4cm}
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+
+% manual
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.7cm
+\topmargin 1cm
+\rightmargin 2cm
+\bottommargin 2.7cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset External
+	template PDFPages
+	filename front_page.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newgeometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Income and Wealth Inequality
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Code to start from is provided as supplementary material.
+ This code solves for the stationary equilibrium of the model in the special
+ case of 
+\begin_inset Formula $\sigma_{\beta}=\sigma_{\chi}=\kappa=0$
+\end_inset
+
+.
+ Your first task thus is to extend the code to solve the full model.
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first set of questions is related to the 
+\series bold
+stationary equilibrium
+\series default
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[a)]
+\end_layout
+
+\end_inset
+
+
+\series bold
+Discuss how 
+\begin_inset Formula $\sigma_{\psi}\in\{0.10,0.12,0.14\}$
+\end_inset
+
+ affects inequality
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Report at least the stock of capital, the standard deviation of income and
+ the standard deviation and skewness of savings.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[b)]
+\end_layout
+
+\end_inset
+
+
+\series bold
+Discuss how 
+\begin_inset Formula $\sigma_{\beta}\in\{0.01,0.02,0.03\}$
+\end_inset
+
+ affects inequality
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Report the same outcomes as in question a).
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[c)]
+\end_layout
+
+\end_inset
+
+
+\series bold
+Discuss how 
+\begin_inset Formula $\sigma_{\chi}\in\{0.10,0.20,0.30\}$
+\end_inset
+
+ affects inequality
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Report the same outcomes as in question a).
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Data shows that wealth inequality is much larger than income inequality,
+ and that the distribution of wealth is highly right skewed.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[d)]
+\end_layout
+
+\end_inset
+
+
+\series bold
+Interpret your results in light of this information.
+\end_layout
+
+\begin_layout Standard
+The second set of questions is related to the transition path when 
+\begin_inset Formula $\alpha_{t}=\alpha_{ss}+0.01\cdot0.9^{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[e)]
+\end_layout
+
+\end_inset
+
+
+\series bold
+Find the baseline transition path
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Discuss the implications for the stock of capital, capital income and inequality.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Consider a government which dislikes increases in capital income.
+ They therefore impose a tax on capital income so that post-tax capital
+ income is constant at the steady state level along the transition path.
+ The tax proceeds are rebated to the households as a lump-sum transfer.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[f)]
+\end_layout
+
+\end_inset
+
+
+\series bold
+Implement the proposed tax-and-transfer scheme and discuss whether the policy
+ is a good idea.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+1.
+ Model
+\end_layout
+
+\begin_layout Paragraph*
+Households.
+\end_layout
+
+\begin_layout Standard
+The model has a continuum of infinitely lived households indexed by 
+\begin_inset Formula $i\in[0,1]$
+\end_inset
+
+.
+ Households are 
+\emph on
+ex ante 
+\emph default
+heterogeneous in terms of their discount factors.
+ Households choose consumption and exogenously supply labor.
+ Savings is in terms of capital, which is rented out to firms at the idiosyncrat
+ic rental rate, 
+\begin_inset Formula $r_{it}^{K}$
+\end_inset
+
+.
+ There are no possibilities to borrow.
+ Households are 
+\emph on
+ex post 
+\emph default
+heterogeneous in terms of their stochastic labor productivity, 
+\begin_inset Formula $s_{it}$
+\end_inset
+
+, their stochastic capital productivity indicator, 
+\begin_inset Formula $\chi_{it}\in\{0,1\}$
+\end_inset
+
+, and their (end-of-period) savings, 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+.
+ The distribution of households over idiosyncratic states is denoted 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t}$
+\end_inset
+
+ before shocks are realized and 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+ afterwards.
+ The real wage is 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+, and real-profits are 
+\begin_inset Formula $\Pi_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The household problem is
+\begin_inset Formula 
+\begin{align}
+v_{t}(s_{it},\chi_{it},a_{it-1}) & =\max_{c_{t}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\kappa\frac{\left(a_{it}+\underline{a}\right)^{1-\sigma}}{1-\sigma}+\beta_{i}\mathbb{E}_{t}\left[v_{t+1}(s_{it+1},\chi_{it+1},a_{it})\right]\label{eq:Bellman}\\
+\text{s.t. }a_{it}+c_{it} & =(1+r_{it}^{K}-\delta)a_{it-1}+w_{t}s_{it}+\Pi_{t}\nonumber \\
+\log s_{it+1} & =\rho_{s}\log s_{it}+\psi_{it+1},\,\,\,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[s_{it}]=1\nonumber \\
+r_{it}^{K} & =r_{t}^{K}\cdot\begin{cases}
+1+\sigma_{\chi} & \text{if }\text{\ensuremath{\chi_{it}=1}}\\
+1-\sigma_{\chi}\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}} & \text{if }\text{\ensuremath{\chi_{it}=0}}
+\end{cases},\,\text{\ensuremath{\mathbb{E}}\left[r_{it}^{K}\right]=r_{t}^{K}}\nonumber \\
+\text{Pr}[\chi_{it+1}=1\,|\,\chi_{it}=0] & =\overline{\pi}_{\chi}\nonumber \\
+\text{Pr}[\chi_{it+1}=0\,|\,\chi_{it}=1] & =\underline{\pi}_{\chi}\nonumber \\
+a_{it} & \geq0.\nonumber 
+\end{align}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We have
+\begin_inset Formula 
+\begin{align*}
+\text{Pr}[\chi_{it}=1] & =\overline{\pi}_{\chi}\text{Pr}[\chi_{it}=0]+(1-\underline{\pi}_{\chi})\text{Pr}[\chi_{it}=1]\Leftrightarrow\\
+\text{Pr}[\chi_{it}=1] & =\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}}\text{Pr}[\chi_{it}=0]\Leftrightarrow\\
+1-\text{Pr}[\chi_{it}=0] & =\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}}\text{Pr}[\chi_{it}=0]\\
+1 & =\left(\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}}+1\right)\text{Pr}[\chi_{it}=0]
+\end{align*}
+
+\end_inset
+
+and therefore
+\begin_inset Formula 
+\begin{align*}
+\mathbb{E}\left[r_{it}^{K}\right] & =r_{t}^{K}\left(\left(1+\sigma_{\chi}\right)\text{Pr}[\chi_{it}=1]+\left(1-\sigma_{\chi}\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}}\right)\text{Pr}[\chi_{it}=0]\right)\\
+ & =r_{t}^{K}\left(\left(1+\sigma_{\chi}\right)\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}}+\left(1-\sigma_{\chi}\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}}\right)\right)\text{Pr}[\chi_{it}=0]\\
+ & =r_{t}^{K}\left(\frac{\overline{\pi}_{\chi}}{\underline{\pi}_{\chi}}+1\right)\text{Pr}[\chi_{it}=0]\\
+ & =r_{t}^{K}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The discount factors are drawn with equal probabilities from a three element
+ set, 
+\begin_inset Formula 
+\[
+\beta_{i}\in\{\breve{\beta}-\sigma_{\beta},\breve{\beta},\breve{\beta}+\sigma_{\beta}\}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The Euler-equation is 
+\begin_inset Formula 
+\begin{align}
+c_{it}^{-\rho} & =\kappa(a_{it}+\underline{a})^{-\sigma}+\beta_{i}\mathbb{E}\left[v_{a,it+1}(s_{it+1},\chi_{it+1},a_{it})\right]\label{eq:euler}\\
+v_{a,it} & =(1+r_{it}^{K}-\delta)c_{it}^{-\sigma}.\label{eq:envelope}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The aggregate quantities of central interest are
+\begin_inset Formula 
+\begin{align}
+L_{t}^{hh} & =\int s_{it}d\boldsymbol{D}_{t}=1\label{eq:L_hh}\\
+C_{t}^{hh} & =\int c_{it}d\boldsymbol{D}_{t}\label{eq:C_hh}\\
+A_{t}^{hh} & =\int a_{it}d\boldsymbol{D}_{t}\label{eq:A_hh}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Firms.
+\end_layout
+
+\begin_layout Standard
+A representative firm rents capital, 
+\begin_inset Formula $K_{t-1}$
+\end_inset
+
+, and hires labor, 
+\begin_inset Formula $L_{t}$
+\end_inset
+
+, to produce goods, with the production function
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=\Gamma_{t}K_{t-1}^{\alpha_{t}}L_{t}^{1-\alpha_{t}}\label{eq:production}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Gamma_{t}$
+\end_inset
+
+ is technology and 
+\begin_inset Formula $\alpha_{t}$
+\end_inset
+
+ is the Cobb-Douglas weight parameter.
+ Capital depreciates with the rate 
+\begin_inset Formula $\delta\in(0,1)$
+\end_inset
+
+.
+ The real rental price of capital is 
+\begin_inset Formula $r_{t}^{K}$
+\end_inset
+
+ and the real wage is 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+.
+ Profits are 
+\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}-r_{t}^{K}K_{t-1}$
+\end_inset
+
+.
+ The households own the representative firm in equal shares.
+\end_layout
+
+\begin_layout Standard
+The law-of-motion for capital is 
+\begin_inset Formula $K_{t}=(1-\delta)K_{t-1}+I_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Market clearing.
+\end_layout
+
+\begin_layout Standard
+Market clearing implies
+\end_layout
+
+\begin_layout Enumerate
+Labor market: 
+\begin_inset Formula $L_{t}=\int s_{it}d\boldsymbol{D}_{t}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Asset market: 
+\begin_inset Formula $K_{t}=A_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Goods market: 
+\begin_inset Formula $Y_{t}=C_{t}^{hh}+I_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+2.
+ Calibration
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Preferences: 
+\series default
+
+\begin_inset Formula $\sigma=2$
+\end_inset
+
+, 
+\begin_inset Formula $\breve{\beta}=0.96$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{\beta}=0.01$
+\end_inset
+
+, 
+\begin_inset Formula $\kappa=0.5$
+\end_inset
+
+, 
+\begin_inset Formula $\underline{a}=5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Income process:
+\series default
+ 
+\begin_inset Formula $\rho_{s}=0.95$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{\psi}=0.10$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Return process:
+\series default
+ 
+\begin_inset Formula $\sigma_{\chi}=0.10$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{\pi}_{\chi}=0.01$
+\end_inset
+
+, 
+\begin_inset Formula $\underline{\pi}_{\chi}=0.10$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Production:
+\series default
+ 
+\begin_inset Formula $\Gamma_{ss}=1$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha_{ss}=0.30$
+\end_inset
+
+, 
+\begin_inset Formula $\delta=0.10$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+restoregeometry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
