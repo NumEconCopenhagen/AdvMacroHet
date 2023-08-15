@@ -32,11 +32,11 @@ class ConSavModelClass(EconModelClass):
         par.w = 1.0 # wage level
         
         par.rho_zt = 0.96 # AR(1) parameter
-        par.sigma_psi = 0.10 # std. of persistent shock
-        par.Nzt = 5 # number of grid points for zt
+        par.sigma_psi = 0.15 # std. of persistent shock
+        par.Nzt = 7 # number of grid points for zt
         
-        par.sigma_xi = 0.10 # std. of transitory shock
-        par.Nxi = 2 # number of grid points for xi
+        par.sigma_xi = np.nan # std. of transitory shock
+        par.Nxi = 1 # number of grid points for xi
 
         # saving
         par.r = 0.02 # interest rate
@@ -70,7 +70,8 @@ class ConSavModelClass(EconModelClass):
         par.zt_grid,par.zt_trans,par.zt_ergodic,par.zt_trans_cumsum,par.zt_ergodic_cumsum = _out
         
         # transitory
-        if par.sigma_xi > 0 and par.Nxi > 1:
+        if par.Nxi > 1:
+            assert not np.isnan(par.sigma_xi), f'{par.sigma_xi = :.1f} is NaN, should be non-NaN'
             par.xi_grid,par.xi_weights = log_normal_gauss_hermite(par.sigma_xi,par.Nxi)
             par.xi_trans = np.broadcast_to(par.xi_weights,(par.Nxi,par.Nxi))
         else:
@@ -88,7 +89,7 @@ class ConSavModelClass(EconModelClass):
         par.z_trans_T = par.z_trans.T
 
         # b. asset grid
-        assert par.b <= 0.0, f'{par.b = :.1f} > 0, should be negative'
+        assert par.b <= 0.0, f'{par.b = :.1f} > 0, should be non-positive'
         b_min = -par.z_grid.min()/par.r
         if par.b < b_min:
             print(f'parameter changed: {par.b = :.1f} -> {b_min = :.1f}') 
@@ -121,6 +122,15 @@ class ConSavModelClass(EconModelClass):
         sim.Dbeg_ = np.zeros(sol.a.shape)
         sim.D_ = np.zeros(sol.a.shape)
 
+    def solve_hh_backwards_vfi(self,vbeg_plus,c_plus,vbeg,c,a):
+        """ solve household problem backwards one step using value function iteration """
+
+        with jit(self) as model:
+
+            par = model.par
+        
+        solve_hh_backwards_vfi(par,vbeg_plus,c_plus,vbeg,c,a)  
+    
     def solve(self,do_print=True,algo='vfi'):
         """ solve model using value function iteration or egm """
 

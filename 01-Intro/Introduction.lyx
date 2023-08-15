@@ -174,7 +174,7 @@ author{Jeppe Druedahl
 
 
 \backslash
-date{2022}
+date{2023}
 \end_layout
 
 \begin_layout Plain Layout
@@ -515,11 +515,11 @@ More about the course
 \end_layout
 
 \begin_layout Enumerate
-Dynamic programming - theory
+Consumption-saving models
 \end_layout
 
 \begin_layout Enumerate
-Dynamic programming - practice
+Numerical dynamic programming
 \end_layout
 
 \end_deeper
@@ -552,6 +552,19 @@ status open
 \begin_layout Plain Layout
 
 <+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
 \end_layout
 
 \end_inset
@@ -690,6 +703,12 @@ Heterogeneous Agent
 Neo-Classical 
 \emph default
 model
+\begin_inset Newline newline
+\end_inset
+
+
+\size footnotesize
+(Aiyagari-Bewley-Hugget-Imrohoroglu or Standard Incomplete Market model)
 \end_layout
 
 \begin_layout Itemize
@@ -761,7 +780,7 @@ Thursday 10-13
 
 \begin_deeper
 \begin_layout Standard
-2 hours of 
+~2 hours of 
 \begin_inset Quotes ald
 \end_inset
 
@@ -773,7 +792,7 @@ normal
 \end_layout
 
 \begin_layout Standard
-1 hour of active problem solving (no exercise classes)
+~1 hour of active problem solving (no exercise classes)
 \end_layout
 
 \end_deeper
@@ -912,7 +931,7 @@ textcolor{DarkRed}{
 \begin_inset CommandInset href
 LatexCommand href
 name "github.com/numeconcopenhagen/adv-macro-het"
-target "https://github.com/numeconcopenhagen/adv-macro-het"
+target "https://github.com/NumEconCopenhagen/AdvMacroHet"
 literal "false"
 
 \end_inset
@@ -1043,9 +1062,9 @@ status open
 
 \end_inset
 
-Assignment based on a 
+
 \series bold
-HANC-model
+Technical assignment
 \end_layout
 
 \begin_deeper
@@ -1054,7 +1073,7 @@ HANC-model
 \bar under
 Deadline
 \bar default
-: 14th of October (
+: 6th of October (
 \emph on
 must be approved before exam
 \emph default
@@ -1073,11 +1092,9 @@ status open
 
 \end_inset
 
-Assignment based on a 
+
 \series bold
-HANK -model
-\series default
- 
+Economic assignment
 \end_layout
 
 \begin_deeper
@@ -1086,7 +1103,7 @@ HANK -model
 \bar under
 Deadline
 \bar default
-: 25th of November (
+: 24th of November (
 \emph on
 must be approved before exam
 \emph default
@@ -1119,7 +1136,7 @@ ion
 \bar under
 Deadline for proposal
 \bar default
-: 9th of December
+: 8th of December
 \end_layout
 
 \begin_layout Standard
@@ -1127,7 +1144,7 @@ Deadline for proposal
 \bar under
 Deadline for peer feedback
 \bar default
-: 16th of December (
+: 14th of December (
 \emph on
 exam requirement
 \emph default
@@ -1263,10 +1280,6 @@ Python
 \end_layout
 
 \begin_layout Enumerate
-JupyterLab
-\end_layout
-
-\begin_layout Enumerate
 VSCode
 \end_layout
 
@@ -1344,7 +1357,7 @@ Course plan
 \begin_layout Frame
 
 \emph on
-See CoursePlan.pdf
+See CoursePlan.pdf in repository
 \end_layout
 
 \begin_layout Standard
@@ -1515,7 +1528,7 @@ Discuss and assess the importance of how heterogeneity and risk is modeled
 \end_layout
 
 \begin_layout Section
-Dynamic programming
+Consumption-Saving
 \end_layout
 
 \begin_layout Frame
@@ -1523,7 +1536,7 @@ Dynamic programming
 status open
 
 \begin_layout Plain Layout
-From static to dynamic consumer optimization
+Generations of models
 \end_layout
 
 \end_inset
@@ -1532,26 +1545,51 @@ From static to dynamic consumer optimization
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
+\begin_layout Enumerate
+Permanent income hypothesis (Friedman, 1957) or life-cycle model (Modigliani
+ and Brumburg, 1954) 
+\end_layout
+
+\begin_layout Enumerate
+Buffer-stock consumption model 
+\begin_inset Newline newline
+\end_inset
+
+(Deaton, 1991, 1992; Carroll, 1992, 1997)
+\end_layout
+
+\begin_layout Enumerate
+Multiple-asset buffer-stock consumption models
+\begin_inset Newline newline
+\end_inset
+
+(e.g.
+ Kaplan and Violante (2014))
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-
-<+->
+Consumption-saving
 \end_layout
 
 \end_inset
 
 
-\series bold
-Budget constraint 
-\series default
-for 
-\begin_inset Formula $t\in\{0,1,\dots,T-1\}$
-\end_inset
+\end_layout
 
-
+\begin_deeper
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1559,18 +1597,18 @@ status open
 
 
 \backslash
-vspace{-1mm}
+vspace{-8mm}
 \end_layout
 
 \end_inset
 
 
-\size small
-
 \begin_inset Formula 
 \begin{align*}
-\text{assets}_{t} & =(1+\text{return\,rate})\times\text{assets}_{t-1}+\text{wage}\times\text{productivity}_{t}-\text{consumption}_{t}\\
-a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}
+v_{0}(a_{-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\\
+ & \text{s.t.}\\
+a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
+a_{T-1} & \geq0
 \end{align*}
 
 \end_inset
@@ -1584,12 +1622,111 @@ status open
 
 \begin_layout Plain Layout
 
-<+->
+
+\backslash
+vspace{-3mm}
 \end_layout
 
 \end_inset
 
 
+\series bold
+Variables:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Consumption: 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Productivity: 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+End-of-period savings: 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ (
+\emph on
+no debt at death
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Parameters:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Discount factor: 
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Wage: 
+\begin_inset Formula $w$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Interest rate: 
+\begin_inset Formula $r$
+\end_inset
+
+ (define 
+\begin_inset Formula $R\equiv1+r$
+\end_inset
+
+ as interest factor)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+It is a 
+\emph on
+static 
+\emph default
+problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -1597,21 +1734,20 @@ status open
 
 
 \backslash
-vspace{-2mm}
+vspace{-8mm}
 \end_layout
 
 \end_inset
 
 
-\series bold
-Borrowing constraints: 
-\begin_inset Formula $\text{\ensuremath{a_{t}\geq w\cdot b}}$
-\end_inset
+\begin_inset Formula 
+\begin{align*}
+v_{0}(a_{-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\\
+ & \text{s.t.}\\
+a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
+a_{T-1} & \geq0
+\end{align*}
 
- 
-\series default
-and 
-\begin_inset Formula $a_{T}\geq0$
 \end_inset
 
 
@@ -1623,14 +1759,20 @@ status open
 
 \begin_layout Plain Layout
 
-<+->
+
+\backslash
+vspace{-3mm}
 \end_layout
 
 \end_inset
 
 
 \series bold
-Static problem: 
+It is a 
+\emph on
+static 
+\emph default
+problem:
 \end_layout
 
 \begin_deeper
@@ -1647,7 +1789,11 @@ Information:
 \begin_inset Formula $t$
 \end_inset
 
- 
+ at 
+\begin_inset Formula $t=0$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1657,18 +1803,6 @@ Target:
 \series default
  Discounted utility, 
 \begin_inset Formula $\sum_{t=0}^{T-1}\beta^{t}u(c_{t})$
-\end_inset
-
-,
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\beta>0$
 \end_inset
 
 
@@ -1698,7 +1832,7 @@ Sequence of consumption
 choices
 \emph default
  
-\begin_inset Formula $c_{0},c_{1},\dots,c_{T-1}$
+\begin_inset Formula $c_{0}^{\star},c_{1}^{\star},\dots,c_{T-1}^{\star}$
 \end_inset
 
 
@@ -1707,6 +1841,32 @@ choices
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IBC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -1720,7 +1880,489 @@ status open
 
 
 \series bold
-Dynamic programming:
+Substitution 
+\series default
+implies 
+\emph on
+Intertemporal Budget Constraint
+\emph default
+ (IBC)
+\begin_inset Formula 
+\begin{eqnarray*}
+a_{T-1} & = & Ra_{T-2}+wz_{T-1}-c_{T-1}\\
+ & = & R^{2}a_{T-3}+Rwz_{T-2}-Rc_{T-1}+wz_{T-1}-c_{T-1}\\
+ & = & R^{T}a_{-1}+\sum_{t=0}^{T-1}R^{T-1-t}(wz_{t}-c_{t})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use 
+\series bold
+terminal condition 
+\series default
+
+\begin_inset Formula $a_{T-1}=0$
+\end_inset
+
+ (equality due utility max.)
+\begin_inset Formula 
+\begin{eqnarray*}
+R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & s_{0}+h_{0}-\sum_{t=0}^{T-1}R^{-t}c_{t}=0
+\end{eqnarray*}
+
+\end_inset
+
+where 
+\begin_inset Formula $s_{0}\equiv Ra_{-1}$
+\end_inset
+
+ (after-interst assets)
+\begin_inset Newline newline
+\end_inset
+
+and 
+\begin_inset Formula $h_{0}\equiv\sum_{t=0}^{T-1}R^{-t}wz_{t}$
+\end_inset
+
+ (human capital)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+FOC and Euler-equation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{L}=\sum_{t=0}^{T-1}\beta^{t}u(c_{t})+\lambda\left[\sum_{t=0}^{T-1}R^{-t}c_{t}-s_{0}-h_{0}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+First order conditions
+\series default
+: 
+\begin_inset Formula 
+\[
+\forall t:0=\beta^{t}u^{\prime}(c_{t})-\lambda(1+r)^{-t}\Leftrightarrow u^{\prime}(c_{t})=-\lambda\left(\beta R\right)^{-t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Euler-equation
+\series default
+ for 
+\begin_inset Formula $k\in\{1,2,\dots\}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\frac{u^{\prime}(c_{t})}{u^{\prime}(c_{t+k})}=\frac{-\lambda\left(\beta R\right)^{-t}}{-\lambda\left(\beta R\right)^{-(t+k)}}=\left(\beta R\right)^{k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Consumption choice
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+CRRA:
+\series default
+ 
+\begin_inset Formula $u(c_{t})=\frac{c_{t}^{1-\sigma}}{1-\sigma}$
+\end_inset
+
+ imply Euler-equation
+\begin_inset Formula 
+\[
+\frac{c_{0}^{-\sigma}}{c_{t}^{-\sigma}}=\left(\beta R\right)^{t}\Leftrightarrow c_{t}=(\beta R)^{\frac{t}{\sigma}}c_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Insert 
+\series bold
+Euler 
+\series default
+into
+\series bold
+ IBC
+\series default
+ to get consumption choice
+\begin_inset Formula 
+\begin{eqnarray*}
+\sum_{t=0}^{T-1}R^{-t}(\beta R)^{t/\sigma}c_{0} & = & s_{0}+h_{0}\Leftrightarrow\\
+c_{0}^{\star} & = & \frac{1-\frac{(\beta R)^{1/\rho}}{R}}{1-\left(\frac{(\beta R)^{1/\rho}}{R}\right)^{T}}(s_{0}+h_{0})
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Infinite horizon
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Infitnite horizon 
+\series default
+for 
+\begin_inset Formula $\beta R<1$
+\end_inset
+
+: Let 
+\begin_inset Formula $T\rightarrow\infty$
+\end_inset
+
+ to get
+\begin_inset Formula 
+\[
+c_{0}^{\star}=\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Interesting properties 
+\series default
+are e.g.:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Interest rate sensitivity: 
+\begin_inset Formula $\frac{\partial c_{0}}{\partial r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+MPC of permanent income change: 
+\begin_inset Formula $\frac{\partial c_{0}}{\partial w}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+MPC of future income: 
+\begin_inset Formula $\frac{\partial c_{0}}{\partial z_{t}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+MPC of windfall income: 
+\begin_inset Formula $\frac{\partial c_{0}}{\partial s_{0}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+No borrowing constraints or uncertainty
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Other simplifications:
+\series default
+ No age life-cycle, bequests etc.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Liquidity/borrowing constraints
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Implied period 
+\begin_inset Formula $0$
+\end_inset
+
+ 
+\series bold
+savings
+\series default
+ are
+\series bold
+:
+\begin_inset Formula 
+\[
+a_{0}=Ra_{-1}+wz_{0}-c_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Borrowing constraint:
+\series default
+ 
+\begin_inset Formula $a_{0}\geq-w\cdot b$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Maximum consumption:
+\series default
+ 
+\begin_inset Formula $\overline{c}_{0}=Ra_{-1}+wz_{0}+wb$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Optimal consumption: 
+\series default
+Constrained or unconstrained.
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+\begin_inset Formula 
+\[
+c_{0}^{\star}=\min\left\{ \overline{c}_{0},\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Empirical realism.
+
+\series default
+ Incl.
+ high MPC of constrained.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Technical issue: 
+\series default
+Borrowing constraints further in the future complicated the analytical solution
+ considerably.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Uncertainty
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-8mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+v_{0}(a_{-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\mathbb{E}_{0}\left[\sum_{t=0}^{\infty}\beta^{t}u(c_{t})\right]\\
+ & \text{s.t.}\\
+a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
+z_{t} & \sim\mathcal{Z}(z_{t-1})\\
+a_{t} & \geq-wb\\
+\lim_{t\rightarrow\infty}(1+r)^{-t}a_{t} & \geq0\,\,\,\,\,[\text{No-Ponzi game}]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Stochastic income
+\series default
+ from 1st order Markov-process, 
+\begin_inset Formula $\mathcal{Z}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\emph on
+A true dynamic problem:
 \end_layout
 
 \begin_deeper
@@ -1746,19 +2388,7 @@ Target:
 Expected
 \emph default
  discounted utility, 
-\begin_inset Formula $\mathbb{E}_{0}\left[\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\right]$
-\end_inset
-
-,
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset space ~
-\end_inset
-
-
-\begin_inset Formula $\beta>0$
+\begin_inset Formula $\mathbb{E}_{0}\left[\sum_{t=0}^{\infty}\beta^{t}u(c_{t})\right]$
 \end_inset
 
 
@@ -1810,44 +2440,24 @@ functions
 status open
 
 \begin_layout Plain Layout
-Static solution: IBC
+IBC
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Frame
 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Substitution 
 \series default
-implies 
-\emph on
-Intertemporal Budget Constraint
-\emph default
- (IBC)
+still implies:
 \begin_inset Formula 
 \begin{eqnarray*}
-a_{T-1} & = & (1+r)a_{T-2}+wz_{T-1}-c_{T-1}\\
- & = & (1+r)^{2}a_{T-3}+(1+r)wz_{T-2}-(1+r)c_{T-1}+wz_{T-1}-c_{T-1}\\
- & = & (1+r)^{T}a_{-1}+\sum_{t=0}^{T-1}(1+r)^{T-1-t}(wz_{t}-c_{t})
+R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & b_{0}+h_{0}-\sum_{t=0}^{T-1}R^{-t}c_{t}=0
 \end{eqnarray*}
 
 \end_inset
@@ -1856,38 +2466,52 @@ a_{T-1} & = & (1+r)a_{T-2}+wz_{T-1}-c_{T-1}\\
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
 
-\begin_layout Plain Layout
+\series bold
+What if 
+\begin_inset Formula $T\rightarrow\infty$
+\end_inset
 
-<+->
+? 
+\series default
+We must have 
+\begin_inset Formula $\lim_{T\rightarrow\infty}R^{-(T-1)}a_{T-1}=0$
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{T\rightarrow\infty}R^{-(T-1)}a_{T-1}>0$
 \end_inset
 
-Use 
+: Consumption can be increased
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\lim_{T\rightarrow\infty}R^{-(T-1)}a_{T-1}<0$
+\end_inset
+
+: Violates No-Ponzi game condition
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+For 
+\begin_inset Formula $T\rightarrow\infty$
+\end_inset
+
+ we have the
 \series bold
-terminal condition 
+ IBC
 \series default
-
-\begin_inset Formula $a_{T-1}=0$
-\end_inset
-
- (equality due utility max.)
+:
 \begin_inset Formula 
-\begin{eqnarray*}
-(1+r)^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & s_{0}+h_{0}-\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}=0
-\end{eqnarray*}
+\[
+\sum_{t=0}^{\infty}R^{-t}c_{t}=(1+r)a_{-1}+\sum_{t=0}^{\infty}R^{-t}wz_{t}
+\]
 
-\end_inset
-
-where 
-\begin_inset Formula $s_{0}=(1+r)a_{-1}$
-\end_inset
-
- and 
-\begin_inset Formula $h_{0}\equiv\sum_{t=0}^{T-1}(1+r)^{-t}wz_{t}$
 \end_inset
 
 
@@ -1906,7 +2530,7 @@ where
 status open
 
 \begin_layout Plain Layout
-Static solution: FOC and consumption function
+Euler-equation from variation argument
 \end_layout
 
 \end_inset
@@ -1915,17 +2539,87 @@ Static solution: FOC and consumption function
 \end_layout
 
 \begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Case I:
+\series default
+ If 
+\begin_inset Formula $u^{\prime}(c_{t})>\beta R\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
 \begin_layout Standard
-\begin_inset Formula 
-\[
-\mathcal{L}=\sum_{t=0}^{T-1}\beta^{t}\frac{c_{t}^{1-\rho}}{1-\rho}+\lambda\left[\sum_{t=0}^{T-1}(1+r)^{-t}c_{t}-s_{0}-h_{0}\right]
-\]
+Increase 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ by marginal 
+\begin_inset Formula $\Delta>0$
+\end_inset
+
+, and lower 
+\begin_inset Formula $c_{t+1}$
+\end_inset
+
+ by 
+\begin_inset Formula $R\Delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Feasible:
+\series default
+ Yes, if 
+\begin_inset Formula $a_{t}>-\underline{a}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Utility change:
+\series default
+ 
+\begin_inset Formula $u^{\prime}(c_{t})+\beta\left(-R\right)\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]>0$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -1939,12 +2633,314 @@ status open
 
 
 \series bold
-First order conditions
+Case II:
 \series default
+ If 
+\begin_inset Formula $u^{\prime}(c_{t})<\beta(1+r)\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]$
+\end_inset
+
 : 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Lower 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ by marginal 
+\begin_inset Formula $\Delta>0$
+\end_inset
+
+, and increase 
+\begin_inset Formula $c_{t+1}$
+\end_inset
+
+ by 
+\begin_inset Formula $R\Delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Feasible:
+\series default
+ Yes (always)
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Utility change: 
+\series default
+
+\begin_inset Formula $u^{\prime}(c_{t})+\beta R\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]>0$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Conclusion: 
+\series default
+By contradiction
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Constrained:
+\series default
+ 
+\begin_inset Formula $a_{t}=-\underline{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $u^{\prime}(c_{t})\geq\beta R\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]$
+\end_inset
+
+, or
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Unconstrained:
+\series default
+ 
+\begin_inset Formula $a_{t}>-\underline{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $u^{\prime}(c_{t})=\beta R\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Special case I: Qudratic utility
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Quadratic utility:
+\series default
+ 
+\begin_inset Formula $u(c_{it})=-\frac{1}{2}(\overline{c}-c)^{2}$
+\end_inset
+
+ with 
+\begin_inset Formula $\beta R=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Euler-equation: 
+\series default
+\emph on
+Consumption = expected future consumption
+\emph default
+
+\begin_inset Formula 
+\begin{align*}
+(\overline{c}-c_{t}) & =\mathbb{E}_{t}\left[(\overline{c}-c_{t+k})\right]\Leftrightarrow c_{t}=\mathbb{E}_{t}\left[c_{t+k}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Use 
+\series bold
+IBC 
+\series default
+in expectation
+\series bold
+ 
+\series default
+to get 
+\series bold
+consumption function:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\sum_{t=0}^{\text{\ensuremath{\infty}}}R^{-t}\mathbb{E}_{0}\left[c_{t}\right] & =Ra_{-1}+\sum_{t=0}^{\text{\ensuremath{\infty}}}R^{-t}w\mathbb{E}_{0}\left[z_{t}\right]\Rightarrow\\
+c_{0} & =ra_{-1}+\frac{r}{R}\sum_{t=0}^{T}R^{-t}w\mathbb{E}_{0}\left[z_{t}\right]\Rightarrow\\
+c^{\star}(a_{t-1},z_{t}) & =ra_{t-1}+\frac{r}{R}\sum_{k=0}^{\infty}R^{-k}w\mathbb{E}_{t}\left[z_{t+k}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Certainty equivalence:
+\series default
+ 
+\emph on
+Only expected income matter
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Special case II: CARA utility
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+CARA utility:
+\series default
+ 
+\begin_inset Formula $u(c_{t})=-\frac{1}{\alpha}e^{-\alpha c}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Productivity is absolute random walk:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+z_{t} & =z_{it-1}+\psi_{it}\\
+\psi_{it} & \sim\mathcal{N}(0,\sigma_{\psi}^{2})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Consumption function 
+\series default
+(
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+color{DarkRed}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "see proof"
+target "https://www.econ2.jhu.edu/people/ccarroll/public/LectureNotes/Consumption/CARAModelWithYRisk/"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+)
+\series bold
+:
+\series default
+
 \begin_inset Formula 
 \[
-\forall t:0=\beta^{t}c_{t}^{-\rho}-\lambda(1+r)^{-t}\Leftrightarrow c_{t}^{-\rho}=\beta(1+r)c_{t+1}^{-\rho}
+c_{t}^{\star}(a_{it-1},z_{it})=ra_{it-1}+wz_{it}-\frac{\log\left(\beta R\right)^{\frac{1}{\alpha}}+\alpha\frac{\sigma_{\psi}^{2}}{2}}{r^{2}}
 \]
 
 \end_inset
@@ -1953,52 +2949,179 @@ First order conditions
 \end_layout
 
 \begin_layout Itemize
+
+\series bold
+Precautionary saving: 
+\series default
+
+\begin_inset Formula $\sigma_{\psi}^{2}\uparrow$
+\end_inset
+
+ implies 
+\begin_inset Formula $c_{t}^{\star}\downarrow$
+\end_inset
+
+ for given 
+\begin_inset Formula $a_{t-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph on
+accumulation of buffer-stock
+\emph default
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Further resources
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<+->
+{
+\backslash
+color{DarkRed}
 \end_layout
 
 \end_inset
 
-Insert 
-\series bold
-Euler 
-\series default
-into
-\series bold
- IBC
-\series default
- to get consumption choice
-\begin_inset Formula 
-\begin{eqnarray*}
-\sum_{t=0}^{T-1}(1+r)^{-t}(\beta(1+r))^{t/\rho}c_{0} & = & s_{0}+h_{0}\Leftrightarrow\\
-c_{0} & = & \frac{1-(\beta(1+r))^{1/\rho}/(1+r)}{1-((\beta(1+r))^{1/\rho}/(1+r))^{T}}(s_{0}+h_{0})
-\end{eqnarray*}
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Lecture notes"
+target "http://www.econ2.jhu.edu/people/ccarroll/public/lecturenotes/Consumption/"
+literal "false"
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Itemize
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<+->
+}
+\end_layout
+
+\end_inset
+
+ by Christopher Carroll 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+color{DarkRed}
 \end_layout
 
 \end_inset
 
 
-\series bold
-Question:
-\series default
- Is this the solution correct?
+\begin_inset CommandInset href
+LatexCommand href
+name "Lecture notes"
+target "https://www.econ.berkeley.edu/sites/default/files/course-homepage/2018-10-23/lecture-notes/Notes_Consumption_Section4-2_POG_F2015.pdf"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ by Pierre-Olivier Gourinchas
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+color{DarkRed}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "The Economics of Consumption"
+target "https://global.oup.com/academic/product/the-economics-of-consumption-9780199383153?cc=dk&lang=en&"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+, Jappelli and Pistaferri (2017)
+\end_layout
+
+\begin_layout Enumerate
+Liquidity constraints and precautionary saving, Carroll, Holm, Kimball (JET,
+ 2021)
+\end_layout
+
+\begin_layout Enumerate
+Theoretical Foundations of Buffer Stock Saving, Carroll (QE, forthcomming)
 \end_layout
 
 \end_deeper
@@ -2182,6 +3305,19 @@ Vocabulary
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
@@ -2194,6 +3330,18 @@ v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1}
 \end_layout
 
 \begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
 State variables: 
@@ -2253,105 +3401,14 @@ Parameters:
 
 \end_layout
 
-\end_deeper
 \begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Timing of shocks
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
-Realization of shocks:
+Note:
 \series default
- First in the period before choices are made
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Beginning-of-period value function 
-\series default
-(before realization)
-\series bold
-:
-\series default
-
-\begin_inset Formula 
-\begin{align*}
-\underline{v}_{t}(z_{t-1},a_{t-1}) & =\mathbb{E}_{t-1}\left[v_{t}(z_{t},a_{t-1})\right]
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-End-of-period value function 
-\series default
-(after realization)
-\series bold
-:
-\series default
-
-\begin_inset Formula 
-\begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(z_{t},a_{t})\\
- & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
-\end{align*}
-
-\end_inset
-
-
+ Conceptually straightforward to extend to more goods, more assets or other
+ states, more complex uncentainty, bounded rationality etc.
+ 
 \end_layout
 
 \end_deeper
@@ -2388,7 +3445,7 @@ status open
 
 
 \backslash
-vspace{-4mm}
+vspace{-7mm}
 \end_layout
 
 \end_inset
@@ -2406,6 +3463,18 @@ v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1}
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
 
 \series bold
 Contraction mapping result:
@@ -2470,7 +3539,7 @@ In practice:
 status open
 
 \begin_layout Plain Layout
-The natural borrowing limit
+One analytical result: Natural borrowing limit
 \end_layout
 
 \end_inset
@@ -2599,7 +3668,112 @@ status open
 
 \series bold
 Natural borrowing constraint: 
-\begin_inset Formula $a_{t}>w\cdot\max\left\{ b,-\frac{\underline{z}}{r}\right\} $
+\begin_inset Formula $a_{t}>w\max\left\{ -b,-\frac{\underline{z}}{r}\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Numerical solution
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Timing of shocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Realization of shocks:
+\series default
+ First in the period before choices are made
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Beginning-of-period value function 
+\series default
+(before realization)
+\series bold
+:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{t}(z_{t-1},a_{t-1}) & =\mathbb{E}_{t-1}\left[v_{t}(z_{t},a_{t-1})\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+End-of-period value function 
+\series default
+(after realization)
+\series bold
+:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(z_{t},a_{t})\\
+ & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
+\end{align*}
+
 \end_inset
 
 
@@ -2618,7 +3792,7 @@ Natural borrowing constraint:
 status open
 
 \begin_layout Plain Layout
-Numerical value function iteration - basics
+Discretization and linear interpolation
 \end_layout
 
 \end_inset
@@ -2803,6 +3977,51 @@ vspace{-2mm}
 status open
 
 \begin_layout Plain Layout
+Grids
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/grids.pdf
+	height 80theight%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Deriving transition probabilities
 \end_layout
 
@@ -2927,6 +4146,51 @@ Combined:
 \end_inset
 
  (kronecker product)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Transition probability matrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/z_trans.pdf
+	height 80theight%
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -3207,7 +4471,7 @@ so that
 status open
 
 \begin_layout Plain Layout
-Numerical value function iteration - loops
+Value function iteration
 \end_layout
 
 \end_inset
@@ -3334,7 +4598,7 @@ numerical optimizer
 status open
 
 \begin_layout Plain Layout
-In practice
+Convergence
 \end_layout
 
 \end_inset
@@ -3343,26 +4607,88 @@ In practice
 \end_layout
 
 \begin_deeper
-\begin_layout Itemize
+\begin_layout Standard
+\begin_inset ERT
+status open
 
-\series bold
-Example-notebooks:
+\begin_layout Plain Layout
+
+
+\backslash
+centering
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-Introduces 
-\family typewriter
-EconModel
-\family default
- package
-\end_layout
+\end_inset
 
-\begin_layout Enumerate
-Show implementation of solution and simulation methods
+
+\begin_inset Graphics
+	filename figs/vbeg_func_convergence.pdf
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/c_func_convergence.pdf
+	width 50text%
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Converged policy functions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/c_func.pdf
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/a_diff_func.pdf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -3917,6 +5243,103 @@ Introduces a non-continuous distribution
 status open
 
 \begin_layout Plain Layout
+CDF of savings in final period
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/a_cdf.pdf
+	height 80theight%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+MPCs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/MPC_policy.pdf
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/MPC_dist.pdf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Side-note: Matrix formulation
 \end_layout
 
@@ -4132,238 +5555,6 @@ Young (2010), Tan (2020), Ocampo and Robinson (2022)
 
 \begin_layout Section
 EGM
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Euler-equation from variation argument 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Case I:
-\series default
- If 
-\begin_inset Formula $c_{t}^{-\rho}>\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
-\end_inset
-
-:
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Increase 
-\begin_inset Formula $c_{t}$
-\end_inset
-
- by 
-\begin_inset Formula $\Delta>0$
-\end_inset
-
-, and lower 
-\begin_inset Formula $c_{t+1}$
-\end_inset
-
- by 
-\begin_inset Formula $(1+r)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-Feasible:
-\series default
- Yes, if 
-\begin_inset Formula $a_{t}>wb$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-Utility change:
-\series default
- 
-\begin_inset Formula $\left(c_{t}^{-\rho}\right)+\beta\left(-(1+r)\right)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]>0$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Case II:
-\series default
- If 
-\begin_inset Formula $c_{t}^{-\rho}<\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
-\end_inset
-
-: 
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-Lower 
-\begin_inset Formula $c_{t}$
-\end_inset
-
- by 
-\begin_inset Formula $\Delta>0$
-\end_inset
-
-, and increase 
-\begin_inset Formula $c_{t+1}$
-\end_inset
-
- by 
-\begin_inset Formula $(1+r)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-Feasible:
-\series default
- Yes (always)
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-Utility change: 
-\series default
-
-\begin_inset Formula $\left(-c_{t}^{-\rho}\right)+\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]>0$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Conclusion: 
-\series default
-By contradiction
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-
-\series bold
-Constrained:
-\series default
- 
-\begin_inset Formula $a_{t}=wb$
-\end_inset
-
- and 
-\begin_inset Formula $c_{t}^{-\rho}\geq\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
-\end_inset
-
-, or
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-Unconstrained:
-\series default
- 
-\begin_inset Formula $a_{t}>wb$
-\end_inset
-
- and 
-\begin_inset Formula $c_{t}^{-\rho}=\beta(1+r)\mathbb{E}_{t}\left[c_{t+1}^{-\rho}\right]$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
 \begin_layout Frame
@@ -4605,6 +5796,125 @@ Else:
 \end_layout
 
 \begin_layout Section
+Practice
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+In practice
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+EconModel: 
+\series default
+Go through notebook 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+color{DarkRed}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "01. Using the EconModelClass"
+target "https://github.com/NumEconCopenhagen/EconModelNotebooks"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ (except part on C++)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+ConSav: 
+\series default
+Look at the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+color{DarkRed}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "04. Tools"
+target "https://github.com/NumEconCopenhagen/ConsumptionSavingNotebooks"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ folder.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Todays notebook: 
+\series default
+\emph on
+Consumption-Saving Model
+\emph default
+ show implementation of solution and simulation methods.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Summary
 \end_layout
 
@@ -4634,11 +5944,11 @@ Introduction to course
 \end_layout
 
 \begin_layout Enumerate
-Dynamic programming in theory
+Consumption-saving models
 \end_layout
 
 \begin_layout Enumerate
-Dynamic programming in practice
+Numerical dynamic programming
 \end_layout
 
 \end_deeper
@@ -4647,8 +5957,7 @@ Dynamic programming in practice
 \series bold
 Next week: 
 \series default
-More on consumption-saving models and precautionary savings in partial equilibri
-um
+Stationary equilibrlium
 \end_layout
 
 \begin_layout Itemize
@@ -4671,11 +5980,11 @@ Work on:
 \series bold
 Read:
 \series default
- Kaplan and Violante, 2014, 
+ Aiyagari (1994), 
 \begin_inset Quotes ald
 \end_inset
 
-A Model of the Consumption Response to Fiscal Stimulus Payments
+Uninsured Idiosyncratic Risk and Aggregate Saving
 \begin_inset Quotes ard
 \end_inset
 

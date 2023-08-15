@@ -619,6 +619,517 @@ Literature:
 \end_layout
 
 \begin_layout Section
+Ramsey-recap
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Firms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Production function: 
+\begin_inset Formula $Y_{t}=F(K_{t-1},L_{t})$
+\end_inset
+
+ 
+\series default
+\size footnotesize
+[note timing of capital]
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Profits:
+\series default
+ 
+\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}-r_{t}^{K}K_{t-1}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Profit maximization: 
+\begin_inset Formula $\max_{K_{t-1},L_{t}}\Pi_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Rental rate: 
+\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial K_{t-1}}=0\Leftrightarrow$
+\end_inset
+
+
+\begin_inset Formula $r_{t}^{K}=F_{K}(K_{t-1},L_{t})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Real wage: 
+\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial L_{t}}=0\Leftrightarrow w_{t}=F_{L}(K_{t-1},L_{t})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Zero profits: 
+\begin_inset Formula $\Pi_{t}=0\Rightarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Y_{t}=w_{t}L_{t}+r_{t}^{K}K_{t-1}$
+\end_inset
+
+ 
+\size footnotesize
+[functional income distribution]
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Capital accumulation: 
+\begin_inset Formula $K_{t}=(1-\delta)K_{t-1}+I_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Interest rate after depreciation:
+\series default
+ 
+\begin_inset Formula $r_{t}=r_{t}^{K}-\delta$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Households
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Utility maximization:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+v_{0}(A_{-1}) & =\max_{\{C_{t}\}_{t=0}^{\infty}}\sum_{t=0}^{\infty}\beta^{t}u(C_{t})\\
+ & \text{s.t.}\\
+A_{t} & =(1+r_{t})A_{t-1}+w_{t}L_{t}-C_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Exogenous labor: 
+\begin_inset Formula $L_{t}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note: 
+\begin_inset Formula $v_{0}(\bullet)$
+\end_inset
+
+ is the 
+\emph on
+indirect utility function
+\emph default
+ or 
+\emph on
+value function
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Euler-equation 
+\series default
+(implied by Lagrangian):
+\series bold
+
+\begin_inset Formula 
+\[
+u^{\prime}(C_{t})=\beta(1+r_{t+1})u^{\prime}(C_{t+1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Market Clearing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Asset market: 
+\begin_inset Formula $K_{t}=A_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Goods market: 
+\begin_inset Formula $C_{t}+I_{t}=Y_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Walras:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+C_{t}+I_{t} & =Y_{t}\Leftrightarrow\\
+C_{t}+K_{t}-(1-\delta)K_{t-1} & =F_{K}K_{t-1}+F_{L}L_{t}\Leftrightarrow\\
+K_{t} & =(1+F_{K}-\delta)K_{t-1}+F_{L}L_{t}-C_{t}=A_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Capital accumulation
+\series default
+ from asset market clearing:
+\begin_inset Formula 
+\begin{align*}
+K_{t}=A_{t} & =(1+r_{t})A_{t-1}+w_{t}L_{t}-C_{t}\Leftrightarrow\\
+ & =(1+F_{K}-\delta)K_{t-1}+w_{t}L_{t}-C_{t}\Leftrightarrow\\
+ & =(1-\delta)K_{t-1}+F_{K}K_{t-1}+F_{L}L_{t}-C_{t}\Leftrightarrow\\
+ & =(1-\delta)K_{t-1}+F(K_{t-1},L_{t})-C_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Simplified form:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+u^{\prime}(C_{t}) & =\beta(1+F_{K}(K_{t},1)-\delta)u^{\prime}(C_{t+1})\\
+K_{t} & =(1-\delta)K_{t-1}+F(K_{t-1},1)-C_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Extended form:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+
+\begin_inset Formula 
+\begin{align*}
+L_{t} & =1\\
+r_{t}^{K} & =F_{K}(K_{t-1},L_{t})\\
+w_{t} & =F_{L}(K_{t-1},L_{t})\\
+r_{t} & =r_{t}^{K}-\delta\\
+A_{t} & =(1+r_{t})A_{t-1}+w_{t}L_{t}-C_{t}\\
+u^{\prime}(C_{t}) & =\beta(1+r_{t+1})u^{\prime}(C_{t+1})\\
+K_{t} & =A_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: As an equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+L_{t}-1\\
+r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
+w_{t}-F_{L}(K_{t-1},L_{t})\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-[(1+r_{t})A_{t-1}+w_{t}L_{t}-C_{t}]\\
+u^{\prime}(C_{t})-\beta(1+r_{t+1})u^{\prime}(C_{t+1})\\
+K_{t}-A_{t}\\
+\forall t\in\{0,1,\dots\},\text{given }K_{-1}
+\end{array}\right]\boldsymbol{=} & \boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{3mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note I:
+\series default
+ There is 
+\emph on
+perfect foresight
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note II:
+\series default
+ This is the so-called 
+\emph on
+sequence-space
+\emph default
+ formulation.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 HANC
 \end_layout
 
@@ -803,7 +1314,7 @@ The Standard Incomplete Market (SIM) model
 status open
 
 \begin_layout Plain Layout
-Notation - aggregate variables
+Heterogeneous households
 \end_layout
 
 \end_inset
@@ -813,286 +1324,25 @@ Notation - aggregate variables
 
 \begin_deeper
 \begin_layout Itemize
-
-\series bold
-Aggregate variables (quantities and prices):
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Output: 
-\begin_inset Formula $Y_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Consumption: 
-\begin_inset Formula $C_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Investment: 
-\begin_inset Formula $I_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Technology: 
-\begin_inset Formula $\Gamma_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Capital: 
-\begin_inset Formula $K_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Labor: 
-\begin_inset Formula $L_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Rental rate: 
-\begin_inset Formula $r_{t}^{k}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Real wage: 
-\begin_inset Formula $w_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Real interest rate: 
-\begin_inset Formula $r_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Profit: 
-\begin_inset Formula $\Pi_{t}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
+\begin_inset ERT
 status open
 
 \begin_layout Plain Layout
-Notation - idiosyncratic variables
+
+<+->
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
 
 \series bold
-Idiosyncratic variables:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Savings: 
-\begin_inset Formula $a_{t}$
-\end_inset
-
- (end-of-period)
-\end_layout
-
-\begin_layout Enumerate
-Consumption: 
-\begin_inset Formula $c_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Productivity: 
-\begin_inset Formula $z_{t}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Distributions:
+Utility maximization
 \series default
- 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset Formula $\underline{\boldsymbol{D}}_{t}$
+ for household 
+\begin_inset Formula $i$
 \end_inset
 
- over 
-\begin_inset Formula $z_{t-1}$
-\end_inset
-
- and 
-\begin_inset Formula $a_{t-1}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $\boldsymbol{D}_{t}$
-\end_inset
-
- over 
-\begin_inset Formula $z_{t}$
-\end_inset
-
- and 
-\begin_inset Formula $a_{t-1}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Firms
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Production function: 
-\begin_inset Formula $Y_{t}=\Gamma_{t}K_{t-1}^{\alpha}L_{t}^{1-\alpha}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Profits:
-\series default
- 
-\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}-r_{t}^{k}K_{t-1}$
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Profit maximization: 
-\begin_inset Formula $\max_{K_{t-1},L_{t}}\Pi_{t}$
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Rental rate: 
-\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial K_{t-1}}=0\Leftrightarrow$
-\end_inset
-
-
-\begin_inset Formula $r_{t}^{k}=\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\text{\alpha-1}}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Real wage: 
-\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial L_{t}}=0\Leftrightarrow w_{t}=(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Households - formulation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
+:
 \begin_inset ERT
 status open
 
@@ -1100,7 +1350,7 @@ status open
 
 
 \backslash
-vspace{-7mm}
+vspace{-2mm}
 \end_layout
 
 \end_inset
@@ -1108,22 +1358,16 @@ vspace{-7mm}
 
 \begin_inset Formula 
 \begin{align*}
-v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\\
-\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+w_{t}z_{t}+\Pi_{t}\geq0\\
-\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\,
+v_{0}(z_{it},a_{it-1},\beta_{i}) & =\max_{\{c_{it}\}_{t=0}^{\infty}}\mathbb{E}_{0}\sum_{t=0}^{\infty}\beta_{i}^{t}u(c_{it})\\
+ & \text{s.t.}\\
+a_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}-c_{it}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0
 \end{align*}
 
 \end_inset
 
-with 
-\begin_inset Formula $r_{t}\equiv r_{t}^{k}-\delta$
-\end_inset
 
-, where 
-\begin_inset Formula $\delta$
-\end_inset
-
- is the depreciation rate
 \end_layout
 
 \begin_layout Itemize
@@ -1132,20 +1376,131 @@ status open
 
 \begin_layout Plain Layout
 
-<2->
+<+->
 \end_layout
 
 \end_inset
 
 
 \series bold
-Aggregates:
+Where are there heterogeneity?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+-|handout:0>
+\end_layout
+
+\end_inset
+
+
+\emph on
+Ex ante
+\emph default
+ due to different preferences, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+-|handout:0>
+\end_layout
+
+\end_inset
+
+
+\emph on
+Ex post
+\emph default
+ due to stochastic productivity, 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Incomplete markets due to borrowing constraint 
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size small
+(fancy words: partial self-insurrance, lack of Arrow-Debreu securities)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Distributions and aggregates
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Policy functions: 
+\series default
+Aggregate prices are hidden as inputs, i.e.
+\series bold
 \size footnotesize
 
 \begin_inset Formula 
 \begin{align*}
-A_{t}^{hh} & =\int a_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}=A^{hh}\left(\boldsymbol{D}_{t},\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)=\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
-C_{t}^{hh} & =\int c_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}=C^{hh}\left(\boldsymbol{D}_{t},\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)=\boldsymbol{c}_{t}^{\ast\prime}\boldsymbol{D}_{t}
+c_{t}^{\star}(z_{it},a_{it-1},\beta_{i}) & =c^{\star}(z_{it},a_{it-1},\beta_{i},\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t})\\
+a_{t}^{\star}(z_{it},a_{it-1},\beta_{i}) & =a^{\star}(z_{it},a_{it-1},\beta_{i},\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t})
 \end{align*}
 
 \end_inset
@@ -1159,16 +1514,16 @@ status open
 
 \begin_layout Plain Layout
 
-<3->
+<+->
 \end_layout
 
 \end_inset
 
 
 \series bold
-Distributional dynamics 
+Distributions 
 \series default
-(with histogram method):
+(vector of probabilities):
 \begin_inset ERT
 status open
 
@@ -1186,8 +1541,30 @@ vspace{1mm}
 
 \begin_deeper
 \begin_layout Enumerate
-Stochastic: 
-\begin_inset Formula $\boldsymbol{D}_{t}=\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Beginning-of-period: 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t}$
+\end_inset
+
+ over 
+\begin_inset Formula $z_{it-1}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{i}$
 \end_inset
 
 
@@ -1207,57 +1584,278 @@ vspace{1mm}
 \end_layout
 
 \begin_layout Enumerate
-Choices: 
-\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}=$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Productivity transition: 
+\begin_inset Formula $\boldsymbol{D}_{t}=\Pi_{z}\underline{\boldsymbol{D}}_{t}$
+\end_inset
+
+ over 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+, 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta_{i}$
 \end_inset
 
 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
+\begin_inset ERT
+status open
 
-\begin_inset Formula $\Lambda_{t}^{\prime}\boldsymbol{D}_{t}$
-\end_inset
+\begin_layout Plain Layout
 
-,
-\begin_inset space ~
+
+\backslash
+vspace{1mm}
+\end_layout
+
 \end_inset
 
 
-\begin_inset space ~
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Savings transition: 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}=\Lambda_{t}\boldsymbol{D}_{t}$
+\end_inset
+
+ where again
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
 \end_inset
 
 
-\begin_inset space ~
+\begin_inset Formula 
+\[
+\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)
+\]
+
 \end_inset
 
 
-\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)$
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-5mm}
+\end_layout
+
 \end_inset
 
 
-\family default
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Aggregate consumption and savings:
+\size footnotesize
+
+\begin_inset Formula 
+\begin{align*}
+\mathcal{C}_{t} & =\int c_{t}^{\ast}(z_{it},a_{it-1},\beta_{i})d\boldsymbol{D}_{t}=\mathcal{C}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t},\underline{\boldsymbol{D}}_{0}\right)\\
+\mathcal{A}_{t} & =\int a_{t}^{\ast}(z_{it},a_{it-1},\beta_{i})d\boldsymbol{D}_{t}=\mathcal{A}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t},\underline{\boldsymbol{D}}_{0}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-5mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+L_{t}-1\\
+r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
+w_{t}-F_{L}(K_{t-1},L_{t})\\
+r_{t}-r_{t}^{K}-\delta\\
+\boldsymbol{D}_{t}-\Pi_{z}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}\boldsymbol{D}_{t}\\
+K_{t}-\mathcal{A}_{t}\\
+\forall t\in\{0,1,\dots\},\text{given }\underline{\boldsymbol{D}}_{0}
+\end{array}\right] & =\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{-1}=\int a_{it-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Perfect forsight 
 \series default
-\shape default
-\size default
+wrt.
+ aggregate variables
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Stationary equilibrium: 
+\series default
+Time-constant solution.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Transition path: 
+\series default
+Time-varying solution due to e.g.
+ initial conditions or temporary deviations of exogenous variables.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solution method
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Must be solved 
+\emph on
+numerically
 \emph default
-\bar default
-\strikeout default
-\xout default
-\uuline default
-\uwave default
-\noun default
-\color inherit
- 
+:
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Household problem:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Discretize and evaluate with interpolation
+\end_layout
+
+\begin_layout Enumerate
+Make recursion until convergence
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Transition path:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Find the stationary equilibrium
+\end_layout
+
+\begin_layout Enumerate
+Find Jacobian around stationary equilibrium
+\end_layout
+
+\begin_layout Enumerate
+Solve using quasi-Newton solver
 \end_layout
 
 \end_deeper
@@ -1274,7 +1872,7 @@ Choices:
 status open
 
 \begin_layout Plain Layout
-Households - solution
+Solution of household problem
 \end_layout
 
 \end_inset
@@ -1597,84 +2195,6 @@ C_{t}+I_{t} & =\left[(1+r_{t})K_{t-1}+w_{t}-K_{t}\right]+\left[K_{t}-(1-\delta)K
 \end_layout
 
 \end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Equation system
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-The model can be written as an 
-\series bold
-equation system
-\series default
-
-\begin_inset Formula 
-\begin{align*}
-\boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-r_{t}-(\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta)\\
-w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
-\boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
-\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
-K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
-L_{t}-1\\
-\forall t\in\{0,1,\dots\}
-\end{array}\right]=\boldsymbol{0}
-\end{align*}
-
-\end_inset
-
-where 
-\begin_inset Formula $\left\{ \Gamma_{t}\right\} _{t\geq0}$
-\end_inset
-
- is a given technology path and 
-\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Remember: 
-\series default
-Policies and choice transitions depend on prices
-\end_layout
-
-\begin_layout Enumerate
-Policy function: 
-\begin_inset Formula $a_{t}^{\ast}=a^{\ast}\left(\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Choice transition: 
-\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)$
-\end_inset
-
-
-\end_layout
-
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain

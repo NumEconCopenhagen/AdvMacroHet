@@ -27,10 +27,10 @@ def prepare_hh_ss(model):
     # 2. transition matrix initial distribution #
     #############################################
     
-    ss.z_trans[0,:,:] = z_trans
-    ss.Dz[0,:] = z_ergodic
-    ss.Dbeg[0,:,0] = ss.Dz[0,:] # ergodic at a_lag = 0.0
-    ss.Dbeg[0,:,1:] = 0.0 # none with a_lag > 0.0
+    for i_fix in range(par.Nfix):
+        ss.z_trans[0,:,:] = z_trans
+        ss.Dbeg[0,:,0] = z_ergodic/par.Nfix # ergodic at a_lag = 0.0
+        ss.Dbeg[0,:,1:] = 0.0 # none with a_lag > 0.0
 
     ################################################
     # 3. initial guess for intertemporal variables #
