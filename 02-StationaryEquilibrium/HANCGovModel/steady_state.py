@@ -28,8 +28,7 @@ def prepare_hh_ss(model):
     #############################################
     
     ss.z_trans[0,:,:] = z_trans
-    ss.Dz[0,:] = z_ergodic
-    ss.Dbeg[0,:,0] = ss.Dz[0,:] # ergodic at a_lag = 0.0
+    ss.Dbeg[0,:,0] = z_ergodic # ergodic at a_lag = 0.0
     ss.Dbeg[0,:,1:] = 0.0 # none with a_lag > 0.0
 
     ################################################
@@ -38,53 +37,32 @@ def prepare_hh_ss(model):
 
     # a. raw value
     y = (1-ss.tau)*par.z_grid
-    c = m = (1+ss.r)*par.a_grid[np.newaxis,:] + y[:,np.newaxis]
-    v_a = (1+ss.r)*c**(-par.sigma)
+    c = m = par.a_grid[np.newaxis,:] + y[:,np.newaxis]
+    v_a = c**(-par.sigma)
 
     # b. expectation
     ss.vbeg_a[:] = ss.z_trans@v_a
-
-def obj_ss(r_ss,model,do_print=False):
-    """ objective when solving for steady state capital """
-
-    par = model.par
-    ss = model.ss
-
-    ss.r = r_ss
-
-    # a. household behavior
-    model.solve_hh_ss(do_print=do_print)
-    model.simulate_hh_ss(do_print=do_print)
-
-    # b. government
-    ss.B = ss.tau/ss.r
-
-    # c. market clearing
-    ss.clearing_A = ss.B
-
-    return ss.clearing_A # target to hit
     
-def obj_ss(r_ss,model,do_print=False):
+def obj_ss(pB,model,do_print=False):
     """ objective when solving for steady state capital """
 
     par = model.par
     ss = model.ss
-
-    ss.r = r_ss
 
     # a. government
-    ss.B = ss.tau/ss.r
+    ss.pB = pB
+    ss.B = (ss.G-ss.tau)/(ss.pB-1)
                        
     # b. households                       
     model.solve_hh_ss(do_print=do_print)
     model.simulate_hh_ss(do_print=do_print)
     
-    # d. market clearing
-    ss.clearing_B = ss.A_hh-ss.B
+    # c. market clearing
+    ss.clearing_B = ss.B-ss.A_hh
 
     return ss.clearing_B
 
-def find_ss(model,tau,do_print=False,r_min=1e-8,r_max=0.04,Nr=10):
+def find_ss(model,tau,do_print=False,pB_min=0.965,pB_max=0.985,Nr=5):
     """ find steady state using the direct or indirect method """
 
     t0 = time.time()
@@ -92,51 +70,42 @@ def find_ss(model,tau,do_print=False,r_min=1e-8,r_max=0.04,Nr=10):
     par = model.par
     ss = model.ss
 
-    if np.isclose(tau,0.0):
+    assert tau >= par.G_ss, f'tau = {tau} < par.G_ss = {par.G_ss}'
 
-        ss.tau = 0.0
-        ss.r = 0.0
+    # a. government
+    ss.G = par.G_ss
+    ss.tau = tau
 
-        model.solve_hh_ss(do_print=do_print)
-        model.simulate_hh_ss(do_print=do_print)
+    # b. broad search
+    if do_print: print(f'### step 1: broad search ###\n')
 
-        ss.B = ss.A_hh
-        ss.clearing_B = ss.A_hh-ss.B
+    pB_vec = np.linspace(pB_min,pB_max,Nr) # trial values
+    clearing_B = np.zeros(pB_vec.size) # asset market errors
 
-    else:
-
-        ss.tau = tau
-
-        # a. broad search
-        if do_print: print(f'### step 1: broad search ###\n')
-
-        r_ss_vec = np.linspace(r_min,r_max,Nr) # trial values
-        clearing_B = np.zeros(r_ss_vec.size) # asset market errors
-
-        for i,r_ss in enumerate(r_ss_vec):
+    for i,pB in enumerate(pB_vec):
+        
+        try:
+            clearing_B[i] = obj_ss(pB,model,do_print=do_print)
+        except Exception as e:
+            clearing_B[i] = np.nan
+            if do_print: print(f'{e}')
             
-            try:
-                clearing_B[i] = obj_ss(r_ss,model,do_print=do_print)
-            except Exception as e:
-                clearing_B[i] = np.nan
-                print(f'{e}')
-                
-            if do_print: print(f'clearing_B = {clearing_B[i]:12.8f}\n')
-                
-        # b. determine search bracket
-        if do_print: print(f'### step 2: determine search bracket ###\n')
+        if do_print: print(f'clearing_B = {clearing_B[i]:12.8f}\n')
+            
+    # b. determine search bracket
+    if do_print: print(f'### step 2: determine search bracket ###\n')
 
-        r_min = np.max(r_ss_vec[clearing_B < 0])
-        r_max = np.min(r_ss_vec[clearing_B > 0])
+    pB_min = np.max(pB_vec[clearing_B < 0])
+    pB_max = np.min(pB_vec[clearing_B > 0])
 
-        if do_print: print(f'r in [{r_min:12.8f},{r_max:12.8f}]\n')
+    if do_print: print(f'pB in [{pB_min:12.8f},{pB_max:12.8f}]\n')
 
-        # c. search
-        if do_print: print(f'### step 3: search ###\n')
+    # c. search
+    if do_print: print(f'### step 3: search ###\n')
 
-        root_finding.brentq(
-            obj_ss,r_min,r_max,args=(model,),do_print=do_print,
-            varname='r_ss',funcname='A_hh-B'
-        )
+    root_finding.brentq(
+        obj_ss,pB_min,pB_max,args=(model,),do_print=do_print,
+        varname='pB',funcname='B-A_hh'
+    )
 
     if do_print: print(f'found steady state in {elapsed(t0)}')

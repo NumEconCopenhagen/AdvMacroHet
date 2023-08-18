@@ -147,7 +147,7 @@ status open
 
 
 \backslash
-title{7.
+title{3.
  Transition Path
 \backslash
 vspace{-2mm}}
@@ -174,7 +174,7 @@ author{Jeppe Druedahl
 
 
 \backslash
-date{2022}
+date{2023}
 \end_layout
 
 \begin_layout Plain Layout
@@ -415,7 +415,7 @@ status open
 
 
 \series bold
-Previously: 
+Last time: 
 \series default
 \emph on
 Stationary equilibrium
@@ -627,6 +627,401 @@ Kirkby (2017)
 \end_layout
 
 \begin_layout Section
+Ramsey
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Simplified form:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+u^{\prime}(C_{t}^{hh}) & =\beta(1+F_{K}(K_{t},1)-\delta)u^{\prime}(C_{t+1}^{hh})\\
+K_{t} & =(1-\delta)K_{t-1}+F(K_{t-1},1)-C_{t}^{hh}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Production function:
+\series default
+ 
+\begin_inset Formula $\Gamma_{t}K_{t}^{\alpha}L_{t}^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Utility function:
+\series default
+ 
+\begin_inset Formula $\frac{C_{t}^{1-\sigma}}{1-\sigma}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Steady state:
+\begin_inset Formula 
+\begin{align*}
+K_{ss} & =\left(\frac{\left(\frac{1}{\beta}-1+\delta\right)}{\Gamma_{ss}\alpha}\right)^{\frac{1}{\alpha-1}}\\
+C_{ss}^{hh} & =(1-\delta)K_{ss}+\Gamma_{ss}K_{ss}^{\alpha}-K_{ss}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: As an equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+r_{t}^{K}-\alpha\Gamma_{t}K_{t}^{\alpha-1}L_{t}^{1-\alpha}\\
+w_{t}-(1-\alpha)\Gamma_{t}K_{t}^{\alpha}L_{t}^{-\alpha}\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-K_{t}\\
+A_{t}^{hh}-\left((1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\right)\\
+C_{t}^{hh,-\sigma}-\beta(1+r_{t+1})C_{t+1}^{hh,-\sigma}\\
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots\},\text{given }K_{-1}
+\end{array}\right]\boldsymbol{=} & \boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\series bold
+Remember:
+\series default
+ Perfect foresight
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Truncated, reduced vector form
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma},K_{-1}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
+\end_inset
+
+, 
+\begin_inset Formula $A_{-1}^{hh}=K_{-1}$
+\end_inset
+
+ and
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+A_{t} & =K_{t}\\
+r_{t} & =r_{t}^{K}-\delta\\
+C_{t}^{hh} & =\left(\beta(1+r_{t+1})\right)^{-\sigma}C_{t+1}^{hh}\,\text{(backwards)}\\
+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\,\text{(forwards)}\\
+L_{t}^{hh} & =1
+\end{align*}
+
+\end_inset
+
+
+\series bold
+\size default
+Truncation:
+\series default
+ 
+\begin_inset Formula $T<\infty$
+\end_inset
+
+ fine when 
+\begin_inset Formula $\Gamma_{t}=\Gamma_{ss}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t>\underline{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\underline{t}\ll T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Further reduced
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma},K_{-1}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
+\end_inset
+
+, 
+\begin_inset Formula $A_{-1}^{hh}=K_{-1}$
+\end_inset
+
+ and
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+L_{t}=L_{t}^{hh} & =1\\
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+A_{t} & =K_{t}\\
+r_{t} & =r_{t}^{K}-\delta\\
+C_{t}^{hh} & =\left(\beta(1+r_{t+1})\right)^{-\sigma}C_{t+1}^{hh}\,\text{(backwards)}\\
+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\,\text{(forwards)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 1: Initially low capital
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Initially away from steady state: 
+\begin_inset Formula $K_{-1}=0.75K_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Graphics
+	filename figs/K_ini_lag.pdf
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 2: Technology shock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Technology shock: 
+\begin_inset Formula $\Gamma_{t}=0.01\Gamma_{ss}0.95^{t}$
+\end_inset
+
+ 
+\series default
+(exogenous, deterministic)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Graphics
+	filename figs/Gamma_shock.pdf
+	width 95text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Transition path
 \end_layout
 
@@ -649,22 +1044,27 @@ The model can be written as an
 \series bold
 equation system
 \series default
+\size footnotesize
 
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-r_{t}-(\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta)\\
-w_{t}-(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
-\boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
-\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
-K_{t}-\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
-L_{t}-1\\
-\forall t\in\{0,1,\dots\}
+r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
+w_{t}-F_{L}(K_{t-1},L_{t})\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-K_{t}\\
+\boldsymbol{D}_{t}-\Pi_{z}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}\boldsymbol{D}_{t}\\
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots\},\text{given }\underline{\boldsymbol{D}}_{0}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
 
 \end_inset
 
+
+\size default
 where 
 \begin_inset Formula $\left\{ \Gamma_{t}\right\} _{t\geq0}$
 \end_inset
@@ -686,7 +1086,11 @@ Policies and choice transitions depend on prices
 
 \begin_layout Enumerate
 Policy function: 
-\begin_inset Formula $a_{t}^{\ast}=a^{\ast}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\begin_inset Formula $x_{t}^{\ast}=x^{\ast}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{t}^{hh}=\boldsymbol{x}_{t}^{\ast\prime}\boldsymbol{D}_{t}$
 \end_inset
 
 
@@ -772,6 +1176,10 @@ the distributions
 \end_inset
 
  over 
+\begin_inset Formula $\beta_{i},$
+\end_inset
+
+
 \begin_inset Formula $z_{t}$
 \end_inset
 
@@ -786,11 +1194,15 @@ the distributions
 
 \size small
 and the policy functions 
-\begin_inset Formula $\{a_{t}^{\ast}(z_{t},a_{t-1})\}$
+\begin_inset Formula $\{a_{t}^{\ast}\}$
+\end_inset
+
+, 
+\begin_inset Formula $\{\ell_{t}^{\ast}\}$
 \end_inset
 
  and 
-\begin_inset Formula $\{c_{t}^{\ast}(z_{t},a_{t-1})\}$
+\begin_inset Formula $\{c_{t}^{\ast}\}$
 \end_inset
 
 
@@ -825,6 +1237,12 @@ Household maximize expected utility (policy functions) in all periods
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Mutual fund balance sheet is satisfied in all periods
 \end_layout
 
 \begin_layout Enumerate
@@ -868,15 +1286,24 @@ Truncated, reduced vector form
 
 \begin_deeper
 \begin_layout Standard
+\begin_inset ERT
+status open
 
-\series bold
-Truncated, reduced vector form:
-\series default
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
 
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-A_{t}^{hh}-K_{t}\\
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
 \forall t\in\{0,1,\dots,T-1\}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
@@ -884,11 +1311,105 @@ A_{t}^{hh}-K_{t}\\
 \end_inset
 
 where 
-\begin_inset Formula $\boldsymbol{K}=(K_{0},K_{1},\dots,K_{T-1})$
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
 \end_inset
 
- and 
-\begin_inset Formula $\boldsymbol{\Gamma}=(\Gamma_{0},\Gamma_{1},\dots,\Gamma_{T-1})$
+, 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+ and
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+r_{t}^{k} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{x}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+L_{t}^{hh} & =\boldsymbol{\ell}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+ & \forall t\in\{0,1,\dots,T-1\}
+\end{align*}
+
+\end_inset
+
+
+\series bold
+\size default
+Truncation:
+\series default
+ 
+\begin_inset Formula $T<\infty$
+\end_inset
+
+ fine when 
+\begin_inset Formula $\Gamma_{t}=\Gamma_{ss}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t>\underline{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\underline{t}\ll T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Further reduction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
+\end_inset
+
+, 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
 \end_inset
 
  and
@@ -897,11 +1418,11 @@ where
 \begin_inset Formula 
 \begin{align*}
 L_{t} & =1\\
-r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta\\
+r_{t}^{k} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
-A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{x}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
  & \forall t\in\{0,1,\dots,T-1\}
 \end{align*}
 
@@ -967,7 +1488,7 @@ Guess
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{L}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 .
@@ -982,8 +1503,8 @@ Stop if
 \end_layout
 
 \begin_layout Enumerate
-Calculate the Jacobian 
-\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
+Calculate the Jacobians 
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{X}}^{i}=\boldsymbol{H}_{\boldsymbol{L}}(\boldsymbol{K}^{i},\boldsymbol{L}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 
@@ -1205,7 +1726,7 @@ Simulate households forward along transition path
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(A_{t}^{hh}-K_{t})-(A_{ss}^{hh}-K_{ss})}{\Delta}$
+\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(A_{t}-A_{t}^{hh})-(A_{ss}-A_{ss}^{hh})}{\Delta}$
 \end_inset
 
  for all 
@@ -1446,32 +1967,6 @@ Presentation:
 I go through the code
 \end_layout
 
-\begin_layout Itemize
-
-\series bold
-In-class exercise:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Look at the code and talk about it with the person next to you for 10 minutes
- 
-\end_layout
-
-\begin_layout Enumerate
-Write at least one question on 
-\begin_inset CommandInset href
-LatexCommand href
-name "https://padlet.com/jeppe_druedahl/advmacrohet"
-target "https://padlet.com/jeppe_druedahl/advmacrohet"
-literal "false"
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1712,35 +2207,35 @@ DAG: Directed Acyclical Growth
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
-From Auclert et al.
- (2021):
-\end_layout
-
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/DAG_KS.png
-	lyxscale 30
-	width 90text%
-
-\end_inset
-
-
+Orange square:
+\series default
+ Shocks (exogenous)
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Notation: 
+Purple square:
 \series default
+ Unknowns (endogenous)
+\end_layout
 
-\begin_inset Formula $\boldsymbol{\Gamma}=\boldsymbol{Z}$
-\end_inset
+\begin_layout Itemize
 
-, 
-\begin_inset Formula $\boldsymbol{A}^{hh}=\mathcal{K}$
+\series bold
+Green circles:
+\series default
+ Blocks (with variables and targets inside)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/DAG.png
+	width 50text%
+
 \end_inset
 
 
@@ -1965,7 +2460,7 @@ Go through Section 3 of the documentation for GEModelTools
 \end_layout
 
 \begin_layout Section
-Exercises
+Bottlenecks
 \end_layout
 
 \begin_layout Frame
@@ -1973,7 +2468,7 @@ Exercises
 status open
 
 \begin_layout Plain Layout
-Exercises: Model extensions
+Bottlenecks
 \end_layout
 
 \end_inset
@@ -1982,46 +2477,113 @@ Exercises: Model extensions
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
-Firms:
+Small models: 
 \series default
- Unchanged
+Finding the stationary equilibrium
 \end_layout
 
-\begin_layout Enumerate
+\begin_deeper
+\begin_layout Standard
 
 \series bold
-Households: 
+Trick:
 \series default
-New budget constraint with labor taxes, 
-\begin_inset Formula $\tau_{t}$
-\end_inset
-
-
-\begin_inset Formula 
-\[
-a_{t}+c_{t}=(1+r_{t})a_{t-1}+(1-\tau_{t})w_{t}z_{t}\geq0
-\]
-
-\end_inset
-
-
+ 
+\emph on
+(Modified) policy function iteration
+\emph default
+ (Howard improvement)
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
+Idea: Multiple steps as once when finding the value function
+\end_layout
+
+\begin_layout Standard
+See e.g.
+ Rendahl (2022) and eslami and Phelan (2023)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \series bold
-Government: 
+Bigger models: 
 \series default
-Set taxes and government consumption, and government bonds follows the law-of-mo
-tion 
-\begin_inset Formula 
-\[
-B_{t+1}=(1+r_{t})B_{t}+G_{t}-\int\tau_{t}z_{t}d\boldsymbol{D}_{t}
-\]
+With many unknowns and targets both computing the Jacobian and solving the
+ equation system can be costly
+\begin_inset Newline newline
+\end_inset
 
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Auclert et.
+ al., 2021, has some methods for speeding this up not availible in GEModelTools
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exercises
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercises: HANCGovModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Same model.
+ Your choice of 
+\begin_inset Formula $\tau_{ss}.$
+\end_inset
+
+ New questions:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Define the transition path.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Plot the DAG
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+How does the Jacobians look like?
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Find the transition path for 
+\begin_inset Formula $G_{t}=G_{ss}+0.01G_{ss}0.95^{t}$
 \end_inset
 
 
@@ -2030,29 +2592,13 @@ B_{t+1}=(1+r_{t})B_{t}+G_{t}-\int\tau_{t}z_{t}d\boldsymbol{D}_{t}
 \begin_layout Enumerate
 
 \series bold
-Asset market clearing: 
-\series default
-
-\begin_inset Formula $K_{t}+B_{t}=\int a_{t}^{\ast}(z_{t},a_{t-1})d\boldsymbol{D}_{t}$
-\end_inset
-
-
+What explains household savings behavior?
 \end_layout
 
 \begin_layout Enumerate
 
 \series bold
-Define and find the stationary equilibrium and transition path 
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
-What is the response to a persistent shock to 
-\begin_inset Formula $G_{t}$
-\end_inset
-
- when the budget is balanced in all periods?
+What happens to consumption inequality?
 \end_layout
 
 \end_deeper
@@ -2133,37 +2679,19 @@ status open
 \begin_layout Itemize
 
 \series bold
-Next week: 
+Homework:
 \series default
-More on interesting heterogeneous agent models
+ Work on completing the model extension exercise
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
-Homework:
+Next week: 
+\series default
+Begin working on Assignment 1
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-Work on completing the model extension exercise
-\end_layout
-
-\begin_layout Enumerate
-Read: Auclert et.
- al.
- (2021), 
-\begin_inset Quotes ald
-\end_inset
-
-Demographics, Wealth, and Global Imbalances in the Twenty-First Century
-\begin_inset Quotes ard
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain

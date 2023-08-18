@@ -1832,7 +1832,7 @@ Sequence of consumption
 choices
 \emph default
  
-\begin_inset Formula $c_{0}^{\star},c_{1}^{\star},\dots,c_{T-1}^{\star}$
+\begin_inset Formula $c_{0}^{\ast},c_{1}^{\ast},\dots,c_{T-1}^{\ast}$
 \end_inset
 
 
@@ -1890,7 +1890,7 @@ Intertemporal Budget Constraint
 \begin_inset Formula 
 \begin{eqnarray*}
 a_{T-1} & = & Ra_{T-2}+wz_{T-1}-c_{T-1}\\
- & = & R^{2}a_{T-3}+Rwz_{T-2}-Rc_{T-1}+wz_{T-1}-c_{T-1}\\
+ & = & R^{2}a_{T-3}+Rwz_{T-2}-Rc_{T-2}+wz_{T-1}-c_{T-1}\\
  & = & R^{T}a_{-1}+\sum_{t=0}^{T-1}R^{T-1-t}(wz_{t}-c_{t})
 \end{eqnarray*}
 
@@ -1930,7 +1930,7 @@ where
 \begin_inset Formula $s_{0}\equiv Ra_{-1}$
 \end_inset
 
- (after-interst assets)
+ (after-interest assets)
 \begin_inset Newline newline
 \end_inset
 
@@ -2065,7 +2065,7 @@ into
 \begin_inset Formula 
 \begin{eqnarray*}
 \sum_{t=0}^{T-1}R^{-t}(\beta R)^{t/\sigma}c_{0} & = & s_{0}+h_{0}\Leftrightarrow\\
-c_{0}^{\star} & = & \frac{1-\frac{(\beta R)^{1/\rho}}{R}}{1-\left(\frac{(\beta R)^{1/\rho}}{R}\right)^{T}}(s_{0}+h_{0})
+c_{0}^{\ast} & = & \frac{1-\frac{(\beta R)^{1/\sigma}}{R}}{1-\left(\frac{(\beta R)^{1/\sigma}}{R}\right)^{T}}(s_{0}+h_{0})
 \end{eqnarray*}
 
 \end_inset
@@ -2098,7 +2098,7 @@ Infinite horizon
 \begin_layout Itemize
 
 \series bold
-Infitnite horizon 
+Infinite horizon 
 \series default
 for 
 \begin_inset Formula $\beta R<1$
@@ -2111,7 +2111,7 @@ for
  to get
 \begin_inset Formula 
 \[
-c_{0}^{\star}=\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})
+c_{0}^{\ast}=\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})
 \]
 
 \end_inset
@@ -2256,7 +2256,7 @@ Constrained or unconstrained.
 \family typewriter
 \begin_inset Formula 
 \[
-c_{0}^{\star}=\min\left\{ \overline{c}_{0},\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})\right\} 
+c_{0}^{\ast}=\min\left\{ \overline{c}_{0},\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})\right\} 
 \]
 
 \end_inset
@@ -2420,7 +2420,7 @@ Solution:
 functions
 \emph default
 , 
-\begin_inset Formula $c_{t}^{\star}(z_{t},a_{t-1})$
+\begin_inset Formula $c_{t}^{\ast}(z_{t},a_{t-1})$
 \end_inset
 
 
@@ -2509,7 +2509,7 @@ For
 :
 \begin_inset Formula 
 \[
-\sum_{t=0}^{\infty}R^{-t}c_{t}=(1+r)a_{-1}+\sum_{t=0}^{\infty}R^{-t}wz_{t}
+\sum_{t=0}^{\infty}R^{-t}c_{t}=Ra_{-1}+\sum_{t=0}^{\infty}R^{-t}wz_{t}
 \]
 
 \end_inset
@@ -2762,7 +2762,7 @@ Unconstrained:
 status open
 
 \begin_layout Plain Layout
-Special case I: Qudratic utility
+Special case I: Quadratic utility
 \end_layout
 
 \end_inset
@@ -2777,7 +2777,7 @@ Special case I: Qudratic utility
 Quadratic utility:
 \series default
  
-\begin_inset Formula $u(c_{it})=-\frac{1}{2}(\overline{c}-c)^{2}$
+\begin_inset Formula $u(c_{t})=-\frac{1}{2}(\overline{c}-c)^{2}$
 \end_inset
 
  with 
@@ -2824,7 +2824,7 @@ consumption function:
 \begin{align*}
 \sum_{t=0}^{\text{\ensuremath{\infty}}}R^{-t}\mathbb{E}_{0}\left[c_{t}\right] & =Ra_{-1}+\sum_{t=0}^{\text{\ensuremath{\infty}}}R^{-t}w\mathbb{E}_{0}\left[z_{t}\right]\Rightarrow\\
 c_{0} & =ra_{-1}+\frac{r}{R}\sum_{t=0}^{T}R^{-t}w\mathbb{E}_{0}\left[z_{t}\right]\Rightarrow\\
-c^{\star}(a_{t-1},z_{t}) & =ra_{t-1}+\frac{r}{R}\sum_{k=0}^{\infty}R^{-k}w\mathbb{E}_{t}\left[z_{t+k}\right]
+c^{\ast}(a_{t-1},z_{t}) & =ra_{t-1}+\frac{r}{R}\sum_{k=0}^{\infty}R^{-k}w\mathbb{E}_{t}\left[z_{t+k}\right]
 \end{align*}
 
 \end_inset
@@ -2940,7 +2940,7 @@ status open
 
 \begin_inset Formula 
 \[
-c_{t}^{\star}(a_{it-1},z_{it})=ra_{it-1}+wz_{it}-\frac{\log\left(\beta R\right)^{\frac{1}{\alpha}}+\alpha\frac{\sigma_{\psi}^{2}}{2}}{r^{2}}
+c_{t}^{*}(a_{it-1},z_{it})=ra_{it-1}+wz_{it}-\frac{\log\left(\beta R\right)^{\frac{1}{\alpha}}+\alpha\frac{\sigma_{\psi}^{2}}{2}}{r^{2}}
 \]
 
 \end_inset
@@ -2958,7 +2958,7 @@ Precautionary saving:
 \end_inset
 
  implies 
-\begin_inset Formula $c_{t}^{\star}\downarrow$
+\begin_inset Formula $c_{t}^{*}\downarrow$
 \end_inset
 
  for given 
@@ -3116,12 +3116,33 @@ status open
 \end_layout
 
 \begin_layout Enumerate
-Liquidity constraints and precautionary saving, Carroll, Holm, Kimball (JET,
- 2021)
+\begin_inset Quotes ald
+\end_inset
+
+Liquidity constraints and precautionary saving
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Carroll, Holm, Kimball (JET, 2021)
 \end_layout
 
 \begin_layout Enumerate
-Theoretical Foundations of Buffer Stock Saving, Carroll (QE, forthcomming)
+\begin_inset Quotes ald
+\end_inset
+
+Theoretical Foundations of Buffer Stock Saving
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Carroll (QE, forthcomming)
 \end_layout
 
 \end_deeper
@@ -3264,7 +3285,7 @@ status open
 
 \series bold
 Policy function, 
-\begin_inset Formula $c_{t}^{\star}$
+\begin_inset Formula $c_{t}^{*}$
 \end_inset
 
 : 
@@ -3272,7 +3293,7 @@ Policy function,
 Is the same as
 \begin_inset Formula 
 \begin{align*}
-c_{t}^{\star}(z_{t},a_{t-1}) & =\arg\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
+c_{t}^{*}(z_{t},a_{t-1}) & =\arg\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
  & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq wb
 \end{align*}
 
@@ -3491,7 +3512,7 @@ If
 \end_inset
 
  and 
-\begin_inset Formula $c^{\star}(z_{t},a_{t-1})$
+\begin_inset Formula $c^{\ast}(z_{t},a_{t-1})$
 \end_inset
 
  for large enough 
@@ -3841,7 +3862,8 @@ vspace{-2mm}
 \begin_inset Formula 
 \begin{align*}
 z_{t} & \in\mathcal{G}_{z}=\{z^{0},z^{1},\dots,z^{\#z-1}\}\\
-a_{t} & \in\mathcal{G}_{a}=\{a^{0},a^{1},\dots,a^{\#_{a}-1}\}
+a_{t} & \in\mathcal{G}_{a}=\{a^{0},a^{1},\dots,a^{\#_{a}-1}\}\\
+ & a^{0}=w\max\left\{ -b,-\frac{\underline{z}}{r}\right\} 
 \end{align*}
 
 \end_inset
@@ -3865,7 +3887,7 @@ status open
 Transition probabilities: 
 \series default
 
-\begin_inset Formula $\pi_{i_{z-},i_{z}}=\text{Pr}[z_{t}=z^{i_{z}}\,|\,z_{t}=z^{i_{z-}}]$
+\begin_inset Formula $\pi_{i_{z-},i_{z}}=\text{Pr}[z_{t}=z^{i_{z}}\,|\,z_{t-1}=z^{i_{z-}}]$
 \end_inset
 
 
@@ -4103,7 +4125,7 @@ Derive
 \begin_layout Itemize
 
 \series bold
-Discratization of 
+Discretization of 
 \begin_inset Formula $\xi_{t}$
 \end_inset
 
@@ -4206,7 +4228,7 @@ centering
 status open
 
 \begin_layout Plain Layout
-Details: Gauss-Hermite I
+Extra: Gauss-Hermite I
 \end_layout
 
 \end_inset
@@ -4216,16 +4238,6 @@ Details: Gauss-Hermite I
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 General problem: 
@@ -4270,16 +4282,6 @@ function (PDF) for
 
 \end_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 General solution: 
@@ -4296,16 +4298,6 @@ Turn it into a discrete sum
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 How to choose 
@@ -4354,7 +4346,7 @@ Answer:
 status open
 
 \begin_layout Plain Layout
-Details: Gauss-Hermite II
+Extra: Gauss-Hermite II
 \end_layout
 
 \end_inset
@@ -4364,16 +4356,6 @@ Details: Gauss-Hermite II
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Gauss-Hermite
@@ -4398,16 +4380,6 @@ for some
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Well behaved function:
@@ -4428,16 +4400,6 @@ Well behaved function:
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
 Example: Random normal variable: 
@@ -4551,15 +4513,15 @@ Nested loops:
 \series bold
 Outer loop: 
 \series default
-Backwards in time from 
+Backwards from 
 \begin_inset Formula $t=T-1$
 \end_inset
 
  (note 
-\begin_inset Formula $\underline{v}_{T}$
+\begin_inset Formula $\underline{v}_{T}=0$
 \end_inset
 
- is known)
+, or known)
 \end_layout
 
 \begin_layout Enumerate
@@ -4572,11 +4534,11 @@ For each grid point in
 \end_inset
 
  find 
-\begin_inset Formula $c_{t}^{\star}(z_{t},a_{t-1})$
+\begin_inset Formula $c_{t}^{\ast}(z_{t},a_{t-1})$
 \end_inset
 
  and therefore 
-\begin_inset Formula $v_{t}^{\star}(z_{t},a_{t-1})$
+\begin_inset Formula $v_{t}^{\ast}(z_{t},a_{t-1})$
 \end_inset
 
  with a 
@@ -4598,7 +4560,11 @@ numerical optimizer
 status open
 
 \begin_layout Plain Layout
-Convergence
+Convergence 
+\begin_inset Formula $(t=T-1-k)$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -4789,7 +4755,7 @@ vspace{-1mm}
  
 \begin_inset Formula 
 \begin{align*}
-c_{it} & =\breve{c}_{t}^{\star}(z_{it},a_{it-1})\\
+c_{it} & =\breve{c}_{t}^{\ast}(z_{it},a_{it-1})\\
 a_{it} & =(1+r)a_{it-1}+wz_{it}-c_{it}
 \end{align*}
 
@@ -5074,7 +5040,7 @@ Find
 \end_inset
 
  such that 
-\begin_inset Formula $a^{i_{a}}\leq a_{t}^{\star}(z^{i_{z}},a^{i_{a-}})$
+\begin_inset Formula $a^{i_{a}}\leq a_{t}^{\ast}(z^{i_{z}},a^{i_{a-}})$
 \end_inset
 
 
@@ -5759,8 +5725,9 @@ If
 \begin_inset Formula $m\leq m(z^{i_{z}},a^{0})$
 \end_inset
 
-: 
-\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})=m+wb$
+ con.
+ binds: 
+\begin_inset Formula $c^{\ast}(z^{i_{z}},a^{i_{a-}})=m+w\max\left\{ -b,-\frac{\underline{z}}{r}\right\} $
 \end_inset
 
 
@@ -5768,7 +5735,7 @@ If
 
 \begin_layout Standard
 Else: 
-\begin_inset Formula $c^{\star}(z^{i_{z}},a^{i_{a-}})=$
+\begin_inset Formula $c^{\ast}(z^{i_{z}},a^{i_{a-}})=$
 \end_inset
 
  interpolate 
@@ -5957,7 +5924,7 @@ Numerical dynamic programming
 \series bold
 Next week: 
 \series default
-Stationary equilibrlium
+Stationary equilibrium
 \end_layout
 
 \begin_layout Itemize
@@ -5972,7 +5939,7 @@ Homework:
 \series bold
 Work on:
 \series default
- Familiarize your self with the code
+ Familiarize your self with today's code
 \end_layout
 
 \begin_layout Enumerate
@@ -5981,6 +5948,10 @@ Work on:
 Read:
 \series default
  Aiyagari (1994), 
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes ald
 \end_inset
 
