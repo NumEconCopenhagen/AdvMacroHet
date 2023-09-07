@@ -417,7 +417,7 @@ status open
 \series bold
 Teachers: 
 \series default
-Jeppe Druedahl & Patrick Moran
+Jeppe Druedahl & Patrick Moran (& Jacob Røpke)
 \end_layout
 
 \begin_layout Itemize
@@ -1064,7 +1064,7 @@ status open
 
 
 \series bold
-Assignment II
+Assignment I
 \end_layout
 
 \begin_deeper
@@ -1559,7 +1559,7 @@ Kaplan and Violante (2018),
 \begin_inset Quotes ald
 \end_inset
 
-“Microeconomic Heterogeneity and Macroeconomic Shocks
+Microeconomic Heterogeneity and Macroeconomic Shocks
 \begin_inset Quotes ard
 \end_inset
 
@@ -1669,7 +1669,7 @@ vspace{-8mm}
 
 \begin_inset Formula 
 \begin{align*}
-v_{0}(a_{-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\\
+v_{0} & =\max_{\{c_{t}\}_{t=0}^{T-1}}\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\\
  & \text{s.t.}\\
 a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
 a_{T-1} & \geq0
@@ -1806,7 +1806,7 @@ vspace{-8mm}
 
 \begin_inset Formula 
 \begin{align*}
-v_{0}(a_{-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\\
+v_{0} & =\max_{\{c_{t}\}_{t=0}^{T-1}}\sum_{t=0}^{T-1}\beta^{t}u(c_{t})\\
  & \text{s.t.}\\
 a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
 a_{T-1} & \geq0
@@ -2385,10 +2385,10 @@ vspace{-8mm}
 
 \begin_inset Formula 
 \begin{align*}
-v_{0}(a_{-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\mathbb{E}_{0}\left[\sum_{t=0}^{\infty}\beta^{t}u(c_{t})\right]\\
+v_{0}(z_{0},a_{-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\mathbb{E}_{0}\left[\sum_{t=0}^{\infty}\beta^{t}u(c_{t})\right]\\
  & \text{s.t.}\\
 a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
-z_{t} & \sim\mathcal{Z}(z_{t-1})\\
+z_{t+1} & \sim\mathcal{Z}(z_{t})\\
 a_{t} & \geq-wb\\
 \lim_{t\rightarrow\infty}(1+r)^{-t}a_{t} & \geq0\,\,\,\,\,[\text{No-Ponzi game}]
 \end{align*}
@@ -2521,7 +2521,7 @@ Substitution
 still implies:
 \begin_inset Formula 
 \begin{eqnarray*}
-R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & b_{0}+h_{0}-\sum_{t=0}^{T-1}R^{-t}c_{t}=0
+R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & s_{0}+h_{0}-\sum_{t=0}^{T-1}R^{-t}c_{t}=0
 \end{eqnarray*}
 
 \end_inset
@@ -2652,7 +2652,7 @@ Increase
 Feasible:
 \series default
  Yes, if 
-\begin_inset Formula $a_{t}>-\underline{a}$
+\begin_inset Formula $a_{t}>-wb$
 \end_inset
 
 
@@ -2786,7 +2786,7 @@ By contradiction
 Constrained:
 \series default
  
-\begin_inset Formula $a_{t}=-\underline{a}$
+\begin_inset Formula $a_{t}=-wb$
 \end_inset
 
  and 
@@ -2802,7 +2802,7 @@ Constrained:
 Unconstrained:
 \series default
  
-\begin_inset Formula $a_{t}>-\underline{a}$
+\begin_inset Formula $a_{t}>-wb$
 \end_inset
 
  and 
@@ -2950,8 +2950,8 @@ Productivity is absolute random walk:
 
 \begin_inset Formula 
 \begin{align*}
-z_{t} & =z_{it-1}+\psi_{it}\\
-\psi_{it} & \sim\mathcal{N}(0,\sigma_{\psi}^{2})
+z_{t} & =z_{t-1}+\psi_{t}\\
+\psi_{t} & \sim\mathcal{N}(0,\sigma_{\psi}^{2})
 \end{align*}
 
 \end_inset
@@ -3004,7 +3004,7 @@ status open
 
 \begin_inset Formula 
 \[
-c_{t}^{*}(a_{it-1},z_{it})=ra_{it-1}+wz_{it}-\frac{\log\left(\beta R\right)^{\frac{1}{\alpha}}+\alpha\frac{\sigma_{\psi}^{2}}{2}}{r^{2}}
+c^{*}(a_{t-1},z_{t})=ra_{t-1}+wz_{t}-\frac{\log\left(\beta R\right)^{\frac{1}{\alpha}}+\alpha\frac{\sigma_{\psi}^{2}}{2}}{r^{2}}
 \]
 
 \end_inset
@@ -3570,7 +3570,7 @@ If
 \begin_inset Formula $\beta$
 \end_inset
 
- is low enough (strong enough impatience) then the value and policy function
+ is low enough (strong enough impatience) then the value and policy functions
  converge to 
 \begin_inset Formula $v(z_{t},a_{t-1})$
 \end_inset
@@ -4039,8 +4039,8 @@ vspace{-2mm}
 
 \begin_inset Formula 
 \begin{align*}
-\breve{\underline{v}}_{t+1}(z^{i_{z}},a) & =\underline{v}_{t+1}(z^{i_{z}},a^{\iota})+\omega_{i}(a-a^{\iota})\\
-\omega_{i} & \equiv\frac{v_{t+1}(z^{i_{z}},a^{\iota+1})-v_{t+1}(z^{\iota_{z}},a^{\iota})}{a^{\iota+1}-a^{\iota}}\\
+\breve{\underline{v}}_{t+1}(z^{i_{z}},a) & =\underline{v}_{t+1}(z^{i_{z}},a^{\iota})+\omega(a-a^{\iota})\\
+\omega & \equiv\frac{v_{t+1}(z^{i_{z}},a^{\iota+1})-v_{t+1}(z^{i_{z}},a^{\iota})}{a^{\iota+1}-a^{\iota}}\\
 \iota & \equiv\text{largest }i_{a}\in\{0,1,\dots,\#_{a}-2\}\text{ such that }a^{i_{a}}\leq a
 \end{align*}
 
@@ -4466,10 +4466,18 @@ Well behaved function:
 \begin_layout Itemize
 
 \series bold
-Example: Random normal variable: 
+Example: 
+\series default
+Random normal variable,
+\series bold
+ 
 \begin_inset Formula $Y\sim\mathcal{N}(\mu,\sigma^{2})$
 \end_inset
 
+
+\series default
+,
+\series bold
  
 \series default
 so that
@@ -4497,7 +4505,7 @@ so that
 status open
 
 \begin_layout Plain Layout
-Value function iteration
+Value function iteration (VFI)
 \end_layout
 
 \end_inset
@@ -4602,7 +4610,7 @@ For each grid point in
 \end_inset
 
  and therefore 
-\begin_inset Formula $v_{t}^{\ast}(z_{t},a_{t-1})$
+\begin_inset Formula $v_{t}(z_{t},a_{t-1})$
 \end_inset
 
  with a 
@@ -5602,7 +5610,12 @@ Endogenous grid-point method (EGM)
 
 \begin_deeper
 \begin_layout Standard
-Alternative to value function iteration:
+Alternative to VFI using Euler, i.e.
+ 
+\begin_inset Formula $c_{t}^{\sigma}=\beta(1+r)\mathbb{E}_{t}[c_{t+1}^{-\sigma}]$
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Enumerate
@@ -5740,7 +5753,7 @@ vspace{-1mm}
 
 \begin_inset Formula 
 \[
-m(z^{i_{z}},a^{i_{a}})=a^{i_{a}}+c_{+}(z^{i_{z}},a^{i_{a}})
+m(z^{i_{z}},a^{i_{a}})=a^{i_{a}}+c(z^{i_{z}},a^{i_{a}})
 \]
 
 \end_inset
