@@ -1775,7 +1775,7 @@ Aggregate prices are hidden as inputs, i.e.
 
 \begin_inset Formula 
 \begin{align*}
-x_{t}^{*}(\beta_{i},z_{it},a_{it-1}) & =*(\beta_{i},z_{it},a_{it-1},\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t})\text{ for }x\in\{a,\ell,c\}
+x_{t}^{*}(\beta_{i},z_{it},a_{it-1}) & =x^{*}(\beta_{i},z_{it},a_{it-1},\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t})\text{ for }x\in\{a,\ell,c\}
 \end{align*}
 
 \end_inset
@@ -1870,7 +1870,7 @@ status open
 \end_inset
 
 Productivity transition: 
-\begin_inset Formula $\boldsymbol{D}_{t}=\Pi_{z}\underline{\boldsymbol{D}}_{t}$
+\begin_inset Formula $\boldsymbol{D}_{t}=\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}$
 \end_inset
 
  over 
@@ -1913,7 +1913,7 @@ status open
 \end_inset
 
 Savings transition: 
-\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}=\Lambda_{t}\boldsymbol{D}_{t}$
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t+1}=\Lambda_{t}^{\prime}\boldsymbol{D}_{t}$
 \end_inset
 
  where again
@@ -2024,8 +2024,8 @@ r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
 w_{t}-F_{L}(K_{t-1},L_{t})\\
 r_{t}-(r_{t}^{K}-\delta)\\
 A_{t}-K_{t}\\
-\boldsymbol{D}_{t}-\Pi_{z}\underline{\boldsymbol{D}}_{t}\\
-\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}\boldsymbol{D}_{t}\\
+\boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
 A_{t}-A_{t}^{hh}\\
 L_{t}-L_{t}^{hh}\\
 \forall t\in\{0,1,\dots\},\text{given }\underline{\boldsymbol{D}}_{0}
@@ -2102,7 +2102,11 @@ numerically
 \begin_layout Itemize
 
 \series bold
-Household problem:
+Household problem: 
+\begin_inset Formula $u(c_{t})=\frac{c_{t}^{1-\sigma}}{1-\sigma}$
+\end_inset
+
+
 \end_layout
 
 \begin_deeper
