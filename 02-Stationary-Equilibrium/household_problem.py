@@ -30,3 +30,10 @@ def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,l):
         # b. expectation step
         v_a = (1+r)*c[i_fix]**(-par.sigma)
         vbeg_a[i_fix] = z_trans[i_fix]@v_a
+
+        # # alternatively we write the matrix multiplication as a loop 
+        # for i_z_lag in nb.prange(par.Nz):
+        #     vbeg_a[i_fix,i_z_lag] = 0.0
+        #     for i_z in range(par.Nz):
+        #         vbeg_a[i_fix,i_z_lag] += z_trans[i_fix,i_z_lag,i_z]*v_a[i_fix,i_z]
+

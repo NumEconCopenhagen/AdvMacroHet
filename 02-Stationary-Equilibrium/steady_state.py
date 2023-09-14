@@ -30,6 +30,8 @@ def prepare_hh_ss(model):
     # 2. transition matrix initial distribution #
     #############################################
     
+    # note: the guess here is somewhat arbitrary
+
     for i_fix in range(par.Nfix):
         ss.z_trans[i_fix,:,:] = z_trans
         ss.Dbeg[i_fix,:,0] = z_ergodic/par.Nfix # ergodic at a_lag = 0.0
@@ -39,6 +41,8 @@ def prepare_hh_ss(model):
     # 3. initial guess for intertemporal variables #
     ################################################
 
+    # note: the guess here is somewhat arbitrary
+    
     # a. raw value
     y = ss.w*par.z_grid
     c = m = (1+ss.r)*par.a_grid[np.newaxis,:] + y[:,np.newaxis]
@@ -123,8 +127,8 @@ def find_ss_direct(model,do_print=False,K_min=1.0,K_max=10.0,NK=10):
     # b. determine search bracket
     if do_print: print(f'### step 2: determine search bracket ###\n')
 
-    K_max = np.min(K_ss_vec[clearing_A < 0])
-    K_min = np.max(K_ss_vec[clearing_A > 0])
+    K_min = np.max(K_ss_vec[clearing_A < 0])
+    K_max = np.min(K_ss_vec[clearing_A > 0])
 
     if do_print: print(f'K in [{K_min:12.8f},{K_max:12.8f}]\n')
 

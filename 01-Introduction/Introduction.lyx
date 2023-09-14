@@ -2636,9 +2636,13 @@ status open
 
 \end_inset
 
-
+Denote 
 \series bold
-Minimum possible income: 
+minimum possible income 
+\series default
+by
+\series bold
+ 
 \begin_inset Formula $\underline{z}$
 \end_inset
 
@@ -2658,77 +2662,44 @@ status open
 
 
 \series bold
-Thought experiment: 
+Consumption must be non-negative
 \series default
-Assumptions
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset Formula $a_{t-1}=-\frac{w\underline{z}}{r}+\Delta$
+ 
+\begin_inset Formula $\Rightarrow$
 \end_inset
 
  
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $z_{t}=\underline{z}$
-\end_inset
-
-, 
-\begin_inset Formula $\forall t$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $c_{t}=0$
-\end_inset
-
-, 
-\begin_inset Formula $\forall t$
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Implication:
-\series default
- For 
-\begin_inset Formula $\Delta<0$
-\end_inset
-
- assets will be 
 \emph on
-decreasing without bound!
+interest payments must be less than minimum income
 \emph default
 
 \begin_inset Formula 
+\[
+c_{t}\geq0\Rightarrow r(-a_{t})\leq w\underline{z}\Leftrightarrow a_{t}\geq-\frac{w\underline{z}}{r}
+\]
+
+\end_inset
+
+If debt was larger it would in the worst case (
+\begin_inset Formula $\forall z_{t}=\underline{z}$
+\end_inset
+
+) grow without bound even with zero consumption (
+\begin_inset Formula $\forall c_{t}=0$
+\end_inset
+
+)
+\begin_inset Formula 
 \begin{align*}
-a_{t} & =\left(1+r\right)\left(-\frac{w\underline{z}}{r}+\Delta\right)+w\underline{z}=-\frac{w\underline{z}}{r}+(1+r)\Delta\\
-a_{t+1} & =-\frac{w\underline{z}}{r}+(1+r)^{2}\Delta\\
- & \dots\\
-a_{t+k} & =-\frac{w\underline{z}}{r}+(1+r)^{k}\Delta\rightarrow-\infty
+a_{0} & =-\frac{w\underline{z}}{r}-\Delta\\
+a_{1} & =(1+r)a_{0}+w\underline{z}=a_{0}-(1+r)\Delta\\
+a_{2} & =(1+r)a_{1}+w\underline{z}=a_{0}-(1+r)^{2}\Delta\\
+\vdots
 \end{align*}
 
 \end_inset
 
-which violates No-Ponzi game condition
+
 \end_layout
 
 \begin_layout Itemize
@@ -2745,7 +2716,7 @@ status open
 
 \series bold
 Natural borrowing constraint: 
-\begin_inset Formula $a_{t}\geq\underline{a}=w\max\left\{ -b,-\frac{\underline{z}}{r}\right\} $
+\begin_inset Formula $a_{t}\geq\underline{a}=-w\min\left\{ b,\frac{\underline{z}}{r}\right\} $
 \end_inset
 
 
@@ -5339,6 +5310,115 @@ Introduces a non-continuous distribution
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Small example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Grids:
+\series default
+ 
+\begin_inset Formula $\mathcal{G}_{z}=\{\underline{z},\overline{z}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{G}_{a}=\{0,1\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Transition matrix:
+\series default
+ 
+\begin_inset Formula $\pi_{0,0}=\pi_{1,1}=0.5$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Policy function: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Low income: 
+\begin_inset Formula $a^{\ast}(\underline{z},0)=a^{\ast}(\underline{z},1)=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+High income: Let 
+\begin_inset Formula $a^{\ast}(\overline{z},0)=0.5$
+\end_inset
+
+ and 
+\begin_inset Formula $a^{\ast}(\overline{z},1)=1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Initial distribution
+\series default
+: 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{0}(z_{it},a_{it-1})=\begin{cases}
+1 & \text{if }z_{it}=\underline{z}\text{ and }a_{it}=0\\
+0 & \text{else}
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Task: 
+\series default
+Calculate by hand the transitions to
+\begin_inset Formula 
+\[
+\boldsymbol{D}_{0},\,\underline{\boldsymbol{D}}_{1},\,\boldsymbol{D}_{1},\dots
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain

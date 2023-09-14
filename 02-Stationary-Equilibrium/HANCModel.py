@@ -8,14 +8,20 @@ import household_problem
 
 class HANCModelClass(EconModelClass,GEModelClass):    
 
+    # remember in model = EconModelClass(name='') we call:
+    # self.settings()ba
+    # self.setup()
+    # self.allocate()
+
     def settings(self):
         """ fundamental settings """
 
         # a. namespaces (typically not changed)
         self.namespaces = ['par','ini','ss','path','sim'] # not used today: 'ini', 'path', 'sim'
 
-        # not used today: .sim and .path
-        
+        # settings required for in GEModelClass
+        # important for allocate_GE in self.allocate()
+
         # b. household
         self.grids_hh = ['a'] # grids
         self.pols_hh = ['a'] # policy functions
@@ -88,3 +94,7 @@ class HANCModelClass(EconModelClass,GEModelClass):
 
     prepare_hh_ss = steady_state.prepare_hh_ss
     find_ss = steady_state.find_ss
+
+    # simular to:
+    # def find_ss(self):
+    #    steady_state.find_ss(self)

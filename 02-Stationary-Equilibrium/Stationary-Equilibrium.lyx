@@ -744,7 +744,7 @@ Ramsey: Firms
 
 \series bold
 Production function: 
-\begin_inset Formula $Y_{t}=F(K_{t-1},L_{t})$
+\begin_inset Formula $Y_{t}=F(\Gamma_{t},K_{tt-1},L_{t})$
 \end_inset
 
  
@@ -753,6 +753,16 @@ Production function:
 [note timing of capital]
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+where 
+\begin_inset Formula $\Gamma_{t}$
+\end_inset
+
+ is technology
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -797,7 +807,7 @@ Rental rate:
 \end_inset
 
 
-\begin_inset Formula $r_{t}^{K}=F_{K}(K_{t-1},L_{t})$
+\begin_inset Formula $r_{t}^{K}=F_{K}(\Gamma_{t},K_{t-1},L_{t})$
 \end_inset
 
 
@@ -818,7 +828,7 @@ vspace{1mm}
 
 \begin_layout Enumerate
 Real wage: 
-\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial L_{t}}=0\Leftrightarrow w_{t}=F_{L}(K_{t-1},L_{t})$
+\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial L_{t}}=0\Leftrightarrow w_{t}=F_{L}(\Gamma_{t},K_{t-1},L_{t})$
 \end_inset
 
 
@@ -1219,8 +1229,8 @@ Simplified form:
 
 \begin_inset Formula 
 \begin{align*}
-u^{\prime}(C_{t}^{hh}) & =\beta(1+F_{K}(K_{t},1)-\delta)u^{\prime}(C_{t+1}^{hh})\\
-K_{t} & =(1-\delta)K_{t-1}+F(K_{t-1},1)-C_{t}^{hh}
+u^{\prime}(C_{t}^{hh}) & =\beta(1+F_{K}(\Gamma_{t},K_{t},1)-\delta)u^{\prime}(C_{t+1}^{hh})\\
+K_{t} & =(1-\delta)K_{t-1}+F(\Gamma_{t},K_{t-1},1)-C_{t}^{hh}
 \end{align*}
 
 \end_inset
@@ -1261,8 +1271,8 @@ vspace{-1mm}
 
 \begin_inset Formula 
 \begin{align*}
-r_{t}^{K} & =F_{K}(K_{t-1},L_{t})\\
-w_{t} & =F_{L}(K_{t-1},L_{t})\\
+r_{t}^{K} & =F_{K}(\Gamma_{t},K_{t-1},L_{t})\\
+w_{t} & =F_{L}(\Gamma_{t},K_{t-1},L_{t})\\
 r_{t} & =r_{t}^{K}-\delta\\
 A_{t} & =K_{t}\\
 A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\\
@@ -1302,8 +1312,8 @@ Ramsey: As an equation system
 \begin_inset Formula 
 \begin{align*}
 \left[\begin{array}{c}
-r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
-w_{t}-F_{L}(K_{t-1},L_{t})\\
+r_{t}^{K}-F_{K}(\Gamma_{t},K_{t-1},L_{t})\\
+w_{t}-F_{L}(\Gamma_{t},K_{t-1},L_{t})\\
 r_{t}-(r_{t}^{K}-\delta)\\
 A_{t}-K_{t}\\
 A_{t}^{hh}-\left((1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\right)\\
@@ -1389,7 +1399,7 @@ Euler-equation
 :
 \begin_inset Formula 
 \begin{align*}
-u^{\prime}(C_{ss}) & =\beta(1+F_{K}(K_{ss},1)-\delta)u^{\prime}(C_{ss})\Leftrightarrow\\
+u^{\prime}(C_{ss}) & =\beta(1+F_{K}(\Gamma_{ss},K_{ss},1)-\delta)u^{\prime}(C_{ss})\Leftrightarrow\\
 F_{K}(K_{ss},1) & =\frac{1}{\beta}-1+\delta
 \end{align*}
 
@@ -1410,8 +1420,8 @@ Accumulation equation
 :
 \begin_inset Formula 
 \begin{align*}
-K_{ss} & =(1-\delta)K_{ss}+F(K_{ss},1)-C_{ss}\Leftrightarrow\\
-C_{ss} & =(1-\delta)K_{ss}+F(K_{ss},1)-K_{ss}
+K_{ss} & =(1-\delta)K_{ss}+F(\Gamma_{ss},K_{ss},1)-C_{ss}\Leftrightarrow\\
+C_{ss} & =(1-\delta)K_{ss}+F(\Gamma_{ss},K_{ss},1)-K_{ss}
 \end{align*}
 
 \end_inset
@@ -1637,7 +1647,7 @@ vspace{-2mm}
 v_{0}(\beta_{i},z_{it},a_{it-1}) & =\max_{\{c_{it}\}_{t=0}^{\infty}}\mathbb{E}_{0}\sum_{t=0}^{\infty}\beta_{i}^{t}u(c_{it})\\
  & \text{s.t.}\\
 \ell_{it} & =z_{it}\\
-a_{it} & =(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}\\
+a_{it} & =(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}+\Pi_{t}\\
 \log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
 a_{it} & \geq0
 \end{align*}
@@ -1654,6 +1664,8 @@ status open
 \begin_layout Plain Layout
 
 <+->
+\backslash
+vspace{-1mm}
 \end_layout
 
 \end_inset
@@ -1731,6 +1743,168 @@ Incomplete markets due to borrowing constraint
 
 \size small
 (fancy words: partial self-insurrance, lack of Arrow-Debreu securities)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recursive formulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Value function 
+\series default
+(at decision)
+\begin_inset Formula 
+\begin{align*}
+v_{t}(\beta_{i},z_{it},a_{it-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(\beta_{i},z_{it},a_{it})\\
+ & \text{s.t.}\\
+\ell_{it} & =z_{it}\\
+a_{it} & =(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}+\Pi_{t}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Beginning-of-period value function
+\series default
+ (before shock realization):
+\begin_inset Formula 
+\[
+\underline{v}_{t}(\beta_{i},z_{it-1},a_{it-1})=\mathbb{E}\left[v_{t}(\beta_{i},z_{it},a_{it-1})\,|\,\beta_{i},z_{it-1},a_{it-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<2->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Envelop-condition:
+\begin_inset Formula 
+\[
+\underline{v}_{a,t}(\beta_{i},z_{it-1},a_{it-1})\equiv\frac{\partial\underline{v}_{t}}{\partial a_{it-1}}=\mathbb{E}\left[(1+r_{t})c_{it}^{-\sigma}\,|\,\beta_{i},z_{it-1},a_{it-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Euler-equation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Proof:
+\series default
+ Using 
+\emph on
+variation argument
+\emph default
+ (see previous lecture)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Euler-equation:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+c_{it}^{-\sigma} & =\beta_{i}\underline{v}_{a,t+1}(\beta_{i},z_{it},a_{it})\\
+ & =\beta_{i}\mathbb{E}_{t}\left[v_{a,t+1}(\beta_{i},z_{it+1},a_{it})\right]\\
+ & =\beta_{i}(1+r_{t+1})\mathbb{E}_{t}\left[c_{it+1}^{-\sigma}\right]\\
+ & =\beta_{i}(1+r_{t+1})q(z_{it},a_{it})
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $q$
+\end_inset
+
+ is the 
+\emph on
+post-decision marginal value of cash
 \end_layout
 
 \end_deeper
@@ -2020,8 +2194,8 @@ vspace{-5mm}
 \begin_inset Formula 
 \begin{align*}
 \left[\begin{array}{c}
-r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
-w_{t}-F_{L}(K_{t-1},L_{t})\\
+r_{t}^{K}-F_{K}(\Gamma_{t},K_{t-1},L_{t})\\
+w_{t}-F_{L}(\Gamma_{t},K_{t-1},L_{t})\\
 r_{t}-(r_{t}^{K}-\delta)\\
 A_{t}-K_{t}\\
 \boldsymbol{D}_{t}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
@@ -2170,77 +2344,11 @@ Solution of household problem
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
 
 \series bold
-Beginning-of-period value function:
-\begin_inset Formula 
-\[
-\underline{v}_{t}(\beta_{i},z_{it-1},a_{it-1})=\mathbb{E}\left[v_{t}(\beta_{i},z_{it},a_{it-1})\,|\,\beta_{i},z_{it-1},a_{it-1}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Envelope theorem: 
+Solve:
 \series default
-Differentiate with fixed 
-\begin_inset Formula $a_{t}$
-\end_inset
-
- choice
-\series bold
-
-\begin_inset Formula 
-\[
-\underline{v}_{a,t}(\beta_{i},z_{it-1},a_{it-1})\equiv\frac{\partial\underline{v}_{t}}{\partial a_{it-1}}=\mathbb{E}\left[(1+r_{t})c_{it}^{-\sigma}\,|\,\beta_{i},z_{it-1},a_{it-1}\right]
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-EGM: 
-\series default
-Separately for each 
+ Separately for each 
 \begin_inset Formula $\beta_{i}$
 \end_inset
 
@@ -2305,6 +2413,20 @@ Consumption is
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+Expecation:
+\begin_inset Formula 
+\[
+\underline{v}_{a,t}(\beta_{i},z_{it-1},a_{it-1})=\sum_{i_{z}=0}^{\#_{z}-1}\pi_{i_{z-},i_{z}}(1+r_{t})c_{it}^{-\rho}
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2435,8 +2557,8 @@ satisfies
 \begin_inset Formula 
 \[
 \left[\begin{array}{c}
-r_{ss}^{K}-(\alpha\Gamma_{ss}(K_{ss}/L_{ss})^{\alpha-1})\\
-w_{ss}-(1-\alpha)\Gamma_{ss}(K_{ss}/L_{ss})^{\alpha}\\
+r_{ss}^{K}-F_{K}(\Gamma_{ss},K_{ss,}L_{ss})\\
+w_{ss}-F_{L}(\Gamma_{ss},K_{ss,}L_{ss})\\
 r_{ss}-(r_{ss}^{K}-\delta)\\
 A_{ss}-K_{ss}\\
 \boldsymbol{D}_{ss}-\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{ss}\\
@@ -2656,6 +2778,18 @@ Direct implementation
 \begin_layout Standard
 
 \series bold
+Technology:
+\series default
+ 
+\begin_inset Formula $F(K,L)=\Gamma K^{\alpha}L^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 Root-finding problem
 \series default
  in 
@@ -2748,6 +2882,18 @@ Direct implementation (alternative)
 \begin_layout Standard
 
 \series bold
+Technology:
+\series default
+ 
+\begin_inset Formula $F(K,L)=\Gamma K^{\alpha}L^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
 Root-finding problem
 \series default
  in 
@@ -2837,6 +2983,40 @@ Indirect implementation
 \end_layout
 
 \begin_deeper
+\begin_layout Standard
+
+\series bold
+Technology:
+\series default
+ 
+\begin_inset Formula $F(K,L)=\Gamma K^{\alpha}L^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Consider 
+\begin_inset Formula $\Gamma_{ss}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ as 
+\begin_inset Quotes ald
+\end_inset
+
+free
+\begin_inset Quotes ard
+\end_inset
+
+ parameters:
+\end_layout
+
 \begin_layout Enumerate
 Choose 
 \begin_inset Formula $r_{ss}$
@@ -2905,7 +3085,7 @@ Set
 
 \begin_layout Enumerate
 Set 
-\begin_inset Formula $r_{ss}^{k}=\alpha\Gamma_{ss}(K_{ss})^{\alpha-1}$
+\begin_inset Formula $r_{ss}^{K}=\alpha\Gamma_{ss}(K_{ss})^{\alpha-1}$
 \end_inset
 
 
