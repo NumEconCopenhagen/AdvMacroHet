@@ -1311,7 +1311,7 @@ u^{\prime}(C_{t}^{hh})-\beta(1+r_{t+1})u^{\prime}(C_{t+1}^{hh})\\
 A_{t}-A_{t}^{hh}\\
 L_{t}-L_{t}^{hh}\\
 \forall t\in\{0,1,\dots\},\text{given }K_{-1}
-\end{array}\right]\boldsymbol{=} & \boldsymbol{0}
+\end{array}\right] & \boldsymbol{=}\boldsymbol{0}
 \end{align*}
 
 \end_inset
@@ -1637,7 +1637,7 @@ vspace{-2mm}
 v_{0}(\beta_{i},z_{it},a_{it-1}) & =\max_{\{c_{it}\}_{t=0}^{\infty}}\mathbb{E}_{0}\sum_{t=0}^{\infty}\beta_{i}^{t}u(c_{it})\\
  & \text{s.t.}\\
 \ell_{it} & =z_{it}\\
-a_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}-c_{it}\\
+a_{it} & =(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}\\
 \log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
 a_{it} & \geq0
 \end{align*}
@@ -4051,6 +4051,28 @@ What happens for
 
 \series bold
 When is average household utility maximized? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note:
+\series default
+ Full solution in repository folder 
+\emph on
+HANCGovModel
 \end_layout
 
 \end_deeper
