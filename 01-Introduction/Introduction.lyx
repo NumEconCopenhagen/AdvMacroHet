@@ -3763,10 +3763,25 @@ Maximum upper limit for
 \series bold
 In practice:
 \series default
- Solve backwards until value and policy functions does not change anymore
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Make arbitrary initial guess (e.g.
+ 
+\begin_inset Formula $v_{t+1}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Solve backwards until value and policy functions does not change anymore
  (given some tolerance)
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -5432,7 +5447,65 @@ Calculate by hand the transitions to
 status open
 
 \begin_layout Plain Layout
-CDF of savings in final period
+Infinite horizon: 
+\begin_inset Formula $T\rightarrow\infty?$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Initial guess: 
+\series default
+Can be arbitrary.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Everyone in one grid point, or
+\end_layout
+
+\begin_layout Enumerate
+Ergodic distribution of 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+ and everyone has zero savings,
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Convergence:
+\series default
+ Simulate forward until the distribution does not change anymore (given
+ some tolerance)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Converged CDF of savings
 \end_layout
 
 \end_inset
