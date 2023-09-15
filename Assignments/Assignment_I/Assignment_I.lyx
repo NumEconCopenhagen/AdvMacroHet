@@ -462,7 +462,8 @@ heterogeneous in terms of their discount factors,
 \end_inset
 
 .
- The abilities are either low or high with equal probability, 
+ The abilities are either low or high with equal independent probability,
+ 
 \begin_inset Formula $\chi_{i}\in\{0,1\}$
 \end_inset
 

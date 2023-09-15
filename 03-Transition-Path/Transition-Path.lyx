@@ -516,7 +516,7 @@ status open
 \end_layout
 
 \begin_layout Enumerate
-Examples from 
+Example from 
 \begin_inset ERT
 status open
 
@@ -999,7 +999,7 @@ Transition path:
 \end_inset
 
  with non-linear equation system solver (e.g.
- broyden):
+ broyden)
 \end_layout
 
 \begin_layout Itemize
@@ -1466,7 +1466,7 @@ where
 
 \begin_inset Formula 
 \begin{align*}
-r_{t}^{k} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
@@ -1561,7 +1561,7 @@ where
 \begin_inset Formula 
 \begin{align*}
 L_{t} & =1\\
-r_{t}^{k} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
@@ -1631,7 +1631,7 @@ Guess
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{L}^{i},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}^{i}=\boldsymbol{H}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 .
@@ -1647,7 +1647,7 @@ Stop if
 
 \begin_layout Enumerate
 Calculate the Jacobians 
-\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{L}}(\boldsymbol{K}^{i},\boldsymbol{L}^{i},\boldsymbol{\Gamma})$
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}^{i}=\boldsymbol{H}_{\boldsymbol{K}}(\boldsymbol{K}^{i},\boldsymbol{\Gamma})$
 \end_inset
 
 
@@ -1655,7 +1655,7 @@ Calculate the Jacobians
 
 \begin_layout Enumerate
 Update guess by 
-\begin_inset Formula $\boldsymbol{K}^{i+1}=\boldsymbol{K}^{i}+\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
+\begin_inset Formula $\boldsymbol{K}^{i+1}=\boldsymbol{K}^{i}-\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
 \end_inset
 
 
@@ -1748,7 +1748,7 @@ Stop if
 
 \begin_layout Enumerate
 Update guess by 
-\begin_inset Formula $\boldsymbol{K}^{i+1}=\boldsymbol{K}^{i}+\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
+\begin_inset Formula $\boldsymbol{K}^{i+1}=\boldsymbol{K}^{i}-\left(\boldsymbol{H}_{\boldsymbol{K}}^{i}\right)^{-1}\boldsymbol{H}^{i}$
 \end_inset
 
 
@@ -1949,7 +1949,9 @@ vspace{-5mm}
 \begin_inset Formula $\mathcal{J}^{r,K},\mathcal{J}^{w,K}$
 \end_inset
 
-: Fast from the onset - only involve aggregates
+: Fast from the onset - 
+\emph on
+only involve aggregates
 \end_layout
 
 \begin_layout Enumerate
@@ -1977,15 +1979,14 @@ status open
 \begin_layout Standard
 
 \emph on
-Details discussed later
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ details discussed later today
 \end_layout
 
 \end_deeper
 \end_deeper
-\begin_layout Frame
-
-\end_layout
-
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -2151,7 +2152,7 @@ I go through the code
 status open
 
 \begin_layout Plain Layout
-Intrepreting the household Jacobians
+Interpreting the household Jacobians
 \end_layout
 
 \end_inset
@@ -2166,6 +2167,7 @@ Intrepreting the household Jacobians
 Jacobian of consumption wrt.
  wage: 
 \series default
+\emph on
 What happens to consumption in period 
 \begin_inset Formula $t$
 \end_inset
@@ -2176,11 +2178,12 @@ What happens to consumption in period
 
 ?
 \series bold
+\emph default
 
 \begin_inset Formula 
 \[
 \mathcal{J}^{C^{hh},w}=\left[\begin{array}{ccc}
-\frac{\partial C_{0}^{hh}}{\partial w_{0}} & \frac{\partial C_{1}^{hh}}{\partial K_{1}} & \cdots\\
+\frac{\partial C_{0}^{hh}}{\partial w_{0}} & \frac{\partial C_{0}^{hh}}{\partial w_{1}} & \cdots\\
 \frac{\partial C_{1}^{hh}}{\partial w_{0}} & \ddots & \ddots\\
 \vdots & \ddots & \ddots
 \end{array}\right]
@@ -2567,7 +2570,7 @@ steady state
  satisfy
 \begin_inset Formula 
 \[
-\boldsymbol{H(\boldsymbol{U}_{ss},\boldsymbol{Z}_{ss})}=0\text{ and \boldsymbol{X}_{ss}=\boldsymbol{M(}\boldsymbol{U_{ss}}\boldsymbol{,}\boldsymbol{Z}_{ss}\boldsymbol{)}.}
+\boldsymbol{H(\boldsymbol{U}_{ss},\boldsymbol{Z}_{ss})}=0\text{ and}\boldsymbol{X}_{ss}=\boldsymbol{M(}\boldsymbol{U_{ss}}\boldsymbol{,}\boldsymbol{Z}_{ss}\boldsymbol{)}
 \]
 
 \end_inset
@@ -2639,7 +2642,7 @@ where
 \begin_inset Formula $\boldsymbol{y}(\underline{\boldsymbol{v}}_{t+1},\boldsymbol{X}_{t}^{hh})$
 \end_inset
 
- as individual level measures.
+ as individual level measures (savings, consumption labor supply etc.).
 \end_layout
 
 \begin_layout Enumerate
@@ -3097,6 +3100,8 @@ With many unknowns and targets both computing the Jacobian and solving the
 \end_inset
 
  
+\emph on
+
 \begin_inset ERT
 status open
 

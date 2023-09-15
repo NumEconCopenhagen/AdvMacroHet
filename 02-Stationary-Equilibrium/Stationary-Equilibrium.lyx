@@ -484,6 +484,16 @@ Equilibrium-concept:
 Stationary equilibrium
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+What determines income and wealth inequality?
+\end_layout
+
+\begin_layout Enumerate
+What determines the real interest rate?
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -541,15 +551,7 @@ Is in active development
 \end_layout
 
 \begin_layout Enumerate
-You can help to improve interface
-\end_layout
-
-\begin_layout Enumerate
-You can help to find bugs
-\end_layout
-
-\begin_layout Enumerate
-You can help to add features 
+You can help to improve interface, find bugs and features 
 \end_layout
 
 \begin_layout Standard
