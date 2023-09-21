@@ -1462,10 +1462,11 @@ where
 \end_inset
 
  and
-\size small
+\size footnotesize
 
 \begin_inset Formula 
 \begin{align*}
+A_{t} & =K_{t}\\
 r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
@@ -1556,11 +1557,12 @@ where
 \end_inset
 
  and
-\size small
+\size footnotesize
 
 \begin_inset Formula 
 \begin{align*}
 L_{t} & =1\\
+A_{t} & =K_{t}\\
 r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
@@ -1849,6 +1851,10 @@ Set
 
 \begin_layout Enumerate
 Find 
+\begin_inset Formula $\boldsymbol{A}$
+\end_inset
+
+, 
 \begin_inset Formula $\boldsymbol{r}$
 \end_inset
 
@@ -1869,7 +1875,7 @@ Simulate households forward along transition path
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{(A_{t}-A_{t}^{hh})-(A_{ss}-A_{ss}^{hh})}{\Delta}$
+\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{A_{t}-A_{t}^{hh}}{\Delta}$
 \end_inset
 
  for all 
@@ -1912,7 +1918,7 @@ From household Jacobian to full Jacobian
 
 \begin_inset Formula 
 \[
-\boldsymbol{H}_{\boldsymbol{K}}=\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}-\boldsymbol{I}
+\boldsymbol{H}_{\boldsymbol{K}}=\boldsymbol{I}-\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}
 \]
 
 \end_inset
@@ -2570,7 +2576,7 @@ steady state
  satisfy
 \begin_inset Formula 
 \[
-\boldsymbol{H(\boldsymbol{U}_{ss},\boldsymbol{Z}_{ss})}=0\text{ and}\boldsymbol{X}_{ss}=\boldsymbol{M(}\boldsymbol{U_{ss}}\boldsymbol{,}\boldsymbol{Z}_{ss}\boldsymbol{)}
+\boldsymbol{H(\boldsymbol{U}_{ss},\boldsymbol{Z}_{ss})}=0\text{ and\,}\boldsymbol{X}_{ss}=\boldsymbol{M(}\boldsymbol{U_{ss}}\boldsymbol{,}\boldsymbol{Z}_{ss}\boldsymbol{)}
 \]
 
 \end_inset

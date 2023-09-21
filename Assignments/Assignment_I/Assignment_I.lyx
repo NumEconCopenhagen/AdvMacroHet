@@ -385,7 +385,7 @@ status open
 
 \series bold
 Solve for the transition path when 
-\begin_inset Formula $\varphi_{0t}$
+\begin_inset Formula $\varphi_{1t}$
 \end_inset
 
  is 10 percent higher for 10 periods.
@@ -408,14 +408,14 @@ status open
 
 \series bold
 Solve for the transition path when 
-\begin_inset Formula $\varphi_{0t}$
+\begin_inset Formula $\varphi_{1t}$
 \end_inset
 
  is 
 \emph on
 permanently
 \emph default
- 10 percent.
+ 10 percent higher.
  
 \series default
 Discuss which types of agents this benefits.
@@ -462,9 +462,16 @@ heterogeneous in terms of their discount factors,
 \end_inset
 
 .
- The abilities are either low or high with equal independent probability,
- 
+ The abilities are either low or high, 
 \begin_inset Formula $\chi_{i}\in\{0,1\}$
+\end_inset
+
+, with probabilities 
+\begin_inset Formula $\frac{2}{3}$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{1}{3}$
 \end_inset
 
 .
@@ -611,13 +618,13 @@ where
 \begin_inset Formula $r_{t}^{K}$
 \end_inset
 
- and the real wage is 
-\begin_inset Formula $w_{t}$
+ and the real wages are 
+\begin_inset Formula $w_{t}^{j}$
 \end_inset
 
 .
  Profits are 
-\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}-r_{t}^{K}K_{t-1}$
+\begin_inset Formula $\Pi_{t}=Y_{t}-\sum_{j=0}^{1}w_{t}^{j}L_{t}^{j}-r_{t}^{K}K_{t-1}$
 \end_inset
 
 .
@@ -699,11 +706,15 @@ Preferences:
 \end_layout
 
 \begin_layout Enumerate
-Labor supply: 
+
+\series bold
+Labor supply
+\series default
+: 
 \begin_inset Formula $\eta_{i}^{j}=\begin{cases}
-\eta^{j} & \text{if }\chi_{i}=j\\
+1 & \text{if }\chi_{i}=j\\
 0 & \text{else}
-\end{cases},\varphi_{ss}^{0}=2,\varphi_{ss}^{1}=1$
+\end{cases},\varphi_{ss}^{0}=1,\varphi_{ss}^{1}=2$
 \end_inset
 
 
