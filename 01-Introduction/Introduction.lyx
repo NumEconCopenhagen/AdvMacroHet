@@ -2638,7 +2638,7 @@ status open
 
 Denote 
 \series bold
-minimum possible income 
+minimum possible productivity 
 \series default
 by
 \series bold
@@ -2668,7 +2668,11 @@ Consumption must be non-negative
 \begin_inset Formula $\Rightarrow$
 \end_inset
 
- 
+
+\begin_inset Newline newline
+\end_inset
+
+
 \emph on
 interest payments must be less than minimum income
 \emph default
@@ -4755,19 +4759,6 @@ Converged policy functions
 
 \begin_deeper
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-centering
-\end_layout
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename figs/c_func.pdf
 	width 50text%
@@ -4782,6 +4773,46 @@ centering
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Precautionary saving:
+\end_layout
+
+\begin_layout Enumerate
+Consumption lower than without risk (same slope for 
+\begin_inset Formula $a_{t-1}\rightarrow\infty$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Especially at low savings (
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ concave function in 
+\begin_inset Formula $a_{t-1}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Buffer-stock target:
+\series default
+ 
+\begin_inset Formula $a_{t}=a_{t-1}$
+\end_inset
+
+ for constant income 
+\emph on
+realizations
 \end_layout
 
 \end_deeper
@@ -5434,6 +5465,14 @@ Calculate by hand the transitions to
 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+See simple simple_histogram_simulation.xlsx
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain

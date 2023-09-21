@@ -812,8 +812,8 @@ w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
 A_{t} & =K_{t}\\
 r_{t} & =r_{t}^{K}-\delta\\
 C_{t}^{hh} & =\left(\beta(1+r_{t+1})\right)^{-\sigma}C_{t+1}^{hh}\,\text{(backwards)}\\
-A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\,\text{(forwards)}\\
-L_{t}^{hh} & =1
+L_{t}^{hh} & =1\\
+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\,\text{(forwards)}
 \end{align*}
 
 \end_inset
@@ -995,7 +995,7 @@ Transition path:
 \end_inset
 
  solve 
-\begin_inset Formula $\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma},K_{-1}\right)$
+\begin_inset Formula $\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},K_{-1}\right)$
 \end_inset
 
  with non-linear equation system solver (e.g.
@@ -1153,7 +1153,7 @@ equation system
 
 \begin_inset Formula 
 \begin{align*}
-\boldsymbol{H}\left(\{K_{t},L_{t};\Gamma_{t}\}_{t\geq0},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+\left[\begin{array}{c}
 r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
 w_{t}-F_{L}(K_{t-1},L_{t})\\
 r_{t}-(r_{t}^{K}-\delta)\\
@@ -1163,7 +1163,7 @@ A_{t}-K_{t}\\
 A_{t}-A_{t}^{hh}\\
 L_{t}-L_{t}^{hh}\\
 \forall t\in\{0,1,\dots\},\text{given }\underline{\boldsymbol{D}}_{0}
-\end{array}\right]=\boldsymbol{0}
+\end{array}\right] & =\boldsymbol{0}
 \end{align*}
 
 \end_inset
@@ -1466,9 +1466,9 @@ where
 
 \begin_inset Formula 
 \begin{align*}
-A_{t} & =K_{t}\\
 r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
 w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+A_{t} & =K_{t}\\
 \boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
 A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
@@ -1851,10 +1851,6 @@ Set
 
 \begin_layout Enumerate
 Find 
-\begin_inset Formula $\boldsymbol{A}$
-\end_inset
-
-, 
 \begin_inset Formula $\boldsymbol{r}$
 \end_inset
 
@@ -1875,7 +1871,7 @@ Simulate households forward along transition path
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{A_{t}-A_{t}^{hh}}{\Delta}$
+\begin_inset Formula $\frac{\partial H_{t}}{\partial K_{s}}=\frac{K_{t}-A_{t}^{hh}}{\Delta}$
 \end_inset
 
  for all 
@@ -1918,7 +1914,7 @@ From household Jacobian to full Jacobian
 
 \begin_inset Formula 
 \[
-\boldsymbol{H}_{\boldsymbol{K}}=\boldsymbol{I}-\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}
+\boldsymbol{H}_{\boldsymbol{K}}=\boldsymbol{I}-\left(\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K}+\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}\right)
 \]
 
 \end_inset
@@ -1988,7 +1984,7 @@ status open
 \begin_inset Formula $\Rightarrow$
 \end_inset
 
- details discussed later today
+ detailed discussed later today
 \end_layout
 
 \end_deeper
@@ -2852,6 +2848,14 @@ Computation:
  Only a single backward iteration required!
 \end_layout
 
+\begin_layout Itemize
+
+\series bold
+Note:
+\series default
+ This is not an approximation
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2887,7 +2891,7 @@ Effect on output variable
 
 :
 \series default
- 
+
 \begin_inset Formula 
 \[
 \mathcal{Y}_{0,s}^{o,i}\equiv\frac{dY_{0}^{o,s,i}}{dx}=\frac{\left(d\boldsymbol{y}_{0}^{o,s,i}\right)^{\prime}}{dx}\left(\Pi_{ss}\right)^{\prime}\underline{\boldsymbol{D}}_{ss}
@@ -2901,7 +2905,7 @@ Effect on output variable
 \begin_layout Itemize
 
 \series bold
-Effect on distribution in period 
+Effect on beginning-of-period distribution in period 
 \begin_inset Formula $1$
 \end_inset
 
@@ -3007,8 +3011,8 @@ Result:
 \begin_inset Formula 
 \begin{align*}
 \mathcal{F}_{t,s}^{,i,o} & \equiv\begin{cases}
-\mathcal{Y}_{s}^{o,i} & t=0\\
-\left(\mathcal{E}_{t-1}^{o}\right)^{\prime}\underline{\mathcal{D}}_{s}^{i} & t\geq1
+\mathcal{Y}_{0,s}^{o,i} & t=0\\
+\left(\mathcal{E}_{t-1}^{o}\right)^{\prime}\underline{\mathcal{D}}_{1,s}^{i} & t\geq1
 \end{cases}\\
 \mathcal{J}_{t,s}^{hh,i,o} & =\sum_{k=0}^{\min\{t,s\}}\mathcal{F}_{t-k,s-k}^{i,o}
 \end{align*}
@@ -3032,6 +3036,129 @@ Intuition:
 Mathematically:
 \series default
  Use the chain-rule over and over again
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Note:
+\series default
+ Use linearity and that we start from steady state
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Chain-rule unfolding 
+\begin_inset Formula $t=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathcal{J}_{0,s}^{hh,i,o} & =\mathcal{F}_{0,s}^{i,o}=\mathcal{Y}_{0,s}^{o,i}=\underset{\text{change in policy }}{\underbrace{\frac{dY_{0}^{o,s,i}}{dx}}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Chain-rule unfolding 
+\begin_inset Formula $t=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathcal{J}_{1,0}^{hh,i,o} & =\mathcal{F}_{1,0}^{i,o}=\left(\mathcal{E}_{0}^{o}\right)^{\prime}\underline{\mathcal{D}}_{0}^{i}=\underset{\text{change in distribution}}{\underbrace{\left(\boldsymbol{y}_{ss}^{o}\right)^{\prime}\Pi_{ss}^{\prime}\frac{d\underline{\boldsymbol{D}}_{1}^{0,i}}{dx}}}\\
+s\geq1:\,\mathcal{J}_{1,s}^{hh,i,o} & =\mathcal{F}_{1,s}^{i,o}+\mathcal{F}_{0,s-1}^{i,o}=\underset{\text{change in distribution}}{\underbrace{\left(\boldsymbol{y}_{ss}^{o}\right)^{\prime}\Pi_{ss}^{\prime}\Lambda_{ss}^{\prime}\Pi_{ss}^{\prime}\frac{d\underline{\boldsymbol{D}}_{1}^{s,i}}{dx}}}+\underset{\text{change in policy }}{\underbrace{\frac{dY_{0}^{o,s-1,i}}{dx}}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Chain-rule unfolding 
+\begin_inset Formula $t=2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\mathcal{J}_{2,0}^{hh,i,o} & =\mathcal{F}_{2,0}^{i,o}=\underset{\text{change in distribution}}{\underbrace{\left(\boldsymbol{y}_{ss}^{o}\right)^{\prime}\Pi_{ss}^{\prime}\Lambda_{ss}^{\prime}\Pi_{ss}^{\prime}\frac{d\underline{\boldsymbol{D}}_{1}^{0,i}}{dx}}}\\
+\mathcal{J}_{2,1}^{hh,i,o} & =\mathcal{F}_{2,1}^{i,o}+\mathcal{F}_{1,0}^{i,o}=\underset{\text{change in distribution}}{\underbrace{\left(\boldsymbol{y}_{ss}^{o}\right)^{\prime}\Pi_{ss}^{\prime}\Lambda_{ss}^{\prime}\Pi_{ss}^{\prime}\frac{d\underline{\boldsymbol{D}}_{1}^{1,i}}{dx}+\left(\boldsymbol{y}_{ss}^{o}\right)^{\prime}\Pi_{ss}^{\prime}\frac{d\underline{\boldsymbol{D}}_{1}^{0,i}}{dx}}}\\
+s\geq2:\,\mathcal{J}_{2,s}^{hh,i,o} & =\mathcal{F}_{2,s}^{i,o}+\mathcal{F}_{1,s-1}^{i,o}+\mathcal{F}_{0,s-2}^{i,o}\\
+ & =\underset{\text{change in distribution}}{\underbrace{\left(\boldsymbol{y}_{ss}^{o}\right)^{\prime}\Pi_{ss}^{\prime}\Lambda_{ss}^{\prime}\Pi_{ss}^{\prime}\frac{d\underline{\boldsymbol{D}}_{1}^{s,i}}{dx}+\left(\boldsymbol{y}_{ss}^{o}\right)^{\prime}\Pi_{ss}^{\prime}\frac{d\underline{\boldsymbol{D}}_{1}^{s-1,i}}{dx}}}+\underset{\text{change in policy }}{\underbrace{\frac{dY_{0}^{o,s-2,i}}{dx}}}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -3069,7 +3196,7 @@ Finding the stationary equilibrium
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
 
 \series bold
 Trick:
@@ -3081,15 +3208,21 @@ Trick:
  (Howard improvement)
 \end_layout
 
-\begin_layout Standard
-Idea: Multiple steps as once when finding the value function
+\begin_layout Itemize
+
+\series bold
+Idea:
+\series default
+ Multiple steps as once when finding the value function
 \end_layout
 
+\begin_deeper
 \begin_layout Standard
 See e.g.
  Rendahl (2022) and Eslami and Phelan (2023)
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 
@@ -3140,7 +3273,9 @@ status open
 
 \end_inset
 
- has some methods for speeding this up not availible in GEModelTools
+ toolbox from Auclert et.
+ al.
+ (2021) has some methods for speeding this up not available in GEModelTools
 \end_layout
 
 \end_deeper
