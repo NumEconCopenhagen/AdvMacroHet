@@ -4071,9 +4071,10 @@ Bonds: Pays
 
 
 \begin_inset Formula 
-\[
-p_{t}^{B}B_{t}=B_{t-1}+G_{t}-\int\tau_{t}z_{it}d\boldsymbol{D}_{t}
-\]
+\begin{align*}
+p_{t}^{B}B_{t} & =B_{t-1}+G_{t}-\int\tau_{t}z_{it}d\boldsymbol{D}_{t}\\
+\tau_{t} & =\tau_{ss}+\varphi\left(B_{t-1}-B_{ss}\right)
+\end{align*}
 
 \end_inset
 
@@ -4081,6 +4082,20 @@ p_{t}^{B}B_{t}=B_{t-1}+G_{t}-\int\tau_{t}z_{it}d\boldsymbol{D}_{t}
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+Market clearing:
+\begin_inset Formula 
+\[
+B_{t}=A_{t}^{hh}
+\]
+
+\end_inset
+
+
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain

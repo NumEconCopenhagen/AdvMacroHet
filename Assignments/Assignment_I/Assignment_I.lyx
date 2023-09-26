@@ -552,7 +552,7 @@ a_{it} & \geq0.\nonumber
 The Euler-equation is 
 \begin_inset Formula 
 \begin{align}
-c_{it}^{-\rho} & =\beta_{i}\mathbb{E}\left[v_{a,it+1}(s_{it+1},a_{it})\right]\label{eq:euler}\\
+c_{it}^{-\sigma} & =\beta_{i}\mathbb{E}\left[v_{a,it+1}(s_{it+1},a_{it})\right]\label{eq:euler}\\
 v_{a,it} & =(1+r_{t}^{K}-\delta)c_{it}^{-\sigma}.\label{eq:envelope}
 \end{align}
 
@@ -730,7 +730,7 @@ Income process:
 \end_inset
 
 , 
-\begin_inset Formula $\sigma_{\psi}=0.30\sqrt{(1-\rho_{z}^{2})}$
+\begin_inset Formula $\sigma_{\psi}=0.30\sqrt{(1-\rho_{s}^{2})}$
 \end_inset
 
 , 
