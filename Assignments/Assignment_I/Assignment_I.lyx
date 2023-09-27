@@ -566,7 +566,7 @@ The aggregate quantities of central interest are
 \begin_inset Formula 
 \begin{align}
 C_{t}^{hh} & =\int c_{it}d\boldsymbol{D}_{t}\label{eq:C_hh}\\
-L_{t}^{j,hh} & =\int\varphi_{t}^{i}\eta_{i}^{j}s_{it}d\boldsymbol{D}_{t}\,\,\,\text{for }j\in\{0,1\}\label{eq:L_hh}\\
+L_{t}^{j,hh} & =\int\varphi_{t}^{j}\eta_{i}^{j}s_{it}d\boldsymbol{D}_{t}\,\,\,\text{for }j\in\{0,1\}\label{eq:L_hh}\\
 A_{t}^{hh} & =\int a_{it}d\boldsymbol{D}_{t}\label{eq:A_hh}
 \end{align}
 
