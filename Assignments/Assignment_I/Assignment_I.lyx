@@ -364,7 +364,7 @@ status open
 \series bold
 Compute and inspect the Jacobians of the household block wrt.
  
-\begin_inset Formula $\varphi_{0}$
+\begin_inset Formula $\varphi_{1}$
 \end_inset
 
 .
