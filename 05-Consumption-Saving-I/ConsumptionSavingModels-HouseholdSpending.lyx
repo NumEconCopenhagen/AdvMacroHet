@@ -203,7 +203,7 @@ status open
 
 
 \backslash
-title{2.
+title{5.
  Consumption-Saving Models 
 \backslash
 vspace{-2mm}}
@@ -230,7 +230,7 @@ author{Jeppe Druedahl
 
 
 \backslash
-date{2022}
+date{2023}
 \end_layout
 
 \begin_layout Plain Layout
@@ -440,63 +440,6 @@ Introduction
 status open
 
 \begin_layout Plain Layout
-Disclaimer
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{20mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Note: The views expressed in this presentation are those of the author and
- do not represent the views of the Federal Reserve Board or Federal Reserve
- System.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Consumption-Saving Models
 \end_layout
 
@@ -612,6 +555,51 @@ Study the link between income risk and consumption behavior
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Important Note
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{20mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The views expressed in this presentation are those of the author and do
+ not represent the views of the Federal Reserve Board or Federal Reserve
+ System.
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1108,6 +1096,16 @@ No idiosyncratic risk, no borrowing constraint
 \end_layout
 
 \begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
 Household problem:
 \end_layout
 
@@ -1137,9 +1135,6 @@ status open
 \end_inset
 
 Consumption function:
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \[
 c\left(b\right)=\mathfrak{m}^{CE}\left[Rb+\sum_{t=0}^{\infty}\left(\frac{1}{R}\right)^{t}y_{t}\right],\;where\;\mathfrak{m}^{CE}=1-R^{-1}(R\beta)^{\frac{1}{\gamma}}
