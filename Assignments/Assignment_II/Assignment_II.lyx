@@ -334,7 +334,7 @@ Find the stationary equilibrium without a government
  
 \series default
 \emph on
-Code is provided as starting point.
+Code is provided as a starting point.
 \end_layout
 
 \begin_layout Enumerate
@@ -543,7 +543,7 @@ heterogeneous in terms of their stochastic labor productivity,
 The household problem is
 \begin_inset Formula 
 \begin{align}
-v_{t}(z_{it},a_{it-1}) & =\max_{c_{t}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\frac{S_{t}^{1-\omega}}{1-\omega}-\varphi\frac{\ell_{it}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\label{eq:Bellman}\\
+v_{t}(z_{it},a_{it-1}) & =\max_{c_{it},\ell_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\frac{S_{t}^{1-\omega}}{1-\omega}-\varphi\frac{\ell_{it}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\label{eq:Bellman}\\
 \text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+(1-\tau_{t})w_{t}z_{it}+\chi_{t}+\Pi_{t}\nonumber \\
 \log z_{it+1} & =\rho_{s}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\nonumber \\
 a_{it} & \geq0.\nonumber 
@@ -592,16 +592,16 @@ A representative firm rents capital,
  to produce goods, with the production function
 \begin_inset Formula 
 \begin{equation}
-Y_{t}=\Gamma_{t}K_{t-1}^{\alpha}(L_{t}^{Y})^{1-\alpha}\label{eq:production}
+Y_{t}=\Gamma^{Y}K_{t-1}^{\alpha}(L_{t}^{Y})^{1-\alpha}\label{eq:production}
 \end{equation}
 
 \end_inset
 
 where 
-\begin_inset Formula $\Gamma_{t}$
+\begin_inset Formula $\Gamma^{Y}$
 \end_inset
 
- is technology and 
+ is TFP and 
 \begin_inset Formula $\alpha$
 \end_inset
 
@@ -757,7 +757,7 @@ Income process:
 Production:
 \series default
  
-\begin_inset Formula $\Gamma_{ss}^{Y}=\Gamma_{ss}^{G}=1$
+\begin_inset Formula $\Gamma^{Y}=\Gamma^{G}=1$
 \end_inset
 
 , 
