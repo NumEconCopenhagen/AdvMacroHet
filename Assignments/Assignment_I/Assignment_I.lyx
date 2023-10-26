@@ -757,6 +757,680 @@ Production:
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Implementation hints
+\end_layout
+
+\begin_layout Standard
+The model can be implemented in many different equally good ways.
+ Below are some hints for one such implementation.
+ 
+\end_layout
+
+\begin_layout Standard
+Compared to the baseline HANC model, the first new thing is additional heterogen
+eity in 
+\begin_inset Formula $\eta^{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $\eta^{1}$
+\end_inset
+
+ (through 
+\begin_inset Formula $\chi$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+This calls for extending the code with something like:
+\end_layout
+
+\begin_layout Itemize
+In method 
+\series bold
+setup()
+\series default
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{Nfix = 6}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.phi0_ss = 1.0 # steady state productivity of labor type 0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.phi1_ss = 2.0 # steady state productivity of labor type 1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In method 
+\series bold
+allocate()
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.beta_grid = np.zeros(par.Nfix)}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.eta0_grid = np.zeros(par.Nfix)}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.eta1_grid = np.zeros(par.Nfix)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In function 
+\series bold
+obj_ss()
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.phi0 = par.phi0_ss}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.phi1 = par.phi1_ss}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.L0 = ss.phi0*2/3 # from equation (5) combined with P(chi=0) =
+ 2/3}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.L1 = ss.phi1*1/3 # from equation (5) combined with P(chi=1) =
+ 1/3}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In function 
+\series bold
+prepare_hh_ss()
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.beta_grid[:] = np.tile(beta_grid,2)}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.eta0_grid[:] = np.hstack((np.ones(par.Nbeta),np.zeros(par.Nbeta)))}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{par.eta1_grid[:] = np.hstack((np.zeros(par.Nbeta),np.ones(par.Nbeta)))}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.Dbeg[:3,:,0] = z_ergodic*2/3*1/3 # ergodic at a_lag = 0.0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.Dbeg[:3,:,1:] = 0.0 # none with a_lag > 0.0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.Dbeg[3:,:,0] = z_ergodic*1/3*1/3 # ergodic at a_lag = 0.0}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.Dbeg[3:,:,1:] = 0.0 # none with a_lag > 0.0}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+In function 
+\series bold
+solve_hh_backwards()
+\series default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{l0[i_fix,i_z,:] = phi0*par.eta0_grid[i_fix]*par.z_grid[i_z]}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{l1[i_fix,i_z,:] = phi1*par.eta1_grid[i_fix]*par.z_grid[i_z]}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+Next, the definition of 
+\emph on
+shocks
+\emph default
+ and 
+\emph on
+unknowns
+\emph default
+ must be changed.
+ In 
+\series bold
+method settings()
+\series default
+, we should have something like:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{self.shocks = ['Gamma','phi0','phi1'] # exogenous shocks}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{self.unknowns = ['K','L0','L1'] # endogenous unknowns}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is important to check your results step by step:
+\end_layout
+
+\begin_layout Enumerate
+Check you can solve the household_problem.
+\begin_inset Newline newline
+\end_inset
+
+(for your choice of 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ss.phi0, ss.phi1, ss.r, ss.w0, ss.w1}
+\end_layout
+
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Enumerate
+Check all markets clear after completing 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{find_ss()}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Run 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{model.test_path()}
+\end_layout
+
+\end_inset
+
+ after 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{find_ss()}
+\end_layout
+
+\end_inset
+
+ to find errors in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{blocks.py}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Finally, some extra tips:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Permanent shock: 
+\series default
+You should use the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{ini=}
+\end_layout
+
+\end_inset
+
+ option in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{find_transition_path()}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Utility:
+\series default
+ You might want to look at household utility.
+ In solve_hh_backwards():
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{u[i_fix,i_z] = c[i_fix,i_z]**(1-par.sigma)/(1-par.sigma) - par.nu}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the notebook you can calculate expected discounted utility as:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{v = np.sum([par.beta_grid[i_fix]**t*}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{np.sum(path.u[t,i_fix]*path.D[t,i_fix]/np.sum(path.D[t,i_fix]))}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{for t in range(par.T)])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
 \begin_inset ERT
 status open
 

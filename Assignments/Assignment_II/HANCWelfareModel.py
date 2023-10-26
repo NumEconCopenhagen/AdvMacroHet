@@ -23,7 +23,7 @@ class HANCWelfareModelClass(EconModelClass,GEModelClass):
         self.intertemps_hh = ['vbeg_a'] # intertemporal variables
 
         # c. GE
-        self.shocks = ['Gamma'] # exogenous shocks
+        self.shocks = [] # exogenous shocks
         self.unknowns = ['K','L'] # endogenous unknowns
         self.targets = ['clearing_A','clearing_L'] # targets = 0
         self.blocks = [ # list of strings to block-functions
@@ -35,8 +35,6 @@ class HANCWelfareModelClass(EconModelClass,GEModelClass):
 
         # e. functions
         self.solve_hh_backwards = household_problem.solve_hh_backwards
-        self.block_pre = None # not used today
-        self.block_post = None # not used today
 
     def setup(self):
         """ set baseline parameters """
@@ -57,7 +55,7 @@ class HANCWelfareModelClass(EconModelClass,GEModelClass):
         par.sigma_psi = 0.15 # std. of shock
 
         # c. production and investment
-        par.Gamma = 1.0 # technology level
+        par.Gamma_Y = 1.0 # technology level
         par.alpha = 0.30 # cobb-douglas coefficient
         par.delta = 0.10 # depreciation rate
 
@@ -69,14 +67,15 @@ class HANCWelfareModelClass(EconModelClass,GEModelClass):
         par.tau_ss = 0.00 # tax rate on wage income
 
         # e. misc.
-        par.max_iter_ell = 100 # maximum number of iterations when solving for ell 
+        par.max_iter_ell = 200 # maximum number of iterations when solving for ell 
         par.max_iter_solve = 50_000 # maximum number of iterations when solving household problem
         par.max_iter_simulate = 50_000 # maximum number of iterations when simulating household problem
         
-        par.tol_ell = 1e-10 # tolerance when solving for ell 
+        par.tol_ell = 1e-12 # tolerance when solving for ell 
         par.tol_solve = 1e-12 # tolerance when solving household problem
         par.tol_simulate = 1e-12 # tolerance when simulating household problem
-        
+        par.tol_broyden = 1e-10 # tolerance when solving eq. system
+
     def allocate(self):
         """ allocate model """
 
