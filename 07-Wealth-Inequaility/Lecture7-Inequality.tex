@@ -182,10 +182,10 @@
 
 \usepackage{babel}
 \begin{document}
-	\title{5. Wealth Inequality \vspace{-2mm}}
+	\title{7. Wealth Inequality \vspace{-2mm}}
 	\subtitle{Adv. Macro: Heterogenous Agent Models} 
 	\author{Jeppe Druedahl \& Patrick Moran}
-	\date{2022}
+	\date{2023}
 	
 	{
 		\setbeamertemplate{footline}{} 
@@ -220,17 +220,7 @@
 
 
 \section{Introduction}
-\begin{frame}{Disclaimer}
-\vspace{-2mm}
 
-\vspace{20mm}
-\begin{itemize}
-	\item Note: The views expressed in this presentation are those of the author
-	and do not represent the views of the Federal Reserve Board or Federal
-	Reserve System.
-\end{itemize}
-\end{frame}
-%
 \begin{frame}{Wealth Inequality}
 \vspace{-2mm}
 \begin{itemize}
@@ -257,6 +247,16 @@ through the lens of heterogeneous agent general equilibrium models \vfill
 \end{frame}
 %
 
+\begin{frame}{Note}
+\vspace{-2mm}
+
+\vspace{20mm}
+\begin{itemize}
+	\item The views expressed in this presentation are those of the author
+	and do not represent the views of the Federal Reserve Board or Federal
+	Reserve System.
+\end{itemize}
+\end{frame}
 
 %\begin{document}
 %\frame{\titlepage}
@@ -318,16 +318,14 @@ through the lens of heterogeneous agent general equilibrium models \vfill
 
 \pause
 \begin{center}
-\begin{tabular}{lcccc}
+\begin{tabular}{lccccc}
 	\hline\hline
-	& Top &  &  &  Perc. at zero \\
-	$1 \%$ & $5 \%$ & $20 \%$ & $40 \%$ & or negative \\
+	& \quad\quad & \quad\quad & \quad\quad &  \quad\quad &  Percent at zero \\
+	& Top $1 \%$ & Top $5 \%$ & Top $20 \%$ & Top $40 \%$ & or negative \\
 	\hline
-	\multicolumn{4}{l}{Wealth (SCF)}  &  \\
-	29 & 53 & 80 & 93 & 6 \\
-	\hline
-	\multicolumn{4}{l}{Earnings (LIS)} &  \\
-	6 & 19 & 48 & 72 & 8 \\
+	Wealth & 29 & 53 & 80 & 93 & 6 \\
+	
+	Earnings & 6 & 19 & 48 & 72 & 8 \\
 	\hline\hline
 \end{tabular}
 \end{center}
@@ -339,11 +337,47 @@ through the lens of heterogeneous agent general equilibrium models \vfill
 	\item Rich people (high lifetime income, education, wealth) have a higher saving rate before and after retirement
 	
 \end{itemize}
+\end{frame}
 
 
 
+\begin{frame}
+\frametitle{Wealth more concentrated than earnings}
+
+
+Not only in the US, but also Denmark and almost all other countries
+
+\includegraphics[width=0.75\textwidth]{figs/Cross-Country-Gini.png}
+% Figure from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4841595/
 
 \end{frame}
+
+
+
+\begin{frame}
+\frametitle{Quick refresher: Gini index}
+
+
+\begin{itemize}
+	\item Measures extent a distribution deviates from perfect equality
+	
+	\item 0 represents perfect equality, 1 implies perfect inequality
+	
+	\item Gini Index = $\frac{A}{A+B}$
+	
+\end{itemize}
+
+\includegraphics[width=0.5\textwidth]{figs/Gini.png}
+
+\begin{itemize}
+	\item Wealth and earnings becoming more concentrated over time
+	
+	\item Rich people (high lifetime income, education, wealth) have a higher saving rate before and after retirement
+	
+\end{itemize}
+\end{frame}
+
+
 
 
 \subsection{Basic models of inequality}
@@ -458,6 +492,7 @@ $$
 	\item  and the policy functions $a_{ss}^{\ast}(z_{t},a_{t-1})$ and $c_{ss}^{\ast}(z_{t},a_{t-1})$	
 \end{enumerate}
 
+\pause
 	are such that
 	
 \begin{enumerate}	
@@ -512,14 +547,6 @@ $$
 
 \end{frame}
 
-%--------------------------------------
-\begin{frame}
-\frametitle{Saving rate by age and wealth, median earnings level}
-\includegraphics[max width=\textwidth]{DeNardiFella-Figs/2022_10_05_feede24bac33b2bb1aaag-04}
-
-Standard life cycle Bewley model
-
-\end{frame}
 
 
 
@@ -540,7 +567,7 @@ Standard life cycle Bewley model
 
 \item Once "buffer stock savings" is reached, people start dissaving. Carroll (1997)
 
-\item The saving rate of the high wealth households is low or even negative
+\item In the model: The saving rate of the high wealth households is low or even negative
 
 \begin{itemize}
 \item Contrasts with much empirical evidence (Dynan Skinner and Zeldes, 2004 and De Nardi, French and Jones, 2010)
@@ -550,17 +577,25 @@ Standard life cycle Bewley model
 \end{wideitemize}
 \end{frame}
 
+%--------------------------------------
+\begin{frame}
+\frametitle{Model-implied saving rate by age and wealth}
+\includegraphics[max width=\textwidth]{DeNardiFella-Figs/2022_10_05_feede24bac33b2bb1aaag-04}
+
+Standard life cycle Bewley model
+
+\end{frame}
 
 
 %--------------------------------------
 \begin{frame}
 \frametitle{Limitations of the standard model}
 \begin{wideitemize}
-\item Counterfactual saving behavior
+\item Model generates counterfactual saving behavior
 
-\item They do not generate the high wealth people that we see in the data
+\item Model does not generate enough high wealth people as in the data
 
-\item They allow for very few saving motives. Might miss important saving motives even for households whose saving behavior we think we understand
+\item Model allows for very few saving motives. Might miss important saving motives 
 
 \item Why people save is important
 
@@ -569,7 +604,7 @@ Standard life cycle Bewley model
 
 
 
-\subsection{Richer models of wealth inequality}
+\section{Richer Models of Inequality}
 
 
 %--------------------------------------
@@ -1137,7 +1172,7 @@ $$
 
 
 
-\section{Sources of US Wealth Inequality}
+\section{How to Explain Rising Wealth Inequality?}
 \subsection{Hubmer, Krusell, Smith (2020)}
 \begin{frame}
 \frametitle{Evolution of top wealth inequality in the U.S.}
@@ -1717,7 +1752,7 @@ asset-price movements account well for medium-run dynamics
 		\item Then analyzed the rise in wealth inequality in the US
 	\end{enumerate}
 	\item <+->\textbf{Next week: } Learn to extend the workhorse model to include equilibrium in housing markets
-	\item <+->\textbf{Homework:} Begin work on the first assignment 
+%	\item <+->\textbf{Homework:} Begin work on the first assignment 
 \end{wideitemize}
 
 \end{frame}
