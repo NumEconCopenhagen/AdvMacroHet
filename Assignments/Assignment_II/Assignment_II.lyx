@@ -331,9 +331,21 @@ Find the stationary equilibrium without a government
 )
 \series bold
 .
- 
+
 \series default
 \emph on
+ 
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+Report the expected discounted utility.
+\emph on
+
+\begin_inset Newline newline
+\end_inset
+
 Code is provided as a starting point.
 \end_layout
 
@@ -367,6 +379,32 @@ Choose
 \end_inset
 
 .
+ Report 
+\begin_inset Formula $G_{t}/Y_{t}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\emph on
+Hint: You can use that 
+\begin_inset Formula $G_{t}=\Gamma^{G}L_{t}^{G}$
+\end_inset
+
+ is always optimal cf.
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:S"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -386,10 +424,11 @@ Find optimal welfare policies II.
  
 \series default
 Repeat b) allowing for 
-\begin_inset Formula $\chi_{t}>0$
+\begin_inset Formula $\chi_{t}\neq0$
 \end_inset
 
 .
+ Discuss whether positive or negative transfer are optimal.
 \end_layout
 
 \begin_layout Enumerate
@@ -532,7 +571,7 @@ heterogeneous in terms of their stochastic labor productivity,
 \begin_inset Formula $c_{it}$
 \end_inset
 
- and labor supply, 
+, and labor supply, 
 \begin_inset Formula $\ell_{it}$
 \end_inset
 
@@ -540,11 +579,23 @@ heterogeneous in terms of their stochastic labor productivity,
 \end_layout
 
 \begin_layout Standard
+The utility function is
+\begin_inset Formula 
+\begin{equation}
+u(c_{it},S_{t},\ell_{it})=\frac{c_{it}^{1-\sigma}}{1-\sigma}+\frac{\left(S_{t}+\underline{S}\right)^{1-\omega}}{1-\omega}-\varphi\frac{\ell_{it}^{1+\nu}}{1+\nu}.\label{eq:u}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 The household problem is
 \begin_inset Formula 
 \begin{align}
-v_{t}(z_{it},a_{it-1}) & =\max_{c_{it},\ell_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\frac{S_{t}^{1-\omega}}{1-\omega}-\varphi\frac{\ell_{it}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\label{eq:Bellman}\\
-\text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+(1-\tau_{t})w_{t}z_{it}+\chi_{t}+\Pi_{t}\nonumber \\
+v_{t}(z_{it},a_{it-1}) & =\max_{c_{it},\ell_{it}}u(c_{it},S_{t},\ell_{it})+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\label{eq:Bellman}\\
+\text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+(1-\tau_{t})w_{t}z_{it}\ell_{it}+\chi_{t}+\Pi_{t}\nonumber \\
 \log z_{it+1} & =\rho_{s}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\nonumber \\
 a_{it} & \geq0.\nonumber 
 \end{align}
@@ -556,6 +607,15 @@ where
 \end_inset
 
 .
+ The expected discounted utility is
+\begin_inset Formula 
+\begin{equation}
+\overline{v}_{t}=\sum_{k=0}^{\infty}\beta^{t}\int u(c_{it},S_{t},\ell_{it})d\boldsymbol{D}_{t+k}.\label{eq:vbar}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -621,7 +681,7 @@ where
 
 .
  Profits are 
-\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}-r_{t}^{K}K_{t-1}$
+\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}^{Y}-r_{t}^{K}K_{t-1}$
 \end_inset
 
 .
@@ -704,7 +764,7 @@ Labor market:
 
 \begin_layout Enumerate
 Goods market: 
-\begin_inset Formula $Y_{t}=C_{t}^{hh}+I_{t}$
+\begin_inset Formula $Y_{t}=C_{t}^{hh}+G_{t}+I_{t}$
 \end_inset
 
 
@@ -725,6 +785,10 @@ Preferences:
 \end_inset
 
 , 
+\begin_inset Formula $\underline{S}=10^{-8},$
+\end_inset
+
+ 
 \begin_inset Formula $\varphi=1.0$
 \end_inset
 
