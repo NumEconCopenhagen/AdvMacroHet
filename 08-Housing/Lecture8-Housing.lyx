@@ -161,7 +161,7 @@ status open
 
 
 \backslash
-title{6.
+title{8.
  Housing 
 \backslash
 vspace{-2mm}}
@@ -188,7 +188,7 @@ author{Jeppe Druedahl
 
 
 \backslash
-date{2022}
+date{2023}
 \end_layout
 
 \begin_layout Plain Layout
@@ -247,7 +247,7 @@ node[above left=0cm and 0.0cm of current page.south east]
 
 {
 \backslash
-includegraphics[width=4cm]{../04/figs/KUSAMFtitlelrcorner.pdf}};
+includegraphics[width=4cm]{../01-Introduction/figs/KUSAMFtitlelrcorner.pdf}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -279,7 +279,7 @@ node[below left=0.5cm and .8cm of current page.north east]
 
 {
 \backslash
-includegraphics[width=1.5cm]{../04/figs/KUSAMFlogo.pdf}};
+includegraphics[width=1.5cm]{../01-Introduction/figs/KUSAMFlogo.pdf}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -311,7 +311,7 @@ node[below right=0.5cm and 0.8cm of current page.north west]
 
 {
 \backslash
-includegraphics[width=1.5cm]{../04/figs/CEBI.png}};
+includegraphics[width=1.5cm]{../01-Introduction/figs/CEBI.png}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -343,7 +343,7 @@ node[above right=0.5cm and 0.8cm of current page.south west]
 
 {
 \backslash
-includegraphics[width=1.5cm]{../04/figs/DNRF.png}};
+includegraphics[width=1.5cm]{../01-Introduction/figs/DNRF.png}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -391,63 +391,6 @@ addtocounter{framenumber}{-1}
 
 \begin_layout Section
 Introduction
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Disclaimer
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{20mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-Note: The views expressed in this presentation are those of the author and
- do not represent the views of the Federal Reserve Board or Federal Reserve
- System.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
 \end_layout
 
 \begin_layout Frame
@@ -615,6 +558,63 @@ Study the effect of eliminating housing subsidies
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Note
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{20mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The views expressed in this presentation are those of the author and do
+ not represent the views of the Federal Reserve Board or Federal Reserve
+ System.
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2787,7 +2787,7 @@ Properties of baseline model
 status open
 
 \begin_layout Plain Layout
-Distribution of shelter consumption
+Distribution of housing consumption
 \end_layout
 
 \end_inset
@@ -2799,7 +2799,7 @@ Distribution of shelter consumption
 \begin_layout Standard
 \begin_inset Graphics
 	filename SommerSullivan2018/12.PNG
-	width 100page%
+	width 60page%
 
 \end_inset
 
@@ -3065,7 +3065,7 @@ All agents correctly forecast the sequence of house prices and rents, and
 status open
 
 \begin_layout Plain Layout
-Effect of eliminating MITD
+Effect of eliminating housing subsidy
 \end_layout
 
 \end_inset
@@ -3101,7 +3101,7 @@ Effect of eliminating MITD
 status open
 
 \begin_layout Plain Layout
-Eliminating MITD: change in housing by quintile
+Eliminating housing subsidy: change in housing by quintile
 \end_layout
 
 \end_inset
@@ -3500,7 +3500,7 @@ Summary
 status open
 
 \begin_layout Plain Layout
-Summary and next week
+Summary
 \end_layout
 
 \end_inset
@@ -3624,55 +3624,6 @@ vfill
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Next lecture: 
-\series default
-Learn how to compute the transition path between two steady states
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vfill
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Homework: 
-\series default
-finish assignment 1
-\end_layout
-
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
