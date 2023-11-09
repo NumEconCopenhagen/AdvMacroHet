@@ -3798,38 +3798,7 @@ status open
 \series bold
 Next lecture: 
 \series default
-Learn more about the International HANK literature
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vfill
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Homework: 
-\series default
-Work on HANK assignment
+Learn about the baseline HANK model with Jeppe
 \end_layout
 
 \end_deeper
