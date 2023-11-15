@@ -870,7 +870,7 @@ The envelope condition implies
 The first order conditions imply
 \begin_inset Formula 
 \begin{align}
-c_{t} & =(\beta\mathbb{E}(\underline{v}_{t+1}(z_{t+1},a_{t})))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
+c_{t} & =(\beta\mathbb{E}(\underline{v}_{t+1}(z_{t+1},a_{t}))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
 \ell_{t} & =\left(\frac{(1-\tau_{t})w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}\label{eq:FOC_ell}
 \end{align}
 
@@ -974,7 +974,7 @@ If
 \begin_inset Formula 
 \begin{align*}
 \ell_{t}^{j+1} & =\ell_{t}^{j}-\frac{f(\ell_{t})}{f^{\prime}(\ell_{t})}\\
- & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)\frac{\partial c_{t}}{\partial\ell_{t}}}\\
+ & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{t}^{-\sigma/\nu-1}\frac{\partial c_{t}}{\partial\ell_{t}}}\\
  & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{t}^{-\sigma/\nu-1}(1-\tau)w_{t}z_{t}}
 \end{align*}
 
