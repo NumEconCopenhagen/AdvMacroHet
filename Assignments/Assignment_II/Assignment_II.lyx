@@ -596,7 +596,7 @@ The household problem is
 \begin{align}
 v_{t}(z_{it},a_{it-1}) & =\max_{c_{it},\ell_{it}}u(c_{it},S_{t},\ell_{it})+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\label{eq:Bellman}\\
 \text{s.t. }a_{it}+c_{it} & =(1+r_{t})a_{it-1}+(1-\tau_{t})w_{t}z_{it}\ell_{it}+\chi_{t}+\Pi_{t}\nonumber \\
-\log z_{it+1} & =\rho_{s}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\nonumber \\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it+1}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\nonumber \\
 a_{it} & \geq0.\nonumber 
 \end{align}
 
@@ -862,7 +862,7 @@ restoregeometry
 The envelope condition implies
 \begin_inset Formula 
 \begin{equation}
-\underline{v}_{a,t+1}(z_{t-1},a_{t-1})=\mathbb{E}\left[(1+r_{t}^{K}-\delta)c_{t}^{-\rho}\,|\,z_{t-1},a_{t-1}\right]\label{envelope}
+\underline{v}_{t}(z_{t},a_{t-1})=(1+r_{t}^{K}-\delta)c_{t}^{-\sigma}\label{envelope}
 \end{equation}
 
 \end_inset
@@ -870,7 +870,7 @@ The envelope condition implies
 The first order conditions imply
 \begin_inset Formula 
 \begin{align}
-c_{t} & =(\beta\underline{v}_{a,t+1}(z_{t},a_{t}))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
+c_{t} & =(\beta\mathbb{E}(\underline{v}_{t+1}(z_{t+1},a_{t}))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
 \ell_{t} & =\left(\frac{(1-\tau_{t})w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}\label{eq:FOC_ell}
 \end{align}
 
@@ -974,7 +974,7 @@ If
 \begin_inset Formula 
 \begin{align*}
 \ell_{t}^{j+1} & =\ell_{t}^{j}-\frac{f(\ell_{t})}{f^{\prime}(\ell_{t})}\\
- & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)\frac{\partial c_{t}}{\partial\ell_{t}}}\\
+ & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{t}^{-\sigma/\nu-1}\frac{\partial c_{t}}{\partial\ell_{t}}}\\
  & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{t}^{-\sigma/\nu-1}(1-\tau)w_{t}z_{t}}
 \end{align*}
 

@@ -188,7 +188,7 @@ author{Jeppe Druedahl
 
 
 \backslash
-date{2022}
+date{2023}
 \end_layout
 
 \begin_layout Plain Layout
@@ -247,7 +247,7 @@ node[above left=0cm and 0.0cm of current page.south east]
 
 {
 \backslash
-includegraphics[width=4cm]{../04/figs/KUSAMFtitlelrcorner.pdf}};
+includegraphics[width=4cm]{../01-Introduction/figs/KUSAMFtitlelrcorner.pdf}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -279,7 +279,7 @@ node[below left=0.5cm and .8cm of current page.north east]
 
 {
 \backslash
-includegraphics[width=1.5cm]{../04/figs/KUSAMFlogo.pdf}};
+includegraphics[width=1.5cm]{../01-Introduction/figs/KUSAMFlogo.pdf}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -311,7 +311,7 @@ node[below right=0.5cm and 0.8cm of current page.north west]
 
 {
 \backslash
-includegraphics[width=1.5cm]{../04/figs/CEBI.png}};
+includegraphics[width=1.5cm]{../01-Introduction/figs/CEBI.png}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -343,7 +343,7 @@ node[above right=0.5cm and 0.8cm of current page.south west]
 
 {
 \backslash
-includegraphics[width=1.5cm]{../04/figs/DNRF.png}};
+includegraphics[width=1.5cm]{../01-Introduction/figs/DNRF.png}};
 \end_layout
 
 \begin_layout Plain Layout
@@ -3798,38 +3798,7 @@ status open
 \series bold
 Next lecture: 
 \series default
-Learn more about the International HANK literature
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vfill
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
-Homework: 
-\series default
-Work on HANK assignment
+Learn about the baseline HANK model with Jeppe
 \end_layout
 
 \end_deeper
