@@ -158,16 +158,14 @@ vspace{-2mm}}
 
 \backslash
 subtitle{Adv.
- Macro: Heterogenous Agent Models} 
+ Macro: Heterogenous Agent Models}  
 \end_layout
 
 \begin_layout Plain Layout
 
 
 \backslash
-author{Jeppe Druedahl 
-\backslash
-& Patrick Moran}
+author{Jeppe Druedahl}
 \end_layout
 
 \begin_layout Plain Layout
@@ -459,105 +457,13 @@ status open
 
 
 \series bold
-Model:
+Relevance: 
 \series default
- Heterogeneous Agent New Keynesian (HANK) model
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
+Business cycle analysis
 \series bold
-Code:
-\series default
  
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-Based on the 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textcolor{DarkRed}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "GEModelTools"
-target "https://github.com/NumEconCopenhagen/GEModelTools"
-literal "false"
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
- package
-\end_layout
-
-\begin_layout Enumerate
-Example from 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-textcolor{DarkRed}{
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset href
-LatexCommand href
-name "GEModelToolsNotebooks/HANK"
-target "https://github.com/NumEconCopenhagen/GEModelToolsNotebooks"
-literal "false"
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -584,6 +490,21 @@ Auclert et.
 
 Using the Sequence-Space Jacobian to Solve and Estimate Heterogeneous-Agent
  Models
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Boppart et.
+ al.
+ (2018), 
+\begin_inset Quotes ald
+\end_inset
+
+Exploiting MIT shocks in heterogeneous-agent economies: The impulse response
+ as a numerical derivative
 \begin_inset Quotes ard
 \end_inset
 
@@ -639,7 +560,7 @@ Unknowns:
 Shock:
 \series default
  
-\begin_inset Formula $Z$
+\begin_inset Formula $\boldsymbol{Z}$
 \end_inset
 
  
@@ -660,7 +581,7 @@ Additional variables:
 \begin_layout Itemize
 
 \series bold
-Target equation system;
+Target equation system:
 \series default
 
 \begin_inset Formula 
@@ -676,7 +597,7 @@ Target equation system;
 \begin_layout Itemize
 
 \series bold
-Auxiliary model equations
+Auxiliary model equations:
 \series default
 
 \begin_inset Formula 
@@ -724,27 +645,13 @@ status open
 
 
 \series bold
-Previously: 
-\series default
-Full non-linear transition path to an MIT-shock
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<+->
-\end_layout
-
-\end_inset
-
-
-\series bold
 Today: 
 \series default
-Just consider the first order solution
+Just consider the 
+\emph on
+first order solution
+\emph default
+
 \begin_inset ERT
 status open
 
@@ -772,11 +679,21 @@ status open
 
 \end_inset
 
-Solve for IRFs for unknowns
+Solve for Impulse Response Functions (IRFs) for unknowns
 \begin_inset Formula 
 \begin{align*}
 \boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=\underset{\text{\ensuremath{\equiv\boldsymbol{G}_{\boldsymbol{U}}}}}{\underbrace{-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}}}d\boldsymbol{Z}
 \end{align*}
+
+\end_inset
+
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+IRF: Path of variable in response to shock path
+\end_layout
 
 \end_inset
 
@@ -820,6 +737,32 @@ vspace{-4mm}
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Computation: 
+\series default
+Same for 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+ as for 
+\begin_inset Formula $\boldsymbol{U}$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -919,9 +862,49 @@ Aggregate stochastic variables:
 
  
 \series default
-follow some known process
+follow some known process with innovations 
+\begin_inset Formula $\boldsymbol{\epsilon}$
+\end_inset
+
+.
+ 
+\emph on
+State space form
+\emph default
+: RHS is what is known today 
+\size small
+
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\underline{\boldsymbol{D}}_{t+1}\\
+X_{t}\\
+Z_{t}
+\end{array}\right]=\mathcal{M}\left(\left[\begin{array}{c}
+\underline{\boldsymbol{D}}_{t}\\
+X_{t-1}\\
+Z_{t-1}
+\end{array}\right],\boldsymbol{\epsilon}_{t}\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\neq$
+\end_inset
+
+ perfect foresight wrt.
+ future agg.
+ variables in 
+\emph on
+sequence-space
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -942,6 +925,24 @@ Observation:
 certainty equivalence
 \emph default
  with respect to these
+\size small
+
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\underline{\boldsymbol{D}}_{t+1}\\
+X_{t}\\
+Z_{t}
+\end{array}\right]=\boldsymbol{A}\left[\begin{array}{c}
+\underline{\boldsymbol{D}}_{t}\\
+X_{t-1}\\
+Z_{t-1}
+\end{array}\right]+\boldsymbol{B}\boldsymbol{\epsilon}_{t}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -971,24 +972,29 @@ equivalent
  al., 2018)
 \end_layout
 
-\begin_layout Itemize
-\begin_inset ERT
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
 status open
 
 \begin_layout Plain Layout
-
-<+->
+Comparisons
 \end_layout
 
 \end_inset
 
 
-\series bold
-Perspectives:
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
+\begin_layout Itemize
 
 \series bold
 State-space approach with linearization
@@ -1028,27 +1034,62 @@ status open
 \end_inset
 
 ; Bhandari et al.
- (2023); Bilal (2023).
+ (2023); Bilal (2023)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\bar under
+Con
+\bar default
+: 
 \end_layout
 
 \begin_layout Enumerate
+Harder to implement in my view
+\end_layout
+
+\begin_layout Enumerate
+Valuable to be able to interpret Jacobians
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Pro
+\series bold
+\bar default
+:
+\series default
+ 
+\end_layout
+
+\begin_layout Enumerate
+More similar to standard approaches for RBC and NK models
+\end_layout
+
+\begin_layout Enumerate
+Easier path to 2nd and higher order approximations
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
 
 \series bold
-Why not full 
-\emph on
-global 
-\emph default
-solution?
+Global solution:
 \series default
  The distribution of households is a state variable for each household 
 \begin_inset Formula $\Rightarrow$
 \end_inset
 
- explosion in complexity
+ 
+\emph on
+explosion in complexity
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Enumerate
 
 \bar under
 Original
@@ -1057,7 +1098,7 @@ Original
  (2014);
 \end_layout
 
-\begin_layout Standard
+\begin_layout Enumerate
 
 \bar under
 Deep learning
@@ -1073,7 +1114,14 @@ Deep learning
 \end_layout
 
 \end_deeper
-\end_deeper
+\begin_layout Itemize
+
+\series bold
+Discrete aggregate risk:
+\series default
+ Lin and Peruffo (2023)
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1195,12 +1243,26 @@ status open
 \end_inset
 
 Calculate the time series of shocks as 
-\begin_inset Formula $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{T}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
+\begin_inset Formula $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
 \end_inset
 
 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Note: 
+\begin_inset Formula $d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}=$
+\end_inset
+
+ effect of shock 
+\begin_inset Formula $s$
+\end_inset
+
+ periods ago today 
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 \begin_inset ERT
 status open
@@ -1215,7 +1277,7 @@ status open
 Calculate the time series of other aggregate variables as 
 \begin_inset Formula 
 \[
-d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{T}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
+d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
 \]
 
 \end_inset
@@ -1224,7 +1286,11 @@ where
 \begin_inset Formula $d\boldsymbol{X}_{s}$
 \end_inset
 
- is the IRF to a unit-shock after 
+ is the IRF to a 
+\emph on
+unit-shock
+\emph default
+ after 
 \begin_inset Formula $s$
 \end_inset
 
@@ -1263,12 +1329,9 @@ status open
 
 
 \series bold
-Equivalence: 
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Same result if we linearize all aggregated equations and write the model
+Equivalence:
+\series default
+ Same result if we linearize all aggregated equations and write the model
  in MA(
 \begin_inset Formula $\infty$
 \end_inset
@@ -1276,11 +1339,6 @@ Same result if we linearize all aggregated equations and write the model
 ) form
 \end_layout
 
-\begin_layout Enumerate
-The state space form can also be recovered (not needed)
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1294,7 +1352,7 @@ The state space form can also be recovered (not needed)
 status open
 
 \begin_layout Plain Layout
-Advanced linearized simulation
+Generalized linearized simulation [advanced]
 \end_layout
 
 \end_inset
@@ -1331,7 +1389,7 @@ status open
 \series bold
 Generality:
 \series default
- Extend the model with auxiliary variables (incl.
+ Add auxiliary variables (incl.
  distributional moments) to calculate additional IRFs and simulations
 \series bold
  
@@ -1350,11 +1408,7 @@ status open
 
 
 \series bold
-Full distribution 
-\series default
-(advanced)
-\series bold
-:
+Full distribution:
 \end_layout
 
 \begin_deeper
@@ -1394,6 +1448,19 @@ where
 \end_inset
 
  (calculated in fake news algorithm)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
@@ -1410,7 +1477,7 @@ status open
 The policy function can there be simulated as
 \begin_inset Formula 
 \[
-\boldsymbol{a}_{i_{g}}^{\ast}=\sum_{s=0}^{T}da_{i_{g},s}^{\ast}\tilde{\boldsymbol{\epsilon}}_{t-s}
+\boldsymbol{a}_{i_{g},t}^{\ast}=\sum_{s=0}^{T-1}da_{i_{g},s}^{\ast}\tilde{\boldsymbol{\epsilon}}_{t-s}
 \]
 
 \end_inset
@@ -1446,39 +1513,7 @@ Distribution can then be simulated forwards
 status open
 
 \begin_layout Plain Layout
-The HANC example from GEModelToolsNotebooks
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-
-\series bold
-Presentation: 
-\series default
-I go through the code for 
-\emph on
-finding the linearized IRFs and simulating the model
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Calculating moments
+Calculating moments - variance
 \end_layout
 
 \end_inset
@@ -1500,24 +1535,61 @@ status open
 
 
 \series bold
+Identical and independent distributed innovations:
+\series default
+
+\begin_inset Formula 
+\[
+\mathbb{E}\left[\epsilon_{t}^{i}\epsilon_{t^{\prime}}^{j}\right]=\begin{cases}
+\sigma_{i} & \text{if }t=t^{\prime}\text{ and }i=j\\
+0 & \text{el}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
 Calculating moments such as 
 \begin_inset Formula $\text{var}(dC_{t})$
 \end_inset
 
-:
+
+\series default
+ from the IRFs:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-From the simulation, or
-\end_layout
+\end_inset
 
-\begin_layout Enumerate
-From the IRFs, 
+
 \begin_inset Formula 
-\[
-\text{var}(dC_{t})=\sum_{i}\sigma_{i}^{2}\sum_{s=0}^{i}\left(dC_{s}^{i}\right)^{2}
-\]
+\begin{align*}
+\text{var}(dC_{t}) & =\mathbb{E}\left[\left(\sum_{i\in\mathcal{Z}}\sum_{s=0}^{T-1}dC_{s}\epsilon_{t-s}^{i}\right)^{2}\right]\\
+ & =\sum_{i\in\mathcal{Z}}\sum_{s=0}^{T-1}\mathbb{E}\left[\epsilon_{t-s}^{i}\epsilon_{t-s}^{i}\right]\left(dC_{s}^{i}\right)^{2}\\
+ & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1}\left(dC_{s}^{i}\right)^{2}
+\end{align*}
 
 \end_inset
 
@@ -1555,6 +1627,27 @@ and
 
 \end_deeper
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Calculating moments - covariance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 \begin_inset ERT
 status open
@@ -1568,7 +1661,30 @@ status open
 
 
 \series bold
-Also work for covariances, correlations etc.
+Covariances:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{cov}(dC_{t},dY_{t+k}) & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}
+\end{align*}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
@@ -1583,21 +1699,78 @@ status open
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
 \series bold
-For a new set of parameters?
+Covariance decomposition:
+\series default
+
+\begin_inset Formula 
+\[
+\frac{\text{contribution from one shock}}{\text{contributions from all shocks}}=\frac{\sigma_{j}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{j}dY_{s+k}^{j}}{\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+The simplest approaches:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Only need to re-compute Jacobian of aggregate variables?
+Impulse Response Function (IRF) matching
 \end_layout
 
 \begin_layout Enumerate
-Also need to re-compute Jacobian of household problem?
-\end_layout
-
-\begin_layout Enumerate
-Also need to find stationary equilibrium again?
+Minimum distance / simulated method of methods (SMM)
 \end_layout
 
 \end_deeper
@@ -1614,9 +1787,12 @@ status open
 
 
 \series bold
-Speed-up: 
+Also possible: 
 \series default
-Use Fast Fourier Transform (FFT), see 
+\emph on
+Bayesian likelihood estimation 
+\emph default
+(see 
 \begin_inset ERT
 status open
 
@@ -1649,9 +1825,67 @@ status open
 
 \end_inset
 
-
+)
 \end_layout
 
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Speed: 
+\series default
+For a new set of parameters?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Only shock processes change 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph on
+same Jacobians 
+\emph default
+(
+\begin_inset Formula $\boldsymbol{G}_{\boldsymbol{U}}$
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{G}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Only need to re-compute Jacobian of aggregate variables?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+(only single block?)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Also need to re-compute Jacobian of household problem?
+\end_layout
+
+\begin_layout Enumerate
+Also need to find stationary equilibrium again?
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1661,7 +1895,7 @@ status open
 \end_layout
 
 \begin_layout Section
-HANK model
+Sticky prices
 \end_layout
 
 \begin_layout Frame
@@ -3205,32 +3439,6 @@ Choose
 status open
 
 \begin_layout Plain Layout
-The HANK example from GEModelToolsNotebooks
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-We go through the code
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
 Transmission mechanism to monetary policy shock
 \end_layout
 
@@ -3481,6 +3689,65 @@ but dampened by
 \end_layout
 
 \begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Aggregate risk and linearized dynamics (IRF and simulation)
+\end_layout
+
+\begin_layout Enumerate
+Calculating aggregate moments (for calibration or estimation)
+\end_layout
+
+\begin_layout Enumerate
+HANK with sticky prices
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Exercise
 \end_layout
 
@@ -3553,11 +3820,15 @@ Today:
 
 \begin_deeper
 \begin_layout Enumerate
-Linearized IRFs and simulation
+Aggregate risk and linearized dynamics (IRF and simulation)
 \end_layout
 
 \begin_layout Enumerate
-A baseline HANK model
+Calculating aggregate moments (for calibration or estimation)
+\end_layout
+
+\begin_layout Enumerate
+A baseline HANK (sticky prices)
 \end_layout
 
 \end_deeper
