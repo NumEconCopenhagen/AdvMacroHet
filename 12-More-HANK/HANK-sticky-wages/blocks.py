@@ -4,7 +4,7 @@ import numba as nb
 from GEModelTools import lag, lead
    
 @nb.njit
-def production(par,ini,ss,path,Gamma,pi_w,L,w,pi,Y):
+def production(par,ini,ss,Gamma,pi_w,L,w,pi,Y):
 
     Gamma_lag = lag(ini.Gamma,Gamma)
 
@@ -13,7 +13,7 @@ def production(par,ini,ss,path,Gamma,pi_w,L,w,pi,Y):
     pi[:] = (1+pi_w)/(Gamma/Gamma_lag)-1
 
 @nb.njit
-def central_bank(par,ini,ss,path,pi,i,r):
+def central_bank(par,ini,ss,pi,i,r):
 
     # b. central bank
     for t in range(par.T):
@@ -25,7 +25,7 @@ def central_bank(par,ini,ss,path,pi,i,r):
     r[:] = (1+i)/(1+pi_plus)-1
         
 @nb.njit
-def mutual_fund(par,ini,ss,path,r,q,ra):
+def mutual_fund(par,ini,ss,r,q,ra):
 
     for k in range(par.T):
         t = par.T-1-k
@@ -36,7 +36,7 @@ def mutual_fund(par,ini,ss,path,r,q,ra):
     ra[:] = (1+par.delta*q)/q_lag-1
 
 @nb.njit
-def government(par,ini,ss,path,G,chi,q,Y,B,tau):
+def government(par,ini,ss,G,chi,q,Y,B,tau):
 
     for t in range(par.T):
         
@@ -45,7 +45,7 @@ def government(par,ini,ss,path,G,chi,q,Y,B,tau):
         B[t] = ((1+par.delta*q[t])*B_lag + G[t] + chi[t] - tau[t]*Y[t])/q[t]
 
 @nb.njit
-def NKWC(par,ini,ss,path,pi_w,L,tau,w,C_hh,NKWC_res):
+def NKWC(par,ini,ss,pi_w,L,tau,w,C_hh,NKWC_res):
 
     # a. phillips curve
     pi_w_plus = lead(pi_w,ss.pi_w)
@@ -55,7 +55,7 @@ def NKWC(par,ini,ss,path,pi_w,L,tau,w,C_hh,NKWC_res):
     NKWC_res[:] = LHS-RHS
 
 @nb.njit
-def market_clearing(par,ini,ss,path,G,q,B,Y,C_hh,A_hh,A,clearing_A,clearing_Y):
+def market_clearing(par,ini,ss,G,q,B,Y,C_hh,A_hh,A,clearing_A,clearing_Y):
         
     # a. aggregates
     A[:] = q*B

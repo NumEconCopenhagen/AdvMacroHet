@@ -1356,7 +1356,7 @@ C_{t}^{hh}=C^{hh}\left(\{Y_{s}-T_{s}\}_{s\geq0}\right)\Rightarrow\boldsymbol{C}^
 status open
 
 \begin_layout Plain Layout
-Two-equation version in 
+Side-note: Two-equation version in 
 \begin_inset Formula $\boldsymbol{Y}$
 \end_inset
 
@@ -1577,29 +1577,6 @@ dY_{t}=dG_{t}+\sum_{s=0}^{\infty}\frac{\partial C_{t}^{hh}}{\partial Z_{s}}\left
 
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-IBC implies: 
-\begin_inset Formula $\sum_{t=0}^{\infty}(1+r_{ss})^{-t}\frac{\partial C_{t}^{hh}}{\partial Z_{s}}=(1+r_{ss})^{-s}$
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1621,6 +1598,56 @@ where
  encodes the entire 
 \emph on
 complexity
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+iMPC matrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-5mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{M}=\left[\begin{array}{ccc}
+\frac{\partial C_{0}^{hh}}{\partial Z_{0}} & \frac{\partial C_{0}^{hh}}{\partial Z_{1}} & \cdots\\
+\frac{\partial C_{1}^{hh}}{\partial Z_{0}} & \frac{\partial C_{1}^{hh}}{\partial Z_{1}} & \cdots\\
+\vdots & \vdots & \ddots
+\end{array}\right]
+\]
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
@@ -1787,7 +1814,7 @@ Static Keynesian Cross
 status open
 
 \begin_layout Plain Layout
-Intertemporal solution technicalities
+NPV-vector
 \end_layout
 
 \end_inset
@@ -1799,11 +1826,6 @@ Intertemporal solution technicalities
 \begin_layout Itemize
 
 \series bold
-IBCs:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
 NPV-vector: 
 \begin_inset Formula $\boldsymbol{q}\equiv[1,(1+r_{ss})^{-1},(1+r_{ss})^{-2},\dots]^{\prime}$
 \end_inset
@@ -1811,33 +1833,42 @@ NPV-vector:
 
 \end_layout
 
-\begin_layout Enumerate
-Households: 
-\begin_inset Formula $\boldsymbol{q}^{\prime}\boldsymbol{M}=\boldsymbol{q}^{\prime}$
-\end_inset
+\begin_layout Itemize
 
- and 
-\begin_inset Formula $\boldsymbol{q}^{\prime}(\boldsymbol{I}-\boldsymbol{M})=\boldsymbol{0}$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
+\series bold
 Government: 
-\begin_inset Formula $\boldsymbol{q}^{\prime}(d\boldsymbol{G}-d\boldsymbol{T})=\boldsymbol{0}$
+\series default
+IBC holds
+\series bold
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+\sum_{t=0}^{\infty}(1+r_{ss})^{-t}(dG_{t}-dT_{t}) & =0\Leftrightarrow\\
+\boldsymbol{q}^{\prime}(d\boldsymbol{G}-d\boldsymbol{T}) & =0
+\end{align*}
+
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{1mm}
 \end_layout
+
+\begin_layout Itemize
+
+\series bold
+Households: 
+\series default
+IBC holds 
+\series bold
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+C_{t}^{hh} & =A_{t}^{hh}=(1+r_{ss})A_{t-1}^{hh}+Z_{t}\Rightarrow\\
+\sum_{t=0}^{\infty}(1+r_{ss})^{-t}C_{t}^{hh} & =(1+r_{ss})A_{-1}+\sum_{t=0}^{\infty}(1+r_{ss})^{-t}Z_{t}\Rightarrow\\
+\sum_{t=0}^{\infty}(1+r_{ss})^{-t}M_{t,s} & =\frac{1}{(1+r)^{s}}\Rightarrow\\
+\boldsymbol{q}^{\prime}\boldsymbol{M} & =\boldsymbol{q}^{\prime}\Leftrightarrow\boldsymbol{q}^{\prime}(\boldsymbol{I}-\boldsymbol{M})=\boldsymbol{0}
+\end{align*}
 
 \end_inset
 
@@ -1845,6 +1876,27 @@ vspace{1mm}
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Form of unique solution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
 \begin_layout Itemize
 
 \series bold
@@ -1858,12 +1910,11 @@ Problem:
 \series bold
  
 \series default
-because
+because this leads to a contradiction
 \begin_inset Formula 
 \begin{align*}
-(\boldsymbol{I}-\boldsymbol{M})d\boldsymbol{Y} & =d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}\Leftrightarrow\\
-\boldsymbol{q}^{\prime}(\boldsymbol{I}-\boldsymbol{M})d\boldsymbol{Y} & =\boldsymbol{q}^{\prime}(d\boldsymbol{G}-d\boldsymbol{T})\Leftrightarrow\\
-\boldsymbol{0} & =\boldsymbol{0}
+\boldsymbol{q}^{\prime}(\boldsymbol{I}-\boldsymbol{M})(\boldsymbol{I}-\boldsymbol{M})^{-1} & =\boldsymbol{0}(\boldsymbol{I}-\boldsymbol{M})^{-1}\Leftrightarrow\\
+\boldsymbol{q}^{\prime} & =0
 \end{align*}
 
 \end_inset
@@ -1872,18 +1923,6 @@ because
 \end_layout
 
 \begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-1mm}
-\end_layout
-
-\end_inset
-
 
 \series bold
 Result: 
@@ -1900,25 +1939,15 @@ d\boldsymbol{Y} & =\mathcal{M}(d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T})\\
 
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout Itemize
 
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-1mm}
-\end_layout
-
-\end_inset
-
-Indeterminancy: Still work-in-progress (Auclert et.
+\series bold
+Indeterminancy:
+\series default
+ Still work-in-progress (Auclert et.
  al., 2023)
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1932,7 +1961,7 @@ Indeterminancy: Still work-in-progress (Auclert et.
 status open
 
 \begin_layout Plain Layout
-Intermezzo: Response of consumption
+Response of consumption
 \end_layout
 
 \end_inset
@@ -2121,7 +2150,7 @@ Impact-multiplier:
 
 
 \series bold
-Cummulative-multiplier: 
+Cumulative-multiplier: 
 \series default
 
 \begin_inset Formula 
@@ -2187,6 +2216,7 @@ iMPC-matrix
 \boldsymbol{M}^{RA}=\left[\begin{array}{cccc}
 (1-\beta) & (1-\beta)\beta & (1-\beta)\beta^{2} & \cdots\\
 (1-\beta) & (1-\beta)\beta & (1-\beta)\beta^{2} & \cdots\\
+(1-\beta) & (1-\beta)\beta & (1-\beta)\beta^{2} & \cdots\\
 \vdots & \vdots & \vdots & \ddots
 \end{array}\right]=(1-\beta)\boldsymbol{1}\boldsymbol{q}^{\prime}
 \]
@@ -2207,6 +2237,60 @@ Consumption response
 d\boldsymbol{C}^{\boldsymbol{RA}} & =\mathcal{M}\boldsymbol{M}^{\boldsymbol{RA}}(d\boldsymbol{G}-d\boldsymbol{T})\\
  & =\mathcal{M}(1-\beta)\boldsymbol{1}\boldsymbol{q}^{\prime}(d\boldsymbol{G}-d\boldsymbol{T})\\
  & =\boldsymbol{0}\Leftrightarrow d\boldsymbol{Y}=d\boldsymbol{G}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Details on matrix formulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula 
+\begin{align*}
+(1-\beta)\boldsymbol{1}\boldsymbol{q}^{\prime} & =\left[\begin{array}{cccc}
+(1-\beta) & (1-\beta) & (1-\beta) & \cdots\\
+(1-\beta) & (1-\beta) & (1-\beta) & \cdots\\
+(1-\beta) & (1-\beta) & (1-\beta) & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right]\left[\begin{array}{cccc}
+1 & (1+r_{ss})^{-1} & (1+r_{ss})^{-2} & \cdots\end{array}\right]\\
+ & =\left[\begin{array}{cccc}
+(1-\beta) & (1-\beta) & (1-\beta) & \cdots\\
+(1-\beta) & (1-\beta) & (1-\beta) & \cdots\\
+(1-\beta) & (1-\beta) & (1-\beta) & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right]\left[\begin{array}{cccc}
+1 & \beta & \beta^{2} & \cdots\end{array}\right]\\
+ & =\left[\begin{array}{cccc}
+(1-\beta) & (1-\beta)\beta & (1-\beta)\beta^{2} & \cdots\\
+(1-\beta) & (1-\beta)\beta & (1-\beta)\beta^{2} & \cdots\\
+(1-\beta) & (1-\beta)\beta & (1-\beta)\beta^{2} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right]
 \end{align*}
 
 \end_inset
@@ -2297,15 +2381,36 @@ d\boldsymbol{Y}=d\tilde{\boldsymbol{G}_{t}}=d\boldsymbol{G}_{t}+\frac{\lambda}{1
 
 \end_layout
 
-\begin_layout Itemize
-Still a cumulative multiplier of 
-\begin_inset Formula $1$
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
 \end_inset
 
- (both for RA and HtM)
+
 \end_layout
 
-\end_deeper
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cumulative multiplier still one
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\frac{\boldsymbol{q}^{\prime}d\boldsymbol{Y}}{\boldsymbol{q}^{\prime}d\boldsymbol{G}} & =\frac{\boldsymbol{q}^{\prime}d\boldsymbol{G}_{t}+\frac{\lambda}{1-\lambda}\boldsymbol{q}^{\prime}\left[d\boldsymbol{G}-d\boldsymbol{T}\right]}{\boldsymbol{q}^{\prime}d\boldsymbol{G}}\\
+ & =0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
