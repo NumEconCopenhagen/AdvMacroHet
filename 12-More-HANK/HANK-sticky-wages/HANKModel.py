@@ -89,14 +89,6 @@ class HANKModelClass(EconModelClass,GEModelClass):
         par.rho_G = 0.00 # AR(1) coefficeint
         par.std_G = 0.00 # std.
 
-        par.jump_B = 0.00 # initial jump
-        par.rho_B = 0.00 # AR(1) coefficeint
-        par.std_B = 0.00 # std.
-
-        par.jump_Gamma = 0.00 # initial jump
-        par.rho_Gamma = 0.00 # AR(1) coefficeint
-        par.std_Gamma = 0.00 # std.
-
         # h. misc.
         par.T = 500 # length of path        
         
@@ -116,4 +108,27 @@ class HANKModelClass(EconModelClass,GEModelClass):
         self.allocate_GE()
 
     prepare_hh_ss = steady_state.prepare_hh_ss
-    find_ss = steady_state.find_ss        
+    find_ss = steady_state.find_ss      
+
+    def calc_MPC(self):
+        """ MPC """
+        
+        par = self.par
+        ss = self.ss
+
+        MPC = np.sum(ss.D[:,:,:-1]*(ss.c[:,:,1:]-ss.c[:,:,:-1])/((1+ss.ra)*(par.a_grid[1:]-par.a_grid[:-1])))
+        iMPC = self.jac_hh[('C_hh','chi')]
+        print(f'{MPC = :.2f}, {iMPC[0,0] = :.2f}')  
+
+    def calc_fiscal_multiplier(self):
+        """ fiscal multiplier """
+
+        par = self.par
+        ss = self.ss
+        path = self.path
+
+        nom = np.sum([(1+ss.r)**(-t)*(path.Y[t]-ss.Y) for t in range(par.T)])        
+        denom = np.sum([(1+ss.r)**(-t)*(path.G[t]-ss.G) for t in range(par.T)])   
+
+        fiscal_multiplier = nom/denom
+        print(f'{fiscal_multiplier = :.2f}')

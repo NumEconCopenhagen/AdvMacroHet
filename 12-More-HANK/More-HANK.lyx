@@ -976,7 +976,7 @@ or, long-term
 \begin{align*}
 \frac{1+\delta q_{t+1}}{q_{t}} & =1+r_{t}\\
 1+r_{t}^{b}=1+r_{t}^{a} & =\frac{1+\delta q_{t}}{q_{t-1}}=\begin{cases}
-\frac{1+\delta q_{0}}{q_{-1}} & \text{if }t=0\\
+\frac{1+\delta q_{0}}{q_{ss}} & \text{if }t=0\\
 1+r_{t-1} & \text{else}
 \end{cases}
 \end{align*}
@@ -1461,7 +1461,7 @@ NKWC:
 
 \begin_layout Enumerate
 Firm behavior II: 
-\begin_inset Formula $\boldsymbol{\pi^{w}}\rightarrow\boldsymbol{\pi}$
+\begin_inset Formula $\boldsymbol{\pi^{w}},\boldsymbol{\Gamma}\rightarrow\boldsymbol{\pi}$
 \end_inset
 
 
@@ -1569,7 +1569,7 @@ Total differentiation:
 
 \begin_inset Formula 
 \[
-dY_{t}=dG_{t}+\sum_{s=0}^{\infty}\frac{\partial C_{t}^{hh}}{\partial Z_{s}}\left(dY_{t}-dT_{t}\right)
+dY_{t}=dG_{t}+\sum_{s=0}^{\infty}\frac{\partial C_{t}^{hh}}{\partial Z_{s}}dZ_{s}=dG_{t}+\sum_{s=0}^{\infty}\frac{\partial C_{t}^{hh}}{\partial Z_{s}}\left(dY_{s}-dT_{s}\right)
 \]
 
 \end_inset
@@ -1975,6 +1975,7 @@ Response of consumption
 \begin{align*}
 d\boldsymbol{Y} & =d\boldsymbol{G}+\boldsymbol{M}(d\boldsymbol{Y}-d\boldsymbol{T})\Leftrightarrow\\
 d\boldsymbol{Y}-d\boldsymbol{G} & =\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})+\boldsymbol{M}(d\boldsymbol{Y}-d\boldsymbol{G})\Leftrightarrow\\
+(I-\boldsymbol{M})\left(d\boldsymbol{Y}-d\boldsymbol{G}\right) & =\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})\Leftrightarrow\\
 d\boldsymbol{Y}-d\boldsymbol{G} & =\mathcal{M}\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})\Leftrightarrow\\
 d\boldsymbol{C} & =\mathcal{M}\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T})
 \end{align*}
@@ -2403,7 +2404,7 @@ Cumulative multiplier still one
 \begin_inset Formula 
 \begin{align*}
 \frac{\boldsymbol{q}^{\prime}d\boldsymbol{Y}}{\boldsymbol{q}^{\prime}d\boldsymbol{G}} & =\frac{\boldsymbol{q}^{\prime}d\boldsymbol{G}_{t}+\frac{\lambda}{1-\lambda}\boldsymbol{q}^{\prime}\left[d\boldsymbol{G}-d\boldsymbol{T}\right]}{\boldsymbol{q}^{\prime}d\boldsymbol{G}}\\
- & =0
+ & =1
 \end{align*}
 
 \end_inset
@@ -2542,7 +2543,7 @@ Nominal bond:
 Long-term bond: 
 \begin_inset Formula 
 \[
-\text{cap}_{0}=\frac{1+\delta q_{0}}{q_{-1}}-(1+r_{ss})
+\text{cap}_{0}=\frac{1+\delta q_{0}}{q_{ss}}-(1+r_{ss})
 \]
 
 \end_inset
@@ -2648,6 +2649,14 @@ HANK-sticky-wages
 \end_layout
 
 \begin_layout Enumerate
+Does the model match the evidence of intertemporal MPCs? 
+\begin_inset Newline newline
+\end_inset
+
+What happens to the fiscal multiplier if the fit is improved?
+\end_layout
+
+\begin_layout Enumerate
 Compute 
 \emph on
 fiscal multipliers
@@ -2656,14 +2665,6 @@ fiscal multipliers
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
-Bond maturity: 
-\begin_inset Formula $\delta$
-\end_inset
-
-
-\end_layout
-
 \begin_layout Enumerate
 Fiscal aggressiveness: 
 \begin_inset Formula $\omega$
@@ -2680,15 +2681,15 @@ Monetary aggressiveness:
 
 \end_layout
 
-\end_deeper
 \begin_layout Enumerate
-Does the model match the evidence of intertemporal MPCs? 
-\begin_inset Newline newline
+Bond maturity: 
+\begin_inset Formula $\delta$
 \end_inset
 
-What happens to the fiscal multiplier if the fit is improved?
+
 \end_layout
 
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain

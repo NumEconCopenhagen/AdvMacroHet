@@ -86,7 +86,9 @@ def evaluate_ss(model,do_print=False):
     ss.clearing_A = ss.A-ss.A_hh
     ss.clearing_Y = ss.Y-ss.C_hh-ss.G
 
+    # h. NK wage curve
     par.varphi = (1/par.mu*(1-ss.tau)*ss.w*ss.C_hh**(-par.sigma))/ss.L**par.nu
+    ss.NKWC_res = 0.0 # used to derive par.varphi
 
 def obj_ss(x,model,do_print=False):
     """ objective function for finding steady state """
@@ -115,11 +117,11 @@ def find_ss(model,do_print=False):
 
     # final evaluation
     obj_ss(res.root,model)
-
     # b. print
     if do_print:
 
         print(f'steady state found in {elapsed(t0)}')
+        print(f' beta = {par.beta:8.4f}')
         print(f' r    = {ss.r:8.4f}')
         print(f' q    = {ss.q:8.4f}')
         print(f' qB   = {ss.q*ss.B:8.4f}')

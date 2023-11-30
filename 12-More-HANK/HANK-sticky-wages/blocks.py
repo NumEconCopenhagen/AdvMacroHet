@@ -19,7 +19,7 @@ def central_bank(par,ini,ss,pi,i,r):
     for t in range(par.T):
         i_lag = i[t-1] if t > 0 else ini.i
         i[t] = (1+i_lag)**par.rho_i*((1+ss.r)*(1+pi[t])**(par.phi_pi))**(1-par.rho_i)-1
-
+ 
     # c. Fisher
     pi_plus = lead(pi,ss.pi)
     r[:] = (1+i)/(1+pi_plus)-1

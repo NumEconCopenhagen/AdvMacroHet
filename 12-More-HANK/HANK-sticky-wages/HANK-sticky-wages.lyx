@@ -805,8 +805,8 @@ Check a remaining market clearing condition
 \begin_layout Standard
 The model can be summarized by the following equation system
 \begin_inset Formula 
-\[
-\boldsymbol{H}(\boldsymbol{\pi^{w}},\boldsymbol{L},\boldsymbol{G},\boldsymbol{\chi},\boldsymbol{\Gamma})=\left[\begin{array}{c}
+\begin{align*}
+\boldsymbol{H}(\boldsymbol{\pi^{w}},\boldsymbol{L};\boldsymbol{G},\boldsymbol{\chi},\boldsymbol{\Gamma}) & =\left[\begin{array}{c}
 w_{t}-\Gamma_{t}\\
 1+\pi_{t}-\frac{1+\pi_{t}^{w}}{\Gamma_{t}/\Gamma_{t-1}}\\
 Y_{t}-\Gamma_{t}L_{t}\\
@@ -818,16 +818,52 @@ Y_{t}-\Gamma_{t}L_{t}\\
 q_{t}(B_{t}-\delta B_{t-1})-\left[B_{t-1}+G_{t}+\chi_{t}-\tau_{t}Y_{t}\right]\\
 q_{t}B_{t}-A_{t}^{hh}\\
 \pi_{t}^{w}-\left[\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{W}\right]
-\end{array}\right]\boldsymbol{=0}
-\]
+\end{array}\right]\boldsymbol{=0}\\
+ & =\left[\begin{array}{c}
+q_{t}B_{t}-A_{t}^{hh}\\
+\pi_{t}^{w}-\left[\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{W}\right]
+\end{array}\right]
+\end{align*}
 
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Shocks:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{G},\boldsymbol{\chi},\boldsymbol{\Gamma}$
 \end_inset
 
 
 \end_layout
 
+\begin_layout Enumerate
+
+\series bold
+Unknowns:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{\pi^{w}},\boldsymbol{L}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Targets:
+\series default
+ Asset market clearing and NKWC
+\end_layout
+
 \begin_layout Standard
-A potential DAG is the one below.
+The DAG is the one below.
 \end_layout
 
 \begin_layout Standard
