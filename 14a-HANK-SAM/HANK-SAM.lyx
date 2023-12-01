@@ -1,0 +1,3046 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{14a.
+ HANK-SAM
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Jeppe Druedahl}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2023}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below right=0.5cm and 0.8cm of current page.north west] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/CEBI.png}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above right=0.5cm and 0.8cm of current page.south west] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/DNRF.png}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Further advanced topics:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Policy analysis
+\end_layout
+
+\begin_layout Enumerate
+Life-cycle
+\end_layout
+
+\begin_layout Enumerate
+Endogenous idiosyncratic risk (time-varying)
+\end_layout
+
+\begin_layout Enumerate
+Discrete choices (with 
+\emph on
+taste shocks
+\emph default
+)
+\end_layout
+
+\begin_layout Enumerate
+Bounded rationality (non-FIRE)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Example: 
+\series default
+\emph on
+HANK-SAM
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Broer et.
+ al.
+ (2023),
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Quotes ald
+\end_inset
+
+Fiscal stimulus policies according to HANK-SAM
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Policies
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Policies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Policies as shocks:
+\series default
+ 
+\emph on
+Choose ARMA(p,q) process and study IRFs
+\emph default
+ (also for utility, inequality and social welfare)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Non-linear transition: Interaction with initial state and other shocks
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Policies from targets: 
+\series default
+Make different policies comparable by achieving the 
+\emph on
+exact 
+\emph default
+same path of outcomes 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Policy rules: 
+\series default
+Parameterize and study effects on IRFs to shocks
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Optimal policy with quadratic loss function
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+(McKay and Wolf, 2023)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Easy to solve numerically with 
+\emph on
+ad hoc
+\emph default
+ loss function
+\end_layout
+
+\begin_layout Enumerate
+Harder to derive loss function from social welfare (Ramsey problem)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Optimal policy: 
+\series default
+Discretion, commitment, timeless perspective (Dávila and Schaab, 2023)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Life-cycle
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households with life-cycle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Age:
+\series default
+ 
+\begin_inset Formula $h_{it}\in\{0,1,\dots,\#_{h}-1\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Mortality:
+\series default
+ 
+\begin_inset Formula $\delta\left(h_{it}\right)\in[0,1]$
+\end_inset
+
+, 
+\begin_inset Formula $\delta(\#_{h}-1)=1$
+\end_inset
+
+, 
+\begin_inset Formula $\zeta(j)=\int\boldsymbol{1}\{h_{it}=j\}d\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Income profile:
+\series default
+ 
+\begin_inset Formula $\mathcal{Z}(z_{it},h_{it+1})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Household problem
+\series default
+, 
+\begin_inset Formula $\{r_{t},w_{t},q_{t}\}\rightarrow\{a_{it},b_{it},c_{it},\ell_{it}\}$
+\end_inset
+
+:
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+v_{0}(\beta_{i},h_{it},z_{it},a_{it-1}) & =\max_{c_{it}}u(c_{t})+\beta_{i}(1-\delta(h_{it}))\underline{v}_{t+1}\left(\beta_{i},h_{it+1},z_{it+1},a_{it}\right)\\
+\text{s.t. }\ell_{it} & =z_{it}\\
+a_{it} & =\begin{cases}
+(1+r_{t})q_{t}+w_{t}\ell_{it}-c_{it}+\Pi_{t} & \text{if }h_{it}=0\\
+(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}+\Pi_{t} & \text{else }
+\end{cases}\\
+b_{it} & =\delta(h_{it})a_{it}\\
+h_{it+1} & =\begin{cases}
+0 & \text{with prob. }\delta(h_{it})\\
+h_{it}+1 & \text{else}
+\end{cases}\\
+z_{it+1} & \sim\mathcal{Z}(z_{it},h_{it+1}),\,\,\mathbb{E}\left[z_{it}\right]=1\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{q},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+\zeta(0)q_{t}-B_{t-1}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+ and
+\size footnotesize
+
+\begin_inset Formula 
+\begin{align*}
+L_{t} & =1\\
+A_{t} & =K_{t}\\
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+ & \forall t\in\{0,1,\dots,T-1\}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Endogenous idiosyncratic risk
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Consumption problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Recursive household problem:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(u_{it},a_{it-1}) & =\max_{c_{it}}u(c_{it})+\beta\underline{v}_{t}\left(u_{it},a_{it}\right)\\
+ & \text{s.t.}\\
+a_{it} & =(1+r_{t})a_{it-1}+y_{it}-c_{it}\\
+y_{it} & =(1-\tau_{t})w_{t}\cdot\begin{cases}
+1 & \text{if }u_{it}=0\\
+\phi\in(0,1) & \text{if }u_{it}=1
+\end{cases}\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Working if 
+\begin_inset Formula $u_{it}=0$
+\end_inset
+
+, unemployed if 
+\begin_inset Formula $u_{it}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Solution method:
+\series default
+\emph on
+ Standard EGM
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+External
+\emph default
+ endogenous risk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Expectation step:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{t}(u_{it-1},a_{it-1}) & =\mathbb{E}\left[v_{t}(u_{it},a_{it-1})\,|\,u_{it-1},a_{it-1},\delta_{t},\lambda_{t}^{u}\right]\\
+ & \text{s.t.}\\
+\pi_{t}(u_{it}\,|\,u_{it-1}) & =\begin{cases}
+\delta_{t} & \text{if }u_{it}=1\text{ and }u_{it-1}=0\\
+1-\delta_{t} & \text{if }u_{it}=0\text{ and }u_{it-1}=0\\
+\lambda_{t}^{u} & \text{if }u_{it}=0\text{ and }u_{it-1}=1\\
+1-\lambda_{t}^{u} & \text{if }u_{it}=1\text{ and }u_{it-1}=1
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Stochastic transition matrix:
+\series default
+ 
+\begin_inset Formula $\Pi_{t,z}=\Pi_{z}(\delta_{t},\lambda_{t}^{u})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Envelope condition:
+\series default
+ 
+\emph on
+Nothing changed
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Transition steps:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{D}_{t} & =\Pi_{t,z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+Internal
+\emph default
+ endogenous risk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Expectation step:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{t}(u_{it-1},a_{it-1}\,|\,s_{it}) & =\mathbb{E}\left[v_{t}(u_{it},a_{it-1})\,|\,u_{it-1},a_{it-1},s_{it},\delta_{t},\lambda_{t}^{u,s}\right]\\
+ & \text{s.t.}\\
+\pi_{t}(u_{it}\,|\,u_{it-1},s_{it}) & =\begin{cases}
+\delta_{t} & \text{if }u_{it}=1\text{ and }u_{it-1}=0\\
+1-\delta_{t} & \text{if }u_{it}=0\text{ and }u_{it-1}=0\\
+\lambda_{t}^{u,s}s_{it} & \text{if }u_{it}=0\text{ and }u_{it-1}=1\\
+1-\lambda_{t}^{u,s}s_{it} & \text{if }u_{it}=1\text{ and }u_{it-1}=1
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Search decision:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Discrete search choice:
+\series bold
+ 
+\begin_inset Formula $s_{it}\in\{0,1\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Search cost: 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ if 
+\begin_inset Formula $s_{it}=1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Taste shocks: 
+\begin_inset Formula $\varepsilon\left(s_{it}\right)\sim\text{Extreme value}$
+\end_inset
+
+ (Iskhakov et.
+ al., 2017)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+See also: 
+\series default
+Bardóczy (2021)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Discrete search decision
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Standard logit formula:
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{t}(u_{it-1},a_{it-1}) & =\max_{s_{it}\in\{0,1\}}\left\{ \underline{v}_{t}(u_{it-1},a_{it-1}\,|\,s_{it})-\lambda\boldsymbol{1}_{s_{it}=1}+\sigma_{\varepsilon}\varepsilon\left(s_{it}\right)\right\} \\
+ & =\sigma_{\varepsilon}\log\left(\exp\frac{\underline{v}_{t}(u_{it-1},a_{it-1}\,|\,0)}{\sigma_{\varepsilon}}+\exp\frac{\underline{v}_{t}(u_{it-1},a_{it-1}\,|\,1)}{\sigma_{\varepsilon}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Transition matrix:
+\series default
+ 
+\begin_inset Formula 
+\begin{align*}
+\Pi_{t,z} & =\Pi_{z}\left(\left\{ r_{\tau},w_{\tau},\tau_{\tau},\delta_{\tau},\lambda_{\tau}^{u,s}\right\} _{\tau\geq t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Envelope condition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Choice probabilities:
+\begin_inset Formula 
+\[
+P_{t}(s\,|\,u_{it-1},a_{it-1})=\frac{\exp\frac{\underline{v}_{t}(u_{it-1},a_{it-1}\,|\,s)}{\sigma_{\xi}}}{\sum_{s^{\prime}\in\left\{ 0,1\right\} }\exp\frac{\underline{v}_{t}(u_{it-1},a_{it-1}\,|\,s^{\prime})}{\sigma_{\xi}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Envelope condition:
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{a,t}(u_{t-1},a_{t-1}) & =\sum_{s\in\{0,1\}}P_{t}(s\,|\,u_{it-1},a_{it-1})\pi_{t}(u_{it}\,|\,u_{it-1},s)v_{a,t}(u_{it},a_{it-1})\\
+ & =\sum_{s\in\{0,1\}}P_{t}(s\,|\,u_{it-1},a_{it-1})\pi_{t}(u_{it}\,|\,u_{it-1},s)c_{t}^{\ast}(u_{it},a_{it-1})^{-\sigma}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Break of 
+\emph on
+monotonicity 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series default
+\emph default
+FOC still 
+\emph on
+necessary
+\emph default
+, but not 
+\emph on
+sufficient
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Normally:
+\series default
+ Savings
+\series bold
+ 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series default
+future consumption
+\series bold
+ 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series default
+marginal utility 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Now also:
+\series default
+ Future search jump 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ future income 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ future consumption 
+\begin_inset Formula $\downarrow$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ marginal utility 
+\begin_inset Formula $\uparrow$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Upper envelope for given 
+\begin_inset Formula $z^{i_{z}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Generate candidate points:
+\series default
+ 
+\begin_inset Formula $\forall i_{a}\in\{0,1,\dots,\#_{a}-1\}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+w^{i_{a}} & =\beta\underline{v}_{t+1}(z^{i_{z}},a^{i_{a}})\\
+c^{i_{a}} & =u^{\prime-1}\left(\beta\underline{v}_{a,t+1}(z^{i_{z}},a^{i_{a}})\right)\\
+m^{i_{a}} & =a^{i_{a}}+c^{i_{a}}\\
+v^{i_{a}} & =u\left(c^{i_{a}}\right)+w^{i_{a}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Apply upper-envelope:
+\series default
+ 
+\begin_inset Formula $\forall i_{a-}\in\{0,1,\dots,\#_{a}-1\}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{align*}
+c^{\ast}(a^{i_{a-}}) & =\max_{j\in\{0,1,\dots\#_{a}-2\}}u\left(c^{i_{a-}}\right)+w^{i_{a-}}\text{ s.t.}\\
+m^{i_{a-}} & =(1+r_{t})a^{i_{a-}}+w_{t}z^{i_{z}}\in\left[m^{j},m^{j+1}\right]\\
+c^{i_{a-}} & =\min\left\{ \text{interp }\left\{ m^{i_{a}}\right\} \rightarrow\left\{ c^{i_{a}}\right\} \text{ at }m^{i_{a-}},m^{i_{a-}}\right\} \\
+a^{i_{a-}} & =m^{i_{a-}}-c^{i_{a-}}\\
+w^{i_{a-}} & =\text{interp }\left\{ a^{i_{a}}\right\} \rightarrow\left\{ w^{i_{a}}\right\} \text{ at }a^{i_{a-}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/upper_envelope.png
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-6mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Numbering:
+\series default
+ Different levels of end-of-period assets, 
+\begin_inset Formula $a^{i_{a}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Problem:
+\series default
+ Find the consumption function at 
+\begin_inset Formula $m_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $m_{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Largest value-of-choice:
+\series default
+ Denoted by the 
+\emph on
+triangles
+\emph default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Source:
+\series default
+ Druedahl and Jørgensen (2017), 
+\begin_inset Formula $G^{2}EGM$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Beg.-of-period value function:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\underline{v}_{t+1}(a_{t}) & =\sqrt{m_{t+1}}+\eta\max\left\{ m_{t+1}-\underline{m},0\right\} \\
+ & \text{where }m_{t+1}=(1+r)a_{t}+1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Derivative:
+\series default
+
+\begin_inset Formula 
+\[
+\underline{v}_{a,t+1}(a_{t})=\frac{1}{2}(1+r)m_{t+1}^{-\frac{1}{2}}+(1+r)\eta\boldsymbol{1}\left\{ m_{t+1}>\underline{m}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Budget constraint:
+\begin_inset Formula 
+\[
+a_{t}+c_{t}=(1+r)a_{t-1}+1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Next-period values
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/upper_envelope_next_period.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Raw values of 
+\begin_inset Formula $c^{i_{a}}$
+\end_inset
+
+ and 
+\begin_inset Formula $v^{i_{a}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/upper_envelope_raw.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problem:
+\series default
+ Overlaps 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ not a function 
+\begin_inset Formula $m_{t}$
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Result after upper envelope
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/upper_envelope.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General problem structure
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+General problem structure with 
+\emph on
+nesting
+\emph default
+:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\overline{v}_{t}\left(\overline{x}_{t},d_{t},e_{t},m_{t}\right) & =\max_{c_{t}\in\left[0,m_{t}\right]}u(c_{t},d_{t},e_{t})+\beta\underline{v}_{t+1}\left(\underline{\Gamma}_{t}\left(\overline{x}_{t},d_{t},e_{t},a_{t}\right)\right)\\
+ & \text{with }a_{t}=m_{t}-c_{t}\\
+v(x_{t}) & =\max_{d_{t}\in\Omega^{d}(x_{t})}\overline{v}_{t}\left(\overline{\Gamma}_{t}\left(x_{t},d_{t}\right)\right)\\
+\underline{v}_{t}\left(\underline{x}_{t}\right) & =\max_{e_{t}\in\Omega^{e}(\underline{x}_{t})}\mathbb{E}\left[v\left(\Gamma\left(\underline{x}_{t},e_{t}\right)\right)\,|\,\underline{x}_{t},e_{t}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Finding 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+: 
+\series default
+\emph on
+EGM with upper envelope can (typically) still be used
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Finding 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $e_{t}$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Combination of discrete and continuous choices
+\end_layout
+
+\begin_layout Enumerate
+Typically requires use of numerical optimizer or root-finder
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Druedahl (2021),
+\series default
+ 
+\begin_inset Quotes ald
+\end_inset
+
+A Guide on Solving Non-Convex Consumption-Saving Models
+\begin_inset Quotes ard
+\end_inset
+
+ (costly with extra states in 
+\begin_inset Formula $\overline{v}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Non-FIRE
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivating example
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+FIRE:
+\series default
+ 
+\emph on
+Full International Rational Expectations
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+IKC: 
+\begin_inset Formula $d\boldsymbol{Y}=\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Y}$
+\end_inset
+
+
+\series default
+ where 
+\series bold
+
+\begin_inset Formula $M_{t,s}=\frac{\partial C_{t}}{\partial Y_{s}}$
+\end_inset
+
+
+\series default
+ and similar for 
+\begin_inset Formula $\boldsymbol{M}^{r}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Myopic behavior:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Agents 
+\emph on
+never
+\emph default
+ thinks about the future
+\end_layout
+
+\begin_layout Enumerate
+Agents gradually observe current aggregate variables
+\size small
+
+\begin_inset Formula 
+\[
+\boldsymbol{M}^{\text{myopic}}=\left[\begin{array}{cccc}
+M_{0,0} & 0 & 0 & \cdots\\
+M_{1,0} & M_{0,0} & 0 & \cdots\\
+M_{2,0} & M_{1,0} & M_{0,0} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\size default
+Consider 
+\begin_inset Formula $t=1$
+\end_inset
+
+: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $M_{1,0}dY_{0}$
+\end_inset
+
+: Effect from past shock observed
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $M_{0,0}dY_{1}$
+\end_inset
+
+: Effect of unexpected change in period 1 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sticky expectations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Sticky expectations:
+\series default
+ A fraction 
+\begin_inset Formula $1-\theta$
+\end_inset
+
+ updates expectations each period (from Carroll et.
+ al., 2020)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{M}^{\text{sticky}}=\left[\begin{array}{cccc}
+M_{0,0} & (1-\theta)M_{0,1} & (1-\theta)M_{0,2} & \cdots\\
+M_{1,0} & (1-\theta)M_{1,1}+\theta M_{0,0} & (1-\theta)M_{1,2}+\theta(1-\theta)M_{0,1} & \cdots\\
+M_{2,0} & (1-\theta)M_{2,1}+\theta M_{1,0} & \vdots & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $t=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Non-updaters: 
+\begin_inset Formula $\theta M_{0,0}dY_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Updaters: 
+\begin_inset Formula $(1-\theta)\sum_{s\geq0}M_{0,s}dY_{s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider 
+\begin_inset Formula $t=1$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+Ingoing updaters: 
+\begin_inset Formula $(1-\theta)\sum_{s\geq0}M_{1,s}dY_{s}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ingoing non-updaters: 
+\begin_inset Formula $\theta\left(M_{1,0}dY_{0}+M_{0,0}dY_{1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+New updaters: 
+\begin_inset Formula $\theta(1-\theta)\sum_{s\geq1}M_{0,s}dY_{s+1}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hump-shaped response to monetary policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/HumpsBumps_fig4.png
+	lyxscale 30
+	width 95text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\series bold
+Source:
+\series default
+ Auclert et.
+ al.
+ (2020), 
+\begin_inset Quotes ald
+\end_inset
+
+Micro Jumps, Macro Humps: Monetary Policy and Business Cycles in an Estimated
+ HANK Model
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+UI extensions might be less powerful
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/UI_extensions.png
+	lyxscale 30
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+footnotesize
+\end_layout
+
+\end_inset
+
+
+\series bold
+Source:
+\series default
+ Bardóczy and Guerreiro (2020), 
+\begin_inset Quotes ald
+\end_inset
+
+Unemployment Insurance in Macroeconomic Stabilization with Imperfect Expectation
+s
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+HANK-SAM
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+My ongoing work 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Zero liqduity:
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+Broer, Druedahl, Harmenberg and Öberg (2023),
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes ald
+\end_inset
+
+The Unemployment-Risk Channel in Business-Cycle Fluctuations
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Positive liqudity: 
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+Broer, Druedahl, Harmenberg and Öberg (2023), 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes ald
+\end_inset
+
+Fiscal stimulus policies according to HANK-SAM
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\emph on
+
+\begin_inset Graphics
+	filename figs/HANK-SAM-fiscal.png
+	lyxscale 30
+	width 65text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Code:
+\series default
+ 
+\emph on
+HANK-SAM 
+\emph default
+in 
+\emph on
+GEModelToolsNotebooks
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Household problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-5mm}
+\end_layout
+
+\end_inset
+
+
+\size default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(\beta_{i},u_{it},a_{it-1})= & \max_{c_{it},a_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta_{i}\mathbb{E}_{t}\left[v_{t+1}\left(\beta_{i},u_{it+1},a_{it}\right)\right]\\
+\text{s.t. } & a_{it}+c_{it}=(1+r_{t})a_{it-1}+(1-\tau_{t})y_{t}(u_{it})+\text{div}_{t}+\text{transfer}_{t}\\
+ & a_{it}\geq0
+\end{align*}
+
+\end_inset
+
+
+\size footnotesize
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Dividends and government transfers:
+\series default
+ 
+\begin_inset Formula $\text{div}_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\text{transfer}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Real wage
+\series default
+: 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Income tax: 
+\series default
+
+\begin_inset Formula $\tau_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Separation rate
+\series default
+ for employed: 
+\begin_inset Formula $\delta_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Job-finding rate 
+\series default
+for unemployed: 
+\begin_inset Formula $\lambda_{t}^{u,s}s(u_{it-1})$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+(where 
+\begin_inset Formula $s(u_{it-1})$
+\end_inset
+
+ is exogenous search effectiveness)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+US-style duration-dependent 
+\series bold
+UI system:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+a) High replacement rate
+\series bold
+ 
+\begin_inset Formula $\overline{\phi}$
+\end_inset
+
+, 
+\series default
+first 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ months
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+b) Low replacement rate 
+\series bold
+
+\begin_inset Formula $\underline{\phi}$
+\end_inset
+
+,
+\series default
+ after 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ months
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Income process
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Income
+\series default
+ is
+\begin_inset Formula 
+\begin{align*}
+y_{it}(u_{it}) & =w_{ss}\cdot\begin{cases}
+1 & \text{if }u_{it}=0\\
+\overline{\phi}\text{UI}_{it}+(1-\text{UI}_{it})\underline{\phi} & \text{else}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+where share of the month with UI is
+\begin_inset Formula 
+\begin{align*}
+\text{UI}_{it}=\begin{cases}
+0 & \text{if }u_{it}=0\\
+1 & \text{else }\text{if }u_{it}<\overline{u}_{t}\\
+0 & \text{else if }u_{it}>\overline{u}_{t}+1\\
+\overline{u}-\left(u_{it}-1\right) & \text{else}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Note:
+\series default
+ 
+\emph on
+Hereby 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ becomes a continuous variables
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Transition probabilities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Beginning-of-period value function:
+\series default
+
+\begin_inset Formula 
+\[
+\underline{v}_{t}\left(\beta_{i},u_{it-1},a_{it-1}\right)=\mathbb{E}\left[v_{t}(\beta_{i},u_{it},a_{it-1})\,|\,u_{it-1},a_{it-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Grids:
+\series default
+ 
+\begin_inset Formula $u_{it}\in\{0,1,\dots,\#_{u}-1\}$
+\end_inset
+
+ for 
+\begin_inset Formula $\#_{u}-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Workers
+\series default
+ with 
+\begin_inset Formula $u_{it-1}=0$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+u_{it} & =\begin{cases}
+0 & \text{with }1-\delta_{t}\\
+1 & \text{with }\delta_{t}
+\end{cases},\,\text{UI}_{it}=\begin{cases}
+1 & \text{with }\pi^{\text{UI}}\\
+0 & \text{with }1-\pi^{\text{UI}}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Unemployed
+\series default
+ with 
+\begin_inset Formula $u_{it-1}=1$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+u_{it} & =\begin{cases}
+0 & \text{with \lambda_{t}^{u,s}s(u_{it-1})}\\
+\min\left\{ u_{it-1}+1,\#_{u}-1\right\}  & \text{with }1-\lambda_{t}^{u,s}s(u_{it-1})
+\end{cases},\,\text{UI}_{it}=\text{UI}_{it-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Hiring and firing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Job value:
+\series default
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+V_{t}^{j} & =p_{t}^{x}Z_{t}-w_{ss}+\beta^{\text{firm}}\mathbb{E}_{t}\left[(1-\delta_{ss})V_{t+1}^{j}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Vacancy value: 
+\series default
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+V_{t}^{v} & =-\kappa+\lambda_{t}^{v}V_{t}^{j}+(1-\lambda_{t}^{v})(1-\delta_{ss})\beta^{\text{firm}}\mathbb{E}_{t}\left[V_{t+1}^{v}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Free entry 
+\series default
+implies 
+\begin_inset Formula 
+\[
+V_{t}^{v}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Labor market dynamics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Labor market tightness 
+\series default
+is given by
+\begin_inset Formula 
+\[
+\theta_{t}=\frac{v_{t}}{S_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Cobb-Douglas matching function 
+\series default
+implies: 
+\begin_inset Formula 
+\begin{align*}
+\lambda_{t}^{v} & =A\theta_{t}^{-\alpha}\\
+\lambda_{t}^{u,s} & =A\theta_{t}^{1-\alpha}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Law of motion for unemployment:
+\series default
+
+\begin_inset Formula 
+\[
+u_{t}=u_{t-1}+\delta_{t}(1-u_{t-1})-\lambda_{t}^{u,s}S_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Standard New Keynesian block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Intermediate goods price:
+\series default
+ 
+\begin_inset Formula $p_{t}^{X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dixit-Stiglitz 
+\series bold
+demand curve
+\series default
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\series bold
+ Phillips curve 
+\series default
+relating marginal cost, 
+\begin_inset Formula $MC_{t}=p_{t}^{x}$
+\end_inset
+
+, and 
+\series bold
+final goods price inflation
+\series default
+, 
+\begin_inset Formula $\Pi_{t}=P_{t}/P_{t-1},$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+1-\epsilon+\epsilon p_{t}^{x}=\phi\pi_{t}(1+\pi_{t})-\phi\beta^{\text{firm}}\mathbb{E}_{t}\left[\pi_{t+1}(1+\pi_{t+1})\frac{Y_{t+1}}{Y_{t}}\right]
+\]
+
+\end_inset
+
+with output 
+\begin_inset Formula $Y_{t}=Z_{t}(1-u_{t})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Flexible price limit:
+\series default
+ 
+\begin_inset Formula $\phi\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Taylor rule:
+\series default
+
+\begin_inset Formula 
+\begin{eqnarray*}
+1+i_{t} & = & \left(1+i_{ss}\right)\left(\frac{1+\pi_{t}}{1+\pi_{ss}}\right)^{\delta_{\pi}}
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Government
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Unemployment insurance:
+\series default
+ 
+\begin_inset Formula $\Phi_{t}=w_{ss}\left(\overline{\phi}_{t}\text{UI}_{t}^{hh}+\underline{\phi}\left(u_{t}-\text{UI}_{t}^{hh}\right)\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Total expenses:
+\series default
+ 
+\begin_inset Formula $X_{t}=\Phi_{t}+G_{t}+\text{transfer}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Total taxes:
+\series default
+ 
+\begin_inset Formula $\text{taxes}_{t}=\tau_{t}\left(\Phi_{t}+w_{ss}(1-u_{t})\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Government budget
+\series default
+ is
+\begin_inset Formula 
+\[
+q_{t}B_{t}=(1+q_{t}\delta_{q})B_{t-1}+X_{t}-\text{taxes}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tax rule:
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset Formula 
+\begin{align*}
+\tilde{\tau}_{t} & =\frac{\left(1+q_{t}\delta_{q}\right)B_{t-1}+X_{t}-q_{ss}B_{ss}}{\Phi_{t}+w_{ss}(1-u_{t})}\\
+\tau_{t} & =\omega\tilde{\tau}_{t}+(1-\omega)\tau_{ss}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status collapsed
+
+\begin_layout Plain Layout
+Equilibrium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Financial markets:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\frac{1+\delta_{q}q_{t+1}}{q_{t}} & =\frac{1+i_{t}}{1+\pi_{t+1}}\\
+1+r_{t} & =\begin{cases}
+\frac{(1+\delta_{q}q_{0})B_{-1}}{A_{-1}^{hh}} & \text{if }t=0\\
+\frac{1+i_{t-1}}{1+\pi_{t}} & \text{else}
+\end{cases}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Market clearing:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+A_{t}^{hh} & =q_{t}B_{t}\\
+Y_{t} & =C_{t}^{hh}+G_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Mixed advanced:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Policies (shocks, targets, rule, optimal)
+\end_layout
+
+\begin_layout Enumerate
+Life-cycle (age, mortality, income profile) 
+\end_layout
+
+\begin_layout Enumerate
+Endogenous idiosyncratic risk (external/internal)
+\end_layout
+
+\begin_layout Enumerate
+Discrete choices with taste shocks (upper envelope, non-convex)
+\end_layout
+
+\begin_layout Enumerate
+Bounded rationality (manipulation of Jacobian, myopic, sticky)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+HANK-SAM
+\series default
+ (labor market dynamics, fiscal policy)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
