@@ -984,6 +984,286 @@ If
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Implementation hints
+\end_layout
+
+\begin_layout Standard
+One way to think about the model is as follows: 
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $K_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{t}^{Y}$
+\end_inset
+
+ be the variables we guess on (i.e.
+ unknowns)
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $G_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\chi_{t}$
+\end_inset
+
+ to be fully exogenous policy choices
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $L_{t}^{G}=\Gamma^{G}/G_{t}$
+\end_inset
+
+ be an implied policy choice (why can we use this?)
+\end_layout
+
+\begin_layout Enumerate
+Let 
+\begin_inset Formula $\tau_{t}=\frac{G_{t}+w_{t}L_{t}^{G}}{w_{t}(L_{t}^{Y}+L_{t}^{G})}$
+\end_inset
+
+ be another implied policy choice (why can we use this?)
+\end_layout
+
+\begin_layout Enumerate
+Ensure the asset market and the labor market both clears
+\end_layout
+
+\begin_layout Standard
+This can be used both for finding the 
+\emph on
+steady state
+\emph default
+ and for solving for the 
+\emph on
+transition path
+\emph default
+.
+ For the latter see the code in Listing 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "lst:blocks"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ below.
+ In question b)-c), you should expect to find
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[b)]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\overline{v}_{ss}=-138.97$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[c)]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\overline{v}_{ss}=-136.89$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[d)]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\overline{v}_{ss}=-128.84$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python,caption=Inspiration for blocks.py,label=lst:blo
+cks,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+@nb.njit
+\end_layout
+
+\begin_layout Plain Layout
+
+def government(par,ini,ss,G,L_Y,w,chi,
+\end_layout
+
+\begin_layout Plain Layout
+
+	L_G,L,tau,wt,B,S):
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # a.
+ total employment
+\end_layout
+
+\begin_layout Plain Layout
+
+    L_G[:] = ?
+\end_layout
+
+\begin_layout Plain Layout
+
+    L[:] = ?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # b.
+ implied taxation
+\end_layout
+
+\begin_layout Plain Layout
+
+    tau[:] = ?
+\end_layout
+
+\begin_layout Plain Layout
+
+    wt[:] = ?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # c.
+ debt
+\end_layout
+
+\begin_layout Plain Layout
+
+    B[:] = ?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # d.
+ service flow
+\end_layout
+
+\begin_layout Plain Layout
+
+    S[:] = ?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
