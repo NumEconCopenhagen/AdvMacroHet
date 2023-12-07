@@ -102,6 +102,7 @@ def government(par,ini,ss,
 
     # a. government budget
     for t in range(par.T):
+
         tax_base = wT[t]*NT[t]+wNT[t]*NNT[t]
         
         B_lag = prev(B,t,ini.B)
@@ -150,12 +151,12 @@ def consumption(par,ini,ss,
                 CT,CNT,CTF,CTH,CTH_s):
 
     # a. home - tradeable vs. non-tradeable
-    CT[:] = (par.alphaT)*(PT/P)**(-par.etaT)*C_hh
+    CT[:] = par.alphaT*(PT/P)**(-par.etaT)*C_hh
     CNT[:] = (1-par.alphaT)*(PNT/P)**(-par.etaT)*C_hh
 
     # b. home - home vs. foreign tradeable
-    CTH[:] = (1-par.alphaF)*(PTH/PT)**(-par.etaF)*CT
     CTF[:] = par.alphaF*(PF/PT)**(-par.etaF)*CT
+    CTH[:] = (1-par.alphaF)*(PTH/PT)**(-par.etaF)*CT
 
     # c. foreign - home tradeable
     CTH_s[:] = (PTH_s/PF_s)**(-par.eta_s)*M_s

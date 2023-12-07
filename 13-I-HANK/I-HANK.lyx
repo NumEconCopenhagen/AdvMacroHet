@@ -408,6 +408,45 @@ vspace{2mm}
 
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+Small open economy (SOE) 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ foreign economy exogenous
+\end_layout
+
+\begin_layout Enumerate
+Demand for home goods declining in relative price
+\end_layout
+
+\begin_layout Enumerate
+Floating exchange rate
+\end_layout
+
+\begin_layout Enumerate
+Free capital mobility 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ uncovered interest parity (UIP)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 
 \series bold
@@ -491,6 +530,10 @@ vspace{2mm}
 
 \end_layout
 
+\begin_layout Section
+Exchange rate shocks
+\end_layout
+
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -554,7 +597,7 @@ footnotesize
 
 \end_inset
 
-(initially households only hold domestic stocks 
+(initially households only hold domestic assets 
 \begin_inset Formula $\Rightarrow$
 \end_inset
 
@@ -703,7 +746,7 @@ status open
 Real exchange rate:
 \series default
  
-\begin_inset Formula $Q_{t}=E_{t}\frac{P_{t}^{\ast}}{P_{t}}$
+\begin_inset Formula $Q_{t}=\frac{E_{t}P_{t}^{\ast}}{P_{t}}$
 \end_inset
 
  
@@ -760,12 +803,64 @@ P_{t} & =\left[\alpha\left(E_{t}P_{t}^{\ast}\right)^{1-\eta}+\left(1-\alpha\righ
 \end_layout
 
 \begin_layout Itemize
+From demand of 
+\begin_inset Formula $C_{H,t}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+dC_{H,t}=(1-\alpha)\eta\left(dP_{t}-dP_{H,t}\right)+(1-\alpha)dC_{t}^{hh}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Real income
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+From price level;
+\begin_inset Formula 
+\begin{align*}
+0 & =\alpha\left(\frac{E_{t}P_{t}^{\ast}}{P_{t}}\right)^{1-\eta}+\left(1-\alpha\right)\left(\frac{P_{H,t}}{P_{t}}\right)^{1-\eta}\Rightarrow\\
+0 & =\alpha(1-\eta)dQ_{t}+(1-\alpha)(1-\eta)(dP_{H,t}-dP_{t})\Leftrightarrow\\
+dP_{t}-dP_{H,t} & =\frac{\alpha}{1-\alpha}dQ_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
 
 \series bold
 Real income:
 \begin_inset Formula 
 \begin{align*}
-Y_{t}^{hh} & =\frac{W_{t}N_{t}+D_{t}}{P_{t}}=\frac{P_{H,t}Y_{t}}{P_{t}}\Rightarrow\\
+Y_{t}^{hh} & =\frac{W_{t}N_{t}+D_{t}}{P_{t}}=Y_{t}\frac{P_{H,t}}{P_{t}}\Rightarrow\\
 dY_{t}^{hh} & =dY_{t}-\left(dP_{t}-dP_{H,t}\right)=dY_{t}-\frac{\alpha}{1-\alpha}dQ_{t}
 \end{align*}
 
@@ -804,7 +899,8 @@ Armington demand for home goods:
 
 \begin_inset Formula 
 \begin{align*}
-C_{H,t}^{\ast} & =\alpha\left(\frac{P_{H,t}}{E_{t}P_{t}^{\ast}}\right)^{-\gamma}C_{t}^{\ast}
+C_{H,t}^{\ast} & =\alpha\left(\frac{P_{H,t}}{E_{t}P_{t}^{\ast}}\right)^{-\gamma}C_{t}^{\ast}\\
+ & =\alpha\left(\frac{1}{Q_{t}}\frac{P_{H,t}}{P_{t}}\right)^{-\gamma}C_{t}^{\ast}
 \end{align*}
 
 \end_inset
@@ -817,11 +913,14 @@ C_{H,t}^{\ast} & =\alpha\left(\frac{P_{H,t}}{E_{t}P_{t}^{\ast}}\right)^{-\gamma}
 \series bold
 Market clearing:
 \series default
+\size small
 
 \begin_inset Formula 
 \begin{align*}
 Y_{t} & =C_{H,t}+C_{H,t}^{\ast}\Rightarrow\\
-dY_{t} & =(1-\alpha)dC_{t}+\alpha dC_{t}^{\ast}+\frac{\alpha}{1-\alpha}\chi dQ_{t}
+dY_{t} & =(1-\alpha)\eta\left(dP_{t}-dP_{H,t}\right)+(1-\alpha)dC_{t}^{hh}+\alpha dC_{t}^{\ast}+\alpha\gamma(dQ_{t}+dP_{t}-dP_{H,t})\\
+ & =(1-\alpha)dC_{t}^{hh}+\alpha dC_{t}^{\ast}+\alpha\eta dQ_{t}+\left(\frac{\alpha(1-\alpha)}{1-\alpha}+\frac{\alpha^{2}}{1-\alpha}\right)\gamma dQ_{t}\\
+ & =(1-\alpha)dC_{t}^{hh}+\alpha dC_{t}^{\ast}+\frac{\alpha}{1-\alpha}\chi dQ_{t}
 \end{align*}
 
 \end_inset
@@ -886,7 +985,7 @@ Consumption satisfies:
 \begin_layout Standard
 \begin_inset Formula 
 \[
-d\boldsymbol{C}=\underset{\text{multiplier}}{\underbrace{\boldsymbol{M}d\boldsymbol{Y}}}-\underset{\text{real income}}{\underbrace{\frac{\alpha}{1-\alpha}\boldsymbol{M}d\boldsymbol{Q}}}
+d\boldsymbol{C}^{hh}=\underset{\text{multiplier}}{\underbrace{\boldsymbol{M}d\boldsymbol{Y}}}-\underset{\text{real income}}{\underbrace{\frac{\alpha}{1-\alpha}\boldsymbol{M}d\boldsymbol{Q}}}
 \]
 
 \end_inset
@@ -914,8 +1013,8 @@ Intertemporal Keynesian Cross:
 
 \begin_inset Formula 
 \begin{align*}
-d\boldsymbol{Y} & =\underset{\text{expenditure switching}}{\underbrace{\frac{\alpha}{1-\alpha}d\boldsymbol{Q}}}-\underset{\text{real income}}{\underbrace{\alpha\boldsymbol{M}d\boldsymbol{Q}}}+\underset{\text{multiplier}}{\underbrace{\left(1-\alpha\right)\boldsymbol{M}d\boldsymbol{Y}}}\\
- & =\mathcal{M}\left(\frac{\alpha}{1-\alpha}\chi d\boldsymbol{Q}-\alpha\boldsymbol{M}d\boldsymbol{Q}\right)
+d\boldsymbol{Y} & =\underset{\text{multiplier}}{\underbrace{\left(1-\alpha\right)\boldsymbol{M}d\boldsymbol{Y}}}\underset{\text{real income}}{\underbrace{-\alpha\boldsymbol{M}d\boldsymbol{Q}}}\underset{\text{expenditure switching}}{\underbrace{+\frac{\alpha}{1-\alpha}\chi d\boldsymbol{Q}}}\\
+ & =\mathcal{M}\left(\frac{\alpha}{1-\alpha}\chi-\alpha\boldsymbol{M}\right)d\boldsymbol{Q}
 \end{align*}
 
 \end_inset
@@ -935,6 +1034,18 @@ Expansion: For high
 \begin_layout Itemize
 Contraction: For low 
 \begin_inset Formula $\chi$
+\end_inset
+
+, easier if 
+\begin_inset Formula $\boldsymbol{M}$
+\end_inset
+
+ is 
+\begin_inset Quotes ald
+\end_inset
+
+large
+\begin_inset Quotes ard
 \end_inset
 
 
@@ -985,7 +1096,11 @@ Contractionary depreciation
 status open
 
 \begin_layout Plain Layout
-Equivalence and decomposition
+Equivalence and decomposition with 
+\begin_inset Formula $\chi=1$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1000,6 +1115,42 @@ Equivalence and decomposition
 	lyxscale 30
 	width 100text%
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Solution:
+\series default
+ Guess 
+\begin_inset Formula $d\boldsymbol{Y}=\frac{\alpha}{1-\alpha}d\boldsymbol{Q}$
+\end_inset
+
+ and verify for any 
+\begin_inset Formula $\boldsymbol{M}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d\boldsymbol{Y}=\left(1-\alpha\right)\boldsymbol{M}d\boldsymbol{Y}-\alpha\boldsymbol{M}d\boldsymbol{Q}+\frac{\alpha}{1-\alpha}d\boldsymbol{Q}=\frac{\alpha}{1-\alpha}d\boldsymbol{Q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Zero consumption:
+\series default
+ 
+\begin_inset Formula $d\boldsymbol{C}^{hh}=\boldsymbol{M}d\boldsymbol{Y}-\frac{\alpha}{1-\alpha}\boldsymbol{M}d\boldsymbol{Q}=\boldsymbol{0}$
 \end_inset
 
 
@@ -1078,6 +1229,10 @@ status open
 
 \end_layout
 
+\begin_layout Section
+Demand shocks
+\end_layout
+
 \begin_layout Frame
 \begin_inset Argument 4
 status open
@@ -1103,12 +1258,24 @@ Foreign demand shocks
 
 \end_layout
 
+\begin_layout Standard
+
+\series bold
+Simplified model:
+\series default
+ I-HANK/
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Regional dynamics
 \end_layout
 
 \begin_layout Frame
@@ -1225,6 +1392,98 @@ Regional employment effects of MP
 
 \end_layout
 
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\series default
+International HANK
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Next week: 
+\series default
+HANK with Search-And-Matching (SAM)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Homework:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Paper: Broer et al.
+ (2023),
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes ald
+\end_inset
+
+The Unemployment-Risk Channel in Business-Cycle Fluctuations
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Slides: Broer et al.
+ (2023),
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes ald
+\end_inset
+
+Fiscal stimulus policies according to HANK-SAM
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+GEModelTools: Model description of HANK-SAM
+\end_layout
+
+\begin_layout Itemize
+Ask questions regarding the exam
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
