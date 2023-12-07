@@ -161,18 +161,18 @@
 
 \shape smallcaps
 \size largest
-A Two-Sector I-HANK Model
+GEModelTools:
 \begin_inset Newline newline
 \end_inset
 
-(preliminary)
+Two-Sector I-HANK Model
 \end_layout
 
 \begin_layout Author
 Jeppe Druedahl
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Model
 \end_layout
 
@@ -209,18 +209,18 @@ The home economy has a continuum of infinitely lived households indexed
 ex ante
 \emph default
  heterogeneous in terms of which sector they work in, 
-\begin_inset Formula $s_{i}\in\{T,NT\}$
+\begin_inset Formula $s_{i}\in\{TH,NT\}$
 \end_inset
 
 , where 
-\begin_inset Formula $T$
+\begin_inset Formula $TH$
 \end_inset
 
  is the 
 \emph on
 tradeable
 \emph default
- sector, and 
+ sector (in the home country), and 
 \begin_inset Formula $s_{i}=NT$
 \end_inset
 
@@ -314,7 +314,7 @@ Aggregate quantities are
 \begin{align}
 A_{t}^{hh} & =\int a_{it}d\boldsymbol{D}_{t}\label{eq:A_hh}\\
 C_{t}^{hh} & =\int c_{it}d\boldsymbol{D}_{t}\label{eq:C_hh}\\
-s\in\{T,NT\}:\,S_{x}^{hh} & =\int1\{s_{it}=s\}d\boldsymbol{D}_{t}\label{eq:S_hh}
+s\in\{TH,NT\}:\,S_{x}^{hh} & =\int1\{s_{it}=s\}d\boldsymbol{D}_{t}\label{eq:S_hh}
 \end{align}
 
 \end_inset
@@ -409,7 +409,7 @@ Firms.
 
 \begin_layout Standard
 A representative firm in each sector, 
-\begin_inset Formula $s\in\{T,NT\}$
+\begin_inset Formula $s\in\{TH,NT\}$
 \end_inset
 
 , hires labor, 
@@ -419,7 +419,7 @@ A representative firm in each sector,
 , to produce goods, with the production function
 \begin_inset Formula 
 \begin{equation}
-Y_{s,t}=Z_{s,t}N_{s,t},\,\,\,s\in\{T,NT\}\label{eq:production}
+Y_{s,t}=Z_{s,t}N_{s,t}\label{eq:production}
 \end{equation}
 
 \end_inset
@@ -432,8 +432,7 @@ where
  Profits are
 \begin_inset Formula 
 \begin{align}
-\Pi_{T,t} & =P_{TH,t}Y_{T,t}-W_{T,t}N_{T,t}\label{eq:profits_T}\\
-\Pi_{NT,t} & =P_{NT,t}Y_{NT,t}-W_{NT,t}N_{NT,t}
+\Pi_{s,t} & =P_{s,t}Y_{s,t}-W_{s,t}N_{s,t}\label{eq:profits_T}
 \end{align}
 
 \end_inset
@@ -454,8 +453,7 @@ where
  The first order condition for labor implies that 
 \begin_inset Formula 
 \begin{align}
-P_{TH,t} & =W_{T,t}/Z_{T,t}\label{eq:FOC_T}\\
-P_{NT,t} & =W_{NT,t}/Z_{NT,t}\label{eq:FOC_NT}
+P_{s,t} & =W_{s,t}/Z_{s,t}\label{eq:FOC_T}
 \end{align}
 
 \end_inset
@@ -467,7 +465,7 @@ P_{NT,t} & =W_{NT,t}/Z_{NT,t}\label{eq:FOC_NT}
 The real wage is
 \begin_inset Formula 
 \begin{equation}
-w_{s,t}=\frac{W_{s,t}}{P_{t}},\,\,\,s\in\{T,NT\}\label{eq:real_wage}
+w_{s,t}=\frac{W_{s,t}}{P_{t}}\label{eq:real_wage}
 \end{equation}
 
 \end_inset
@@ -497,13 +495,13 @@ New Keynesian Wage Philips Curve
 s,
 \begin_inset Formula 
 \begin{align}
-\pi_{s,t}^{w} & =\kappa\left(\varphi\left(N_{s,t}^{hh}\right)^{\nu}-\frac{1}{\mu}\int\left(1-\tau_{t}\right)w_{s,t}z_{it}c_{it}^{-\sigma}1\{s_{it}=s\}d\boldsymbol{D}_{t}\right)+\beta\pi_{s,t+1}^{w},\,\,\,s\in\{T,NT\}\label{eq:NKPWC}
+\pi_{s,t}^{w} & =\kappa\int\left(\varphi n_{s,t}^{-\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{s,t}z_{it}c_{it}^{-\sigma}\right)1\{s_{it}=s\}d\boldsymbol{D}_{t}+\beta\pi_{s,t+1}^{w}\label{eq:NKPWC}
 \end{align}
 
 \end_inset
 
 where 
-\begin_inset Formula $\pi_{s,t}^{w}=\frac{W_{s,t}}{W_{s,t+1}}-1$
+\begin_inset Formula $1+\pi_{s,t}^{w}=W_{s,t}/W_{s,t-1}$
 \end_inset
 
 , 
@@ -525,7 +523,7 @@ Central bank.
 The central bank follows a standard Taylor rule
 \begin_inset Formula 
 \begin{equation}
-i_{t}=i_{ss}+\phi\pi_{t+1}\label{eq:Taylor}
+1+i_{t}=1+i_{ss}+\left(\frac{1+\pi_{t+1}}{1+\pi_{ss}}\right)^{\phi}\label{eq:Taylor}
 \end{equation}
 
 \end_inset
@@ -547,14 +545,14 @@ where
 \end_inset
 
 , 
-\begin_inset Formula $\pi_{t+1}=P_{t+1}/P_{t}-1$
+\begin_inset Formula $1+\pi_{t+1}=P_{t+1}/P_{t}$
 \end_inset
 
 , and 
 \begin_inset Formula $\phi$
 \end_inset
 
- is the Taylor coefficient.
+ is the Taylor coefficient on inflation.
 \end_layout
 
 \begin_layout Standard
@@ -622,7 +620,7 @@ The government chooses spending,
  The budget constraint for the government then is
 \begin_inset Formula 
 \begin{align*}
-B_{t} & =(1+r_{t}^{a})B_{t-1}+\frac{P_{NT,t}}{P_{t}}G_{t}-\tau_{t}\left(w_{T,t}N_{T,t}+w_{NT,t}N_{NT,t}\right)
+B_{t} & =(1+r_{t}^{a})B_{t-1}+\frac{P_{NT,t}}{P_{t}}G_{t}-\tau_{t}\sum_{s\in\{TH,NT\}}w_{s,t},N_{s,t}
 \end{align*}
 
 \end_inset
@@ -634,7 +632,7 @@ where government consumption is fully in terms of non-tradeable goods.
 The tax rule is
 \begin_inset Formula 
 \begin{equation}
-\tau_{t}=\tau_{ss}+\omega\frac{B_{t-1}-B_{ss}}{Y_{T,ss}+Y_{NT,ss}}\label{eq:tax_rule}
+\tau_{t}=\tau_{ss}+\omega\frac{B_{t-1}-B_{ss}}{Y_{TH,ss}+Y_{NT,ss}}\label{eq:tax_rule}
 \end{equation}
 
 \end_inset
@@ -721,27 +719,9 @@ where
 
  is the foreign nominal interest rate.
  In real terms this is
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset Formula 
-\begin{align*}
-Q_{t} & =E_{t}\frac{P_{F,t}}{P_{t}}\Leftrightarrow E_{t}=Q_{t}\frac{P_{t}}{P_{F,t}}\\
-\frac{E_{t+1}}{E_{t}} & =\frac{Q_{t+1}}{Q_{t}}\frac{1+\pi_{t}}{1+\pi_{F,t}}
-\end{align*}
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{align}
-1+r_{t} & =\frac{1+r_{t}^{f}}{1+\pi_{t+1}^{f}}\frac{Q_{t+1}}{Q_{t}}\label{eq:UIP_real}
+1+r_{t} & =\left(1+r_{t}^{f}\right)\frac{Q_{t+1}}{Q_{t}}\label{eq:UIP_real}
 \end{align}
 
 \end_inset
@@ -781,15 +761,12 @@ Accounting.
 
 \begin_layout Standard
 We define the following variables,
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{align}
-\text{Gross domestic product: }GDP_{t} & =\frac{P_{T,t}Y_{T,t}+P_{NT,t}Y_{NT}}{P_{t}}\label{eq:GDP}\\
+\text{Gross domestic product: }GDP_{t} & =\frac{P_{TH,t}Y_{TH,t}+P_{NT,t}Y_{NT}}{P_{t}}\label{eq:GDP}\\
 \text{Net exports: }NX_{t} & =GDP_{t}-C_{t}^{hh}-\frac{P_{NT,t}}{P_{t}}G_{t}\label{eq:NX}\\
-\text{Current account: }CA_{t} & =NX_{t}+r_{t}^{a}NFA_{t-1}\label{eq:CA}\\
-\text{Net foreign assets: }NFA_{t} & =A_{t}^{hh}-B_{t}\label{eq:NFA}
+\text{Net foreign assets: }NFA_{t} & =A_{t}^{hh}-B_{t}\label{eq:NFA}\\
+\text{Current account: }CA_{t} & =NX_{t}+r_{t}^{a}NFA_{t-1}\label{eq:CA}
 \end{align}
 
 \end_inset
@@ -809,10 +786,12 @@ NFA_{t}-NFA_{t-1}=CA_{t}\label{eq:Walras}
 as shown by
 \begin_inset Formula 
 \begin{align*}
-NFA_{t}-NFA_{t-1} & =\left(A_{t}^{hh}-B_{t}\right)-\left(A_{t-1}^{hh}-B_{t-1}\right)\\
- & =r_{t}^{a}(A_{t-1}^{hh}-B_{t-1})+(1-\tau_{t})\sum_{s\in\{T,NT\}}w_{s,t},N_{s,t}-C_{t}^{hh}-\left(B_{t}-(1+r_{t}^{a})B_{t-1}\right)\\
- & =r_{t}^{a}NFA_{t-1}+GDP_{t}-C_{t}^{hh}-\frac{P_{NT,t}}{P_{t}}G_{t}\\
- & =r_{t}^{a}NFA_{t-1}+NX_{t}
+\int a_{it}d\boldsymbol{D}_{t} & =\int(1+r_{t}^{a})a_{it-1}+(1-\tau_{t})w_{s_{i},t}n_{s_{i},t}z_{it}-c_{it}d\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =(1+r_{t}^{a})A_{t-1}^{hh}+(1-\tau_{t})\sum_{s\in\{TH,NT\}}w_{s,t},N_{s,t}-C_{t}^{hh}\\
+ & =(1+r_{t}^{a})A_{t-1}^{hh}+GDP_{t}-C_{t}^{hh}-\tau_{t}\sum_{s\in\{TH,NT\}}w_{s,t},N_{s,t}\\
+ & =(1+r_{t}^{a})A_{t-1}^{hh}+GDP_{t}-C_{t}^{hh}+\left(B_{t}-(1+r_{t}^{a})B_{t-1}+\frac{P_{NT,t}}{P_{t}}G_{t}\right)\\
+ & =(1+r_{t}^{a})NFA_{t-1}+NX_{T}+B_{t}\Leftrightarrow\\
+NFA_{t}-NFA_{t-1} & =r_{t}^{a}NFA_{t-1}+NX_{t}
 \end{align*}
 
 \end_inset

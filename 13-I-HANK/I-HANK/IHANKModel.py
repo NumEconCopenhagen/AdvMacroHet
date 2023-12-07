@@ -21,15 +21,15 @@ class IHANKModelClass(EconModelClass,GEModelClass):
         # b. household
         self.grids_hh = ['a'] # grids
         self.pols_hh = ['a'] # policy functions
-        self.inputs_hh = ['ra','inc_T','inc_NT'] # direct inputs
+        self.inputs_hh = ['ra','inc_TH','inc_NT'] # direct inputs
         self.inputs_hh_z = [] # transition matrix inputs
-        self.outputs_hh = ['a','c','uc_T','uc_NT'] # outputs
+        self.outputs_hh = ['a','c','uc_TH','uc_NT'] # outputs
         self.intertemps_hh = ['vbeg_a'] # intertemporal variables
 
         # c. GE
-        self.shocks = ['ZT','ZNT','M_s','rF','PF_s'] # exogenous inputs
-        self.unknowns = ['E','NNT','NT','piWT','piWNT'] # endogenous inputs
-        self.targets = ['NKWCT_res','NKWCNT_res','clearing_YT','clearing_YNT','UIP_res'] # targets
+        self.shocks = ['ZTH','ZNT','M_s','rF','PF_s'] # exogenous inputs
+        self.unknowns = ['E','NNT','NTH','piWTH','piWNT'] # endogenous inputs
+        self.targets = ['NKWCT_res','NKWCNT_res','clearing_YTH','clearing_YNT','UIP_res'] # targets
         
         # d. all variables
         self.blocks = [
@@ -69,7 +69,7 @@ class IHANKModelClass(EconModelClass,GEModelClass):
         par.alphaF = 1/3 # share of foreign goods in home tradeable consumption
         par.etaF = 2.0 # elasticity of substitution between home and foreign tradeable goods
           
-        par.varphiT = np.nan # disutility of labor in tradeable sector (determined in s)
+        par.varphiTH = np.nan # disutility of labor in tradeable sector (determined in s)
         par.varphiNT = np.nan # disutility of labor in non-tradeable sector (determined in s)
         par.nu = 1.0 # Frisch elasticity of labor supply
               
@@ -89,7 +89,7 @@ class IHANKModelClass(EconModelClass,GEModelClass):
         # f. government
         par.phi = 1.5 # Taylor rule coefficient on inflation
         par.tau_ss = 0.30 # tax rate on labor income
-        par.omega = 0.10 # adjustment rate of taxes
+        par.omega = 0.10 # tax sensitivity to debt
 
         # g. grids         
         par.a_min = 0.0 # maximum point in grid for a
@@ -120,6 +120,9 @@ class IHANKModelClass(EconModelClass,GEModelClass):
         par.tol_solve = 1e-12 # tolerance when solving
         par.tol_simulate = 1e-12 # tolerance when simulating
         par.tol_broyden = 1e-10 # tolerance when solving eq. system
+
+        par.py_hh = False # use python in household problem
+        par.py_blocks = False # use python in blocks
 
     def allocate(self):
         """ allocate model """
