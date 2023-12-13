@@ -459,18 +459,33 @@ Example:
 \series default
 \emph on
 HANK-SAM
-\emph default
- 
-\begin_inset Newline newline
-\end_inset
-
-Broer et.
- al.
- (2023),
 \end_layout
 
 \begin_deeper
-\begin_layout Standard
+\begin_layout Itemize
+Paper: Broer et al.
+ (2023),
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes ald
+\end_inset
+
+The Unemployment-Risk Channel in Business-Cycle Fluctuations
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Slides: Broer et al.
+ (2023),
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset Quotes ald
 \end_inset
 
@@ -479,6 +494,10 @@ Fiscal stimulus policies according to HANK-SAM
 \end_inset
 
 
+\end_layout
+
+\begin_layout Itemize
+GEModelTools: Model description of HANK-SAM
 \end_layout
 
 \end_deeper
@@ -588,6 +607,118 @@ Discretion, commitment, timeless perspective (Dávila and Schaab, 2023)
 
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Steady state 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ transition path 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ timeless perspective
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Maximize welfare in steady state:
+\begin_inset Formula 
+\[
+\max_{\text{\ensuremath{policies}}}\int v_{ss}(\boldsymbol{x}_{i};\boldsymbol{X}_{ss}^{hh})d\boldsymbol{D}_{ss}=\max_{\text{\ensuremath{policies}}}\int\sum_{k=0}^{\infty}\beta_{i}^{k}u(\boldsymbol{c}_{ss}^{\star}\left(\boldsymbol{x}_{i};\boldsymbol{X}_{ss}^{hh}\right))d\boldsymbol{D}_{ss}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Maximize welfare along transition path 
+\series default
+(Ramsey problem)
+\series bold
+
+\begin_inset Formula 
+\[
+\max_{\text{\ensuremath{policies}}}\int v_{0}(\boldsymbol{x}_{it};\left\{ \boldsymbol{X}_{s}^{hh}\right\} _{s=0}^{\infty})d\boldsymbol{D}_{0}=\max_{\text{\ensuremath{policies}}}\sum_{t=0}^{\infty}\int\beta_{i}^{k}u(\boldsymbol{x}_{it};\left\{ \boldsymbol{X}_{s}^{hh}\right\} _{s=t}^{\infty})d\boldsymbol{D}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\div$
+\end_inset
+
+ 
+\emph on
+same steady state if too costly to get there 
+\emph default
+(accumulation?) 
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Weird time-0 policies
+\emph default
+ (tax capital 100% and redistribute?)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Maximize welfare in timeless perspective
+\series default
+
+\begin_inset Formula 
+\[
+\text{"add penalties such that policy is stationary in absence of shocks"}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Life-cycle
 \end_layout
@@ -664,7 +795,7 @@ Household problem
 
 \begin_inset Formula 
 \begin{align*}
-v_{0}(\beta_{i},h_{it},z_{it},a_{it-1}) & =\max_{c_{it}}u(c_{t})+\beta_{i}(1-\delta(h_{it}))\underline{v}_{t+1}\left(\beta_{i},h_{it+1},z_{it+1},a_{it}\right)\\
+v_{0}(\beta_{i},h_{it},z_{it},a_{it-1}) & =\max_{c_{it}}u(c_{t})+\beta_{i}(1-\delta(h_{it}))\mathbb{E}_{t}\left[v_{t+1}\left(\beta_{i},h_{it+1},z_{it+1},a_{it}\right)\right]\\
 \text{s.t. }\ell_{it} & =z_{it}\\
 a_{it} & =\begin{cases}
 (1+r_{t})q_{t}+w_{t}\ell_{it}-c_{it}+\Pi_{t} & \text{if }h_{it}=0\\

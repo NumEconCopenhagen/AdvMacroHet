@@ -408,19 +408,21 @@ Code which can run in itself
 \begin_layout Enumerate
 
 \series bold
-Question 0:
-\series default
- Extend the code to match the model description
-\end_layout
-
-\begin_layout Enumerate
-
-\series bold
 Questions:
 \series default
  Use the code to analyze economic questions
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+One direction
+\end_layout
+
+\begin_layout Itemize
+Another direction, etc.
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Itemize
 \begin_inset ERT
@@ -441,10 +443,6 @@ Grading:
 \begin_deeper
 \begin_layout Enumerate
 Clearly presented results in figures and tables
-\begin_inset Newline newline
-\end_inset
-
-(small coding mistakes not important)
 \end_layout
 
 \begin_layout Enumerate
@@ -488,6 +486,26 @@ I understand this is a very complicated course
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+What if the code is not working: 
+\series default
+Describe in words what you have tried to do.
+ Much better than an empty answer.
+ 
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -776,7 +794,9 @@ Optimize your Assignments I-III
 \begin_layout Itemize
 
 \series bold
-Ask questions in the GitHub forum
+Prepare questions for January 4 
+\series default
+(9:00-11:30, CSS 1.1.02)
 \end_layout
 
 \end_deeper
