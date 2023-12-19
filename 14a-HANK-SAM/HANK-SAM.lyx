@@ -2571,10 +2571,10 @@ y_{it}(u_{it}) & =w_{ss}\cdot\begin{cases}
 where share of the month with UI is
 \begin_inset Formula 
 \begin{align*}
-\text{UI}_{it}=\begin{cases}
+\text{UI}_{it} & =\begin{cases}
 0 & \text{if }u_{it}=0\\
-1 & \text{else }\text{if }u_{it}<\overline{u}_{t}\\
-0 & \text{else if }u_{it}>\overline{u}_{t}+1\\
+1 & \text{else }\text{if }u_{it}<\overline{u}\\
+0 & \text{else if }u_{it}>\overline{u}+1\\
 \overline{u}-\left(u_{it}-1\right) & \text{else}
 \end{cases}
 \end{align*}
@@ -2667,9 +2667,6 @@ Workers
 u_{it} & =\begin{cases}
 0 & \text{with }1-\delta_{t}\\
 1 & \text{with }\delta_{t}
-\end{cases},\,\text{UI}_{it}=\begin{cases}
-1 & \text{with }\pi^{\text{UI}}\\
-0 & \text{with }1-\pi^{\text{UI}}
 \end{cases}
 \end{align*}
 
@@ -2693,7 +2690,7 @@ Unemployed
 u_{it} & =\begin{cases}
 0 & \text{with \lambda_{t}^{u,s}s(u_{it-1})}\\
 \min\left\{ u_{it-1}+1,\#_{u}-1\right\}  & \text{with }1-\lambda_{t}^{u,s}s(u_{it-1})
-\end{cases},\,\text{UI}_{it}=\text{UI}_{it-1}
+\end{cases}
 \end{align*}
 
 \end_inset
@@ -2974,7 +2971,7 @@ Government
 Unemployment insurance:
 \series default
  
-\begin_inset Formula $\Phi_{t}=w_{ss}\left(\overline{\phi}_{t}\text{UI}_{t}^{hh}+\underline{\phi}\left(u_{t}-\text{UI}_{t}^{hh}\right)\right)$
+\begin_inset Formula $\Phi_{t}=w_{ss}\left(\overline{\phi}\text{UI}_{t}^{hh}+\underline{\phi}\left(u_{t}-\text{UI}_{t}^{hh}\right)\right)$
 \end_inset
 
 

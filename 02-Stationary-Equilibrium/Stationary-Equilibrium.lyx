@@ -746,7 +746,7 @@ Ramsey: Firms
 
 \series bold
 Production function: 
-\begin_inset Formula $Y_{t}=F(\Gamma_{t},K_{tt-1},L_{t})$
+\begin_inset Formula $Y_{t}=F(\Gamma_{t},K_{t-1},L_{t})$
 \end_inset
 
  
@@ -4073,12 +4073,16 @@ Bonds: Pays
 \begin_inset Formula 
 \begin{align*}
 p_{t}^{B}B_{t} & =B_{t-1}+G_{t}-\int\tau_{t}z_{it}d\boldsymbol{D}_{t}\\
-\tau_{t} & =\tau_{ss}+\varphi\left(B_{t-1}-B_{ss}\right)
+\tau_{t} & =\tau_{ss}+\eta_{t}+\varphi\left(B_{t-1}-B_{ss}\right)
 \end{align*}
 
 \end_inset
 
+where 
+\begin_inset Formula $\eta_{t}$
+\end_inset
 
+ is a tax-shifter
 \end_layout
 
 \end_deeper
@@ -4087,9 +4091,10 @@ p_{t}^{B}B_{t} & =B_{t-1}+G_{t}-\int\tau_{t}z_{it}d\boldsymbol{D}_{t}\\
 \series bold
 Market clearing:
 \begin_inset Formula 
-\[
-B_{t}=A_{t}^{hh}
-\]
+\begin{align*}
+B_{t} & =A_{t}^{hh}\\
+C_{t}^{hh}+G_{t} & =\int z_{it}d\boldsymbol{D}_{t}=1
+\end{align*}
 
 \end_inset
 
@@ -4144,7 +4149,7 @@ Euler-equation
 :
 \begin_inset Formula 
 \begin{align*}
-c_{t}^{-\sigma} & =\beta\frac{\underline{v}_{a,t+1}(z_{it},a_{it})}{p_{t}^{B}}
+c_{it}^{-\sigma} & =\beta\frac{\underline{v}_{a,t+1}(z_{it},a_{it})}{p_{t}^{B}}
 \end{align*}
 
 \end_inset
