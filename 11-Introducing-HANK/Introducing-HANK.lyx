@@ -834,7 +834,7 @@ aggregate non-linearities
 status open
 
 \begin_layout Plain Layout
-Aggregate risk
+Aggregate risk (dynamic equilibrium)
 \end_layout
 
 \end_inset
@@ -878,12 +878,12 @@ State space form
 \[
 \left[\begin{array}{c}
 \underline{\boldsymbol{D}}_{t+1}\\
-X_{t}\\
-Z_{t}
+\boldsymbol{X}_{t}\\
+\boldsymbol{Z}_{t}
 \end{array}\right]=\mathcal{M}\left(\left[\begin{array}{c}
 \underline{\boldsymbol{D}}_{t}\\
-X_{t-1}\\
-Z_{t-1}
+\boldsymbol{X}_{t-1}\\
+\boldsymbol{Z}_{t-1}
 \end{array}\right],\boldsymbol{\epsilon}_{t}\right)
 \]
 
@@ -931,12 +931,12 @@ certainty equivalence
 \[
 \left[\begin{array}{c}
 \underline{\boldsymbol{D}}_{t+1}\\
-X_{t}\\
-Z_{t}
+\boldsymbol{X}_{t}\\
+\boldsymbol{Z}_{t}
 \end{array}\right]=\boldsymbol{A}\left[\begin{array}{c}
 \underline{\boldsymbol{D}}_{t}\\
-X_{t-1}\\
-Z_{t-1}
+\boldsymbol{X}_{t-1}\\
+\boldsymbol{Z}_{t-1}
 \end{array}\right]+\boldsymbol{B}\boldsymbol{\epsilon}_{t}
 \]
 
@@ -1123,6 +1123,89 @@ Discrete aggregate risk:
 \end_layout
 
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: Global HANC (Krusell-Smith)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Recursive formulation of household problem:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v(\boldsymbol{D}_{t},\Gamma_{t},z_{it},a_{it-1}) & =\max_{a_{it},c_{it}}u(c_{it})+\beta\mathbb{E}_{t}\left[v(\boldsymbol{D}_{t+1},\Gamma_{t+1},z_{it+1},a_{it})\right]\\
+ & \text{s.t.}\\
+K_{t-1} & =\int a_{it-1}d\boldsymbol{D}_{t}\\
+r_{t} & =\alpha\Gamma_{t}K_{t-1}^{\alpha-1}-\delta\\
+w_{t} & =(1-\alpha)\Gamma_{t}K_{t-1}^{\alpha}\\
+a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0,
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Problem: 
+\series default
+How to discretize 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+ needed directly for 
+\begin_inset Formula $K_{t-1}$
+\end_inset
+
+ and indirectly for 
+\begin_inset Formula $K_{t},K_{t+1}\dots$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -2374,7 +2457,7 @@ NKPC
  and envelope condition:
 \begin_inset Formula 
 \[
-\log(1+\pi_{t})=\kappa\left(\frac{w_{t}}{Z_{t}}-\frac{1}{\mu}\right)+\frac{Y_{t+1}}{Y_{t}}\frac{\log\left(1+\pi_{t+1}\right)}{1+r_{t+1}},\,\,\,\pi_{t}\equiv P_{t}/P_{t-1}-1
+\log(1+\pi_{t})=\kappa\left(\frac{w_{t}}{\Gamma_{t}}-\frac{1}{\mu}\right)+\frac{Y_{t+1}}{Y_{t}}\frac{\log\left(1+\pi_{t+1}\right)}{1+r_{t+1}},\,\,\,\pi_{t}\equiv P_{t}/P_{t-1}-1
 \]
 
 \end_inset
@@ -2473,7 +2556,7 @@ FOC wrt.
 
 \begin_inset Formula 
 \begin{align*}
-0= & \left(1-\frac{\mu}{\mu-1}\right)\left(\frac{p_{jt}}{P_{t}}\right)^{-\frac{\mu}{\mu-1}}\frac{Y_{t}}{P_{t}}+\frac{\mu}{\mu-1}\frac{w_{t}}{Z_{t}}\left(\frac{p_{jt}}{P_{t}}\right)^{-\frac{\mu}{\mu-1}}\frac{Y_{t}}{p_{jt}}\\
+0= & \left(1-\frac{\mu}{\mu-1}\right)\left(\frac{p_{jt}}{P_{t}}\right)^{-\frac{\mu}{\mu-1}}\frac{Y_{t}}{P_{t}}+\frac{\mu}{\mu-1}\frac{w_{t}}{\Gamma_{t}}\left(\frac{p_{jt}}{P_{t}}\right)^{-\frac{\mu}{\mu-1}}\frac{Y_{t}}{p_{jt}}\\
  & -\frac{\mu}{\mu-1}\frac{1}{\kappa}\frac{\log\left(\frac{p_{jt}}{p_{jt-1}}\right)}{p_{jt}}Y_{t}+\frac{J_{t+1}^{\prime}(p_{jt})}{1+r_{t+1}}
 \end{align*}
 
@@ -2522,13 +2605,189 @@ FOC + Envelope + Symmetry +
 
 \begin_inset Formula 
 \begin{align*}
-0= & \left(1-\frac{\mu}{\mu-1}\right)\frac{Y_{t}}{P_{t}}+\frac{\mu}{\mu-1}\frac{w_{t}}{Z_{t}}\frac{Y_{t}}{P_{t}}\\
+0= & \left(1-\frac{\mu}{\mu-1}\right)\frac{Y_{t}}{P_{t}}+\frac{\mu}{\mu-1}\frac{w_{t}}{\Gamma_{t}}\frac{Y_{t}}{P_{t}}\\
  & +\frac{\mu}{\mu-1}\frac{1}{\kappa}\log\left(1+\pi_{t}\right)\frac{Y_{t}}{P_{t}}+\frac{\frac{\mu}{\mu-1}\frac{1}{\kappa}\log\left(1+\pi_{t+1}\right)\frac{Y_{t+1}}{P_{t}}}{1+r_{t+1}}
 \end{align*}
 
 \end_inset
 
 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Central NKPC intution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\log(1+\pi_{t})=\kappa\left(\frac{w_{t}}{Z_{t}}-\frac{1}{\mu}\right)+\frac{Y_{t+1}}{Y_{t}}\frac{\log\left(1+\pi_{t+1}\right)}{1+r_{t+1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Zero-inflation steady state:
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\pi_{t}=0\rightarrow w_{t}=\frac{\Gamma_{t}}{\mu}\rightarrow$
+\end_inset
+
+ wage is mark-downed relative to productivity
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Larger adjustment costs
+\series default
+, 
+\begin_inset Formula $\kappa\downarrow$
+\end_inset
+
+ (more sticky prices): 
+\begin_inset Newline newline
+\end_inset
+
+Less pass-through from marginal costs, 
+\begin_inset Formula $\frac{w_{t}}{Z_{t}}$
+\end_inset
+
+, to inflation, 
+\begin_inset Formula $\pi_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Larger (expected) future inflation, 
+\begin_inset Formula $\pi_{t+1}\uparrow$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Increase price today, 
+\begin_inset Formula $\pi_{t}\uparrow$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Especially in a boom, 
+\begin_inset Formula $\frac{Y_{t+1}}{Y_{t}}>1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Dividends: 
+\series default
+\emph on
+Counter-cyclical
+\emph default
+ as wages increase more than prices
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{4mm}
+\end_layout
+
+\end_inset
+
+(Note: Sometimes a 
+\begin_inset Formula $\beta^{\text{firm}}$
+\end_inset
+
+ is used instead of 
+\begin_inset Formula $\frac{1}{1+r_{t+1}}$
+\end_inset
+
+)
 \end_layout
 
 \end_deeper
@@ -2614,7 +2873,7 @@ vspace{-2mm}
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}-\varphi\frac{\ell_{it}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\\
-\text{s.t. }a_{it} & =(1+r_{t})a_{it-1}+(w_{t}\ell_{it}-\tau_{t}+d_{t})z_{it}-c_{it}\geq0\\
+\text{s.t. }a_{it} & =(1+r_{t})a_{it-1}+(w_{t}\ell_{it}-\tau_{t}+d_{t})z_{it}-c_{it}\geq\underline{a}\\
 \log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1
 \end{align*}
 
@@ -2875,7 +3134,7 @@ status open
 Problem:
 \series default
  
-\begin_inset Formula $a_{t}^{\ast}(z_{it},a_{it-1})<0$
+\begin_inset Formula $a_{t}^{\ast}(z_{it},a_{it-1})<\underline{a}$
 \end_inset
 
  violate borrowing constraint
@@ -2895,7 +3154,7 @@ status open
 
 \series bold
 Refinement if 
-\begin_inset Formula $a_{t}^{\ast}(z_{it},a_{it-1})<0$
+\begin_inset Formula $a_{t}^{\ast}(z_{it},a_{it-1})<\underline{a}$
 \end_inset
 
  by:
@@ -2935,7 +3194,7 @@ Find
 Newton solver 
 \emph default
 assuming 
-\begin_inset Formula $a_{it}^{\ast}=0$
+\begin_inset Formula $a_{it}^{\ast}=\underline{a}$
 \end_inset
 
 
@@ -3058,7 +3317,7 @@ Monetary policy:
 Follow Taylor-rule:
 \begin_inset Formula 
 \[
-i_{t}=i_{t}^{\ast}+\phi\pi_{t}
+i_{t}=i_{t}^{\ast}+\phi\pi_{t}+\phi^{Y}(Y_{t}-Y_{ss})
 \]
 
 \end_inset
@@ -3678,6 +3937,81 @@ but dampened by
 \end_inset
 
 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Representative agent
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Replace market clearing conditions with FOCs:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+C_{t}^{-\sigma} & =\beta(1+r_{t+1})C_{t\text{+1}}^{-\sigma}\\
+\varphi N_{t}^{\nu} & =w_{t}C_{t}^{-\sigma}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From resource constraint: 
+\begin_inset Formula $C_{t}=Y_{t}-G_{t}-\frac{\mu}{\mu-1}\frac{1}{2\kappa}\left[\log\left(1+\pi_{t}\right)\right]^{2}Y_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Ensure same steady state: 
+\begin_inset Formula $\beta^{RA}=\frac{1}{1+r_{ss}},\,\,\,\varphi^{RA}=\frac{w_{ss}\left(C_{ss}^{hh}\right)^{-\sigma}}{\left(N_{ss}\right)^{\nu}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Intertemporal budget constraint:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+C_{0}+\frac{C_{1}}{1+r_{1}}+\dots & =\left(1+r_{0}\right)A_{-1}+Y_{0}^{RA}+\frac{Y_{1}^{RA}}{1+r_{1}}\dots
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $Y_{t}^{RA}=w_{t}N_{t}+d_{t}-\tau_{t}$
+\end_inset
+
+ is household income
 \end_layout
 
 \end_deeper

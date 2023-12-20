@@ -862,7 +862,7 @@ restoregeometry
 The envelope condition implies
 \begin_inset Formula 
 \begin{equation}
-\underline{v}_{t}(z_{t},a_{t-1})=(1+r_{t}^{K}-\delta)c_{t}^{-\sigma}\label{envelope}
+\underline{v}_{t}(z_{it},a_{t-1})=(1+r_{t}^{K}-\delta)c_{it}^{-\sigma}\label{envelope}
 \end{equation}
 
 \end_inset
@@ -870,8 +870,8 @@ The envelope condition implies
 The first order conditions imply
 \begin_inset Formula 
 \begin{align}
-c_{t} & =(\beta\mathbb{E}(\underline{v}_{t+1}(z_{t+1},a_{t}))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
-\ell_{t} & =\left(\frac{(1-\tau_{t})w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}\label{eq:FOC_ell}
+c_{it} & =(\beta\mathbb{E}(\underline{v}_{t+1}(z_{it+1},a_{it}))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
+\ell_{it} & =\left(\frac{(1-\tau_{it})w_{t}z_{it}}{\varphi}\right)^{\frac{1}{\nu}}c_{it}^{-\sigma/\nu}\label{eq:FOC_ell}
 \end{align}
 
 \end_inset
@@ -885,11 +885,11 @@ The household problem can be solved with an extended EGM:
 
 \begin_layout Enumerate
 Calculate 
-\begin_inset Formula $c_{t}$
+\begin_inset Formula $c_{it}$
 \end_inset
 
  and 
-\begin_inset Formula $\ell_{t}$
+\begin_inset Formula $\ell_{it}$
 \end_inset
 
  over end-of-period states from FOCs
@@ -897,7 +897,7 @@ Calculate
 
 \begin_layout Enumerate
 Construct endogenous grid 
-\begin_inset Formula $m_{t}=c_{t}+a_{t}-(1-\tau_{t})w_{t}\ell_{t}z_{t}$
+\begin_inset Formula $m_{it}=c_{it}+a_{it}-(1-\tau_{t})w_{t}\ell_{it}z_{it}$
 \end_inset
 
 
@@ -918,15 +918,15 @@ Use linear interpolation to find
 \noun off
 \color none
 consumption 
-\begin_inset Formula $c^{\ast}(z_{t},a_{t-1})$
+\begin_inset Formula $c^{\ast}(z_{it},a_{it-1})$
 \end_inset
 
  and labor supply 
-\begin_inset Formula $\ell^{\ast}(z_{t},a_{t-1})$
+\begin_inset Formula $\ell^{\ast}(z_{it},a_{it-1})$
 \end_inset
 
  with 
-\begin_inset Formula $m_{t}=(1+r_{t})a_{t-1}$
+\begin_inset Formula $m_{it}=(1+r_{t})a_{it-1}$
 \end_inset
 
 
@@ -934,7 +934,7 @@ consumption
 
 \begin_layout Enumerate
 Calculate savings 
-\begin_inset Formula $a^{\ast}(z_{t},a_{t-1})=(1+r_{t})a_{t-1}+(1-\tau_{t})w_{t}\ell_{t}^{\ast}z_{t}-c_{t}^{\ast}$
+\begin_inset Formula $a^{\ast}(z_{it},a_{it-1})=(1+r_{t})a_{it-1}+(1-\tau_{t})w_{t}\ell_{it}^{\ast}z_{it}-c_{it}^{\ast}$
 \end_inset
 
 
@@ -942,23 +942,27 @@ Calculate savings
 
 \begin_layout Enumerate
 If 
-\begin_inset Formula $a^{\ast}(z_{t},a_{t-1})<0$
+\begin_inset Formula $a^{\ast}(z_{it},a_{it-1})<0$
 \end_inset
 
  set 
-\begin_inset Formula $a^{\ast}(z_{t},a_{t-1})=0$
+\begin_inset Formula $a^{\ast}(z_{it},a_{it-1})=0$
 \end_inset
 
  and search for 
-\begin_inset Formula $\ell_{t}$
+\begin_inset Formula $\ell_{it}$
 \end_inset
 
  such that 
-\begin_inset Formula $f(\ell_{t})\equiv\ell_{t}-\left(\frac{(1-\tau_{t})w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}=0$
+\begin_inset Formula $f(\ell_{it})\equiv\ell_{it}-\left(\frac{(1-\tau_{t})w_{t}z_{it}}{\varphi}\right)^{\frac{1}{\nu}}c_{it}^{-\sigma/\nu}=0$
 \end_inset
 
  holds and 
-\begin_inset Formula $c_{t}=(1+r_{t})a_{t-1}+(1-\tau)w_{t}\ell_{t}z_{t}$
+\begin_inset Formula 
+\[
+c_{it}=(1+r_{t})a_{it-1}+(1-\tau_{t})w_{t}\ell_{it}z_{it}
+\]
+
 \end_inset
 
 .
@@ -973,9 +977,9 @@ If
  by
 \begin_inset Formula 
 \begin{align*}
-\ell_{t}^{j+1} & =\ell_{t}^{j}-\frac{f(\ell_{t})}{f^{\prime}(\ell_{t})}\\
- & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{t}^{-\sigma/\nu-1}\frac{\partial c_{t}}{\partial\ell_{t}}}\\
- & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau)w_{t}z_{t}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{t}^{-\sigma/\nu-1}(1-\tau)w_{t}z_{t}}
+\ell_{it}^{j+1} & =\ell_{it}^{j}-\frac{f(\ell_{it})}{f^{\prime}(\ell_{it})}\\
+ & =\ell_{it}^{j}-\frac{\ell_{it}-\left(\frac{(1-\tau_{t})w_{t}z_{it}}{\varphi}\right)^{\frac{1}{\nu}}c_{it}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau_{y})w_{t}z_{it}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{it}^{-\sigma/\nu-1}\frac{\partial c_{it}}{\partial\ell_{it}}}\\
+ & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{(1-\tau)w_{t}z_{it}}{\varphi}\right)^{\frac{1}{\nu}}c_{it}^{-\sigma/\nu}}{1-\left(\frac{(1-\tau_{t})w_{it}z_{it}}{\varphi}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{it}^{-\sigma/\nu-1}(1-\tau)w_{t}z_{it}}
 \end{align*}
 
 \end_inset

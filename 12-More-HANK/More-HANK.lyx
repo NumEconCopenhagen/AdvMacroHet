@@ -1081,7 +1081,7 @@ Y_{t}-\Gamma_{t}L_{t}\\
 \tau_{t}-\left[\tau_{ss}+\omega q_{ss}\frac{B_{t-1}-B_{ss}}{Y_{ss}}\right]\\
 q_{t}(B_{t}-\delta B_{t-1})-\left[B_{t-1}+G_{t}+\chi_{t}-\tau_{t}Y_{t}\right]\\
 q_{t}B_{t}-A_{t}^{hh}\\
-\pi_{t}^{w}-\left[\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{W}\right]
+\pi_{t}^{w}-\left[\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{w}\right]
 \end{array}\right]\boldsymbol{=0}
 \]
 
@@ -1453,7 +1453,7 @@ Firm behavior I:
 
 \begin_layout Enumerate
 NKWC: 
-\begin_inset Formula $\boldsymbol{L},\boldsymbol{w},\boldsymbol{\tau}\rightarrow\boldsymbol{\pi^{w}}$
+\begin_inset Formula $\boldsymbol{L},\boldsymbol{C},\boldsymbol{w},\boldsymbol{\tau}\rightarrow\boldsymbol{\pi^{w}}$
 \end_inset
 
 
