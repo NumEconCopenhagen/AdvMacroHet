@@ -22,7 +22,8 @@
 \setbeamersize{text margin right=1.5cm}
 
 % colors
-\colorlet{DarkRed}{red!70!black}
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
 \setbeamercolor{normal text}{fg=black}
 \setbeamercolor{alerted text}{fg=DarkRed}
 \setbeamercolor{progress bar}{fg=DarkRed}
