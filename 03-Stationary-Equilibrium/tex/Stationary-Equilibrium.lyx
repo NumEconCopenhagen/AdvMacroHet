@@ -1,0 +1,4213 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{3.
+ Stationary Equilibrium
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=-0.14cm and -0.14cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Last time: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Partial equilibrium 
+\end_layout
+
+\begin_layout Enumerate
+No interactions 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today:
+\series default
+ Interaction through markets
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Model:
+\series default
+ Heterogeneous Agent Neo-Classical (HANC) model
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Equilibrium-concept:
+\series default
+ 
+\emph on
+Stationary equilibrium
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+What determines income and wealth inequality
+\emph on
+ in the long run
+\emph default
+?
+\end_layout
+
+\begin_layout Enumerate
+What determines the real interest rate 
+\emph on
+in the long run
+\emph default
+?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Code:
+\series default
+ Based on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelTools"
+target "https://github.com/NumEconCopenhagen/GEModelTools"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ package
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Is in active development
+\end_layout
+
+\begin_layout Enumerate
+You can help to improve interface, find bugs and features 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Documentation: 
+\series default
+See 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelToolsNotebooks"
+target "https://github.com/NumEconCopenhagen/GEModelToolsNotebooks"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Many examples in repo, so look if you have issues 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Literature:
+\series default
+ Aiyagari (1994) 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Ramsey-recap
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Ramsey model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+We will study the 
+\emph on
+stationary equilibrium 
+\emph default
+in
+\emph on
+ 
+\emph default
+the
+\emph on
+ 
+\emph default
+Heterogeneous Agent Neo-Classical (HANC) model
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Merges two well known models in the literature:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Standard Ramsey–Cass–Koopman model (
+\emph on
+NC
+\emph default
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What do we mean by Neo-classical? 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+One-asset Buffer-stock model (
+\emph on
+HA
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Went through the Buffer-stock model over the last two lectures 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Now
+\series default
+: Recap of the Ramsey model 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Firms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Production function: 
+\begin_inset Formula $Y_{t}=F(\Gamma_{t},K_{t-1},L_{t})$
+\end_inset
+
+ 
+\series default
+\size footnotesize
+[note timing of capital]
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+where 
+\begin_inset Formula $\Gamma_{t}$
+\end_inset
+
+ is technology
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Profits:
+\series default
+ 
+\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}-r_{t}^{K}K_{t-1}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Profit maximization: 
+\begin_inset Formula $\max_{K_{t-1},L_{t}}\Pi_{t}$
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Rental rate: 
+\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial K_{t-1}}=0\Leftrightarrow$
+\end_inset
+
+
+\begin_inset Formula $r_{t}^{K}=F_{K}(\Gamma_{t},K_{t-1},L_{t})$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Real wage: 
+\begin_inset Formula $\frac{\partial\Pi_{t}}{\partial L_{t}}=0\Leftrightarrow w_{t}=F_{L}(\Gamma_{t},K_{t-1},L_{t})$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+With CRS we get zero profits: 
+\begin_inset Formula $\Pi_{t}=0\Rightarrow$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Y_{t}=w_{t}L_{t}+r_{t}^{K}K_{t-1}$
+\end_inset
+
+ 
+\size footnotesize
+[functional income distribution]
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Zero-profit mutual fund
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Introduce 
+\series bold
+mutual fund
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Takes savings 
+\begin_inset Formula $A_{t-1}$
+\end_inset
+
+ from households and investment them in available assets
+\end_layout
+
+\begin_layout Itemize
+In the Ramsey model: Only capital 
+\begin_inset Formula $K_{t-1}$
+\end_inset
+
+ but could also include gov.
+ bonds, firm equity etc.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Capital depreciate 
+\series default
+with rate 
+\begin_inset Formula $\delta\in(0,1)$
+\end_inset
+
+,
+\series bold
+
+\begin_inset Formula 
+\[
+K_{t}=(1-\delta)K_{t-1}+I_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Deposits 
+\series default
+(from households), 
+\begin_inset Formula $A_{t-1}$
+\end_inset
+
+:
+\series bold
+ 
+\series default
+The rate of return is 
+\begin_inset Formula 
+\[
+r_{t}=r_{t}^{K}-\delta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Balance sheet:
+\begin_inset Formula 
+\[
+A_{t-1}=K_{t-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Households
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Utility maximization:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+v_{0}(A_{-1}^{hh}) & =\max_{\{C_{t}^{hh}\}_{t=0}^{\infty}}\sum_{t=0}^{\infty}\beta^{t}u(C_{t}^{hh})\\
+ & \text{s.t.}\\
+C_{t}^{hh}+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Exogenous labor supply: 
+\begin_inset Formula $L_{t}^{hh}=1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Euler-equation 
+\series default
+(implied by Lagrangian):
+\series bold
+
+\begin_inset Formula 
+\[
+u^{\prime}(C_{t}^{hh})=\beta(1+r_{t+1})u^{\prime}(C_{t+1}^{hh})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Market Clearing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Capital market: 
+\begin_inset Formula $K_{t}=A_{t}=A_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Labor market: 
+\begin_inset Formula $L_{t}=L_{t}^{hh}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Goods market: 
+\begin_inset Formula $Y_{t}=C_{t}^{hh}+I_{t}$
+\end_inset
+
+
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Walras:
+\series default
+ Capital and labor market clears 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ goods market clears.
+ Start from 
+\begin_inset Formula 
+\begin{align*}
+C_{t}^{hh}+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh})\\
+\Leftrightarrow C_{t}^{hh}+I_{t} & =\left[(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-A_{t}^{hh})\right]+(K_{t}-(1-\delta)K_{t-1})\\
+ & =\left[(1+r_{t})K_{t-1}+w_{t}L_{t}-K_{t})\right]+(K_{t}-(1-\delta)K_{t-1})\\
+ & =r_{t}^{K}K_{t-1}+w_{t}L_{t}\\
+ & =Y_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: Means that we can check if we have solved the numerical model correctly
+ by: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Impose two of the market clearing conditions
+\end_layout
+
+\begin_layout Itemize
+Then check the third market clearing condition (should be zero)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Simplified form:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+u^{\prime}(C_{t}^{hh}) & =\beta(1+F_{K}(\Gamma_{t},K_{t},1)-\delta)u^{\prime}(C_{t+1}^{hh})\\
+K_{t} & =(1-\delta)K_{t-1}+F(\Gamma_{t},K_{t-1},1)-C_{t}^{hh}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Extended form:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+
+\begin_inset Formula 
+\begin{align*}
+r_{t}^{K} & =F_{K}(\Gamma_{t},K_{t-1},L_{t})\\
+w_{t} & =F_{L}(\Gamma_{t},K_{t-1},L_{t})\\
+r_{t} & =r_{t}^{K}-\delta\\
+A_{t} & =K_{t}\\
+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\\
+u^{\prime}(C_{t}^{hh}) & =\beta(1+r_{t+1})u^{\prime}(C_{t+1}^{hh})\\
+A_{t} & =A_{t}^{hh}\\
+L_{t} & =L_{t}^{hh}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: As an equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Eqs.
+ system with unknowns 
+\begin_inset Formula $\left\{ K_{t},L_{t},r_{t}^{K},w_{t},r_{t},A_{t},A_{t}^{hh},C_{t}^{hh}\right\} _{t=0}^{\infty}$
+\end_inset
+
+ and eqs:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+r_{t}^{K}-F_{K}(\Gamma_{t},K_{t-1},L_{t})\\
+w_{t}-F_{L}(\Gamma_{t},K_{t-1},L_{t})\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-K_{t}\\
+A_{t}^{hh}-\left((1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\right)\\
+u^{\prime}(C_{t}^{hh})-\beta(1+r_{t+1})u^{\prime}(C_{t+1}^{hh})\\
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots\},\text{given }K_{-1}
+\end{array}\right] & \boldsymbol{=}\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Steady state
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Euler-equation
+\series default
+ can be solved for 
+\begin_inset Formula $K_{ss}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+u^{\prime}(C_{ss}) & =\beta(1+F_{K}(\Gamma_{ss},K_{ss},1)-\delta)u^{\prime}(C_{ss})\Leftrightarrow\\
+F_{K}(K_{ss},1) & =\frac{1}{\beta}-1+\delta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Accumulation equation + goods mkt.
+ clearing
+\series default
+ then implies 
+\begin_inset Formula $C_{ss}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+K_{ss} & =(1-\delta)K_{ss}+F(\Gamma_{ss},K_{ss},1)-C_{ss}\Leftrightarrow\\
+C_{ss} & =(1-\delta)K_{ss}+F(\Gamma_{ss},K_{ss},1)-K_{ss}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+HANC
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+HANC model overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Model blocks:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Firms:
+\series default
+ Rent capital from mutual fund and hire labor from the households, produce
+ with given technology, and sell output goods
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Zero-profit mutual funds:
+\series default
+ Own capital and rent it to firms, take deposits and pay return to household
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Households:
+\series default
+ Face idiosyncratic productivity shocks, supplies labor exogenously and
+ makes consumption-saving decisions
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Markets:
+\series default
+ Perfect competition in labor, goods and capital markets
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Add-on to Ramsey-Cass-Koopman:
+\series default
+ 
+\emph on
+Heterogeneous households
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Other names:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The Aiyagari-model
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The Aiyagari-Bewley-Hugget-Imrohoroglu-model
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The Standard Incomplete Market (SIM) model
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Heterogeneous households
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Utility maximization
+\series default
+ for household 
+\begin_inset Formula $i$
+\end_inset
+
+:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+v_{0}(\beta_{i},z_{it},a_{it-1}) & =\max_{\{c_{it}\}_{t=0}^{\infty}}\mathbb{E}_{0}\sum_{t=0}^{\infty}\beta_{i}^{t}u(c_{it})\\
+ & \text{s.t.}\\
+\ell_{it} & =z_{it}\\
+a_{it} & =(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}+\Pi_{t}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Where does heterogeneity enter?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+-|handout:0>
+\end_layout
+
+\end_inset
+
+
+\emph on
+Ex ante
+\emph default
+ due to different preferences, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+-|handout:0>
+\end_layout
+
+\end_inset
+
+
+\emph on
+Ex post
+\emph default
+ due to stochastic productivity, 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Incomplete markets due to borrowing constraint 
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\size small
+(fancy words: partial self-insurrance, lack of Arrow-Debreu securities)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recursive formulation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Value function 
+\series default
+(at decision)
+\begin_inset Formula 
+\begin{align*}
+v_{t}(\beta_{i},z_{it},a_{it-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(\beta_{i},z_{it},a_{it})\\
+ & \text{s.t.}\\
+\ell_{it} & =z_{it}\\
+a_{it} & =(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}+\Pi_{t}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<1->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Beginning-of-period value function
+\series default
+ (before shock realization):
+\begin_inset Formula 
+\[
+\underline{v}_{t}(\beta_{i},z_{it-1},a_{it-1})=\mathbb{E}\left[v_{t}(\beta_{i},z_{it},a_{it-1})\,|\,\beta_{i},z_{it-1},a_{it-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Distributions and aggregates
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Household policy function 
+\begin_inset Formula $x^{*}$
+\end_inset
+
+ where 
+\begin_inset Formula $x\in\{a,c,\ell\}$
+\end_inset
+
+ function of:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Individuals states 
+\begin_inset Formula $\left(\beta_{i},z_{it},a_{it-1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Aggregates 
+\begin_inset Formula $\left(w_{t},\Pi_{t},r_{t}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Aggregate policy:
+\begin_inset Formula 
+\[
+X_{t}^{hh}\left(\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}\right)=\int x_{t}^{\ast}(\beta_{i},z_{it},a_{it-1},\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t})d\boldsymbol{D}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+When aggregating we 
+\series bold
+integrate
+\series default
+ out individual states 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aggregate 
+\begin_inset Formula $X_{t}^{hh}$
+\end_inset
+
+ is only a function of 
+\begin_inset Formula $\left\{ r_{\tau},w_{\tau},\Pi_{\tau}\right\} _{\tau\geq t}$
+\end_inset
+
+ in GE as long as exogenous states don't change 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ If we know aggregates 
+\begin_inset Formula $\left(w_{t},\Pi_{t},r_{t}\right)$
+\end_inset
+
+ can calculate aggregate household behavior (consumption or savings)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+small
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+r_{t}^{K}-F_{K}(\Gamma_{t},K_{t-1},L_{t})\\
+w_{t}-F_{L}(\Gamma_{t},K_{t-1},L_{t})\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-K_{t}\\
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+A_{t}^{hh}-\int a_{t}d\boldsymbol{D}_{t}\\
+L_{t}^{hh}-\int\ell_{t}d\boldsymbol{D}_{t}\\
+\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}^{\prime}\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+a_{t}-a_{t}^{*}\\
+\forall t\in\{0,1,\dots\},\text{given }\underline{\boldsymbol{D}}_{0}
+\end{array}\right] & =\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+normalsize
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note
+\series default
+: Much larger system compared to Ramsey due to last 2 eqs.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\boldsymbol{D}_{t},a_{t}^{*}$
+\end_inset
+
+ define mass and optimal savings policy at 
+\series bold
+the individual level
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Standard Ramsey model: 8 eqs.
+ per period
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+HANC with 
+\begin_inset Formula $N_{\beta}=3,N_{z}=7,N_{a}=300:$
+\end_inset
+
+ 
+\begin_inset Formula $8+2\times3\times7\times300=12.608$
+\end_inset
+
+ per period
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Market clearing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Capital market:
+\series default
+ 
+\begin_inset Formula $K_{t}=A_{t}=\int a_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Labor market:
+\series default
+ 
+\begin_inset Formula $L_{t}=\int\ell_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}=\int z_{it}d\boldsymbol{D}_{t}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Goods market:
+\series default
+ 
+\begin_inset Formula $Y_{t}=\int c_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}+I_{t}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Walras:
+\series default
+ Capital and labor market clears 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ goods market clears
+\begin_inset Formula 
+\begin{align*}
+C_{t}^{hh}+I_{t} & =\int c_{it}^{*}d\boldsymbol{D}_{t}+\left[K_{t}-(1-\delta)K_{t-1}\right]\\
+ & =\int\left[(1+r_{t})a_{it-1}+w_{t}z_{it}-a_{it}\right]d\boldsymbol{D}_{t}\\
+ & =\left[(1+r_{t})K_{t-1}+w_{t}L_{t}-K_{t}\right]+\left[K_{t}-(1-\delta)K_{t-1}\right]\\
+ & =r_{t}^{K}K_{t-1}+w_{t}L_{t}\\
+ & =Y_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Stationary Equilibrium
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stationary equilibrium - equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The 
+\series bold
+stationary equilibrium 
+\series default
+satisfies
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+r_{ss}^{K}-F_{K}(\Gamma_{ss},K_{ss},L_{ss})\\
+w_{t}-F_{L}(\Gamma_{sst},K_{ss},L_{ss})\\
+r_{ss}-(r_{ss}^{K}-\delta)\\
+A_{ss}-K_{ss}\\
+A_{ss}-A_{ss}^{hh}\\
+L_{ss}-L_{ss}^{hh}\\
+A_{t}^{hh}-\int a_{ss}d\boldsymbol{D}_{t}\\
+L_{t}^{hh}-\int\ell_{ss}d\boldsymbol{D}_{t}\\
+\underline{\boldsymbol{D}}_{ss}-\Lambda_{ss}^{\prime}\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{ss}\\
+a_{ss}-a_{ss}^{*}
+\end{array}\right] & =\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note : 
+\series default
+Households still move around 
+\begin_inset Quotes ald
+\end_inset
+
+inside
+\begin_inset Quotes ard
+\end_inset
+
+ the distribution due to idiosyncratic shocks.
+ Does not affect aggregates due to 
+\begin_inset Quotes ald
+\end_inset
+
+law of large numbers
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stationary equilibrium - more verbal definition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size small
+Given technology 
+\begin_inset Formula $\Gamma_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Quantities 
+\begin_inset Formula $K_{ss}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{ss},$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+prices 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ss}$
+\end_inset
+
+ (always 
+\begin_inset Formula $\Pi_{ss}=0)$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+the distribution 
+\begin_inset Formula $\boldsymbol{D}_{ss}$
+\end_inset
+
+ over 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+and the policy functions 
+\begin_inset Formula $a_{ss}^{\ast}$
+\end_inset
+
+, 
+\begin_inset Formula $\ell_{ss}^{\ast}$
+\end_inset
+
+ and 
+\begin_inset Formula $c_{ss}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+are such that
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Households maximize expected utility (policy functions)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Firms maximize profits (prices)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\boldsymbol{D}_{ss}$
+\end_inset
+
+ is the invariant distribution implied by the household problem
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Mutual fund balance sheet is satisfied
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The capital market clears
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The labor market clears
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The goods market clears
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Direct implementation (K guess)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Technology:
+\series default
+ 
+\begin_inset Formula $F(K,L)=\Gamma K^{\alpha}L^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Root-finding problem
+\series default
+ in 
+\begin_inset Formula $K_{ss}$
+\end_inset
+
+ with the objective function:
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $L_{ss}=1$
+\end_inset
+
+ (and 
+\begin_inset Formula $\Pi_{ss}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $r_{ss}=\alpha\Gamma_{ss}(K_{ss})^{\alpha-1}-\delta$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ss}=(1-\alpha)\Gamma_{ss}(K_{ss})^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve infinite horizon household problem 
+\emph on
+backwards
+\emph default
+, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{a}_{ss}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulate households 
+\emph on
+forwards
+\emph default
+ until convergence, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Return 
+\begin_inset Formula $K_{ss}-\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note: 
+\begin_inset Formula $\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}=\sum_{i}a_{i,ss}^{*}D_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Direct implementation (r guess)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Technology:
+\series default
+ 
+\begin_inset Formula $F(K,L)=\Gamma K^{\alpha}L^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Root-finding problem
+\series default
+ in 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
+ with the objective function:
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $L_{ss}=1$
+\end_inset
+
+ (and 
+\begin_inset Formula $\Pi_{ss}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $K_{ss}=\left(\frac{r_{ss}+\delta}{\alpha\Gamma_{ss}}\right)^{\frac{1}{\alpha-1}}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ss}=(1-\alpha)\Gamma_{ss}(K_{ss})^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve infinite horizon household problem 
+\emph on
+backwards
+\emph default
+, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{a}_{ss}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulate households 
+\emph on
+forwards
+\emph default
+ until convergence, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Return 
+\begin_inset Formula $K_{ss}-\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Indirect implementation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Technology:
+\series default
+ 
+\begin_inset Formula $F(K,L)=\Gamma K^{\alpha}L^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Consider 
+\begin_inset Formula $\Gamma_{ss}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ as 
+\begin_inset Quotes ald
+\end_inset
+
+free
+\begin_inset Quotes ard
+\end_inset
+
+ parameters:
+\end_layout
+
+\begin_layout Enumerate
+Choose 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve infinite horizon household problem 
+\emph on
+backwards
+\emph default
+, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{a}_{ss}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Simulate households 
+\emph on
+forwards
+\emph default
+ until convergence, i.e.
+ find 
+\begin_inset Formula $\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $K_{ss}=\boldsymbol{a}_{ss}^{\ast\prime}\boldsymbol{D}_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $L_{ss}=1$
+\end_inset
+
+ (and 
+\begin_inset Formula $\Pi_{ss}=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $\Gamma_{ss}=\frac{w_{ss}}{(1-\alpha)(K_{ss})^{\alpha}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $r_{ss}^{K}=\alpha\Gamma_{ss}(K_{ss})^{\alpha-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $\delta=r_{ss}^{k}-r_{ss}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Code
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Calibration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Preferences:
+\series default
+ 
+\begin_inset Formula $u(c)=\frac{c^{1-\sigma}}{1-\sigma}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Discount factors: 
+\begin_inset Formula $\beta\in\{0.965,0.975,0.985\}$
+\end_inset
+
+ in equal pop.
+ shares
+\end_layout
+
+\begin_layout Enumerate
+Relative risk aversion: 
+\begin_inset Formula $\sigma=2$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Income:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+AR(1): 
+\begin_inset Formula $\rho_{z}=0.95$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Std.: 
+\begin_inset Formula $\sigma_{\psi}=0.30\sqrt{(1-\rho_{z}^{2})}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Technology:
+\series default
+ 
+\begin_inset Formula $F(K,L)=\Gamma K^{\alpha}L^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Capital share: 
+\begin_inset Formula $\alpha=0.36$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+TFP: 
+\begin_inset Formula $\Gamma_{ss}=1.082$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Depreciation: 
+\begin_inset Formula $\delta=0.193$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Steady state:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Prices: 
+\begin_inset Formula $r_{ss}=0.01$
+\end_inset
+
+ and 
+\begin_inset Formula $w_{ss}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Quantities: 
+\begin_inset Formula $K_{ss}/Y_{ss}=1.776$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Code example in repo 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Consumption function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Euler-equation still necessary for 
+\begin_inset Formula $a_{it}>0$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+c_{it}^{-\sigma}=\beta_{i}(1+r_{t+1})\mathbb{E}_{t}\left[c_{it+1}^{-\sigma}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Precautionary saving:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Low consumption for low cash-on-hand 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\emph on
+buffer-stock target
+\end_layout
+
+\begin_layout Enumerate
+Steep slope for low cash-on-hand 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\emph on
+high MPC
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/c_func_1.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Low vs.
+ high 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/c_func_0.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/c_func_2.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Distribution, 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Productivity: 
+\series default
+Marginal distribution over only 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Savings: 
+\series default
+Marginal distribution over 
+\begin_inset Formula $a_{it}$
+\end_inset
+
+ cond.
+ on 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/distribution.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Drivers of wealth inequality:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Stochastic income
+\end_layout
+
+\begin_layout Enumerate
+Heterogeneous patience 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ savings behavior
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Steady state interest rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Representative agent / complete markets: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Derived from aggregate Euler-equation
+\begin_inset Formula 
+\[
+C_{t}^{-\sigma}=\beta(1+r_{t+1})C_{t+1}^{-\sigma}\Rightarrow C_{ss}^{-\sigma}=\beta(1+r_{ss})C_{ss}^{-\sigma}\Leftrightarrow\beta=\frac{1}{1+r_{ss}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Heterogeneous agents: 
+\series default
+\emph on
+No such equation exists
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Euler-equation replaced by asset market clearing condition
+\end_layout
+
+\begin_layout Enumerate
+Idiosyncratic income risk affects the steady state interest rate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $\sigma_{\psi}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+PE (
+\begin_inset Formula $r_{ss}=1\%$
+\end_inset
+
+), 
+\begin_inset Formula $A^{hh}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+GE, 
+\begin_inset Formula $r_{ss}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+GE, 
+\begin_inset Formula $A^{hh}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.09$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2.78$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size footnotesize
+\begin_inset Formula $\,1.00\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2.78$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.14$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $7.39$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\size footnotesize
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset Formula $0.12\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $2.97$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $0.19$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $13.68$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $-1.11\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Formula $3.30$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\size default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Partial Equilibrium
+\series default
+: Same interest rate.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+General Equilibrium
+\series default
+: Capital+labor market clearing.
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Calibration
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How to choose parameters?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+External calibration: 
+\series default
+Set subset of parameters to the 
+\emph on
+standard values in the literature
+\emph default
+ or 
+\emph on
+directly from data estimates
+\emph default
+ 
+\begin_inset Newline newline
+\end_inset
+
+(e.g.
+ income process)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Internal calibration: 
+\series default
+Set remaining parameters so the model fit a number of chosen 
+\emph on
+macro-level and/or micro-level
+\emph default
+ 
+\emph on
+targets 
+\emph default
+based on empirical estimates
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Informal: 
+\series default
+Roughly match targets by hand
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Formal: 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+2a.
+ Solve root-finding problem
+\end_layout
+
+\begin_layout Standard
+2b.
+ Minimize a squared loss function
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Estimation: 
+\series default
+Formal with squared loss function (think GMM) or likelihood function + standard
+ errors
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Complication:
+\series default
+ 
+\emph on
+We must always solve for the steady state for each guess of the parameters
+ to be calibrated
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exercises
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercise: HANCGovModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+No production.
+ 
+\series default
+No physical savings instrument
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Households: 
+\series default
+Get stochastic endowment
+\series bold
+ 
+\series default
+
+\begin_inset Formula $z_{it}$
+\end_inset
+
+ of consumption good
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Government:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Choose government spending
+\end_layout
+
+\begin_layout Enumerate
+Collect taxes, 
+\begin_inset Formula $\tau_{t}$
+\end_inset
+
+, proportional to endowment
+\end_layout
+
+\begin_layout Enumerate
+Bonds: Pays 
+\begin_inset Formula $1$
+\end_inset
+
+ consumption good next period.
+ Price is 
+\begin_inset Formula $p_{t}^{B}<1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+p_{t}^{B}B_{t} & +\int\tau_{t}z_{it}d\boldsymbol{D}_{t}=B_{t-1}+G_{t}\\
+\tau_{t} & =\tau_{ss}+\eta_{t}+\varphi\left(B_{t-1}-B_{ss}\right)
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\eta_{t}$
+\end_inset
+
+ is a tax-shifter
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Market clearing:
+\begin_inset Formula 
+\begin{align*}
+B_{t} & =A_{t}^{hh}\\
+C_{t}^{hh}+G_{t} & =\int z_{it}d\boldsymbol{D}_{t}=1
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercise: Households
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Households:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{it+1}(z_{it+1},a_{it})\right]\\
+\text{s.t. }p_{t}^{B}a_{it}+c_{it} & =a_{it-1}+(1-\tau_{t})z_{it}\geq0\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Euler-equation
+\series default
+:
+\begin_inset Formula 
+\begin{align*}
+c_{it}^{-\sigma} & =\beta\frac{\underline{v}_{a,t+1}(z_{it},a_{it})}{p_{t}^{B}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Envelope condition:
+\begin_inset Formula 
+\[
+\underline{v}_{a,t}(z_{it-1},a_{it-1})=c_{it}^{-\sigma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercise: Questions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Define the stationary equilibrium
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Solve and simulate the household problem 
+\series default
+
+\begin_inset Newline newline
+\end_inset
+
+with 
+\begin_inset Formula $p_{ss}^{B}=0.975$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{ss}=0.12$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Find the stationary equilibrium
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+with 
+\begin_inset Formula $G_{ss}=0.10$
+\end_inset
+
+ and 
+\begin_inset Formula $\tau_{ss}=0.12$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+What happens for 
+\begin_inset Formula $\tau_{ss}\in(0.11,0.15)?$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+When is average household utility maximized? 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note:
+\series default
+ Full solution in repository folder 
+\emph on
+GEModelToolsNotebooks/HANCGovModel
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The concept of a stationary equilibrium
+\end_layout
+
+\begin_layout Enumerate
+Introduction to the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelTools"
+target "https://github.com/NumEconCopenhagen/GEModelTools"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ package
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Next week: 
+\series default
+\emph on
+Work on assignment
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Exercise/Homework:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Work on completing the HANCGovModel exercise
+\end_layout
+
+\begin_layout Enumerate
+Go through 
+\emph on
+Stationary-Equilibrium
+\emph default
+ notebook in repository 
+\end_layout
+
+\begin_layout Enumerate
+Assignment
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
