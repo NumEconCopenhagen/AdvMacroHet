@@ -15,6 +15,29 @@ set "temp_file=%base_name%_temp.tex"
 start /wait lyx --export latex "%input_lyx%"
 
 
+rem rem Clear the output file if it already exists
+rem if exist "%temp_file%" del "%temp_file%"
+
+rem rem First Pass: Remove 'draft,' from the LaTeX file
+rem for /f "tokens=*" %%A in ('type "%input%"') do (
+rem     set "line=%%A"
+    
+rem     rem Enable delayed expansion inside the loop to update the line variable
+rem     setlocal enabledelayedexpansion
+    
+rem     rem Remove draft option
+rem     set "line=!line:draft,=!"
+    
+rem     rem Append the modified line to the output file
+rem     echo !line!>> "%temp_file%"
+    
+rem     endlocal
+rem )
+
+rem del %input%
+rem move /y "%temp_file%" "%input%"
+
+
 rem Second Pass: Add 'handout' option to \documentclass line
 if exist "%output_handout%" del "%output_handout%"
 
@@ -24,6 +47,9 @@ for /f "tokens=*" %%A in ('type "%input%"') do (
     rem Enable delayed expansion inside the loop to update the line variable
     setlocal enabledelayedexpansion
     
+    rem Add handout option to \documentclass line
+    rem set "line=!line:\documentclass[10pt,english,t,10pt]{beamer}=\documentclass[10pt,english,t,10pt,handout]{beamer}!"
+
     rem Check if the line contains \documentclass and replace only if it does
     if "!line!"=="\documentclass[10pt,english,t,10pt]{beamer}" (
         set "line=\documentclass[10pt,english,t,10pt,handout]{beamer}"

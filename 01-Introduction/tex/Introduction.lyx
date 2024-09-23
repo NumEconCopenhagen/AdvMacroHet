@@ -2200,7 +2200,7 @@ Note from euler equation
 \end_inset
 
  so a steady state will feature 
-\begin_inset Formula $\beta R=1\Leftrightarrow1-\beta=r$
+\begin_inset Formula $\beta R=1\Leftrightarrow1-\beta=\frac{R-1}{R}\Leftrightarrow1-\beta=\frac{r}{1+r}\approx r$
 \end_inset
 
 
