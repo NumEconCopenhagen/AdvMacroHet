@@ -1,0 +1,4749 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{4.
+ Transition Path
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Last time: 
+\series default
+\emph on
+Stationary equilibrium (steady states)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today:
+\series default
+ 
+\emph on
+Transition path (dynamic responses away from steady state)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Model:
+\series default
+ Heterogeneous Agent Neo-Classical (HANC) model
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Code:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Based on the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelTools"
+target "https://github.com/NumEconCopenhagen/GEModelTools"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ package
+\end_layout
+
+\begin_layout Enumerate
+Example from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelToolsNotebooks/HANC"
+target "https://github.com/NumEconCopenhagen/GEModelToolsNotebooks"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+(except stuff on 
+\emph on
+linearized solution
+\emph default
+ and 
+\emph on
+simulation
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Literature: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Auclert et.
+ al.
+ (2021), 
+\begin_inset Quotes ald
+\end_inset
+
+Using the Sequence-Space Jacobian to Solve and Estimate Heterogeneous-Agent
+ Models
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Documentation for GEModelTools
+\begin_inset Newline newline
+\end_inset
+
+(except stuff on 
+\emph on
+linearized solution
+\emph default
+ and 
+\emph on
+simulation
+\emph default
+)
+\end_layout
+
+\begin_layout Enumerate
+Kirkby (2017)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example I 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What do we mean by transition path?
+\end_layout
+
+\begin_layout Itemize
+Permanent shock to labor supply (think increase in retirement age) in the
+ macroeconomic model of the Ministry of Finance: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{figure}[H]     
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.99
+\backslash
+linewidth]{figs/MAKRO_ex1.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\end_inset
+
+Note: Permanent shock, so transition path 
+\emph on
+between
+\emph default
+ two different steady states
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Temporary shock to public spending (i.e.
+ fiscal stimulus during recessions)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{figure}[H]     
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MAKRO_ex2.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note: Temporary shock, so model returns to the 
+\emph on
+same steady state
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Standard Ramsey model
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Simplified form:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+u^{\prime}(C_{t}^{hh}) & =\beta(1+F_{K}(K_{t},1)-\delta)u^{\prime}(C_{t+1}^{hh})\\
+K_{t} & =(1-\delta)K_{t-1}+F(K_{t-1},1)-C_{t}^{hh}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Production function:
+\series default
+ 
+\begin_inset Formula $\Gamma_{t}K_{t}^{\alpha}L_{t}^{1-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Utility function:
+\series default
+ 
+\begin_inset Formula $\frac{\left(C_{t}^{hh}\right)^{1-\sigma}}{1-\sigma}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Steady state:
+\begin_inset Formula 
+\begin{align*}
+K_{ss} & =\left(\frac{\left(\frac{1}{\beta}-1+\delta\right)}{\Gamma_{ss}\alpha}\right)^{\frac{1}{\alpha-1}}\\
+C_{ss}^{hh} & =(1-\delta)K_{ss}+\Gamma_{ss}K_{ss}^{\alpha}-K_{ss}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ramsey: As an equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+r_{t}^{K}-\alpha\Gamma_{t}K_{t}^{\alpha-1}L_{t}^{1-\alpha}\\
+w_{t}-(1-\alpha)\Gamma_{t}K_{t}^{\alpha}L_{t}^{-\alpha}\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-K_{t}\\
+A_{t}^{hh}-\left((1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\right)\\
+C_{t}^{hh,-\sigma}-\beta(1+r_{t+1})C_{t+1}^{hh,-\sigma}\\
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots\},\text{given }K_{-1}
+\end{array}\right] & \boldsymbol{=}\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\series bold
+Remember:
+\series default
+ Perfect foresight w.r.t aggregate variables
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Unknowns
+\series default
+: 
+\begin_inset Formula $\{r_{t}^{K},w_{t},L_{t},K_{t},r_{t},A_{t},C_{t}^{hh},A_{t}^{hh}\}$
+\end_inset
+
+ for 
+\begin_inset Formula $\forall t\in\{0,1,\dots\}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recap: Newton's method I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Before solving the dynamic Ramsey model, consider a simpler example 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Want to solve 1 eq.
+ with 1 unknown (x is a scalar):
+\begin_inset Formula 
+\[
+f\left(x\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+How to find
+\series default
+ x? First-order Taylor approximation around current guess 
+\begin_inset Formula $x^{i}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f\left(x\right)\approx f\left(x^{i}\right)+f'\left(x^{i}\right)\left(x-x^{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Set 
+\begin_inset Formula $f\left(x\right)=0$
+\end_inset
+
+ and solve for x to get:
+\begin_inset Formula 
+\[
+x=x^{i}-\frac{f\left(x^{i}\right)}{f'\left(x^{i}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recap: Newton's method II 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Newton's method: Given initial guess 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ update guess for 
+\begin_inset Formula $x$
+\end_inset
+
+ from 
+\begin_inset Formula $i$
+\end_inset
+
+ to 
+\begin_inset Formula $i+1$
+\end_inset
+
+ as:
+\begin_inset Formula 
+\[
+x^{i+1}=x^{i}-\frac{f\left(x^{i}\right)}{f'\left(x^{i}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+until 
+\begin_inset Formula $\left|f\left(x^{i}\right)\right|<\epsilon$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can always get 
+\begin_inset Formula $f\left(x^{i}\right)$
+\end_inset
+
+ by simply evaluating the function at current estimate.
+ What about derivative 
+\begin_inset Formula $f'\left(x^{i}\right)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use numerical approximation:
+\begin_inset Formula 
+\[
+f'\left(x^{i}\right)\approx\frac{f\left(x^{i}+h\right)-f\left(x^{i}\right)}{h}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For small 
+\begin_inset Formula $h$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How well does it work?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ is linear this update solves 
+\begin_inset Formula $f\left(x\right)=0$
+\end_inset
+
+ in 
+\series bold
+1 iteration
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $f\left(x\right)$
+\end_inset
+
+ is non-linear we typically need more iterations, but works well if initial
+ guess is within basis of attraction
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recap: Multivariate Newton's method
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Generalize to vector-valued, multivariate functions 
+\begin_inset Formula $\left[f_{1}\left(x_{1,}x_{2}\right),f_{2}\left(x_{1,}x_{2}\right)\right]'=\boldsymbol{f}\left(\boldsymbol{x}\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $\boldsymbol{x}=\left(x_{1,}x_{2}\right)'$
+\end_inset
+
+ :
+\begin_inset Formula 
+\[
+\boldsymbol{x}^{i+1}=\boldsymbol{x}^{i}-\boldsymbol{J}\left(\boldsymbol{x}^{i}\right)^{-1}\boldsymbol{f}\left(\boldsymbol{x}^{i}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Where 
+\begin_inset Formula $\boldsymbol{J}\left(\boldsymbol{x}^{i}\right)$
+\end_inset
+
+ is the 
+\emph on
+Jacobian 
+\emph default
+of
+\emph on
+ 
+\begin_inset Formula $f\left(\boldsymbol{x}\right)$
+\end_inset
+
+ 
+\emph default
+w.r.t 
+\begin_inset Formula $\boldsymbol{x}^{i}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\boldsymbol{J}\left(\boldsymbol{x}_{i}\right)=\left[\begin{array}{cc}
+\frac{\partial f_{1}}{\partial x_{1}^{i}} & \frac{\partial f_{1}}{\partial x_{2}^{i}}\\
+\frac{\partial f_{2}}{\partial x_{1}^{i}} & \frac{\partial f_{2}}{\partial x_{2}^{i}}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can calculate this jacobian in the same way as 
+\begin_inset Formula $f'\left(x\right)$
+\end_inset
+
+ in previous example, but need to so for every element in 
+\series bold
+
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Go through code
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recap: Broyden's method I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Newton's method updates Jacobian 
+\begin_inset Formula $\boldsymbol{J}$
+\end_inset
+
+ in 
+\series bold
+every iteration
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If 
+\begin_inset Formula $\boldsymbol{J}$
+\end_inset
+
+ is expensive to calculate, this is a serious bottleneck 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Broyden's method solves this issue by only calculating 
+\begin_inset Formula $J$
+\end_inset
+
+ around some initial point.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Then apply following (linear) update of 
+\begin_inset Formula $f'\left(x^{i+1}\right)$
+\end_inset
+
+ at every iteration 
+\begin_inset Formula $i$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f'\left(x^{i+1}\right)=f'\left(x^{i}\right)+\frac{\left[f\left(x^{i+1}\right)-f\left(x^{i}\right)\right]-f'\left(x^{i}\right)\left(x^{i+1}-x^{i}\right)}{x^{i+1}-x^{i}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recap: Broyden's method II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Guess 
+\begin_inset Formula $\boldsymbol{x}^{0}$
+\end_inset
+
+ and set 
+\begin_inset Formula $i=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate the Jacobian around initial point 
+\begin_inset Formula $\boldsymbol{J}_{\boldsymbol{0}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $\boldsymbol{f}^{i}=\boldsymbol{f}(\boldsymbol{x}^{i})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Stop if 
+\begin_inset Formula $\left|\boldsymbol{f}^{i}\right|$
+\end_inset
+
+ below tolerance 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate Jacobian by 
+\begin_inset Formula $\boldsymbol{J}^{i}=\begin{cases}
+\boldsymbol{J}_{\boldsymbol{0}} & \text{if }i=0\\
+\boldsymbol{J}^{i-1}+\frac{(\boldsymbol{f}^{i}-\boldsymbol{f}^{i-1})-\boldsymbol{H}_{\boldsymbol{K}}^{i-1}(\boldsymbol{K}^{i}-\boldsymbol{K}^{i-1})}{\left|\boldsymbol{x}^{i}-\boldsymbol{x}^{i-1}\right|_{2}}\left(\boldsymbol{x}^{i}-\boldsymbol{x}^{i-1}\right)^{\prime} & \text{if }i>0
+\end{cases}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Update guess by 
+\begin_inset Formula $\boldsymbol{x}^{i+1}=\boldsymbol{x}^{i}-\left(\boldsymbol{J}^{i}\right)^{-1}\boldsymbol{f}^{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Increment 
+\begin_inset Formula $i$
+\end_inset
+
+ and return to step 3
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Go through code
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Back to Ramsey
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+r_{t}^{K}-\alpha\Gamma_{t}K_{t}^{\alpha-1}L_{t}^{1-\alpha}\\
+w_{t}-(1-\alpha)\Gamma_{t}K_{t}^{\alpha}L_{t}^{-\alpha}\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-K_{t}\\
+A_{t}^{hh}-\left((1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\right)\\
+C_{t}^{hh,-\sigma}-\beta(1+r_{t+1})C_{t+1}^{hh,-\sigma}\\
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots\},\text{given }K_{-1}
+\end{array}\right] & \boldsymbol{=}\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+2 issues:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Many unknowns (8 eqs per period)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In fact, infinitely many since time is infinite, 
+\begin_inset Formula $T\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Truncated Ramsey, reduced vector form
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma},K_{-1}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
+\end_inset
+
+, 
+\begin_inset Formula $A_{-1}^{hh}=K_{-1}$
+\end_inset
+
+ and
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+A_{t} & =K_{t}\\
+r_{t} & =r_{t}^{K}-\delta\\
+C_{t}^{hh} & =\left(\beta(1+r_{t+1})\right)^{-\sigma}C_{t+1}^{hh}\,\text{(backwards)}\\
+L_{t}^{hh} & =1\\
+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\,\text{(forwards)}
+\end{align*}
+
+\end_inset
+
+
+\series bold
+\size default
+Truncation:
+\series default
+ 
+\begin_inset Formula $T<\infty$
+\end_inset
+
+ fine when 
+\begin_inset Formula $\Gamma_{t}=\Gamma_{ss}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t>\underline{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\underline{t}\ll T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Further reduced
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},K_{-1}\right) & =\left[\boldsymbol{A}-\boldsymbol{A}^{hh}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
+\end_inset
+
+, 
+\begin_inset Formula $A_{-1}^{hh}=K_{-1}$
+\end_inset
+
+ and
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+L_{t}=L_{t}^{hh} & =1\\
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+A_{t} & =K_{t}\\
+r_{t} & =r_{t}^{K}-\delta\\
+C_{t}^{hh} & =\left(\beta(1+r_{t+1})\right)^{-\sigma}C_{t+1}^{hh}\,\text{(backwards)}\\
+A_{t}^{hh} & =(1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\,\text{(forwards)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+for 
+\begin_inset Formula $\forall t\in\{0,1,\dots,T-1\}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sequence space
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: We have now written the model in 
+\emph on
+sequence space
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Representing an entire timepath/
+\emph on
+sequence
+\emph default
+ of variables as a function of timepath
+\emph on
+/sequence
+\emph default
+ of other variables
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Example: Keynesian consumption function 
+\begin_inset Formula $C_{t}=a+bY_{t}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{cccc}
+C_{0} & C_{1} & C_{2} & \ldots\end{array}\right]' & =a+b\left[\begin{array}{cccc}
+Y_{0} & Y_{1} & Y_{2} & \ldots\end{array}\right]'\\
+\Leftrightarrow\boldsymbol{C} & =a+b\boldsymbol{Y}\\
+\Leftrightarrow\boldsymbol{C} & =f\left(\boldsymbol{Y}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Powerfull since it also applies 
+\emph on
+non-linear
+\emph default
+, forward-looking and backwards-looking eqs:
+\begin_inset Formula 
+\begin{align*}
+C_{t} & =a+b_{0}Y_{t}+b_{1}\log Y_{t-4}+b_{2}Y_{t+4}^{2}\\
+\Leftrightarrow\boldsymbol{C} & =g\left(\boldsymbol{Y}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+As long as we have the sequence 
+\begin_inset Formula $\boldsymbol{Y}$
+\end_inset
+
+ we can calculate 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Will leverage this later when working with the HA model 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solution in sequence space
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Truncation:
+\series default
+ 
+\begin_inset Formula $T=200$
+\end_inset
+
+ (transition path should have converged to ss by then)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Jacobian:
+\series default
+ Find 
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}$
+\end_inset
+
+ by 
+\emph on
+numerical differentiation
+\emph default
+
+\begin_inset Formula 
+\[
+\boldsymbol{H}_{\boldsymbol{K}}=\left[\begin{array}{ccc}
+\frac{\partial(A_{0}-A_{0}^{hh})}{\partial K_{0}} & \frac{\partial(A_{0}-A_{0}^{hh})}{\partial K_{1}} & \cdots\\
+\frac{\partial(A_{1}-A_{1}^{hh})}{\partial K_{0}} & \ddots & \ddots\\
+\vdots & \ddots & \ddots
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Transition path:
+\series default
+ Given 
+\begin_inset Formula $\boldsymbol{\Gamma}$
+\end_inset
+
+ and 
+\begin_inset Formula $K_{-1}$
+\end_inset
+
+ solve 
+\begin_inset Formula $\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},K_{-1}\right)$
+\end_inset
+
+ with non-linear equation system solver (e.g.
+ broyden)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Notebook:
+\series default
+ 
+\emph on
+Ramsey.ipynb
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 1: Initially low capital
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Initially away from steady state: 
+\begin_inset Formula $K_{-1}=0.75K_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Graphics
+	filename figs/K_ini_lag.pdf
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 2: Technology shock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Technology shock: 
+\begin_inset Formula $\Gamma_{t}=0.01\times\Gamma_{ss}\times0.95^{t}$
+\end_inset
+
+ 
+\series default
+(i.e AR(1) with 
+\begin_inset Formula $\rho=0.95$
+\end_inset
+
+) (exogenous, deterministic)
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\begin_inset Graphics
+	filename figs/Gamma_shock.pdf
+	width 95text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Terminology:
+\series default
+ MIT-shock
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Transition path with HA
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The model can be written as an 
+\series bold
+equation system
+\series default
+\size footnotesize
+
+\begin_inset Formula 
+\begin{align*}
+\left[\begin{array}{c}
+r_{t}^{K}-F_{K}(K_{t-1},L_{t})\\
+w_{t}-F_{L}(K_{t-1},L_{t})\\
+r_{t}-(r_{t}^{K}-\delta)\\
+A_{t}-K_{t}\\
+\boldsymbol{D}_{t}-\Pi_{z}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}\boldsymbol{D}_{t}\\
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots\},\text{given }\underline{\boldsymbol{D}}_{0}
+\end{array}\right] & =\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+
+\size default
+where 
+\begin_inset Formula $\left\{ \Gamma_{t}\right\} _{t\geq0}$
+\end_inset
+
+ is a given technology path and 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Remember: 
+\series default
+Policies and choice transitions depend on prices
+\end_layout
+
+\begin_layout Enumerate
+Policy function: 
+\begin_inset Formula $x_{t}^{\ast}=x^{\ast}\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $X_{t}^{hh}=\sum_{i}x_{it}^{\ast}D_{it}=\boldsymbol{x}_{t}^{\ast\prime}\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Choice transition: 
+\begin_inset Formula $\Lambda_{t}=\Lambda\left(\left\{ r_{\tau},w_{\tau}\right\} _{\tau\geq t}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Transition path - close to verbal definition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size small
+For a given 
+\begin_inset Formula $\boldsymbol{\underline{D}}_{0}$
+\end_inset
+
+ and a path 
+\begin_inset Formula $\{\Gamma_{t}\}$
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Quantities 
+\begin_inset Formula $\{K_{t}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{L_{t}\}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+prices 
+\begin_inset Formula $\{r_{t}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{w_{t}\}$
+\end_inset
+
+,
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+the distributions 
+\begin_inset Formula $\{\boldsymbol{D}_{t}\}$
+\end_inset
+
+ over 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{t-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+and the policy functions 
+\begin_inset Formula $\{a_{t}^{\ast}\}$
+\end_inset
+
+, 
+\begin_inset Formula $\{\ell_{t}^{\ast}\}$
+\end_inset
+
+ and 
+\begin_inset Formula $\{c_{t}^{\ast}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+are such that in all periods
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Firms maximize profits (prices) 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Household maximize expected utility (policy functions)
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+ is implied by simulating the household problem forwards from 
+\begin_inset Formula $\boldsymbol{\underline{D}}_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Mutual fund balance sheet is satisfied
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The capital market clears
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The labor market clears
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+The goods market clears
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Reduce size of equation system
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In the equation system above we have many 
+\series bold
+unknowns
+\series default
+ and many 
+\series bold
+equations
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Makes finding the solution with Broyden's method since 
+\series bold
+Jacobian is large
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+With truncation 
+\begin_inset Formula $T$
+\end_inset
+
+ and 
+\begin_inset Formula $N$
+\end_inset
+
+ equations/unknowns 
+\begin_inset Formula $\boldsymbol{J}$
+\end_inset
+
+ has size 
+\series bold
+
+\begin_inset Formula $\left(T\times N,T\times N,\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Ekspensive to calculate 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+We can typically 
+\series bold
+exploit model structure 
+\series default
+to reduce size of system 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Did this earlier for Ramsey
+\end_layout
+
+\begin_layout Itemize
+Now more formally 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Truncated, reduced vector form
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
+\end_inset
+
+, 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+ and
+\size footnotesize
+
+\begin_inset Formula 
+\begin{align*}
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+r_{t} & =r_{t}^{K}-\delta\\
+A_{t} & =K_{t}\\
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+L_{t}^{hh} & =\boldsymbol{\ell}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+ & \forall t\in\{0,1,\dots,T-1\}
+\end{align*}
+
+\end_inset
+
+
+\series bold
+\size default
+Truncation:
+\series default
+ 
+\begin_inset Formula $T<\infty$
+\end_inset
+
+ fine when 
+\begin_inset Formula $\Gamma_{t}=\Gamma_{ss}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t>\underline{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\underline{t}\ll T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DAG - Directed Acyclic Graph
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Orange square:
+\series default
+ Shocks (exogenous)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Blue square:
+\series default
+ Unknowns (endogenous)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Green circles:
+\series default
+ Blocks (with variables and targets inside)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/DAG.png
+	width 40text%
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This DAG implies: Exo.
+ input + guess 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Firm block 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Mutual fund 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+HHs 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Residuals 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Further reduction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-7mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+\forall t\in\{0,1,\dots,T-1\}
+\end{array}\right]=\boldsymbol{0}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{X}=(X_{0},X_{1},\dots,X_{T-1})$
+\end_inset
+
+, 
+\begin_inset Formula $K_{-1}=\int a_{t-1}d\underline{\boldsymbol{D}}_{0}$
+\end_inset
+
+ and
+\size footnotesize
+
+\begin_inset Formula 
+\begin{align*}
+L_{t} & =1\\
+r_{t}^{K} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}\\
+A_{t} & =K_{t}\\
+r_{t} & =r_{t}^{K}-\delta\\
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}^{\prime}\boldsymbol{D}_{t}\\
+A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+ & \forall t\in\{0,1,\dots,T-1\}
+\end{align*}
+
+\end_inset
+
+
+\series bold
+\size default
+Truncation:
+\series default
+ 
+\begin_inset Formula $T<\infty$
+\end_inset
+
+ fine when 
+\begin_inset Formula $\Gamma_{t}=\Gamma_{ss}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t>\underline{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\underline{t}\ll T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solve with Broyden
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As with standard Ramsey model from before we have:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Equation system with 
+\begin_inset Formula $T$
+\end_inset
+
+ equations (
+\begin_inset Formula $\boldsymbol{H}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+And 
+\begin_inset Formula $T$
+\end_inset
+
+ unknowns (
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If we can calculate the jacobian of 
+\begin_inset Formula $\boldsymbol{H}$
+\end_inset
+
+ w.r.t 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+ we can solve with Broyden's method as before
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How to compute Jacobian?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How do we compute the Jacobian of the residuals 
+\begin_inset Formula $\,\boldsymbol{H}$
+\end_inset
+
+ w.r.t unknowns 
+\begin_inset Formula $\boldsymbol{K}?$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Before: Compute Jacobian of entire model using num.
+ diff
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Now
+\series default
+: Use DAG structure + chain rule 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\emph on
+Example
+\emph default
+.
+ Represent model in block form: 
+\series bold
+
+\begin_inset Formula 
+\[
+\boldsymbol{w},\boldsymbol{r}^{K}=Firm\left(\boldsymbol{K}\right),\quad\boldsymbol{A},\boldsymbol{r}=MutFund\left(\boldsymbol{K},\boldsymbol{r}^{K}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\boldsymbol{A}^{hh}=hh\left(\boldsymbol{r},\boldsymbol{w}\right),\quad\boldsymbol{A}-\boldsymbol{A}^{hh}=\boldsymbol{H}\left(\boldsymbol{A},\boldsymbol{A}^{hh}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\mathcal{J}^{y,x}$
+\end_inset
+
+ be Jacobian of 
+\begin_inset Formula $y$
+\end_inset
+
+ w.r.t 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}_{\boldsymbol{K}}\equiv\mathcal{J}^{A-A^{hh},K} & =\mathcal{J}^{A-A^{hh},A}\mathcal{J}^{A,K}\\
+ & +\mathcal{J}^{A-A^{hh},A^{hh}}\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,r^{k}}\mathcal{J}^{r^{k},K}\\
+ & +\mathcal{J}^{A_{t}-A^{hh},A^{hh}}\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How to compute Jacobian?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If we have individuals Jacobians, easy to compute 
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{K}}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Also very efficient - just matrix mulitiplication 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How to get individual Jacobians?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Some are easy: For 
+\begin_inset Formula $\mathcal{J}^{w,K},\mathcal{J}^{r^{k},K}$
+\end_inset
+
+ we just have to diff.
+ 
+\begin_inset Formula $r_{t}^{K}=\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1},w_{t}=(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cheap, and can often be vectorized 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+What about HH Jacobians 
+\begin_inset Formula $\mathcal{J}^{A_{hh},r},\mathcal{J}^{A_{hh},w}$
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bottleneck: How do we find the Jacobian?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Naive approach: 
+\series default
+For each input 
+\begin_inset Formula $i$
+\end_inset
+
+ into HH block 
+\begin_inset Formula $i\in\left\{ r,w\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For each 
+\begin_inset Formula $s\in\{0,1,...,T-1\}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Shock input 
+\begin_inset Formula $i$
+\end_inset
+
+ in period 
+\begin_inset Formula $s$
+\end_inset
+
+ by small amount 
+\begin_inset Formula $\Delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve household problem backwards along transition path
+\end_layout
+
+\begin_layout Enumerate
+Simulate households forward along transition path
+\end_layout
+
+\begin_layout Enumerate
+Calculate column 
+\begin_inset Formula $s$
+\end_inset
+
+, row 
+\begin_inset Formula $t$
+\end_inset
+
+ of jacobian as 
+\begin_inset Formula $\frac{\partial\mathcal{J}_{t}^{A_{hh},i}}{\partial i_{s}}=\frac{A_{t}^{hh}-A_{ss}^{hh}}{\Delta}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Bottleneck: 
+\series default
+We need 
+\begin_inset Formula $T^{2}$
+\end_inset
+
+ solution steps and simulation steps for each input 
+\begin_inset Formula $\left\{ r,w\right\} $
+\end_inset
+
+!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solution: 
+\series bold
+Fake news algorithm
+\series default
+ - only need 
+\begin_inset Formula $T$
+\end_inset
+
+ steps! (later today)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H] 
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.3
+\backslash
+textwidth]{figs/sequence_space.png}    
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Conditional on being able to compute HH jacobian efficiently we can compute
+ 
+\series bold
+transition path 
+\series default
+through following steps:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Compute stationary state of model 
+\end_layout
+
+\begin_layout Enumerate
+Formulate transition path as DAG 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reduce number of unknowns and residual equations
+\end_layout
+
+\begin_layout Itemize
+Not essential, but often good idea 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Compute Jacobian of residuals 
+\begin_inset Formula $\boldsymbol{H}$
+\end_inset
+
+ w.r.t unknowns 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Formulate shock (i.e.
+ TFP increases by 1% for 4 years)
+\end_layout
+
+\begin_layout Enumerate
+Use Broyden's method to solve for transition path
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Assumptons and interpretation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Underlying assumption: 
+\series default
+No aggregate uncertainty
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+
+\begin_inset Quotes ald
+\end_inset
+
+Shock
+\begin_inset Quotes ard
+\end_inset
+
+, 
+\begin_inset Formula $\boldsymbol{\Gamma}$
+\end_inset
+
+: 
+\series default
+A fully unexpected non-recurrent event 
+\begin_inset Formula $\equiv$
+\end_inset
+
+ 
+\emph on
+MIT shock
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Unexpected before occuring at time 
+\begin_inset Formula $0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+From time 
+\begin_inset Formula $0$
+\end_inset
+
+ and onwards agents have perfect foresight w.r.t transition dynamics 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Transition path, 
+\begin_inset Formula $\boldsymbol{K}$
+\end_inset
+
+: 
+\series default
+Non-linear perfect foresight response to
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Initial distribution, 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{0}\neq\boldsymbol{D}_{ss}$
+\end_inset
+
+or 
+\begin_inset Formula $K_{0}\neq K_{ss}$
+\end_inset
+
+ (convergence to steady state)
+\end_layout
+
+\begin_layout Enumerate
+Shock, 
+\begin_inset Formula $\Gamma_{t}\neq\Gamma_{ss}$
+\end_inset
+
+ for some 
+\begin_inset Formula $t$
+\end_inset
+
+ (i.e.
+ impulse-response)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The HANC example from GEModelToolsNotebooks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Presentation: 
+\series default
+I go through the code
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Interpreting the household Jacobians
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Jacobian of consumption wrt.
+ wage: 
+\series default
+\emph on
+What happens to consumption in period 
+\begin_inset Formula $t$
+\end_inset
+
+ when the wage (and thus income) increases in period 
+\begin_inset Formula $s$
+\end_inset
+
+?
+\series bold
+\emph default
+
+\begin_inset Formula 
+\[
+\mathcal{J}^{C^{hh},w}=\left[\begin{array}{ccc}
+\frac{\partial C_{0}^{hh}}{\partial w_{0}} & \frac{\partial C_{0}^{hh}}{\partial w_{1}} & \cdots\\
+\frac{\partial C_{1}^{hh}}{\partial w_{0}} & \ddots & \ddots\\
+\vdots & \ddots & \ddots
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Columns:
+\series default
+ The full dynamic response to a unit shock in period 
+\begin_inset Formula $s$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Decomposition of GE response
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+GE transition path:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{r}^{\ast}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{w}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+PE response of each:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Set 
+\begin_inset Formula $(\boldsymbol{r},\boldsymbol{w})\in\left\{ \left(\boldsymbol{r}^{\ast},\boldsymbol{w}_{ss}\right),\left(\boldsymbol{r}_{ss},\boldsymbol{w}^{\ast}\right)\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve household problem backwards along transition path
+\end_layout
+
+\begin_layout Enumerate
+Simulate households forward along transition path
+\end_layout
+
+\begin_layout Enumerate
+Calculate outcomes of interest
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Fake News Algorithm
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fake news algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Household block:
+\series default
+ 
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{Y}^{hh} & =hh(\boldsymbol{X}^{hh})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+i.e.
+ 
+\begin_inset Formula $\boldsymbol{Y}^{hh}=C^{hh},A^{hh}$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{X}^{hh}=w,r$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Goal:
+\series default
+ Fast computation of
+\begin_inset Formula 
+\[
+\mathcal{J}^{hh,}=\frac{dhh(\boldsymbol{X}_{ss}^{hh})}{d\boldsymbol{X}^{hh}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Naive approach:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Shock at time 
+\begin_inset Formula $s=0$
+\end_inset
+
+, solve + simulate HH block for 
+\begin_inset Formula $T$
+\end_inset
+
+ periods
+\end_layout
+
+\begin_layout Itemize
+Repeat until 
+\begin_inset Formula $s=T-1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Requires 
+\begin_inset Formula $T^{2}$
+\end_inset
+
+ solution and simulation steps 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Next slides: 
+\series default
+\emph on
+Sketch of much faster approach
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Initial step
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note that aggregate is (matrix) product of individual policy function 
+\begin_inset Formula $\boldsymbol{y}_{t}$
+\end_inset
+
+ and distribution 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Linearize (first-order Taylor) around ss:
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{Y}^{hh} & =\left(\boldsymbol{y}_{t}'\right)\boldsymbol{D}_{t}\\
+\Rightarrow\frac{d\boldsymbol{Y}^{hh}}{d\boldsymbol{X}^{hh}} & =\left(\frac{d\boldsymbol{y}_{t}}{d\boldsymbol{X}^{hh}}'\right)\boldsymbol{D}_{ss}+\left(\boldsymbol{y}_{ss}'\right)\frac{d\boldsymbol{D}_{t}}{d\boldsymbol{X}^{hh}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What can we say about policy function term 
+\begin_inset Formula $d\boldsymbol{y}_{t}$
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pertubation of policy function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The heart of the fake news algorithm is a central insight that allow us
+ to compute 
+\begin_inset Formula $d\boldsymbol{y}_{t}/d\boldsymbol{X}^{hh}$
+\end_inset
+
+ efficiently
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\boldsymbol{y}_{t}^{s}$
+\end_inset
+
+ be policy function at time 
+\begin_inset Formula $t$
+\end_inset
+
+ following a shock in period 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\[
+\boldsymbol{y}_{t}^{s}=\begin{cases}
+\boldsymbol{y}_{ss} & t>s\\
+\boldsymbol{y}_{t+j}^{s+j} & t\leq s
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Verbally: The response of the policy function 
+\begin_inset Formula $\boldsymbol{y}$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ to a shock at 
+\begin_inset Formula $s$
+\end_inset
+
+ is the as the response at time 
+\begin_inset Formula $t+j$
+\end_inset
+
+ to a shock at 
+\begin_inset Formula $s+j$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Policy function 
+\series bold
+does not depend on the absolut time of shock
+\series default
+ only the relative distance between 
+\begin_inset Quotes ald
+\end_inset
+
+today
+\begin_inset Quotes ard
+\end_inset
+
+ and the shock, 
+\begin_inset Formula $s-t$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Implication
+\series default
+: We need to only do a single backwards iteration to a shock at 
+\begin_inset Formula $s=T-1$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can then construct change in policy function 
+\begin_inset Formula $d\boldsymbol{y}_{t}^{s}/d\boldsymbol{X}^{hh}$
+\end_inset
+
+ for different 
+\begin_inset Formula $s$
+\end_inset
+
+ by shifting policy function around 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Numerical illustration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Graphically.
+ Response of 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ to income shock at 
+\begin_inset Formula $s=3,5$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+linewidth]{figs/irf_fakenews1.pdf} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+linewidth]{figs/irf_fakenews2.pdf} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aggregate Jacobian 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can we use same logic for aggreregate Jacobian, 
+\begin_inset Formula $\mathcal{J}_{t,s}=\mathcal{J}_{t-1,s-1}$
+\end_inset
+
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No - the above is true for 
+\emph on
+policy
+\emph default
+ function, but not 
+\series bold
+distribution
+\end_layout
+
+\begin_layout Itemize
+Distribution is backwards looking (
+\begin_inset Formula $\boldsymbol{D}_{t}^{s}=\left(\boldsymbol{\Lambda}_{t}^{s}\Pi_{ss}\right)'\boldsymbol{D}_{t-1}^{s}$
+\end_inset
+
+) so number of periods 
+\begin_inset Formula $t$
+\end_inset
+
+ since announcement matters
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can write aggregate Jacobian as:
+\begin_inset Formula 
+\[
+\mathcal{J}_{t,s}=\begin{cases}
+\mathcal{F}_{t,s} & \text{ for }t=0,s=0\\
+\mathcal{J}_{t-1,s-1}+\mathcal{F}_{t,s} & \text{ for }t,s>0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{F}_{t,s}$
+\end_inset
+
+ is the 
+\series bold
+fake news
+\series default
+ matrix.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Element 
+\begin_inset Formula $\left(t,s\right)$
+\end_inset
+
+ in matrix 
+\begin_inset Formula $\mathcal{F}$
+\end_inset
+
+ for 
+\begin_inset Formula $t>0$
+\end_inset
+
+ is 
+\begin_inset Formula 
+\begin{align*}
+\mathcal{F}_{t,s}= & \left(\boldsymbol{y}_{ss}\right)'\left(\boldsymbol{\Lambda}'_{ss}\right)^{t}\frac{d\boldsymbol{D}_{1}^{s}}{d\boldsymbol{X}^{hh}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why 
+\begin_inset Quotes ald
+\end_inset
+
+fake news
+\begin_inset Quotes ard
+\end_inset
+
+? 
+\begin_inset Formula $\mathcal{F}_{t,s}$
+\end_inset
+
+ captures effect of announcing a date
+\begin_inset Formula $-s$
+\end_inset
+
+ shock at time 
+\begin_inset Formula $0$
+\end_inset
+
+, and retracting the annountment at date 1
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Policy variables revert to steady state after period 1, but distribution
+ changes since 
+\begin_inset Formula $d\boldsymbol{y}_{0}\neq0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fake News Matrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can show that the fake news matrix can be computed as:
+\begin_inset Formula 
+\[
+\mathcal{F}_{t,s}\equiv\begin{cases}
+\left(\frac{d\boldsymbol{y}_{0}^{s}}{d\boldsymbol{X}^{hh}}\right)'\boldsymbol{D}_{ss} & t=0\\
+\left(\boldsymbol{y}_{ss}\right)'\left(\boldsymbol{\Lambda}'_{ss}\right)^{t}\frac{d\boldsymbol{D}_{1}^{s}}{d\boldsymbol{X}^{hh}} & t>0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $t=0$
+\end_inset
+
+ element: Easy to compute when we have 
+\begin_inset Formula $d\boldsymbol{y}_{0}^{s}/d\boldsymbol{X}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can get this from a single backwards run (
+\begin_inset Formula $T$
+\end_inset
+
+ periods) due to logic from before 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $t>0$
+\end_inset
+
+ elements: Only involves basic matrix multiplication once we have 
+\begin_inset Formula $d\boldsymbol{D}_{1}^{s}/d\boldsymbol{X}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Since we have derivatves of policy function for all 
+\begin_inset Formula $t,s$
+\end_inset
+
+ 
+\begin_inset Formula $d\boldsymbol{y}_{t}^{s}/d\boldsymbol{X}^{hh}$
+\end_inset
+
+ can get 
+\begin_inset Formula $d\boldsymbol{D}_{1}^{s}/d\boldsymbol{X}^{hh}$
+\end_inset
+
+ easily
+\end_layout
+
+\begin_layout Itemize
+Note: Not too expensive since histogram method for distribution is fast
+ and efficient 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fake news algorithm - summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Auclert et.
+ al (2021) introduce an efficient alogirthm to compute aggregate jacobians
+ for models with heterogeneous agents 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can compute the linearized response of aggregate consumption, savings w.r.t
+ aggregate variables such as wages, interest rates 
+\series bold
+fast
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Central insight: Exploit structure of dynamic programming problems + histogram
+ method 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why did we need this? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Allows us to compute Jacobian of aggregate model by 
+\begin_inset Quotes ald
+\end_inset
+
+chaining
+\begin_inset Quotes ard
+\end_inset
+
+ together individual jacobians along DAG
+\end_layout
+
+\begin_layout Itemize
+Can then use Quasi-Newton methods to solve dynamic GE model!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+GEModeltools does all of this 
+\begin_inset Quotes ald
+\end_inset
+
+under the hood
+\begin_inset Quotes ard
+\end_inset
+
+ when you compute HH Jacobians
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+You just tell GEModeltools the inputs and outputs of the household block
+ 
+\end_layout
+
+\begin_layout Itemize
+Entire algorithm is automated 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exercises
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercises: HANCGovModel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Same model.
+ Your choice of 
+\begin_inset Formula $\tau_{ss}.$
+\end_inset
+
+ New questions:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Define the transition path.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Plot the DAG
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+What do the Jacobians look like?
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Find the transition path for 
+\begin_inset Formula $G_{t}=G_{ss}+0.01G_{ss}0.95^{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+What explains household savings behavior?
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+What happens to consumption inequality?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The concept of a transition path
+\end_layout
+
+\begin_layout Enumerate
+Details of the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textcolor{DarkRed}{
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "GEModelTools"
+target "https://github.com/NumEconCopenhagen/GEModelTools"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ package
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Homework:
+\series default
+ Work on completing the model extension exercise
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Next week: 
+\series default
+Begin working on Assignment 1
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
