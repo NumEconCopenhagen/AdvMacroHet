@@ -1463,7 +1463,7 @@ Stop if
 Calculate Jacobian by 
 \begin_inset Formula $\boldsymbol{J}^{i}=\begin{cases}
 \boldsymbol{J}_{\boldsymbol{0}} & \text{if }i=0\\
-\boldsymbol{J}^{i-1}+\frac{(\boldsymbol{f}^{i}-\boldsymbol{f}^{i-1})-\boldsymbol{H}_{\boldsymbol{K}}^{i-1}(\boldsymbol{K}^{i}-\boldsymbol{K}^{i-1})}{\left|\boldsymbol{x}^{i}-\boldsymbol{x}^{i-1}\right|_{2}}\left(\boldsymbol{x}^{i}-\boldsymbol{x}^{i-1}\right)^{\prime} & \text{if }i>0
+\boldsymbol{J}^{i-1}+\frac{(\boldsymbol{f}^{i}-\boldsymbol{f}^{i-1})-\boldsymbol{J}^{i-1}(\boldsymbol{x}^{i}-\boldsymbol{x}^{i-1})}{\left|\boldsymbol{x}^{i}-\boldsymbol{x}^{i-1}\right|_{2}}\left(\boldsymbol{x}^{i}-\boldsymbol{x}^{i-1}\right)^{\prime} & \text{if }i>0
 \end{cases}$
 \end_inset
 
