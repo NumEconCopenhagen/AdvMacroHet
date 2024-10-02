@@ -53,10 +53,10 @@ def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,l,ell,
                         ell[i_fix,i_z,i_a] = solve_cl(we, other_income, a_min, par.vphi, par.sigma, par.frisch)
 
             # cash-on-hand 
-            m = (1+(1-tau_a)*r)*par.a_grid + we*l[i_fix,i_z,:] + transfer
+            m = (1+(1-tau_a)*r)*par.a_grid + we*ell[i_fix,i_z,:] + transfer
 
             c[i_fix,i_z] = m - a[i_fix,i_z]
-            l[i_fix,i_z] = l[i_fix,i_z]*par.z_grid[i_z]
+            l[i_fix,i_z] = ell[i_fix,i_z]*par.z_grid[i_z]
             taxes[i_fix,i_z] = tau_a*r*par.a_grid + l[i_fix,i_z]*w*tau_l
 
         # b. expectation step 
