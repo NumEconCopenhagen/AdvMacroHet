@@ -19,7 +19,7 @@ def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,
 
     # ss = True is to get guess of vbeg_a
 
-   
+    v_a = np.zeros_like(vbeg_a_plus)
 
     for i_fix in nb.prange(par.Nfix): # fixed types
 
@@ -51,7 +51,9 @@ def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,
             
             c[i_fix,i_z] = m - a[i_fix,i_z]
 
-        # b. expectation step
-        v_a = (1+r_eff)*c[i_fix]**(-par.sigma)
-        vbeg_a[i_fix] = z_trans[i_fix]@v_a
-        
+            # b. expectation step
+            v_a[i_fix,i_z] = (1+r_eff)*c[i_fix,i_z]**(-par.sigma)
+    
+    for i_fix in nb.prange(par.Nfix): # fixed types
+        vbeg_a[i_fix] = z_trans[i_fix] @ v_a 
+            
