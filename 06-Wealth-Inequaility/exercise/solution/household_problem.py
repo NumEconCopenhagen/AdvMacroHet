@@ -51,9 +51,10 @@ def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,
             
             c[i_fix,i_z] = m - a[i_fix,i_z]
 
-            # b. expectation step
+            # b. marginal value 
             v_a[i_fix,i_z] = (1+r_eff)*c[i_fix,i_z]**(-par.sigma)
     
+    # expectation step
     for i_fix in nb.prange(par.Nfix): # fixed types
-        vbeg_a[i_fix] = z_trans[i_fix] @ v_a 
+        vbeg_a[i_fix] = z_trans[i_fix] @ v_a[i_fix] 
             

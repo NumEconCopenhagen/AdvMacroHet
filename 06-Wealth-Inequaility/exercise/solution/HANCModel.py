@@ -46,7 +46,7 @@ class HANCModelClass(EconModelClass,GEModelClass):
         par.Nr = 7 
         par.rho_r = 0.8
         par.rX_mean = 0.01
-        par.sigma_r = 0.016 #par.r_std*(1.0-par.rho_r**2.0)**0.5
+        par.sigma_r = 0.019
         par.Ne = 5 # number of stochastic discrete states (here productivity)
         par.Nz = par.Ne*par.Nr  
 

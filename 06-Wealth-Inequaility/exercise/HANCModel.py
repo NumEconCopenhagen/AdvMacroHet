@@ -55,7 +55,7 @@ class HANCModelClass(EconModelClass,GEModelClass):
         par.sigma_psi = 0.30*(1.0-par.rho_e**2.0)**0.5 # std. of persistent shock
         par.rho_r = 0.8 # persistence of r process
         par.rX_mean = 0.01 # mean of r process
-        par.sigma_r = 0.016 # standard deviation of r process
+        par.sigma_r = 0.019 # standard deviation of r process
 
         # c. production and investment
         par.Gamma_ss = np.nan # technology level [determined in ss]
