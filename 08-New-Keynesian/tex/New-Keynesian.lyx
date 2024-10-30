@@ -1,0 +1,4811 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{8.
+ The New Keynesian Model
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models}  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Previously: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Economic content: Long run trends and outcomes
+\end_layout
+
+\begin_layout Enumerate
+Methods: Stationary eq., Non-linear transition path and perfect foresight
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Business cycles in the New Keynesian model
+\end_layout
+
+\begin_layout Enumerate
+Linearized solution in models with aggregate risk
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Literature: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NK:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gali textbook ch.
+ 3-4
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Macroeconomics
+\emph default
+ textbook ch.
+ 16
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Solution methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Auclert et.
+ al.
+ (2021), 
+\begin_inset Quotes ald
+\end_inset
+
+Using the Sequence-Space Jacobian to Solve and Estimate Heterogeneous-Agent
+ Models
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Boppart et.
+ al.
+ (2018), 
+\begin_inset Quotes ald
+\end_inset
+
+Exploiting MIT shocks in heterogeneous-agent economies: The impulse response
+ as a numerical derivative
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Documentation for GEModelTools
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Business cycles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Macro variables relatievly volatile around long-run trends 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.65
+\backslash
+linewidth]{figs/FREDBC.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Rest of the course: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Study how aggregate shocks cause business cycles
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Does the transmission change with heterogeneous agents?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Implications for fiscal and monetary policy 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+First point on agenda: Need 
+\series bold
+role
+\series default
+ for monetary policy 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Models so far in the course have featured
+\series bold
+ monetary-non neutrality
+\end_layout
+
+\begin_layout Itemize
+Monetary policy cannot affect real quantities (unemployment, GDP)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+New Keynesian framework
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ A proper mode of business cycles and stabalization policy require that
+ output is partially demand determined 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ The study of monetary policy requires 
+\series bold
+monetary-non neutrality 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ The New Keynesian (NK) model adresses these two concerns by adding to the
+ standard model:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monopolistic competetion (price-setting)
+\end_layout
+
+\begin_layout Itemize
+Price rigidities
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The basic NK model is simple (can be reduced to 3 equations) but 
+\series bold
+extremely influential
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The New Keynesian model 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Several version of the NK model 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+I present the simplest version her 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The model consists of the following agents:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A representative household who consumes, saves and supplies labor
+\end_layout
+
+\begin_layout Itemize
+Firms with market power who produce output using labor and sets prices subject
+ to nominal rigidities
+\end_layout
+
+\begin_layout Itemize
+A central bank which conduct monetary policy 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Households:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Representativ agent
+\end_layout
+
+\begin_layout Enumerate
+Supply labor and choose consumption
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Intermediary goods firms 
+\series default
+(continuum)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Produce differentiated goods with labor
+\end_layout
+
+\begin_layout Enumerate
+Set price under monopolistic competition
+\end_layout
+
+\begin_layout Enumerate
+Pay profits to households
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Final goods firms 
+\series default
+(representative)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Produce final good with intermediary goods 
+\end_layout
+
+\begin_layout Enumerate
+Take price as given under perfect competition
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Central bank
+\series default
+: Sets nominal interest rate
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Representative household solve the following problem:
+\begin_inset Formula 
+\begin{align*}
+\max_{C_{t},A_{t},L_{t}} & E_{0}\sum_{t=0}^{\infty}\beta^{t}\left[u\left(C_{t}\right)-\nu\left(L_{t}^{hh}\right)\right]\\
+ & s.t.\\
+C_{t}+A_{t} & =\left(1+r_{t}\right)A_{t-1}+\left(w_{t}L_{t}^{hh}+\Pi_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note: Expectation taken w.r.t 
+\series bold
+aggregate shocks
+\series default
+ (TFP, monetary policy, markup etc.)
+\end_layout
+
+\begin_layout Itemize
+Standard first-order conditions:
+\begin_inset Formula 
+\begin{align*}
+u'\left(C_{t}\right) & =E_{t}\beta\left(1+r_{t+1}\right)u'\left(C_{t+1}\right)\\
+\nu'\left(L_{t}^{hh}\right) & =w_{t}u'\left(C_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Final goods firms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Final goods firm buy goods 
+\begin_inset Formula $y_{jt}$
+\end_inset
+
+ from intermediary goods firms and assemble into aggregate output 
+\begin_inset Formula $Y_{t}$
+\end_inset
+
+ using CES technology with sub.
+ elaticity 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Intermediary firms/intermediary goods indexed by 
+\begin_inset Formula $j\in[0,1]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+\emph on
+Static
+\emph default
+ problem for representative final good firm:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\max_{y_{jt}\,\forall j}P_{t}Y_{t}-\int_{0}^{1}p_{jt}y_{jt}dj & \text{ s.t. }Y_{t}=\left(\int_{0}^{1}y_{jt}^{\frac{\epsilon-1}{\epsilon}}dj\right)^{\frac{\epsilon}{\epsilon-1}}
+\end{align*}
+
+\end_inset
+
+for given output price, 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+, and input prices, 
+\begin_inset Formula $p_{jt}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Demand curve 
+\series default
+derived from FOC wrt.
+ 
+\begin_inset Formula $y_{jt}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\forall j:\,y_{jt} & =\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon}Y_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note:
+\series default
+ Zero profits (can be used to derive price index)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Intermediary goods firms
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Intermediary goods firms produce using labor, choose price subject to quadratic
+ adjustment cost of changing prices (Rotemberg)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+\emph on
+Dynamic
+\emph default
+ problem for intermediary goods firms:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+J_{t}(p_{jt-1}) & =\max_{y_{jt},p_{jt},l_{jt}}\left\{ \frac{p_{jt}}{P_{t}}y_{jt}-w_{t}l_{jt}-\Omega(p_{jt},p_{jt-1})Y_{t}+E_{t}\frac{J_{t+1}(p_{jt})}{1+r_{t+1}}\right\} \\
+\text{s.t. } & y_{jt}=\Gamma_{t}l_{jt},\,\,\,y_{jt}=\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon}Y_{t},\,\,\,\Omega(p_{jt},p_{jt-1})=\frac{\theta}{2}\left[\frac{p_{jt}}{p_{jt-1}}-1\right]^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Symmetry:
+\series default
+ In equilibrium all firms set the same price, 
+\begin_inset Formula $p_{jt}=P_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+NKPC
+\series default
+ with slope 
+\begin_inset Formula $\kappa=\frac{\epsilon}{\theta}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu=\frac{\epsilon}{\epsilon-1}$
+\end_inset
+
+ derived from FOC wrt.
+ 
+\begin_inset Formula $p_{jt}$
+\end_inset
+
+ and envelope condition (note 
+\begin_inset Formula $mc_{t}=\frac{MC_{t}}{P_{t}}=\frac{w_{t}}{\Gamma_{t}})$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\pi_{t}(1+\pi_{t})=\kappa\left(\frac{w_{t}}{\Gamma_{t}}-\frac{1}{\mu}\right)+E_{t}\frac{Y_{t+1}}{Y_{t}}\frac{\pi_{t+1}(1+\pi_{t+1})}{1+r_{t+1}},\,\,\,\pi_{t}\equiv P_{t}/P_{t-1}-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Implied production: 
+\begin_inset Formula $Y_{t}=y_{jt}$
+\end_inset
+
+
+\series default
+, 
+\begin_inset Formula $L_{t}=l_{jt}$
+\end_inset
+
+ (from symmetry)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Implied dividends: 
+\begin_inset Formula $\Pi_{t}=Y_{t}-w_{t}L_{t}-\frac{\theta}{2}\left[\frac{p_{jt}}{p_{jt-1}}-1\right]^{2}Y_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Derivation of NKPC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+FOC wrt.
+ 
+\begin_inset Formula $p_{jt}$
+\end_inset
+
+:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+0= & \left(1-\epsilon\right)\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon}\frac{Y_{t}}{P_{t}}+\epsilon\frac{w_{t}}{\Gamma_{t}}\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon-1}\frac{Y_{t}}{P_{t}}\\
+ & -\theta\left[\frac{p_{jt}}{p_{jt-1}}-1\right]\frac{Y_{t}}{p_{jt-1}}+E_{t}\frac{J_{t+1}'(p_{jt})}{1+r_{t+1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Envelope condition: 
+\begin_inset Formula $J_{t+1}^{\prime}(p_{jt})=-\theta\left[\frac{p_{jt+1}}{p_{jt}}-1\right]\left(\frac{p_{jt+1}}{p_{jt}^{2}}\right)Y_{t+1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+FOC + Envelope + Symmetry + 
+\begin_inset Formula $\pi_{t}=P_{t}/P_{t-1}-1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+0= & \left[\left(1-\epsilon\right)+\epsilon\frac{w_{t}}{\Gamma_{t}}\right]\frac{Y_{t}}{P_{t}}\\
+ & -\theta\left[\frac{P_{t}}{P_{t-1}}-1\right]\frac{Y_{t}}{P_{t-1}}-E_{t}\frac{\theta\left[\frac{P_{t+1}}{P_{t}}-1\right]\left(\frac{P_{t+1}}{P_{t}^{2}}\right)Y_{t+1}}{1+r_{t+1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Central NKPC intution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\pi_{t}(1+\pi_{t})=\kappa\left(\frac{w_{t}}{\Gamma_{t}}-\frac{1}{\mu}\right)+E_{t}\frac{Y_{t+1}}{Y_{t}}\frac{1}{1+r_{t+1}}\pi_{t+1}\left(1+\pi_{t+1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Zero-inflation steady state:
+\series default
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\pi_{t}=0\rightarrow w_{t}=\frac{\Gamma_{t}}{\mu}\rightarrow$
+\end_inset
+
+ wage is mark-downed relative to MPL (
+\begin_inset Formula $\mu>1$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Larger adjustment costs
+\series default
+, 
+\begin_inset Formula $\kappa\downarrow$
+\end_inset
+
+ (more sticky prices): 
+\begin_inset Newline newline
+\end_inset
+
+Less pass-through from marginal costs, 
+\begin_inset Formula $\frac{w_{t}}{\Gamma_{t}}$
+\end_inset
+
+, to inflation, 
+\begin_inset Formula $\pi_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Larger (expected) future inflation, 
+\begin_inset Formula $\pi_{t+1}\uparrow$
+\end_inset
+
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\series default
+Increase price today, 
+\begin_inset Formula $\pi_{t}\uparrow$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+Especially in a boom, 
+\begin_inset Formula $\frac{Y_{t+1}}{Y_{t}}>1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sometimes a 
+\begin_inset Formula $\beta^{\text{firm}}$
+\end_inset
+
+ is used instead of 
+\begin_inset Formula $\frac{1}{1+r_{t+1}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\pi_{t}(1+\pi_{t})\approx\pi_{t}$
+\end_inset
+
+ for small 
+\begin_inset Formula $\pi_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Government and central bank
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Monetary policy: 
+\series default
+Follow Taylor-rule:
+\begin_inset Formula 
+\[
+i_{t}=i_{t}^{*}+\phi\pi_{t}
+\]
+
+\end_inset
+
+ where 
+\begin_inset Formula $i_{t}^{*}$
+\end_inset
+
+ is a monetary policy shock (target for CB)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Fisher relationship:
+\series default
+
+\begin_inset Formula 
+\[
+r_{t}=(1+i_{t-1})/(1+\pi_{t})-1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Government: 
+\series default
+In standard model Government simply supplies bonds that are in net-zero
+ supply, 
+\begin_inset Formula $B=0$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note: HHs still make consumption-saving decisions (so cannot impose 
+\begin_inset Formula $A=0$
+\end_inset
+
+ in budget), but in equilibrium prices will adjust such that 
+\begin_inset Formula $A=B=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Simplifying assumption, can easily incorporate more reaslitic government
+ 
+\begin_inset Formula $\tau_{t}=r_{t}B_{ss}+G_{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $B_{ss}>0$
+\end_inset
+
+ (see HANK later)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equilibrium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Three markets that need to clear in the NK model:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Goods market:
+\begin_inset Formula 
+\[
+Y_{t}=C_{t}+\frac{\theta}{2}\pi_{t}^{2}Y_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Labor market:
+\begin_inset Formula 
+\[
+L_{t}^{hh}=L_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Asset market:
+\begin_inset Formula 
+\[
+A=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+As usual, in practice we will only impose market clearing in two of the
+ markets when solving the model
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aggregate shocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In the standard NK model business cycles arise due to fluctuations in aggregate
+ shocks:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{3mm}
+\end_layout
+
+\end_inset
+
+TFP (supply) 
+\begin_inset Formula 
+\[
+\ln\Gamma_{t}=\overline{\Gamma}+\ln\Gamma_{t-1}+\epsilon_{t}^{\Gamma},\quad\epsilon_{t}^{\Gamma}\sim\mathcal{N}\left(0,\sigma_{\Gamma}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{3mm}
+\end_layout
+
+\end_inset
+
+Discount factor (demand) 
+\begin_inset Formula 
+\[
+\ln\beta_{t}=\overline{\beta}+\ln\beta_{t-1}+\epsilon_{t}^{\beta},\quad\epsilon_{t}^{\beta}\sim\mathcal{N}\left(0,\sigma_{\beta}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{3mm}
+\end_layout
+
+\end_inset
+
+Monetary policy 
+\begin_inset Formula 
+\[
+i_{t}^{\ast}=\overline{i^{\ast}}+\ln i_{t-1}^{\ast}+\epsilon_{t}^{i^{\ast}},\quad\epsilon_{t}^{i^{\ast}}\sim\mathcal{N}\left(0,\sigma_{i^{\ast}}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The 3 equation NK model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consider the deterministic, zero-inflation steady state of the model (with
+ TFP and prices normalized to 1):
+\begin_inset Formula 
+\begin{align*}
+\pi & _{ss}=0,\quad Y_{ss}=C_{ss}=1\\
+r_{ss}=i & _{ss}=\frac{1}{\beta}-1,\quad w_{ss}=\frac{1}{\mu}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Linearize the model arounds this steady state with notation 
+\begin_inset Formula $\hat{x}_{t}=x_{t}-x_{ss}$
+\end_inset
+
+ for some endo.
+ variable 
+\begin_inset Formula $x_{t}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The model can be reduced to three equations:
+\begin_inset Formula 
+\begin{align*}
+\hat{Y}_{t} & =-\sigma\left(i_{t}-\pi_{t+1}\right)+\hat{Y}_{t+1}+\epsilon_{t}^{D}\;\text{\ensuremath{\quad}(Euler/demand curve})\\
+\hat{\pi}_{t} & =\tilde{\kappa}\hat{Y}_{t}+\beta\hat{\pi}_{t+1}+\epsilon_{t}^{S}\;\quad\quad\quad\quad\quad\text{(NKPC/supply curve)}\\
+\hat{i}_{t} & =\phi\hat{\pi}_{t}+\epsilon_{t}^{i}\;\quad\text{\quad\quad\quad\quad\quad\quad\quad(Monetary policy)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+With three unknowns (per period) 
+\begin_inset Formula $\hat{Y}_{t},\hat{\pi}_{t},\hat{i}_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Technology shocks in the NK model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Effects of a positive TFP shock (increase 
+\begin_inset Formula $\Gamma_{t}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+linewidth]{figs/NK_TFP.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Increase in productivity decreases marginal costs 
+\begin_inset Formula $w_{t}/\Gamma_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Firms reduce prices 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ CB reduce nominal interest rate 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Intertemporal sub.
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $C,Y\uparrow$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary policy shocks in the NK model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Effects of accomodating monetary policy (easing) with persistent decline
+ in 
+\begin_inset Formula $i_{t}^{*}$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+linewidth]{figs/NK_monpol.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Decrease real rate 
+\begin_inset Formula $r$
+\end_inset
+
+ which induce intertemporal substitution, so 
+\begin_inset Formula $C,Y\uparrow$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Increase in employment pushes up wages (marginal costs), so inflation increases
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary neutrality
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Monetary policy can affect consumption, employment and output in the short
+ run because the model features 
+\series bold
+monetary non-neutrality
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Comes from sticky prices of firms 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consider monetary policy shock with increasing slope of NKPC 
+\begin_inset Formula $\kappa$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recall 
+\begin_inset Formula $\kappa\rightarrow\infty$
+\end_inset
+
+ is flexible prices (think Ramsey) and constant markup
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.5
+\backslash
+linewidth]{figs/monpol_NKPC_slope.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why? With completely flexible prices monetary policy just increases inflation
+ 1-1 without affecting 
+\begin_inset Formula $r$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Review questions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consider the standard New Keynesian model 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Review questions
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+How does a positive demand shock 
+\begin_inset Formula $\epsilon_{t}^{\beta}$
+\end_inset
+
+ (which decrease 
+\begin_inset Formula $\beta$
+\end_inset
+
+) affect output 
+\begin_inset Formula $Y,$
+\end_inset
+
+ inflation 
+\begin_inset Formula $\pi,$
+\end_inset
+
+ and interest rates 
+\begin_inset Formula $i,r$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Are firm markups pro-cyclical or counter-cyclical (w.r.t 
+\begin_inset Formula $Y$
+\end_inset
+
+) in response to the demand shock? 
+\end_layout
+
+\begin_layout Enumerate
+Consider an extension with a government that spends 
+\begin_inset Formula $G$
+\end_inset
+
+ and raises lumpsum taxes 
+\begin_inset Formula $\tau$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What is the effect of a shock to 
+\begin_inset Formula $G$
+\end_inset
+
+? Is the fiscal multiplier 
+\begin_inset Formula $\frac{dY}{dG}$
+\end_inset
+
+ above or below one?
+\end_layout
+
+\begin_layout Itemize
+Does the effects of the shock dependent on the method of financing (debt
+ vs taxes)?
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Section
+IRFs and simulation
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aggregate uncertainty
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In business cycle model common to have 
+\emph on
+aggregate uncertainty
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+I.e.
+ underlying shocks (TFP, demand etc) 
+\begin_inset Formula $x$
+\end_inset
+
+ follow stochastic process with dist, 
+\begin_inset Formula $f$
+\end_inset
+
+, 
+\begin_inset Formula $x_{t}\sim f$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+This implies that all variables which are functions of 
+\begin_inset Formula $x$
+\end_inset
+
+ are also random.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size small
+If TFP is random 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ wages, interest rates, labor demand etc.
+ are 
+\series bold
+random 
+\series default
+until observed 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Implies that we need to compute expectation in Euler, NKPC and other forward
+ looking equations:
+\begin_inset Formula 
+\[
+u'\left(C_{t}\right)=\beta\mathbb{E}_{t}\left[R_{t+1}\left(x_{t+1}\right)u'\left(C_{t}\left(x_{t+1}\right)\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: So far in the course we have generally assumed 
+\series bold
+perfect foresight
+\series default
+ w.r.t aggregate variables (
+\begin_inset Formula $w,r$
+\end_inset
+
+) so no expectation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size small
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.5mm}
+\end_layout
+
+\end_inset
+
+Implies that aggregate shocks are not random process, but rather 
+\emph on
+MIT shocks
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Interpretation of MIT shocks generally hard to reconcile with business cycles
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stochastic vs deterministic models
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+To see how the 
+\series bold
+stochastic
+\series default
+ model and deterministic model are related consider the Euler with random
+ 
+\begin_inset Formula $x$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+u'\left(C_{t}\right)=R\beta\mathbb{E}_{t}\left[u'\left(C_{t}\left(x_{t+1}\right)\right)\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+First-order Taylor approx.
+ around deterministic ss (use 
+\begin_inset Formula $R\beta=1$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+du'\left(C_{t}\right)\approx u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Assume 
+\begin_inset Formula $x_{t}=\rho^{x}x_{t-1}+\epsilon_{t}^{x}$
+\end_inset
+
+ with 
+\begin_inset Formula $\mathbb{E}\epsilon_{t}^{x}=0$
+\end_inset
+
+.
+ Period 0 solution in deterministic/perfect foresight model:
+\begin_inset Formula 
+\[
+du'\left(C_{0}\right)\approx u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot\rho^{x}d\epsilon_{0}^{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Stochastic model we use:
+\begin_inset Formula 
+\begin{align*}
+d\mathbb{E}_{0}x_{1} & =d\mathbb{E}_{0}\left(\rho^{x}x_{0}+\epsilon_{1}^{x}\right)\\
+ & =\rho^{x}d\mathbb{E}_{0}x_{0}=\rho^{x}d\epsilon_{0}^{x}=dx_{1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+Same result! Aggregate uncertainty 
+\series bold
+does not matter to first-order 
+\series default
+when linearizing w.r.t aggregate shock
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+When does uncertainty matter?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Insight: 
+\series default
+\emph on
+The IRF from an MIT shock is 
+\bar under
+equivalent
+\bar default
+ to the IRF in a model with aggregate risk, which is linearized in the aggregate
+ variables
+\emph default
+ (Boppart et.
+ al., 2018)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What about 
+\series bold
+high order
+\series default
+?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Approximate Euler to 
+\series bold
+second
+\series default
+ order:
+\begin_inset Formula 
+\begin{align*}
+du'\left(C_{t}\right)\approx & u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}+\frac{1}{2}u'''\left(C_{ss}\right)C''\left(x_{ss}\right)\cdot\mathbb{E}_{t}\left(x_{t+1}-x_{ss}\right)^{2}\\
+ & u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}+\frac{1}{2}u'''\left(C_{ss}\right)C''\left(x_{ss}\right)\cdot\sigma_{x,t}^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In deterministic model 
+\begin_inset Formula $\sigma_{x,t}^{2}=0$
+\end_inset
+
+ - not true in stochastic model!
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Models deviate once we go beyond 1st order approximation (linearization)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Still extremely usefull though - we may solve deterministic models to first-orde
+r and interpret as models with aggregate uncertainty
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How do we linearize models numerically?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Reminder of model class
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Unknowns:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{U}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Shock:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Additional variables:
+\series default
+ 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Target equation system:
+\series default
+
+\begin_inset Formula 
+\[
+\boldsymbol{H(U,Z)=0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In deterministic, perfect foresight model, solve 
+\begin_inset Formula $\boldsymbol{H(U,Z)=0}$
+\end_inset
+
+ w.r.t 
+\begin_inset Formula $\boldsymbol{U}$
+\end_inset
+
+ by:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Calculating the jacobian of 
+\begin_inset Formula $\boldsymbol{H}$
+\end_inset
+
+w.r.t 
+\begin_inset Formula $\boldsymbol{U}$
+\end_inset
+
+around steady state 
+\end_layout
+
+\begin_layout Enumerate
+Use Newton/Broyden's method to find non-linear transition path given shocks
+ 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Linearized IRFs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What if just want 
+\emph on
+first order solution
+\emph default
+?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solve for Impulse Response Functions (IRFs) for unknowns
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=\underset{\text{\ensuremath{\equiv\boldsymbol{G}_{\boldsymbol{U}}}}}{\underbrace{-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}}}d\boldsymbol{Z}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Computation: 
+\series default
+Same for 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+ as for 
+\begin_inset Formula $\boldsymbol{U}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Limitations:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Imprecise for 
+\emph on
+large
+\emph default
+ shocks
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Imprecise in models with 
+\emph on
+aggregate non-linearities
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ No aggregate uncertainty (precautionary savings w.r.t aggregate shocks etc.)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Next slide: 
+\series bold
+Can we solve model with aggregate risk globally
+\series default
+ (i.e.
+ to more than first-order)?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aggregate risk (dynamic equilibrium)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+To solve models with aggregate risk we need to write them in 
+\emph on
+state-space
+\emph default
+ form instead of 
+\emph on
+sequence-space
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Think of HA household problem - that is always in state-space form
+\end_layout
+
+\begin_layout Itemize
+Endogenous variables 
+\begin_inset Formula $c_{t},a_{t}$
+\end_inset
+
+ as function of current states 
+\begin_inset Formula $a_{t-1},z_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Aggregate stochastic variables: 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+ 
+\series default
+follow some known process with innovations 
+\begin_inset Formula $\boldsymbol{\epsilon}$
+\end_inset
+
+.
+ 
+\emph on
+State space form
+\emph default
+: RHS is what is known today 
+\size small
+
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\boldsymbol{U}_{t}\\
+\boldsymbol{Z}_{t}
+\end{array}\right]=\mathcal{M}\left(\left[\begin{array}{c}
+\boldsymbol{U}_{t-1}\\
+\boldsymbol{Z}_{t-1}
+\end{array}\right],\boldsymbol{\epsilon}_{t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula $\neq$
+\end_inset
+
+ perfect foresight wrt.
+ future agg.
+ variables in 
+\emph on
+sequence-space
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In standard NK model: no backward looking eqs.
+ so number of state variables = Number of shocks 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example: Krussel-Smith
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What if we add heterogeneous agents? Canonical example: The Krussel-Smith
+ model (1998) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HANC with aggregate uncertainty (TFP shocks)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Recursive formulation of household problem:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v(\boldsymbol{D}_{t},\Gamma_{t},z_{it},a_{it-1}) & =\max_{a_{it},c_{it}}u(c_{it})+\beta\mathbb{E}_{t}\left[v(\boldsymbol{D}_{t+1},\Gamma_{t+1},z_{it+1},a_{it})\right]\\
+ & \text{s.t.}\\
+K_{t-1} & =\int a_{it-1}d\boldsymbol{D}_{t}\\
+r_{t} & =\alpha\Gamma_{t}K_{t-1}^{\alpha-1}-\delta\\
+w_{t} & =(1-\alpha)\Gamma_{t}K_{t-1}^{\alpha}\\
+a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0,
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+ is a state variable 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Massive state space
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Comparisons
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+State-space approach with linearization
+\series default
+: Ahn et al.
+ (2018); 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{
+\backslash
+color{DarkRed}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Bayer and Luetticke (2020)"
+target "https://github.com/BASEforHANK"
+literal "false"
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+; Bhandari et al.
+ (2023); Bilal (2023)
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\bar under
+Con
+\bar default
+: 
+\end_layout
+
+\begin_layout Enumerate
+Harder to implement
+\end_layout
+
+\begin_layout Enumerate
+Valuable to be able to interpret Jacobians
+\end_layout
+
+\begin_layout Standard
+
+\bar under
+Pro
+\series bold
+\bar default
+:
+\series default
+ 
+\end_layout
+
+\begin_layout Enumerate
+Easier path to 2nd and higher order approximations
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Global solution:
+\series default
+ The distribution of households is a state variable for each household 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph on
+explosion in complexity
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\bar under
+Original
+\bar default
+: Krusell and Smith (1997, 1998); Algan et al.
+ (2014);
+\end_layout
+
+\begin_layout Enumerate
+
+\bar under
+Deep learning
+\bar default
+: Fernández-Villaverde et al.
+ (2021); Maliar et al.
+ (2021); Han et al.
+ (2021); Kase et al.
+ (2022); Azinovic et al.
+ (2022); Gu et al.
+ (2023); Chen et al.
+ (2023)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Discrete aggregate risk:
+\series default
+ Lin and Peruffo (2023)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Basic linearized simulation
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Shocks: 
+\series default
+Write the shocks as an 
+\begin_inset Formula $MA(\infty)$
+\end_inset
+
+ with coefficients 
+\begin_inset Formula $d\boldsymbol{Z}_{s}$
+\end_inset
+
+ for 
+\begin_inset Formula $s\in\{0,1,\dots\}$
+\end_inset
+
+ driven by the innovation 
+\begin_inset Formula $\boldsymbol{\epsilon}_{t}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+EX: If shock 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+ follows an AR(1) then 
+\begin_inset Formula $d\boldsymbol{Z}_{s}=\rho^{s-t}\boldsymbol{\epsilon}_{t-s}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Linearized simulation:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Draw time series of innovations, 
+\begin_inset Formula $\tilde{\boldsymbol{\epsilon}}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Calculate the time series of shocks as 
+\begin_inset Formula $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Note: 
+\begin_inset Formula $d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}=$
+\end_inset
+
+ effect of shock 
+\begin_inset Formula $s$
+\end_inset
+
+ periods ago today 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Calculate the time series of other aggregate variables as 
+\begin_inset Formula 
+\[
+d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $d\boldsymbol{X}_{s}$
+\end_inset
+
+ is the IRF to a 
+\emph on
+unit-shock
+\emph default
+ after 
+\begin_inset Formula $s$
+\end_inset
+
+ periods (just needs jacobian of 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+ w.r.t shocks 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Intuition:
+\series default
+ Sum of first order effects from all previous shocks
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Generalized linearized simulation [advanced]
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Generality:
+\series default
+ Prev.
+ slide: Aggregate variables.
+ What about micro level household variables?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Full distribution:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The IRF for grid point 
+\begin_inset Formula $i_{g}$
+\end_inset
+
+ in a policy function can be calculated as 
+\begin_inset Formula 
+\[
+da_{i_{g},s}^{\ast}=\sum_{s^{\prime}=s}^{T-1}\sum_{X^{hh}\in\boldsymbol{X}^{hh}}\frac{\partial a_{i_{g}}^{\ast}}{\partial X_{s^{\prime}-s}^{hh}}dX_{s^{\prime}}^{hh}.
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\partial\boldsymbol{a}_{i_{g}}^{\ast}/\partial X_{k}^{hh}$
+\end_inset
+
+ is the derivative to a 
+\begin_inset Formula $k$
+\end_inset
+
+-period ahead shock to input 
+\begin_inset Formula $X^{hh}$
+\end_inset
+
+ (calculated in fake news algorithm)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The policy function can there be simulated as
+\begin_inset Formula 
+\[
+\boldsymbol{a}_{i_{g},t}^{\ast}=\sum_{s=0}^{T-1}da_{i_{g},s}^{\ast}\tilde{\boldsymbol{\epsilon}}_{t-s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Distribution can then be simulated forwards using standard method
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Calculating moments - variance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Identical and independent distributed innovations:
+\series default
+
+\begin_inset Formula 
+\[
+\mathbb{E}\left[\epsilon_{t}^{i}\epsilon_{t^{\prime}}^{j}\right]=\begin{cases}
+\sigma_{i}^{2} & \text{if }t=t^{\prime}\text{ and }i=j\\
+0 & \text{else}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Calculating moments such as 
+\begin_inset Formula $\text{var}(dC_{t})$
+\end_inset
+
+
+\series default
+ from the IRFs:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-1mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{var}(dC_{t}) & =\mathbb{E}\left[\left(\sum_{i\in\mathcal{Z}}\sum_{s=0}^{T-1}dC_{s}^{i}\epsilon_{t-s}^{i}\right)^{2}\right]\\
+ & =\sum_{i\in\mathcal{Z}}\sum_{s=0}^{T-1}\mathbb{E}\left[\epsilon_{t-s}^{i}\epsilon_{t-s}^{i}\right]\left(dC_{s}^{i}\right)^{2}\\
+ & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1}\left(dC_{s}^{i}\right)^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+where 
+\begin_inset Formula $dC_{s}^{i}$
+\end_inset
+
+ is the IRF to a unit-shock to 
+\begin_inset Formula $i$
+\end_inset
+
+ after 
+\begin_inset Formula $s$
+\end_inset
+
+ periods
+\end_layout
+
+\begin_layout Standard
+and 
+\begin_inset Formula $\sigma_{i}$
+\end_inset
+
+ is the standard deviation of shock 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Calculating moments - variance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Implications of prior slide:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Very easy to calculate business cycle moments 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Steps (variance of 
+\begin_inset Formula $C$
+\end_inset
+
+) (1 shock):
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Formulate shock to e.g.
+ public spending, 
+\begin_inset Formula $\left\{ dG_{t}\right\} _{t=0}^{T}=d\boldsymbol{G}$
+\end_inset
+
+ (could be an AR(1))
+\end_layout
+
+\begin_layout Enumerate
+Linearize and solve model to get IRF of 
+\begin_inset Formula $\left\{ dC_{t}\right\} _{t=0}^{T}=d\boldsymbol{C}$
+\end_inset
+
+ w.r.t 
+\begin_inset Formula $\left\{ dG_{t}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate variance 
+\begin_inset Formula $\text{var}(dC_{t})=\sum_{s=0}^{T-1}\left(dC_{s}\right)^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Same principle with more shocks 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Calculating moments - covariance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Covariances:
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{cov}(dC_{t},dY_{t+k}) & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Covariance decomposition:
+\series default
+
+\begin_inset Formula 
+\[
+\frac{\text{contribution from one shock}}{\text{contributions from all shocks}}=\frac{\sigma_{j}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{j}dY_{s+k}^{j}}{\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}}
+\]
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exercise
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercise - NK model with government
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+Familiarize yourself with the model equations in 
+\emph on
+blocks.py
+\emph default
+.
+ Do you understand all the equations?
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Compute the non-linear response to a temporary increase in government spending
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+Use 
+\emph on
+model.find_transition_path()
+\emph default
+ for the non-linear response (results are in 
+\emph on
+model.path
+\emph default
+)
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Use 
+\emph on
+model.find_IRFs()
+\emph default
+ for the linear response (results are in 
+\emph on
+model.IRF
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+Add a zero lower bound to the model:
+\begin_inset Formula 
+\[
+i_{t}=\max\left\{ i_{ss}+\phi\pi_{t},0\right\} 
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Compute linear and non-linear responses to a 
+\begin_inset Formula $\beta$
+\end_inset
+
+-shock of size 
+\begin_inset Formula $0.05$
+\end_inset
+
+ and compare.
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Assume that the government tries to stabilize the economy after the demand
+ shock.
+ Compute linear and non-linear responses to a simultaneous shock to 
+\begin_inset Formula $\beta$
+\end_inset
+
+ (
+\begin_inset Formula $d\beta_{0}=0.05$
+\end_inset
+
+) and 
+\begin_inset Formula $G$
+\end_inset
+
+ (
+\begin_inset Formula $dG_{0}=0.03$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Is stabilization policy more or less efficient once we take the ZLB into
+ account?
+\begin_inset Newline newline
+\end_inset
+
+Hint: Compare the multipliers 
+\begin_inset Formula $\frac{dY^{\beta,G}-dY^{\beta}}{dG}$
+\end_inset
+
+ for the linear and non-linear responses and compare.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+MORE ON NEXT SLIDE 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercise - NK model with government
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+6.
+ 
+\size small
+Simulate a monetary policy shock of size 
+\begin_inset Formula $0.01.$
+\end_inset
+
+ Calculate the variance of consumption using the analytical formula:
+\begin_inset Formula 
+\[
+\text{var}\left(dC\right)=\sum_{s=0}^{T-1}\left(dC_{s}\right)^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Check that you get the same variance if you simulate a timeseries of consumption
+ using 
+\begin_inset Formula $\text{model.simulate(skip\_hh=True)}$
+\end_inset
+
+, and calculate the variance as:
+\begin_inset Formula 
+\[
+\text{var}\left(dC\right)=\frac{1}{N}\sum_{i=0}^{N}\left(dC_{i}^{sim}\right)^{2}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Hints:
+\series default
+ You can set the size of the shock for the IRFs using 
+\begin_inset Formula $\text{model.par.jump\_eps\_i}$
+\end_inset
+
+, while the standard error of the shocks in the simulation is set using
+ 
+\begin_inset Formula $\text{model.par.std\_eps\_i}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\size small
+Make sure that the standard error of other shocks in the model are zero
+ when you simulate.
+ You can find the simulated series in 
+\begin_inset Formula $\text{model.sim.dC}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The New Keynesian model
+\end_layout
+
+\begin_layout Enumerate
+Aggregate risk and linearized dynamics (IRF and simulation)
+\end_layout
+
+\begin_layout Enumerate
+Calculating aggregate moments (for calibration or estimation)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Next week: 
+\series default
+HANK + Fiscal policy
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Homework:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Work on exercise
+\end_layout
+
+\begin_layout Enumerate
+Skim-read Auclert et al.
+ (2023), 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Quotes ald
+\end_inset
+
+The Intertemporal Keynesian Cross
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
