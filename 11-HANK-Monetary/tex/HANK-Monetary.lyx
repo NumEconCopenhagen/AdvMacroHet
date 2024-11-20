@@ -1,0 +1,4891 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+%\colorlet{DarkRed}{red!70!black}
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{11.
+ Monetary Policy in HANK
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Last Time: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fiscal policy in the canonical HANK model 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Other pillar of stabilization policy: 
+\series bold
+Monetary policy
+\end_layout
+
+\begin_layout Itemize
+Will use as example to study alternatives to 
+\series bold
+rational expecations
+\series default
+ (RE) in HANK
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Literature: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Seminal paper
+\emph default
+: Kaplan, Moll, Violante (2018) 
+\begin_inset Quotes ald
+\end_inset
+
+Monetary policy according to HANK
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Auclert Rognlie, Straub (2020) 
+\begin_inset Quotes ald
+\end_inset
+
+Micro jumps, macro humps
+\begin_inset Quotes ard
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Alves, Kaplan, Moll, Violante (2020) 
+\begin_inset Quotes ald
+\end_inset
+
+A further look at the propagation of monetary policy shocks in HANK
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Monetary Policy in HANK
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Introducing heterogeneous agents into the standard NK model 
+\series bold
+fundamentally
+\series default
+ changes the transmission of Fiscal Policy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Potentially
+\emph default
+ more effective 
+\end_layout
+
+\begin_layout Itemize
+Important whether policy is deficit financed or tax financed 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What about monetary policy? 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Last time
+\series default
+: Canonical HANK model 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Very close to standard 
+\series bold
+NK
+\series default
+ except for:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HA instead of RA
+\end_layout
+
+\begin_layout Itemize
+Sticky wages 
+\end_layout
+
+\begin_layout Itemize
+Government
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Today: Monetary policy - don't really need a government?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Issue: If we remove government no liquidity for households to save in
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fine in RA, issue in HA with borrowing constraint at 
+\begin_inset Formula $a=0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Solution: 
+\series default
+Firm equity 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Household problem:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
+\text{s.t. }a_{t}+c_{t} & =(1+r_{t}^{a})a_{t-1}+Z_{t}z_{t}+\chi_{t}\\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\\
+a_{t} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+with 
+\begin_inset Formula $Z_{t}=w_{t}\ell_{t}$
+\end_inset
+
+ - real labor income
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+decisions:
+\series default
+ Consumption-saving, 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ (and 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Union decision:
+\series default
+ Labor supply, 
+\begin_inset Formula $\ell_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Aggregate Consumption: 
+\begin_inset Formula $C_{t}^{hh}=\int c_{t}d\mathcal{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Consumption function: 
+\begin_inset Formula $C_{t}^{hh}=C^{hh}\left(\{r_{s}^{a},Z_{s},\chi_{s}\}_{s=0}^{\infty}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Firms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Production and profits:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+Y_{t} & =L_{t}\\
+\Pi_{t} & =Y_{t}-w_{t}L_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Optimize subject to demand curve (monopolistic competition) 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+First order condition:
+\series default
+
+\begin_inset Formula 
+\[
+w_{t}=\frac{1}{\mu}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+where 
+\begin_inset Formula $\mu>1=$
+\end_inset
+
+ markup - firms make positive profits in equilibrium
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mutual fund I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Mutual fund collect households savings 
+\begin_inset Formula $A_{t}$
+\end_inset
+
+ and invest in firm equity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Firm 
+\begin_inset Formula $j$
+\end_inset
+
+ has ownership shares 
+\begin_inset Formula $\upsilon_{j,t}$
+\end_inset
+
+ with price 
+\begin_inset Formula $p_{j,t}^{D}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If you own shares in the firm you get profits/dividends 
+\begin_inset Formula $\Pi_{j,t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Shares sum to 1, 
+\begin_inset Formula $\int\upsilon_{j,t}dj=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Firms are gonna be symmetric in eq., 
+\begin_inset Formula $p_{j,t}^{D}=p_{t}^{D}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Total value of firm equity is then 
+\begin_inset Formula $\int p_{t}^{D}\upsilon_{j,t}dj=p_{t}^{D}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mutual fund II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Problem
+\series default
+:
+\begin_inset Formula 
+\[
+\max_{\upsilon_{j,t}}\int\left(\Pi_{j,t+1}+p_{j,t+1}^{D}\right)\upsilon_{j,t}-\left(1+r_{t+1}^{a}\right)A_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Subject
+\series default
+ to balance sheet:
+\begin_inset Formula 
+\[
+\int p_{j,t}^{D}\upsilon_{j,t}dj=A_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+FOC
+\series default
+:
+\begin_inset Formula 
+\[
+p_{t}^{D}=\frac{\Pi_{t+1}+p_{t+1}^{D}}{1+r_{t}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $r_{t}=E_{t}r_{t+1}^{a}$
+\end_inset
+
+ the ex-ante interest rate
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Price of equity can be written as (assume 
+\begin_inset Formula $r_{t}=r$
+\end_inset
+
+): 
+\begin_inset Formula $p_{t}^{D}=\sum_{s=0}^{\infty}\left(1+r\right)^{-s}\Pi_{t+s}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Asset price today reflect discounted sum of future profits
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+Valuation effects: As with nominal gov bonds:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.4cm}
+\end_layout
+
+\end_inset
+
+
+\size default
+
+\begin_inset Formula 
+\[
+1+r_{t}^{a}=\begin{cases}
+\frac{\Pi_{0}+p_{0}^{D}}{p_{ss}^{D}} & t=0\\
+1+r_{t-1} & t>0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Union
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Everybody works the same:
+\begin_inset Formula 
+\begin{align*}
+\ell_{t} & =L_{t}^{hh}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maximization subject to wage adjustment cost imply a 
+\series bold
+New Keynesian Wage (Phillips) Curve
+\series default
+ (NKWPC or NKWC)
+\begin_inset Formula 
+\[
+\pi_{t}^{w}=\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{w}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Central bank
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Two options for monetary policy 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+1.
+ 
+\series default
+Government bonds are nominel, CB chooses nominel interest rate: 
+\begin_inset Formula 
+\[
+i_{t}=i_{ss}+\phi\pi_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+And fisher equation links nominal rate 
+\begin_inset Formula $i$
+\end_inset
+
+ to real rate 
+\begin_inset Formula $r$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+1+r_{t}=\frac{1+i_{t}}{1+\pi_{t+1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+2.
+ Alternative:
+\series default
+ Real rate rule.
+ CB chooses real rate 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ directly 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+r_{t}=r_{ss}+\left(\phi-1\right)\pi_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Market clearing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Asset market: 
+\begin_inset Formula $p_{t}^{D}=A_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Labor market: 
+\begin_inset Formula $L_{t}=L_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Goods market: 
+\begin_inset Formula $Y_{t}=C_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The consumption function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Model features a consumption function:
+\begin_inset Formula 
+\[
+C_{t}^{hh}=C_{t}^{hh}\left(\left\{ r_{s}^{a},Z_{s}\right\} _{s=0}^{\infty}\right)\Rightarrow\boldsymbol{C}^{hh}=C^{hh}\left(\boldsymbol{r}^{a},\boldsymbol{Z}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Linearize around steady state:
+\begin_inset Formula 
+\[
+d\boldsymbol{C}=\boldsymbol{M}d\boldsymbol{Z}+\boldsymbol{M}_{r^{a}}d\boldsymbol{r}^{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+As discussed in last lecture, can split overall effect of asset returns
+ 
+\begin_inset Formula $d\boldsymbol{r}^{a}$
+\end_inset
+
+ into intertemporal substitution effect (ex-ante 
+\begin_inset Formula $r$
+\end_inset
+
+) and a capital gain effect at time 0:
+\begin_inset Formula 
+\[
+d\boldsymbol{C}=\boldsymbol{M}d\boldsymbol{Z}+\boldsymbol{M}_{r}d\boldsymbol{r}+\boldsymbol{m}dcap_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: 
+\begin_inset Formula $\boldsymbol{m}$
+\end_inset
+
+ is a vector not matrix (multiplies onto scalar 
+\begin_inset Formula $dcap_{0}$
+\end_inset
+
+, not vector)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Interest rate Jacobians
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{minipage}{0.48
+\backslash
+textwidth}         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=
+\backslash
+textwidth]{figs/M_r.pdf}         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}    
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hfill     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.48
+\backslash
+textwidth}       
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+includegraphics[width=
+\backslash
+textwidth]{figs/m_cap.pdf}    
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{minipage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary policy in sequence-space
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Write real labor income as 
+\begin_inset Formula $Z_{t}=w_{t}L_{t}=\frac{1}{\mu}Y_{t}\Rightarrow d\boldsymbol{Z}=\frac{1}{\mu}d\boldsymbol{Y}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Linearize goods market clearing:
+\begin_inset Formula 
+\[
+d\boldsymbol{Y}=\boldsymbol{M}_{r}d\boldsymbol{r}+\frac{1}{\mu}\boldsymbol{M}d\boldsymbol{Y}+\boldsymbol{m}dcap_{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+For small capital gains, solution is:
+\begin_inset Formula 
+\[
+d\boldsymbol{Y}=\left(\boldsymbol{I}-\frac{1}{\mu}\boldsymbol{M}\right)^{-1}\boldsymbol{M}_{r}d\boldsymbol{r}\equiv\mathcal{M}\boldsymbol{M}_{r}d\boldsymbol{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: 
+\series bold
+can
+\series default
+ multiplier invert this PV of columns in 
+\begin_inset Formula $\frac{1}{\mu}\boldsymbol{M}$
+\end_inset
+
+ is not 1 when 
+\begin_inset Formula $\mu>1$
+\end_inset
+
+!)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Monetary policy operates through: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Direct
+\series default
+ (partial eq., 
+\begin_inset Formula $\boldsymbol{M}_{r}$
+\end_inset
+
+) effect 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Indirect
+\series default
+ (general eq., 
+\begin_inset Formula $\boldsymbol{M}$
+\end_inset
+
+) effect 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Q1
+\series default
+: Sign? Positive/negative? 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Q2
+\series default
+: Do you expect the effects of monetary policy on output to be larger in
+ HANK then RANK?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+HANK-RANK equivalence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Assume logarithmic utility 
+\begin_inset Formula $u\left(c\right)=\log\left(c\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Proposition
+\series default
+: Above model features 
+\series bold
+exact
+\series default
+ equivalence between RANK and HANK for the response of aggregates w.r.t a
+ monetary policy shock (
+\emph on
+Werning 2015
+\emph default
+) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+...
+ but transmission channel is different
+\series default
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Decompose 
+\begin_inset Formula $d\boldsymbol{Y}$
+\end_inset
+
+ into direct and indrect effect using 
+\begin_inset Formula $d\boldsymbol{Y}^{j}=\boldsymbol{M}_{r^{a}}^{j}d\boldsymbol{r^{a}}+\boldsymbol{M}^{j}d\boldsymbol{Z}$
+\end_inset
+
+ for 
+\begin_inset Formula $j\in\left\{ HA,RA\right\} $
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/HANK_Monpol_decomp.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+HANK-RANK equivalence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In basic HANK model:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monetary policy has same effectiveness as in RANK 
+\end_layout
+
+\begin_layout Itemize
+But transmission different: Indirect income effects more important than
+ in RANK
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Exact 
+\series bold
+equivalence 
+\series default
+is the product of a number of simplifying assumptions:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Linear production function 
+\end_layout
+
+\begin_layout Itemize
+No investment 
+\end_layout
+
+\begin_layout Itemize
+Log utility 
+\end_layout
+
+\begin_layout Itemize
+Equal incidence of labor income 
+\end_layout
+
+\begin_layout Itemize
+No government debt
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How does the effectiveness of monetary policy look in more realistic models?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kaplan, Moll, Violante (2018) 
+\begin_inset Quotes ald
+\end_inset
+
+Monetary policy according to HANK
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Auclert Rognlie, Straub (2020) 
+\begin_inset Quotes ald
+\end_inset
+
+Micro jumps, macro humps
+\begin_inset Quotes ard
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+KMV 2018
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary policy according to HANK
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Kaplan, Moll, Violante (2018) is a seminal paper in the HANK litterature
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The term HANK originates from this paper
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+They study the transmission of monetary policy in medium scale HANK model
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Follows Kaplan & Violante (2014) closely
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+See lecture 2 
+\end_layout
+
+\begin_layout Itemize
+Household can hold both liquid and illiquid assets 
+\end_layout
+
+\begin_layout Itemize
+Model features both 
+\series bold
+poor
+\series default
+ and 
+\series bold
+wealthy
+\series default
+ Hand-to-mouth households
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Household problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Households solve (here converted to discrete time, paper in cont.
+ time):
+\begin_inset Formula 
+\begin{align*}
+V_{t}\left(a_{t-1},b_{t-1},z_{t}\right) & =\max_{c_{t},a_{t},b_{t}}u\left(c_{t},\ell_{t}\right)+\beta E_{t}V_{t+1}\left(a_{t},b_{t},z_{t+1}\right)\\
+b_{t} & +c_{t}=(1-\tau_{t})w_{t}z_{t}\ell_{t}+\left(1+r_{t}^{b}\right)b_{t-1}-d_{t}-\chi(d_{t},a_{t-1})\\
+a_{t} & =\left(1+r_{t}^{a}\right)a_{t-1}+d_{t}\\
+b_{t}\geq-\bar{b} & \quad a_{t}\geq0.\\
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+with 
+\begin_inset Formula $b_{t}$
+\end_inset
+
+=liquid asset, 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+=illiquid assets, 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+=deposits into illiquid asset
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Return on illiquid asset 
+\begin_inset Formula $r_{t}^{a}$
+\end_inset
+
+ Return on liquid asset 
+\begin_inset Formula $r_{t}^{b}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Household will prefer to hold 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ due to superior return
+\end_layout
+
+\begin_layout Itemize
+But not good for consumption smoothing as they have to pay adjustment cost
+ to use 
+\begin_inset Formula $a_{t}$
+\end_inset
+
+ for smoothing against shocks
+\end_layout
+
+\begin_layout Itemize
+Some HHs will be wealthy hand-to-mouth
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+MPCs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1) MPCs for different sizes of stimulus checks, 2) MPCs across the wealth
+ distribution
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/KMVMPCs.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Direct vs indirect effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Amplification in HANK (elasticity of 
+\begin_inset Formula $C^{HANK}$
+\end_inset
+
+ 
+\begin_inset Formula $=-2.9$
+\end_inset
+
+ vs 
+\begin_inset Formula $C^{RANK}$
+\end_inset
+
+ 
+\begin_inset Formula $=-2.07$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Baseline HANK: Indirect effects account for majority of transmission (
+\begin_inset Formula $\approx80\%$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+linewidth]{figs/KMVTable7.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Expectations
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Micro Jumps, Macro Humps
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Auclert, Rognlie and Straub (2020) 
+\begin_inset Quotes ald
+\end_inset
+
+Micro jumps, macro humps
+\begin_inset Quotes ard
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Estimate parameters in quantitative HANK model to match estimated effects
+ of causal monetary policy shock
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Main hurdle: Empirical response of 
+\begin_inset Formula $C,Y$
+\end_inset
+
+ is hump-shaped to monetary policy shock.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Want a model that simultaneously match hump-shaped agg.
+ response to 
+\begin_inset Formula $r$
+\end_inset
+
+ and iMPC moment
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MJMCFig1.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The problem
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Standard model does 
+\series bold
+not 
+\series default
+give
+\series bold
+ 
+\series default
+hump shaped
+\series bold
+ 
+\series default
+for 
+\begin_inset Formula $C$
+\end_inset
+
+ to standard shock 
+\end_layout
+
+\begin_layout Itemize
+Does not matter if 
+\series bold
+shock
+\series default
+ is hump shaped or not
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/HANK_Monpol_shape.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The solution: RANK
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solution in RANK litterature: Habits in utility function:
+\begin_inset Formula 
+\begin{align*}
+\sum_{t=0}^{\infty} & \beta^{t}u\left(C_{t}-\gamma C_{t-1}\right)\\
+\Rightarrow u'\left(C_{t}-\gamma C_{t-1}\right)= & \beta R_{t+1}u'\left(C_{t+1}-\gamma C_{t}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Generates persistence in C response to shocks because household don't want
+ to deviate too much from last periods consumption level 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+However
+\series default
+: Does not work in HANK because it kills iMPCs:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.5
+\backslash
+linewidth]{figs/MJMCFig2.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Deviations from alternative expecations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solution: 
+\series bold
+Deviate
+\series default
+ from 
+\series bold
+rational expecations
+\series default
+ (RE)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Assume households have imperfect expecations about 
+\series bold
+changes
+\series default
+ in 
+\series bold
+aggregate variables
+\series default
+ (
+\begin_inset Formula $Z,r$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Implies that steady state is unaffected 
+\end_layout
+
+\begin_layout Itemize
+Still rational expecations w.r.t idiosyncratic income shocks 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Will only implement this to first-order (e.g.
+ linear approximations)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Much more difficult if we want full non-linear solution
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Income Jacobian
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Example: Response of aggregate consumption 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ to change in agg.
+ income 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d\boldsymbol{C}=\boldsymbol{M}d\boldsymbol{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $\boldsymbol{M}$
+\end_inset
+
+ is jacobian with rational expectations:
+\begin_inset Formula 
+\[
+\boldsymbol{M}=\begin{bmatrix}\frac{\partial C_{0}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{1}} & \frac{\partial C_{0}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{1}}{\partial Z_{1}} & \frac{\partial C_{1}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{2}}{\partial Z_{0}} & \frac{\partial C_{2}}{\partial Z_{1}} & \frac{\partial C_{2}}{\partial Z_{2}} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note that elements above diagonal are affected by expectations (i.e.
+ they concern the 
+\series bold
+future
+\series default
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Elements on and below diagonal reflect changes in income 
+\series bold
+today
+\series default
+ or in the 
+\series bold
+past
+\series default
+ (known by HHs)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Expectations matrix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Introduce expectations matrix 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\boldsymbol{E}=\begin{bmatrix}1 & * & * & * & \cdots\\
+1 & 1 & * & * & \cdots\\
+1 & 1 & 1 & * & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Element 
+\begin_inset Formula $t,s$
+\end_inset
+
+ (
+\begin_inset Formula $E_{t,s})$
+\end_inset
+
+ captures average date-
+\begin_inset Formula $t$
+\end_inset
+
+ exp.
+ about shock to 
+\begin_inset Formula $Z$
+\end_inset
+
+ at date 
+\begin_inset Formula $s$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $E_{t,s}dZ_{s}$
+\end_inset
+
+ is then the expected value of 
+\begin_inset Formula $dZ_{s}$
+\end_inset
+
+ at date 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How to get jacobian 
+\begin_inset Formula $\hat{\boldsymbol{M}}$
+\end_inset
+
+ associated with 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stylized Example I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Expectations matrix:
+\begin_inset Formula 
+\[
+\boldsymbol{E}=\begin{bmatrix}1 & 0.4 & 0.3 & \cdots\\
+1 & 1 & 0.6 & \cdots\\
+1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+At 
+\begin_inset Formula $t=0$
+\end_inset
+
+ expected path of 
+\begin_inset Formula $d\boldsymbol{Z}$
+\end_inset
+
+ is 
+\begin_inset Formula $\left\{ 1\cdot dZ_{0},0.4\cdot dZ_{1},0.3\cdot dZ_{2}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+At 
+\begin_inset Formula $t=1$
+\end_inset
+
+ expected path of 
+\begin_inset Formula $d\boldsymbol{Z}$
+\end_inset
+
+ is 
+\begin_inset Formula $\left\{ 1\cdot dZ_{0},1\cdot dZ_{1},0.6\cdot dZ_{2}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What is response of 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+? 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Period 0 with RE:
+\begin_inset Formula 
+\[
+dC_{0}=\frac{\partial C_{0}}{\partial Z_{0}}dZ_{0}+\frac{\partial C_{0}}{\partial Z_{1}}dZ_{1}+\frac{\partial C_{0}}{\partial Z_{2}}dZ_{2}+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+With alternative 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+d\hat{C}_{0}=\frac{\partial C_{0}}{\partial Z_{0}}dZ_{0}+0.4\cdot\frac{\partial C_{0}}{\partial Z_{1}}dZ_{1}+0.3\cdot\frac{\partial C_{0}}{\partial Z_{2}}dZ_{2}+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stylized Example II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $d\hat{C}_{0}$
+\end_inset
+
+ simple to get.
+ What about 
+\begin_inset Formula $d\hat{C}_{1}?$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+With RE we have:
+\begin_inset Formula 
+\[
+dC_{1}=\frac{\partial C_{1}}{\partial Z_{0}}dZ_{0}+\frac{\partial C_{1}}{\partial Z_{1}}dZ_{1}+\frac{\partial C_{1}}{\partial Z_{2}}dZ_{2}+\ldots
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+With Alternative 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+:
+\size footnotesize
+
+\begin_inset Formula 
+\[
+d\hat{C}_{1}=\underbrace{\frac{\partial C_{1}}{\partial Z_{0}}dZ_{0}}_{\text{Past shock}}+\underbrace{0.4\frac{\partial C_{1}}{\partial Z_{1}}dZ_{1}+\left(1-0.4\right)\frac{\partial C_{0}}{\partial Z_{0}}dZ_{1}}_{\text{Shock "today"}}+\underbrace{0.3\frac{\partial C_{1}}{\partial Z_{2}}dZ_{2}+\left(0.6-0.3\right)\frac{\partial C_{0}}{\partial Z_{1}}dZ_{2}}_{\text{Future shock}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Intuition:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Past shock: Fully known, so standard effect
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Present shock: Weighted average of forward looking RE part and 
+\begin_inset Quotes ald
+\end_inset
+
+myopic
+\begin_inset Quotes ard
+\end_inset
+
+ surprise
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Future shock: Initial RE part from period 0 (weight: 
+\begin_inset Formula $0.3$
+\end_inset
+
+) and revision of expectations (weight: 
+\begin_inset Formula $0.6-0.3$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General formula
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+At first glance seems hard to implement
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+...
+ but we have a general formula to get 
+\begin_inset Formula $\hat{\boldsymbol{M}}$
+\end_inset
+
+ given 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\hat{\boldsymbol{M}}$
+\end_inset
+
+ matrix with expectations matrix 
+\begin_inset Formula $\boldsymbol{E}:$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\hat{M}_{t,s}=\sum_{\tau=0}^{\min\left\{ t,s\right\} }\underbrace{\left(E_{\tau,s}-E_{\tau-1,s}\right)M_{t-\tau,s-\tau}}_{\text{date-\ensuremath{t} effect of date-\ensuremath{\tau} expectation revision of date-\ensuremath{s} shock}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+with 
+\begin_inset Formula $E_{-1,s}=0$
+\end_inset
+
+ by convention
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Fast
+\series default
+ and 
+\series bold
+easy
+\series default
+ to implement
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Examples
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Examples:
+\size footnotesize
+
+\begin_inset Formula 
+\[
+\boldsymbol{E}^{\text{RE}}=\begin{bmatrix}1 & 1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix},\quad\quad\quad\boldsymbol{E}^{\text{Myopic}}=\begin{bmatrix}1 & 0 & 0 & 0 & \cdots\\
+1 & 1 & 0 & 0 & \cdots\\
+1 & 1 & 1 & 0 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Two extremes: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+\size small
+Rational
+\series default
+ expectations: Households are fully informed about the future path of 
+\series bold
+
+\begin_inset Formula $Z$
+\end_inset
+
+ 
+\series default
+from the moment the shock manifests
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size small
+Myopic
+\series default
+ expectations: Households are not forward looking w.r.t aggregates.
+ Every change in 
+\begin_inset Formula $Z$
+\end_inset
+
+ is a surprise.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Implied jacobians:
+\size footnotesize
+
+\begin_inset Formula 
+\[
+\boldsymbol{\hat{M}}^{\text{RE}}=\boldsymbol{M}=\begin{bmatrix}\frac{\partial C_{0}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{1}} & \frac{\partial C_{0}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{1}}{\partial Z_{1}} & \frac{\partial C_{1}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{2}}{\partial Z_{0}} & \frac{\partial C_{2}}{\partial Z_{1}} & \frac{\partial C_{2}}{\partial Z_{2}} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix},\quad\quad\quad\boldsymbol{\hat{M}}^{\text{Myopic}}=\begin{bmatrix}\frac{\partial C_{0}}{\partial Z_{0}} & 0 & 0 & \cdots\\
+\frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{0}} & 0 & \cdots\\
+\frac{\partial C_{2}}{\partial Z_{0}} & \frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{0}} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jacobians
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Jacobian of C w.r.t Z 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+begin{minipage}{0.45
+\backslash
+textwidth}         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=
+\backslash
+textwidth]{figs/M_RE.pdf}         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}    
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+hfill     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.45
+\backslash
+textwidth}       
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+includegraphics[width=
+\backslash
+textwidth]{figs/M_myopic.pdf}    
+\end_layout
+
+\begin_layout Plain Layout
+
+ 
+\backslash
+end{minipage}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solving GE with non-RE expecations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Given some exp.
+ matrix 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+ we can construct alternative jacobians 
+\begin_inset Formula $\boldsymbol{\hat{M}},\boldsymbol{\hat{M}}_{r}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solve for GE using these jacobians instead of RE jacobians 
+\begin_inset Formula $\boldsymbol{M},\boldsymbol{M}_{r}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\boldsymbol{H}\left(\boldsymbol{U},\boldsymbol{X}\right)=0\Rightarrow d\boldsymbol{U}=-\boldsymbol{\hat{H}}_{U}^{-1}\hat{\boldsymbol{H}}_{X}d\boldsymbol{X}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In our example:
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{Y} & -\boldsymbol{C}\left(\boldsymbol{r},\frac{1}{\mu}\boldsymbol{Y}\right)=0\\
+\Rightarrow & d\boldsymbol{Y}=\left(\boldsymbol{I}-\frac{1}{\mu}\boldsymbol{\hat{M}}\right)^{-1}\boldsymbol{\hat{M}}_{r}d\boldsymbol{r}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $-\boldsymbol{\hat{H}}_{U}^{-1}=\left(\boldsymbol{I}-\frac{1}{\mu}\boldsymbol{\hat{M}}\right)^{-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{\boldsymbol{H}}_{X}=-\boldsymbol{\hat{M}}_{r}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Non-RE expecations in GEModelTools I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How to implement in GEModelTools?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Currently no built in way to handle 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Work around (see exercise):
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Compute all Jacobians for household block 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{model.compute_hh_jacs()}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If using RA/TA instead of HA must manually compute jac
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Construct Expectation matrix 
+\begin_inset Formula $\boldsymbol{E}$
+\end_inset
+
+ and compute 
+\begin_inset Formula $\boldsymbol{\tilde{M}}$
+\end_inset
+
+ by modyfing RE jacobians in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{model.jac_hh}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Overwrite jacobians 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{model.jac_hh}
+\end_layout
+
+\end_inset
+
+ with 
+\begin_inset Formula $\boldsymbol{\tilde{M}}$
+\end_inset
+
+ for each output/input to household block
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Compute all Jacobians w.r.t unknowns and shocks, but 
+\series bold
+not
+\series default
+ for household block 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{model.compute_jacs(compute_hh_jac=False,do_shocks=True)}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+GEModelTools will automatically use whatever jacobian is in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{model.jac_hh}
+\end_layout
+
+\end_inset
+
+ to construct Jacobians 
+\begin_inset Formula $\boldsymbol{H}_{U},\boldsymbol{H}_{Z}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solve for IRFs:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{model.find_IRFs(shocks=[x])}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Back to Auclert, Rognlie, Straub (2020) - Sticky expectations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Auclert, Rognlie, Straub (2020) use 
+\series bold
+sticky information/expectations
+\series default
+ (Mankiw and Reis (2002)) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Only a fraction 
+\begin_inset Formula $1-\theta$
+\end_inset
+
+ of HHs update their information set about the aggregate economy each period
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Only learn full path of shock 
+\begin_inset Formula $d\boldsymbol{r},d\boldsymbol{Z}$
+\end_inset
+
+ if you update 
+\end_layout
+
+\begin_layout Itemize
+1.
+ period: 
+\begin_inset Formula $1-\theta$
+\end_inset
+
+ update and learn full path 
+\end_layout
+
+\begin_layout Itemize
+2.
+ period: 
+\begin_inset Formula $\theta\left(1-\theta\right)$
+\end_inset
+
+ update, so 
+\begin_inset Formula $1-\theta+\theta\left(1-\theta\right)=1-\theta^{2}$
+\end_inset
+
+ have full info
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Expectations matrix:
+\begin_inset Formula 
+\[
+\boldsymbol{E}=\begin{pmatrix}1 & 1-\theta & 1-\theta & \dots\\
+1 & 1 & 1-\theta^{2} & \dots\\
+1 & 1 & 1 & \dots\\
+\vdots & \vdots & \vdots & \ddots
+\end{pmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sticky expectations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Properties:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Response of consumption at 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $Z_{1}$
+\end_inset
+
+ is 
+\begin_inset Formula $\left(1-\theta\right)\frac{\partial C_{0}}{\partial Z_{1}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Response of consumption at 
+\begin_inset Formula $1$
+\end_inset
+
+ to 
+\begin_inset Formula $Z_{1}$
+\end_inset
+
+is 
+\begin_inset Formula $\left(1-\theta\right)\frac{\partial C_{1}}{\partial Z_{1}}+\theta\frac{\partial C_{0}}{\partial Z_{0}}$
+\end_inset
+
+ and so forth
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\theta=0$
+\end_inset
+
+ gives us RE, 
+\begin_inset Formula $\theta=1$
+\end_inset
+
+ gives us myopic behavior.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Since households perfectly observe income changes 
+\series bold
+today and in past 
+\series default
+iMPCs are preserved
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Unlike
+\series default
+ habit formation 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Estimation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Auclert, Rognlie, Straub (2020) fomulate full HANK model with:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Investment 
+\end_layout
+
+\begin_layout Itemize
+Sticky wages + prices
+\end_layout
+
+\begin_layout Itemize
+Government
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Estimate parameters to match empirical evidence on causally identified monetary
+ policy shock in the US (Romer & Romer shock) 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MJMCFig3.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Estimate 
+\begin_inset Formula $\theta=0.935$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series bold
+Large 
+\series default
+deviation from RE
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Direct and indirect effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can decompose 
+\begin_inset Formula $C$
+\end_inset
+
+ into direct and indirect as before
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MJMCFig6.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the estimated model with sticky expectations indirect effect is by far
+ the most important driver of consumption
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Exercise
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercise
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Consider the HANK model described in section 2
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Compare a monetary policy shock in HANK and RANK.
+ Decompose the response in HANK into direct and indirect effects using the
+ household Jacobians
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Solve for a monetary policy shock in HANK and RANK with myopic expectations
+ w.r.t 
+\begin_inset Formula $\boldsymbol{r},\boldsymbol{Z},$
+\end_inset
+
+only 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ and only 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Solve for a monetary policy shock in HANK and RANK with sticky expectations
+ w.r.t 
+\begin_inset Formula $\boldsymbol{r},\boldsymbol{Z},$
+\end_inset
+
+only 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ and only 
+\begin_inset Formula $\boldsymbol{Z}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Consider a model where household hold nominal government debt instead.
+ Relax the borrowing constraint to -1, 
+\begin_inset Formula $\underline{a}=-1$
+\end_inset
+
+ and solve for a monetary policy shock (assume rational expectations).
+ Does the presence of household debt amplify or dampen the effects of monetary
+ policy?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monetary policy in HANK 
+\end_layout
+
+\begin_layout Itemize
+Alternatives to rational expecations, and how to implement them using jacobians
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Next week: 
+\series default
+HANK + unemployment risk in GE (
+\series bold
+JD
+\series default
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Homework:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Work on exercise
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
