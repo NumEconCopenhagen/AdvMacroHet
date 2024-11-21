@@ -3179,6 +3179,24 @@ Element
 
 \end_layout
 
+\begin_layout Itemize
+First column: Exp.
+ of HHs at all dates w.r.t 
+\begin_inset Formula $dZ_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Second column: Exp.
+ of HHs at all dates w.r.t 
+\begin_inset Formula $dZ_{1}$
+\end_inset
+
+...
+\end_layout
+
 \end_deeper
 \begin_layout Itemize
 \begin_inset ERT
@@ -3981,7 +3999,11 @@ Solve for GE using these jacobians instead of RE jacobians
 \begin_inset Formula $\boldsymbol{M},\boldsymbol{M}_{r}$
 \end_inset
 
-:
+ (
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+=shock):
 \begin_inset Formula 
 \[
 \boldsymbol{H}\left(\boldsymbol{U},\boldsymbol{X}\right)=0\Rightarrow d\boldsymbol{U}=-\boldsymbol{\hat{H}}_{U}^{-1}\hat{\boldsymbol{H}}_{X}d\boldsymbol{X}
@@ -4050,7 +4072,7 @@ where
 status open
 
 \begin_layout Plain Layout
-Non-RE expecations in GEModelTools I
+Non-RE expecations in GEModelTools
 \end_layout
 
 \end_inset
@@ -4117,7 +4139,7 @@ status open
 
 
 \backslash
-lstinline{model.compute_hh_jacs()}
+lstinline{model._compute_jac_hh()}
 \end_layout
 
 \end_inset
@@ -4146,7 +4168,7 @@ Construct Expectation matrix
 \end_inset
 
  and compute 
-\begin_inset Formula $\boldsymbol{\tilde{M}}$
+\begin_inset Formula $\boldsymbol{\hat{M}}$
 \end_inset
 
  by modyfing RE jacobians in 
@@ -4190,7 +4212,7 @@ lstinline{model.jac_hh}
 \end_inset
 
  with 
-\begin_inset Formula $\boldsymbol{\tilde{M}}$
+\begin_inset Formula $\boldsymbol{\hat{M}}$
 \end_inset
 
  for each output/input to household block
@@ -4223,7 +4245,7 @@ status open
 
 
 \backslash
-lstinline{model.compute_jacs(compute_hh_jac=False,do_shocks=True)}
+lstinline{model.compute_jacs(skip_hh=True,skip_shocks=False)}
 \end_layout
 
 \end_inset
@@ -4668,6 +4690,73 @@ deviation from RE
 status open
 
 \begin_layout Plain Layout
+RE vs.
+ Non-RE
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Why we need sticky expectations in order to match empirical response
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.85
+\backslash
+linewidth]{figs/MJMCFig4.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Direct and indirect effects
 \end_layout
 
@@ -4708,7 +4797,7 @@ centering
 
 
 \backslash
-includegraphics[width=0.7
+includegraphics[width=0.85
 \backslash
 linewidth]{figs/MJMCFig6.png}      
 \end_layout
@@ -4728,6 +4817,74 @@ end{figure}
 \begin_layout Itemize
 In the estimated model with sticky expectations indirect effect is by far
  the most important driver of consumption
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Importance of Investment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Importance of indirect effects in HANK partly comes from 
+\emph on
+investment
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/MJMCFig5.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_deeper
