@@ -1,0 +1,183 @@
+\documentclass[handout]{beamer}
+
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{overlay-beamer-styles}
+\usepackage{verbatim}
+\usepackage[active,tightpage]{preview}
+
+\usepackage{xcolor}
+\definecolor{color1}{HTML}{4C72B0}
+\definecolor{color2}{HTML}{55A868}
+\definecolor{color3}{HTML}{ff6833}
+\definecolor{white}{HTML}{FFFFFF}
+
+\PreviewEnvironment{tikzpicture}
+\setlength\PreviewBorder{5pt}
+
+\usepackage[utf8]{inputenc}
+\usetikzlibrary{arrows,automata}
+\usetikzlibrary{positioning}
+
+\tikzset{
+state/.style={
+rectangle,
+rounded corners,
+minimum height=2em,
+inner sep=2pt,
+text centered,
+},
+}
+
+%%%%%%
+% NODES %
+%%%%%%
+
+\begin{document}
+\begin{frame}
+\begin{tikzpicture}[->,>=stealth']
+
+\node[state] (RealR) 
+{\begin{tabular}{c}
+Real interest rate \\
+$\{R_t^{\text{real}}\}$
+\end{tabular}
+};
+
+
+\node[state,
+text width=0.1cm,
+yshift=0cm,
+right of=RealR,
+node distance=1.5cm, 
+anchor=center] (CLEAR) 
+{
+};
+
+\node[state,
+text width=3cm,
+yshift=0cm,
+right of=RealR,
+node distance=12cm, 
+anchor=center] (UDYN) 
+{
+\begin{tabular}{c} 	
+Income (risk) \\ $\{\delta_{t},\lambda^u_t,\text{div}_t\}$
+\end{tabular}
+};
+
+\node[state,
+text width=2cm,
+yshift=2cm,
+left of=UDYN,
+node distance=5.5cm, 
+anchor=center] (GOV) 
+{
+\begin{tabular}{c} 	
+Goverment\\bonds \\ $\{B_{t}\}$
+\end{tabular}
+};
+
+\node[state,
+text width=2cm,
+yshift=-1cm,
+below of=GOV,
+node distance=2cm, 
+anchor=center] (HH) 
+{
+\begin{tabular}{c} 	
+Household\\savings \\ $\{A_{t}^{hh}\}$
+\end{tabular}
+};
+
+
+\node[state,
+below of=RealR,
+node distance=3cm,
+anchor=center] (PI) 
+{
+\begin{tabular}{c}
+Inflation\\
+$\{\Pi_t\}$
+\end{tabular}
+};
+
+\node[state,
+right of=PI,
+node distance=12cm,
+anchor=center] (PXZ) 
+{
+\begin{tabular}{c}
+Labor revenue product\\
+$\{P_t^x\}$
+\end{tabular}
+};
+
+\node[state,
+right of=PXZ,
+node distance=8cm,
+anchor=center] (THETA) 
+{
+\begin{tabular}{c}
+Tightness\\
+$\{\theta_t\}$
+\end{tabular}
+};
+
+\path 
+
+%%%%%%%
+%% EDGES %
+%%%%%%%
+
+(GOV) edge[draw=color1,->]  node[color=color1]{} (CLEAR)
+(HH) edge[draw=color1,->]  node[color=color1]{} (CLEAR)
+(GOV) edge[draw=color1,->]  node[color=color1,anchor=west]{tax} (HH)
+
+(UDYN) edge[draw=color1,->]  node[color=color1,anchor=west,yshift=0.2cm]{fiscal rule} (GOV)
+(UDYN) edge[draw=color1,->]  node[color=color1,anchor=north,xshift=0.5cm]{\begin{tabular}{c}income process\end{tabular}} (HH)
+(UDYN) edge[draw=color3,<-] node[color=color3,anchor=south west,above]{\begin{tabular}{c}matching \\ function\end{tabular}} (THETA)
+(UDYN) edge[draw=color3,<-,] node[color=color3,anchor=west]{separations} (PXZ)
+
+(PXZ) edge[draw=color2,<-] node[color=color2,anchor=west,above]{phillips curve} (PI) 
+(PI) edge[draw=color2,<-] node[color=color2, anchor=west]{taylor rule} (RealR)
+(THETA) edge[draw=color3,<-] node[color=color3,anchor=west,above]{separations + entry} (PXZ)
+
+;
+
+%%%%%%%
+%% BOXES %
+%%%%%%%
+
+\node[state,
+text width=1.8cm,
+yshift=0.1cm,
+right of=RealR,
+node distance=3.0cm, 
+color=color1,
+fill=white,
+anchor=center]
+{
+\begin{tabular}{c} 	
+asset\\market\\clearing
+\end{tabular}
+};
+
+\node[state,
+fill=gray!20,
+text width=3cm,
+yshift=2cm,
+right of=UDYN,
+node distance=4.0cm, 
+anchor=center] 
+{
+\begin{tabular}{c} 	
+{\color{color1} HA-block} \\
+{\color{color2} NK-block} \\
+{\color{color3} SAM-block} \\
+\end{tabular}
+};
+
+\end{tikzpicture}
+\end{frame}
+\end{document}
