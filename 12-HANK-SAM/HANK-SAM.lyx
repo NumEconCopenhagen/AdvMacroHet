@@ -746,6 +746,8 @@ Incomplete markets:
 
 \begin_deeper
 \begin_layout Standard
+
+\size footnotesize
 Complete markets / representative agent:
 \begin_inset Newline newline
 \end_inset
@@ -1112,7 +1114,7 @@ Grid:
 \begin_layout Itemize
 
 \series bold
-Workers
+Employed
 \series default
  with 
 \begin_inset Formula $u_{it-1}=0$
@@ -1169,6 +1171,8 @@ Trick:
 \series bold
 All unemployed search:
  
+\series default
+
 \begin_inset Formula $s(u_{it-1})=\begin{cases}
 0 & \text{if }u_{it-1}=0\\
 1 & \text{else}
@@ -1255,7 +1259,7 @@ At decision:
 \begin_layout Itemize
 
 \series bold
-Stochastic transition matrix:
+Stochastic (time-varying) transition matrix:
 
 \series default
  
@@ -1970,7 +1974,7 @@ Tip:
 \series default
  
 \emph on
-You should be able to verify Walras' law
+You should be able to verify Walras' law.
 \end_layout
 
 \end_deeper
@@ -2719,6 +2723,17 @@ More detailed calibration
 \end_layout
 
 \end_deeper
+\begin_layout Itemize
+
+\series bold
+Previous paper:
+
+\series default
+ Broer et.
+ al.
+ (2023) in zero liquidity
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -3177,6 +3192,22 @@ Relative tax respones:
 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Decomposition for household transfers:
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{taxes}^{j} & =M_{\text{inc},\text{taxes}}\boldsymbol{inc}^{j}+M_{h,taxes}\boldsymbol{h}^{j}\\
+\text{\boldsymbol{taxes}^{j,\text{PE}}} & =M_{h,\text{taxes}}\boldsymbol{h}^{j}\\
+\text{\boldsymbol{taxes}^{j,\text{GE}}} & =M_{\text{inc},\text{taxes}}\boldsymbol{inc}^{j}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -4069,6 +4100,129 @@ Non-sufficient Euler-equation create serious problems
 
 \end_deeper
 \end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Adds
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Økonomisk Eksploratorium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename figs/Eksploratorium.jpeg
+	lyxscale 30
+	width 95text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+PhD (4+4 or 5+3)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/PhD.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Interested?
+
+\series default
+ Come talk to me
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Additional positions:
+
+\series default
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Nationalbanken 
+\series default
+(not online yet)
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+EUI 
+\series default
+(in Florence)
+\series bold
+:
+ 
+\series default
+Virtual Open Day Dec 2 at 13 (
+\begin_inset CommandInset href
+LatexCommand href
+name "link"
+target "https://www.eui.eu/events?id=574566"
+literal "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
