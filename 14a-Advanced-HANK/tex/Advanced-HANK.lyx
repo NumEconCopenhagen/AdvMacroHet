@@ -1,0 +1,3430 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{14.
+ Advanced HANK Topics
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+So far:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Utilize HANK framework to study 
+\series bold
+how
+\series default
+ stabilization policy (fiscal, monetary) affects the economy
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today: 
+\series default
+How does 
+\emph on
+policy recommendations
+\emph default
+ change with the introduction of heterogeneous agents?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I.e what is the optimal policy in response to adverse aggregate shocks? 
+\end_layout
+
+\begin_layout Itemize
+Is it affected by heterogeneity?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+This topic is at the 
+\series bold
+research frontier 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+At the end of lecture I will briefly mention other topics at the frontier
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Optimal Policy
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What is the problem of the social planner?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider example where the central bank/social planner chooses the path
+ of interest rates 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Goal
+\series default
+: Maximize aggregate welfare of 
+\series bold
+all
+\series default
+ 
+\series bold
+households 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Subject to:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The model (equilibrium conditons, firm + HH behavior, budget constraints
+ etc)
+\end_layout
+
+\begin_layout Itemize
+Aggregate shocks 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+This problem is more complicated than calculating 
+\series bold
+optimal steady state policy 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Optimal steady state: Maximize one function as a function of 1 or 2 variables
+ (ex: labor income tax+capital income tax)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Here: Choose entire 
+\series bold
+path
+\series default
+ (length T) of instruments subject to entire dynamic model 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal Policy - computation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Two Approaches:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Start from 
+\series bold
+efficient
+\series default
+ steady state 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Harsh assumption
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+No distortions in steady state 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No monopolistic competetion, tax distortions
+\end_layout
+
+\begin_layout Itemize
+No motive for redistribution (i.e.
+ incomplete markets)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can then derive quadratic loss function
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Easy to minimize 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Yields optimal Policy
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Start from 
+\series bold
+inefficient
+\series default
+ steady state 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Larger role for inequality and redistribution 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Much more difficult - see end of lecture 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal policy around efficient steady state
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Standard NK model features 
+\series bold
+inefficient
+\series default
+ steady state due to monopolistic competition 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Simple steady state policy can restore efficiency: Give firms a labor subsidiy
+ 
+\begin_inset Formula $\tau$
+\end_inset
+
+ such that they charge lower prices 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Around
+\series bold
+ efficient steady state
+\series default
+, can derive the following approximation of household welfare (see e.g.
+ Woodford book):
+\begin_inset Formula 
+\[
+\mathcal{W}=\sum_{t=0}^{\infty}\beta^{t}\left[u\left(c_{t}\right)-\nu\left(L_{t}\right)\right]\approx-\sum_{t=0}^{\infty}\beta^{t}\left(d\pi_{t}^{2}+\lambda_{Y}dY_{t}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Maximizing welfare same as minizing loss function
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Planner want to stabilize (varianceof) inflation and output
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solving the planner prob.
+ - efficient steady state
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Sequence-space social planner problem (
+\begin_inset Formula $\boldsymbol{\beta}=\text{diag}\left(1,\beta^{1},\beta^{2},...\right)$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+\min\boldsymbol{\pi}'\boldsymbol{\beta}\boldsymbol{\pi}+\lambda_{Y}d\boldsymbol{Y}'\boldsymbol{\beta}d\boldsymbol{Y}\quad\text{s.t.}\quad H\left(\boldsymbol{Y},\boldsymbol{\pi},\boldsymbol{i},\boldsymbol{\Gamma}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Stack target variables in vector 
+\begin_inset Formula $\boldsymbol{x}=\left(\boldsymbol{\pi},\boldsymbol{Y}\right)'$
+\end_inset
+
+ and weights 
+\begin_inset Formula $\boldsymbol{\lambda}=\left(\boldsymbol{1},\lambda_{Y}\right)$
+\end_inset
+
+.
+ Then:
+\begin_inset Formula 
+\[
+\min\boldsymbol{x}'\left(\boldsymbol{\beta}\boldsymbol{\lambda}\right)\boldsymbol{x}\quad\text{s.t.}\quad H\left(\boldsymbol{x},\boldsymbol{i},\boldsymbol{\Gamma}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Choose interest rate to solve this problem.
+ Solution:
+\begin_inset Formula 
+\[
+\boldsymbol{i}^{*}=-\left[\boldsymbol{J}_{x,i}'\left(\boldsymbol{\beta}\boldsymbol{\lambda}\right)\boldsymbol{J}_{x,i}\right]^{-1}\times\left[\boldsymbol{J}_{x,i}'\left(\boldsymbol{\beta}\boldsymbol{\lambda}\right)\boldsymbol{J}_{x,\boldsymbol{\Gamma}}d\boldsymbol{\Gamma}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Easy
+\series default
+ to solve for optimal policy given shock 
+\begin_inset Formula $d\boldsymbol{\Gamma}$
+\end_inset
+
+ - just need jacobians around ss!
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We need jacobians for 
+\begin_inset Formula $\pi,Y$
+\end_inset
+
+ w.r.t to the shock 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+, and the policy instrument 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Interpretation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How to interpret optimal policy formula:
+\begin_inset Formula 
+\[
+\boldsymbol{i}^{*}=-\left[\boldsymbol{J}_{x,i}'\left(\boldsymbol{\beta}\boldsymbol{\lambda}\right)\boldsymbol{J}_{x,i}\right]^{-1}\times\left[\boldsymbol{J}_{x,i}'\left(\boldsymbol{\beta}\boldsymbol{\lambda}\right)\boldsymbol{J}_{x,\boldsymbol{\Gamma}}d\boldsymbol{\Gamma}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solution to least-squares problem: 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Same form as a OLS least squares estimate (
+\begin_inset Quotes ald
+\end_inset
+
+
+\begin_inset Formula $cov\left(\frac{\partial x}{\partial i},\frac{\partial x}{\partial\Gamma}d\boldsymbol{\Gamma}\right)/var\left(\frac{\partial x}{\partial i}\right)$
+\end_inset
+
+
+\begin_inset Quotes ard
+\end_inset
+
+)
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.3cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If the instrument and the shock co-vary strongly 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+Instrument is good at offsetting shock, should react more 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.3cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If variance of instrument is large (i.e.
+ it has large effects on target variables) 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+Don't need to change instrument much to get effect
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal policy in HANK - Efficient ss
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How does this work in 
+\series bold
+HANK
+\series default
+?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Main reference: Mckay and Wolf (2022)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Steady state is 
+\series bold
+not efficient 
+\series default
+due to incomplete markets (i.e.
+ borrowing constraint)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+But need efficient steady state to get quadratic loss function
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Choose general social welfare function (i.e.
+ objective of planner):
+\begin_inset Formula 
+\[
+\mathcal{W}=\sum_{t=0}^{T}\beta^{t}E_{t}\int\textcolor{red}{\ensuremath{\phi_{j}}}\left[u\left(c_{jt}\right)-\nu\left(L_{t}\right)\right]D_{jt}dj
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $\textcolor{red}{\ensuremath{\left\{ \phi_{j}\right\} }}$
+\end_inset
+
+ is a pareto weight.
+ Mckay and Wolf (2022) calibrate these weights such that initial steady
+ state efficiente according to objective 
+\begin_inset Formula $\mathcal{W}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If ss features some HHs with low income/wealth with high marginal utility,
+ then planner will place 
+\series bold
+low weight
+\series default
+ on these 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Welfare approximation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Given 
+\begin_inset Formula $\textcolor{red}{\ensuremath{\left\{ \phi_{i}\right\} }}$
+\end_inset
+
+ we can derive a second-order approximation of social welfare:
+\begin_inset Formula 
+\begin{alignat*}{1}
+\mathcal{W} & =\sum_{t=0}^{T}\beta^{t}E_{t}\int\phi_{j}\left[u\left(c_{jt}\right)-\nu\left(L_{t}\right)\right]D_{jt}dj\\
+ & \approx-\sum_{t=0}^{\infty}\beta^{t}\left(d\pi_{t}^{2}+\lambda_{Y}dY_{t}^{2}+\lambda_{\omega}\int\left(d\omega_{jt}\right)^{2}D_{j}dj\right)
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $d\omega_{it}\equiv\frac{c_{it}}{C_{t}}-\frac{c_{i,ss}}{C_{ss}}$
+\end_inset
+
+ is the change in individual 
+\begin_inset Formula $j$
+\end_inset
+
+'s consumption share
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Introducing HA give additional motive to social planner to 
+\series bold
+stabilize consumption shares 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Implications of inequality for opt.
+ policy depend on distributional incidence of policy 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Heterogeneity matters for monetary policy if this affect cross-sectional
+ consumption dispersion 
+\begin_inset Formula $\left(\frac{\int\left(d\omega_{jt}\right)^{2}D_{j}dj}{di_{t}}\neq0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary policy effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Match model to empirical effects of monetary policy on labor income + capital
+ gains across wealth distribution:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Model implied consumption response across wealth distribution:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MW/Fig2MonPolWealth.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Relatively flat - mon.
+ pol.
+ affect 
+\begin_inset Formula $c$
+\end_inset
+
+ of all HHs proportionally 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ consumption shares relatively stable, 
+\begin_inset Formula $\frac{\int\left(d\omega_{jt}\right)^{2}D_{j}dj}{di_{t}}\approx0$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size small
+HHs at bottom of dist.
+ respond to changes in labor income
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+HHs at top of dist.
+ respond (less) to large fluctuations in cap income (stock prices + house
+ prices)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal monetary policy - distributional shock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Application: Optimal monetary policy response to 
+\emph on
+distributional
+\emph default
+ shock (transfer from poor to rich)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Dual mandate = No inequality term (loss 
+\begin_inset Formula $=-\sum_{t=0}^{\infty}\beta^{t}\left(d\pi_{t}^{2}+\lambda_{Y}dY_{t}^{2}\right)$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Monetary only = Dual mandate + inequality term 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Inequality term barely affects optimal policy since monetary policy is ill-suite
+d to offset dist.
+ incidence
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MW/DistShock.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal joint monetary-fiscal policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If we consider joint monetary 
+\series bold
+and
+\series default
+ fiscal policy:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MW/DistShockJoint.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Fiscal policy good at redistribution - no need for monetary policy here
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Typical sentiment: Fiscal policy should handle redistribution, not monetar
+ policy
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quadratic approx: What do we lose?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Mckay-Wolf loss function builds on second-order approximation of aggregate
+ utility (assume log utility):
+\begin_inset Formula 
+\[
+\int\phi_{j}u\left(c_{jt}\right)dj\approx u'\left(C\right)\times dC_{t}-\int\frac{\phi_{j}}{c_{j}^{2}}dc_{jt}^{2}dj
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Weight on variance term 
+\begin_inset Formula $dc_{jt}^{2}$
+\end_inset
+
+ of individual 
+\begin_inset Formula $j$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Efficient steady state (
+\begin_inset Formula $\phi_{j}=u'\left(c_{j}\right)^{-1}=c_{j}$
+\end_inset
+
+): 
+\begin_inset Formula $1/c_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Infficient steady state and Utilitarian planner (
+\begin_inset Formula $\phi_{j}=1$
+\end_inset
+
+): 
+\begin_inset Formula $1/c_{j}^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Weights in standard model
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.5
+\backslash
+linewidth]{figs/UtilWeights.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Optimal Policy from inefficient steady state (Ramsey)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If we do not use use planner weights, HA ss is not efficient 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Cannot derive quad.
+ loss function 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+How to solve for optimal policy?
+\series default
+ Example in simple HANK with optimal monetary policy
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Simple model with HA, linear production and TFP shock - CB controls real
+ rate 
+\begin_inset Formula $r$
+\end_inset
+
+ (
+\series bold
+policy
+\series default
+ 
+\series bold
+instrument
+\series default
+)
+\size small
+
+\begin_inset Formula 
+\begin{alignat*}{1}
+\max_{\left\{ r_{t},c_{it},L_{t},Y_{t},w_{t},a_{it}\right\} _{t=0}^{T}}\mathcal{W}= & \sum_{t=0}^{T}\beta^{t}E_{t}\int\left[u\left(c_{it}\right)-\nu\left(L_{t}\right)\right]D_{it}di\\
+ & \text{s.t.}\\
+c_{it} & =c_{it}^{*}\\
+c_{it}+a_{it} & =w_{t}e_{it}+\left(1+r_{t}\right)a_{it-1}\\
+Y_{t} & =\Gamma_{t}L_{t}\\
+w_{t} & =\Gamma_{t}\\
+Y_{t} & =\int c_{it}D_{it}di
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lagrangian I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In Lagrangian form (substitute in and use 
+\begin_inset Formula $w_{t}=\Gamma_{t})$
+\end_inset
+
+ and 
+\begin_inset Formula $\boldsymbol{x}=\left\{ L_{t}\Gamma_{t},r_{t}\right\} _{t=0}^{T}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{alignat*}{1}
+\mathcal{L}=\max_{\left\{ r_{t},L_{t},\lambda_{t}\right\} _{t=0}^{T}} & \sum_{t=0}^{T}\left\{ \beta^{t}E_{t}\int u\left[\left(c_{it}^{*}\left(\boldsymbol{x}\right)\right)-\nu\left(L_{t}\right)\right]D_{it}\left(\boldsymbol{x}\right)di\right.\\
++ & \left.\lambda_{t}\left[\Gamma_{t}L_{t}-\int c_{it}^{*}\left(\boldsymbol{x}\right)D_{it}\left(\boldsymbol{x}\right)di\right]\right\} 
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+FOC
+\series default
+ (just w.r.t 
+\begin_inset Formula $r_{s}$
+\end_inset
+
+):
+\begin_inset Formula 
+\begin{alignat*}{1}
+\frac{\partial}{\partial r_{s}}\left[\sum_{t=0}^{T}\left\{ \beta^{t}E_{t}\int u\left(c_{it}^{*}\left(\boldsymbol{x}\right)-\nu\left(L_{t}\right)\right)D_{it}di\right.\right]\\
+-\frac{\partial}{\partial r_{s}}\sum_{t=0}^{T}\lambda_{t}\int c_{it}^{*}\left(\boldsymbol{x}\right)D_{it}\left(\boldsymbol{x}\right) & di=0
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lagrangian II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Denote 
+\begin_inset Formula $\boldsymbol{J}^{\mathcal{\mathcal{U}},r}\left(\boldsymbol{x}\right)$
+\end_inset
+
+ as jacobian of 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ w.r.t 
+\begin_inset Formula $r$
+\end_inset
+
+ evaluated at 
+\begin_inset Formula $\boldsymbol{x}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{alignat*}{1}
+\sum_{t=0}^{T}\beta^{t}\boldsymbol{J}_{t,s}^{\mathcal{\mathcal{U}},r} & \left(\boldsymbol{x}\right)-\sum_{t=0}^{T}\lambda_{t}\boldsymbol{J}_{t,s}^{C,r}\left(\boldsymbol{x}\right)=0
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+First term is (sum) of jacobian of agg.
+ utility 
+\begin_inset Formula $\mathcal{U}$
+\end_inset
+
+ w.r.t 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ (gradient)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Second term is (sum) of jacobian of agg 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ w.r.t 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+We know how to compute these using fake-news algorithm 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We can 
+\series bold
+evaluate
+\series default
+ the FOCs
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lagrangian FOCs I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Standard techniques (i.e.
+ Fake-news) allow us to evaluate the following system of FOCs:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+T eqs.
+ for each (instrument, endogenous variable, lagrange multiplier) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How do we 
+\series bold
+solve
+\series default
+ the system for the optimal policy response?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use (Quasi-)Newton/Broyden's method as usual [solve 
+\begin_inset Formula $f\left(x\right)=0$
+\end_inset
+
+ using 
+\begin_inset Formula $f'\left(x\right)$
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Continue example from before.
+ Jacobian of residual w.r.t 
+\begin_inset Formula $r_{k}$
+\end_inset
+
+: 
+\begin_inset Formula 
+\begin{alignat*}{1}
+\sum_{t=0}^{T}\beta^{t}\boldsymbol{J}_{t,s}^{\mathcal{\mathcal{U}},r}\left(\boldsymbol{x}\right)-\sum_{t=0}^{T}\lambda_{t}\boldsymbol{J}_{t,s}^{C,r}\left(\boldsymbol{x}\right)=0\\
+\Rightarrow\sum_{t=0}^{T}\beta^{t}\frac{\partial\boldsymbol{J}_{t,s}^{\mathcal{\mathcal{U}},r}}{\partial r_{k}}\left(\boldsymbol{x}\right)-\sum_{t=0}^{T}\lambda_{t}\frac{\partial\boldsymbol{J}_{t,s}^{C,r}}{\partial r_{k}}\left(\boldsymbol{x}\right)=0\\
+=\sum_{t=0}^{T}\beta^{t}\frac{\partial^{2}\mathcal{\mathcal{U}}_{t}}{\partial r_{s}\partial r_{k}}\left(\boldsymbol{x}\right)-\sum_{t=0}^{T}\lambda_{t}\frac{\partial^{2}C_{t}}{\partial r_{s}\partial r_{k}}\left(\boldsymbol{x}\right)=0
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Lagrangian FOCs II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Last equation repeated:
+\begin_inset Formula 
+\[
+=\sum_{t=0}^{T}\beta^{t}\frac{\partial^{2}\mathcal{\mathcal{U}}_{t}}{\partial r_{s}\partial r_{k}}\left(\boldsymbol{x}\right)-\sum_{t=0}^{T}\lambda_{t}\frac{\partial^{2}C_{t}}{\partial r_{s}\partial r_{k}}\left(\boldsymbol{x}\right)=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What is the issue here?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We need 
+\series bold
+\emph on
+second
+\series default
+\emph default
+ order derivatives to solve this!
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Expensive to get - recall:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Jacobian of HH problem requires 
+\begin_inset Formula $T^{2}$
+\end_inset
+
+ iterations to get for each input (Fake-news reduce this to 
+\begin_inset Formula $T$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Hessian (size: 
+\begin_inset Formula $T\times T\times T$
+\end_inset
+
+) requires 
+\begin_inset Formula $T^{3}$
+\end_inset
+
+ iterations to get 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can get down to 
+\begin_inset Formula $\frac{T^{2}}{2}$
+\end_inset
+
+ if we use Fake-news + symmetry
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Still slow if 
+\begin_inset Formula $T=300$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow45.000$
+\end_inset
+
+ evaluations of HH problem for each input 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Getting standard J with Fake-news only requires 
+\begin_inset Formula $T=300$
+\end_inset
+
+ evaluations 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Intuition for why this is difficult: the action of every agent 
+\begin_inset Formula $c_{i},a_{i}$
+\end_inset
+
+ is a choice variable in the planner's problem 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series bold
+massive
+\series default
+ max.
+ problem 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Solutions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Bhandari, Evans, Golosov, & Sargent (2021) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Use small-noise expansions to approximate model w.r.t to both idiosyncratic
+ states + aggregate shocks 
+\end_layout
+
+\begin_layout Itemize
+Can handle aggregate uncertainty, but not occ.
+ binding borrowing constraints
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Le Grand & Ragot (2022)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Truncation of state space.
+ Can then derive FOCs by hand
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Dávila & Schaab (2023)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Formulate model in continuous time following Nuño & Moll (2018) - can get
+ FOCs of planner problem by hand 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Extended to discrete time in Waldstrøm (2024) - use numerical tools from
+ 
+\emph on
+deep learning
+\emph default
+ literature to efficiently compute derivatives
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Literature not settled - no preferred solution yet!
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Other HANK Topics 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Other HANK topics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Brief introducion to optimal policy in HANK
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Many
+\series default
+ other very interesting topics where household heterogeneity potentially
+ matters
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+I will give you some very brief examples
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Could serve as inspiration for master thesis
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Schaab and Tan (2023) 
+\begin_inset Quotes ald
+\end_inset
+
+Monetary and Fiscal Policy According to HANK-IO
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Alves & Violante (2023) 
+\begin_inset Quotes ald
+\end_inset
+
+Some Like It Hot: Monetary Policy Under Okun’s Hypothesis
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Faccini, Lee, Luetticke, Ravn & Renkin (2024) 
+\begin_inset Quotes ald
+\end_inset
+
+Financial Frictions: Macro vs Micro Volatility
+\begin_inset Quotes ard
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Ferriere Navarro (2024) 
+\begin_inset Quotes ald
+\end_inset
+
+The heterogeneous effects of government spending: It’s all about taxes
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+HANK-IO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Schaab and Tan (2023) 
+\begin_inset Quotes ald
+\end_inset
+
+Monetary and Fiscal Policy According to HANK-IO
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+A multi-sector HANK model where:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Households work in different sectors (earnings heterogeneity)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+May matter for transmission if high MPC HHs work in sectors that are more
+ cyclical
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Buy goods from sectors (expenditure heterogeneity)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+May matter for transmission if higher MPC HHs primarily buy goods from sectors
+ with more flexible prices
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Calibrate the model to match these channels using micro data 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+They find that the contribution of earnings and expenditure heterogeneity
+ channels in the transmission of monetary policy is small
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Labor Market Dynamics and Monetary Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Alves & Violante (2023) 
+\begin_inset Quotes ald
+\end_inset
+
+Some Like It Hot: Monetary Policy Under Okun’s Hypothesis
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Poor households are more exposed to business cycles through LM transition
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Separation rates + job finding rates are more cyclical
+\end_layout
+
+\begin_layout Itemize
+Recession have long lasting effects on earnings (recession 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ leave the LM 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ hard to get back in)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Trade-off
+\series default
+ for CB: Running the economy hot generates inflaiton (bad) but keeps poor
+ household in labor market (good)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use a HANK model to quantify this trade-off 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Financial Frictions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Faccini, Lee, Luetticke, Ravn & Renkin (2024) 
+\begin_inset Quotes ald
+\end_inset
+
+Financial Frictions: Macro vs Micro Volatility
+\begin_inset Quotes ard
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Borrowers and savers pay different interest rates 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The spread (interest on loans minus savings) is countercyclical 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+A monetary policy shock that increases the interbank rate causes banks to
+ raise rates on loans more than on savings 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+This reduces the mass of household at 
+\begin_inset Formula $a<0$
+\end_inset
+
+ who move to 
+\begin_inset Formula $a=0$
+\end_inset
+
+ through deleveraging
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The aggregate MPCs increases by up to 5% in 
+\series bold
+response
+\series default
+ to a monetary policy shock due to this mechanism 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Progressive Taxes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Ferriere & Navarro (2024) 
+\begin_inset Quotes ald
+\end_inset
+
+The heterogeneous effects of government spending: It’s all about taxes
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Uncover 
+\emph on
+Progressivity-dependent fiscal multipliers
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Observation: Low income households:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+1) Have higher MPCs 
+\end_layout
+
+\begin_layout Itemize
+2) Have larger labor supply elasticities 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Result: Government spending shocks which are financed by more progressive
+ taxes have higher multipliers
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consistent with empirical evidence
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A brief look into current research frontier on HANK 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Many
+\series default
+ other papers which we have not covered
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Now: 
+\series default
+Exam
+\series bold
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
