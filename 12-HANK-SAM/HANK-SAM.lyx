@@ -2155,7 +2155,7 @@ Choose
 \end_inset
 
  and 
-\begin_inset Formula $\lambda_{u,ss}^{s}=0.30$
+\begin_inset Formula $\lambda_{ss}^{u,s}=0.30$
 \end_inset
 
  
@@ -4091,7 +4091,7 @@ Solution methods:
 
 \begin_deeper
 \begin_layout Enumerate
-Time-varying transition matrix is straigtforward
+Time-varying transition matrix is straightforward
 \end_layout
 
 \begin_layout Enumerate
@@ -4191,9 +4191,19 @@ Additional positions:
 \begin_layout Enumerate
 
 \series bold
-Nationalbanken 
+Nationalbanken:
+ 
 \series default
-(not online yet)
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Link"
+target "https://www.nationalbanken.dk/da/karriere/stillingsopslag/oekonomi-og-pengepolitik/dansk-stilling-25012024-resident-phd-fellowhip-programme-20241122"
+literal "false"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Enumerate
