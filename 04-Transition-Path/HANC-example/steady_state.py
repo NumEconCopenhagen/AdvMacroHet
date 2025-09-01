@@ -20,23 +20,10 @@ def prepare_hh_ss(model):
     # 1. grids #
     ############
     
-    # a. ability and beta
-    if par.Nphi == 1:
-        phi_grid = np.array([1.0])
-    elif par.Nphi == 3:
-        phi_grid = np.array([1-par.phi_delta,1,1+par.phi_delta])
-    else:
-        raise NotImplementedError
-
-    beta_grid = np.linspace(par.beta_mean-par.beta_delta,par.beta_mean+par.beta_delta,par.Nbeta)
-
-    par.phi_grid[:] = np.tile(phi_grid,par.Nbeta)
-    par.beta_grid[:] = np.repeat(beta_grid,par.Nphi)
-
-    # b. a
+    # a. a
     par.a_grid[:] = equilogspace(0.0,ss.w*par.a_max,par.Na)
     
-    # c. z
+    # b. z
     par.z_grid[:],z_trans,z_ergodic,_,_ = log_rouwenhorst(par.rho_z,par.sigma_psi,par.Nz)
 
     #############################################
@@ -88,7 +75,7 @@ def obj_ss(K_ss,model,do_print=False):
     # d. market clearing
     ss.I = par.delta*ss.K
     ss.clearing_A = ss.A-ss.A_hh
-    ss.clearing_L = ss.L-ss.L_hh
+    ss.clearing_L = ss.L-1.0
     ss.clearing_Y = ss.Y-ss.C_hh-ss.I
 
     return ss.clearing_A # target to hit

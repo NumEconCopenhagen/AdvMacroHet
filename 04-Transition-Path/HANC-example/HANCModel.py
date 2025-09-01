@@ -20,7 +20,7 @@ class HANCModelClass(EconModelClass,GEModelClass):
         self.pols_hh = ['a'] # policy functions
         self.inputs_hh = ['r','w'] # direct inputs
         self.inputs_hh_z = [] # transition matrix inputs
-        self.outputs_hh = ['a','c','l'] # outputs
+        self.outputs_hh = ['a','c'] # outputs
         self.intertemps_hh = ['vbeg_a'] # intertemporal variables
 
         # c. GE
@@ -50,35 +50,29 @@ class HANCModelClass(EconModelClass,GEModelClass):
 
         par = self.par
 
-        par.Nbeta = 3 # number of patience types
+        par.Nbeta = 1 # number of patience types
         par.Nphi = 1 # number of ability types
         par.Nz = 7 # number of stochastic discrete states (here productivity)
 
         # a. preferences
-        par.sigma = 2.0 # CRRA coefficient
-        par.beta_mean = 0.975 # discount factor, mean, range is [mean-width,mean+width]
-        par.beta_delta = 0.010 # discount factor, width, range is [mean-width,mean+width]
+        par.sigma = 1.0 # CRRA coefficient
+        par.beta = 0.9498866874132476 # discount factor, mean, range is [mean-width,mean+width]
 
         # b. income parameters
         par.rho_z = 0.95 # AR(1) parameter
         par.sigma_psi = 0.30*(1.0-par.rho_z**2.0)**0.5 # std. of persistent shock
-        par.phi_delta = 0.0 # spread in ability
 
         # c. production and investment
-        par.Gamma_ss = np.nan # technology level [determined in ss]
-        par.alpha = 0.36 # cobb-douglas
-        par.delta = np.nan # depreciation [determined in ss]
-
-        # d. calibration
-        par.r_ss_target = 0.01 # target for real interest rate
-        par.w_ss_target = 1.0 # target for real wage
+        par.alpha = 1/3 # cobb-douglas
+        par.Gamma_ss = 1.0/(4.0**par.alpha) # technology level [determined in ss]
+        par.delta = 0.1/3 # depreciation
 
         # f. grids         
-        par.a_max = 500.0 # maximum point in grid for a
-        par.Na = 300 # number of grid points
+        par.a_max = 10_000.0 # maximum point in grid for a
+        par.Na = 500 # number of grid points
 
         # g. shocks
-        par.jump_Gamma = -0.10 # initial jump
+        par.jump_Gamma = 0.02 # initial jump
         par.rho_Gamma = 0.90 # AR(1) coefficient
         par.std_Gamma = 0.01 # std. of innovation
 

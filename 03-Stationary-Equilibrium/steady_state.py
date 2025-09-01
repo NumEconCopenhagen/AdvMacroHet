@@ -17,13 +17,10 @@ def prepare_hh_ss(model):
     # 1. grids #
     ############
     
-    # a. beta
-    par.beta_grid[:] = np.linspace(par.beta_mean-par.beta_delta,par.beta_mean+par.beta_delta,par.Nbeta)
-
-    # b. a
+    # a. a
     par.a_grid[:] = equilogspace(0.0,par.a_max,par.Na)
     
-    # c. z
+    # b. z
     par.z_grid[:], z_trans, z_ergodic,_,_ = log_rouwenhorst(par.rho_z,par.sigma_psi,par.Nz)
 
     #############################################
@@ -102,13 +99,16 @@ def find_ss(model,method='direct',do_print=False,K_min=1.0,K_max=10.0,NK=10):
         find_ss_direct(model,do_print=do_print,K_min=K_min,K_max=K_max,NK=NK)
     elif method == 'indirect':
         find_ss_indirect(model,do_print=do_print)
+    elif method == 'beta':
+        find_ss_beta(model,do_print=do_print)
     else:
         raise NotImplementedError
 
     if do_print: print(f'found steady state in {elapsed(t0)}')
 
 
-def find_ss_direct(model,do_print=False,K_min=1.0,K_max=10.0,NK=10):
+
+def find_ss_direct(model,do_print=False,K_min=0.1,K_max=10.0,NK=10):
     """ find steady state using direct method """
 
     # a. broad search
@@ -116,7 +116,7 @@ def find_ss_direct(model,do_print=False,K_min=1.0,K_max=10.0,NK=10):
 
     K_ss_vec = np.linspace(K_min,K_max,NK) # trial values
     clearing_A = np.zeros(K_ss_vec.size) # asset market errors
-    import ipdb; ipdb.set_trace()
+
     for i,K_ss in enumerate(K_ss_vec):
         
         try:
@@ -143,6 +143,41 @@ def find_ss_direct(model,do_print=False,K_min=1.0,K_max=10.0,NK=10):
         varname='K_ss',funcname='A-A_hh'
     )
 
+def obj_ss_beta(beta, model, do_print = False):
+    par = model.par
+    ss = model.ss
+
+    par.beta = beta
+    model.solve_hh_ss(do_print=do_print)
+    model.simulate_hh_ss(do_print=do_print)
+
+    if do_print: print(f'implied {ss.A_hh = :.4f}')
+
+    # d. market clearing
+    ss.clearing_A = ss.A - ss.A_hh
+    ss.clearing_L = ss.L - ss.L_hh
+    ss.I = ss.K - (1-par.delta) * ss.K
+    ss.clearing_Y = ss.Y - ss.C_hh - ss.I
+
+    return ss.clearing_A  # target to hit
+
+def find_ss_beta(model, Y_target=1.0, K_target=4.0, r_target=0.05, beta_min=0.93, beta_max=0.95, do_print=True):
+    par = model.par
+    ss = model.ss
+
+    ss.Y = Y_target 
+    ss.K = K_target 
+    ss.A = ss.K 
+    r_implied = par.alpha * ss.Y / ss.K 
+    par.delta = r_implied - r_target
+    ss.Gamma = ss.Y/(ss.K**par.alpha)
+    ss.w = (1-par.alpha) * ss.Y 
+
+    root_finding.brentq(
+        obj_ss_beta,beta_min,beta_max,args=(model, do_print),
+        varname='beta',funcname='A-A_hh'
+    )
+
 def find_ss_indirect(model,do_print=False):
     """ find steady state using indirect method """
 
@@ -151,8 +186,8 @@ def find_ss_indirect(model,do_print=False):
 
     # a. exogenous and targets
     ss.L = 1.0
-    ss.r = par.r_ss_target
-    ss.w = par.w_ss_target
+    ss.r = 0.05
+    ss.w = 1/3
 
     # b. stock and capital stock from household behavior
     model.solve_hh_ss(do_print=do_print) # give us ss.a and ss.c (steady state policy functions)

@@ -4,7 +4,7 @@ import numba as nb
 from consav.linear_interp import interp_1d_vec
 
 @nb.njit(parallel=True)        
-def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,l,ss=False):
+def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,ss=False):
     """ solve backwards with vbeg_a from previous iteration (here vbeg_a_plus) """
 
     # par,z_trans: always inputs
@@ -18,21 +18,16 @@ def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c,l,ss=False):
 
         # a. solve step
         for i_z in nb.prange(par.Nz): # stochastic discrete states
-        
-            ## i. labor supply
-            l[i_fix,i_z,:] = par.phi_grid[i_fix]*par.z_grid[i_z] # : is over the asset state
 
-            ## ii. cash-on-hand
-            m = (1+r)*par.a_grid + w*l[i_fix,i_z,:]
+            ## i. cash-on-hand
+            m = (1+r)*par.a_grid + w*par.z_grid[i_z]
 
             if ss:
-
                 a[i_fix,i_z,:] = 0.0
 
             else:
-
                 # iii. EGM
-                c_endo = (par.beta_grid[i_fix]*vbeg_a_plus[i_fix,i_z])**(-1/par.sigma)
+                c_endo = (par.beta*vbeg_a_plus[i_fix,i_z])**(-1/par.sigma)
                 m_endo = c_endo + par.a_grid # current consumption + end-of-period assets
                 
                 # iv. interpolation to fixed grid

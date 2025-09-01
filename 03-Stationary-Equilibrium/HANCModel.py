@@ -52,29 +52,28 @@ class HANCModelClass(EconModelClass,GEModelClass):
         par.Nz = 7 # number of stochastic discrete states (here productivity)
 
         # a. preferences
-        par.sigma = 2.0 # CRRA coefficient
-        par.beta_mean = 0.985 # discount factor, mean, range is [mean-width,mean+width]
-        par.beta_delta = 0.010 # discount factor, width, range is [mean-width,mean+width]
-        par.beta = par.beta_mean
+        par.sigma = 1.0 # CRRA coefficient
+        par.beta = 0.9498866872330793 # discount factor, mean, range is [mean-width,mean+width]
+         
         # b. income parameters
         par.rho_z = 0.95 # AR(1) parameter
         par.sigma_psi = 0.30*(1.0-par.rho_z**2.0)**0.5 # std. of persistent shock
 
         # c. production and investment
-        par.alpha = 0.36 # cobb-douglas
-        par.delta = 0.10 # depreciation rate
-        par.Gamma_ss = 1.0 # direct approach: technology level in steady state
+        par.alpha = 1/3 # cobb-douglas
+        par.delta = 0.1/3 # depreciation rate
+        par.Gamma_ss = 0.6299605249474366 # direct approach: technology level in steady state
 
         # f. grids         
         par.a_max = 10_000.0 # maximum point in grid for a
         par.Na = 500 # number of grid points
 
         # g. indirect approach: targets for stationary equilibrium
-        par.r_ss_target = 0.01
-        par.w_ss_target = 1.0
+        par.r_ss_target = 0.05
+        par.w_ss_target = 1/3
 
         # h. misc.
-        par.max_iter_solve = 100_000 # maximum number of iterations when solving household problem
+        par.max_iter_solve = 50_000 # maximum number of iterations when solving household problem
         par.max_iter_simulate = 100_000 # maximum number of iterations when simulating household problem
         
         par.tol_solve = 1e-10 # tolerance when solving household problem
