@@ -211,7 +211,7 @@ subtitle{Adv.
 \backslash
 author{Jeppe Druedahl 
 \backslash
-& Raphael Hüleux}
+& Raphaël Huleux}
 \end_layout
 
 \begin_layout Plain Layout
@@ -809,7 +809,7 @@ Intertemporal Budget Constraint
 \begin_inset Formula 
 \begin{eqnarray*}
 a_{T-1} & = & Ra_{T-2}+wz_{T-1}-c_{T-1}\\
- & = & R^{2}a_{T-3}+Rwz_{T-2}-Rc_{T-2}+wz_{T-1}-c_{T-1}\\
+ & = & R(Ra_{T-3}+wz_{T-2}-c_{T-2})+wz_{T-1}-c_{T-1}\\
  & = & R^{T}a_{-1}+\sum_{t=0}^{T-1}R^{T-1-t}(wz_{t}-c_{t})
 \end{eqnarray*}
 
@@ -830,7 +830,7 @@ terminal condition
  (equality due utility max.)
 \begin_inset Formula 
 \begin{eqnarray*}
-R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & s_{0}+h_{0}-\sum_{t=0}^{T-1}R^{-t}c_{t}=0
+R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & \sum_{t=0}^{T-1}R^{-t}c_{t}=s_{0}+h_{0}
 \end{eqnarray*}
 
 \end_inset
@@ -963,6 +963,26 @@ CRRA:
 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+Constant consumption if:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\beta R=1$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\frac{1}{\sigma}\rightarrow0$
+\end_inset
+
+ (zero intertemporal elasticity of substitution)
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Insert 
 \series bold
@@ -997,7 +1017,12 @@ c_{0}^{\ast} & = & \frac{1-(\beta R)^{1/\sigma}R^{-1}}{1-\left((\beta R)^{1/\sig
 status open
 
 \begin_layout Plain Layout
-Infinite horizon
+Infinite horizon:
+ 
+\begin_inset Formula $T\rightarrow\infty$
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -1016,15 +1041,19 @@ for
 \end_inset
 
 :
- Let 
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Let 
 \begin_inset Formula $T\rightarrow\infty$
 \end_inset
 
  to get
 \begin_inset Formula 
 \begin{align*}
-c_{0}^{\ast} & =\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})\\
-\text{if }\forall z_{t}=1:\,c_{0}^{\ast} & =\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)\left(Ra_{-1}+\frac{R}{R-1}w\right)
+c_{0}^{\ast} & =\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})
 \end{align*}
 
 \end_inset
@@ -1032,32 +1061,21 @@ c_{0}^{\ast} & =\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)(s_{0}+h_{0})\\
 
 \end_layout
 
+\end_deeper
 \begin_layout Itemize
 
 \series bold
-Consume annuity value:
- 
-\begin_inset Formula $\beta R=1,z_{t}=1\Rightarrow c_{0}^{\ast}=ra_{-1}+w$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Intertemporal elasticity of substitution 
+Constant income
 \series default
-(IES 
-\begin_inset Formula $=\frac{1}{\sigma}$
+,
+ 
+\begin_inset Formula $\forall z_{t}=1$
 \end_inset
 
-)
-\series bold
 :
 \begin_inset Formula 
 \[
-\log c_{t+1}-\log c_{t}=\frac{1}{\sigma}\log\beta R
+c_{0}^{\ast}=\left(1-\frac{(\beta R)^{1/\sigma}}{R}\right)\left(Ra_{-1}+\frac{R}{R-1}w\right)
 \]
 
 \end_inset
@@ -1065,26 +1083,28 @@ Intertemporal elasticity of substitution
 
 \end_layout
 
-\begin_deeper
-\begin_layout Standard
-Constant consumption if:
-\end_layout
+\begin_layout Itemize
 
-\begin_layout Enumerate
+\series bold
+Consume annuity value
+\series default
+ if also 
 \begin_inset Formula $\beta R=1$
 \end_inset
 
- 
-\end_layout
 
-\begin_layout Enumerate
-\begin_inset Formula $\sigma\rightarrow\infty$
+\series bold
+ 
+\begin_inset Formula 
+\begin{align*}
+c_{0}^{\ast} & =ra_{-1}+w
+\end{align*}
+
 \end_inset
 
- (zero elasticity of substitution)
+
 \end_layout
 
-\end_deeper
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1285,8 +1305,13 @@ Same consumption if NPV of
 \end_inset
 
  is unchanged
-\series default
+\end_layout
 
+\begin_deeper
+\begin_layout Standard
+e.g.
+ higher in one period,
+ and lower in another
 \begin_inset Formula 
 \[
 \frac{r}{1+r}\sum_{t=0}^{\infty}\frac{z_{t}}{\left(1+r\right)^{t}}=1
@@ -1297,7 +1322,6 @@ Same consumption if NPV of
 
 \end_layout
 
-\begin_deeper
 \begin_layout Standard
 \begin_inset Formula $\Rightarrow$
 \end_inset
@@ -1308,6 +1332,50 @@ savings change with income
 \end_layout
 
 \end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Empirical MPCs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Fagereng_MPCs.png
+	lyxscale 50
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Source:
+
+\series default
+ Fagereng et.
+ al.
+ (2021)
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -1429,50 +1497,6 @@ Technical issue:
 \series default
 \emph on
 Borrowing constraints further in the future complicates the analytical solution considerably.
-\end_layout
-
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Empirical MPCs
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Standard
-\begin_inset Graphics
-	filename figs/Fagereng_MPCs.png
-	lyxscale 50
-	width 100text%
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Source:
-
-\series default
- Fagereng et.
- al.
- (2021)
 \end_layout
 
 \end_deeper
@@ -1660,7 +1684,7 @@ Substitution
 still implies:
 \begin_inset Formula 
 \begin{eqnarray*}
-R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & s_{0}+h_{0}-\sum_{t=0}^{T-1}R^{-t}c_{t}=0
+R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & \sum_{t=0}^{\infty}R^{-t}c_{t}=s_{0}+h_{0}
 \end{eqnarray*}
 
 \end_inset
@@ -1904,8 +1928,12 @@ Feasible:
 
 \series bold
 Utility change:
-
+ 
 \series default
+For 
+\begin_inset Formula $\Delta\rightarrow0$
+\end_inset
+
  
 \begin_inset Formula $u^{\prime}(c_{t})+\beta\left(-R\right)\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]>0$
 \end_inset
@@ -1976,6 +2004,14 @@ Feasible:
 
 \series bold
 Utility change:
+ 
+\series default
+For 
+\begin_inset Formula $\Delta\rightarrow0$
+\end_inset
+
+
+\series bold
  
 \series default
 
@@ -2336,15 +2372,15 @@ Dynamic solution:
 
 \begin_deeper
 \begin_layout Itemize
-
+Go back to a 
 \series bold
-Origin:
-
+finite horizon
 \series default
- Bellman,
- 1957,
- Chap.
- III.3.
+ problem with 
+\begin_inset Formula $T$
+\end_inset
+
+ periods
 \end_layout
 
 \begin_layout Itemize
@@ -2366,7 +2402,7 @@ recursively
 \begin_inset Formula $v_{T}(\bullet)=0$
 \end_inset
 
-
+ 
 \begin_inset Formula 
 \begin{align*}
 v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}[v_{t+1}(z_{t+1},a_{t})]\\
@@ -2588,7 +2624,7 @@ status open
 \begin_layout Plain Layout
 Infinite horizon:
  
-\begin_inset Formula $T\rightarrow\infty?$
+\begin_inset Formula $T\rightarrow\infty$
 \end_inset
 
 
@@ -2677,14 +2713,14 @@ In practice:
 \begin_layout Enumerate
 Make arbitrary initial guess (e.g.
  
-\begin_inset Formula $v_{t+1}=0$
+\begin_inset Formula $v_{T}=0$
 \end_inset
 
 )
 \end_layout
 
 \begin_layout Enumerate
-Solve backwards until value and policy functions does not change anymore (given some tolerance)
+Solve backwards until the value (and/or policy function) does not change anymore (relative to chosen tolerance)
 \end_layout
 
 \end_deeper
@@ -4638,7 +4674,7 @@ c_{it} & =m_{it}-bw
 \end_inset
 
 where 
-\begin_inset Formula $m_{it}=(1+r)a_{it-1}+wz_{it}$
+\begin_inset Formula $m_{t}=(1+r)a_{t-1}+wz_{t}$
 \end_inset
 
 
@@ -4761,7 +4797,11 @@ Savings transition:
 \begin_inset Formula $\Lambda$
 \end_inset
 
- is derived from the policy function 
+ derives from 
+\begin_inset Formula $a^{\ast}(z_{t},a_{t-1})$
+\end_inset
+
+
 \begin_inset ERT
 status open
 
@@ -5379,262 +5419,6 @@ vspace{2mm}
 \end_layout
 
 \end_deeper
-\end_deeper
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Side-note:
- Matrix formulation
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-The histogram method can be written in 
-\series bold
-matrix form
-\series default
-:
-\begin_inset Formula 
-\begin{align*}
-\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
-\underline{\boldsymbol{D}}_{t+1} & =\Lambda^{\prime}\boldsymbol{D}_{t}
-\end{align*}
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{-2mm}
-\end_layout
-
-\end_inset
-
-where
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{3mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[]
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\underline{\boldsymbol{D}}_{t}$
-\end_inset
-
- is vector of length 
-\begin_inset Formula $\#_{z}\times\#_{a}$
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[]
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\boldsymbol{D}_{t}$
-\end_inset
-
- is vector of length 
-\begin_inset Formula $\#_{z}\times\#_{a}$
-\end_inset
-
- 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[]
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula $\Pi_{z}^{\prime}$
-\end_inset
-
- is derived from the 
-\begin_inset Formula $\pi_{i_{z-},i_{z}}$
-\end_inset
-
-'s
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[]
-\end_layout
-
-\end_inset
-
-
-\series bold
-
-\begin_inset Formula $\Lambda_{t}^{\prime}$
-\end_inset
-
- 
-\series default
-is derived from the 
-\begin_inset Formula $\iota$
-\end_inset
-
-'s and 
-\begin_inset Formula $\omega$
-\end_inset
-
-'s
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{2mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-
-\series bold
-Further details:
- 
-\series default
-Young (2010),
- Tan (2020),
-\begin_inset Newline newline
-\end_inset
-
-Ocampo and Robinson (2024),
- Bayer et.
- al.
- (2024) 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-vspace{1mm}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Itemize
-
-\series bold
-Notebook:
-
-\series default
- Extra.
- The matrix formulation.ipynb
-\end_layout
-
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
