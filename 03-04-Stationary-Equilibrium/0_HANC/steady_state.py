@@ -54,15 +54,21 @@ Steady-state objective functions:
 - obj_ss (for beta method)
 """
 
-def obj_ss(K_ss,model,do_print=False):
+def obj_ss(x,model,method = 'direct', do_print=False):
     """ objective when solving for steady state capital """
 
     par = model.par
     ss = model.ss
 
+    if method == 'direct':
+        K_ss = x
+        ss.A = ss.K = K_ss
+    elif method == 'beta':
+        par.beta = x
+
     # a. production
     ss.Gamma = par.Gamma_ss # model user choice
-    ss.A = ss.K = K_ss
+    
     ss.L = 1.0 # by assumption
     ss.Y = ss.Gamma*ss.K**par.alpha*ss.L**(1-par.alpha)    
 
@@ -93,24 +99,6 @@ def obj_ss(K_ss,model,do_print=False):
     ss.clearing_Y = ss.Y - ss.C_hh - ss.I
 
     return ss.clearing_A # target to hit
-
-def obj_ss_beta(beta, model, do_print = False):
-    par = model.par
-    ss = model.ss
-
-    par.beta = beta
-    model.solve_hh_ss(do_print=do_print)
-    model.simulate_hh_ss(do_print=do_print)
-
-    if do_print: print(f'implied {ss.A_hh = :.4f}')
-
-    # d. market clearing
-    ss.clearing_A = ss.A - ss.A_hh
-    ss.clearing_L = ss.L - ss.L_hh
-    ss.I = ss.K - (1-par.delta) * ss.K
-    ss.clearing_Y = ss.Y - ss.C_hh - ss.I
-
-    return ss.clearing_A  # target to hit
 
 """ 
 Steady-state routines:
@@ -168,8 +156,8 @@ def find_ss_direct(model,do_print=False,K_min=0.1,K_max=10.0,NK=10):
     if do_print: print(f'### step 3: search ###\n')
 
     root_finding.brentq(
-        obj_ss,K_min,K_max,args=(model,),do_print=do_print,
-        varname='K_ss',funcname='A-A_hh'
+        obj_ss,K_min,K_max,args=(model,'direct'),
+        do_print=do_print,varname='K_ss',funcname='A-A_hh'
     )
 
 
@@ -188,8 +176,8 @@ def find_ss_beta(model, beta_min=0.93, beta_max=0.95, do_print=True):
     ss.w = (1-par.alpha) * ss.Y
 
     root_finding.brentq(
-        obj_ss_beta,beta_min,beta_max,args=(model, do_print),
-        varname='beta',funcname='A-A_hh'
+        obj_ss,beta_min,beta_max,args=(model, 'beta'),
+        do_print=do_print, varname='beta',funcname='A-A_hh'
     )
 
     # e. print
