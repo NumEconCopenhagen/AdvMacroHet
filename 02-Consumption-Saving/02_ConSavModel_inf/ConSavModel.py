@@ -40,7 +40,7 @@ class ConSavModelClass(EconModelClass):
 
         # saving
         par.r = 0.02 # interest rate
-        par.b = -0.10 # borrowing constraint relative to wage
+        par.b = 0.10 # borrowing constraint relative to wage
 
         # grid
         par.a_max = 100.0 # maximum point in grid
@@ -89,11 +89,11 @@ class ConSavModelClass(EconModelClass):
         par.z_trans_T = par.z_trans.T
 
         # b. asset grid
-        assert par.b <= 0.0, f'{par.b = :.1f} > 0, should be non-positive'
-        b_min = -par.z_grid.min()/par.r
-        if par.b < b_min:
-            print(f'parameter changed: {par.b = :.1f} -> {b_min = :.1f}') 
-            par.b = b_min + 1e-8
+        assert par.b >= 0.0, f'{par.b = :.1f} > 0, should be non-negative'
+        b_max = par.z_grid.min()/par.r
+        if par.b > b_max:
+            print(f'parameter changed: {par.b = :.1f} -> {b_max = :.1f}') 
+            par.b = b_max - 1e-8
 
         par.a_grid = par.w*equilogspace(par.b,par.a_max,par.Na)
 

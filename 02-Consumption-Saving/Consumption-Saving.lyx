@@ -3009,7 +3009,7 @@ lstinline{grids.equilogspace}
 \begin_layout Itemize
 
 \series bold
-ConSavNotebook:
+ConSavNotebooks:
  
 \series default
 
@@ -3242,7 +3242,7 @@ lstinline{linear_interp.interp1d}
 \begin_layout Itemize
 
 \series bold
-ConSavNotebook:
+ConSavNotebooks:
  
 \series default
 
@@ -3422,7 +3422,7 @@ lstinline{numba}
 \begin_layout Itemize
 
 \series bold
-ConSavNotebook:
+ConSavNotebooks:
  
 \series default
 
@@ -4604,7 +4604,7 @@ v_{0}(z_{t},a_{t-1}) & =\max_{\{c_{t}\}_{t=0}^{\infty}}\mathbb{E}_{0}\sum_{t=0}^
  & \text{s.t.}\\
 a_{t} & =(1+r_{t})a_{t-1}+wz_{t}-c_{it}\\
 \log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1},\,\,\,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{t}]=1\\
-a_{t} & \geq bw
+a_{t} & \geq-bw
 \end{align*}
 
 \end_inset
@@ -4625,7 +4625,7 @@ a_{t} & \geq bw
 status open
 
 \begin_layout Plain Layout
-Recursive formulation
+Recursive formulation I
 \end_layout
 
 \end_inset
@@ -4642,11 +4642,11 @@ Value function
 :
 \begin_inset Formula 
 \begin{align*}
-v(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}\left[v(z_{t+1},a_{t})\right]\\
+v(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}\left[v(z_{t+1},a_{t})\right]\\
  & \text{s.t.}\\
 a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
 \log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\\
-a_{t} & \geq bw
+a_{t} & \geq-bw
 \end{align*}
 
 \end_inset
@@ -4675,6 +4675,76 @@ c_{it} & =m_{it}-bw
 
 where 
 \begin_inset Formula $m_{t}=(1+r)a_{t-1}+wz_{t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recursive formulation II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Beginning-of-period value function
+\begin_inset Formula 
+\[
+\underline{v}\left(z_{t-1},a_{t-1}\right)=\mathbb{E}\left[v(z_{t},a_{t-1})\,|\,z_{t-1}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Value function
+\series default
+:
+\begin_inset Formula 
+\begin{align*}
+v(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}\left(z_{t},a_{t}\right)\\
+ & \text{s.t.}\\
+a_{t} & =(1+r)a_{t-1}+wz_{t}-c_{t}\\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\\
+a_{t} & \geq-bw
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Why do this?
+ 
+\series default
+\emph on
+Only one interpolation per guess of 
+\begin_inset Formula $c_{t}$
 \end_inset
 
 
