@@ -1,0 +1,1334 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% general
+\usepackage[titletoc]{appendix}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{tikz}
+
+% algorithm
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\IncMargin{2.5cm}
+\DecMargin{2cm}
+\usepackage{fullwidth}
+\usepackage{enumitem}
+\setlist{leftmargin=1.7cm}
+
+% tables
+\usepackage{tabularx, siunitx, multirow, booktabs}
+\begingroup
+% Allow `_` and `:` in macro names (LaTeX3 style)
+\catcode`\_=11
+\catcode`\:=11
+% Internal code of `S`
+\gdef\tabularxcolumn#1{%
+    >{\__siunitx_table_collect_begin:Nn S{} }%
+    p{#1}%  <- this is different (is `c` in normal `S`)
+    <{\__siunitx_table_print:}%
+}
+\endgroup
+
+% figures
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfloat]{position=top}
+
+% footnotes
+\setlength{\skip\footins}{1cm}
+\usepackage[hang,splitrule]{footmisc}
+\setlength{\footnotemargin}{0.3cm} %.5
+\setlength{\footnotesep}{0.4cm}
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+
+% manual
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.7cm
+\topmargin 1cm
+\rightmargin 2cm
+\bottommargin 2.7cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\shape smallcaps
+\size largest
+Assignment I: The Aiygari Model
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-3mm}
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Vision: 
+\series default
+This project teaches you to solve for the 
+\emph on
+stationary equilibrium
+\emph default
+ in a neoclassical-style heterogeneous agent model and analyze the economic
+ results.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Problem:
+\series default
+ The problem consists of
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+A number of questions (page 2)
+\end_layout
+
+\begin_layout Enumerate
+A model (page 3 onward, incl.
+ solution tricks)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Code:
+\series default
+ The problem is designed to be solved with the 
+\emph on
+GEModelTools
+\emph default
+ package.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Structure: 
+\series default
+Your
+\series bold
+ 
+\series default
+project should consist of
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+A single self-contained pdf-file with all results
+\end_layout
+
+\begin_layout Enumerate
+A single Jupyter notebook showing how the results are produced
+\end_layout
+
+\begin_layout Enumerate
+Well-documented 
+\emph on
+.py
+\emph default
+ files
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Hand-in: 
+\series default
+Upload a single zip-file on Absalon (and nothing else)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Deadline:
+\series default
+ 14th of October 2022
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Exam: 
+\series default
+Your Aiygari-project will be a part of your exam portfolio.
+\begin_inset Newline newline
+\end_inset
+
+You can incorporate feedback before handing in the final version.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newgeometry{left=3cm,right=3cm,top=2.5cm,bottom=2.5cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Questions
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Define the stationary equilibrium for the model on the next page
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Solve for the stationary equilibrium
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Show aggregate quantities and prices
+\end_layout
+
+\begin_layout Standard
+Illustrate household behavior
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ 
+\emph on
+You can restrict attention to equilibria with a positive real interest rate
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Illustrate how changes in the tax rates affect the stationary equilibrium
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Discuss the social optimal level of taxation
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Begin with average household utility as a social welfare criterion
+\end_layout
+
+\begin_layout Standard
+Other aspects of social welfare can also be introduced
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Note:
+\series default
+ 
+\emph on
+Searching over a fixed grid of tax rates is fine
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Suggest and implement an extension which improves the tax system
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+The definition of 
+\begin_inset Quotes ald
+\end_inset
+
+improves
+\begin_inset Quotes ard
+\end_inset
+
+ is up to you
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+1.
+ Model
+\end_layout
+
+\begin_layout Paragraph*
+Households.
+\end_layout
+
+\begin_layout Standard
+The model has a continuum of infinitely lived households indexed by 
+\begin_inset Formula $i\in[0,1]$
+\end_inset
+
+.
+ Households are 
+\emph on
+ex ante
+\emph default
+ heterogeneous in terms of their dis-utility of labor, 
+\begin_inset Formula $\varphi_{i}$
+\end_inset
+
+, and their time-invariant productivity, 
+\begin_inset Formula $\zeta_{i}$
+\end_inset
+
+.
+ Households are 
+\emph on
+ex post
+\emph default
+ heterogeneous in terms of their time-varying stochastic productivity, 
+\begin_inset Formula $z_{t}$
+\end_inset
+
+, and their (end-of-period) savings, 
+\begin_inset Formula $a_{t-1}$
+\end_inset
+
+.
+ The distribution of households over idiosyncratic states is denoted 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t}$
+\end_inset
+
+ before shocks are realized and 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+ afterwards.
+ Households choose to supply labor, 
+\begin_inset Formula $\ell_{t}$
+\end_inset
+
+, and consumption, 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+.
+ Households are not allowed to borrow.
+ The real interest rate is 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+, the real wage is 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+, and real-profits are 
+\begin_inset Formula $\Pi_{t}$
+\end_inset
+
+.
+ Interest-rate income is taxed with the rate 
+\begin_inset Formula $\tau_{t}^{a}\in[0,1]$
+\end_inset
+
+ and labor income is taxed with the rate 
+\begin_inset Formula $\tau_{t}^{\ell}\in[0,1]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The household problem is
+\begin_inset Formula 
+\begin{align}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t},\ell_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi_{i}\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}\left[v_{t+1}(z_{t+1},a_{t})\,|\,z_{t},a_{t}\right]\label{eq:Bellman}\\
+\text{s.t. }a_{t}+c_{t} & =(1+\tilde{r}_{t})a_{t-1}+\tilde{w}_{t}\ell_{t}\zeta_{i}z_{t}+\Pi_{t}\nonumber \\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\nonumber \\
+a_{t} & \geq0\nonumber 
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{r}_{t}=(1-\tau_{t}^{a})r_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{w}_{t}=(1-\tau_{t}^{\ell})w_{t}$
+\end_inset
+
+.
+ Aggregate quantities are
+\begin_inset Formula 
+\begin{align}
+L_{t}^{hh} & =\int\ell_{t}\zeta_{i}z_{t}d\boldsymbol{D}_{t}\label{eq:L_hh}\\
+C_{t}^{hh} & =\int c_{t}d\boldsymbol{D}_{t}\label{eq:C_hh}\\
+A_{t}^{hh} & =\int a_{t}d\boldsymbol{D}_{t}\label{eq:A_hh}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Firms.
+\end_layout
+
+\begin_layout Standard
+A representative firm rents capital, 
+\begin_inset Formula $K_{t-1}$
+\end_inset
+
+, and hire labor, 
+\begin_inset Formula $L_{t}$
+\end_inset
+
+, to produce goods, with the production function
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=\Gamma K_{t-1}^{\alpha}L_{t}^{1-\alpha}\label{eq:production}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ is technology.
+ Capital depreciates with the rate 
+\begin_inset Formula $\delta\in(0,1)$
+\end_inset
+
+.
+ The real rental price of capital is 
+\begin_inset Formula $r_{t}^{K}$
+\end_inset
+
+ and the real wage is 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+.
+ Profits are
+\begin_inset Formula 
+\begin{equation}
+\Pi_{t}=Y_{t}-w_{t}L_{t}-r_{t}^{K}K_{t-1}\label{eq:profits}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The law-of-motion for capital is
+\begin_inset Formula 
+\begin{equation}
+K_{t}=(1-\delta)K_{t-1}+I_{t}\label{eq:lom_K}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The households own the representative firm in equal shares.
+\end_layout
+
+\begin_layout Paragraph*
+Government.
+\end_layout
+
+\begin_layout Standard
+The budget constraint for the government is
+\begin_inset Formula 
+\begin{align}
+B_{t} & =(1+r_{t}^{B})B_{t-1}+G_{t}-\int\left[\tau_{t}^{a}r_{t}a_{t-1}+\tau_{t}^{\ell}w_{t}\ell_{t}\zeta_{i}z_{t}\right]d\boldsymbol{D}_{t}\label{eq:B}\\
+ & =(1+r_{t}^{B})B_{t-1}+G_{t}-\tau_{t}^{a}r_{t}A_{t}^{hh}-\tau_{t}^{\ell}w_{t}L_{t}^{hh}\nonumber 
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $G_{t}$
+\end_inset
+
+ is exogenous government spending not entering household utility, 
+\begin_inset Formula $B_{t}$
+\end_inset
+
+ is (end-of-period) government bonds, and 
+\begin_inset Formula $r_{t}^{B}$
+\end_inset
+
+ is the real interest rate on government bonds.
+\end_layout
+
+\begin_layout Paragraph*
+Market clearing.
+\end_layout
+
+\begin_layout Standard
+Arbitrage implies that all assets must give the same rate of return
+\begin_inset Formula 
+\begin{equation}
+r_{t}=r_{t}^{B}=r_{t}^{K}-\delta\label{eq:arbitrage}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Market clearing implies
+\end_layout
+
+\begin_layout Enumerate
+Labor market: 
+\begin_inset Formula $L_{t}=L_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Goods market: 
+\begin_inset Formula $Y_{t}=C_{t}^{hh}+I_{t}+G_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Asset market: 
+\begin_inset Formula $K_{t}+B_{t}=A_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+2.
+ Calibration
+\end_layout
+
+\begin_layout Standard
+The parameters and steady state government behavior are as follows:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Preferences and abilities:
+\series default
+ 
+\begin_inset Formula $\beta=0.96$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma=2$
+\end_inset
+
+, 
+\begin_inset Formula $\varphi_{i}\in\{0.9,1.1\}$
+\end_inset
+
+, 
+\begin_inset Formula $\nu=1.0$
+\end_inset
+
+, 
+\begin_inset Formula $\zeta_{i}\in\{0.9,1.1\}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\text{Pr}[\varphi_{i}=0.9,\zeta_{i}=0.9] & =0.25\\
+\text{Pr}[\varphi_{i}=1.1,\zeta_{i}=0.9] & =0.25\\
+\text{Pr}[\varphi_{i}=0.9,\zeta_{i}=1.1] & =0.25\\
+\text{Pr}[\varphi_{i}=1.1,\zeta_{i}=1.1] & =0.25
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Income: 
+\series default
+
+\begin_inset Formula $\rho_{z}=0.96$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{\psi}=0.15$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Production:
+\series default
+ 
+\begin_inset Formula $\Gamma=1$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha=0.3$
+\end_inset
+
+, 
+\begin_inset Formula $\delta=0.1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Government:
+\series default
+ 
+\begin_inset Formula $G_{ss}=0.30$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{ss}^{a}=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $\tau_{ss}^{\ell}=0.30$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+3.
+ Finding the steady state
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $\mathcal{K}_{ss}=K_{ss}/L_{ss}$
+\end_inset
+
+ denote the steady state capital-labor ratio.
+\end_layout
+
+\begin_layout Standard
+From a guess on 
+\begin_inset Formula $\mathcal{K}_{ss}$
+\end_inset
+
+ we can derive:
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $r_{ss}^{K}=\alpha\Gamma\left(\mathcal{K}_{ss}\right)^{\alpha-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $w_{ss}=(1-\alpha)\Gamma\left(\mathcal{K}_{ss}\right)^{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $r_{ss}=r_{ss}^{B}=r_{ss}^{K}-\delta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Solve and simulate household problem to obtain 
+\begin_inset Formula $A_{ss}^{hh}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{ss}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate
+\begin_inset Formula $B_{ss}=\frac{\tau_{ss}^{a}r_{ss}A_{ss}^{hh}+\tau_{ss}^{\ell}w_{ss}L_{ss}^{hh}-G_{ss}}{r_{ss}^{B}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $L_{ss}=L_{ss}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $K_{ss}=\mathcal{K}_{ss}L_{ss}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We then only need to check the asset market clearing condition:
+\begin_inset Formula 
+\[
+K_{ss}+B_{ss}-A_{ss}^{hh}=0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can also derive a 
+\emph on
+lower 
+\emph default
+and an 
+\emph on
+upper 
+\emph default
+bound on 
+\begin_inset Formula $\mathcal{K}_{ss}$
+\end_inset
+
+.
+ From ensuring a positive real interest rate, we get
+\begin_inset Formula 
+\[
+r_{ss}>0\Leftrightarrow r_{ss}^{K}-\delta>0\Leftrightarrow\mathcal{K}_{ss}>\left(\frac{\delta}{\alpha\Gamma}\right)^{\frac{1}{\alpha-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From ensuring the real interest rate is not too high relative to the household
+ discount factor, we get
+\begin_inset Formula 
+\begin{align*}
+1+r_{ss} & <\frac{1}{\beta}\Leftrightarrow r_{ss}^{K}-\delta<\frac{1}{\beta}-1\Leftrightarrow\mathcal{K}_{ss}<\left(\frac{\frac{1}{\beta}-1+\delta}{\alpha\Gamma}\right)^{\frac{1}{\alpha-1}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+\series bold
+4.
+ Solving the household problem
+\end_layout
+
+\begin_layout Standard
+The following provides a recipe for solving the household problem for fixed
+ 
+\begin_inset Formula $\varphi_{i}=\varphi$
+\end_inset
+
+ and 
+\begin_inset Formula $\zeta_{i}=\zeta$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The envelope condition implies
+\begin_inset Formula 
+\begin{equation}
+\underline{v}_{a,t+1}(z_{t-1},a_{t-1})=\mathbb{E}\left[(1+\tilde{r}_{t})c_{t}^{-\rho}\,|\,z_{t-1},a_{t-1}\right]\label{envelope}
+\end{equation}
+
+\end_inset
+
+The first order conditions imply
+\begin_inset Formula 
+\begin{align}
+c_{t} & =(\beta\underline{v}_{a,t+1}(z_{t},a_{t}))^{-\frac{1}{\sigma}}\label{eq:FOC_c}\\
+\ell_{t} & =\left(\frac{\tilde{w}_{t}\zeta_{i}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}\label{eq:FOC_ell}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The household problem can be solved with an extended EGM:
+\end_layout
+
+\begin_layout Enumerate
+Calculate 
+\begin_inset Formula $c_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\ell_{t}$
+\end_inset
+
+ over end-of-period states from FOCs
+\end_layout
+
+\begin_layout Enumerate
+Construct endogenous grid 
+\begin_inset Formula $m_{t}=c_{t}+a_{t}-\tilde{w}_{t}\ell_{t}\zeta_{i}z_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Use linear interpolation to find 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+consumption 
+\begin_inset Formula $c^{\ast}(z_{t},a_{t-1})$
+\end_inset
+
+ and labor supply 
+\begin_inset Formula $\ell^{\ast}(z_{t},a_{t-1})$
+\end_inset
+
+ with 
+\begin_inset Formula $m_{t}=(1+\tilde{r}_{t})a_{t-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Calculate savings 
+\begin_inset Formula $a^{\ast}(z_{t},a_{t-1})=(1+\tilde{r}_{t})a_{t-1}+\tilde{w}_{t}\ell_{t}^{\ast}\zeta_{i}z_{t}-c_{t}^{\ast}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+If 
+\begin_inset Formula $a^{\ast}(z_{t},a_{t-1})<0$
+\end_inset
+
+ set 
+\begin_inset Formula $a^{\ast}(z_{t},a_{t-1})=0$
+\end_inset
+
+ and search for 
+\begin_inset Formula $\ell_{t}$
+\end_inset
+
+ such that 
+\begin_inset Formula $f(\ell_{t})\equiv\ell_{t}-\left(\frac{\tilde{w}_{t}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}=0$
+\end_inset
+
+ holds and 
+\begin_inset Formula $c_{t}=(1+\tilde{r}_{t})a_{t-1}+\tilde{w}_{t}\ell_{t}\zeta_{i}z_{t}$
+\end_inset
+
+.
+ This can be done with a Newton solver with an update from step 
+\begin_inset Formula $j$
+\end_inset
+
+ to step 
+\begin_inset Formula $j+1$
+\end_inset
+
+ by
+\begin_inset Formula 
+\begin{align*}
+\ell_{t}^{j+1} & =\ell_{t}^{j}-\frac{f(\ell_{t})}{f^{\prime}(\ell_{t})}\\
+ & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{\tilde{w}_{t}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{\tilde{w}_{t}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)\frac{\partial c_{t}}{\partial\ell_{t}}}\\
+ & =\ell_{t}^{j}-\frac{\ell_{t}-\left(\frac{\tilde{w}_{t}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}c_{t}^{-\sigma/\nu}}{1-\left(\frac{\tilde{w}_{t}z_{t}}{\varphi_{i}}\right)^{\frac{1}{\nu}}\left(-\sigma/\nu\right)c_{t}^{-\sigma/\nu-1}\tilde{w}_{t}\zeta_{i}z_{t}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The next page contains a code snippet with 
+\begin_inset Formula $\zeta_{i}z_{t}=1$
+\end_inset
+
+ you can base your code on.
+\begin_inset Newpage newpage
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{lstlisting}[language=Python,caption=Extended EGM,label=lst:setup,basicstyl
+e=
+\backslash
+linespread{1.1}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+# a.
+ prepare
+\end_layout
+
+\begin_layout Plain Layout
+
+fac = (wt/varphi)**(1/nu)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# b.
+ use FOCs
+\end_layout
+
+\begin_layout Plain Layout
+
+c_endo = (beta*vbeg_a_plus)**(-1/sigma)
+\end_layout
+
+\begin_layout Plain Layout
+
+ell_endo = fac*(c_endo)**(-sigma/nu)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# c.
+ interpolation
+\end_layout
+
+\begin_layout Plain Layout
+
+m_endo = c_endo + a_grid - wt*ell_endo
+\end_layout
+
+\begin_layout Plain Layout
+
+m_exo = (1+rt)*a_grid
+\end_layout
+
+\begin_layout Plain Layout
+
+c = np.zeros(Na)
+\end_layout
+
+\begin_layout Plain Layout
+
+interp_1d_vec(m_endo,c_endo,m_exo,c)
+\end_layout
+
+\begin_layout Plain Layout
+
+ell = np.zeros(Na)
+\end_layout
+
+\begin_layout Plain Layout
+
+interp_1d_vec(m_endo,ell_endo,m_exo,ell)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a = m_exo + wt*ell - c
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# d.
+ refinement at borrowing constraint
+\end_layout
+
+\begin_layout Plain Layout
+
+for i_a in range(Na):
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    if a[i_a] < 0.0:
+\end_layout
+
+\begin_layout Plain Layout
+
+                    
+\end_layout
+
+\begin_layout Plain Layout
+
+        # i.
+ binding constraint for a
+\end_layout
+
+\begin_layout Plain Layout
+
+        a[i_a] = 0.0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+        # ii.
+ solve FOC for ell
+\end_layout
+
+\begin_layout Plain Layout
+
+        elli = ell[i_a]
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+        it = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+        while True:
+\end_layout
+
+\begin_layout Plain Layout
+
+        
+\end_layout
+
+\begin_layout Plain Layout
+
+            ci = (1+rt)*a_grid[i_a] + wt*elli
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\end_layout
+
+\begin_layout Plain Layout
+
+            error = elli - fac*ci**(-sigma/nu)
+\end_layout
+
+\begin_layout Plain Layout
+
+            if np.abs(error) < tol_ell:
+\end_layout
+
+\begin_layout Plain Layout
+
+                break
+\end_layout
+
+\begin_layout Plain Layout
+
+            else:
+\end_layout
+
+\begin_layout Plain Layout
+
+                derror = 1 - fac*(-sigma/nu)*ci**(-sigma/nu-1)*wt
+\end_layout
+
+\begin_layout Plain Layout
+
+                elli = elli - error/derror
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\end_layout
+
+\begin_layout Plain Layout
+
+            it += 1
+\end_layout
+
+\begin_layout Plain Layout
+
+            if it > max_iter_ell: raise ValueError('too many iterations')
+\end_layout
+
+\begin_layout Plain Layout
+
+            
+\end_layout
+
+\begin_layout Plain Layout
+
+        # iii.
+ save
+\end_layout
+
+\begin_layout Plain Layout
+
+        c[i_a] = ci
+\end_layout
+
+\begin_layout Plain Layout
+
+        ell[i_a] = elli
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+restoregeometry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

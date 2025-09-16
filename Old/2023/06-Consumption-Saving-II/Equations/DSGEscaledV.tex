@@ -1,0 +1,7 @@
+\begin{eqnarray}
+\ifnumSw  \Value(\MLev_{t},\PtyGro_t) & = & \max_{\CLev_{t}} \left\{ \uFunc(\CLev_{t}) + \beta \Ex_{t}[ (\PtyGro_{t+1}\Psi_{t+1})^{1-\CRRA} \Value(\MLev_{t+1},\PtyGro_{t+1})]\right\} \nonumber \ifnumSw
+\\ \ifnumSw & \mbox{s.t.} & \eqref{eq:AggRandWalk}, \label{eq:DSGEscaledV}
+\\ \ifnumSw \ALev_{t} & = & \MLev_{t}-\CLev_{t}, \nonumber
+\\ \ifnumSw \KLev_{t+1} & = & \ALev_{t} / (\PtyGro_{t+1} \Psi_{t+1}), \label{eq:Ktp1DSGE}  \nonumber
+\\ \ifnumSw {\MLev}_{t+1} & = & \daleth \KLev_{t+1} + \KLev_{t+1}^{\varepsilon} \Theta_{t+1}^{1-\varepsilon}. \label{eq:Mtp1DSGE}    \nonumber
+\end{eqnarray}

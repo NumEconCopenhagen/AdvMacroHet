@@ -1,0 +1,4689 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+% Automatically create vspace between items
+% See: https://tex.stackexchange.com/questions/369504/beamer-vertically-stretching-level-1-list-items-in-a-nested-list-environment
+%\usepackage{xpatch} 
+%\xpatchcmd{\itemize}   
+%	{\def\makelabel}   
+%	{\ifnum\@itemdepth=1\relax      
+%		\setlength\itemsep{\fill} % separation for first level    
+%		\fi\def\makelabel   
+%	}{}{} 
+%\xpatchcmd{\enditemize}   
+%	{\endlist}   
+%	{\endlist\ifnum\@itemdepth<2\else\vfil\fi}{}{}
+
+
+
+
+% Automatically create vspace between items
+% See: https://jayrobwilliams.com/posts/2019/10/better-beamer
+\makeatletter
+\renewcommand{\itemize}[1][]{%
+  \beamer@ifempty{#1}{}{\def\beamer@defaultospec{#1}}%
+  \ifnum \@itemdepth >2\relax\@toodeep\else
+    \advance\@itemdepth\@ne
+    \beamer@computepref\@itemdepth% sets \beameritemnestingprefix
+    \usebeamerfont{itemize/enumerate \beameritemnestingprefix body}%
+    \usebeamercolor[fg]{itemize/enumerate \beameritemnestingprefix body}%
+    \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body begin}%
+    \list
+      {\usebeamertemplate{itemize \beameritemnestingprefix item}}
+      {\def\makelabel##1{%
+          {%
+            \hss\llap{{%
+                \usebeamerfont*{itemize \beameritemnestingprefix item}%
+                \usebeamercolor[fg]{itemize \beameritemnestingprefix item}##1}}%
+          }%
+        }%
+      }
+  \fi%
+  \setlength\itemsep{\fill}
+    \ifnum \@itemdepth >1
+        \vfill
+    \fi%  
+  \beamer@cramped%
+  \raggedright%
+  \beamer@firstlineitemizeunskip%
+}
+
+\def\enditemize{\ifhmode\unskip\fi\endlist%
+  \usebeamertemplate{itemize/enumerate \beameritemnestingprefix body end}
+  \ifnum \@itemdepth >1
+        \vfil
+  \fi%  
+  }
+\makeatother
+\end_preamble
+\options t,10pt
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{2.
+ Consumption-Saving Models 
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Advertisement
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Cagé and Piketty at CSS
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{columns}[T] % Left column for text and bullets         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{column}{0.6
+\backslash
+textwidth}             
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}                 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Thomas Piketty and Julia Cagé will visit CSS and discuss 
+\backslash
+textbf{the history of policy conflict  }              
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item October 10 at 17:00-18:00 in room 35.01.05              
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Interview by editor at danish newspaper 
+\backslash
+textit{Information}, Rune Lykkeberg                
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item The first 100 students who sign-up will be able to attend (
+\backslash
+href{https://forms.office.com/pages/responsepage.aspx?id=S9iZHj8WBU20AwL9yXLYCrLwJk
+Q6_BhEvvpwBS_0JANUQlVPNzlNMkpRVDk3TTlaNUxFWjcxNlpIOS4u&route=shorturl}{
+\backslash
+textcolor{red}{signup link}})            
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{column}  % Right column for image         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{column}{0.4
+\backslash
+textwidth}   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering 
+\backslash
+includegraphics[width=
+\backslash
+textwidth]{figs/piketty_cage.png} % Replace with your image file        
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{column}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{columns}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Consumption-Saving Models
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Last time: 
+\series default
+How to solve consumption-saving models using dynamic programing 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Goal for today: 
+\series default
+Better understanding of household spending through the lens of traditional
+ consumption-saving models 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Central economic questions:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+How do households consume out of transitory income shocks?
+\end_layout
+
+\begin_layout Enumerate
+How to design models that match the empirical evidence on the Marginal Propensit
+y to Consume (MPC)?
+\end_layout
+
+\begin_layout Enumerate
+What is the effect of income risk on consumption dynamics? 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Plan for today:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Discuss the MPC, why it matters, and how it looks in the data
+\end_layout
+
+\begin_layout Enumerate
+Consider a variety of models that attempt to match the data
+\end_layout
+
+\begin_layout Enumerate
+Study the link between income risk and consumption behavior
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Primarily 
+\series bold
+partial equilibrium 
+\series default
+- leave general equilibrium for next lecture
+\series bold
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+MPC
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Marginal Propensity to Consume (MPC)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Definition:
+\series default
+ How much a household spends out of a small, one-time, unanticipated income
+ shock
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+MPC=\frac{\Delta C}{\Delta Y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Notes:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+It is the MPC out of a transitory income shock (Friedman, 1957) 
+\end_layout
+
+\begin_layout Enumerate
+It is the contemporaneous MPC (usually one quarter or a year)
+\end_layout
+
+\begin_layout Enumerate
+It is measured based on spending on nondurables and services
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+For a comprehensive overview, see Kaplan and Violante (2022) 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Why do we care about the MPC?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Central concept in modern heterogeneous-agent macroeconomics 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Affects macro response to:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fiscal stimulus
+\end_layout
+
+\begin_layout Itemize
+Monetary policy
+\end_layout
+
+\begin_layout Itemize
+Redistribution 
+\end_layout
+
+\begin_layout Itemize
+External shocks (markup shocks, oil/energy shocks, capital flows)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Historically: Tension between data and models
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+We need macro models that can reproduce the data on MPC
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+MPC in the Data: Methods 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Three strands of empirical evidence on the size of the MPC: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Quasi-experimental evidence 
+\begin_inset Newline newline
+\end_inset
+
+Johnson-Parker-Souleles (2006): Income tax rebates 
+\begin_inset Newline newline
+\end_inset
+
+Gelman et al.
+ (2020): government shutdown 
+\begin_inset Newline newline
+\end_inset
+
+Fagereng et al.
+ (2020), Golosov et al.
+ (2021): lottery wins
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Self-reported MPC from survey questions 
+\begin_inset Newline newline
+\end_inset
+
+Bunn et al.
+ (2018), Christelis et al.
+ (2018), Fuster et al.
+ (2020) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{5mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Structural estimates 
+\begin_inset Newline newline
+\end_inset
+
+Blundell-Pistaferri-Preston (2008), Commault (2019)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+MPC in the Data: Findings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The quarterly aggregate MPC is between 15% and 25% 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Annual MPCs are larger since spending responses are 
+\emph on
+persistent
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Size dependence: MPC larger for small income shocks 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Sign asymmetry: MPC much larger for negative income shocks 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+There is large heterogeneity in MPCs across households 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Liquid wealth: MPC larger for low wealth households 
+\end_layout
+
+\begin_layout Itemize
+Fixed individual characteristics: MPC larger for young, low-income households
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Taking Stock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In the data, the MPC is large and heterogeneous
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+These observations have important implications for modern macro
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Question: how can common macro models generate a large MPC?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+MPCs in Macro Models
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model overview
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Permanent income hypothesis
+\begin_inset Newline newline
+\end_inset
+
+Friedman (1957)
+\end_layout
+
+\begin_layout Enumerate
+Buffer-stock consumption model 
+\begin_inset Newline newline
+\end_inset
+
+Deaton (1991, 1992); Carroll (1992, 1997)
+\end_layout
+
+\begin_layout Enumerate
+Multiple-asset buffer-stock consumption models
+\begin_inset Newline newline
+\end_inset
+
+Kaplan and Violante (2014)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Quick aside: General vs.
+ partial equilibrium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Today everything is gonna be set in 
+\series bold
+partial equilibrium
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No market clearing (labor market, goods market, asset market)
+\end_layout
+
+\begin_layout Itemize
+Prices 
+\begin_inset Formula $w,r$
+\end_inset
+
+ are therefore 
+\series bold
+exogenous
+\end_layout
+
+\begin_layout Itemize
+Only endogenous variables are the choice variables and endo.
+ states of households
+\end_layout
+
+\begin_layout Itemize
+Typically consumption 
+\begin_inset Formula $c$
+\end_inset
+
+ and savings 
+\begin_inset Formula $a$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+General equilibrium
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Households, firms and government interact through 
+\series bold
+market clearing 
+\end_layout
+
+\begin_layout Itemize
+Prices are endogenous and adjust to clear these markets
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Next lecture
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Representative Agent (RA) Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No idiosyncratic risk, no borrowing constraint
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Household problem:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{aligned}\max_{\left\{ c_{t},a_{t}\right\} } & \sum_{t=0}^{\infty}\beta^{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}\\
+\text{ s.t. }\\
+c_{t}+a_{t}= & Ra_{t-1}+y_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consumption function:
+\begin_inset Formula 
+\[
+c\left(a\right)=\mathfrak{m}\left[Ra+\sum_{t=0}^{\infty}\left(\frac{1}{R}\right)^{t}y_{t}\right],\;where\;\mathfrak{m}=1-R^{-1}(R\beta)^{\frac{1}{\sigma}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Observation: The consumption function is linear in asset holdings 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ wealth distribution irrelevant for MPC
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Cannot reproduce empirical evidence on correlation between wealth and MPCs
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Representative Agent (RA) Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Parameterization:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Log utility (
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+): then we can simplify to: 
+\begin_inset Formula $\mathfrak{m}=1-\beta=r$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Plausible (quarterly) calibrations: 
+\begin_inset Formula $\mathfrak{m}=0.5\%$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Representative Agent model features a tiny MPC
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why? With concave utility 
+\begin_inset Formula $u\left(c\right)$
+\end_inset
+
+ across periods households want to smooth consumption across periods 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+I.e.
+ Prefer 
+\begin_inset Formula $u\left(1\right)+\beta u\left(1\right)$
+\end_inset
+
+ to 
+\begin_inset Formula $u\left(2\right)+\beta u\left(0\right)$
+\end_inset
+
+ when 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is high (Jensen's inequality)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In the RA model there is nothing preventing excessive consumption smoothing
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Household optimally spread out spending out of income gain across all periods
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ low MPC
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Main Takeaways for the MPC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Can macro models generate a high MPC, and if so, how?
+\end_layout
+
+\begin_layout Enumerate
+RA model: No 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+One-Asset Heterogeneous Agent (HA) Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Add idiosyncratic income risk, realistic borrowing constraint
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Household problem:
+\begin_inset Formula 
+\[
+\begin{aligned}\max_{\left\{ c_{t},a_{t}\right\} }\mathbb{E}_{0} & \sum_{t=0}^{\infty}\beta^{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}\\
+\text{ s.t. }\\
+c_{t}+a_{t} & =Ra_{t-1}+y_{t}\\
+y_{t+1} & \sim\mathcal{F}(y_{t})\\
+a_{t} & \geq0
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Main takeaways:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consumption function 
+\begin_inset Formula $c\left(a\right)$
+\end_inset
+
+ is concave due to precautionary motive
+\end_layout
+
+\begin_layout Enumerate
+There is an optimal buffer stock of assets that HHs want to achieve
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Consumption function is concave
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/consumption-function.png
+	width 60page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $x=\nicefrac{a}{y}$
+\end_inset
+
+ is the share of assets to permanent income (Carroll 2001)
+\end_layout
+
+\begin_layout Itemize
+Concavity: Slope of consumption (=MPC) increases as 
+\begin_inset Formula $x\rightarrow0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But approximately linear for large 
+\begin_inset Formula $x$
+\end_inset
+
+ (as in representative agent model)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households try to achieve an optimal buffer stock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/buffer-stock-saving.JPG
+	width 60page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $x_{t}<x^{*}:$
+\end_inset
+
+ Expected consumption growth decreases (precautionary saving motive)
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $x_{t}>x^{*}:$
+\end_inset
+
+ Expected consumption growth increases (impatience, 
+\begin_inset Formula $\beta R<1$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households try to achieve an optimal buffer stock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Takeaways:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+As 
+\begin_inset Formula $x\rightarrow\infty$
+\end_inset
+
+, the expected growth rate of consumption (and the MPC) converge to their
+ values in the RA model
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+As 
+\begin_inset Formula $x\rightarrow0$
+\end_inset
+
+ the MPC approaches due to binding borrowing constraint 
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If the consumer is impatient, there exists a unique target assets-to-permanent-i
+ncome ratio (
+\begin_inset Formula $x^{*}$
+\end_inset
+
+) 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+From the inidividual to the aggregate MPC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Individual MPC for a household with state 
+\begin_inset Formula $(a,y)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+m(a,y)=\frac{c(a+x,y)-c(a,y)}{x}\simeq\frac{\partial c(a,y)}{\partial a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Aggregate MPC:
+\begin_inset Formula 
+\[
+\overline{\mathrm{m}}=\sum_{a,y}\mathfrak{m}(a,y)\times D\left(a,y\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Two key determinants:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Consumption function 
+\begin_inset Formula $c(a,y)$
+\end_inset
+
+
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+MPC function 
+\begin_inset Formula $m(a,y)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Wealth distribution 
+\begin_inset Formula $D(a,y)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What determines the size of the aggregate MPC?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Shape of the consumption function 
+\begin_inset Formula $m(a,y)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Uninsurable income risk 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ precautionary saving motive 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Risk-aversion and prudence (
+\begin_inset Formula $u''$
+\end_inset
+
+,
+\begin_inset Formula $u'''$
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Itemize
+Occasionally binding borrowing constraint 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Strength of precautionary saving is decreasing in wealth 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consumption function is concave 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ MPC is decreasing in wealth 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+As wealth grows, the MPC 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ MPC in the RA model
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Shape of the wealth distribution 
+\begin_inset Formula $D\left(a,y\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Bigger mass at bottom, where 
+\begin_inset Formula $c$
+\end_inset
+
+ function is concave 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ large MPC
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a reasonable calibration of such a model?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Calibration Strategy:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+As before, we set 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+, so that we have log utility
+\end_layout
+
+\begin_layout Enumerate
+Set the interest rate 
+\begin_inset Formula $r$
+\end_inset
+
+ to be 1% per year
+\end_layout
+
+\begin_layout Enumerate
+Choose 
+\begin_inset Formula $\beta$
+\end_inset
+
+ so that the model matches some target of mean wealth 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Calibration 1:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Target US data: wealth to income ratio of 4.1
+\end_layout
+
+\begin_layout Enumerate
+This gives an MPC of 4.6%
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a reasonable calibration of such a model?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+
+\series bold
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/HA-TargetMeanWealth.jpg
+	width 7cm
+	rotateOrigin center
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+High wealth target imply high 
+\begin_inset Formula $\beta$
+\end_inset
+
+ -> HHs are very patient and save a lot
+\end_layout
+
+\begin_layout Itemize
+Very few high MPC households
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a reasonable calibration of such a model?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Calibration Strategy:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+As before, we set 
+\begin_inset Formula $\gamma=1$
+\end_inset
+
+, so that we have log utility
+\end_layout
+
+\begin_layout Enumerate
+Set the interest rate 
+\begin_inset Formula $r$
+\end_inset
+
+ to be 1% per year
+\end_layout
+
+\begin_layout Enumerate
+Choose 
+\begin_inset Formula $\beta$
+\end_inset
+
+ so that the model matches some target of mean wealth 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Calibration 1:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Target US data: wealth-to-income ratio of 4.1
+\end_layout
+
+\begin_layout Enumerate
+This gives an MPC of 4.6%
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Calibration 2:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Target a counterfactual wealth-to-income ratio of 0.5
+\end_layout
+
+\begin_layout Enumerate
+This gives an MPC of 14%
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a reasonable calibration of such a model?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/HA-TargetLowerWealth.JPG
+	width 8cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Now we have a lot more high MPC households (hand-to-mouth HHs)
+\end_layout
+
+\begin_layout Itemize
+But we miss the vast majority of wealth in the economy
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Main Takeaways for the MPC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can macro models generate a high MPC, and if so, how?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+RA model: No 
+\end_layout
+
+\begin_layout Enumerate
+One-asset HA model: only by neglecting the majority of wealth
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Where do we go from here?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Wanted: a version of the HA model that:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Generates a large aggregate MPC
+\end_layout
+
+\begin_layout Enumerate
+Matches wealth holdings as in the data
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Observation: 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Not all household wealth is 
+\bar under
+immediately
+\bar default
+ available for consumption smoothing
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Important difference between liquid (i.e.
+ bank deposits) and illiquid wealth (i.e.
+ housing, retirement accounts)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Third generation of consumption-saving models: Multiple-asset buffer-stock
+ consumption models
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Two-Asset HA Model - Kaplan & Violante (2014)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Continuum of households 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Life-cycle - HHs live for a fixed number of periods (no infinite horizon)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Face uninsurable idiosyncratic income shocks 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Choose consumption, saving and 
+\bar under
+portfolio allocation
+\bar default
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Two assets: liquid (
+\begin_inset Formula $m$
+\end_inset
+
+) and illiquid (
+\begin_inset Formula $a$
+\end_inset
+
+) with 
+\begin_inset Formula $r^{a}>r^{m}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Liquid: cash + deposits + directly held stock - unsecured debt 
+\end_layout
+
+\begin_layout Itemize
+Illiquid: housing equity + retirement account (85% of net worth) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Fixed transaction cost 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ to move funds into / out of illiquid account 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Q: 
+\series default
+Why do HHs want to hold liquid or illiquid assets in this model? Why would
+ you want to hold both assets?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Two-Asset HA Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Value function in period 
+\begin_inset Formula $j$
+\end_inset
+
+ is the max of the value if you do not (
+\begin_inset Formula $N$
+\end_inset
+
+) or do adjust (
+\begin_inset Formula $A$
+\end_inset
+
+) illiquid assets
+\begin_inset Formula 
+\[
+V_{j}\left(a_{j-1},m_{j-1},z_{j}\right)=max\left\{ V_{j}^{N}\left(a_{j-1},m_{j-1},z_{j}\right),\;V_{j}^{A}\left(a_{j-1},m_{j-1},z_{j}\right)\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Value function if you do not adjust:
+\begin_inset Formula 
+\[
+\begin{aligned}V_{j}^{N}\left(a_{j-1},m_{j-1},z_{j}\right)= & \max_{c_{j},m_{j}}u\left(c_{j}\right)+\beta\mathbb{E}_{j}\left[V_{j+1}\left(a_{j},m_{j},z_{j+1}\right)\right]\\
+ & \text{ subject to }\\
+ & c_{j}+m_{j}\leq m_{j-1}\left(1+r^{m}\right)+y_{j}\left(z_{j}\right)\\
+ & a_{j}=a_{j-1}(1+r^{a})\\
+ & m_{j}\geq\underline{m}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+States: 
+\begin_inset Formula $\left(a_{j-1},m_{j-1},z_{j}\right)$
+\end_inset
+
+ = illiquid assets, liquid assets, productivity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Choices: 
+\begin_inset Formula $\left(c_{j},m_{j}\right)$
+\end_inset
+
+ = consumption, liquid asset tmrw
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Two-Asset HA Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Value function if you adjust:
+\begin_inset Formula 
+\[
+\begin{aligned}V_{j}^{A}\left(a_{j},m_{j-1},z_{j}\right)= & \max_{c_{j},a_{j},m_{j}}u\left(c_{j}\right)+\beta\mathbb{E}_{j}\left[V_{j+1}\left(a_{j},m_{j},z_{j+1}\right)\right]\\
+ & \text{ subject to }\\
+ & c_{j}+a_{j}+m_{j}\leq a_{j-1}(1+r^{a})+m_{j-1}(1+r^{m})-\kappa+y_{j}\left(z_{j}\right)\\
+ & a_{j}\geq0,m_{j}\geq\underline{m}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Choices: 
+\begin_inset Formula $\left(c_{j},a_{j},m_{j}\right)$
+\end_inset
+
+ = consumption, illiquid asset tmrw, liquid asset tmrw
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Result: Two different Euler equations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Short-Run Euler Equation - governed by saving vs dissaving in the liquid
+ asset (HHs adjust liquid assets every period)
+\begin_inset Formula 
+\[
+u'(c_{j})=\beta(1+r^{m})u'(c_{j+1})
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Long-Run Euler Equation - governed by saving vs dissaving in the illiquid
+ assets (only adjust illiquid asset infrequently)
+\begin_inset Formula 
+\[
+u'(c_{j})=\beta(1+r^{a})^{N}u'(c_{j+N})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of periods between adjustment
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stylized example 1 - policy function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Zoom in on life-cycle dynamics of savings and portefolio choice in simplified
+ model with:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Coarse hump-shaped earnings profile over life
+\end_layout
+
+\begin_layout Itemize
+Large transaction cost 
+\begin_inset Formula $\kappa$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stylized example 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/PHtM-HH.JPG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<1>{Income profile: High earnings while working, lower after retirement}
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<2>{Liquid assets adjust more throughout lifecycle since they are suitable
+ for consumption smoothing }  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<3>{Illiquid assets adjust only 3 times}  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<4>{Slope of consumption function 
+\backslash
+textit{between} adj.
+ dates obey short-run Euler, slope across adj.
+ dates obey long-run euler}  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<5>{Agent exhibits poor hand-to-mouth behavior between periods 40-60,
+ when she consumes all of her income and holds zero liquid assets}  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/WHtM-HH.JPG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{itemize}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<1>{Same example as before, but increase the return on the illiquid
+ asset $r^a$.
+ This incentivizes HHs to substitute from the liquid to illiquid asset}
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+only<2>{Agent exhibits wealthy hand-to-mouth behavior between periods 55
+ to 100, when she owns illiquid wealth, but zero liquid wealth}  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{itemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Result: Emergence of Wealthy HtM Households 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Three types of households in the model: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Unconstrained (60%) (positive liquid and illiquid wealth) 
+\end_layout
+
+\begin_layout Itemize
+Poor HtM: zero net worth (14%) (zero liquid and illiquid wealth)
+\end_layout
+
+\begin_layout Itemize
+Wealthy HtM (26%) (zero liquid wealth, but positive illiquid wealth)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why hold zero liquid and some illiquid wealth at the same time? 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Trade-off between higher return and illiquidity: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Long-run gain: higher level of consumption 
+\end_layout
+
+\begin_layout Itemize
+Short-run cost: worse consumption smoothing 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If gains exceeds costs 
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+ Wealthy HtM
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Wealthy HtM households in the data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/HtM-by-year.JPG
+	width 60page%
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Share of US population that are Hand-to-mouth in 
+\emph on
+Survey of Consumer Finances
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Wealthy HtM households in the data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/HtM-by-country.JPG
+	width 70page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What is a reasonable calibration of such a model?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Calibration Strategy:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+As before, we set 
+\begin_inset Formula $\gamma=1$
+\end_inset
+
+, so that we have log utility
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Set the interest rate 
+\begin_inset Formula $r^{liq}$
+\end_inset
+
+ on liquid assets to -2% per year (cash or bonds)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+There remains three parameters:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Discount rate 
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Return on illiquid assets 
+\begin_inset Formula $r^{illiq}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Transaction cost 
+\begin_inset Formula $\kappa$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Choose these three parameters so the model matches three targets:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Mean wealth-to-income ratio (4.1) 
+\end_layout
+
+\begin_layout Itemize
+Share of HtM households (34%)
+\end_layout
+
+\begin_layout Itemize
+Share of wealthy HtM households (25%)
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results from the two-asset model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/HA-TwoAsset.JPG
+	width 90page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What matters most for the MPC is liquid wealth, not total wealth
+\end_layout
+
+\begin_layout Itemize
+MPC remains high even for households with sizeable illiquid wealth
+\end_layout
+
+\begin_layout Itemize
+We can match both MPC and aggregate stock of wealth in the two-asset model
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+One-asset model with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-heterogeneity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two-asset models a la Kaplan & Violante (2014) are computationally intensive
+ to solve due to:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Large state space (two endogenous states)
+\end_layout
+
+\begin_layout Itemize
+Non-convexities 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Simpler model that still matches 1) aggregate wealth, 2) aggregate MPC:
+ 
+\series bold
+Heterogeneous 
+\begin_inset Formula $\beta$
+\end_inset
+
+ model
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Other options:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Wealth-in-utility (Michaillat and Saez 2021)
+\end_layout
+
+\begin_layout Itemize
+Behavoiral models (Present Bias, Maxted et al.
+ 2014)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+One-asset model with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-heterogeneity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Standard one-asset model with 
+\emph on
+ex-ante
+\emph default
+ (=permanent) preference heterogeneity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Discount factors 
+\begin_inset Formula $\beta$
+\end_inset
+
+ uniformely distributed between 
+\begin_inset Formula $\left[\overline{\beta}-2\Delta,\overline{\beta}+2\Delta\right]$
+\end_inset
+
+ (with 
+\begin_inset Formula $\Delta=0$
+\end_inset
+
+ we obtain standard model)
+\begin_inset Formula 
+\[
+\begin{aligned}V\left(a_{t-1},z_{t},\beta\right)= & \max_{c_{t}}u\left(c_{t}\right)+\beta\mathbb{E}\left[V\left(a_{t},z_{t+1},\beta\right)\right]\\
+ & \text{ subject to }\\
+ & c_{t}+a_{t}\leq a_{t-1}\left(1+r\right)+z_{t}\\
+ & a_{t}\geq0
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Calibrate average 
+\begin_inset Formula $\beta$
+\end_inset
+
+ and dispersion 
+\begin_inset Formula $\Delta$
+\end_inset
+
+ to match aggregate wealth and aggregate MPC
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can match
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aggregate wealth since high 
+\begin_inset Formula $\beta$
+\end_inset
+
+ households hold a lot of wealth 
+\end_layout
+
+\begin_layout Itemize
+Aggregate MPC since low 
+\begin_inset Formula $\beta$
+\end_inset
+
+ households have high MPC 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+One-asset model with 
+\begin_inset Formula $\beta$
+\end_inset
+
+-heterogeneity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/HA-TargetMeanWealth-beta-het.PNG
+	width 7cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Patient (high 
+\begin_inset Formula $\beta)$
+\end_inset
+
+ households have low MPCs but hold a lot of wealth
+\end_layout
+
+\begin_layout Itemize
+Impatient (low 
+\begin_inset Formula $\beta)$
+\end_inset
+
+ households have high MPCs but hold a little wealth
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Main Takeaways for the MPC
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can macro models generate a high MPC, and if so, how?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RA model: No.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+MPC ~= 0.5%
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+One-asset HA model: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Realistic wealth calibration: MPC = 4.6%
+\end_layout
+
+\begin_layout Itemize
+Low wealth calibration or 
+\begin_inset Formula $\beta$
+\end_inset
+
+-het: MPC = 15%
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Two-asset HA model: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Realistic wealth calibration: MPC = 15%
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Unemployment Risk 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Unemployment Risk and Consumption Dynamics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Question:
+\series default
+ How does unemployment risk affect household spending?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+During recessions, unemployment risk increases 
+\end_layout
+
+\begin_layout Itemize
+This may induce HHs to increase their buffer stock of assets (precautionary
+ savings)
+\end_layout
+
+\begin_layout Itemize
+The resulting fall in consumption may increase output volatility (note:
+ general equilibrium, so not today)
+\end_layout
+
+\begin_layout Itemize
+This channel has been difficult (if not impossible) to capture with RA models
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Our goal:
+\series default
+ Study a HA model that can capture this channel
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We will closely follow Harmenberg and Öberg (2021)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Start with a standard buffer stock model, expanded to have:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Durable (
+\begin_inset Formula $d$
+\end_inset
+
+) and nondurable consumption (
+\begin_inset Formula $c$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Durable consumption: Car, fridge, furniture etc.
+\end_layout
+
+\begin_layout Itemize
+Nondurable consumption: Food, services etc.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Time varying unemployment risk
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Households maximize
+\begin_inset Formula 
+\[
+\begin{aligned}\max_{\left\{ c_{it},d_{it},a_{it}\right\} _{i=0}^{\infty}}E_{0}\sum_{t=0}^{\infty}\beta^{t}u\left(c_{it},d_{it}\right)\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Subject to
+\begin_inset Formula 
+\[
+\begin{aligned}c_{t}+d_{t}+a_{t} & \leq\Upsilon\left(z_{t},n_{t}\right)+(1-\delta)d_{t-1}+Ra_{t-1}-F\left(d_{t},d_{t-1}\right),\\
+a_{t} & \geq0.
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Adjustment costs to durable consumption
+\begin_inset Formula 
+\[
+F\left(d_{t},d_{t-1}\right)=\left\{ \begin{array}{cl}
+0 & \text{ if }d_{t}=(1-\delta)d_{t-1},\\
+hd_{t-1} & \text{ if }d_{t}\neq(1-\delta)d_{t-1}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why do we need the adjustment cost? 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Want to capture 
+\begin_inset Quotes ald
+\end_inset
+
+lumpy
+\begin_inset Quotes ard
+\end_inset
+
+ investment behavoir (durable purchases are infrequent, but large)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Income depends on both productivity and employment status
+\begin_inset Formula 
+\[
+\Upsilon\left(z_{t},n_{t}\right)=z_{t}\left(n_{t}+b\left(1-n_{t}\right)\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+with 
+\begin_inset Formula $b<1$
+\end_inset
+
+ = replacement rate (income when 
+\begin_inset Formula $n_{t}=0$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Where the employment process for 
+\begin_inset Formula $n_{t}$
+\end_inset
+
+ is governed by two parameters:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The job 
+\emph on
+finding
+\emph default
+ probability and job 
+\emph on
+separation
+\emph default
+ probability
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Job separation probability = 1% in expanisions and 2% in recessions
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Job finding probability = 2% in both expansions and recessions
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How might unemployment risk affect consumption
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Two channels:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Unemployment-risk channel (ex-ante)
+\end_layout
+
+\begin_layout Itemize
+Unemployment channel (ex-post)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What is the difference between the two channels?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The first captures the saving response to an increase in future job separation
+ probability
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Increased unemployment-risk 
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+ larger optimal buffer stock 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The second captures the fall in consumption induced by being hit by a bad
+ shock
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Decreased income 
+\begin_inset Formula $\Longrightarrow$
+\end_inset
+
+ less resources available for consumption
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Which of these channels is more important?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Harmenberg-Oberg.JPG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Response of durables is much larger than nondurables
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+For durables: unemployment-risk channel is most important (
+\emph on
+wait-and-see
+\emph default
+ effect)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+For nondurables: unemployment-risk matters initially, but unemployment accounts
+ for the majority in the long-term
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today: 
+\series default
+Three applications of dynamic programming to understand household spending
+ dynamics
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+The role of credit constraints
+\end_layout
+
+\begin_layout Enumerate
+Modeling the large average MPC to income shocks
+\end_layout
+
+\begin_layout Enumerate
+Consumption dynamics with time-varying unemployment risk
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Next week: 
+\series default
+General equilibrium
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Homework exercises: 
+\series default
+(see notebook in Github repo)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Adjust the discount factor, 
+\begin_inset Formula $\beta$
+\end_inset
+
+, to target different levels of average wealth.
+ How does the average MPC change across calibrations?
+\end_layout
+
+\begin_layout Enumerate
+Extend the model with permanent discount factor heterogeneity.
+ Can you find a level of dispersion that allows you to both match a high
+ level of liquidty and a higher MPC?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

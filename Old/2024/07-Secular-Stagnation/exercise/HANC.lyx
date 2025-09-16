@@ -1,0 +1,2280 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+% general
+\usepackage[titletoc]{appendix}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{tikz}
+
+% algorithm
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\IncMargin{2.5cm}
+\DecMargin{2cm}
+\usepackage{fullwidth}
+\usepackage{enumitem}
+\setlist{leftmargin=1.7cm}
+
+% tables
+\usepackage{tabularx, siunitx, multirow, booktabs}
+\begingroup
+% Allow `_` and `:` in macro names (LaTeX3 style)
+\catcode`\_=11
+\catcode`\:=11
+% Internal code of `S`
+\gdef\tabularxcolumn#1{%
+    >{\__siunitx_table_collect_begin:Nn S{} }%
+    p{#1}%  <- this is different (is `c` in normal `S`)
+    <{\__siunitx_table_print:}%
+}
+\endgroup
+
+% figures
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfloat]{position=top}
+
+% footnotes
+\setlength{\skip\footins}{1cm}
+\usepackage[hang,splitrule]{footmisc}
+\setlength{\footnotemargin}{0.3cm} %.5
+\setlength{\footnotesep}{0.4cm}
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+
+% manual
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize 12
+\spacing onehalf
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date true
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 3cm
+\topmargin 2cm
+\rightmargin 3cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle empty
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+
+\shape smallcaps
+\size large
+- GEModelTools -
+\size largest
+
+\begin_inset Newline newline
+\end_inset
+
+Heterogeneous Agent 
+\begin_inset Newline newline
+\end_inset
+
+NeoClassical Model (HANC)
+\end_layout
+
+\begin_layout Author
+Jeppe Druedahl
+\end_layout
+
+\begin_layout Section*
+Model
+\end_layout
+
+\begin_layout Standard
+We consider a 
+\emph on
+closed
+\emph default
+ economy with heterogeneous agents and 
+\emph on
+flexible prices
+\emph default
+ 
+\emph on
+and wages
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+Time is discrete and indexed by 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ There is a continuum of households indexed 
+\begin_inset Formula $i$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Households.
+\end_layout
+
+\begin_layout Standard
+Households are heterogeneous 
+\emph on
+ex ante
+\emph default
+ with respect to their discount factor, 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, and 
+\emph on
+ex post 
+\emph default
+with respect to their productivity, 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+, and assets, 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+.
+ Each period household exogenously supply 
+\begin_inset Formula $\ell_{it}=z_{it}$
+\end_inset
+
+ units of labor, and choose consumption 
+\begin_inset Formula $c_{it}$
+\end_inset
+
+ subject to a no-borrowing constraint, 
+\begin_inset Formula $a_{it}\geq0$
+\end_inset
+
+.
+ Households have 
+\emph on
+perfect foresight
+\emph default
+ wrt.
+ to the interest rate and the wage rate, 
+\begin_inset Formula $\{r_{t},w_{t}\}_{t=0}^{\infty}$
+\end_inset
+
+, and solve the problem
+\begin_inset Formula 
+\begin{align}
+v_{t}(\beta_{i},z_{it},a_{it-1}) & =\max_{a_{it},c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(\beta_{i},z_{it+1},a_{it})\right]\label{eq:Bellman}\\
+ & \text{s.t.}\nonumber \\
+\ell_{it} & =z_{it}\nonumber \\
+a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{it}z_{it}\nonumber \\
+\log z_{it} & =\rho_{z}\log z_{it-1}+\psi_{it}\,\,\,,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\nonumber \\
+a_{it} & \geq0,\nonumber 
+\end{align}
+
+\end_inset
+
+where implicitly 
+\begin_inset Formula $v_{t}(\beta_{i},z_{it},a_{it-1})=v(\beta_{i},z_{it},a_{it-1},\{r_{\tau},w_{\tau}\}_{\tau=t}^{\infty})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We denote optimal policy functions by 
+\begin_inset Formula $a_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})$
+\end_inset
+
+, 
+\begin_inset Formula $\ell_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})$
+\end_inset
+
+, and 
+\begin_inset Formula $c_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})$
+\end_inset
+
+.
+ The distribution of households 
+\emph on
+before
+\emph default
+ the realization of idiosyncratic shocks, i.e.
+ over 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $z_{it-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+, is denoted 
+\begin_inset Formula $\underline{\boldsymbol{D}}_{t}$
+\end_inset
+
+.
+ The distribution of households 
+\emph on
+after
+\emph default
+ the realization idiosyncratic shocks, i.e.
+ over 
+\begin_inset Formula $\beta_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $z_{it}$
+\end_inset
+
+ and 
+\begin_inset Formula $a_{it-1}$
+\end_inset
+
+, is denoted 
+\begin_inset Formula $\boldsymbol{D}_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Central aggregate variables are
+\begin_inset Formula 
+\begin{align}
+A_{t}^{hh} & =\int a_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\label{eq:A_hh}\\
+ & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\nonumber \\
+L_{t}^{hh} & =\int\ell_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\label{eq:L_hh}\\
+ & =\boldsymbol{\ell}_{t}^{\ast\prime}\boldsymbol{D}_{t}\nonumber \\
+C_{t}^{hh} & =\int c_{t}^{\ast}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\label{eq:C_hh}\\
+ & =\boldsymbol{c}_{t}^{\ast\prime}\boldsymbol{D}_{t}.\nonumber 
+\end{align}
+
+\end_inset
+
+To solve the model, we define the beginning-of-period value function as
+\begin_inset Formula 
+\begin{equation}
+\underline{v}_{t}\left(\beta_{i},z_{it-1},a_{it-1}\right)=\mathbb{E}_{t}\left[v_{t}(\beta_{i},z_{it},a_{it-1})\right].\label{eq:beginning-of-period-v}
+\end{equation}
+
+\end_inset
+
+The 
+\emph on
+envelope condition
+\emph default
+ implies
+\begin_inset Formula 
+\begin{equation}
+\underline{v}_{t,a}(\beta_{i}z_{it-1},a_{it-1})=\frac{\partial\underline{v}_{t}(\beta_{i}z_{it-1},a_{it-1})}{\partial a_{it-1}}=\mathbb{E}_{t}\left[(1+r_{t})c_{it}^{-\rho}\right].\label{eq:Envelope}
+\end{equation}
+
+\end_inset
+
+The 
+\emph on
+first condition
+\emph default
+ for consumption implies
+\begin_inset Formula 
+\begin{equation}
+c_{it}^{-\rho}=\beta\underline{v}_{t+1,a}(\beta_{i}z_{it},a_{it}).\label{eq:FOC}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph*
+Firms.
+ 
+\end_layout
+
+\begin_layout Standard
+A representative firm rent capital, 
+\begin_inset Formula $K_{t-1}$
+\end_inset
+
+, and hire labor, 
+\begin_inset Formula $L_{t}$
+\end_inset
+
+, to produce goods, with the production function
+\begin_inset Formula 
+\begin{equation}
+Y_{t}=\Gamma_{t}K_{t-1}^{\alpha}L_{t}^{1-\alpha},\,\,\,\alpha\in(0,1),\label{eq:Y}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Gamma_{t}$
+\end_inset
+
+ is technology and considered an exogenous shock.
+ Capital depreciates with the rate 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ Profit maximization by
+\begin_inset Formula 
+\[
+\max_{K_{t-1},L_{t}}Y_{t}-w_{t}L_{t}-r_{t}^{k}K_{t-1}
+\]
+
+\end_inset
+
+,implies the standard pricing equations
+\series bold
+
+\begin_inset Formula 
+\begin{align}
+r_{t}^{k} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\text{\alpha-1}}\label{eq:rk}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha},\label{eq:w}
+\end{align}
+
+\end_inset
+
+
+\series default
+where 
+\begin_inset Formula $r_{t}^{k}$
+\end_inset
+
+ is rental rate of capital and 
+\begin_inset Formula $w_{t}$
+\end_inset
+
+ is the wage rate.
+ 
+\end_layout
+
+\begin_layout Paragraph*
+Mutual fund.
+\end_layout
+
+\begin_layout Standard
+A zero-profit mutual fund owns all the capital.
+ It take deposits from households, 
+\begin_inset Formula $A_{t}$
+\end_inset
+
+, and pay a real return of 
+\begin_inset Formula $r_{t}=r_{t}^{k}-\delta$
+\end_inset
+
+.
+ It balance sheet is 
+\begin_inset Formula $A_{t}=K_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph*
+Market clearing.
+\end_layout
+
+\begin_layout Standard
+Market clearing requires
+\begin_inset Formula 
+\begin{align}
+\text{Capital: }K_{t} & =A_{t}=A_{t}^{hh}\label{eq:clearing_A}\\
+\text{Labour: }L_{t} & =L_{t}^{hh}=1\label{eq:clearing_L}\\
+\text{Goods: }Y_{t} & =C_{t}^{hh}+\underset{=I_{t}}{\underbrace{K_{t}-K_{t-1}+\delta K_{t-1}},}\label{eq:clearing_Y}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $I_{t}$
+\end_inset
+
+ is investment.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Equation system
+\end_layout
+
+\begin_layout Enumerate
+Shocks: 
+\begin_inset Formula $\boldsymbol{Z}=\{\boldsymbol{\Gamma}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Unknowns: 
+\begin_inset Formula $\boldsymbol{U}=\{\boldsymbol{K},\boldsymbol{L}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Targets: 
+\begin_inset Formula $\{A_{t}-A_{t}^{hh}\}$
+\end_inset
+
+ (asset market clearing) and 
+\begin_inset Formula $\{L_{t}-L_{t}^{hh}\}$
+\end_inset
+
+ (labor market clearing)
+\end_layout
+
+\begin_layout Enumerate
+Aggregate variables: 
+\begin_inset Formula $\boldsymbol{X}=\{\boldsymbol{\boldsymbol{\Gamma}},\boldsymbol{K},\boldsymbol{r},\boldsymbol{w},\boldsymbol{L},\boldsymbol{C},\boldsymbol{Y},\boldsymbol{A},\boldsymbol{A}^{hh},\boldsymbol{C}^{hh},\boldsymbol{L}^{hh}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Household inputs: 
+\begin_inset Formula $\boldsymbol{X}_{t}^{hh}=\{\boldsymbol{r},\boldsymbol{w}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Household outputs: 
+\begin_inset Formula $\boldsymbol{Y}_{t}^{hh}=\{\boldsymbol{A}^{hh},\boldsymbol{C}^{hh},\boldsymbol{L}^{hh}\}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This implies the equation system
+\size small
+
+\begin_inset Formula 
+\begin{align}
+\boldsymbol{H}(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma}) & =\boldsymbol{0}\Leftrightarrow\label{eq:H_Ayagari}\\
+\left[\begin{array}{c}
+A_{t}-A_{t}^{hh}\\
+L_{t}-L_{t}^{hh}
+\end{array}\right] & =\left[\begin{array}{c}
+0\end{array}\right],\,\,\,\forall t\in\{0,1,\dots,T-1\},\nonumber 
+\end{align}
+
+\end_inset
+
+
+\size default
+where we have
+\begin_inset Formula 
+\begin{align*}
+r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta\\
+w_{t} & =(1-\alpha)\Gamma_{t}\left(\frac{r_{t}+\delta}{\alpha\Gamma_{t}}\right)^{\frac{\alpha}{\alpha-1}}\\
+A_{t} & =K_{t}\\
+A_{t}^{hh} & =\boldsymbol{a}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+L_{t}^{hh} & =\boldsymbol{\ell}_{t}^{\ast\prime}\boldsymbol{D}_{t}\\
+\boldsymbol{D}_{t} & =\Pi_{z}^{\prime}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}\boldsymbol{D}_{t}\\
+ & \boldsymbol{\underline{D}}_{0}\text{ is given}.
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+\begin_inset Newpage newpage
+\end_inset
+
+Implementation
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+files 
+\series default
+are: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{block.py}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{household_problem.py}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{steady_state.py}
+\end_layout
+
+\end_inset
+
+, and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{HANCModel.py}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The results are produced in the 
+\series bold
+notebook
+\series default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{HANC.ipynb}
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The basic 
+\series bold
+model definition
+\series default
+ is in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{HANCModel.py}
+\end_layout
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+class HANCModelClass(EconModelClass,GEModelClass):    
+\end_layout
+
+\begin_layout Plain Layout
+
+    def settings(self): ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    def setup(self): ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    def allocate(self): ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    prepare_hh_ss = steady_state.prepare_hh_ss
+\end_layout
+
+\begin_layout Plain Layout
+
+    find_ss = steady_state.find_ss
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The 
+\series bold
+namespaces
+\series default
+ are:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.par}
+\end_layout
+
+\end_inset
+
+: All parameters (no 
+\begin_inset Formula $t$
+\end_inset
+
+ subscript)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.ss}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.path}
+\end_layout
+
+\end_inset
+
+: All actual variables (with 
+\begin_inset Formula $t$
+\end_inset
+
+ subscript)
+\begin_inset Newline newline
+\end_inset
+
+Note: The variables in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{blocks.py}
+\end_layout
+
+\end_inset
+
+ are in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.path}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Step 1.
+
+\series default
+ In the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.settings}
+\end_layout
+
+\end_inset
+
+ method specify household variables, the aggregate shocks, unknowns, targets
+ and blocks, and a function for solving the household problem one step backwards
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+def settings(self):
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # a.
+ namespaces (typically not changed)
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.namespaces = ['par','ini','sim','ss','path']
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    # b.
+ household
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.grids_hh = ['a'] # grids
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.pols_hh = ['a'] # policy functions
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.inputs_hh = ['r','w'] # direct inputs
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.inputs_hh_z = [] # transition matrix inputs
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.outputs_hh = ['a','c','l'] # outputs
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.intertemps_hh = ['vbeg_a'] # intertemporal variables
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # c.
+ GE
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.shocks = ['Gamma'] # exogenous shocks
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.unknowns = ['K','L'] # endogenous unknowns
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.targets = ['clearing_A','clearing_L'] # targets = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.blocks = [ # list of strings to block-functions
+\end_layout
+
+\begin_layout Plain Layout
+
+        'blocks.production_firm',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'blocks.mutual_fund',
+\end_layout
+
+\begin_layout Plain Layout
+
+        'hh', # household block
+\end_layout
+
+\begin_layout Plain Layout
+
+        'blocks.market_clearing']
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    # d.
+ functions
+\end_layout
+
+\begin_layout Plain Layout
+
+    self.solve_hh_backwards = None
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Step 2.
+
+\series default
+ In the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.setup}
+\end_layout
+
+\end_inset
+
+ method set all 
+\emph on
+independent
+\emph default
+ parameters.
+ At the minimum:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+def setup(self):
+\end_layout
+
+\begin_layout Plain Layout
+
+    par = self.par
+\end_layout
+
+\begin_layout Plain Layout
+
+    par.Nfix = 3 # number of fixed types
+\end_layout
+
+\begin_layout Plain Layout
+
+    par.Nz = 7 # number of discrete stochastic states
+\end_layout
+
+\begin_layout Plain Layout
+
+    par.Na = 300 # number of asset grid points
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Step 3.
+
+\series default
+ In the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.allocate}
+\end_layout
+
+\end_inset
+
+ method set all 
+\emph on
+dependent
+\emph default
+ parameters.
+ At the minimum:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+def allocate(self):         
+\end_layout
+
+\begin_layout Plain Layout
+
+	self.allocate_GE() # allocate on aggregate variables
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\backslash
+vspace{2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Step 4.
+ 
+\series default
+Write the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{blocks.py}
+\end_layout
+
+\end_inset
+
+ file with functions in the following format:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+import numba as nb
+\end_layout
+
+\begin_layout Plain Layout
+
+@nb.njit
+\end_layout
+
+\begin_layout Plain Layout
+
+def block_name(par,ini,ss,input1,input2,...,output1,output2,...):
+\end_layout
+
+\begin_layout Plain Layout
+
+    output1[:] = ...
+\end_layout
+
+\begin_layout Plain Layout
+
+    output2[:] = ...
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-4mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note I:
+\series default
+ The order of the function arguments does not matter, but good practice
+ is inputs first, and outputs last.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note II:
+\series default
+ All aggregate variables in 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+ must be set in blocks, except for the outputs of the household block, 
+\begin_inset Formula $\boldsymbol{Y}_{t}^{hh}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Check:
+\series default
+ At this stage it is possible to check, that the inputs and outputs of all
+ blocks are derived correctly by the code.
+ The DAG can also be produced.
+ Run:
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+model = HANCModelClass()
+\end_layout
+
+\begin_layout Plain Layout
+
+model.info()
+\end_layout
+
+\begin_layout Plain Layout
+
+model.draw_DAG(figsize=(10,10))
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Explanation: 
+\series default
+This works because 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{GEModelTools}
+\end_layout
+
+\end_inset
+
+ automatically reads the arguments of the functions 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{blocks.py}
+\end_layout
+
+\end_inset
+
+ in the order determined in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.blocks}
+\end_layout
+
+\end_inset
+
+ attribute of the model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\series bold
+Step 5.
+ 
+\series default
+In the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{household_problem.py}
+\end_layout
+
+\end_inset
+
+ file write the function 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{solve_hh_backwards}
+\end_layout
+
+\end_inset
+
+ to solve the household problem in the following format:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+@nb.njit(parallel=True)        
+\end_layout
+
+\begin_layout Plain Layout
+
+def solve_hh_backwards(par,z_trans,arguments)
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	# arguments:
+\end_layout
+
+\begin_layout Plain Layout
+
+    #  inputs_hh+inputs_hh_z -> r,w [scalars]
+\end_layout
+
+\begin_layout Plain Layout
+
+    #  intertemps_hh -> vbeg_a, vbeg_a_plus [shape=(Nfix,Nfix,Na)]
+\end_layout
+
+\begin_layout Plain Layout
+
+	#  outputs_hh -> a,c,l [shape=(Nfix,Nfix,Na)]
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\end_layout
+
+\begin_layout Plain Layout
+
+	# content of code:
+\end_layout
+
+\begin_layout Plain Layout
+
+	#  given r,w and vbeg_a_plus
+\end_layout
+
+\begin_layout Plain Layout
+
+	#  derive outputs and vbeg_a
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Step 6.
+ 
+\series default
+In the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{steady_state.py}
+\end_layout
+
+\end_inset
+
+ file write the function 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{prepare_hh_steady}
+\end_layout
+
+\end_inset
+
+ to set grids, transition matrix of stochastic discrete states, initial
+ distribution and initial guesses for intertemporal variables.
+ At the minimum:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+def prepare_hh_ss(model):
+\end_layout
+
+\begin_layout Plain Layout
+
+    par = model.par
+\end_layout
+
+\begin_layout Plain Layout
+
+    ss = model.ss
+\end_layout
+
+\begin_layout Plain Layout
+
+    par.a_grid[:] = ...
+ # shape=(Na)
+\end_layout
+
+\begin_layout Plain Layout
+
+    par.z_grid[:] = ...
+ # shape=(Nz)
+\end_layout
+
+\begin_layout Plain Layout
+
+	ss.z_trans[:,:,:] = ...
+ # shape=(Nz,Nz)
+\end_layout
+
+\begin_layout Plain Layout
+
+	ss.Dbeg[:,:,:] = ...
+ # shape=(Nfix,Nz,Na), sum to 1
+\end_layout
+
+\begin_layout Plain Layout
+
+    ss.vbeg_a[:,:,:] = ...
+ # shape=(Nfix,Nz,Na)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-4mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note: 
+\series default
+The 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.prepare_hh_ss}
+\end_layout
+
+\end_inset
+
+ is called internally by 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{GEModelTools}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+whenever
+\series bold
+ 
+\series default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.solve_hh_ss}
+\end_layout
+
+\end_inset
+
+ is called.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Check:
+\series default
+ At this stage it is possible to check, that the household problem can be
+ solved for steady state values you choose.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+model.ss.r = 0.02 # arbitrary number
+\end_layout
+
+\begin_layout Plain Layout
+
+model.ss.w = 1.0 # arbitrary number
+\end_layout
+
+\begin_layout Plain Layout
+
+model.solve_hh_ss(do_print=True) # calls prepare_hh_ss
+\end_layout
+
+\begin_layout Plain Layout
+
+model.simulate_hh_ss(do_print=True)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And that the solution has converged properly:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+model.test_hh_path()
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\series bold
+Step 7.
+ 
+\series default
+In the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{steady_state.py}
+\end_layout
+
+\end_inset
+
+ file write the function 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{find_ss}
+\end_layout
+
+\end_inset
+
+ to find the steady state.
+ This can be formulated in many ways.
+ The structure could e.g.
+ be:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+import numba as nb
+\end_layout
+
+\begin_layout Plain Layout
+
+def find_ss(model)
+\end_layout
+
+\begin_layout Plain Layout
+
+	# a.
+ guess on some variables
+\end_layout
+
+\begin_layout Plain Layout
+
+	#  could be e.g.
+ ss.x = par.x_ss.
+\end_layout
+
+\begin_layout Plain Layout
+
+	# b.
+ derive some more variables analytically
+\end_layout
+
+\begin_layout Plain Layout
+
+	# c.
+ solve household problems
+\end_layout
+
+\begin_layout Plain Layout
+
+	model.solve_hh_ss(do_print=do_print)     
+\end_layout
+
+\begin_layout Plain Layout
+
+	model.simulate_hh_ss(do_print=do_print)
+\end_layout
+
+\begin_layout Plain Layout
+
+	# d.
+ derive more variables analytically
+\end_layout
+
+\begin_layout Plain Layout
+
+	# e.
+ check remaning equations -> update par.x_ss and return to step a.?
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-4mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Note: 
+\series default
+The function 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{find_ss}
+\end_layout
+
+\end_inset
+
+ should set ALL aggregate variables, 
+\begin_inset Formula $\boldsymbol{X}$
+\end_inset
+
+, in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.ss}
+\end_layout
+
+\end_inset
+
+, and it should not dependent on existing values, except through 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.par}
+\end_layout
+
+\end_inset
+
+.
+ To verify this you can call 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+lstinline{.set_ss_to_nan()}
+\end_layout
+
+\end_inset
+
+ just before, or in the beginning.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\series bold
+Check:
+\series default
+ At this stage it is possible to check, that the household problem can be
+ solved for steady state values you choose.
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+model.test_ss() # check for NaN values in .ss
+\end_layout
+
+\begin_layout Plain Layout
+
+model.test_hh_ss() # check for proper convergence of household problem
+\end_layout
+
+\begin_layout Plain Layout
+
+model.test_path() # check for consistency of .ss with blocks.py
+\end_layout
+
+\begin_layout Plain Layout
+
+model.test_jacs() # test computation of Jacobians
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\series bold
+Solution: 
+\series default
+The non-linear transition path can now be found as
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{2mm}
+\backslash
+begin{lstlisting}[language=Python,label=lst:setup,basicstyle=
+\backslash
+linespread{1.3}
+\backslash
+ttfamily
+\backslash
+footnotesize,
+\end_layout
+
+\begin_layout Plain Layout
+
+numbers=left,frame=single,backgroundcolor=
+\backslash
+color{background}]
+\end_layout
+
+\begin_layout Plain Layout
+
+model.compute_jacs()
+\end_layout
+
+\begin_layout Plain Layout
+
+model.find_transition_path(...)
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{lstlisting}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

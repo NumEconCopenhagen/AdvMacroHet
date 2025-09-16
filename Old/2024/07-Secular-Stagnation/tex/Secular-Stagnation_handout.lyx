@@ -1,0 +1,6109 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+% Automatically create vspace between items
+% See: https://tex.stackexchange.com/questions/369504/beamer-vertically-stretching-level-1-list-items-in-a-nested-list-environment
+%\usepackage{xpatch} 
+%\xpatchcmd{\itemize}   
+%	{\def\makelabel}   
+%	{\ifnum\@itemdepth=1\relax      
+%		\setlength\itemsep{\fill} % separation for first level    
+%		\fi\def\makelabel   
+%	}{}{} 
+%\xpatchcmd{\enditemize}   
+%	{\endlist}   
+%	{\endlist\ifnum\@itemdepth<2\else\vfil\fi}{}{}
+\end_preamble
+\options t,10pt,handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{7.
+ Secular Stagnation 
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{/figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{/figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Secular Stagnation 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today: 
+\series default
+Can we explain 
+\emph on
+secular stagnation
+\emph default
+ through the lens of heterogeneous agent models?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Central economic questions:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+How do aging populations affect interest rates and global imbalances?
+\end_layout
+
+\begin_layout Enumerate
+What will happen going forward? 
+\end_layout
+
+\begin_layout Enumerate
+Should we be concerned about an asset market meltdown?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Plan for today: 
+\series default
+Discuss two possible explanations for observed secular stagnation:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Population aging 
+\end_layout
+
+\begin_layout Enumerate
+Increase in income inequality 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Secular Stagnation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Secular stagnation
+\series default
+: A state in which private demand is structurally low 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Low level of growth in the economy 
+\end_layout
+
+\begin_layout Itemize
+Low interest rates 
+\end_layout
+
+\begin_layout Itemize
+Low level of inflation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Large litterature suggests that advanced economies have been in this state
+ over the past 
+\begin_inset Formula $\approx$
+\end_inset
+
+ 20 years
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Declining interest rates
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Various interest rates from Mian, Sufi, Straub (2021)
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.65
+\backslash
+linewidth]{figs/MSSRates.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Declining growth
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.65
+\backslash
+linewidth]{figs/TrendGrowth.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Explanations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Large litterature on potential explanations
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Increases in market power of firms 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Liu, Mian & Sufi (2022), Aghion, Bergeaud, Boppart, Klenow & Li (2023)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Declining relative price of investment (/reduced innovation)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Eichengreen (2015), Eggertsson, Mehrotra & Robbins (2019)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Aging population (Demographics)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Auclert, Malmberg, Martenet & Rognlie (2021), Gagnon, Johannsen & López-Salido
+ (2021)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Increasing income inequality 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Straub (2019), Mian, Sufi & Straub (2021)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Demographics
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The world population is aging
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Fig1.PNG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+...wealth-to-GDP ratios are increasing...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Fig2.PNG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+...rates of return on wealth are falling...
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Fig3.PNG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+...and “global imbalances” are rising
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Fig4.PNG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+How have demographics shaped these trends?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Broad agreement that demographics has contributed to historical trends in
+ W/Y, real returns (
+\begin_inset Formula $r$
+\end_inset
+
+), and NFA imbalances
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Older population saves more, unevenly across countries
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Much less agreement about how much: 
+\begin_inset Formula $\Delta r$
+\end_inset
+
+ for 1970-2015 is
+\begin_inset Formula 
+\[
+\begin{aligned} & >-100\mathrm{bp}\text{ in Gagnon-Johannsen-Lopez-Salido }2021\\
+ & <-30\mathrm{bp}\text{ in Eggertsson-Mehrotra-Robbins }2019
+\end{aligned}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+And how will demographics continue to shape these trends?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Critical question: what will happen going forward?
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Influential view that these trends will revert:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+“While a large population cohort that is saving for retirement puts upward
+ pressure on the total savings rate, a large elderly cohort may push down
+ aggregate savings by running down accumulated wealth.” [Lane, ECB 2020]
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+“asset market meltdown” hypothesis [Poterba 2001]
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If large elderly cohort wishes to sell assets to younger, smaller cohort
+ asset prices drop, rates increase
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+“great demographic reversal” hypothesis [Goodhart-Pradhan 2020]
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Demographic shift may raise rates going forward 
+\end_layout
+
+\begin_layout Itemize
+(
+\series bold
+Less
+\series default
+): Young who consume and produce (i.e.
+ supply labor)
+\end_layout
+
+\begin_layout Itemize
+(
+\series bold
+More
+\series default
+): Old who only consume 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Increase in demand with lower supply: inflationary
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+And how will demographics continue to shape these trends?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+``Demographics, Wealth, and Global Imbalances in the Twenty-First Century''
+ by Auclert, Malmberg, Martenet and Rognlie (2021) attempts to answer these
+ questions
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+These authors develop a multi-country model with overlapping generations
+ of households and equilibrium world interest rates
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Demographic change alters demand for assets in each country
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+This affects world interest rate & financial flows between countries
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Big challenge: how to take this model to the data to discipline the importance
+ of demographics?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Taking the model to the data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The authors develop a sufficient statistic approach to answer this question
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+First, they show analytically that the effect of demographic change on 
+\begin_inset Formula $W/Y$
+\end_inset
+
+, 
+\begin_inset Formula $r$
+\end_inset
+
+, and NFA depends only on:
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Age profiles of wealth, labor income, and consumption
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Demographic projections
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The elasticity of intertemporal substitution
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The elasticity of substitution between capital and labor 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Second, they use this framework to measure the importance of demographic
+ change
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Admittedly, this approach requires a lot of simplifying assumptions.
+ The authors solve and simulate the full model and show that it gives similar
+ results
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Main results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The authors reject the ``great demographic reversal'' hypothesis
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Do not find that aging will decrease savings and increase interest rates
+\end_layout
+
+\begin_layout Itemize
+Instead, it appears the global savings glut has just begun
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In addition, the authors refute the ``asset market meltdown'' hypothesis
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Will dissaving of the old reverse the effects of demographics?
+\end_layout
+
+\begin_layout Itemize
+Yes, slightly.
+ But it does not cause 
+\begin_inset Formula $r$
+\end_inset
+
+ to increase
+\end_layout
+
+\begin_layout Itemize
+As a result, no asset market meltdown
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Model
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model: Main Elements
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+OLG model, demographic change + multiple countries facing 
+\begin_inset Formula $\left\{ r_{t}\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Demographics 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exogenous, time-varying sequence of births 
+\begin_inset Formula $N_{0t}$
+\end_inset
+
+ [will drive demo.
+ change in stylized model]
+\end_layout
+
+\begin_layout Itemize
+Exogenous, constant sequence of mortality rates 
+\begin_inset Formula $\phi_{j}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+No migration 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Production 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Aggregate production function with capital and effective labor, with elasticity
+ of substitution 
+\begin_inset Formula $\eta$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Constant growth rate of labor-augmenting technology 
+\begin_inset Formula $\gamma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Perfect competition, free capital adjustment 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Government 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Flow budget constraint 
+\begin_inset Formula 
+\[
+G_{t}+w_{t}\sum_{j=0}^{T}N_{jt}\mathbb{E}tr_{j}+(1+r_{t})B_{t-1}=\tau w_{t}\sum_{j=0}^{T}N_{jt}\mathbb{E}l_{j}+B_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Balance budget by changing 
+\begin_inset Formula $G_{t}$
+\end_inset
+
+, not 
+\begin_inset Formula $\tau_{t}$
+\end_inset
+
+ or 
+\begin_inset Formula $tr_{jt}$
+\end_inset
+
+, to keep 
+\begin_inset Formula $Bt/Yt$
+\end_inset
+
+ constant
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Environment: heterogeneous agents
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Problem for heterogeneous agents of cohort 
+\begin_inset Formula $k$
+\end_inset
+
+ (age 
+\begin_inset Formula $j\equiv t-k$
+\end_inset
+
+)} 
+\begin_inset Formula 
+\[
+\begin{aligned} & \max\mathbb{E}_{k}\left[\sum_{j}\beta_{j}\Phi_{j}\frac{c_{jt}^{1-\frac{1}{\sigma}}}{1-\frac{1}{\sigma}}\right]\text{, }\\
+ & \text{ s.t }c_{jt}+a_{j,t}\leq w_{t}\left((1-\tau)\ell\left(z_{j}\right)+{tr}\left(z_{j}\right)\right)+\left(1+r_{t}\right)a_{j-1,t-1}\\
+ & a_{j,t}\geq-\underline{a}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\sigma\equiv$
+\end_inset
+
+ elasticity of intertemporal substitution
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\beta_{j}$
+\end_inset
+
+ : age-specific discount rate
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\Phi_{j}$
+\end_inset
+
+ : survival probability by age 
+\begin_inset Formula $\left(\Phi_{j}=\prod_{j}\phi_{j}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\ell\left(z_{j}\right)$
+\end_inset
+
+ : risky labor supply driven by age specific stochastic process 
+\begin_inset Formula $z_{j}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\tau,{tr}\left(z^{j}\right):$
+\end_inset
+
+ taxes and (state-contingent) government transfers
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $a_{jt}:$
+\end_inset
+
+ savings
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Equilibrium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Given demographics and policy, in an integrated world equilibrium:
+\end_layout
+
+\begin_layout Itemize
+Individuals optimize
+\end_layout
+
+\begin_layout Itemize
+Firms optimize
+\end_layout
+
+\begin_layout Itemize
+Global asset markets clear
+\begin_inset Formula 
+\[
+\sum_{c}W_{t}^{c}=\sum_{c}\left(K_{t}^{c}+B_{t}^{c}\right)\quad\forall t
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $W_{t}^{c}$
+\end_inset
+
+ is aggregate household wealth in country c:
+\begin_inset Formula 
+\[
+W_{t}^{c}=\sum_{j=0}^{J}N_{jt}^{c}a_{jt}^{c}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Next: consider small country aging alone, with world at steady state 
+\begin_inset Formula $\rightarrow r$
+\end_inset
+
+ constant (will adjust later)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Compositional effects as sufficient statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Proposition 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+The wealth-to-GDP ratio of a small country aging alone with constant rate
+ 
+\begin_inset Formula $r$
+\end_inset
+
+ and growth 
+\begin_inset Formula $\gamma$
+\end_inset
+
+ follows 
+\begin_inset Formula 
+\[
+\frac{W_{t}}{Y_{t}}\propto\frac{\sum_{j}\pi_{jt}a_{jo}}{\sum_{j}\pi_{jt}h_{jo}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $a_{j0}\equiv\mathbb{E}a_{j,0}$
+\end_inset
+
+ and 
+\begin_inset Formula $h_{j0}=\mathbb{E}w_{0}\ell_{j,0}$
+\end_inset
+
+ are average initial asset holdings and pretax labor income by age, and
+ 
+\begin_inset Formula $\pi_{jt}=N_{jt}/N_{t}$
+\end_inset
+
+ is the share of the population of age 
+\begin_inset Formula $j$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In a 
+\bar under
+partial equilibrium
+\bar default
+ world (where 
+\begin_inset Formula $r$
+\end_inset
+
+ does not adjust to changing demographics) then all changes in 
+\begin_inset Formula $W/Y$
+\end_inset
+
+ reflect the changing age composition 
+\begin_inset Formula $\pi_{jt}$
+\end_inset
+
+ of the population, given fixed profiles of asset holdings by age (
+\begin_inset Formula $a_{j0})$
+\end_inset
+
+ and income by age (
+\begin_inset Formula $h_{j0}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Compositional effects as sufficient statistics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Based on Proposition 1, we can compute the change in log wealth to GDP ratio
+ as follows:
+\begin_inset Formula 
+\[
+\log\left(\frac{W_{t}}{Y_{t}}\right)-\log\left(\frac{W_{o}}{Y_{o}}\right)=\log\left(\frac{\sum_{j}\pi_{jt}a_{jo}}{\sum_{j}\pi_{jt}h_{j0}}\right)-\log\left(\frac{\sum_{j}\pi_{j0}a_{jo}}{\sum_{j}\pi_{jo}h_{j0}}\right)\equiv\Delta_{t}^{comp}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The above is measurable from demographic projections and hh.
+ surveys
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why? Demographics do not affect (normalized) individual decisions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Note
+\series default
+: Comes from SOE 
+\series bold
+assumption
+\series default
+ (constant 
+\begin_inset Formula $r$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Later: we'll think about how 
+\begin_inset Formula $\Delta_{t}^{comp}$
+\end_inset
+
+ affects general equilibrium outcomes
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Measuring compositional effects
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Measuring 
+\begin_inset Formula $\Delta^{\text{comp }}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Calculate 
+\begin_inset Formula $\Delta_{t}^{comp}$
+\end_inset
+
+ for 25 countries:
+\begin_inset Formula 
+\[
+\Delta_{t}^{comp}\equiv\log\left(\frac{\sum\pi_{jt}a_{j0}}{\sum\pi_{jt}h_{j0}}\right)-\log\left(\frac{\sum\pi_{j0}a_{jo}}{\sum\pi_{j0}h_{j0}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Data:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\pi_{jt}$
+\end_inset
+
+ : projections of age distributions over individuals 2019 UN World Population
+ Prospects
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{jo},h_{jo}$
+\end_inset
+
+ age-wealth and labor income profiles in base year
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+For US: SCF, LIS/CPS, and Sabelhaus-Henriques Volz (2019)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $a_{j0}$
+\end_inset
+
+ includes funded part of DB pensions
+\end_layout
+
+\begin_layout Itemize
+Household 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ individual (
+\begin_inset Formula $j$
+\end_inset
+
+) by splitting wealth among adults
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Report implied level change 
+\begin_inset Formula $\frac{W_{t}}{Y_{t}}-\frac{W_{0}}{Y_{0}}=\frac{W_{0}}{Y_{0}}\left(\exp\left\{ \Delta_{t}^{comp}\right\} -1\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta^{\text{comp }}$
+\end_inset
+
+ in the United States: 1950-2100
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Composition effect implies that increase in average population age (low
+ fertility scenario) increases W/Y 
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig5.PNG
+	width 55page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Delta^{\text{comp }}$
+\end_inset
+
+ in the United States: 1950-2100
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig6.PNG
+	width 55page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Where do these large effects come from?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Does increase in W/Y come from increase in 
+\series bold
+agg.
+ wealth W
+\series default
+, or decrease in 
+\series bold
+agg.
+ income Y
+\series default
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Where do these large effects come from?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Does increase in W/Y come from increase in 
+\series bold
+agg.
+ wealth W
+\series default
+, or decrease in 
+\series bold
+agg.
+ income Y
+\series default
+?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig7b.PNG
+	width 90page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Where do these large effects come from?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Does increase in W/Y come from increase in 
+\series bold
+wealth W
+\series default
+, or decrease in 
+\series bold
+income Y
+\series default
+?
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig7c.PNG
+	width 90page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Where do these large effects come from?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig7c.PNG
+	width 90page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In paper: separate contribution of numerator (wealth) and denominator (income)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Going forward: 
+\begin_inset Formula $W$
+\end_inset
+
+ contributes 
+\begin_inset Formula $\sim2/3$
+\end_inset
+
+, 
+\begin_inset Formula $Y$
+\end_inset
+
+ contributes 
+\begin_inset Formula $\sim1/3$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Historically demographic dividend pushed 
+\begin_inset Formula $Y$
+\end_inset
+
+ up, reversed in 2010
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Where do these large effects come from?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig5-breakdown.PNG
+	width 90page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Historically (btw.
+ 1970 and 2010) ``demographic dividend'' pushed up 
+\begin_inset Formula $Y$
+\end_inset
+
+, decreased 
+\begin_inset Formula $W/Y$
+\end_inset
+
+ as a larger share of households were at peak working age where labor income
+ is highest
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+But this effect has been less pronounced recently, as elderly households
+ earn less
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Across countries, 
+\begin_inset Formula $\Delta^{\text{comp }}$
+\end_inset
+
+ large and heterogeneous by 2100
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Fig8.PNG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Note
+\series default
+: Uses US saving/income age profiles
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General equilibrium 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So far: Change age distribution keeping 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+World interest rate 
+\begin_inset Formula $r$
+\end_inset
+
+ fixed 
+\end_layout
+
+\begin_layout Itemize
+Household consumption/saving behavior fixed 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Now: 
+\series bold
+General equilibrium
+\end_layout
+
+\begin_layout Itemize
+Changing the age distribution will affect 
+\emph on
+supply
+\emph default
+ of wealth (demand for assets) 
+\end_layout
+
+\begin_layout Itemize
+Equilibrium 
+\begin_inset Formula $r$
+\end_inset
+
+ will depend on supply of assets (gov.
+ bonds + firm capital) as well 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General equilibrium implications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig9a.PNG
+	width 60page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Semielasticity of asset demand 
+\begin_inset Formula $\bar{\epsilon}_{d}=\frac{\partial\ln\left(W/Y\right)}{\partial r}$
+\end_inset
+
+ : depends on elasticity of intertemporal substitution 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ and observables (HHs)
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+Semielasticity of asset supply 
+\begin_inset Formula $\bar{\epsilon}_{s}=-\frac{\partial\ln\left((K+B)/Y\right)}{\partial r}$
+\end_inset
+
+ : depends on elasticity of substitution between labor and capital
+\end_layout
+
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset Formula $\eta$
+\end_inset
+
+ and observables (Firms + gov)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General equilibrium implications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig9b.PNG
+	width 60page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Asset demand shift of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $\overline{\Delta}^{\text{comp }}$
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ : wealth-weighted average of 
+\begin_inset Formula $\Delta^{\text{comp, c }}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Large and positive in the data.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General equilibrium implications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig9c.PNG
+	width 60page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+General equilibrium implications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Proposition 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Block
+If the age profiles of assets and consumption are constant, net foreign
+ assets are zero, and governments maintain constaint debt-to-GDP ratios,
+ then the long run change in the rate of return is:
+\begin_inset Formula 
+\[
+\Delta r\approx-\frac{\bar{\Delta}^{\text{comp }}}{\bar{\epsilon}_{S}+\bar{\epsilon}_{d}}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{\epsilon}_{S}$
+\end_inset
+
+ is the average semielasticity of asset supply to 
+\begin_inset Formula $r,$
+\end_inset
+
+and 
+\begin_inset Formula $\bar{\epsilon}_{d}$
+\end_inset
+
+ is the average semielasticity of asset holdings to 
+\begin_inset Formula $r$
+\end_inset
+
+, and 
+\begin_inset Formula $\bar{\Delta}^{\text{comp }}$
+\end_inset
+
+ is the average compositional change.
+ 
+\end_layout
+
+\begin_layout Block
+
+\end_layout
+
+\begin_layout Itemize
+If asset demand/capital supply is very elastic: Small decline in 
+\begin_inset Formula $r$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HHs respond a lot to initial decline in 
+\begin_inset Formula $r$
+\end_inset
+
+ by saving less (crowding out direct effect 
+\begin_inset Formula $\bar{\Delta}^{\text{comp }}$
+\end_inset
+
+), which stabilizes 
+\begin_inset Formula $r$
+\end_inset
+
+ in eq.
+\end_layout
+
+\begin_layout Itemize
+Firms respond by investing a lot in capital thereby driving up 
+\begin_inset Formula $r$
+\end_inset
+
+ in eq.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What determines the asset demand semielasticity?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\epsilon^{d}=\sigma\underbrace{\frac{C}{(1+g)W}\frac{\operatorname{Var}Age_{c}}{1+r}}_{\equiv\epsilon_{\text{substitution }}^{d}}+\underbrace{\frac{\mathbb{E}Age_{c}-\mathbb{E}Age_{a}}{1+r}}_{\equiv\epsilon_{\text{income }}^{d}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $Age_{a}$
+\end_inset
+
+, 
+\begin_inset Formula $Age_{c}$
+\end_inset
+
+: R.V.
+ age weighted by assets/consumption
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The substitution effect: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Proportional to 
+\begin_inset Formula $\operatorname{Var}Age_{c}$
+\end_inset
+
+ since there is more scope for intertemporal substitution if consumption
+ is more spread out over the life cycle
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The income effect:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reflects the fact that a higher 
+\begin_inset Formula $r$
+\end_inset
+
+ increases total income, if 
+\begin_inset Formula $\mathbb{E}Age_{a}<\mathbb{E}Age_{c}$
+\end_inset
+
+ (i.e.
+ the extra interest income is saved before it is consumed)
+\end_layout
+
+\begin_layout Itemize
+Note: Income effect can be negative since they allow for borrowing 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The above can be measured assuming fixed 
+\begin_inset Formula $Age_{a}$
+\end_inset
+
+ and 
+\begin_inset Formula $Age_{c}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The authors find 
+\begin_inset Formula $\epsilon_{\text{substitution }}^{d}=39.5$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon_{\text{income }}^{d}=-2$
+\end_inset
+
+, thus 
+\begin_inset Formula $\epsilon^{d}>0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+What determines the asset supply semielasticity?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{\epsilon}^{s}=\frac{\eta}{r_{0}+\delta}\frac{\bar{K}_{0}}{\bar{W}_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\eta$
+\end_inset
+
+ is the elasticity of substitution between capital and labor
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $r_{0}+\delta=9.7\%$
+\end_inset
+
+ is the user cost of capital
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\frac{\bar{K}_{0}}{\bar{W}_{0}}=0.78$
+\end_inset
+
+ is the initial global capital-wealth ratio
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Based on the above calibration, 
+\begin_inset Formula $\bar{\epsilon}^{s}>0$
+\end_inset
+
+ for any plausible 
+\begin_inset Formula $\eta$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ Note: Holds for fixed gov.
+ bond supply 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Change in world interest rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Since 
+\begin_inset Formula $\bar{\epsilon}_{S}+\bar{\epsilon}_{d}>0$
+\end_inset
+
+, then the change in the world interest rate must be negative:
+\begin_inset Formula 
+\[
+\Delta r\approx-\frac{\bar{\Delta}^{\text{comp }}}{\bar{\epsilon}_{S}+\bar{\epsilon}_{d}}<0
+\]
+
+\end_inset
+
+With different assumptions on the elasticity of intertemporal substitution
+ (
+\begin_inset Formula $\sigma$
+\end_inset
+
+) and the elasticity of substitution between capital and labor (
+\begin_inset Formula $\eta$
+\end_inset
+
+), this gives:
+\begin_inset Formula 
+\[
+\begin{tabular}{crrr}
+  & \multicolumn{3}{c}{\ensuremath{\sigma} }\\
+ \cline{ 2 - 4 } \ensuremath{\eta}  &  \ensuremath{0.25}  &  \ensuremath{0.50}  &  \ensuremath{1.00} \\
+\hline  \ensuremath{0.60}  &  \ensuremath{-3.24}  &  \ensuremath{-1.59}  &  \ensuremath{-0.79} \\
+ \ensuremath{1.00}  &  \ensuremath{-2.09}  &  \ensuremath{-1.25}  &  \ensuremath{-0.70} \\
+ \ensuremath{1.25}  &  \ensuremath{-1.71}  &  \ensuremath{-1.10}  &  \ensuremath{-0.65} \\
+\hline  
+\end{tabular}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Change in capital to income ratio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Proposition 2 gives a similar formula for the change in capital to income:
+\begin_inset Formula 
+\[
+\overline{\Delta\log\left(\frac{W}{Y}\right)}\approx\frac{\bar{\epsilon}_{\mathrm{S}}}{\bar{\epsilon}_{\mathrm{S}}+\bar{\epsilon}_{d}}\bar{\Delta}^{\text{comp }}>0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Again with different assumptions on the IES (
+\begin_inset Formula $\sigma$
+\end_inset
+
+) and the elasticity of substitution between capital and labor (
+\begin_inset Formula $\eta$
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+\begin{tabular}{cccc}
+  & \multicolumn{3}{c}{\ensuremath{\sigma} }\\
+ \cline{ 2 - 4 } \ensuremath{\eta}  &  \ensuremath{0.25}  &  \ensuremath{0.50}  &  \ensuremath{1.00} \\
+\hline  \ensuremath{0.60}  &  \ensuremath{15.6}  &  \ensuremath{7.7}  &  \ensuremath{3.8} \\
+ \ensuremath{1.00}  &  \ensuremath{16.7}  &  \ensuremath{10.0}  &  \ensuremath{5.6} \\
+ \ensuremath{1.25}  &  \ensuremath{17.1}  &  \ensuremath{11.1}  &  \ensuremath{6.5} \\
+\hline  
+\end{tabular}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The authors argue that simulations from the general model deliver similar
+ outcomes
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Change in net foreign assets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig9d.PNG
+	width 60page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Country specific 
+\begin_inset Formula $\Delta^{\text{comp}}$
+\end_inset
+
+ large and heterogeneous in the data 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Change in net foreign assets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Fig9e.PNG
+	width 40page%
+	rotateOrigin centerTop
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Countries that age faster will accumulate more wealth, which it supplies
+ to the rest of the world (NFA>0)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Particularly to countries that age slowly (less wealth accumulation) where
+ domestic firms need to go abroad for investments
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Delta\left(\frac{NFA}{Y}\right)\approx\frac{W_{0}}{Y_{0}}\left(\Delta^{\text{comp,c }}-\bar{\Delta}^{\text{comp }}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Change in net foreign assets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Formula 
+\[
+\Delta\left(\frac{NFA}{Y}\right)\approx\frac{W_{0}}{Y_{0}}\left(\Delta^{\text{comp,c }}-\bar{\Delta}^{\text{comp }}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename figs/Fig10.PNG
+	width 50page%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Data suggest large global imbalances going forward
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Limitation to baseline model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What are some limitations of their baseline analysis?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Demographics have no effect on individual savings
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Demographics have no effect on the tax-and-transfer system
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+No bequest motives
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+No changes in mortality (only birth rates)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Demographics have no effect on TFP growth
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+To study some of these changes, the authors extend their baseline model
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ then simulate the transition path 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results from richer model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Compositional effect by country from analytical model product of:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Combination of demographic changes (exogenous in model) and labor supply/wealth
+ profiles (endogenous)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Could match perfectly in richer model if model could replicate observed
+ wealth and labor profiles over the lifecycle 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Main finding: 
+\begin_inset Formula $\Delta^{comp}$
+\end_inset
+
+ in the richer model is roughly similar to the results from the data
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results from richer model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compositional effect by country from analytical model product of:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Combination of demographic changes (exogenous in model) and labor supply/wealth
+ profiles (endogenous)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Could match perfectly in richer model if model could replicate observed
+ wealth and labor profiles over the lifecycle 
+\end_layout
+
+\begin_layout Itemize
+Main finding: 
+\begin_inset Formula $\Delta^{comp}$
+\end_inset
+
+ in the richer model is roughly similar to the results from the data
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Graphics
+	filename figs/Table1.PNG
+	width 20page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results from richer model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+GE Effects from the model are also roughly similar
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/Table2.PNG
+	width 80page%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+How does population aging affect wealth-output ratios, real interest rates,
+ and capital flows?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+what matters is the compositional effect 
+\begin_inset Formula $\Delta^{\text{comp }}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+large and heterogeneous in the data
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The approach developed by the authors:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Refutes the asset market meltdown hypothesis: 
+\begin_inset Formula $r$
+\end_inset
+
+ falls 
+\end_layout
+
+\begin_layout Itemize
+Suggests wealth-to-income ratio will keep rising 
+\end_layout
+
+\begin_layout Itemize
+Larger global imbalances (dispersion of NFAs)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Income Inequality 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Secular stagnation and income inequality
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Auclert et al (2021) explains decline in 
+\begin_inset Formula $r$
+\end_inset
+
+ and rise in 
+\begin_inset Formula $\frac{W}{Y}$
+\end_inset
+
+ with demographic shifts 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Parallel literature explains decline through 
+\emph on
+rising
+\emph default
+ income/wealth 
+\series bold
+inequality 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+See i.e.
+ Mian, Sufi, Straub (2021): 
+\emph on
+What explains the decline in r*? Rising income inequality versus demographic
+ shifts
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Example
+\series default
+: If saving rates increase with income (richer save more) then:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Redistribution from poor to rich households 
+\emph on
+increase
+\emph default
+ the aggregate supply of savings 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ lower rates in GE
+\end_layout
+
+\begin_layout Itemize
+Suggests link between increasing income inequality and secular stagnation
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Permanent redistribution in the canonical HA model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consider standard HA model with permanent income state 
+\begin_inset Formula $p:$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}V\left(a_{t-1},z_{t},p\right)= & \max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]\\
+ & \text{ subject to }\\
+ & c_{t}+a_{t}=Ra_{t-1}+z_{t}p\\
+ & a_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: preferences are 
+\emph on
+homothetic 
+\emph default
+(homogeneous of degree 1)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Quotes ald
+\end_inset
+
+Scale independent
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Increase in permanent income by 
+\begin_inset Formula $1\%$
+\end_inset
+
+ increases 
+\begin_inset Formula $c_{t},a_{t}$
+\end_inset
+
+ by 
+\begin_inset Formula $1\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Permanent redistribution has 
+\emph on
+no effect
+\emph default
+ on aggregates because the dissavings by one group is exactly offset by
+ increase in savings from other groups
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Homothetic household problem I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Normalize constraints by 
+\begin_inset Formula $p$
+\end_inset
+
+ and Bellman by 
+\begin_inset Formula $p^{1-\sigma}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{aligned}\frac{V\left(a_{t-1},z_{t},p\right)}{p^{1-\sigma}}= & \max_{c_{t}}\frac{\frac{c_{t}^{1-\sigma}}{1-\sigma}}{p^{1-\sigma}}+\beta\frac{\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]}{p^{1-\sigma}}\\
+ & \text{ subject to }\\
+ & \frac{c_{t}}{p}+\frac{a_{t}}{p}=R\frac{a_{t-1}}{p}+z_{t}\frac{p}{p}\\
+ & \frac{a_{t}}{p}\geq\frac{0}{p}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Homothetic household problem II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Define 
+\begin_inset Formula $\tilde{c}_{t}=\frac{c_{t}}{p}$
+\end_inset
+
+,
+\begin_inset Formula $\tilde{a}_{t}=\frac{a_{t}}{p}$
+\end_inset
+
+,
+\begin_inset Formula $\tilde{V}_{t}=\frac{V_{t}}{p^{1-\sigma}}$
+\end_inset
+
+ to get:
+\begin_inset Formula 
+\[
+\begin{aligned}\tilde{V}\left(a_{t-1},z_{t}\right)= & \max_{c_{t}}\frac{\tilde{c}_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}\left[\tilde{V}\left(a_{t},z_{t+1}\right)\right]\\
+ & \text{ subject to }\\
+ & \tilde{c}_{t}+\tilde{a}_{t}=R\tilde{a}_{t-1}+z_{t}\\
+ & \tilde{a}_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Then HH problem is independent of 
+\begin_inset Formula $p$
+\end_inset
+
+ up to scale!
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Can always solve above HH problem, and get solution with different 
+\begin_inset Formula $p$
+\end_inset
+
+ by simply scaling policy functions 
+\begin_inset Formula $\tilde{c}_{t},\tilde{a}_{t}$
+\end_inset
+
+ by 
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Solution is 
+\begin_inset Quotes ald
+\end_inset
+
+scale independent
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Straub (2019)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Straub (2019) tests for homothetic preferences 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Let 
+\begin_inset Formula $\phi$
+\end_inset
+
+ be the elasticity of consumption to permanent income, 
+\begin_inset Formula $\phi=\frac{\partial\ln c_{t}}{\partial\ln p_{t}}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Homothetic preferences (scale independence) imply 
+\begin_inset Formula $\phi=1$
+\end_inset
+
+ since 
+\begin_inset Formula $\tilde{c}_{t}=\frac{c_{t}}{p}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If 
+\begin_inset Formula $\phi<1$
+\end_inset
+
+ consumption rises 
+\emph on
+less
+\emph default
+ than proportionally with income
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I.e.
+ savings rise 
+\emph on
+more 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\emph default
+Richer HHs save more 
+\end_layout
+
+\begin_layout Itemize
+Opposite for 
+\begin_inset Formula $\phi>1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Two questions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What does this elasticity look like emprically?
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\phi\neq1$
+\end_inset
+
+ how can we accomodate this in a HA model?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Empirical estimate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use US panel survey data (PSID)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Regress 
+\begin_inset Formula $\log c_{it}$
+\end_inset
+
+ on controls (year, age, HH size, location) and 9 year average of income
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Binned scatter:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.5
+\backslash
+linewidth]{figs/Straub2019Scatter.PNG}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+More detalied estimates in paper, suggest 
+\begin_inset Formula $\phi\approx0.7$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Non-homothetic HA model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Extend standard HA model with
+\emph on
+ taste for wealth 
+\emph default
+(
+\begin_inset Quotes ald
+\end_inset
+
+status
+\begin_inset Quotes ard
+\end_inset
+
+)
+\begin_inset Formula 
+\[
+\begin{aligned}V\left(a_{t-1},z_{t},p\right)= & \max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\phi_{a}\frac{a_{t}^{1-\sigma_{a}}}{1-\sigma_{a}}+\beta\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]\\
+ & \text{ subject to }\\
+ & c_{t}+a_{t}=a_{t-1}\left(1+r\right)+z_{t}p\\
+ & a_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: Still homothetic as long as 
+\begin_inset Formula $\sigma=\sigma_{a}$
+\end_inset
+
+, but non-homothetic if 
+\begin_inset Formula $\sigma\neq\sigma_{a}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\tilde{V}\left(a_{t-1},z_{t},p\right) & =\frac{\tilde{c}_{t}^{1-\sigma}}{1-\sigma}+\frac{1}{p^{1-\sigma}}\phi_{a}\frac{a_{t}^{1-\sigma_{a}}}{1-\sigma_{a}}+\beta\mathbb{E}\left[\tilde{V}\left(a_{t},z_{t+1},p\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If 
+\begin_inset Formula $\sigma\neq\sigma_{a}$
+\end_inset
+
+ then scaling 
+\begin_inset Formula $p$
+\end_inset
+
+ up/down changes relative weight btw 
+\begin_inset Formula $c,a$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Applications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Calibrate lifecycle HA model to with non-homothetic preferences to estimate
+ 
+\begin_inset Formula $\phi=0.7$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note: In paper there is a second source of non-homotheticity where 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ varies across age 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Segment HHs into 3 permanent income groups corresponding to poorest 90%,
+ next 9% and richest 1% 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Feed in evlolution of income inequality from Piketty and Saez (2003), keeping
+ aggregate income unchanged in PE (so permanent redistribution between rich
+ and poor HHs) 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+linewidth]{figs/Straub2019IncomeInequality.PNG}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Solve for GE (Supply side as in HANC)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+GE implications of rising income inequality 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Compare effects in homothetic and non-homothetic models: 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/Straub2019GE.PNG}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note: 
+\begin_inset Quotes ald
+\end_inset
+
+Fixed K
+\begin_inset Quotes ard
+\end_inset
+
+ is Lucas-tree economy, where wealth grows due to rising asset prices
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Indebted Demand (2021)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Mian, Sufi, Straub (2021) 
+\begin_inset Quotes ald
+\end_inset
+
+Indebted Demand
+\begin_inset Quotes ard
+\end_inset
+
+ build on this insight of non-homothetic preferences 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ Highlights role of increasing household debt and connect to returns:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/MSS2021Debt.PNG}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Argue that income inequality and less financial regulation leads to more
+ borrowing and lower returns in GE
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ 
+\series bold
+Note
+\series default
+: Would normally expect the opposite 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If I want to borrow more, I will have to compensate savers by paying 
+\series bold
+higher
+\series default
+ interest rate, not 
+\series bold
+lower
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Model:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Continuous
+\series default
+ time 
+\end_layout
+
+\begin_layout Itemize
+Endowment economy with 
+\begin_inset Formula $Y=1$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Savers 
+\begin_inset Formula $s$
+\end_inset
+
+ are unconstrained and maximize utility:
+\begin_inset Formula 
+\[
+\int_{0}^{\infty}e^{-\rho t}\left\{ \log\left\{ c_{t}^{s}\right\} +\nu\left(a_{t}^{s}\right)\right\} dt
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Borrowers 
+\begin_inset Formula $b$
+\end_inset
+
+ are constrained.
+ They hold debt 
+\begin_inset Formula $d_{t}>0$
+\end_inset
+
+ up to a share 
+\begin_inset Formula $\ell$
+\end_inset
+
+ of collateral 
+\begin_inset Formula $p_{t}=\int_{t}^{\infty}e^{-rt}\omega^{b}Ydt=\frac{\omega^{b}Y}{r}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d_{t}=\frac{\ell\omega^{b}Y}{r}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Equilibrium: Debt owed by borrowers equal savings by savers:
+\begin_inset Formula 
+\[
+d_{t}=a_{t}^{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Non-homothetic model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\size small
+Calibration:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size small
+Interpret savers as top 1% of income distribution
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Calibrate 
+\begin_inset Formula $\nu\left(a_{t}^{s}\right)$
+\end_inset
+
+ such that savers have long run MPC of 0.01
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size small
+Non-homotheticity
+\series default
+: Large differences in SR across the two types
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+ 
+\size small
+Core insight in paper: If savings is luxury good for rich 
+\begin_inset Formula $\nu''\left(a_{t}^{s}\right)>0$
+\end_inset
+
+ (needed for rich to save more) then saving schedule 
+\begin_inset Formula $a_{t}^{s}\left(r\right)$
+\end_inset
+
+ is 
+\emph on
+downward sloping
+\size default
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.5
+\backslash
+linewidth]{figs/MSS2021DemandSupply.PNG}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\size small
+Why? Assume rich agent consumes fixed amount 
+\begin_inset Formula $\overline{c}^{s}$
+\end_inset
+
+ and saves everything else: Then 
+\begin_inset Formula $\overline{c}^{s}=r_{t}a_{t}^{s}\Leftrightarrow a_{t}^{s}=\frac{\overline{c}^{s}}{r_{t}}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size small
+Higher 
+\begin_inset Formula $r$
+\end_inset
+
+ will in the long run crowd out 
+\begin_inset Formula $a_{t}^{s}$
+\end_inset
+
+ in the long run (needed for ss, rules out explosive path)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Increase in income inequality: Increase in debt and lower interest rates
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Similar to Straub (2019)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Increase in financial deregulation (relax borrowing constraint): More borrowing
+ and lower interest rates 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Note: standard GE argument would imply 
+\series bold
+higher
+\series default
+ rates
+\end_layout
+
+\begin_layout Itemize
+Lower rates arise due to downward sloping saving schedule for savers 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Graphically: Increase in income inequality moves supply curve (red) to the
+ left 
+\end_layout
+
+\begin_layout Itemize
+Inequality 
+\begin_inset Formula $\uparrow\Rightarrow$
+\end_inset
+
+saving by rich 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ lower 
+\begin_inset Formula $r$
+\end_inset
+
+ 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Incentive debt 
+\begin_inset Formula $d\uparrow$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+linewidth]{figs/MSS2021Ineq.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fiscal Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Temporary government spending shock (deficit financed)
+\end_layout
+
+\begin_layout Itemize
+Short run: Higher r required for HHs to hold increase in gov.
+ debt
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Long run
+\series default
+ Increase in 
+\begin_inset Formula $B$
+\end_inset
+
+ pushes 
+\series bold
+
+\begin_inset Formula $r$
+\end_inset
+
+
+\series default
+ down.
+ Rich save more, pushing 
+\begin_inset Formula $r$
+\end_inset
+
+ further down and incentivizing holding of debt 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+linewidth]{figs/MSS2021Fiscal.PNG}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Basic premise of Mian, Sufi, Straub (2021): Savers and borrowers have different
+ (permanent) marginal propensities to consume/save
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Show that in their specification this implies a downward sloping saving
+ schedule for rich households
+\end_layout
+
+\begin_layout Itemize
+Implies that increases in debt and savings can co-exist with lower interest
+ rates 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Highlight implications for fiscal policy 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+And monetary policy - see paper 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exercise
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider the following PE HA model:
+\begin_inset Formula 
+\[
+\begin{aligned}V\left(a_{t-1},z_{t},p\right)= & \max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\phi_{a}\frac{a_{t}^{1-\sigma_{a}}}{1-\sigma_{a}}+\beta\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]\\
+ & \text{ subject to }\\
+ & c_{t}+a_{t}=a_{t-1}\left(1+r\right)+z_{t}p\\
+ & a_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size footnotesize
+Q1
+\series default
+: Derive the Euler equation of the model 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size footnotesize
+Q2: 
+\series default
+Update the EGM algorithm in 
+\emph on
+household_problem.py
+\emph default
+ with the new Euler 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+\size footnotesize
+Q3: 
+\series default
+Solve the model with 1) 
+\begin_inset Formula $\phi_{a}=0$
+\end_inset
+
+, 2) 
+\begin_inset Formula $\phi_{a}=0.1,\sigma=\sigma_{a}=1$
+\end_inset
+
+, 3) 
+\begin_inset Formula $\phi_{a}=0.1,\sigma=1,\sigma_{a}=0.7$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Compare the normalized policy function 
+\begin_inset Formula $c/p$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+\size footnotesize
+Q4: 
+\series default
+Conduct an experiment where you permanently redistribute resources across
+ households (change 
+\begin_inset Formula $p$
+\end_inset
+
+).
+ What are the aggregate effects across the models?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Previously: 
+\series default
+Long run wealth inequality
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today: 
+\series default
+Explaining secular stagnation through HA models
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Implications of aging population
+\end_layout
+
+\begin_layout Itemize
+Implications of permanent redistribution
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+From now on: 
+\series bold
+Business cycles
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Next lecture
+\series bold
+: New Keynesian model + HANK 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
