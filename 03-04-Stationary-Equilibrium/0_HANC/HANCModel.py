@@ -64,16 +64,16 @@ class HANCModelClass(EconModelClass,GEModelClass):
         par.delta = 0.008333333333333331 # depreciation rate
         par.Gamma_ss = 0.39685026299204984 # direct approach: technology level in steady state
 
-        # f. grids         
+        # d. grids         
         par.a_max = 10_000.0 # maximum point in grid for a
         par.Na = 500 # number of grid points
 
-        # g. indirect approach: targets for stationary equilibrium
+        # e. indirect approach: targets for stationary equilibrium
         par.r_ss_target = 0.05 / 4.0 # quaterly targets
         par.K_ss_target = 4.0 * 4.0  # quarterly targets
         par.Y_ss_target = 1.0
 
-        # h. misc.
+        # f. misc.
         par.max_iter_solve = 50_000 # maximum number of iterations when solving household problem
         par.max_iter_simulate = 100_000 # maximum number of iterations when simulating household problem
         
@@ -83,9 +83,6 @@ class HANCModelClass(EconModelClass,GEModelClass):
     def allocate(self):
         """ allocate model """
 
-        par = self.par
-
-        # b. solution
         self.allocate_GE() # should always be called here
 
     prepare_hh_ss = steady_state.prepare_hh_ss

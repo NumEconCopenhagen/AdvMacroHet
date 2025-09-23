@@ -4,8 +4,14 @@ import numpy as np
 from consav.grids import equilogspace
 from consav.markov import log_rouwenhorst
 from consav.misc import elapsed
-
 import root_finding
+
+""" 
+Necessary functions in steady_state.py file:
+- prepare_hh_ss (initialize grids and guesses on intertemporal variables)
+- obj_ss (steady-state objective function)
+- find_ss (call a root finding algorithm to find the steady state and fill up the .ss namespace)
+"""
 
 def prepare_hh_ss(model):
     """ prepare the household block to solve for steady state """
@@ -67,7 +73,7 @@ def obj_ss(x,model,method = 'direct', do_print=False):
     # a. production
     ss.Gamma = par.Gamma_ss # model user choice
     
-    ss.L = 1.0 # by assumption
+    ss.L = ss.L_hh = 1.0 # by assumption
     ss.Y = ss.Gamma*ss.K**par.alpha*ss.L**(1-par.alpha)    
 
     # b. implied prices
@@ -165,6 +171,7 @@ def find_ss_beta(model, beta_min=0.93, beta_max=0.95, do_print=True):
 
     ss.Y = par.Y_ss_target
     ss.K = par.K_ss_target
+    ss.L_hh = ss.L = 1.0
     ss.A = ss.K 
     ss.r = par.r_ss_target
     ss.rK = par.alpha * ss.Y / ss.K 
@@ -196,7 +203,7 @@ def find_ss_indirect(model,do_print=False):
     ss = model.ss
 
     # a. exogenous and targets
-    ss.L = 1.0
+    ss.L_hh = ss.L = 1.0
     ss.r = par.r_ss_target
     ss.w = (1-par.alpha) * par.Y_ss_target
 

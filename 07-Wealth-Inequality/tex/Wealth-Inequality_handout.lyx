@@ -1,0 +1,5681 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+\usepackage{booktabs}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+% Automatically create vspace between items
+% See: https://tex.stackexchange.com/questions/369504/beamer-vertically-stretching-level-1-list-items-in-a-nested-list-environment
+%\usepackage{xpatch} 
+%\xpatchcmd{\itemize}   
+%	{\def\makelabel}   
+%	{\ifnum\@itemdepth=1\relax      
+%		\setlength\itemsep{\fill} % separation for first level    
+%		\fi\def\makelabel   
+%	}{}{} 
+%\xpatchcmd{\enditemize}   
+%	{\endlist}   
+%	{\endlist\ifnum\@itemdepth<2\else\vfil\fi}{}{}
+
+
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\end_preamble
+\options t,10pt,handout
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding global
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation skip
+\defskip smallskip
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{6.
+ Wealth Inequality 
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro: Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Nicolai Waldstrøm}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2024}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[above left=0cm and 0.0cm of current page.south east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tikzpicture}[overlay, remember picture]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+node[below left=0.5cm and .8cm of current page.north east] 
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tikzpicture}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Wealth inequality
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Goal for today:
+\series default
+ Better understand wealth inequality through the lens of heterogeneous agent
+ general equilibrium models
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Central economic questions:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Why are some people rich while others are poor? 
+\end_layout
+
+\begin_layout Enumerate
+To what extent can governments affect inequality? 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What does the baseline Aiyigari model predict in terms of wealth inequality?
+\end_layout
+
+\begin_layout Itemize
+How can we augment the baseline model to obtain a closer match of reality?
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+What explains the rise in wealth inequality in recent decades? 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+To answer these questions, we need to better understand why people save,
+ and how this translates into wealth inequality 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Plan for today:
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Study the predictions of a baseline Bewley-Huggett-Aiyagari model 
+\end_layout
+
+\begin_layout Enumerate
+Consider various model extensions that help match the data 
+\end_layout
+
+\begin_layout Enumerate
+Given such a model, what can we say about optimal wealth taxation?
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Wealth inequality in the data
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Earnings and wealth inequality
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+US data on distribution of income and wealth (SCF, 1989)
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Pause
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space \quad{}
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space \quad{}
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space \quad{}
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space \quad{}
+\end_inset
+
+
+\begin_inset space \quad{}
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Percent at zero
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Top 
+\begin_inset Formula $1\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Top 
+\begin_inset Formula $5\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Top 
+\begin_inset Formula $20\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Top 
+\begin_inset Formula $40\%$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+or negative
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Wealth
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+53
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+93
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Earnings
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+48
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+72
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+8
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Wealth more concentrated than earnings
+\end_layout
+
+\begin_layout Itemize
+Skewed distributions with thick upper tails
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Wealth more concentrated than earnings
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+Not only in the US, but also Denmark and almost all other countries
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename figs/Cross-Country-Gini.PNG
+	width 75text%
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Figure from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4841595/
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aiyagari Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Infinitely lived agents with preferences
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\max_{\left\{ c_{t}\right\} _{t=0}^{\infty}}E\sum_{t=0}^{\infty}\beta^{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Budget constraint and borrowing constraint
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\[
+a_{t}=y_{t}+(1+r)a_{t-1}-c_{t},\quad a_{t}\geq\underline{a}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Idiosyncratic earnings risk:
+\begin_inset Formula 
+\[
+\ln y_{t}=\rho\ln y_{t-1}+\epsilon_{t},\quad\epsilon_{t}\sim\mathcal{N}\left(0,\sigma_{\epsilon}^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+As usual, calibrate parameters in earnings process 
+\begin_inset Formula $\left(\rho,\sigma_{\epsilon}^{2}\right)$
+\end_inset
+
+ based on estimates from panel data on earnings, i.e.
+ Floden and Linde (2001)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aiyagari Model - wealth inequality fit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="5">
+<features tabularvalignment="middle">
+<column alignment="left" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ Wealth Gini 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="none" valignment="top" topline="true" usebox="none" special="l">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ Wealth in top (%) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5 %
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20 %
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ U.S.
+ data, 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 1989 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ SCF 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.78
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+29
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+53
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+80
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ Aiyagari Baseline 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.38
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+12.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+41.0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+text
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ Aiyagari higher variability 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="none" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="left" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.41
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15.6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+44.6
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Top wealth inequality
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What about top wealth inequality?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Think top 0.01% or 0.001% (Bezos,Musk, Gates etc.)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The probability of having wealth 
+\begin_inset Formula $a$
+\end_inset
+
+ above threshold 
+\begin_inset Formula $X$
+\end_inset
+
+ described as Pareto dist, 
+\begin_inset Formula $P\left(a>X\right)\sim x^{-\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In logs, 
+\begin_inset Formula $\ln P\left(a>X\right)\sim-\alpha\ln x$
+\end_inset
+
+, so linear in wealth with 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ describing the 
+\begin_inset Quotes ald
+\end_inset
+
+thickness of the tail
+\begin_inset Quotes ard
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+visible<3->{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.5
+\backslash
+linewidth]{figs/pareto.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Key mechanism
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Precautionary savings behavior.
+ People save to self-insure against earnings risk
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Once buffer stock savings is reached, people start dissaving (Carroll 1997)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In the model: The saving rate of the high wealth households is low or even
+ negative
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Contrasts with much empirical evidence (Dynan Skinner and Zeldes, 2004 and
+ De Nardi, French and Jones, 2010) 
+\end_layout
+
+\begin_layout Itemize
+Will discuss this in next lecture 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note also: Only driver of wealth inequality is earnings risk
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Income inequality in data typically lower than 
+\emph on
+wealth
+\emph default
+ inequality
+\end_layout
+
+\begin_layout Itemize
+In reality multiple drivers such as entrepreneurship, preferences, bequests,
+ return heterogeneity 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Explaining wealth inequality 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Explanations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Standard Aiyagari model: Income inequality 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Preference heterogeneity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Krussel and Smith (1998), Alan, Browning, and Ejenaes (2016), Druedahl and
+ Jorgensen (2015) 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Bequests
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kotlikoff and Summers (1981), Modigliani (1988), Gale and Scholz (1994),
+ Di Nardi (2004)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Entrepreneurship
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cagetti and De Nardi (2006), Di Nardi et al.
+ (2007), Guvenen et al.
+ (2023)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Return heterogeneity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hubmer, Krusell, Smith (2021), Ozkan et al.
+ (2023), Guvenen et al.
+ (2023)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%--------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Bequests
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\beta^{t}\left(s_{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\textcolor{blue}{\left(1-s_{t}\right) \phi\left(a_{t-1}\right)}\right)\\
+c_{t}+a_{t}=y_{t}+(1+r)a_{t-1}+\textcolor{blue}{b_{t}},\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Bequests and human capital transmission across generations (
+\emph on
+warm glow
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%--------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Explaining wealth inequality
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\textcolor{blue}{\beta_{i}}^{t}s_{t}\frac{c_{t}^{1-\textcolor{blue}{\sigma_{i}}}}{1-\textcolor{blue}{\sigma_{i}}}\\
+c_{t}+a_{t}=y_{t}+(1+r)a_{t-1},\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\end_layout
+
+\begin_layout Enumerate
+Heterogeneous preferences
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%--------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Explaining wealth inequality
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\beta^{t}s_{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}\\
+c_{t}+a_{t}=\textcolor{blue}{\left[l_{e} f\left(\theta_{t}, k_{t-1}\right)+\left(1-l_{e}\right) y_{t}\right]}+(1+r)\left(a_{t-1}-k_{t-1}\right),\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\end_layout
+
+\begin_layout Enumerate
+
+\end_layout
+
+\begin_layout Enumerate
+Entrepreneurship.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%--------------------------------------
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Explaining wealth inequality
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\beta^{t}s_{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}\\
+c_{t}+a_{t}=y_{t}+\left(1+\textcolor{blue}{r_{t}^{i}}\right)a_{t-1},\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{enumerate}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+item Idiosyncratic rates of return
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{enumerate}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Hubmer, Krussel and Smith (2021) 
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Explaining wealth inequality
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hubmer, Krussel and Smith (2021): 
+\emph on
+Sources of US wealth inequality: Past, present, and future
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Model which matches key features of US wealth inequality in 1967
+\end_layout
+
+\begin_layout Itemize
+Can we account for changes in wealth inequality going forward from 1967
+ based on observables?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+I.e.
+ changes in income inequality, taxes, asset returns 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Household problem features non-linear tax schedules, heterogeneous returns
+ and 
+\begin_inset Formula $\beta$
+\end_inset
+
+-het.
+\begin_inset Formula 
+\begin{align*}
+V_{t}(a_{t-1},p_{t},\beta_{t})= & \max_{a_{t+1}\geq0}\left\{ u(c_{t})+\beta_{t}\mathbb{E}[V_{t+1}(a_{t},p_{t+1},\beta_{t+1})|p_{t},\beta_{t}]\right\} \\
+c_{t}+a_{t}= & y_{t}-\tau_{t}(y_{t})+(1-\tilde{\tau}_{t})\tilde{y}_{t}+T_{t}\\
+y_{t}= & (\underline{r_{t}}+r_{t}^{X}\left(a_{t-1}\right))a_{t-1}+w_{t}l_{t}(p_{t})\\
+\tilde{y}_{t} & =\sigma_{t}^{X}(a_{t-1})\eta_{t}a_{t-1}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Mean excess return 
+\begin_inset Formula $r_{t}^{X}\left(a_{t-1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How does mean returns vary with wealth?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Standard deviation of excess returns: 
+\begin_inset Formula $\sigma_{t}^{X}\left(a_{t-1}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How does return uncertainty vary with wealth?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Example: If rich HHs primarily invest in stocks, poorer HHs in bonds.
+ Would expect both 
+\begin_inset Formula $r_{t}^{X}\left(a_{t-1}\right),\sigma_{t}^{X}\left(a_{t-1}\right)$
+\end_inset
+
+ to be increasing in 
+\begin_inset Formula $a_{t-1}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fagereng, Guiso, Malacrino, Pistaferri (2020) find that rates of returns
+ are:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Heterogeneous across households (over 200 basis points between 10th and
+ 90th percentile of the distribution of returns)
+\end_layout
+
+\begin_layout Itemize
+Also heterogenous within asset classes
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So return differences cannot be explained only by poorer HHs holding banket
+ deposits and rich HHs investing in stocks
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Persistent
+\end_layout
+
+\begin_layout Itemize
+Correlated with household wealth and across generations
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Equilibrium: capital market clearing
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Need to find two equil.
+ objects 
+\begin_inset Formula $(K_{t},\underline{r}_{t})$
+\end_inset
+
+ for capital market clearing:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+aggregate capital (as usual) 
+\begin_inset Formula 
+\[
+K_{t}=\int a_{t}d\Gamma(a_{t})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+aggregate capital income (redundant if 
+\begin_inset Formula $r_{t}^{X}(\cdot)=0$
+\end_inset
+
+) 
+\begin_inset Formula 
+\begin{align*}
+(MPK(K_{t})-\delta)K_{t} & =\int\left(\underline{r}_{t}+r_{t}^{X}(a_{t})\right)a_{t}d\Gamma(a_{t})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Plus goods market clearing, but redundant given other 2
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wideitemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Calibration strategy summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Calibrate earnings process, tax rates, return process, social safety net
+ to observables
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Choose randomness in discount factor 
+\begin_inset Formula $\beta$
+\end_inset
+
+ residually so as to replicate the wealth distribution in the initial steady
+ state (1967)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Then feed in exogenous changes in tax rates, earnings inequality, etc.
+ between 1967 and 2015 to understand the role of these different factors
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Return heterogeneity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Overall return given asset holdings 
+\begin_inset Formula $a_{t-1}$
+\end_inset
+
+ equals 
+\begin_inset Formula 
+\begin{align*}
+\underline{r}_{t}+r_{t}^{X}(a_{t-1})+\sigma^{X}(a_{t-1})\eta_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\underline{r}_{t}$
+\end_inset
+
+ is endogenous
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $r_{t}^{X}(\cdot)$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma^{X}(\cdot)$
+\end_inset
+
+ are exogenous excess return schedules (mean and st.dev.), taken from the
+ data 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\eta_{t}$
+\end_inset
+
+ is an i.i.d.
+ standard normal shock 
+\end_layout
+
+\begin_layout Itemize
+Reduced form portfolio choice 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Calibration: return process
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Formula 
+\begin{align*}
+r_{t}^{X}(a_{t})=\; & \sum_{c\in C}w_{c}(a_{t})\left(\bar{r}_{c,t}+\tilde{r}_{c}^{X}(a_{t})\right)\\
+\sigma^{X}(a_{t})^{2}=\; & \sum_{c\in C}\left(w_{c}(a_{t})\tilde{\sigma}_{c}^{X}(a_{t})\right)^{2}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Asset classes 
+\begin_inset Formula $C$
+\end_inset
+
+: risk-free, public equity, private equity, housing 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\bar{r}_{c,t}$
+\end_inset
+
+: aggregate return on asset class 
+\begin_inset Formula $c$
+\end_inset
+
+ (U.S.
+ data), 
+\color blue
+time-varying
+\color inherit
+ 
+\end_layout
+
+\begin_layout Itemize
+Fixed over time, based on Swedish administrative data from Bach, Calvet,
+ Sodini (2016): 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $w_{c}(\cdot)$
+\end_inset
+
+: portfolio weights 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tilde{r}_{c}^{X}(\cdot)$
+\end_inset
+
+: within asset class return heterogeneity 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\tilde{\sigma}_{c}^{X}(\cdot)$
+\end_inset
+
+: asset 
+\begin_inset Formula $c$
+\end_inset
+
+ idiosyncratic return standard deviation 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Excess return schedule details
+\end_layout
+
+\begin_layout Itemize
+Aggregate Excess Returns in 1967 steady state: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+public equity 0.067 (U.S., Kartashova 2014) 
+\end_layout
+
+\begin_layout Itemize
+private equity 0.129 (U.S., Kartashova 2014) 
+\end_layout
+
+\begin_layout Itemize
+housing 0.037 (incl.
+ imputed rent; Jorda, et al, 2017) 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+and cross-sectional data from Bach, Calvet, Sodini (2019) implies 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+ % Table generated by Excel2LaTeX from sheet 'r_ex_sd'  
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{table}[htbp]   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+resizebox{1.1
+\backslash
+textwidth}{!}{
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+begin{tabular}{lrrrrrrrrrrrrr}     
+\backslash
+toprule           & 
+\backslash
+multicolumn{1}{l}{P0-P40} & 
+\backslash
+multicolumn{1}{l}{P40-P50} & 
+\backslash
+multicolumn{1}{l}{P50-P60} & 
+\backslash
+multicolumn{1}{l}{P60-P70} & 
+\backslash
+multicolumn{1}{l}{P70-P80} & 
+\backslash
+multicolumn{1}{l}{P80-P90} & 
+\backslash
+multicolumn{1}{l}{P90-P95} & 
+\backslash
+multicolumn{1}{l}{P95-P97.5} & 
+\backslash
+multicolumn{1}{l}{P97.5-P99} & 
+\backslash
+multicolumn{1}{l}{P99-P99.5} & 
+\backslash
+multicolumn{1}{l}{P99.5-P99.9} & 
+\backslash
+multicolumn{1}{l}{P99.9-P99.99} & 
+\backslash
+multicolumn{1}{l}{Top 0.01
+\backslash
+%} 
+\backslash
+
+\backslash
+     
+\backslash
+midrule     
+\backslash
+multicolumn{5}{l}{fixed portfolio weights} &       &       &       &   
+    &       &       &       &       &  
+\backslash
+
+\backslash
+ 
+\backslash
+cmidrule{1-5}    risk-free  & 0.722 & 0.412 & 0.248 & 0.182 & 0.156 & 0.134 &
+ 0.115 & 0.102 & 0.090 & 0.079 & 0.071 & 0.051 & 0.029 
+\backslash
+
+\backslash
+     housing & 0.162 & 0.394 & 0.580 & 0.662 & 0.678 & 0.674 & 0.658 & 0.626 & 0.572
+ & 0.482 & 0.363 & 0.253 & 0.155 
+\backslash
+
+\backslash
+     public equity & 0.113 & 0.189 & 0.165 & 0.147 & 0.153 & 0.170 & 0.189 & 0.207
+ & 0.219 & 0.232 & 0.230 & 0.185 & 0.179 
+\backslash
+
+\backslash
+     private equity & 0.002 & 0.005 & 0.007 & 0.009 & 0.013 & 0.021 & 0.038 & 0.065
+ & 0.118 & 0.207 & 0.336 & 0.511 & 0.637 
+\backslash
+
+\backslash
+     
+\backslash
+midrule     
+\backslash
+bottomrule     
+\backslash
+end{tabular}% 
+\end_layout
+
+\begin_layout Plain Layout
+
+} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{table}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Schedule of excess returns
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/4.PNG
+	width 100text%
+
+\end_inset
+
+ 
+\size footnotesize
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption Unnumbered
+
+\begin_layout Plain Layout
+Data sources: Bach, Calvet, Sodini (2019); Kartashova (2014); Jorda, Knoll,
+ Kuvshinov, Schularick, Taylor (2019); Case-Shiller.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Results
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results, I: Steady state (1967)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Steady state fit (with and without 
+\begin_inset Formula $\beta$
+\end_inset
+
+-het)
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{table}[htbp]   
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+resizebox{
+\backslash
+textwidth}{!}{      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{lrrrr}     
+\backslash
+toprule           
+\end_layout
+
+\begin_layout Plain Layout
+
+& Top 10
+\backslash
+% & Top 1
+\backslash
+% & Top 0.1
+\backslash
+% & Top 0.01
+\backslash
+% 
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+midrule     
+\end_layout
+
+\begin_layout Plain Layout
+
+Data & 70.8
+\backslash
+% & 27.8
+\backslash
+% & 9.4
+\backslash
+% & 3.1
+\backslash
+% 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Single-$
+\backslash
+beta$ Model & 66.6
+\backslash
+% & 23.7
+\backslash
+% & 11.2
+\backslash
+% & 7.2
+\backslash
+% 
+\backslash
+
+\backslash
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Benchmark Model & 73.8
+\backslash
+% & 27.4
+\backslash
+% & 8.4
+\backslash
+% & 3.2
+\backslash
+% 
+\backslash
+
+\backslash
+     
+\backslash
+midrule           & Bottom 50
+\backslash
+% & Fraction $a<0$ &       &  
+\backslash
+
+\backslash
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+  
+\backslash
+midrule     
+\end_layout
+
+\begin_layout Plain Layout
+
+Data & 4.0
+\backslash
+% & 8.0
+\backslash
+% &       &  
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+Single-$
+\backslash
+beta$ Model & 3.5
+\backslash
+% & 7.3
+\backslash
+% &       &  
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+Benchmark Model & 3.0
+\backslash
+% & 6.6
+\backslash
+% &       &  
+\backslash
+
+\backslash
+     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+bottomrule     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}}% 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{table}%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results, I: steady state (1967)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.85
+\backslash
+linewidth]{HKS-Figs/table2.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How to read: Shutting of 
+\begin_inset Formula $\beta$
+\end_inset
+
+-het reduces top 10% wealth share by 8.8% 
+\end_layout
+
+\begin_layout Itemize
+Model matches wealth distribution well on its entire domain 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+return heterogeneity is key ingredient 
+\end_layout
+
+\begin_layout Itemize
+wealth concentration is mitigated by progressive taxation and labor income
+ risk 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Next step: transition
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+The authors feed in four different factors that have changed during the
+ past 50 years 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Decrease in tax progressivity 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Increase in labor income risk 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Increase in income going to the top 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Changing return premia to different asset classes 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Observed change 1: Decrease in tax progressivity
+\end_layout
+
+\begin_layout Itemize
+Federal effective tax rates (Piketty & Saez 2007): income, payroll, corporate
+ and estate taxes 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/5.PNG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Observed change 2: Increase in labor income risk
+\end_layout
+
+\begin_layout Itemize
+Estimates for variance of persistent and temporary components 1967-2000
+ (Heathcote, Storesletten & Violante 2010) 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/6.PNG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Observed change 3: Increase in top labor income shares
+\end_layout
+
+\begin_layout Itemize
+Adjust standard AR(1) in idiosyncratic productivity by imposing a Pareto
+ tail for the top 10% earners: calibrated tail coefficient decreases from
+ 2.8 to 1.9 (updated Piketty & Saez 2003 series) 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/7.PNG
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Observed change 4: return premia
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Feed in (smoothed) time series of aggregate U.S.
+ asset premia (Kartashova 2014, Case-Shiller index) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Visible
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/8.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Observed change 4: return premia
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+feed in (smoothed) time series of aggregate U.S.
+ asset premia (Kartashova 2014, Case-Shiller index) 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/9.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Observed change 4: return premia
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+feed in (smoothed) time series of aggregate U.S.
+ asset premia (Kartashova 2014, Case-Shiller index) 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/10.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Results, II: historical evolution
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/fig8_color.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Results: Capital-output ratio and bottom 50 %
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/12.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Results: Risk-free rate
+\end_layout
+
+\begin_layout Itemize
+Return premia are matched in model by construction 
+\end_layout
+
+\begin_layout Itemize
+Risk-free rate 
+\begin_inset Formula $r$
+\end_inset
+
+ is endogenous: comparable level and decline 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/13.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Decomposition of transitional dynamics
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset Float figure
+placement htbp
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename HKS-Figs/14.PNG
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status collapsed
+
+\begin_layout Plain Layout
+label=decomposemain
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameTitle
+Decomposition of transitional dynamics
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{wideitemize}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Overall increase in wealth inequality (more than) fully explained by declining
+ tax progressivity 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Primarily due to direct effect on resource distribution and not due to changing
+ savings behavior 
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Time-varying return premia account for U-shape in wealth inequality 
+\end_layout
+
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+item 
+\end_layout
+
+\end_inset
+
+Subtle role of increasing earnings dispersion 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Thickening Pareto tail in labor income contributes slightly positively to
+ wealth inequality 
+\end_layout
+
+\begin_layout Itemize
+Increase in overall earnings risk 
+\emph on
+decreases
+\emph default
+ wealth inequality because precautionary savings motive is stronger for
+ poorer HHs
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{wideitemize}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Hubmer, Krussel and Smith (2021)
+\end_layout
+
+\begin_layout Itemize
+HANC with:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Income risk
+\end_layout
+
+\begin_layout Itemize
+Return heterogeneity 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\beta$
+\end_inset
+
+-heterogeneity
+\end_layout
+
+\begin_layout Itemize
+Tax system 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Main finding: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Return heterogeneity key in matching initial (1967) wealth inequality
+\end_layout
+
+\begin_layout Itemize
+Can roughly explain evolution in US wealth inequality with observable changes
+ in tax systems 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Ozkan et al.
+ (2024)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Ozkan et al.
+ (2024) takes a 
+\emph on
+lifecycle perspective
+\emph default
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Why do some people become wealther than others?
+\end_layout
+
+\begin_layout Itemize
+Use detailed Norwegian admin data
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Evaluate contribution from
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Inheritances (bequests) 
+\begin_inset Formula $H_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Return heterogeneity 
+\begin_inset Formula $r_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Saving rate heterogeneity 
+\begin_inset Formula $s_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Labor earnings 
+\begin_inset Formula $L_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Initial wealth 
+\begin_inset Formula $a_{i0}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Using budget constraint:
+\begin_inset Formula 
+\[
+a_{it}=a_{it-1}+\left(L_{it}+H_{it}+r_{it}a_{it-1}\right)\times s_{it}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results from Ozkan et al.
+ (2024)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Left panel: Decomposition of wealth for top 0.1%
+\end_layout
+
+\begin_layout Itemize
+Right panel: 
+\begin_inset Quotes ald
+\end_inset
+
+Poorest
+\begin_inset Quotes ard
+\end_inset
+
+ HHs 
+\emph on
+within
+\emph default
+ top 0.1% 
+\emph on
+(New Money
+\emph default
+) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.85
+\backslash
+linewidth]{figs/Ozkan_et_al_2024_fig1.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Section
+Application to Wealth Taxation
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Wealth taxation I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Spend a lot of time understanding 
+\emph on
+what
+\emph default
+ drives wealth inequality 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+We will now see an application where the specific source of inequality matters
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Wealth taxation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why would we want to tax wealth?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+-|handout:0>
+\end_layout
+
+\end_inset
+
+ Redistribution: Transfer from HHs with low MUC to HHs with high MUC 
+\emph on
+raises 
+\emph default
+aggregate welfare
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why not?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+-|handout:0>
+\end_layout
+
+\end_inset
+
+ Efficiency concern 1: Wealthy households might be more productive - do
+ not want to distort their labor supply/investments
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+-|handout:0>
+\end_layout
+
+\end_inset
+
+ Efficiency concern 2: In the Ramsey model aggregate K is generally below
+ the golden rule level 
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Wealth taxation II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Guvenen et al.
+ (2023): 
+\emph on
+Use It or Lose It: Efficiency and Redistributional Effects of Wealth Taxation
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Study optimal taxation in two tax systems:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Wealth tax: 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Capital income tax : 
+\begin_inset Formula $r\times a_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: Without return heterogeneity two tax system are equivalent
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+After tax wealth /w CI tax : 
+\begin_inset Formula $a_{i}+\left(1-\tau_{k}\right)ra_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+After tax wealth /w wealth tax : 
+\begin_inset Formula $\left(1-\tau_{a}\right)a_{i}+ra_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Social planner can implement same allocation using these two different instrumen
+ts by setting 
+\begin_inset Formula $\tau_{a}=r\tau_{k}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Taxation with return heterogeneity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What if returns differ across agents, 
+\begin_inset Formula $r_{i}?$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No equivalence between tax systems
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+With capital income taxation:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A highly productive agent (high 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+) will be taxed more than less productive agents (low 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tax burden falls proportinally more on productive agents 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+distortionary
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+With wealth taxation:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+All agents with same wealth pay same tax regardless of return 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Shifts tax base towards unproductive agents 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note: We say HHs with high 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ are more 
+\series bold
+productive 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Think in terms of 
+\emph on
+entrepreneurial
+\emph default
+ models
+\end_layout
+
+\begin_layout Itemize
+High productivity HHs have better technology (i.e.
+ are better entrepreneurs) and can make their wealth growth faster (high
+ 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+HH problem:
+\begin_inset Formula 
+\[
+\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\beta^{t}\left(s_{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\left(1-s_{t}\right)\phi\left(a_{t}\right)\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{t}+c_{t}=\mathcal{W}\left(a_{t-1},z_{t-1}\right)+w_{t}\left(e_{t}\right)\ell_{t},\quad a_{t}\geq\underline{a}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathcal{W}\left(a_{t-1},z_{t}\right)=\begin{cases}
+\begin{array}{c}
+a_{t-1}+\left(\pi\left(a_{t-1},z_{t}\right)+ra_{t-1}\right)\left(1-\tau_{k}\right)\\
+a_{t-1}\left(1-\tau_{a}\right)+\left(\pi\left(a_{t-1},z_{t}\right)+ra_{t-1}\right)
+\end{array} & \begin{array}{c}
+\text{if CI tax}\\
+\text{if wealth tax}
+\end{array}\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Entrepreneurial abilitiy 
+\begin_inset Formula $z$
+\end_inset
+
+ follow markov chain with values 
+\begin_inset Formula $z=\left[0,z_{L},z_{H}\right]'$
+\end_inset
+
+ and transition matrix 
+\begin_inset Formula $\Pi_{z}$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HHs with 
+\begin_inset Formula $z=0$
+\end_inset
+
+ are normal workers
+\end_layout
+
+\begin_layout Itemize
+HHs with 
+\begin_inset Formula $z=z_{L}$
+\end_inset
+
+ are 
+\begin_inset Quotes ald
+\end_inset
+
+unproductive
+\begin_inset Quotes ard
+\end_inset
+
+ entrepreneurs 
+\end_layout
+
+\begin_layout Itemize
+HHs with 
+\begin_inset Formula $z=z_{H}$
+\end_inset
+
+ are 
+\begin_inset Quotes ald
+\end_inset
+
+productive
+\begin_inset Quotes ard
+\end_inset
+
+ entrepreneurs 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Entrepreneurial profit 
+\begin_inset Formula $\pi\left(a_{t-1},z_{t-1}\right)$
+\end_inset
+
+ given by:
+\begin_inset Formula 
+\[
+\pi\left(a_{t-1},z_{t}\right)=\max_{k_{t}<\kappa a_{t-1}}\left\{ p_{t}z_{t}k_{t}-\left(r+\delta\right)k_{t}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Empirical fit
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Calibrate model to US.
+ Model reproduces wealth inequality in the data, also for the extremely
+ rich
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.7
+\backslash
+linewidth]{figs/Guvenen_et_al_2023_pareto.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exercise: Replace capital income tax 
+\begin_inset Formula $\tau_{k}=25\%$
+\end_inset
+
+ with wealth tax 
+\begin_inset Formula $\tau_{a}>0$
+\end_inset
+
+ in a government revenue-neutral way (requires 
+\begin_inset Formula $\tau_{a}=1.2\%$
+\end_inset
+
+)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.85
+\backslash
+linewidth]{figs/Guvenen_et_al_2023_tableV.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Capital, productivity output, consumption, wages increases 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Efficency gain from shifting tax base away from productive agents 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Also generates large welfare gain (around 7% consumption equivalent gains)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Results - optimal taxation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Now find tax rates that maximize aggregate welfare
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Wealth taxation (OWT) vs.
+ capital income taxation (OKIT)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Results:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\backslash
+centering     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.85
+\backslash
+linewidth]{figs/Guvenen_et_al_2023_tableVII.png}     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Wealth taxation: Positive taxation 
+\begin_inset Formula $\tau_{a}=3.03\%$
+\end_inset
+
+, large welfare gain of 
+\begin_inset Formula $9\%$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Capital income taxation: 
+\emph on
+Subsidy 
+\begin_inset Formula $\tau_{K}=-13.6\%$
+\end_inset
+
+ 
+\emph default
+and smaller welfare gain of 
+\begin_inset Formula $4.2\%$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Guvenen et al.
+ (2023) study optimal wealth taxation 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Source of wealth inequality matters for optimal taxation 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If driven by return heterogeneity 
+\series bold
+wealth tax 
+\series default
+strongly preffered to 
+\series bold
+capital income tax 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Why? It distorts investment decisions of high productivity HHs less than
+ a capital income tax
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Section
+Exercise
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Standard HANC model with return heterogeneity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HH problem:
+\begin_inset Formula 
+\begin{align*}
+v_{t}(,e_{it}r_{it}^{x},,a_{it-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}_{t+1}(e_{it+1},r_{it+1}^{x},a_{it})\\
+ & \text{s.t.}\\
+a_{it} & =(1+r_{t}+r_{it}^{x})a_{it-1}+w_{t}e_{it}-c_{it}\\
+\log e_{it+1} & =\rho_{e}\log e_{it}+\psi_{it+1}^{e},\quad\psi_{it+1}^{e}\sim\mathcal{N}\left(0,\sigma_{e}^{2}\right)\\
+r_{it+1}^{x} & =\overline{r}^{x}+\rho_{z}r_{it}^{x}+\psi_{it+1}^{r^{x}},\quad\psi_{it+1}^{r^{x}}\sim\mathcal{N}\left(0,\sigma_{r^{x}}^{2}\right)\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Q1
+\series default
+:
+\series bold
+ 
+\series default
+Solve the PE HA model with return heterogeneity
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Q2
+\series default
+: Calibrate the HANC model such that average returns are 4%
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Q3
+\series default
+: Calibrate a standard HA model without return heterogeneity.
+ Compare the wealth distributions obtained in the two models.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today: 
+\series default
+Various explanations of wealth inequality
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Preferences
+\end_layout
+
+\begin_layout Enumerate
+Bequests
+\end_layout
+
+\begin_layout Enumerate
+Returns 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Next week: 
+\series default
+Fall break 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ No lecture 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Week after: Secular stagnation 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Midterm evaluation: 
+\series default
+Fill out questionnaire 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Homework exercise
+\series default
+: Solve model with return heterogeneity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+See Github repo 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
