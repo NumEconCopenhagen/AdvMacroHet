@@ -9,7 +9,7 @@ import household_problem
 class HANCModelClass(EconModelClass,GEModelClass):    
 
     # remember in model = EconModelClass(name='') we call:
-    # self.settings()ba
+    # self.settings()
     # self.setup()
     # self.allocate()
 
@@ -48,12 +48,12 @@ class HANCModelClass(EconModelClass,GEModelClass):
 
         par = self.par
 
-        par.Nfix = 1 # number of fixed discrete states (here betas)
+        par.Nfix = 1 # number of fixed discrete states (here none)
         par.Nz = 7 # number of stochastic discrete states (here productivity)
 
         # a. preferences
         par.sigma = 1.0 # CRRA coefficient
-        par.beta = 0.9810226868872732 # discount factor, mean, range is [mean-width,mean+width]
+        par.beta = 0.9810226868872732 # discount factor, mean
          
         # b. income parameters
         par.rho_z = 0.9 # AR(1) parameter
