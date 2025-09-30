@@ -31,3 +31,4 @@ def solve_hh_backwards(par,z_trans,r,w,vbeg_a_plus,vbeg_a,a,c):
     # b. expectation step
     v_a = (1+r)*c[0]**(-par.sigma) # envelope condition
     vbeg_a[0] = z_trans[0]@v_a # expectation step
+

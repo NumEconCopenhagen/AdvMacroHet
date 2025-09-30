@@ -88,8 +88,8 @@ def obj_ss(x,model,method = 'direct', do_print=False):
         print(f'implied {ss.r = :.4f}')
         print(f'implied {ss.w = :.4f}')
 
-    model.solve_hh_ss(do_print=do_print)
-    model.simulate_hh_ss(do_print=do_print)
+    model.solve_hh_ss(do_print=do_print) # backward step: call EGM until convergence to obtain policy functions
+    model.simulate_hh_ss(do_print=do_print) # forward step: simulate to obtain distribution using the histogram method
 
     # ss.A_hh = np.sum(ss.a*ss.D) # calculated in model.solve_hh_ss
     # ss.C_hh = np.sum(ss.c*ss.D) # calculated in model.solve_hh_ss
