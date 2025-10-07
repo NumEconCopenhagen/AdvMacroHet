@@ -1,6 +1,6 @@
 %% LyX 2.3.7 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[10pt,english,t,10pt]{beamer}
+\documentclass[10pt,english,t,10pt,handout]{beamer}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -98,8 +98,8 @@
 \begin{document}
 \title{4. Transition Path\vspace{-2mm}}
 \subtitle{Adv. Macro: Heterogenous Agent Models} 
-\author{Nicolai Waldstrøm}
-\date{2024}
+\author{Jeppe Druedahl, Raphaël Huleux}
+\date{2025}
 
 {
 \setbeamertemplate{footline}{} 
@@ -107,15 +107,6 @@
 
 \maketitle
 
-\begin{tikzpicture}[overlay, remember picture]
-\node[above left=0cm and 0.0cm of current page.south east] 
-{\includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
-\end{tikzpicture}
-
-\begin{tikzpicture}[overlay, remember picture]
-\node[below left=0.5cm and .8cm of current page.north east] 
-{\includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
-\end{tikzpicture}
 
 
 \end{frame}
@@ -136,19 +127,28 @@ from steady state)}
 \item Based on the \textcolor{DarkRed}{\href{https://github.com/NumEconCopenhagen/GEModelTools}{GEModelTools}}
 package
 \item Example from \textcolor{DarkRed}{\href{https://github.com/NumEconCopenhagen/GEModelToolsNotebooks}{GEModelToolsNotebooks/HANC}}\\
-(except stuff on \emph{linearized solution} and \emph{simulation})
 \end{enumerate}
 \item <+->\textbf{Literature: }
 \begin{enumerate}
 \item Auclert et. al. (2021), >>Using the Sequence-Space Jacobian to Solve
 and Estimate Heterogeneous-Agent Models<<
 \item Documentation for GEModelTools\\
-(except stuff on \emph{linearized solution} and \emph{simulation})
 \item Kirkby (2017)
 \end{enumerate}
 \end{itemize}
 \end{frame}
 %
+\begin{frame}{Outline}
+    \begin{enumerate}
+        \item Introduction to transitions with the Ramsey model
+        \item Transition path in HA in partial equilibrium
+        \item Transition path in HA in general equilibrium: using sequence-space Jacobians
+        \item Fake news algorithm: computing SSJ fast
+        \item Exercises
+        \item First-order approximations of transition paths
+    \end{enumerate}
+\end{frame}
+
 \begin{frame}{Example I }
 \begin{itemize}
 \item What do we mean by transition path?
@@ -173,7 +173,7 @@ two different steady states
 \end{frame}
 %
 
-\section{Standard Ramsey model}
+\section{Ramsey model}
 \begin{frame}{Ramsey: Summary}
 \begin{itemize}
 \item \textbf{Simplified form:}
@@ -196,8 +196,8 @@ C_{ss}^{hh} & =(1-\delta)K_{ss}+\Gamma_{ss}K_{ss}^{\alpha}-K_{ss}
 
 \begin{align*}
 \left[\begin{array}{c}
-r_{t}^{K}-\alpha\Gamma_{t}K_{t}^{\alpha-1}L_{t}^{1-\alpha}\\
-w_{t}-(1-\alpha)\Gamma_{t}K_{t}^{\alpha}L_{t}^{-\alpha}\\
+r_{t}^{K}-\alpha\Gamma_{t}K_{t-1}^{\alpha-1}L_{t}^{1-\alpha}\\
+w_{t}-(1-\alpha)\Gamma_{t}K_{t-1}^{\alpha}L_{t}^{-\alpha}\\
 r_{t}-(r_{t}^{K}-\delta)\\
 A_{t}-K_{t}\\
 A_{t}^{hh}-\left((1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\right)\\
@@ -321,8 +321,8 @@ f'\left(x^{i+1}\right)=f'\left(x^{i}\right)+\frac{\left[f\left(x^{i+1}\right)-f\
 
 \begin{align*}
 \left[\begin{array}{c}
-r_{t}^{K}-\alpha\Gamma_{t}K_{t}^{\alpha-1}L_{t}^{1-\alpha}\\
-w_{t}-(1-\alpha)\Gamma_{t}K_{t}^{\alpha}L_{t}^{-\alpha}\\
+r_{t}^{K}-\alpha\Gamma_{t}K_{t-1}^{\alpha-1}L_{t}^{1-\alpha}\\
+w_{t}-(1-\alpha)\Gamma_{t}K_{t-1}^{\alpha}L_{t}^{-\alpha}\\
 r_{t}-(r_{t}^{K}-\delta)\\
 A_{t}-K_{t}\\
 A_{t}^{hh}-\left((1+r_{t})A_{t-1}^{hh}+w_{t}L_{t}^{hh}-C_{t}^{hh}\right)\\
@@ -434,18 +434,24 @@ differentiation}
 \item \textbf{Transition path:} Given $\boldsymbol{\Gamma}$ and $K_{-1}$
 solve $\boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},K_{-1}\right)$
 with non-linear equation system solver (e.g. broyden)
+\item \textbf{Two types of perfect foresight transitions:}
+\begin{enumerate}
+    \item \textit{Transitory:} both the initial and terminal conditions are the steady-state values 
+    \item \textit{Permanent:} the economy moves from one state to another state (the terminal state must be a stationary one)
+\end{enumerate}
 \item \textbf{Notebook:} \emph{Ramsey.ipynb}
+
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Example 1: Initially low capital}
+\begin{frame}{Example 1: permanent from low capital}
 
 \textbf{Initially away from steady state: $K_{-1}=0.75K_{ss}$}
 
 \textbf{\includegraphics[width=0.8\textwidth]{figs/K_ini_lag}}
 \end{frame}
 %
-\begin{frame}{Example 2: Technology shock}
+\begin{frame}{Example 2: transitory following technology shock}
 
 \textbf{Technology shock: $\Gamma_{t}=0.01\times\Gamma_{ss}\times0.95^{t}$
 }(i.e AR(1) with $\rho=0.95$) (exogenous, deterministic)
@@ -456,7 +462,69 @@ with non-linear equation system solver (e.g. broyden)
 \end{frame}
 %
 
-\section{Transition path with HA}
+\section{Transition path in PE}
+
+\begin{frame}{Household model in a transition}
+
+Recall the household block in the HANC model 
+\[\begin{aligned}
+v_{0}(z_{it},a_{it-1})&=\max_{\{c_{it}\}_{t=0}^{\infty}}\mathbb{E}_{0}\sum_{t=0}^{\infty}\beta^{t}u(c_{it})\\&\text{s.t.}\\\ell_{it}&=z_{it}\\a_{it}&=(1+r_{t})a_{it-1}+w_{t}\ell_{it}-c_{it}\\\log z_{it+1}&=\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\a_{it}&\geq0
+\end{aligned}\]
+Until now, we assume that $r_t=r_{ss}$ and $w_t=w_{ss}$ for all $t$. \pause \\
+What if they are time varying-instead? \pause 
+
+\end{frame}
+
+
+\begin{frame}{Perfect foresight, initial and terminal conditions, }
+\textit{Important assumptions: }
+\vspace{5mm}
+\begin{enumerate}
+    \item \textbf{Perfect foresight:} from $t=0$, households know the future path of $\{r_t,w_t\}_{t=0}^\infty$
+    \item \textbf{Truncation:} the model converges to a stationary state after $t\geq T$, $T$ large
+    \item \textbf{Initial conditions:} we compute the transition from a given distribution $D_0$ that we already know
+    \item \textbf{Terminal condition:} we compute a transition towards some stationary state where we know the value function (or its derivative)
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Impulse reponses: backward and forward step}
+
+Our goal is to compute a sequence of impulse responses $$A_t^{hh}(\{r_\tau,w_\tau\}_{\tau=0}^T=\int a_t(a,z)dD_t(a,z)\quad \forall t\in(0,T)$$  \pause 
+We thus need to obtain a sequence of policy functions $a_t(a,z)$ and distributions $D_t$. \emph{(note the $t$ subscript!)}\pause \\ 
+\vspace{5mm}
+We will proceed in two steps: \pause 
+\begin{enumerate}
+    \item \textbf{Backward step}: using the terminal condition on the value function, and going back in time, obtain the policy functions $a_t(a,z)$ and $c_t(a,z)$  \pause 
+    \item \textbf{Forward step}: using the initial condition on the distribution, and going forward in time, simulate the distribution over time $D_t(a,z)$
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Summing up the transition in PE}
+    To solve the household problem, we need three objects:
+    \pause 
+\begin{enumerate}
+    \item An \textbf{exogenous path} of $\{r_t,w_t\}_{t=0}^T$ \pause 
+    \item A \textbf{terminal condition} on the value function (or its derivative) $V^a_T(a,z)$ \pause 
+    \item An \textbf{initial condition} on the distribution \pause 
+\end{enumerate}
+We then do a: \pause 
+\begin{enumerate}
+    \item \textbf{Backward step}, using $V^a_T(a,z)$ as a terminal condition, taking into account $\{r_t,w_t\}_{t=0}^T$ $\to$ this gives us $c_t(a,z)$ and $a_t(a,z)$ \pause 
+    \item \textbf{Forward step}, using $D_0(a,z)$ as an initial condition, and $a_t(a,z)$ $\to$ this gives us $D_t(a,z)$ \pause 
+\end{enumerate}
+We can then obtain the aggregate values of the household as usual by computing
+$A_t =\int a_t(a,z)dD_t(a,z).$ This is the \textbf{impulse response}!
+\end{frame}
+
+\begin{frame}
+\vspace{3cm}
+    \begin{center}
+        {\huge Let's code!}
+    \end{center}
+\end{frame}
+
+\section{Transition path in GE}
 \begin{frame}{Equation system}
 
 The model can be written as an \textbf{equation system}{\footnotesize{}
@@ -468,8 +536,8 @@ r_{t}-(r_{t}^{K}-\delta)\\
 A_{t}-K_{t}\\
 \boldsymbol{D}_{t}-\Pi_{z}\underline{\boldsymbol{D}}_{t}\\
 \underline{\boldsymbol{D}}_{t+1}-\Lambda_{t}\boldsymbol{D}_{t}\\
-A_{t}-A_{t}^{hh}\\
-L_{t}-L_{t}^{hh}\\
+A_{t}^{hh}-A_{t}\\
+L_{t}^{hh}-L_{t}\\
 \forall t\in\{0,1,\dots\},\text{given }\underline{\boldsymbol{D}}_{0}
 \end{array}\right] & =\boldsymbol{0}
 \end{align*}
@@ -518,7 +586,7 @@ is large}
 \begin{itemize}
 \item With truncation $T$ and $N$ equations/unknowns $\boldsymbol{J}$
 has size \textbf{$\left(T\times N,T\times N,\right)$}
-\item $\Rightarrow$ Ekspensive to calculate 
+\item[$\Rightarrow$] Expensive to calculate 
 \end{itemize}
 \item <+->We can typically \textbf{exploit model structure }to reduce size
 of system 
@@ -534,8 +602,8 @@ of system
 \vspace{-7mm}
 \begin{align*}
 \boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-A_{t}-A_{t}^{hh}\\
-L_{t}-L_{t}^{hh}\\
+A_{t}^{hh}-A_{t}\\
+L_{t}^{hh}-L_{t}\\
 \forall t\in\{0,1,\dots,T-1\}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
@@ -575,7 +643,7 @@ Mutual fund $\Rightarrow$HHs $\Rightarrow$ Residuals
 \vspace{-7mm}
 \begin{align*}
 \boldsymbol{H}\left(\boldsymbol{K},\boldsymbol{\Gamma},\underline{\boldsymbol{D}}_{0}\right) & =\left[\begin{array}{c}
-A_{t}-A_{t}^{hh}\\
+A_{t}^{hh}(\boldsymbol{w}(\boldsymbol{K}),\boldsymbol{r}(\boldsymbol{K})) - K_t\\
 \forall t\in\{0,1,\dots,T-1\}
 \end{array}\right]=\boldsymbol{0}
 \end{align*}
@@ -624,30 +692,53 @@ w.r.t unknowns $\boldsymbol{K}?$
 \boldsymbol{A}^{hh}=hh\left(\boldsymbol{r},\boldsymbol{w}\right),\quad\boldsymbol{A}-\boldsymbol{A}^{hh}=\boldsymbol{H}\left(\boldsymbol{A},\boldsymbol{A}^{hh}\right)
 \]
 }
-\item <+->Let $\mathcal{J}^{y,x}$ be Jacobian of $y$ w.r.t $x$. Then:
-\begin{align*}
-\boldsymbol{H}_{\boldsymbol{K}}\equiv\mathcal{J}^{A-A^{hh},K} & =\mathcal{J}^{A-A^{hh},A}\mathcal{J}^{A,K}\\
- & +\mathcal{J}^{A-A^{hh},A^{hh}}\mathcal{J}^{A^{hh},r}\mathcal{J}^{r,r^{k}}\mathcal{J}^{r^{k},K}\\
- & +\mathcal{J}^{A_{t}-A^{hh},A^{hh}}\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K}
-\end{align*}
+\item <+-> Collapsing the previous equations, we write the asset-market clearing condition as 
+\[\boldsymbol{H}=\boldsymbol{A}^{hh}(\boldsymbol{w}(\boldsymbol{K}),\boldsymbol{r}(\boldsymbol{K})) - \boldsymbol{K}\]
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{How to compute Jacobian?}
+
+\begin{frame}{What is a Jacobian}
+
+Let $\mathcal{J}^{y,x}$ be Jacobian of $y$ w.r.t $x$. Then:
+\begin{align*}
+\boldsymbol{H}_{\boldsymbol{K}} & = \mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K} +\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K} - \boldsymbol{I}
+\end{align*}
+
+\pause
+where 
+$$\mathcal{J}^{A^{hh},r}= \left[\begin{matrix}
+    \frac{\partial A^{hh}_0}{\partial dr_0} & \frac{\partial A^{hh}_0}{\partial dr_1} & \dots &\frac{\partial A^{hh}_0}{\partial dr_T}\\ 
+    \frac{\partial A^{hh}_1}{\partial dr_0} & \frac{\partial A^{hh}_1}{\partial dr_1} & \dots & \frac{\partial A^{hh}_1}{\partial dr_T} \\
+    \vdots  & \ddots & \ddots & \vdots \\
+    \frac{\partial A^{hh}_T}{\partial dr_0} & \frac{\partial A^{hh}_T}{\partial dr_1} & \dots & \frac{\partial A^{hh}_T}{\partial dr_T}
+\end{matrix}\right]$$
+
+\pause
+\textbf{Interpretation:} row $t$ of column $s$ gives us the savings change at $t$ in response to a shock on $r$ at $s$.
+\pause 
+Not just a computational tool, also a lot of economic intuition behind it!
+\end{frame}
+
+\begin{frame}{How to compute Jacobian?}    
+
 \begin{itemize}
 \item <+->If we have individuals Jacobians, easy to compute $\boldsymbol{H}_{\boldsymbol{K}}$
 \begin{itemize}
 \item Also very efficient - just matrix mulitiplication \\
-\vspace{1cm}
+
 \end{itemize}
 \item <+->How to get individual Jacobians?
 \begin{itemize}
-\item Some are easy: For $\mathcal{J}^{w,K},\mathcal{J}^{r^{k},K}$ we just
+\item Some are easy: For $\mathcal{J}^{w,K},\mathcal{J}^{r,K}$ we just
 have to diff. $r_{t}^{K}=\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1},w_{t}=(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha}$
 \begin{itemize}
 \item Cheap, and can often be vectorized 
 \end{itemize}
-\item What about HH Jacobians $\mathcal{J}^{A_{hh},r},\mathcal{J}^{A_{hh},w}$?
+\item  <+->What about HH Jacobians $\mathcal{J}^{A_{hh},r},\mathcal{J}^{A_{hh},w}$?
+\begin{itemize}
+    \item Need to compute $T$ impulse reponse!
+\end{itemize}
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -674,6 +765,7 @@ steps for each input $\left\{ r,w\right\} $!
 \end{figure}
 \end{itemize}
 \end{frame}
+
 %
 \begin{frame}{Summary}
 \begin{itemize}
@@ -692,66 +784,30 @@ compute \textbf{transition path }through following steps:
 \end{enumerate}
 \end{itemize}
 \end{frame}
-%
-\begin{frame}{Assumptons and interpretation}
-\begin{itemize}
-\item <+->\textbf{Underlying assumption: }No aggregate uncertainty
-\item <+->\textbf{>>Shock<<, $\boldsymbol{\Gamma}$: }A fully unexpected
-non-recurrent event $\equiv$ \emph{MIT shock}
-\begin{itemize}
-\item Unexpected before occuring at time $0$
-\item From time $0$ and onwards agents have perfect foresight w.r.t transition
-dynamics 
-\end{itemize}
-\item <+->\textbf{Transition path, $\boldsymbol{K}$: }Non-linear perfect
-foresight response to
+
+\begin{frame}
+\vspace{3cm}
+    \begin{center}
+        {\huge Let's code!}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Reminder}
+We are interested in the \textbf{dynamics} of our model \pause 
+What we have seen so far:
 \begin{enumerate}
-\item Initial distribution, $\underline{\boldsymbol{D}}_{0}\neq\boldsymbol{D}_{ss}$or
-$K_{0}\neq K_{ss}$ (convergence to steady state)
-\item Shock, $\Gamma_{t}\neq\Gamma_{ss}$ for some $t$ (i.e. impulse-response)
+    \item How to compute impulse response of the household block in partial equilibrium \pause 
+    \begin{enumerate}
+        \item Backward step: EGM \pause 
+        \item Forward step: histogram method \pause 
+    \end{enumerate}
+    \item To move to general equilibrium: find the path of an endogenous variable (like $\boldsymbol{K}$) such that markets clear $\boldsymbol{H}(\boldsymbol{\Gamma},\boldsymbol{K})=0$ \pause 
+    \item To find $\boldsymbol{K}$, we use Newton's method, which require a \textbf{Sequence Space Jacobian}
 \end{enumerate}
-\end{itemize}
 \end{frame}
-%
-\begin{frame}{The HANC example from GEModelToolsNotebooks}
-\begin{itemize}
-\item \textbf{Presentation: }I go through the code
-\end{itemize}
-\end{frame}
-%
-\begin{frame}{Interpreting the household Jacobians}
-\begin{itemize}
-\item \textbf{Jacobian of consumption wrt. wage: }\emph{What happens to
-consumption in period $t$ when the wage (and thus income) increases
-in period $s$?}\textbf{
-\[
-\mathcal{J}^{C^{hh},w}=\left[\begin{array}{ccc}
-\frac{\partial C_{0}^{hh}}{\partial w_{0}} & \frac{\partial C_{0}^{hh}}{\partial w_{1}} & \cdots\\
-\frac{\partial C_{1}^{hh}}{\partial w_{0}} & \ddots & \ddots\\
-\vdots & \ddots & \ddots
-\end{array}\right]
-\]
-}
-\item \textbf{Columns:} The full dynamic response to a unit shock in period
-$s$
-\end{itemize}
-\end{frame}
-%
-\begin{frame}{Decomposition of GE response}
-\begin{itemize}
-\item \textbf{GE transition path:} $\boldsymbol{r}^{\ast}$ and $\boldsymbol{w}^{\ast}$
-\item \textbf{PE response of each:}
-\begin{enumerate}
-\item Set $(\boldsymbol{r},\boldsymbol{w})\in\left\{ \left(\boldsymbol{r}^{\ast},\boldsymbol{w}_{ss}\right),\left(\boldsymbol{r}_{ss},\boldsymbol{w}^{\ast}\right)\right\} $
-\item Solve household problem backwards along transition path
-\item Simulate households forward along transition path
-\item Calculate outcomes of interest
-\end{enumerate}
-\end{itemize}
-\end{frame}
-%
 
 \section{Fake News Algorithm}
+
 \begin{frame}{Fake news algorithm}
 \begin{itemize}
 \item <+->\textbf{Household block:} 
@@ -763,9 +819,12 @@ $s$
 \item i.e. $\boldsymbol{Y}^{hh}=C^{hh},A^{hh}$ and $\boldsymbol{X}^{hh}=w,r$
 \end{itemize}
 \item <+->\textbf{Goal:} Fast computation of
-\[
-\mathcal{J}^{hh,}=\frac{dhh(\boldsymbol{X}_{ss}^{hh})}{d\boldsymbol{X}^{hh}}
-\]
+$$\mathcal{J}^{A^{hh},r}= \left[\begin{matrix}
+    \frac{\partial A^{hh}_0}{\partial dr_0} & \frac{\partial A^{hh}_0}{\partial dr_1} & \dots &\frac{\partial A^{hh}_0}{\partial dr_T}\\ 
+    \frac{\partial A^{hh}_1}{\partial dr_0} & \frac{\partial A^{hh}_1}{\partial dr_1} & \dots & \frac{\partial A^{hh}_1}{\partial dr_T} \\
+    \vdots  & \ddots & \ddots & \vdots \\
+    \frac{\partial A^{hh}_T}{\partial dr_0} & \frac{\partial A^{hh}_T}{\partial dr_1} & \dots & \frac{\partial A^{hh}_T}{\partial dr_T}
+\end{matrix}\right]$$
 \item <+->\textbf{Naive approach:} 
 \begin{itemize}
 \item Shock at time $s=0$, solve + simulate HH block for $T$ periods
@@ -797,15 +856,15 @@ allow us to compute $d\boldsymbol{y}_{t}/d\boldsymbol{X}^{hh}$ efficiently
 following a shock in period $s$. Then:
 \[
 \boldsymbol{y}_{t}^{s}=\begin{cases}
+\boldsymbol{y}_{t+j}^{s+j} & t\leq s \\ 
 \boldsymbol{y}_{ss} & t>s\\
-\boldsymbol{y}_{t+j}^{s+j} & t\leq s
 \end{cases}
 \]
-\item <+->Verbally: The response of the policy function $\boldsymbol{y}$
+\item <+->\textbf{Verbally}: The response of the policy function $\boldsymbol{y}$
 at time $t$ to a shock at $s$ is the as the response at time $t+j$
 to a shock at $s+j$
 \begin{itemize}
-\item Policy function \textbf{does not depend on the absolut time of shock}
+\item Policy function \textbf{does not depend on the absolute time of shock}
 only the relative distance between >>today<< and the shock, $s-t$.
 \end{itemize}
 \item <+->\textbf{Implication}: We need to only do a single backwards iteration
@@ -830,65 +889,39 @@ Graphically. Response of $c_{t}$ to income shock at $s=3,5$\\
 
 \end{frame}
 %
-\begin{frame}{Aggregate Jacobian }
-\begin{itemize}
-\item <+->Can we use same logic for aggreregate Jacobian, $\mathcal{J}_{t,s}=\mathcal{J}_{t-1,s-1}$?
-\begin{itemize}
-\item No - the above is true for \emph{policy} function, but not \textbf{distribution}
-\item Distribution is backwards looking ($\boldsymbol{D}_{t}^{s}=\left(\boldsymbol{\Lambda}_{t}^{s}\Pi_{ss}\right)'\boldsymbol{D}_{t-1}^{s}$)
-so number of periods $t$ since announcement matters
-\end{itemize}
-\item <+->Can write aggregate Jacobian as:
-\[
-\mathcal{J}_{t,s}=\begin{cases}
-\mathcal{F}_{t,s} & \text{ for }t=0,s=0\\
-\mathcal{J}_{t-1,s-1}+\mathcal{F}_{t,s} & \text{ for }t,s>0
+\begin{frame}{Implementation}
+Let's say you want to compute $\frac{d\boldsymbol{A}^{hh}}{d\boldsymbol{w}}$  \pause \\ 
+\vspace{5mm}
+\underline{Algorithm:}
+\begin{enumerate}
+    \item Compute the impulse response policy functions to a shock on $w$ at $s=T$ $\to$ obtain a vector of policy functions $\boldsymbol{a}'_t(a,z)$ \pause 
+    \item Reconstruct the Jacobian: for all $s\in(0,T)$ \pause 
+    \begin{enumerate}
+        \item Let \[
+\boldsymbol{a}_{t}(a,z)=\begin{cases}
+\boldsymbol{a}_{t+j}(a,z) & t\leq s \\
+\boldsymbol{a}_{ss}(a,z) & t>s\\
 \end{cases}
-\]
-\item <+->where $\mathcal{F}_{t,s}$ is the \textbf{fake news} matrix.
-\item <+->Element $\left(t,s\right)$ in matrix $\mathcal{F}$ for $t>0$
-is 
-\begin{align*}
-\mathcal{F}_{t,s}= & \left(\boldsymbol{y}_{ss}\right)'\left(\boldsymbol{\Lambda}'_{ss}\right)^{t}\frac{d\boldsymbol{D}_{1}^{s}}{d\boldsymbol{X}^{hh}}
-\end{align*}
-\item <+->Why >>fake news<<? $\mathcal{F}_{t,s}$ captures effect of
-announcing a date$-s$ shock at time $0$, and retracting the annountment
-at date 1
-\begin{itemize}
-\item Policy variables revert to steady state after period 1, but distribution
-changes since $d\boldsymbol{y}_{0}\neq0$
-\end{itemize}
-\end{itemize}
+\] \pause 
+        \item Using this reconstructing policy vector, do the forward step  \pause 
+        \item Aggregate as usual using $\boldsymbol{A}_t=\int \boldsymbol{a}_t(a,z)dD_t(a,z)$ \pause 
+        \item Fill up the column $s$ of the Jacobian as $(\boldsymbol{A}_t-\boldsymbol{A}_{ss})/h$ \pause 
+    \end{enumerate}
+\end{enumerate}
 \end{frame}
-%
-\begin{frame}{Fake News Matrix}
-\begin{itemize}
-\item <+->Can show that the fake news matrix can be computed as:
-\[
-\mathcal{F}_{t,s}\equiv\begin{cases}
-\left(\frac{d\boldsymbol{y}_{0}^{s}}{d\boldsymbol{X}^{hh}}\right)'\boldsymbol{D}_{ss} & t=0\\
-\left(\boldsymbol{y}_{ss}\right)'\left(\boldsymbol{\Lambda}'_{ss}\right)^{t}\frac{d\boldsymbol{D}_{1}^{s}}{d\boldsymbol{X}^{hh}} & t>0
-\end{cases}
-\]
-\item <+->$t=0$ element: Easy to compute when we have $d\boldsymbol{y}_{0}^{s}/d\boldsymbol{X}^{hh}$
-\begin{itemize}
-\item Can get this from a single backwards run ($T$ periods) due to logic
-from before 
-\end{itemize}
-\item <+->$t>0$ elements: Only involves basic matrix multiplication once
-we have $d\boldsymbol{D}_{1}^{s}/d\boldsymbol{X}^{hh}$
-\begin{itemize}
-\item Since we have derivatves of policy function for all $t,s$ $d\boldsymbol{y}_{t}^{s}/d\boldsymbol{X}^{hh}$
-can get $d\boldsymbol{D}_{1}^{s}/d\boldsymbol{X}^{hh}$ easily
-\item Note: Not too expensive since histogram method for distribution is
-fast and efficient 
-\end{itemize}
-\end{itemize}
+
+
+\begin{frame}
+\vspace{3cm}
+    \begin{center}
+        {\huge Let's code!}
+    \end{center}
 \end{frame}
-%
+
+
 \begin{frame}{Fake news algorithm - summary}
 \begin{itemize}
-\item <+->Auclert et. al (2021) introduce an efficient alogirthm to compute
+\item <+->Auclert et. al (2021) introduce an efficient algorithm to compute
 aggregate jacobians for models with heterogeneous agents 
 \begin{itemize}
 \item Can compute the linearized response of aggregate consumption, savings
@@ -911,7 +944,302 @@ block
 \end{itemize}
 \end{itemize}
 \end{frame}
+
+\section{Linear transitions and aggregate uncertainty}
+
+\begin{frame}{Reminder of model class}
+
+\begin{itemize}
+    \item <+-> Unknowns: $\boldsymbol{U}$ 
+    \item <+-> Shock: $\boldsymbol{Z}$
+    \item <+-> Additional variables: $\boldsymbol{X}$
+    \item <+-> Target equation system: $$H(\boldsymbol{U},\boldsymbol{Z})=0$$
+    \item <+-> In deterministic, perfect foresigh model (MIT shocks), solve $H(\boldsymbol{U},\boldsymbol{Z})=0$ by 
+\begin{enumerate}
+    \item Calculating the Jacobian of $H$ w.r.t $\boldsymbol{U}$ around s.s.
+    \item Use Newton's method to find non-linear transition given $\boldsymbol{Z}$
+\end{enumerate}
+$\Rightarrow$ But we have abstracted from real aggregate uncertainty 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Aggregate uncertainty}
+\begin{itemize}
+\item <+->In business cycle model common to have \emph{aggregate uncertainty}
+\item <+->I.e. underlying shocks (TFP, demand etc) $x$ follow stochastic
+process with dist, $f$, $x_{t}\sim f$
+\item <+->This implies that all variables which are functions of $x$ are
+also random. 
+\begin{itemize}
+\item {\small If TFP is random $\Rightarrow$ wages, interest rates, labor
+demand etc. are }{\small\textbf{random }}{\small until observed }{\small\par}
+\end{itemize}
+\item <+->Implies that we need to compute expectation in Euler, NKPC and
+other forward looking equations:
+\[
+u'\left(C_{t}\right)=\beta\mathbb{E}_{t}\left[R_{t+1}\left(x_{t+1}\right)u'\left(C_{t}\left(x_{t+1}\right)\right)\right]
+\]
+\item <+->Remember: So far in the course we have generally assumed \textbf{perfect
+foresight} w.r.t aggregate variables ($w,r$) so no expectation
+\begin{itemize}
+\item {\small\vspace{-0.5mm}Implies that aggregate shocks are not random
+process, but rather }{\small\emph{MIT shocks}}{\small\par}
+\item <+->Interpretation of MIT shocks generally hard to reconcile with
+business cycles
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Stochastic vs deterministic models}
+\begin{itemize}
+\item <+->To see how the \textbf{stochastic} model and deterministic model
+are related consider the Euler with random $x$: 
+\[
+u'\left(C_{t}\right)=R\beta\mathbb{E}_{t}\left[u'\left(C_{t}\left(x_{t+1}\right)\right)\right]
+\]
+\item <+->First-order Taylor approx. around deterministic ss (use $R\beta=1$):
+\[
+du'\left(C_{t}\right)\approx u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}
+\]
+\item <+->Assume $x_{t}=\rho^{x}x_{t-1}+\epsilon_{t}^{x}$ with $\mathbb{E}\epsilon_{t}^{x}=0$.
+Period 0 solution in deterministic/perfect foresight model:
+\[
+du'\left(C_{0}\right)\approx u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot\rho^{x}d\epsilon_{0}^{x}
+\]
+\item <+->Stochastic model we use:
+\begin{align*}
+d\mathbb{E}_{0}x_{1} & =d\mathbb{E}_{0}\left(\rho^{x}x_{0}+\epsilon_{1}^{x}\right)\\
+ & =\rho^{x}d\mathbb{E}_{0}x_{0}=\rho^{x}d\epsilon_{0}^{x}=dx_{1}
+\end{align*}
+\item <+->\vspace{-2mm}Same result! Aggregate uncertainty \textbf{does
+not matter to first-order }when linearizing w.r.t aggregate shock
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Linearized IRFs}
+\begin{itemize}
+
+\item Solve for IRfs for unknowns using first-order approximation $$H(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow H_U d\boldsymbol{U}+ H_{\boldsymbol{Z}} d\boldsymbol{Z}=0\Leftrightarrow d\boldsymbol{U}=\underbrace{-H_U^{-1}H_z }_{=G_U}d\boldsymbol{Z}$$
+\item We can find $H_U$ and $H_Z$ as before using fake-news 
+\item Limitations:
+\begin{itemize}
+    \item Imprecise for large shocks
+    \item Imprecise in models with aggregate non-linearities
+    \item No real aggregate uncertainty (precautionary savings w.r.t. aggregate shocks, etc)
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Linearized IRFs: example from HANC}
+You want to compute an IRF facing a TFP shock in HANC. \pause  \\
+Recall that
+$$H(\boldsymbol{K}, \boldsymbol{\Gamma})=\boldsymbol{A}(\boldsymbol{r}(\boldsymbol{K},\boldsymbol{\Gamma}),\boldsymbol{w}(\boldsymbol{K},\boldsymbol{\Gamma}))-\boldsymbol{K}$$ \pause 
+The derivative with respect to $\boldsymbol{K}$ is 
+$$
+H_{\boldsymbol{K}} = \mathcal{J}^{A^{hh},r}\mathcal{J}^{r,K} +\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,K} - \boldsymbol{I}
+$$ \pause 
+The derivative with respect to $\boldsymbol{\Gamma}$ is
+$$
+H_{\boldsymbol{\Gamma}} = \mathcal{J}^{A^{hh},r}\mathcal{J}^{r,\Gamma} +\mathcal{J}^{A^{hh},w}\mathcal{J}^{w,\Gamma} 
+$$ \pause 
+Write a first-order approximation
+$$H_{\boldsymbol{K}} d\boldsymbol{K}+H_{\boldsymbol{\Gamma}}d\boldsymbol{\Gamma}=0 \Leftrightarrow d\boldsymbol{K}= - H_{\boldsymbol{K}} ^{-1}H_{\boldsymbol{\Gamma}}d\boldsymbol{\Gamma}$$ \pause 
+This gives us the endogenous response $d\boldsymbol{K}$ for any shock $d\boldsymbol{\Gamma}$ by simply computing the product of two matrices!
+    
+\end{frame}
+
+
+
+\begin{frame}{Simulating a time-series using the linearized solution}
+\vspace{-2mm}
+We can also simulate the economy following a sequence of shocks: \pause 
+\begin{itemize}
+\item <+->\textbf{Shocks: }Write the shocks as an $MA(\infty)$ with coefficients
+$d\boldsymbol{Z}_{s}$ for $s\in\{0,1,\dots\}$ driven by the innovation
+$\boldsymbol{\epsilon}_{t}$. 
+\begin{itemize}
+\item EX: If shock $\boldsymbol{Z}$ follows an AR(1) then $d\boldsymbol{Z}_{s}=\rho^{s-t}\boldsymbol{\epsilon}_{t-s}$
+\end{itemize}
+\item <+->\textbf{Linearized simulation:}
+\begin{enumerate}
+\item <+->Draw time series of innovations, $\tilde{\boldsymbol{\epsilon}}_{t}$
+\item <+->Calculate the time series of shocks as $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
+
+Note: $d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}=$ effect
+of shock $s$ periods ago today 
+\item <+->Calculate the time series of other aggregate variables as 
+\[
+d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
+\]
+where $d\boldsymbol{X}_{s}$ is the IRF to a \emph{unit-shock} after
+$s$ periods (just needs jacobian of $\boldsymbol{X}$ w.r.t shocks
+$\boldsymbol{Z}$)
+\end{enumerate}
+\item <+->\textbf{Intuition:} Sum of first order effects from all previous
+shocks
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\vspace{3cm}
+    \begin{center}
+        {\huge Let's code!}
+    \end{center}
+\end{frame}
+
+\begin{frame}{When does aggregate uncertainty matter?}
+\begin{itemize}
+\item <+->\textbf{Insight: }\emph{The IRF from an MIT shock is }\emph{\underline{equivalent}}\emph{
+to the IRF in a model with aggregate risk, which is linearized in
+the aggregate variables} (Boppart et. al., 2018)
+\item <+->What about \textbf{high order}?
+\item <+->Approximate Euler to \textbf{second} order:
+\begin{align*}
+du'\left(C_{t}\right)\approx & u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}+\frac{1}{2}u'''\left(C_{ss}\right)C''\left(x_{ss}\right)\cdot\mathbb{E}_{t}\left(x_{t+1}-x_{ss}\right)^{2}\\
+ & u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}+\frac{1}{2}u'''\left(C_{ss}\right)C''\left(x_{ss}\right)\cdot\sigma_{x,t}^{2}
+\end{align*}
+\item <+->In deterministic model $\sigma_{x,t}^{2}=0$ - not true in stochastic
+model!
+\begin{itemize}
+\item Models deviate once we go beyond 1st order approximation (linearization)
+\end{itemize}
+\item <+->Still extremely usefull though - we may solve deterministic models
+to first-order and interpret as models with aggregate uncertainty
+\begin{itemize}
+\item How do we linearize models numerically?
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Calculating moments - variance}
+\begin{itemize}
+\item <+->Implications of prior slide:
+\begin{itemize}
+\item Very easy to calculate business cycle moments 
+\end{itemize}
+\item <+->Steps (variance of $C$) (1 shock):
+\begin{enumerate}
+\item Formulate shock to e.g. public spending, $\left\{ dG_{t}\right\} _{t=0}^{T}=d\boldsymbol{G}$
+(could be an AR(1))
+\item Linearize and solve model to get IRF of $\left\{ dC_{t}\right\} _{t=0}^{T}=d\boldsymbol{C}$
+w.r.t $\left\{ dG_{t}\right\} $
+\item Calculate variance $\text{var}(dC_{t})=\sum_{s=0}^{T-1}\left(dC_{s}\right)^{2}$
+\end{enumerate}
+\item <+->Same principle with more shocks 
+\end{itemize}
+\end{frame}
 %
+\begin{frame}{Calculating moments - covariance}
+\begin{itemize}
+\item <+->\textbf{Covariances:}\vspace{-3mm}
+\begin{align*}
+\text{cov}(dC_{t},dY_{t+k}) & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}
+\end{align*}
+\item <+->\vspace{-2mm}\textbf{Covariance decomposition:}
+\[
+\frac{\text{contribution from one shock}}{\text{contributions from all shocks}}=\frac{\sigma_{j}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{j}dY_{s+k}^{j}}{\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}}
+\]
+ 
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Solving HA model with aggregate risk (advanced)}
+\begin{itemize}
+\item <+->To solve models with aggregate risk we need to write them in
+\emph{state-space} form instead of \emph{sequence-space}
+\begin{itemize}
+\item Think of HA household problem - that is always in state-space form
+\item Endogenous variables $c_{t},a_{t}$ as function of current states
+$a_{t-1},z_{t}$
+\end{itemize}
+\item <+->\textbf{Aggregate stochastic variables: $\boldsymbol{Z}$ }follow
+some known process with innovations $\boldsymbol{\epsilon}$. \emph{State
+space form}: RHS is what is known today {\small
+\[
+\left[\begin{array}{c}
+\boldsymbol{U}_{t}\\
+\boldsymbol{Z}_{t}
+\end{array}\right]=\mathcal{M}\left(\left[\begin{array}{c}
+\boldsymbol{U}_{t-1}\\
+\boldsymbol{Z}_{t-1}
+\end{array}\right],\boldsymbol{\epsilon}_{t}\right)
+\]
+}{\small\par}
+
+$\neq$ perfect foresight wrt. future agg. variables in \emph{sequence-space}
+\item <+->In standard NK model: no backward looking eqs. so number of state
+variables = Number of shocks 
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Example: Krussel-Smith}
+\begin{itemize}
+\item <+->What if we add heterogeneous agents? Canonical example: The Krussel-Smith
+model (1998) 
+\begin{itemize}
+\item HANC with aggregate uncertainty (TFP shocks)
+\end{itemize}
+\item <+->\textbf{Recursive formulation of household problem:}
+\begin{align*}
+v(\boldsymbol{D}_{t},\Gamma_{t},z_{it},a_{it-1}) & =\max_{a_{it},c_{it}}u(c_{it})+\beta\mathbb{E}_{t}\left[v(\boldsymbol{D}_{t+1},\Gamma_{t+1},z_{it+1},a_{it})\right]\\
+ & \text{s.t.}\\
+K_{t-1} & =\int a_{it-1}d\boldsymbol{D}_{t}\\
+r_{t} & =\alpha\Gamma_{t}K_{t-1}^{\alpha-1}-\delta\\
+w_{t} & =(1-\alpha)\Gamma_{t}K_{t-1}^{\alpha}\\
+a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0,
+\end{align*}
+\item <+-> \vspace{-2mm}$\boldsymbol{D}_{t}$ is a state variable $\Rightarrow$
+Massive state space
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Comparisons}
+\begin{itemize}
+\item \textbf{State-space approach with linearization}: Ahn et al. (2018);
+{\color{DarkRed}\href{https://github.com/BASEforHANK}{Bayer and Luetticke (2020)}};
+Bhandari et al. (2023); Bilal (2023)
+
+\underline{Con}: 
+\begin{enumerate}
+\item Harder to implement
+\item Valuable to be able to interpret Jacobians
+\end{enumerate}
+\underline{Pro}\textbf{:} 
+\begin{enumerate}
+\item Easier path to 2nd and higher order approximations
+\end{enumerate}
+\item \textbf{Global solution:} The distribution of households is a state
+variable for each household $\Rightarrow$ \emph{explosion in complexity}
+\begin{enumerate}
+\item \underline{Original}: Krusell and Smith (1997, 1998); Algan et al. (2014);
+\item \underline{Deep learning}: Fernández-Villaverde et al. (2021); Maliar
+et al. (2021); Han et al. (2021); Kase et al. (2022); Azinovic et
+al. (2022); Gu et al. (2023); Chen et al. (2023)
+\end{enumerate}
+\item \textbf{Discrete aggregate risk:} Lin and Peruffo (2023)
+\end{itemize}
+\end{frame}
+%
+
+
+
+\begin{frame}{Summary}
+That was a lot! What you need to remember: \pause 
+\begin{enumerate}
+    \item How to compute households impulse reponse in partial equilibrium: backward and forward steps \pause
+    \item In general equilibrium: we use Newton's method and the Sequence Space Jacobian to find endogenous variables that clear markets (non-linear perfect foresight transitions) \pause 
+    \item Sequence Space Jacobian are costly to compute with 'brute-force', but fake-news algorithm is fast!
+    \item Linear approximations: first-order approximation to full model with aggregate risk, fast to compute once you have Jacobian
+\end{enumerate}
+    
+\end{frame}
+
 
 \section{Exercises}
 \begin{frame}{Exercises: HANCGovModel}
@@ -925,22 +1253,10 @@ Same model. Your choice of $\tau_{ss}.$ New questions:
 \item \textbf{What explains household savings behavior?}
 \item \textbf{What happens to consumption inequality?}
 \end{enumerate}
-\end{frame}
-%
+\vspace{5mm}
 
-\section{Summary}
-\begin{frame}{Summary and next week}
-\begin{itemize}
-\item \textbf{Today: }
-\begin{enumerate}
-\item The concept of a transition path
-\item Details of the \textcolor{DarkRed}{\href{https://github.com/NumEconCopenhagen/GEModelTools}{GEModelTools}}
-package
-\end{enumerate}
-\item \textbf{Homework:} Work on completing the model extension exercise
-\item \textbf{Next week: }Begin working on Assignment 1
-\end{itemize}
+Answers available at this \href{https://github.com/NumEconCopenhagen/GEModelToolsNotebooks/tree/master/HANC-gov}{\underline{link}} 
 \end{frame}
-%
+
 
 \end{document}
