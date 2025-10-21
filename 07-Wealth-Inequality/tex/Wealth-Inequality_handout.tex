@@ -1,6 +1,6 @@
 %% LyX 2.4.3 created this file.  For more info, see https://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[10pt,english,t,10pt,handout]{beamer}
+\documentclass[10pt,english,10pt]{beamer}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -22,7 +22,7 @@
 % (ERT) argument for the TOC
 \AtBeginDocument{%
   \let\origtableofcontents=\tableofcontents
-  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\\vgobbletableofcontents}}
   \def\gobbletableofcontents#1{\origtableofcontents}
 }
 
@@ -32,7 +32,7 @@
 
 \usepackage{tikz}
 \usetikzlibrary{positioning}
-\usepackage{appendixnumberbeamer}
+\usepackage{appendixnumberbeamer} 
 
 \usepackage{graphicx}
 \usepackage{subfig}
@@ -130,30 +130,80 @@
 \addtocounter{framenumber}{-1}
 
 
+\begin{frame}{Summary of the class so far and next steps}
+\begin{itemize}
+\item We are done with the "computational" part of the class! \pause 
+\item We can switch to "economics" :-) \pause 
+\item But let's recap so far what we have done, and what you should remember
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary of the class - Steady state}
+\begin{itemize}
+\item Main difficulty in solving HA models: the household block \pause 
+\item Two steps to solve it \pause
+\begin{itemize}
+\item[1.] Backward step: get the policy functions (EGM) \pause 
+\item[2.] Forward step: using the policy functions, get the stationnary distributions (histogram method) \pause
+\end{itemize}
+\item In GE, we find the prices (or other endogenous variable) such that markets clear: use root finding algorithm \pause 
+\item Good calibration trick to remember: $\beta$ method
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary of the class - Transitions}
+\begin{itemize}
+\item For a given path of prices, we get the impulse response of household (PE) by \pause
+\begin{itemize}
+\item[1.] Backward step: with terminal condition being the terminal value function (or its derivative) \pause
+\item[2.] Forward step: with a distribution as initial condition 
+\end{itemize}
+\item In GE, we use the Sequence Space Jacobian and a Newton method to solve for equilibrium path of prices \pause
+\item Fake-news algorithm speeds up the computation of Sequence Space Jacobian
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary of the class - Transitions}
+Different types of transitions and methods:
+\begin{itemize}
+\item [1.]Transitory shocks: a shock that dissipates and converge back to the initial steady-state \pause 
+\begin{itemize}
+	\item Can be obtained with non-linear transitions: perfect foresight assumption \pause 
+	\item Or with linear approximations using the Jacobian (first-order approximation of the 'big' model with aggregate uncertainty) \pause
+\end{itemize}
+\item [2.]Permanent shocks: a transition between one-state to another: only with non-linear transitions
+\end{itemize}
+
+If you are unsure about those concepts, check the GEModelToolsNotebooks repository, especially the HANC folder.
+\end{frame}
+
+\begin{frame}{Roadmap for the rest of the class}
+\begin{itemize}
+\item[7.] Today: Wealth Inequality
+\item[8.] Next week: Secular Stagnation
+\end{itemize}
+After this, fiscal and monetary policy in HANK, SAM, I-HANK...
+\end{frame}
+
 \section{Introduction}
 \begin{frame}{Wealth inequality}
-\vspace{-2mm}
+
 \begin{itemize}
 \item <+->\textbf{Goal for today:} Better understand wealth inequality
 through the lens of heterogeneous agent general equilibrium models
 \item <+->\textbf{Central economic questions:} 
 \begin{enumerate}
-\item Why are some people rich while others are poor? 
-\item To what extent can governments affect inequality? 
-\begin{itemize}
-\item What does the baseline Aiyigari model predict in terms of wealth inequality?
-\item How can we augment the baseline model to obtain a closer match of
-reality? 
-\end{itemize}
-\item What explains the rise in wealth inequality in recent decades? 
+\item Why are some people rich while others are poor?  \pause 
+\item To what extent can governments affect inequality?  \pause  
+\item What explains the rise in wealth inequality in recent decades?  \pause 
 \end{enumerate}
 \item <+->To answer these questions, we need to better understand why people
 save, and how this translates into wealth inequality 
 \item <+->\textbf{Plan for today:} 
 \begin{enumerate}
-\item Study the predictions of a baseline Bewley-Huggett-Aiyagari model 
-\item Consider various model extensions that help match the data 
-\item Given such a model, what can we say about optimal wealth taxation?
+\item Study the predictions of a baseline Bewley-Huggett-Aiyagari model  \pause 
+\item Consider various model extensions that help match the data  \pause 
+\item Given such a model, what can we say about optimal wealth taxation?  \pause 
 \end{enumerate}
 \end{itemize}
 \end{frame}
@@ -189,7 +239,9 @@ Earnings & 6 & 19 & 48 & 72 & 8\tabularnewline
 
 Not only in the US, but also Denmark and almost all other countries
 
+\begin{center}
 \includegraphics[width=0.75\textwidth]{figs/Cross-Country-Gini.eps} % Figure from https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4841595/
+\end{center}
 \end{frame}
 
 \begin{frame}{Top wealth shares in the US over time}
@@ -228,7 +280,6 @@ Not only in the US, but also Denmark and almost all other countries
 \end{frame}
 
 \begin{frame}{Richer households hold more risky assets}
-\vspace{1cm}
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{figs_papers/bach_et_al_fig_2_allocation_gross_wealth.png}
@@ -254,7 +305,7 @@ $\to$ But still a debate in the literature: is it because of higher risk or high
 \end{frame}
 
 \begin{frame}{Taking stock}
-\vspace{1cm}
+
 \begin{itemize}
     \item Wealth inequality is higher than income inequality \pause
     \item Both wealth and income inequality have increased over time \pause
@@ -294,7 +345,7 @@ based on estimates from panel data on earnings, i.e. Floden and Linde
 \end{frame}
 %
 \begin{frame}{Aiyagari Model - wealth inequality fit}
-\vspace{1cm}
+
 \begin{center}
 
 \begin{tabular}{lcccc}
@@ -334,7 +385,7 @@ with $\alpha$ describing the "thickness of the tail"
 \end{frame}
 
 \begin{frame}{Policies in the Buffer-Stock model}
-\vspace{1cm}
+
 \begin{figure}
     \centering
     \includegraphics[width=\linewidth]{figs_papers/policy_functions_standard_model.pdf}
@@ -470,67 +521,76 @@ $$\text{capital income}<\text{wealth}<\text{labor income}<\text{consumption}$$
 
 
 \begin{frame}{Theoretical results}
-Using a continuous time HA model, they show that we need two key features to match this ranking:   
+Using a continuous-time HA model, they show that we need two key features to match this ranking:   
 \begin{itemize}
-    \item[1.] Non-homothetic preference for wealth
-    \item[2.] Scale-dependent returns
+    \item[1.] Non-homothetic preference for wealth \pause
+    \item[2.] Scale-dependent returns \pause
 \end{itemize}
-(they also allow for random returns, death probability, progressive taxes)
+(they also allow for random returns, death probability, and progressive taxes)
 \end{frame}
 
 \begin{frame}{Quantitative model overview}
 HA households with:
 \begin{itemize}
-    \item Idiosyncratic income shocks
-    \item Scale dependent returns
-    \item Type dependent returns
-    \item Non-homothetic taste for wealth
+    \item Idiosyncratic income shocks \pause
+    \item Scale-dependent returns \pause
+    \item Type dependent returns \pause
+    \item Non-homothetic taste for wealth \pause
 \end{itemize}    
-On the supply side, classic Cobb-Douglas production function with perfect competition.
+On the supply side, a classic Cobb-Douglas production function with perfect competition.
 \end{frame}
 
 \begin{frame}{Quantitative results - Bellman equation}
 $$\begin{aligned} V(y, z, a)= & \max _{c, a^{\prime} \geq a} \frac{c^{1-\gamma}}{1-\gamma}+\kappa \frac{(a / A)^{1-\nu}}{1-\nu} \\ &+\beta(1-\xi) \sum_{y^{\prime} \in \mathcal{Y}} \sum_{z^{\prime} \in \mathcal{Z}} P\left(y^{\prime} \mid y\right) P\left(z^{\prime} \mid z\right) V\left(y^{\prime}, z^{\prime}, a^{\prime}\right) \\ \text { s.t. } & c+a^{\prime}=w y-T(w y)+\left(1-\tau_K\right) r z S(a) a+a\end{aligned}$$    
 with 
 \begin{itemize}
-    \item $y$ is the idiosyncratic productivity type 
-    \item $\xi$ is the death probability
-    \item $z$ is the idiosyncratic return type
-    \item $T(wy)=wy - \frac{1-\tau_0}{1-\tau_L}(wy)^{1-\tau_L}$ (progressive taxations, HSV)
+    \item $y$ is the idiosyncratic productivity type \pause
+    \item $\xi$ is the death probability \pause
+    \item $z$ is the idiosyncratic return type \pause
+    \item $T(wy)=wy - \frac{1-\tau_0}{1-\tau_L}(wy)^{1-\tau_L}$ (progressive taxations, HSV) \pause
     \item $S(a)=1+\psi a^\eta$ (scale dependence)
 \end{itemize}
 \end{frame}
 
+\begin{frame}{A note on non-homothetic taste for wealth}
+
+\begin{itemize}
+\item In this model, households value wealth for its own sake (social status, power, etc) \pause 
+\item If $\nu < \gamma$, marginal utility of wealth decreases more slowly than marginal utility of consumption \pause
+\item Wealth is a luxury good: as households get richer, they enjoy relatively more wealth than consumption \pause 
+\end{itemize}
+$\Rightarrow$ Can explain why the rich save so much!
+
+\end{frame}
 \begin{frame}{A note on death probability}
 Many HA models with a Pareto tail have a death probability:
 \begin{itemize}
-    \item Main assumption: every period, households face a constant probability to die $\xi$
-    \item They are replaced by new houeholds who start with zero wealth
-    \item Because death is iid, does not add an extra state. But needs to change the forward step
-    \item Key paper: perpetual youth model of Blanchard (1985) Yaari 
-    
-    \item Need to make assumptions on what happens to accidental bequests (paid to surviving households through annuity markets, taxes by governments, destroyed, etc)
+    \item Main assumption: every period, households face a constant probability to die $\xi$ \pause
+    \item They are replaced by new households that start with zero wealth \pause
+    \item Because death is iid, it does not add an extra state. But needs to change the forward step \pause
+    \item Key paper: perpetual youth model of Blanchard (1985) Yaari  \pause
+    \item Need to make assumptions on what happens to accidental bequests (paid to surviving households through annuity markets, taxes by governments, destroyed, etc) \pause 
 \end{itemize}
-$\to$ Especially important in non-homothetic model to have a non-degenerate distribution of wealth: we need a force to stop them from accumulating infinite amounts of wealth.
+$\to$ Especially important in a non-homothetic model to have a non-degenerate distribution of wealth: we need a force to stop them from accumulating infinite amounts of wealth.
 \end{frame}
 
 \begin{frame}{Quantitative results - details on heterogeneous returns}
 
-\vspace{1cm}
+
 $z$ is a random variable that captures the return type:
 \begin{itemize}
     
-    \item $z\in(z_l,z_h)$, $z_l=1$, 'worker type', $z_h>1$, 'entrepreneur type'
-    \item Follows a Markov chain: probability to become an entrepreneur is calibrated on data $q_{LH}=0.02$
-    \item Probability to switch to worker type: $q_{HL}=0.2$
+    \item $z\in(z_l,z_h)$, $z_l=1$, 'worker type', $z_h>1$, 'entrepreneur type' \pause
+    \item Follows a Markov chain: probability to become an entrepreneur is calibrated on data $q_{LH}=0.02$ \pause
+    \item Probability to switch to worker type: $q_{HL}=0.2$ \pause
 \end{itemize}
 $\to$ as an entrepreneur, you want to save a lot because you get temporarily very high returns on your wealth.
     
 \end{frame}
 
 \begin{frame}{Quantitative results - supply side and market clearing}
-\vspace{1cm}
-Rest of the model is standard:
+
+The rest of the model is standard:
 \begin{itemize}
     \item $Y=K^\alpha L^{1-\alpha}$, factors paid their marginal productivity
     \item Asset market clearing: $K=A=\int zS(a)adF(y,z,a)$
@@ -552,15 +612,15 @@ They calibrate most of the model parameters, and estimate:
 \pause And they target the following moments (at the steady-state)
 
 \begin{itemize}
-    \item[1.] Ratio of capital income / wealth Pareto coefficients 
+    \item[1.] Ratio of capital income/wealth Pareto coefficients 
     \item[2.] Ratio of consumption to wealth Pareto coefficients
-    \item[3.] Ratio of wealth to labor income Pareto coefficients
+    \item[3.] Ratio of wealth to labour income Pareto coefficients
 \end{itemize}
 + Capital income to wealth tail for the top 1\% + W/Y=3.8 + Top 1\% wealth share
 \end{frame}
 
 \begin{frame}{Results}
-\vspace{1cm}
+
 \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{figs_papers/table_4_gaillard_results.png}
