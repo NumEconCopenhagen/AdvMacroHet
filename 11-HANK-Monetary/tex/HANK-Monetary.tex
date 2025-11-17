@@ -1,0 +1,937 @@
+%% LyX 2.4.3 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[10pt,english,10pt,handout]{beamer}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{tocdepth}{1}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage[authoryear]{natbib}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+%\colorlet{DarkRed}{red!70!black}
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{11. Monetary Policy in HANK\vspace{-2mm}}
+\subtitle{Adv. Macro: Heterogenous Agent Models} 
+\author{Jeppe Druedahl, Raphaël Huleux}
+\date{2025}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+
+\maketitle
+
+\end{frame}
+}
+
+\addtocounter{framenumber}{-1}
+
+\section{Summing Up What We Did So Far:}
+
+\begin{frame}{Aggregate Consumption Function in HANK}
+\begin{itemize}
+    \item Under some assumptions (real rate rule, real bond, no lump-sum transfers), we can derive a simpler consumption function \pause  
+    \item In this case, $C_t^{hh}=C^{hh}(\{Y_s-T_s\}_{s=0}^\infty)$ depends only on net income! \pause 
+    \item If $\mathbf{Y}=C^{hh}(\mathbf{Y}-\mathbf{T})+\mathbf{G}$, we thus have $d\mathbf{Y}=d\mathbf{G}+\mathbf{M}(d\mathbf{Y}-d\mathbf{T})$ \pause 
+    \item The sequence space Jacobian $\mathbf{M}$ tells us everything we need to know to understand output response to a monetary policy shock!\pause 
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}{Plan for Today}
+
+Monetary policy! \pause 
+\begin{itemize}
+   \item Derive equivalent of IKC for Monetary Policy in HANK \pause 
+   \item Main results of KMV (2018) (Key paper in the literature) \pause 
+   \item Study deviations from rational expectations \pause 
+   \item Exercise \pause 
+   \item \textbf{Dedicate last hour to the 2nd assignment.}
+\end{itemize} 
+\end{frame}
+\section{Introduction}
+\begin{frame}{Introduction}
+\vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Last Time: }
+\begin{itemize}
+\item Fiscal policy in the canonical HANK model 
+\end{itemize}
+\item <+->\textbf{Today: }
+\begin{itemize}
+\item Other pillar of stabilization policy: \textbf{Monetary policy}
+\item Will use as example to study alternatives to \textbf{rational expecations}
+(RE) in HANK
+\end{itemize}
+\item <+->\textbf{Literature: }
+\begin{itemize}
+\item \emph{Seminal paper}: Kaplan, Moll, Violante (2018) >>Monetary policy
+according to HANK<<
+\item Auclert Rognlie, Straub (2020) >>Micro jumps, macro humps<< 
+\item Alves, Kaplan, Moll, Violante (2020) >>A further look at the propagation
+of monetary policy shocks in HANK<<
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+
+\section{Monetary Policy in HANK}
+
+\begin{frame}{Monetary Policy}
+\begin{itemize}
+\item <+->Introducing heterogeneous agents into the standard NK model \textbf{fundamentally}
+changes the transmission of Fiscal Policy
+\begin{itemize}
+\item \emph{Potentially} more effective 
+\item Important whether policy is deficit financed or tax financed 
+\end{itemize}
+\item <+->What about monetary policy? 
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Model}
+\begin{itemize}
+\item <+->\textbf{Last time}: Canonical HANK model 
+\item <+->Very close to standard \textbf{NK} except for:
+\begin{itemize}
+\item HA instead of RA
+\item Sticky wages 
+\item Government
+\end{itemize}
+\item <+->Today: Monetary policy - don't really need a government?
+\begin{itemize}
+\item <+->Issue: If we remove government no liquidity for households to
+save in
+\begin{itemize}
+\item Fine in RA, issue in HA with borrowing constraint at $a=0$
+\end{itemize}
+\item <+->\textbf{Solution: }Firm equity 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Households}
+\begin{itemize}
+\item \textbf{Household problem:}
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
+\text{s.t. }a_{t}+c_{t} & =(1+r_{t}^{a})a_{t-1}+Z_{t}z_{t}+\chi_{t}\\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\\
+a_{t} & \geq0
+\end{align*}
+\item with $Z_{t}=w_{t}\ell_{t}$ - real labor income
+\item \textbf{decisions:} Consumption-saving, $c_{t}$ (and $a_{t}$)
+\item \textbf{Union decision:} Labor supply, $\ell_{t}$
+\item \textbf{Aggregate Consumption: $C_{t}^{hh}=\int c_{t}d\mathcal{D}_{t}$}
+\item \textbf{Consumption function: $C_{t}^{hh}=C^{hh}\left(\{r_{s}^{a},Z_{s},\chi_{s}\}_{s=0}^{\infty}\right)$}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Firms}
+\begin{itemize}
+\item \textbf{Production and profits:}
+\begin{align*}
+Y_{t} & =L_{t}\\
+\Pi_{t} & =Y_{t}-w_{t}L_{t}
+\end{align*}
+\item Optimize subject to demand curve (monopolistic competition) 
+\item \textbf{First order condition:}
+\[
+w_{t}=\frac{1}{\mu}
+\]
+\item where $\mu>1=$ markup - firms make positive profits in equilibrium
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Mutual fund I}
+
+\begin{itemize}
+\item <+->Mutual fund collect households savings $A_{t}$ and invest in
+firm equity
+\item <+->Firm $j$ has ownership shares $\upsilon_{j,t}$ with price $p_{j,t}^{D}$
+\item <+->If you own shares in the firm you get profits/dividends $\Pi_{j,t}$
+\item <+->Shares sum to 1, $\int\upsilon_{j,t}dj=1$
+\item <+->Firms are gonna be symmetric in eq., $p_{j,t}^{D}=p_{t}^{D}$
+\item <+->Total value of firm equity is then $\int p_{t}^{D}\upsilon_{j,t}dj=p_{t}^{D}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Mutual fund II}
+\begin{itemize}
+\item <+->\textbf{Problem}:
+\[
+\max_{\upsilon_{j,t}}\int\left(\Pi_{j,t+1}+p_{j,t+1}^{D}\right)\upsilon_{j,t}-\left(1+r_{t+1}^{a}\right)A_{t}
+\]
+\item <+->\textbf{Subject} to balance sheet:
+\[
+\int p_{j,t}^{D}\upsilon_{j,t}dj=A_{t}
+\]
+\item <+->\textbf{FOC}:
+\[
+p_{t}^{D}=\frac{\Pi_{t+1}+p_{t+1}^{D}}{1+r_{t}}
+\]
+\item <+->where $r_{t}=E_{t}r_{t+1}^{a}$ the ex-ante interest rate
+\item <+->Price of equity can be written as (assume $r_{t}=r$): $p_{t}^{D}=\sum_{s=0}^{\infty}\left(1+r\right)^{-s}\Pi_{t+s}$
+\begin{itemize}
+\item {\footnotesize Asset price today reflect discounted sum of future profits}{\footnotesize\par}
+\end{itemize}
+\item <+->{\footnotesize Valuation effects: As with nominal gov bonds:}\\
+{\footnotesize\vspace{-0.4cm}}
+\[
+1+r_{t}^{a}=\begin{cases}
+\frac{\Pi_{0}+p_{0}^{D}}{p_{ss}^{D}} & t=0\\
+1+r_{t-1} & t>0
+\end{cases}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Union}
+\begin{itemize}
+\item Everybody works the same:
+\begin{align*}
+\ell_{t} & =L_{t}^{hh}
+\end{align*}
+\item Maximization subject to wage adjustment cost imply a \textbf{New Keynesian
+Wage (Phillips) Curve} (NKWPC or NKWC)
+\[
+\pi_{t}^{w}=\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}\left(1-\tau_{t}\right)w_{t}\left(C_{t}^{hh}\right)^{\text{-\ensuremath{\sigma}}}\right)+\beta\pi_{t+1}^{w}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Central bank}
+\begin{itemize}
+\item <+->Two options for monetary policy 
+\item <+->\textbf{1. }Government bonds are nominel, CB chooses nominel
+interest rate: 
+\[
+i_{t}=i_{ss}+\phi\pi_{t}
+\]
+\item <+->And fisher equation links nominal rate $i$ to real rate $r$:
+\[
+1+r_{t}=\frac{1+i_{t}}{1+\pi_{t+1}}
+\]
+\item <+->\textbf{2. Alternative:} Real rate rule. CB chooses real rate
+$r_{t}$ directly 
+
+\[
+r_{t}=r_{ss}+\left(\phi-1\right)\pi_{t}
+\]
+
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Market clearing}
+\begin{enumerate}
+\item Asset market: $p_{t}^{D}=A_{t}^{hh}$
+\item Labor market: $L_{t}=L_{t}^{hh}$
+\item Goods market: $Y_{t}=C_{t}^{hh}$
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{The consumption function}
+
+\begin{itemize}
+\item <+->Model features a consumption function:
+\[
+C_{t}^{hh}=C_{t}^{hh}\left(\left\{ r_{s}^{a},Z_{s}\right\} _{s=0}^{\infty}\right)\Rightarrow\boldsymbol{C}^{hh}=C^{hh}\left(\boldsymbol{r}^{a},\boldsymbol{Z}\right)
+\]
+\item <+->Linearize around steady state:
+\[
+d\boldsymbol{C}=\boldsymbol{M}d\boldsymbol{Z}+\boldsymbol{M}_{r^{a}}d\boldsymbol{r}^{a}
+\]
+\item <+->As discussed in last lecture, can split overall effect of asset
+returns $d\boldsymbol{r}^{a}$ into intertemporal substitution effect
+(ex-ante $r$) and a capital gain effect at time 0:
+\[
+d\boldsymbol{C}=\boldsymbol{M}d\boldsymbol{Z}+\boldsymbol{M}_{r}d\boldsymbol{r}+\boldsymbol{m}dcap_{0}
+\]
+\item <+->Note: $\boldsymbol{m}$ is a vector not matrix (multiplies onto
+scalar $dcap_{0}$, not vector)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Interest rate Jacobians}
+
+ \begin{minipage}{0.48\textwidth}         
+\centering         
+\includegraphics[width=\textwidth]{figs/M_r.pdf}         
+\end{minipage}    
+\hfill     
+\begin{minipage}{0.48\textwidth}       
+ \centering      
+  \includegraphics[width=\textwidth]{figs/m_cap.pdf}    
+ \end{minipage}
+\end{frame}
+%
+\begin{frame}{Monetary policy in sequence-space}
+\begin{itemize}
+\item <+->Write real labor income as $Z_{t}=w_{t}L_{t}=\frac{1}{\mu}Y_{t}\Rightarrow d\boldsymbol{Z}=\frac{1}{\mu}d\boldsymbol{Y}$
+\item <+->Linearize goods market clearing:
+\[
+d\boldsymbol{Y}=\boldsymbol{M}_{r}d\boldsymbol{r}+\frac{1}{\mu}\boldsymbol{M}d\boldsymbol{Y}+\boldsymbol{m}dcap_{0}
+\]
+\item <+->For small capital gains, solution is:
+\[
+d\boldsymbol{Y}=\left(\boldsymbol{I}-\frac{1}{\mu}\boldsymbol{M}\right)^{-1}\boldsymbol{M}_{r}d\boldsymbol{r}\equiv\mathcal{M}\boldsymbol{M}_{r}d\boldsymbol{r}
+\]
+\item <+->Note: \textbf{can} multiplier invert this PV of columns in $\frac{1}{\mu}\boldsymbol{M}$
+is not 1 when $\mu>1$!)
+\item <+->Monetary policy operates through: 
+\begin{itemize}
+\item \textbf{Direct} (partial eq., $\boldsymbol{M}_{r}$) effect 
+\item \textbf{Indirect} (general eq., $\boldsymbol{M}$) effect 
+\end{itemize}
+\item <+->\textbf{Q1}: Sign? Positive/negative? 
+\item <+->\textbf{Q2}: Do you expect the effects of monetary policy on
+output to be larger in HANK than RANK?
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{HANK-RANK equivalence}
+\begin{itemize}
+\item <+->Assume logarithmic utility $u\left(c\right)=\log\left(c\right)$ 
+\item <+->\textbf{Proposition}: Above model features \textbf{exact} equivalence
+between RANK and HANK for the response of aggregates w.r.t a monetary
+policy shock (\emph{Werning 2015}) 
+\item <+->\textbf{... but transmission channel is different} 
+\item <+->Decompose $d\boldsymbol{Y}$ into direct and indrect effect using
+$d\boldsymbol{Y}^{j}=\boldsymbol{M}_{r^{a}}^{j}d\boldsymbol{r^{a}}+\boldsymbol{M}^{j}d\boldsymbol{Z}$
+for $j\in\left\{ HA,RA\right\} $\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.9\linewidth]{figs/HANK_Monpol_decomp.pdf}      
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{HANK-RANK equivalence}
+\begin{itemize}
+\item <+->In basic HANK model:
+\begin{itemize}
+\item Monetary policy has same effectiveness as in RANK 
+\item But transmission different: Indirect income effects more important
+than in RANK
+\end{itemize}
+\item <+->Exact \textbf{equivalence }is the product of a number of simplifying
+assumptions:
+\begin{itemize}
+\item Linear production function 
+\item No investment 
+\item Log utility 
+\item Equal incidence of labor income 
+\item No government debt
+\end{itemize}
+\item <+->How does the effectiveness of monetary policy look in more realistic
+models?
+\begin{itemize}
+\item Kaplan, Moll, Violante (2018) >>Monetary policy according to HANK<<
+\item Auclert Rognlie, Straub (2020) >>Micro jumps, macro humps<< 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+
+\section{KMV 2018}
+\begin{frame}{Monetary policy according to HANK}
+\begin{itemize}
+\item <+->Kaplan, Moll, Violante (2018) is a seminal paper in the HANK
+litterature
+\begin{itemize}
+\item The term HANK originates from this paper
+\end{itemize}
+\item <+->They study the transmission of monetary policy in medium scale
+HANK model 
+\item <+->Follows Kaplan \& Violante (2014) closely
+\begin{itemize}
+\item See lecture 2 
+\item Household can hold both liquid and illiquid assets 
+\item Model features both \textbf{poor} and \textbf{wealthy} Hand-to-mouth
+households
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Household problem}
+\begin{itemize}
+\item <+->Households solve (here converted to discrete time, paper in cont.
+time):
+\begin{align*}
+V_{t}\left(a_{t-1},b_{t-1},z_{t}\right) & =\max_{c_{t},a_{t},b_{t}}u\left(c_{t},\ell_{t}\right)+\beta E_{t}V_{t+1}\left(a_{t},b_{t},z_{t+1}\right)\\
+b_{t} & +c_{t}=(1-\tau_{t})w_{t}z_{t}\ell_{t}+\left(1+r_{t}^{b}\right)b_{t-1}-d_{t}-\chi(d_{t},a_{t-1})\\
+a_{t} & =\left(1+r_{t}^{a}\right)a_{t-1}+d_{t}\\
+b_{t}\geq-\bar{b} & \quad a_{t}\geq0.\\
+\end{align*}
+\item <+->with $b_{t}$=liquid asset, $a_{t}$=illiquid assets, $d_{t}$=deposits
+into illiquid asset, $\chi(d_t,a_{t-1})$ a convex cost
+\item <+->Return on illiquid asset $r_{t}^{a}$ Return on liquid asset
+$r_{t}^{b}$
+\begin{itemize}
+\item Household will prefer to hold $a_{t}$ due to superior return
+\item But not good for consumption smoothing as they have to pay adjustment
+cost to use $a_{t}$ for smoothing against shocks
+\item Some HHs will be wealthy hand-to-mouth
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{MPCs}
+\begin{itemize}
+\item 1) MPCs for different sizes of stimulus checks, 2) MPCs across the
+wealth distribution\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.9\linewidth]{figs/KMVMPCs.png}      
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Direct vs indirect effects}
+\begin{itemize}
+\item <+->Amplification in HANK (elasticity of $C^{HANK}$ $=-2.9$ vs
+$C^{RANK}$ $=-2.07$) 
+\item <+->Baseline HANK: Indirect effects account for majority of transmission
+($\approx80\%$)\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.8\linewidth]{figs/KMVTable7.png}      
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+
+\section{Expectations}
+\begin{frame}{Micro Jumps, Macro Humps}
+\begin{itemize}
+\item <+->Auclert, Rognlie and Straub (2020) >>Micro jumps, macro humps<< 
+\item <+->Estimate parameters in quantitative HANK model to match estimated
+effects of causal monetary policy shock
+\item <+->Main hurdle: Empirical response of $C,Y$ is hump-shaped to monetary
+policy shock.
+\item <+->Want a model that simultaneously match hump-shaped agg. response
+to $r$ and iMPC moment\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.7\linewidth]{figs/MJMCFig1.png}      
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{The problem}
+\begin{itemize}
+\item Standard model does \textbf{not }give\textbf{ }hump shaped\textbf{
+}for $C$ to standard shock 
+\item Does not matter if \textbf{shock} is hump shaped or not\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.9\linewidth]{figs/HANK_Monpol_shape.pdf}      
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{The solution: RANK}
+\begin{itemize}
+\item <+->Solution in RANK litterature: Habits in utility function:
+\begin{align*}
+\sum_{t=0}^{\infty} & \beta^{t}u\left(C_{t}-\gamma C_{t-1}\right)\\
+\Rightarrow u'\left(C_{t}-\gamma C_{t-1}\right)= & \beta R_{t+1}u'\left(C_{t+1}-\gamma C_{t}\right)
+\end{align*}
+\item <+->Generates persistence in C response to shocks because household
+don't want to deviate too much from last periods consumption level 
+\item <+->\textbf{However}: Does not work in HANK because it kills iMPCs:\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.5\linewidth]{figs/MJMCFig2.png}      
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Deviations from alternative expecations}
+\begin{itemize}
+\item <+->Solution: \textbf{Deviate} from \textbf{rational expecations}
+(RE)
+\item <+->Assume households have imperfect expecations about \textbf{changes}
+in \textbf{aggregate variables} ($Z,r$)
+\begin{itemize}
+\item Implies that steady state is unaffected 
+\item Still rational expecations w.r.t idiosyncratic income shocks 
+\end{itemize}
+\item <+->Will only implement this to first-order (e.g. linear approximations)
+\begin{itemize}
+\item Much more difficult if we want full non-linear solution
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Income Jacobian}
+\begin{itemize}
+\item <+->Example: Response of aggregate consumption $\boldsymbol{C}$
+to change in agg. income $\boldsymbol{Z}$
+\[
+d\boldsymbol{C}=\boldsymbol{M}d\boldsymbol{Z}
+\]
+\item <+->where $\boldsymbol{M}$ is jacobian with rational expectations:
+\[
+\boldsymbol{M}=\begin{bmatrix}\frac{\partial C_{0}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{1}} & \frac{\partial C_{0}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{1}}{\partial Z_{1}} & \frac{\partial C_{1}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{2}}{\partial Z_{0}} & \frac{\partial C_{2}}{\partial Z_{1}} & \frac{\partial C_{2}}{\partial Z_{2}} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+\item <+->Note that elements above diagonal are affected by expectations
+(i.e. they concern the \textbf{future})
+\begin{itemize}
+\item Elements on and below diagonal reflect changes in income \textbf{today}
+or in the \textbf{past} (known by HHs)
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Expectations matrix}
+\begin{itemize}
+\item <+->Introduce expectations matrix $\boldsymbol{E}$:
+\[
+\boldsymbol{E}=\begin{bmatrix}1 & * & * & * & \cdots\\
+1 & 1 & * & * & \cdots\\
+1 & 1 & 1 & * & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+\item <+->Element $t,s$ ($E_{t,s})$ captures average date-$t$ exp. about
+shock to $Z$ at date $s$. 
+\begin{itemize}
+\item $E_{t,s}dZ_{s}$ is then the expected value of $dZ_{s}$ at date $t$
+\item First column: Exp. of HHs at all dates w.r.t $dZ_{0}$
+\item Second column: Exp. of HHs at all dates w.r.t $dZ_{1}$...
+\end{itemize}
+\item <+->How to get jacobian $\hat{\boldsymbol{M}}$ associated with $\boldsymbol{E}$?
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Stylized Example I}
+\begin{itemize}
+\item <+->Expectations matrix:
+\[
+\boldsymbol{E}=\begin{bmatrix}1 & 0.4 & 0.3 & \cdots\\
+1 & 1 & 0.6 & \cdots\\
+1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+\item <+->At $t=0$ expected path of $d\boldsymbol{Z}$ is $\left\{ 1\cdot dZ_{0},0.4\cdot dZ_{1},0.3\cdot dZ_{2}\right\} $
+\item <+->At $t=1$ expected path of $d\boldsymbol{Z}$ is $\left\{ 1\cdot dZ_{0},1\cdot dZ_{1},0.6\cdot dZ_{2}\right\} $
+\item <+->What is response of $\boldsymbol{C}$? 
+\item <+->Period 0 with RE:
+\[
+dC_{0}=\frac{\partial C_{0}}{\partial Z_{0}}dZ_{0}+\frac{\partial C_{0}}{\partial Z_{1}}dZ_{1}+\frac{\partial C_{0}}{\partial Z_{2}}dZ_{2}+\ldots
+\]
+\item <+->With alternative $\boldsymbol{E}$:
+\[
+d\hat{C}_{0}=\frac{\partial C_{0}}{\partial Z_{0}}dZ_{0}+0.4\cdot\frac{\partial C_{0}}{\partial Z_{1}}dZ_{1}+0.3\cdot\frac{\partial C_{0}}{\partial Z_{2}}dZ_{2}+\ldots
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Stylized Example II}
+\begin{itemize}
+\item <+->$d\hat{C}_{0}$ simple to get. What about $d\hat{C}_{1}?$ 
+\item <+->With RE we have:
+\[
+dC_{1}=\frac{\partial C_{1}}{\partial Z_{0}}dZ_{0}+\frac{\partial C_{1}}{\partial Z_{1}}dZ_{1}+\frac{\partial C_{1}}{\partial Z_{2}}dZ_{2}+\ldots
+\]
+\item <+->With Alternative $\boldsymbol{E}$:{\footnotesize
+\[
+d\hat{C}_{1}=\underbrace{\frac{\partial C_{1}}{\partial Z_{0}}dZ_{0}}_{\text{Past shock}}+\underbrace{0.4\frac{\partial C_{1}}{\partial Z_{1}}dZ_{1}+\left(1-0.4\right)\frac{\partial C_{0}}{\partial Z_{0}}dZ_{1}}_{\text{Shock "today"}}+\underbrace{0.3\frac{\partial C_{1}}{\partial Z_{2}}dZ_{2}+\left(0.6-0.3\right)\frac{\partial C_{0}}{\partial Z_{1}}dZ_{2}}_{\text{Future shock}}
+\]
+}{\footnotesize\par}
+\item <+->Intuition:
+\begin{itemize}
+\item <+->Past shock: Fully known, so standard effect
+\item <+->Present shock: Weighted average of forward looking RE part and
+>>myopic<< surprise
+\item <+->Future shock: Initial RE part from period 0 (weight: $0.3$)
+and revision of expectations (weight: $0.6-0.3$)
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{General formula}
+\begin{itemize}
+\item <+->At first glance seems hard to implement
+\item <+->... but we have a general formula to get $\hat{\boldsymbol{M}}$
+given $\boldsymbol{E}$
+\item <+->$\hat{\boldsymbol{M}}$ matrix with expectations matrix $\boldsymbol{E}:$
+\[
+\hat{M}_{t,s}=\sum_{\tau=0}^{\min\left\{ t,s\right\} }\underbrace{\left(E_{\tau,s}-E_{\tau-1,s}\right)M_{t-\tau,s-\tau}}_{\text{date-\ensuremath{t} effect of date-\ensuremath{\tau} expectation revision of date-\ensuremath{s} shock}}
+\]
+\item <+->with $E_{-1,s}=0$ by convention
+\item <+->\textbf{Fast} and \textbf{easy} to implement
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Examples}
+\begin{itemize}
+\item <+->Examples:{\footnotesize
+\[
+\boldsymbol{E}^{\text{RE}}=\begin{bmatrix}1 & 1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix},\quad\quad\quad\boldsymbol{E}^{\text{Myopic}}=\begin{bmatrix}1 & 0 & 0 & 0 & \cdots\\
+1 & 1 & 0 & 0 & \cdots\\
+1 & 1 & 1 & 0 & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+}{\footnotesize\par}
+\item <+->Two extremes: 
+\begin{itemize}
+\item {\small\textbf{Rational}}{\small{} expectations: Households are fully
+informed about the future path of }{\small\textbf{$Z$ }}{\small from
+the moment the shock manifests}{\small\par}
+\item {\small\textbf{Myopic}}{\small{} expectations: Households are not forward
+looking w.r.t aggregates. Every change in $Z$ is a surprise.}{\small\par}
+\end{itemize}
+\item <+->Implied jacobians:{\footnotesize
+\[
+\boldsymbol{\hat{M}}^{\text{RE}}=\boldsymbol{M}=\begin{bmatrix}\frac{\partial C_{0}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{1}} & \frac{\partial C_{0}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{1}}{\partial Z_{1}} & \frac{\partial C_{1}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{2}}{\partial Z_{0}} & \frac{\partial C_{2}}{\partial Z_{1}} & \frac{\partial C_{2}}{\partial Z_{2}} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix},\quad\quad\quad\boldsymbol{\hat{M}}^{\text{Myopic}}=\begin{bmatrix}\frac{\partial C_{0}}{\partial Z_{0}} & 0 & 0 & \cdots\\
+\frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{0}} & 0 & \cdots\\
+\frac{\partial C_{2}}{\partial Z_{0}} & \frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{0}} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+}{\footnotesize\par}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Jacobians}
+\begin{itemize}
+\item Jacobian of C w.r.t Z \vspace{1cm}\\
+ \begin{minipage}{0.45\textwidth}         
+\centering         
+\includegraphics[width=\textwidth]{figs/M_RE.pdf}         
+\end{minipage}    
+\hfill     
+\begin{minipage}{0.45\textwidth}       
+ \centering      
+  \includegraphics[width=\textwidth]{figs/M_myopic.pdf}    
+ \end{minipage}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Solving GE with non-RE expecations}
+\begin{itemize}
+\item <+->Given some exp. matrix $\boldsymbol{E}$ we can construct alternative
+jacobians $\boldsymbol{\hat{M}},\boldsymbol{\hat{M}}_{r}$ 
+\item <+->Solve for GE using these jacobians instead of RE jacobians $\boldsymbol{M},\boldsymbol{M}_{r}$
+($\boldsymbol{X}$=shock):
+\[
+\boldsymbol{H}\left(\boldsymbol{U},\boldsymbol{X}\right)=0\Rightarrow d\boldsymbol{U}=-\boldsymbol{\hat{H}}_{U}^{-1}\hat{\boldsymbol{H}}_{X}d\boldsymbol{X}
+\]
+\item <+->In our example:
+\begin{align*}
+\boldsymbol{Y} & -\boldsymbol{C}\left(\boldsymbol{r},\frac{1}{\mu}\boldsymbol{Y}\right)=0\\
+\Rightarrow & d\boldsymbol{Y}=\left(\boldsymbol{I}-\frac{1}{\mu}\boldsymbol{\hat{M}}\right)^{-1}\boldsymbol{\hat{M}}_{r}d\boldsymbol{r}
+\end{align*}
+\item <+->where $-\boldsymbol{\hat{H}}_{U}^{-1}=\left(\boldsymbol{I}-\frac{1}{\mu}\boldsymbol{\hat{M}}\right)^{-1}$
+and $\hat{\boldsymbol{H}}_{X}=-\boldsymbol{\hat{M}}_{r}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Non-RE expecations in GEModelTools}
+\begin{itemize}
+\item <+->How to implement in GEModelTools?
+\begin{itemize}
+\item Currently no built in way to handle 
+\end{itemize}
+\item <+->Work around (see exercise):
+\begin{enumerate}
+\item <+->Compute all Jacobians for household block 
+\begin{itemize}
+\item \lstinline{model._compute_jac_hh()}
+\item If using RA/TA instead of HA must manually compute jac
+\end{itemize}
+\item <+->Construct Expectation matrix $\boldsymbol{E}$ and compute $\boldsymbol{\hat{M}}$
+by modyfing RE jacobians in \lstinline{model.jac_hh} 
+\item <+->Overwrite jacobians \lstinline{model.jac_hh} with $\boldsymbol{\hat{M}}$
+for each output/input to household block
+\item <+->Compute all Jacobians w.r.t unknowns and shocks, but \textbf{not}
+for household block 
+\begin{itemize}
+\item \lstinline{model.compute_jacs(skip_hh=True,skip_shocks=False)}
+\item GEModelTools will automatically use whatever jacobian is in \lstinline{model.jac_hh}
+to construct Jacobians $\boldsymbol{H}_{U},\boldsymbol{H}_{Z}$
+\end{itemize}
+\item <+->Solve for IRFs:
+\begin{itemize}
+\item \lstinline{model.find_IRFs(shocks=[x])}
+\end{itemize}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Back to Auclert, Rognlie, Straub (2020) - Sticky expectations}
+\begin{itemize}
+\item <+->Auclert, Rognlie, Straub (2020) use \textbf{sticky information/expectations}
+(Mankiw and Reis (2002)) 
+\item <+->Only a fraction $1-\theta$ of HHs update their information set
+about the aggregate economy each period 
+\begin{itemize}
+\item Only learn full path of shock $d\boldsymbol{r},d\boldsymbol{Z}$ if
+you update 
+\item 1. period: $1-\theta$ update and learn full path 
+\item 2. period: $\theta\left(1-\theta\right)$ update, so $1-\theta+\theta\left(1-\theta\right)=1-\theta^{2}$
+have full info
+\end{itemize}
+\item <+->Expectations matrix:
+\[
+\boldsymbol{E}=\begin{pmatrix}1 & 1-\theta & 1-\theta & \dots\\
+1 & 1 & 1-\theta^{2} & \dots\\
+1 & 1 & 1 & \dots\\
+\vdots & \vdots & \vdots & \ddots
+\end{pmatrix}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Sticky expectations}
+\begin{itemize}
+\item <+->Properties:
+\begin{itemize}
+\item Response of consumption at $0$ to $Z_{1}$ is $\left(1-\theta\right)\frac{\partial C_{0}}{\partial Z_{1}}$
+\item Response of consumption at $1$ to $Z_{1}$is $\left(1-\theta\right)\frac{\partial C_{1}}{\partial Z_{1}}+\theta\frac{\partial C_{0}}{\partial Z_{0}}$
+and so forth
+\end{itemize}
+\item <+->$\theta=0$ gives us RE, $\theta=1$ gives us myopic behavior. 
+\item <+->Since households perfectly observe income changes \textbf{today
+and in past }iMPCs are preserved
+\begin{itemize}
+\item \textbf{Unlike} habit formation 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Estimation}
+\begin{itemize}
+\item <+->Auclert, Rognlie, Straub (2020) fomulate full HANK model with:
+\begin{itemize}
+\item Investment 
+\item Sticky wages + prices
+\item Government
+\end{itemize}
+\item <+->Estimate parameters to match empirical evidence on causally identified
+monetary policy shock in the US (Romer \& Romer shock) \\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.7\linewidth]{figs/MJMCFig3.png}      
+\end{figure}
+\item <+->Estimate $\theta=0.935$ $\Rightarrow$ \textbf{Large }deviation
+from RE
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{RE vs. Non-RE}
+\begin{itemize}
+\item Why we need sticky expectations in order to match empirical response\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.85\linewidth]{figs/MJMCFig4.png}      
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Direct and indirect effects}
+\begin{itemize}
+\item Can decompose $C$ into direct and indirect as before\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.85\linewidth]{figs/MJMCFig6.png}      
+\end{figure}
+\item In the estimated model with sticky expectations indirect effect is
+by far the most important driver of consumption
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Importance of Investment}
+\begin{itemize}
+\item Importance of indirect effects in HANK partly comes from \emph{investment}\\
+\emph{\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.9\linewidth]{figs/MJMCFig5.png}      
+\end{figure}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Summing-Up}
+\begin{enumerate}
+    \item We can use our SSJ machinery to include deviations from RE \pause
+    \item To do so, we just need define an expectation matrix, and recompute the Jacobian accordingly \pause 
+    \item This allows HANK models to match the observed "hump-shape" in the data 
+\end{enumerate}    
+\end{frame}
+
+\section{Exercise}
+\begin{frame}{Exercise}
+
+Consider the HANK model described in section 2
+\begin{enumerate}
+\item {\small Compare a monetary policy shock in HANK and RANK. Decompose
+the response in HANK into direct and indirect effects using the household
+Jacobians}{\small\par}
+\item {\small Solve for a monetary policy shock in HANK and RANK with myopic
+expectations w.r.t $\boldsymbol{r},\boldsymbol{Z},$only $\boldsymbol{r}$
+and only $\boldsymbol{Z}$}{\small\par}
+\item {\small Solve for a monetary policy shock in HANK and RANK with sticky
+expectations w.r.t $\boldsymbol{r},\boldsymbol{Z},$only $\boldsymbol{r}$
+and only $\boldsymbol{Z}$}{\small\par}
+\item {\small Consider a model where household hold nominal government debt
+instead. Relax the borrowing constraint to -1, $\underline{a}=-1$
+and solve for a monetary policy shock (assume rational expectations).
+Does the presence of household debt amplify or dampen the effects
+of monetary policy?}{\small\par}
+\end{enumerate}
+\end{frame}
+
+
+%
+
+\section{Summary}
+\begin{frame}{Summary and next week}
+\begin{itemize}
+\item \textbf{Today: }
+\begin{itemize}
+\item Monetary policy in HANK 
+\item Alternatives to rational expecations, and how to implement them using
+jacobians 
+\end{itemize}
+\item \textbf{Next week: }HANK + unemployment risk in GE (\textbf{JD})
+\item \textbf{Homework:}
+\begin{enumerate}
+\item Work on exercise
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+
+\end{document}
