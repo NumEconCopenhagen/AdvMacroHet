@@ -1,0 +1,891 @@
+%% LyX 2.4.3 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[10pt,english,t,10pt]{beamer}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{luainputenc}
+\setcounter{tocdepth}{1}
+\usepackage{babel}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage[authoryear]{natbib}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\ifx\hypersetup\undefined
+  \AtBeginDocument{%
+    \hypersetup{}
+  }
+\else
+  \hypersetup{}
+\fi
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\begin{document}
+\title{8. The New Keynesian Model\vspace{-2mm}}
+\subtitle{Adv. Macro: Heterogenous Agent Models}  
+\author{Nicolai Waldstrøm}
+\date{2024}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+
+\maketitle
+
+\begin{tikzpicture}[overlay, remember picture]
+\node[above left=0cm and 0.0cm of current page.south east] 
+{\includegraphics[width=4cm]{figs/KUSAMFtitlelrcorner.pdf}};
+\end{tikzpicture}
+
+\begin{tikzpicture}[overlay, remember picture]
+\node[below left=0.5cm and .8cm of current page.north east] 
+{\includegraphics[width=1.5cm]{figs/KUSAMFlogo.pdf}};
+\end{tikzpicture}
+
+
+\end{frame}
+}
+
+\addtocounter{framenumber}{-1}
+
+\section{Introduction}
+\begin{frame}{Introduction}
+\vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Previously: }
+\begin{enumerate}
+\item Economic content: Long run trends and outcomes
+\item Methods: Stationary eq., Non-linear transition path and perfect foresight
+\end{enumerate}
+\item <+->\textbf{Today:}
+\begin{enumerate}
+\item Business cycles in the New Keynesian model
+\item Linearized solution in models with aggregate risk
+\end{enumerate}
+\item <+->\textbf{Literature: }
+\begin{itemize}
+\item NK:
+\begin{enumerate}
+\item Gali textbook ch. 3-4
+\item \emph{Macroeconomics} textbook ch. 16
+\end{enumerate}
+\item Solution methods:
+\begin{enumerate}
+\item Auclert et. al. (2021), >>Using the Sequence-Space Jacobian to Solve
+and Estimate Heterogeneous-Agent Models<<
+\item Boppart et. al. (2018), >>Exploiting MIT shocks in heterogeneous-agent
+economies: The impulse response as a numerical derivative<<
+\item Documentation for GEModelTools
+\end{enumerate}
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Business cycles}
+\begin{itemize}
+\item <+->Macro variables relatievly volatile around long-run trends \\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.65\linewidth]{figs/FREDBC.png}      
+\end{figure}
+\item <+->Rest of the course: 
+\begin{itemize}
+\item Study how aggregate shocks cause business cycles
+\begin{itemize}
+\item Does the transmission change with heterogeneous agents?
+\end{itemize}
+\item Implications for fiscal and monetary policy 
+\end{itemize}
+\item <+->First point on agenda: Need \textbf{role} for monetary policy 
+\begin{itemize}
+\item Models so far in the course have featured\textbf{ monetary-non neutrality}
+\item Monetary policy cannot affect real quantities (unemployment, GDP)
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{New Keynesian framework}
+\begin{itemize}
+\item <+-> A proper mode of business cycles and stabalization policy require
+that output is partially demand determined 
+\item <+-> The study of monetary policy requires \textbf{monetary-non neutrality }
+\item <+-> The New Keynesian (NK) model adresses these two concerns by
+adding to the standard model:
+\begin{itemize}
+\item Monopolistic competetion (price-setting)
+\item Price rigidities
+\end{itemize}
+\item <+->The basic NK model is simple (can be reduced to 3 equations)
+but \textbf{extremely influential}
+\end{itemize}
+\end{frame}
+%
+
+\section{The New Keynesian model }
+
+\begin{frame}{Model}
+\begin{itemize}
+\item <+->Several version of the NK model 
+\item <+->I present the simplest version her 
+\item <+->The model consists of the following agents:
+\begin{itemize}
+\item A representative household who consumes, saves and supplies labor
+\item Firms with market power who produce output using labor and sets prices
+subject to nominal rigidities
+\item A central bank which conduct monetary policy 
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Overview}
+ \vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Households:} 
+\begin{enumerate}
+\item Representativ agent
+\item Supply labor and choose consumption
+\end{enumerate}
+\item <+->\textbf{Intermediary goods firms }(continuum)
+\begin{enumerate}
+\item Produce differentiated goods with labor
+\item Set price under monopolistic competition
+\item Pay profits to households
+\end{enumerate}
+\item <+->\textbf{Final goods firms }(representative)
+\begin{enumerate}
+\item Produce final good with intermediary goods 
+\item Take price as given under perfect competition
+\end{enumerate}
+\item <+->\textbf{Central bank}: Sets nominal interest rate
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Households}
+\begin{itemize}
+\item Representative household solve the following problem:
+\begin{align*}
+\max_{C_{t},A_{t},L_{t}} & E_{0}\sum_{t=0}^{\infty}\beta^{t}\left[u\left(C_{t}\right)-\nu\left(L_{t}^{hh}\right)\right]\\
+ & s.t.\\
+C_{t}+A_{t} & =\left(1+r_{t}\right)A_{t-1}+\left(w_{t}L_{t}^{hh}+\Pi_{t}\right)
+\end{align*}
+\item Note: Expectation taken w.r.t \textbf{aggregate shocks} (TFP, monetary
+policy, markup etc.)
+\item Standard first-order conditions:
+\begin{align*}
+u'\left(C_{t}\right) & =E_{t}\beta\left(1+r_{t+1}\right)u'\left(C_{t+1}\right)\\
+\nu'\left(L_{t}^{hh}\right) & =w_{t}u'\left(C_{t}\right)
+\end{align*}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Final goods firms}
+\begin{itemize}
+\item <+->Final goods firm buy goods $y_{jt}$ from intermediary goods
+firms and assemble into aggregate output $Y_{t}$ using CES technology
+with sub. elaticity $\epsilon$
+\item <+->Intermediary firms/intermediary goods indexed by $j\in[0,1]$
+\item <+->\textbf{\emph{Static}}\textbf{ problem for representative final
+good firm:}
+\begin{align*}
+\max_{y_{jt}\,\forall j}P_{t}Y_{t}-\int_{0}^{1}p_{jt}y_{jt}dj & \text{ s.t. }Y_{t}=\left(\int_{0}^{1}y_{jt}^{\frac{\epsilon-1}{\epsilon}}dj\right)^{\frac{\epsilon}{\epsilon-1}}
+\end{align*}
+for given output price, $P_{t}$, and input prices, $p_{jt}$ 
+\item <+->\textbf{Demand curve }derived from FOC wrt. $y_{jt}$
+\begin{align*}
+\forall j:\,y_{jt} & =\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon}Y_{t}
+\end{align*}
+\item <+->\textbf{Note:} Zero profits (can be used to derive price index)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Intermediary goods firms}
+ \vspace{-2mm}
+\begin{itemize}
+\item <+->Intermediary goods firms produce using labor, choose price subject
+to quadratic adjustment cost of changing prices (Rotemberg)
+\item <+->\textbf{\emph{Dynamic}}\textbf{ problem for intermediary goods
+firms:}
+\begin{align*}
+J_{t}(p_{jt-1}) & =\max_{y_{jt},p_{jt},l_{jt}}\left\{ \frac{p_{jt}}{P_{t}}y_{jt}-w_{t}l_{jt}-\Omega(p_{jt},p_{jt-1})Y_{t}+E_{t}\frac{J_{t+1}(p_{jt})}{1+r_{t+1}}\right\} \\
+\text{s.t. } & y_{jt}=\Gamma_{t}l_{jt},\,\,\,y_{jt}=\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon}Y_{t},\,\,\,\Omega(p_{jt},p_{jt-1})=\frac{\theta}{2}\left[\frac{p_{jt}}{p_{jt-1}}-1\right]^{2}
+\end{align*}
+\item <+->\textbf{Symmetry:} In equilibrium all firms set the same price,
+$p_{jt}=P_{t}$
+\item <+->\textbf{NKPC} with slope $\kappa=\frac{\epsilon}{\theta}$ and
+$\mu=\frac{\epsilon}{\epsilon-1}$ derived from FOC wrt. $p_{jt}$
+and envelope condition (note $mc_{t}=\frac{MC_{t}}{P_{t}}=\frac{w_{t}}{\Gamma_{t}})$:
+\[
+\pi_{t}(1+\pi_{t})=\kappa\left(\frac{w_{t}}{\Gamma_{t}}-\frac{1}{\mu}\right)+E_{t}\frac{Y_{t+1}}{Y_{t}}\frac{\pi_{t+1}(1+\pi_{t+1})}{1+r_{t+1}},\,\,\,\pi_{t}\equiv P_{t}/P_{t-1}-1
+\]
+\item <+->\textbf{Implied production: $Y_{t}=y_{jt}$}, $L_{t}=l_{jt}$
+(from symmetry)
+\item <+->\textbf{Implied dividends: $\Pi_{t}=Y_{t}-w_{t}L_{t}-\frac{\theta}{2}\left[\frac{p_{jt}}{p_{jt-1}}-1\right]^{2}Y_{t}$}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Derivation of NKPC}
+\begin{itemize}
+\item <+->\textbf{FOC wrt. $p_{jt}$:}
+\begin{align*}
+0= & \left(1-\epsilon\right)\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon}\frac{Y_{t}}{P_{t}}+\epsilon\frac{w_{t}}{\Gamma_{t}}\left(\frac{p_{jt}}{P_{t}}\right)^{-\epsilon-1}\frac{Y_{t}}{P_{t}}\\
+ & -\theta\left[\frac{p_{jt}}{p_{jt-1}}-1\right]\frac{Y_{t}}{p_{jt-1}}+E_{t}\frac{J_{t+1}'(p_{jt})}{1+r_{t+1}}
+\end{align*}
+\item <+->\textbf{Envelope condition: $J_{t+1}^{\prime}(p_{jt})=-\theta\left[\frac{p_{jt+1}}{p_{jt}}-1\right]\left(\frac{p_{jt+1}}{p_{jt}^{2}}\right)Y_{t+1}$}
+\item <+->\textbf{FOC + Envelope + Symmetry + $\pi_{t}=P_{t}/P_{t-1}-1$
+\begin{align*}
+0= & \left[\left(1-\epsilon\right)+\epsilon\frac{w_{t}}{\Gamma_{t}}\right]\frac{Y_{t}}{P_{t}}\\
+ & -\theta\left[\frac{P_{t}}{P_{t-1}}-1\right]\frac{Y_{t}}{P_{t-1}}-E_{t}\frac{\theta\left[\frac{P_{t+1}}{P_{t}}-1\right]\left(\frac{P_{t+1}}{P_{t}^{2}}\right)Y_{t+1}}{1+r_{t+1}}
+\end{align*}
+}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Central NKPC intution}
+
+\[
+\pi_{t}(1+\pi_{t})=\kappa\left(\frac{w_{t}}{\Gamma_{t}}-\frac{1}{\mu}\right)+E_{t}\frac{Y_{t+1}}{Y_{t}}\frac{1}{1+r_{t+1}}\pi_{t+1}\left(1+\pi_{t+1}\right)
+\]
+
+\begin{enumerate}
+\item <+->\textbf{Zero-inflation steady state:} \\
+$\pi_{t}=0\rightarrow w_{t}=\frac{\Gamma_{t}}{\mu}\rightarrow$ wage
+is mark-downed relative to MPL ($\mu>1$)
+\item <+->\textbf{Larger adjustment costs}, $\kappa\downarrow$ (more sticky
+prices): \\
+Less pass-through from marginal costs, $\frac{w_{t}}{\Gamma_{t}}$,
+to inflation, $\pi_{t}$
+\item <+->\textbf{Larger (expected) future inflation, $\pi_{t+1}\uparrow$:}\\
+Increase price today, $\pi_{t}\uparrow$ \\
+Especially in a boom, $\frac{Y_{t+1}}{Y_{t}}>1$
+\item <+->Note:
+\begin{itemize}
+\item Sometimes a $\beta^{\text{firm}}$ is used instead of $\frac{1}{1+r_{t+1}}$
+\item $\pi_{t}(1+\pi_{t})\approx\pi_{t}$ for small $\pi_{t}$
+\end{itemize}
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Government and central bank}
+ \vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Monetary policy: }Follow Taylor-rule:
+\[
+i_{t}=i_{t}^{*}+\phi\pi_{t}
+\]
+ where $i_{t}^{*}$ is a monetary policy shock (target for CB)
+\item <+->\textbf{Fisher relationship:}
+\[
+r_{t}=(1+i_{t-1})/(1+\pi_{t})-1
+\]
+\item <+->\textbf{Government: }In standard model Government simply supplies
+bonds that are in net-zero supply, $B=0$
+\begin{itemize}
+\item Note: HHs still make consumption-saving decisions (so cannot impose
+$A=0$ in budget), but in equilibrium prices will adjust such that
+$A=B=0$
+\item Simplifying assumption, can easily incorporate more reaslitic government
+$\tau_{t}=r_{t}B_{ss}+G_{t}$ with $B_{ss}>0$ (see HANK later)
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Equilibrium}
+\begin{itemize}
+\item <+->Three markets that need to clear in the NK model:
+\item <+->Goods market:
+\[
+Y_{t}=C_{t}+\frac{\theta}{2}\pi_{t}^{2}Y_{t}
+\]
+\item <+->Labor market:
+\[
+L_{t}^{hh}=L_{t}
+\]
+\item <+->Asset market:
+\[
+A=0
+\]
+\item <+->As usual, in practice we will only impose market clearing in
+two of the markets when solving the model
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Aggregate shocks}
+\begin{itemize}
+\item In the standard NK model business cycles arise due to fluctuations
+in aggregate shocks:
+\begin{enumerate}
+\item \vspace{3mm}TFP (supply) 
+\[
+\ln\Gamma_{t}=\overline{\Gamma}+\ln\Gamma_{t-1}+\epsilon_{t}^{\Gamma},\quad\epsilon_{t}^{\Gamma}\sim\mathcal{N}\left(0,\sigma_{\Gamma}^{2}\right)
+\]
+\item \vspace{3mm}Discount factor (demand) 
+\[
+\ln\beta_{t}=\overline{\beta}+\ln\beta_{t-1}+\epsilon_{t}^{\beta},\quad\epsilon_{t}^{\beta}\sim\mathcal{N}\left(0,\sigma_{\beta}^{2}\right)
+\]
+\item \vspace{3mm}Monetary policy 
+\[
+i_{t}^{\ast}=\overline{i^{\ast}}+\ln i_{t-1}^{\ast}+\epsilon_{t}^{i^{\ast}},\quad\epsilon_{t}^{i^{\ast}}\sim\mathcal{N}\left(0,\sigma_{i^{\ast}}^{2}\right)
+\]
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{The 3 equation NK model}
+\begin{itemize}
+\item <+->Consider the deterministic, zero-inflation steady state of the
+model (with TFP and prices normalized to 1):
+\begin{align*}
+\pi & _{ss}=0,\quad Y_{ss}=C_{ss}=1\\
+r_{ss}=i & _{ss}=\frac{1}{\beta}-1,\quad w_{ss}=\frac{1}{\mu}
+\end{align*}
+\item <+->Linearize the model arounds this steady state with notation $\hat{x}_{t}=x_{t}-x_{ss}$
+for some endo. variable $x_{t}$ 
+\item <+->The model can be reduced to three equations:
+\begin{align*}
+\hat{Y}_{t} & =-\sigma\left(i_{t}-\pi_{t+1}\right)+\hat{Y}_{t+1}+\epsilon_{t}^{D}\;\text{\ensuremath{\quad}(Euler/demand curve})\\
+\hat{\pi}_{t} & =\tilde{\kappa}\hat{Y}_{t}+\beta\hat{\pi}_{t+1}+\epsilon_{t}^{S}\;\quad\quad\quad\quad\quad\text{(NKPC/supply curve)}\\
+\hat{i}_{t} & =\phi\hat{\pi}_{t}+\epsilon_{t}^{i}\;\quad\text{\quad\quad\quad\quad\quad\quad\quad(Monetary policy)}
+\end{align*}
+\item <+->With three unknowns (per period) $\hat{Y}_{t},\hat{\pi}_{t},\hat{i}_{t}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Technology shocks in the NK model}
+\begin{itemize}
+\item <+->Effects of a positive TFP shock (increase $\Gamma_{t}$)
+\end{itemize}
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.6\linewidth]{figs/NK_TFP.pdf}      
+\end{figure}
+\begin{itemize}
+\item <+->Increase in productivity decreases marginal costs $w_{t}/\Gamma_{t}$
+\item <+->Firms reduce prices $\Rightarrow$ CB reduce nominal interest
+rate 
+\item <+->Intertemporal sub. $\Rightarrow$ $C,Y\uparrow$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Monetary policy shocks in the NK model}
+\begin{itemize}
+\item <+->Effects of accomodating monetary policy (easing) with persistent
+decline in $i_{t}^{*}$\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.6\linewidth]{figs/NK_monpol.pdf}      
+\end{figure}
+\item <+->Decrease real rate $r$ which induce intertemporal substitution,
+so $C,Y\uparrow$
+\item <+->Increase in employment pushes up wages (marginal costs), so inflation
+increases
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Monetary neutrality}
+\begin{itemize}
+\item <+->Monetary policy can affect consumption, employment and output
+in the short run because the model features \textbf{monetary non-neutrality}
+\begin{itemize}
+\item Comes from sticky prices of firms 
+\end{itemize}
+\item <+->Consider monetary policy shock with increasing slope of NKPC
+$\kappa$
+\begin{itemize}
+\item Recall $\kappa\rightarrow\infty$ is flexible prices (think Ramsey)
+and constant markup\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.5\linewidth]{figs/monpol_NKPC_slope.pdf}      
+\end{figure}
+\end{itemize}
+\item <+->Why? With completely flexible prices monetary policy just increases
+inflation 1-1 without affecting $r$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Review questions}
+\begin{itemize}
+\item <+->Consider the standard New Keynesian model 
+\item <+->Review questions
+\begin{enumerate}
+\item How does a positive demand shock $\epsilon_{t}^{\beta}$ (which decrease
+$\beta$) affect output $Y,$ inflation $\pi,$ and interest rates
+$i,r$?
+\item Are firm markups pro-cyclical or counter-cyclical (w.r.t $Y$) in
+response to the demand shock? 
+\item Consider an extension with a government that spends $G$ and raises
+lumpsum taxes $\tau$
+\begin{itemize}
+\item What is the effect of a shock to $G$? Is the fiscal multiplier $\frac{dY}{dG}$
+above or below one?
+\item Does the effects of the shock dependent on the method of financing
+(debt vs taxes)?
+\end{itemize}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\section{IRFs and simulation}
+\begin{frame}{Aggregate uncertainty}
+\begin{itemize}
+\item <+->In business cycle model common to have \emph{aggregate uncertainty}
+\item <+->I.e. underlying shocks (TFP, demand etc) $x$ follow stochastic
+process with dist, $f$, $x_{t}\sim f$
+\item <+->This implies that all variables which are functions of $x$ are
+also random. 
+\begin{itemize}
+\item {\small If TFP is random $\Rightarrow$ wages, interest rates, labor
+demand etc. are }{\small\textbf{random }}{\small until observed }{\small\par}
+\end{itemize}
+\item <+->Implies that we need to compute expectation in Euler, NKPC and
+other forward looking equations:
+\[
+u'\left(C_{t}\right)=\beta\mathbb{E}_{t}\left[R_{t+1}\left(x_{t+1}\right)u'\left(C_{t}\left(x_{t+1}\right)\right)\right]
+\]
+\item <+->Note: So far in the course we have generally assumed \textbf{perfect
+foresight} w.r.t aggregate variables ($w,r$) so no expectation
+\begin{itemize}
+\item {\small\vspace{-0.5mm}Implies that aggregate shocks are not random
+process, but rather }{\small\emph{MIT shocks}}{\small\par}
+\end{itemize}
+\item <+->Interpretation of MIT shocks generally hard to reconcile with
+business cycles
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Stochastic vs deterministic models}
+\begin{itemize}
+\item <+->To see how the \textbf{stochastic} model and deterministic model
+are related consider the Euler with random $x$: 
+\[
+u'\left(C_{t}\right)=R\beta\mathbb{E}_{t}\left[u'\left(C_{t}\left(x_{t+1}\right)\right)\right]
+\]
+\item <+->First-order Taylor approx. around deterministic ss (use $R\beta=1$):
+\[
+du'\left(C_{t}\right)\approx u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}
+\]
+\item <+->Assume $x_{t}=\rho^{x}x_{t-1}+\epsilon_{t}^{x}$ with $\mathbb{E}\epsilon_{t}^{x}=0$.
+Period 0 solution in deterministic/perfect foresight model:
+\[
+du'\left(C_{0}\right)\approx u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot\rho^{x}d\epsilon_{0}^{x}
+\]
+\item <+->Stochastic model we use:
+\begin{align*}
+d\mathbb{E}_{0}x_{1} & =d\mathbb{E}_{0}\left(\rho^{x}x_{0}+\epsilon_{1}^{x}\right)\\
+ & =\rho^{x}d\mathbb{E}_{0}x_{0}=\rho^{x}d\epsilon_{0}^{x}=dx_{1}
+\end{align*}
+\item <+->\vspace{-2mm}Same result! Aggregate uncertainty \textbf{does
+not matter to first-order }when linearizing w.r.t aggregate shock
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{When does uncertainty matter?}
+\begin{itemize}
+\item <+->\textbf{Insight: }\emph{The IRF from an MIT shock is }\emph{\uline{equivalent}}\emph{
+to the IRF in a model with aggregate risk, which is linearized in
+the aggregate variables} (Boppart et. al., 2018)
+\item <+->What about \textbf{high order}?
+\item <+->Approximate Euler to \textbf{second} order:
+\begin{align*}
+du'\left(C_{t}\right)\approx & u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}+\frac{1}{2}u'''\left(C_{ss}\right)C''\left(x_{ss}\right)\cdot\mathbb{E}_{t}\left(x_{t+1}-x_{ss}\right)^{2}\\
+ & u''\left(C_{ss}\right)\cdot C'\left(x_{ss}\right)\cdot d\mathbb{E}_{t}x_{t+1}+\frac{1}{2}u'''\left(C_{ss}\right)C''\left(x_{ss}\right)\cdot\sigma_{x,t}^{2}
+\end{align*}
+\item <+->In deterministic model $\sigma_{x,t}^{2}=0$ - not true in stochastic
+model!
+\begin{itemize}
+\item Models deviate once we go beyond 1st order approximation (linearization)
+\end{itemize}
+\item <+->Still extremely usefull though - we may solve deterministic models
+to first-order and interpret as models with aggregate uncertainty
+\begin{itemize}
+\item How do we linearize models numerically?
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Reminder of model class}
+\begin{itemize}
+\item <+->\textbf{Unknowns:} $\boldsymbol{U}$
+\item \textbf{Shock:} $\boldsymbol{Z}$ 
+\item \textbf{Additional variables:} $\boldsymbol{X}$
+\item \textbf{Target equation system:}
+\[
+\boldsymbol{H(U,Z)=0}
+\]
+\item <+->In deterministic, perfect foresight model, solve $\boldsymbol{H(U,Z)=0}$
+w.r.t $\boldsymbol{U}$ by:
+\begin{enumerate}
+\item Calculating the jacobian of $\boldsymbol{H}$w.r.t $\boldsymbol{U}$around
+steady state 
+\item Use Newton/Broyden's method to find non-linear transition path given
+shocks $\boldsymbol{Z}$
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Linearized IRFs}
+\begin{itemize}
+\item <+->What if just want \emph{first order solution}?\vspace{1mm}
+\begin{enumerate}
+\item <+->Solve for Impulse Response Functions (IRFs) for unknowns
+\begin{align*}
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=\underset{\text{\ensuremath{\equiv\boldsymbol{G}_{\boldsymbol{U}}}}}{\underbrace{-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}}}d\boldsymbol{Z}
+\end{align*}
+\end{enumerate}
+\item <+->\textbf{Computation: }Same for $\boldsymbol{Z}$ as for $\boldsymbol{U}$
+\item <+->\textbf{Limitations:}
+\begin{enumerate}
+\item <+->Imprecise for \emph{large} shocks
+\item <+->Imprecise in models with \emph{aggregate non-linearities}
+\item <+-> No aggregate uncertainty (precautionary savings w.r.t aggregate
+shocks etc.)
+\end{enumerate}
+\item <+->Next slide: \textbf{Can we solve model with aggregate risk globally}
+(i.e. to more than first-order)?
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Aggregate risk (dynamic equilibrium)}
+\begin{itemize}
+\item <+->To solve models with aggregate risk we need to write them in
+\emph{state-space} form instead of \emph{sequence-space}
+\begin{itemize}
+\item Think of HA household problem - that is always in state-space form
+\item Endogenous variables $c_{t},a_{t}$ as function of current states
+$a_{t-1},z_{t}$
+\end{itemize}
+\item <+->\textbf{Aggregate stochastic variables: $\boldsymbol{Z}$ }follow
+some known process with innovations $\boldsymbol{\epsilon}$. \emph{State
+space form}: RHS is what is known today {\small
+\[
+\left[\begin{array}{c}
+\boldsymbol{U}_{t}\\
+\boldsymbol{Z}_{t}
+\end{array}\right]=\mathcal{M}\left(\left[\begin{array}{c}
+\boldsymbol{U}_{t-1}\\
+\boldsymbol{Z}_{t-1}
+\end{array}\right],\boldsymbol{\epsilon}_{t}\right)
+\]
+}{\small\par}
+
+$\neq$ perfect foresight wrt. future agg. variables in \emph{sequence-space}
+\item <+->In standard NK model: no backward looking eqs. so number of state
+variables = Number of shocks 
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Example: Krussel-Smith}
+\begin{itemize}
+\item <+->What if we add heterogeneous agents? Canonical example: The Krussel-Smith
+model (1998) 
+\begin{itemize}
+\item HANC with aggregate uncertainty (TFP shocks)
+\end{itemize}
+\item <+->\textbf{Recursive formulation of household problem:}
+\begin{align*}
+v(\boldsymbol{D}_{t},\Gamma_{t},z_{it},a_{it-1}) & =\max_{a_{it},c_{it}}u(c_{it})+\beta\mathbb{E}_{t}\left[v(\boldsymbol{D}_{t+1},\Gamma_{t+1},z_{it+1},a_{it})\right]\\
+ & \text{s.t.}\\
+K_{t-1} & =\int a_{it-1}d\boldsymbol{D}_{t}\\
+r_{t} & =\alpha\Gamma_{t}K_{t-1}^{\alpha-1}-\delta\\
+w_{t} & =(1-\alpha)\Gamma_{t}K_{t-1}^{\alpha}\\
+a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{t}z_{it}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\,\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0,
+\end{align*}
+\item <+-> \vspace{-2mm}$\boldsymbol{D}_{t}$ is a state variable $\Rightarrow$
+Massive state space
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Comparisons}
+\begin{itemize}
+\item \textbf{State-space approach with linearization}: Ahn et al. (2018);
+{\color{DarkRed}\href{https://github.com/BASEforHANK}{Bayer and Luetticke (2020)}};
+Bhandari et al. (2023); Bilal (2023)
+
+\uline{Con}: 
+\begin{enumerate}
+\item Harder to implement
+\item Valuable to be able to interpret Jacobians
+\end{enumerate}
+\uline{Pro}\textbf{:} 
+\begin{enumerate}
+\item Easier path to 2nd and higher order approximations
+\end{enumerate}
+\item \textbf{Global solution:} The distribution of households is a state
+variable for each household $\Rightarrow$ \emph{explosion in complexity}
+\begin{enumerate}
+\item \uline{Original}: Krusell and Smith (1997, 1998); Algan et al. (2014);
+\item \uline{Deep learning}: Fernández-Villaverde et al. (2021); Maliar
+et al. (2021); Han et al. (2021); Kase et al. (2022); Azinovic et
+al. (2022); Gu et al. (2023); Chen et al. (2023)
+\end{enumerate}
+\item \textbf{Discrete aggregate risk:} Lin and Peruffo (2023)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Basic linearized simulation}
+\vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Shocks: }Write the shocks as an $MA(\infty)$ with coefficients
+$d\boldsymbol{Z}_{s}$ for $s\in\{0,1,\dots\}$ driven by the innovation
+$\boldsymbol{\epsilon}_{t}$. 
+\begin{itemize}
+\item EX: If shock $\boldsymbol{Z}$ follows an AR(1) then $d\boldsymbol{Z}_{s}=\rho^{s-t}\boldsymbol{\epsilon}_{t-s}$
+\end{itemize}
+\item <+->\textbf{Linearized simulation:}
+\begin{enumerate}
+\item <+->Draw time series of innovations, $\tilde{\boldsymbol{\epsilon}}_{t}$
+\item <+->Calculate the time series of shocks as $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
+
+Note: $d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}=$ effect
+of shock $s$ periods ago today 
+\item <+->Calculate the time series of other aggregate variables as 
+\[
+d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
+\]
+where $d\boldsymbol{X}_{s}$ is the IRF to a \emph{unit-shock} after
+$s$ periods (just needs jacobian of $\boldsymbol{X}$ w.r.t shocks
+$\boldsymbol{Z}$)
+\end{enumerate}
+\item <+->\textbf{Intuition:} Sum of first order effects from all previous
+shocks
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Generalized linearized simulation {[}advanced{]}}
+\vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Generality:} Prev. slide: Aggregate variables. What about
+micro level household variables?
+\item <+->\textbf{Full distribution:}
+\begin{enumerate}
+\item <+->The IRF for grid point $i_{g}$ in a policy function can be calculated
+as 
+\[
+da_{i_{g},s}^{\ast}=\sum_{s^{\prime}=s}^{T-1}\sum_{X^{hh}\in\boldsymbol{X}^{hh}}\frac{\partial a_{i_{g}}^{\ast}}{\partial X_{s^{\prime}-s}^{hh}}dX_{s^{\prime}}^{hh}.
+\]
+where $\partial\boldsymbol{a}_{i_{g}}^{\ast}/\partial X_{k}^{hh}$
+is the derivative to a $k$-period ahead shock to input $X^{hh}$
+(calculated in fake news algorithm)\vspace{1mm}
+\item <+->The policy function can there be simulated as
+\[
+\boldsymbol{a}_{i_{g},t}^{\ast}=\sum_{s=0}^{T-1}da_{i_{g},s}^{\ast}\tilde{\boldsymbol{\epsilon}}_{t-s}
+\]
+\item <+->Distribution can then be simulated forwards using standard method
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Calculating moments - variance}
+\begin{itemize}
+\item <+->\textbf{Identical and independent distributed innovations:}
+\[
+\mathbb{E}\left[\epsilon_{t}^{i}\epsilon_{t^{\prime}}^{j}\right]=\begin{cases}
+\sigma_{i}^{2} & \text{if }t=t^{\prime}\text{ and }i=j\\
+0 & \text{else}
+\end{cases}
+\]
+\item <+->\textbf{Calculating moments such as $\text{var}(dC_{t})$} from
+the IRFs:\vspace{-1mm}
+\begin{align*}
+\text{var}(dC_{t}) & =\mathbb{E}\left[\left(\sum_{i\in\mathcal{Z}}\sum_{s=0}^{T-1}dC_{s}^{i}\epsilon_{t-s}^{i}\right)^{2}\right]\\
+ & =\sum_{i\in\mathcal{Z}}\sum_{s=0}^{T-1}\mathbb{E}\left[\epsilon_{t-s}^{i}\epsilon_{t-s}^{i}\right]\left(dC_{s}^{i}\right)^{2}\\
+ & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1}\left(dC_{s}^{i}\right)^{2}
+\end{align*}
+
+where $dC_{s}^{i}$ is the IRF to a unit-shock to $i$ after $s$
+periods
+
+and $\sigma_{i}$ is the standard deviation of shock $i$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Calculating moments - variance}
+\begin{itemize}
+\item <+->Implications of prior slide:
+\begin{itemize}
+\item Very easy to calculate business cycle moments 
+\end{itemize}
+\item <+->Steps (variance of $C$) (1 shock):
+\begin{enumerate}
+\item Formulate shock to e.g. public spending, $\left\{ dG_{t}\right\} _{t=0}^{T}=d\boldsymbol{G}$
+(could be an AR(1))
+\item Linearize and solve model to get IRF of $\left\{ dC_{t}\right\} _{t=0}^{T}=d\boldsymbol{C}$
+w.r.t $\left\{ dG_{t}\right\} $
+\item Calculate variance $\text{var}(dC_{t})=\sum_{s=0}^{T-1}\left(dC_{s}\right)^{2}$
+\end{enumerate}
+\item <+->Same principle with more shocks 
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Calculating moments - covariance}
+\begin{itemize}
+\item <+->\textbf{Covariances:}\vspace{-3mm}
+\begin{align*}
+\text{cov}(dC_{t},dY_{t+k}) & =\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}
+\end{align*}
+\item <+->\vspace{-2mm}\textbf{Covariance decomposition:}
+\[
+\frac{\text{contribution from one shock}}{\text{contributions from all shocks}}=\frac{\sigma_{j}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{j}dY_{s+k}^{j}}{\sum_{i\in\mathcal{Z}}\sigma_{i}^{2}\sum_{s=0}^{T-1-k}dC_{s}^{i}dY_{s+k}^{i}}
+\]
+ 
+\end{itemize}
+\end{frame}
+%
+
+\section{Exercise}
+
+\begin{frame}{Exercise - NK model with government}
+
+\begin{enumerate}
+\item {\footnotesize Familiarize yourself with the model equations in }{\footnotesize\emph{blocks.py}}{\footnotesize .
+Do you understand all the equations?}{\footnotesize\par}
+\item {\footnotesize Compute the non-linear response to a temporary increase
+in government spending}{\footnotesize\par}
+\begin{enumerate}
+\item {\footnotesize Use }{\footnotesize\emph{model.find\_transition\_path()}}{\footnotesize{}
+for the non-linear response (results are in }{\footnotesize\emph{model.path}}{\footnotesize )}{\footnotesize\par}
+\item {\footnotesize Use }{\footnotesize\emph{model.find\_IRFs()}}{\footnotesize{}
+for the linear response (results are in }{\footnotesize\emph{model.IRF}}{\footnotesize )}{\footnotesize\par}
+\end{enumerate}
+\item {\footnotesize Add a zero lower bound to the model:
+\[
+i_{t}=\max\left\{ i_{ss}+\phi\pi_{t},0\right\} 
+\]
+}\\
+{\footnotesize Compute linear and non-linear responses to a $\beta$-shock
+of size $0.05$ and compare.}{\footnotesize\par}
+\item {\footnotesize Assume that the government tries to stabilize the economy
+after the demand shock. Compute linear and non-linear responses to
+a simultaneous shock to $\beta$ ($d\beta_{0}=0.05$) and $G$ ($dG_{0}=0.03$). }{\footnotesize\par}
+\item {\footnotesize Is stabilization policy more or less efficient once
+we take the ZLB into account?}\\
+{\footnotesize Hint: Compare the multipliers $\frac{dY^{\beta,G}-dY^{\beta}}{dG}$
+for the linear and non-linear responses and compare. }\\
+{\footnotesize\textbf{MORE ON NEXT SLIDE }}{\footnotesize\par}
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Exercise - NK model with government}
+
+6. {\small Simulate a monetary policy shock of size $0.01.$ Calculate
+the variance of consumption using the analytical formula:
+\[
+\text{var}\left(dC\right)=\sum_{s=0}^{T-1}\left(dC_{s}\right)^{2}
+\]
+}\\
+{\small Check that you get the same variance if you simulate a timeseries
+of consumption using $\text{model.simulate(skip\_hh=True)}$, and
+calculate the variance as:
+\[
+\text{var}\left(dC\right)=\frac{1}{N}\sum_{i=0}^{N}\left(dC_{i}^{sim}\right)^{2}
+\]
+}\\
+{\small\textbf{Hints:}}{\small{} You can set the size of the shock for
+the IRFs using $\text{model.par.jump\_eps\_i}$, while the standard
+error of the shocks in the simulation is set using $\text{model.par.std\_eps\_i}$.}{\small\par}
+
+{\small Make sure that the standard error of other shocks in the model
+are zero when you simulate. You can find the simulated series in $\text{model.sim.dC}.$}{\small\par}
+\end{frame}
+
+\section{Summary}
+\begin{frame}{Summary and next week}
+\begin{itemize}
+\item \textbf{Today: }
+\begin{enumerate}
+\item The New Keynesian model
+\item Aggregate risk and linearized dynamics (IRF and simulation)
+\item Calculating aggregate moments (for calibration or estimation)
+\end{enumerate}
+\item \textbf{Next week: }HANK + Fiscal policy
+\item \textbf{Homework:}
+\begin{enumerate}
+\item Work on exercise
+\item Skim-read Auclert et al. (2023), \\
+>>The Intertemporal Keynesian Cross<<
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+
+\end{document}

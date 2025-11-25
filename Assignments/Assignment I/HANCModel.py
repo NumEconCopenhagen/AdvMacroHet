@@ -49,10 +49,11 @@ class HANCModelClass(EconModelClass,GEModelClass):
         par.beta = np.nan # discount factor, mean, range is [mean-width,mean+width]
 
         # b. income parameters
-        par.rho_z = 0.95 # AR(1) parameter
-        par.sigma_psi = 0.30*(1.0-par.rho_z**2.0)**0.5 # std. of persistent shock
+        #CHANGED THE PARAMETERS HERE as requested in the assignment
+        par.rho_z = 0.96 # AR(1) parameter
+        par.sigma_psi = 0.257#0.30*(1.0-par.rho_z**2.0)**0.5 # std. of persistent shock
         par.upsilon_ss = 1.0 
-        
+         
         # c. production and investment
         par.Gamma_ss = np.nan # technology level [determined in ss]
         par.alpha = 1/3 # cobb-douglas
