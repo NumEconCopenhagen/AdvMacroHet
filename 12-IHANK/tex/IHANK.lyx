@@ -1,0 +1,5238 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+%\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\end_preamble
+\options t,10pt,handout
+\use_default_options false
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement class
+\float_alignment class
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 1
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{13.
+ I-HANK
+\backslash
+vspace{-2mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro:
+ Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Jeppe Druedahl,
+ Raphaël Huleux}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2025}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-2mm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+So far:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How does heterogeneity matter for business cycles and policy in 
+\series bold
+closed economies
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Today:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Extend to 
+\series bold
+small open economy
+\series default
+ (SOE) setting 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ The 
+\emph on
+International
+\emph default
+ HANK Model (
+\emph on
+IHANK
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Literature:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Auclert,
+ Rognlie,
+ Souchier,
+ & Straub (2024) 
+\begin_inset Quotes ald
+\end_inset
+
+Exchange rates and monetary policy with heterogeneous agents:
+ Sizing up the real income channel
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Druedahl,
+ Ravn,
+ Sunder-Plassmann,
+ Sundram,
+ & Waldstrøm
+\emph on
+ 
+\emph default
+(2024) 
+\begin_inset Quotes ald
+\end_inset
+
+The Transmission of Foreign Demand Shocks
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Druedahl,
+ Ravn,
+ Sunder-Plassmann,
+ Sundram,
+ & Waldstrøm
+\emph on
+ 
+\emph default
+(2024) 
+\begin_inset Quotes ald
+\end_inset
+
+Fiscal Multipliers in Small Open Economies With Heterogeneous Households
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+IHANK Model 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Small Open Economy HANK Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The 
+\begin_inset Quotes ald
+\end_inset
+
+Small Open economy
+\begin_inset Quotes ard
+\end_inset
+
+ version of the NK model:
+ 
+\series bold
+Gali-Monacelli
+\series default
+ (2005) 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Adds role for 
+\emph on
+capital flows,
+ trade
+\emph default
+ and 
+\emph on
+exchange rates
+\emph default
+ in the NK model 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+IHANK model:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Take Gali-Monacelli 
+\end_layout
+
+\begin_layout Itemize
+Add sticky wages
+\end_layout
+
+\begin_layout Itemize
+Add heterogeneous agents 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model components
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Households
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Standard HA:
+ Face idiosyncratic income risk + borrowing constraint 
+\end_layout
+
+\begin_layout Itemize
+Choose between consumption of domestic and foreign 
+\emph on
+tradeable
+\emph default
+ goods
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Firms
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Produce domestic 
+\emph on
+tradeable
+\emph default
+ good using labor
+\end_layout
+
+\begin_layout Itemize
+Have market power 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Unions
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Decide on labor supply for HHs subject to wage adjustment cost
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Mutual fund
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Collect household savings and invest in available assets (domestic firm equity + 
+\series bold
+foreign bonds
+\series default
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Free capital flows 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Central bank 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Foreign economy
+\series default
+ (mostly exogenous)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Households
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Household problem:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{it},a_{it-1}) & =\max_{c_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}-\varphi\frac{\ell_{it}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\\
+\text{s.t. }a_{it}+c_{it} & =(1+r_{t}^{a})a_{t-1}+Z_{t}z_{it}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Active decisions:
+
+\series default
+ Consumption-saving,
+ 
+\begin_inset Formula $c_{it}$
+\end_inset
+
+ (and 
+\begin_inset Formula $a_{it}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Union decision:
+
+\series default
+ Labor supply,
+ 
+\begin_inset Formula $\ell_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Aggregate Consumption:
+ 
+\begin_inset Formula $C_{t}^{hh}=\int c_{it}d\mathcal{D}_{it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Consumption function:
+ 
+\begin_inset Formula $C_{t}^{hh}=C^{hh}\left(\{r_{s}^{a},Z_{s}\}_{s=0}^{\infty}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Consumption basket
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Consumption 
+\begin_inset Formula $c_{it}$
+\end_inset
+
+ is a basket composed of:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Domestic goods 
+\begin_inset Formula $c_{H,it}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Foreign goods 
+\begin_inset Formula $c_{F,it}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+CES preferences over these with weight 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ on imports:
+\begin_inset Formula 
+\[
+c_{it}=\left[\alpha^{1/\eta}c_{F,it}^{\frac{\eta-1}{\eta}}+\left(1-\alpha\right)^{1/\eta}c_{H,it}^{\frac{\eta-1}{\eta}}\right]^{\frac{\eta}{\eta-1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+FOCs
+\series default
+:
+\begin_inset Formula 
+\[
+c_{F,it}=\alpha\left(\frac{P_{F,t}}{P_{t}}\right)^{-\eta}c_{it},\quad\quad c_{H,it}=\left(1-\alpha\right)\left(\frac{P_{H,t}}{P_{t}}\right)^{-\eta}c_{it},
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+with 
+\begin_inset Formula $P_{t}=$
+\end_inset
+
+CPI:
+\begin_inset Formula 
+\[
+P_{t}=\left[\alpha P_{F,t}^{1-\eta}+\left(1-\alpha\right)P_{H,t}^{1-\eta}\right]^{\frac{1}{1-\eta}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aggregate consumption basket 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Aggregating we get:
+\begin_inset Formula 
+\[
+C_{F,t}=\alpha\left(\frac{P_{F,t}}{P_{t}}\right)^{-\eta}C_{t}^{hh},\quad\quad C_{H,t}=\left(1-\alpha\right)\left(\frac{P_{H,t}}{P_{t}}\right)^{-\eta}C_{t}^{hh}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Only need aggregate consumption to calculate demand for domestic and foreign goods
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Possible because CES preferences are homothetic!
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+All households choose the same consumption basket:
+ 
+\begin_inset Formula $\frac{c_{F,it}}{c_{it}}=\alpha\left(\frac{P_{F,t}}{P_{t}}\right)^{-\eta}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If preferences are non-homothetic HH problem is more complicated
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Non-homothetic preferences 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+If preferences for 
+\begin_inset Formula $\nu\left(c_{F,it},c_{H,it}\right)$
+\end_inset
+
+ are 
+\series bold
+non-homothetic 
+\series default
+rich and poor households will hold different consumption baskets
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Need to solve more complicated problem (see appendix in Auclert et al 2024)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{it},a_{it-1}) & =\max_{c_{F,it},c_{H,it}}\nu\left(c_{F,it},c_{H,it}\right)-\varphi\frac{\ell_{it}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{it+1},a_{it})\right]\\
+\text{a_{it}+\frac{P_{F,t}}{P_{it}}c_{F,it}} & +\frac{P_{H,t}}{P_{it}}c_{H,it}=(1+r_{t}^{a})a_{t-1}+Z_{t}z_{it}\\
+\log z_{it+1} & =\rho_{z}\log z_{it}+\psi_{it+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\\
+a_{it} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $P_{it}$
+\end_inset
+
+ is the ideal price index associated with the consumption basket of individual 
+\begin_inset Formula $i$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Prices
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In baseline model assume 
+\series bold
+law of one price
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Prices of the same product are equalized across countries once converted into same currency
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Implies that the 
+\series bold
+price of foreign goods in domestic currency
+\series default
+ 
+\begin_inset Formula $P_{F,t}$
+\end_inset
+
+ is:
+\begin_inset Formula 
+\[
+P_{F,t}=P_{F,t}^{\ast}E_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $P_{F,t}^{\ast}$
+\end_inset
+
+= price of foreign goods in foreign,
+ 
+\begin_inset Formula $E_{t}$
+\end_inset
+
+=nominal exchange rate 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note:
+ Usual macro convention,
+ an increase in 
+\begin_inset Formula $E_{t}$
+\end_inset
+
+ corresponds to a 
+\series bold
+depreciation
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So 
+\begin_inset Formula $E_{t}=7,46$
+\end_inset
+
+ between DKK and EURO for instance
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Firms
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Production and profits:
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+Y_{t} & =L_{t}\\
+\Pi_{t} & =\frac{P_{H,t}}{P_{t}}Y_{t}-\frac{W_{t}}{P_{t}}L_{t}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+First order condition:
+\series default
+
+\begin_inset Formula 
+\[
+\frac{P_{H,t}}{P_{t}}\frac{1}{\mu}=w_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Mutual fund and assets
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Mutual fund collect households savings 
+\begin_inset Formula $A_{t}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Invest in available assets
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Firm equity 
+\end_layout
+
+\begin_layout Itemize
+Foreign bonds 
+\begin_inset Formula $B_{t}^{*}$
+\end_inset
+
+ (assumption:
+ free capital flows)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Problem
+\series default
+:
+\begin_inset Formula 
+\[
+\max_{\upsilon_{j,t},B_{t}^{*}}\int\left(\Pi_{j,t+1}+p_{j,t+1}^{D}\right)\upsilon_{j,t}+\frac{\left(1+i_{t}^{*}\right)}{1+\pi_{t+1}}\frac{E_{t+1}}{E_{t}}B_{t}^{*}-\left(1+r_{t+1}^{a}\right)A_{t}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\text{s.t\ensuremath{\quad\int p_{j,t}^{D}\upsilon_{j,t}dj+B_{t}^{*}=A_{t}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+FOCs
+\series default
+ (no arbitrage conditions):
+\begin_inset Formula 
+\begin{align*}
+p_{t}^{D} & =\frac{\Pi_{t+1}+p_{t+1}^{D}}{1+r_{t}}\\
+1+r_{t} & =\frac{Q_{t+1}}{Q_{t}}\left(1+r_{t}^{*}\right),\quad\quad\text{(UIP)}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{-0.1cm}
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $r_{t}=r_{t+1}^{a}$
+\end_inset
+
+ the ex-ante interest rate,
+ 
+\begin_inset Formula $r_{t}^{*}$
+\end_inset
+
+ is the foreign real interest rate,
+ 
+\begin_inset Formula $Q_{t}=\frac{E_{t}}{P_{t}}P_{t}^{*}$
+\end_inset
+
+ is the
+\series bold
+ real exchange rate
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Union
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Everybody works the same:
+\begin_inset Formula 
+\begin{align*}
+\ell_{t} & =L_{t}^{hh}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Maximization subject to wage adjustment cost imply a 
+\series bold
+New Keynesian Wage (Phillips) Curve
+\series default
+ (NKWPC or NKWC)
+\begin_inset Formula 
+\[
+\pi_{t}^{w}=\kappa\left(\varphi\left(L_{t}^{hh}\right)^{\nu}-\frac{1}{\mu}w_{t}\left(C_{t}^{hh}\right)^{\text{-\sigma}}\right)+\beta\pi_{t+1}^{w}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Central bank
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+1.
+
+\series default
+ 
+\series bold
+Floating exchange rate:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Will assume float for most of today.
+ Then business as usual:
+\begin_inset Formula 
+\[
+i_{t}=i_{ss}+\phi\pi_{t},\quad\quad1+r_{t}=\frac{1+i_{t}}{1+\pi_{t+1}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+(Note that it might be more suited for CB to target PPI 
+\begin_inset Formula $\pi_{H,t}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+2.
+ Fixed exchange rate 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+E_{t}=E_{ss}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Central bank chooses nominal interest rate such that the nominal exchange rate is fixed
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can also be implemented with a Taylor-type rule:
+\begin_inset Formula 
+\[
+i_{t}=i_{ss}+\phi_{E}\left(E_{t}-E_{ss}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+with 
+\begin_inset Formula $\phi_{E}\rightarrow\infty$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Foreign Economy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Because we focus on a 
+\emph on
+small open economy 
+\emph default
+domestic shocks does not affect the foreign economy
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Foreign interest rate 
+\begin_inset Formula $r_{t}^{*}$
+\end_inset
+
+ is exogenous
+\end_layout
+
+\begin_layout Itemize
+Foreign price 
+\begin_inset Formula $P_{F,t}^{*}$
+\end_inset
+
+ is exogenous
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Foreign demand for domestic goods given by Armington/CES demand:
+\begin_inset Formula 
+\[
+C_{H,t}^{\ast}=\alpha\left(\frac{P_{H,t}^{\ast}}{P_{F,t}^{\ast}}\right)^{-\eta^{\ast}}M_{t}^{\ast}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+where 
+\begin_inset Formula $M_{t}^{\ast}$
+\end_inset
+
+ is overall demand for foreign goods (shifter)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $C_{H,t}^{\ast}$
+\end_inset
+
+ is overall demand for goods from Home country 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Law of one price:
+ 
+\begin_inset Formula $P_{H,t}^{\ast}=\frac{P_{H,t}}{E_{t}}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Trade and current account
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Define 
+\begin_inset Formula $GDP_{t}=\frac{P_{H,t}}{P_{t}}Y_{t}$
+\end_inset
+
+.
+ Net exports are:
+\begin_inset Formula 
+\[
+NX_{t}=GDP_{t}-C_{t}^{hh}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The net foreign asset position is
+\begin_inset Formula 
+\[
+NFA_{t}=A_{t}^{hh}-p_{t}^{D}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The current account is:
+\begin_inset Formula 
+\[
+CA_{t}=NX_{t}+r_{t}^{a}NFA_{t-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Current account and net foreign asset position are related by [Walras]:
+\begin_inset Formula 
+\[
+NFA_{t}-NFA_{t-1}=CA_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Market clearing
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Labor market:
+ 
+\begin_inset Formula $L_{t}=L_{t}^{hh}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Goods market (Version 1)
+\begin_inset Formula 
+\[
+Y_{t}=C_{H,t}+C_{H,t}^{\ast}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Goods market (Version 2)
+\begin_inset Formula 
+\[
+GDP_{t}=C_{t}^{hh}+NX_{t}
+\]
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+with 
+\begin_inset Formula $NX_{t}=\frac{P_{H,t}}{P_{t}}C_{H,t}^{\ast}-\frac{P_{F,t}}{P_{t}}C_{F,t}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+International Keynesian Cross
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sequence-space - goods market
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Linearizing goods mkt' 
+\begin_inset Formula $Y_{t}=C_{H,t}+C_{H,t}^{\ast}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+d\boldsymbol{Y}=d\boldsymbol{C}_{H}+d\boldsymbol{C}_{H}^{\ast}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Linearize CES demand 
+\begin_inset Formula $C_{H,t},C_{H,t}^{\ast}$
+\end_inset
+
+ around ss:
+\begin_inset Formula 
+\begin{align*}
+C_{H,t}=\left(1-\alpha\right)\left(\frac{P_{H,t}}{P_{t}}\right)^{-\eta}C_{t}^{hh} & \Rightarrow d\boldsymbol{C}_{H}=\left(1-\alpha\right)d\boldsymbol{C}^{hh}-\eta\left(1-\alpha\right)d\left(\frac{\boldsymbol{P}_{H}}{\boldsymbol{P}}\right)\\
+C_{H,t}^{\ast}=\alpha\left(\frac{P_{H,t}^{\ast}}{P_{F,t}^{\ast}}\right)^{-\eta^{\ast}}M_{t}^{\ast} & \Rightarrow d\boldsymbol{C}_{H}^{\ast}=\alpha d\boldsymbol{M}^{\ast}-\eta^{\ast}\alpha d\left(\frac{\boldsymbol{P}_{H}^{\ast}}{\boldsymbol{P}_{F}^{\ast}}\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+For now assume no change in foreign demand,
+ 
+\begin_inset Formula $d\boldsymbol{M}^{\ast}=0$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d\boldsymbol{Y}=\left(1-\alpha\right)d\boldsymbol{C}^{hh}-\eta\left(1-\alpha\right)d\left(\frac{\boldsymbol{P}_{H}}{\boldsymbol{P}}\right)-\eta^{\ast}\alpha d\left(\frac{\boldsymbol{P}_{H}^{\ast}}{\boldsymbol{P}_{F}^{\ast}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sequence-space - trade elasticity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Linearizing the price index + LOOP gives 
+\begin_inset Formula $dP_{H,t}-dP_{t}=-\frac{\alpha}{1-\alpha}dQ_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $dP_{H,t}^{*}=dP_{H,t}-dE_{t}$
+\end_inset
+
+ to get:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+so 
+\begin_inset Formula $dP_{H,t}^{*}=dP_{H,t}-dP_{t}-dQ_{t}=-dQ_{t}-\frac{\alpha}{1-\alpha}dQ_{t}=-\frac{1}{1-\alpha}dQ_{t}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+d\boldsymbol{Y} & =\left(1-\alpha\right)d\boldsymbol{C}^{hh}+\eta\left(1-\alpha\right)\frac{\alpha}{1-\alpha}dQ_{t}+\eta^{\ast}\frac{\alpha}{1-\alpha}d\boldsymbol{Q}\\
+ & =\left(1-\alpha\right)d\boldsymbol{C}^{hh}+\chi\frac{\alpha}{1-\alpha}d\boldsymbol{Q}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+with 
+\begin_inset Formula $\chi=\eta\left(1-\alpha\right)+\eta^{\ast}$
+\end_inset
+
+ being the 
+\emph on
+trade elasticity
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Captures the elasticity of net exports to changes in relative prices (the real EXR 
+\begin_inset Formula $Q$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Typically called 
+\emph on
+expenditure switching 
+\end_layout
+
+\begin_layout Itemize
+If the DKK appreciates (
+\begin_inset Formula $d\boldsymbol{Q}\downarrow$
+\end_inset
+
+) against the USD both DK HHs and US HHs will 
+\series bold
+substitute toward
+\series default
+ US goods (
+\begin_inset Formula $d\boldsymbol{Y}\downarrow$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sequence-space - HHs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What can we say about 
+\begin_inset Formula $d\boldsymbol{C}^{hh}$
+\end_inset
+
+?
+ Consumption function is 
+\begin_inset Formula $C^{hh}\left(\{r_{s}^{a},Z_{s}\}_{s=0}^{\infty}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+d\bm{C}^{hh}=\bm{M}^{r^{a}}d\bm{r}^{a}+\bm{M}d\boldsymbol{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use firm FOC + production function 
+\begin_inset Formula $Z_{t}=w_{t}L_{t}=\frac{P_{H,t}}{P_{t}}Y_{t}\Rightarrow dZ_{t}=-\frac{\alpha}{1-\alpha}dQ_{t}+dY_{t}$
+\end_inset
+
+ + small valuation effect 
+\begin_inset Formula $\bm{M}^{r^{a}}\approx\bm{M}^{\boldsymbol{r}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+d\bm{C}^{hh}=\bm{M}^{\bm{r}}d\bm{r}+\bm{M}d\boldsymbol{Y}-\frac{\alpha}{1-\alpha}\bm{M}d\boldsymbol{Q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sequence-space - Keynesian Cross
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Putting it together:
+\begin_inset Formula 
+\[
+d\bm{Y}\;=\;\underbrace{(1-\alpha)\bm{M}^{r}d\bm{r}}_{\text{1. Interest rate}}\;+\;\underbrace{(1-\alpha)\bm{M}d\bm{Y}}_{\text{2. Multiplier}}\;+\;\underbrace{\chi\frac{\alpha}{1-\alpha}d\bm{Q}}_{\text{3. Exp. switching}}\;-\;\underbrace{\alpha\bm{M}d\bm{Q}}_{\text{4. Real income}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+Standard 
+\begin_inset Formula $r$
+\end_inset
+
+ effect:
+ Scaled down by 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+ since some of domestic demand goes to foreign goods (imports)
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\size footnotesize
+Standard multiplier:
+ Scales with MPC matrix 
+\begin_inset Formula $\bm{M}$
+\end_inset
+
+ and home bias 
+\begin_inset Formula $1-\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+Expenditure switching
+\series default
+:
+ An appreciation of the EXR (
+\begin_inset Formula $Q\downarrow$
+\end_inset
+
+) causes substitution away from home's goods -> less demand for 
+\begin_inset Formula $Y$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+Real income channel of EXR
+\series default
+:
+ Appreciation (
+\begin_inset Formula $Q\downarrow$
+\end_inset
+
+) causes foreign goods to be cheaper in home currency 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Reduces 
+\begin_inset Formula $PF,P$
+\end_inset
+
+,
+ raises real income 
+\begin_inset Formula $Z$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Monetary Policy
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sequence-space - Keynesian Cross
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use the Keynesian Cross to analyze monetary policy with heterogeneous agents 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Reference:
+ 
+\size footnotesize
+Auclert,
+ Rognlie,
+ Souchier,
+ & Straub (2024) 
+\begin_inset Quotes ald
+\end_inset
+
+Exchange rates and monetary policy with heterogeneous agents:
+ Sizing up the real income channel
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Fundamental difference in the open economy is that monetary policy affect EXR through 
+\series bold
+UIP:
+\series default
+
+\begin_inset Formula 
+\[
+1+r_{t}=\frac{Q_{t+1}}{Q_{t}}\left(1+r^{*}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+For given foreign rate 
+\begin_inset Formula $r^{*}$
+\end_inset
+
+ an increase in domestic real rate 
+\begin_inset Formula $r_{t}$
+\end_inset
+
+ will attract foreign capital flows 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Appreciation of 
+\begin_inset Formula $Q_{t}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To first-order we have 
+\begin_inset Formula $dQ_{t}=-\sum_{s\geq t}^{\infty}dr_{s}$
+\end_inset
+
+ for a constant 
+\begin_inset Formula $r^{*}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+HANK-RANK equivalence
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In closed economy monetary policy was equally effective in HANK/RANK 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Under some assumption (log utility,
+ no gov bonds ...)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Not obvious here since a reduction in 
+\begin_inset Formula $r$
+\end_inset
+
+ implies a depreciation which:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Decreases demand in HANK due to real income effect 
+\end_layout
+
+\begin_layout Itemize
+Increases demand for domestic goods through expenditure switching 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Turns out that these effects 
+\series bold
+balance each other exactly
+\series default
+ if trade elasticity 
+\begin_inset Formula $\chi=2-\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If 
+\begin_inset Formula $\chi<2-\alpha$
+\end_inset
+
+ then the real income effect dominates and monetary policy 
+\emph on
+less
+\emph default
+ effective in HANK
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $\chi>2-\alpha$
+\end_inset
+
+ then expenditure switching dominates and monetary policy is 
+\emph on
+more
+\emph default
+ effective in HANK
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary policy - 
+\begin_inset Formula $\chi=2-\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Output response in HANK/RANK with neutrality,
+ 
+\begin_inset Formula $\chi=2-\alpha$
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/AMSS2024MonPolNeutral.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Monetary policy - 
+\begin_inset Formula $\chi<2-\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Empirically we expect the trade elasticity to be 
+\series bold
+low 
+\series default
+in the short run
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Takes time for firms/households to respond to changes in relative prices
+\end_layout
+
+\begin_layout Itemize
+But 
+\emph on
+probably
+\emph default
+ larger in the long run (
+\begin_inset Formula $\chi>2-\alpha$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Output response in HANK/RANK with 
+\begin_inset Formula $\chi=0.5<2-\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monetary policy 
+\series bold
+less
+\series default
+ effective in HANK 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.2cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+linewidth]{figs/AMSS2024MonPolLowTrade.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Section
+Fiscal Policy
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fiscal Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Monetary policy in HANK likely to be 
+\series bold
+less effective
+\series default
+ in 
+\series bold
+open economy
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What about 
+\series bold
+fiscal policy?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recall:
+ In closed economy HANK implied larger fiscal multipliers (/w deficit financing)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Take model from before,
+ add government + Taylor rule
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Keynesian cross with G
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Keynesian cross:
+\begin_inset Formula 
+\begin{align*}
+d\bm{Y}\;= & \underbrace{d\bm{G}}_{\text{1. Gov. consumption}}\;-\;\;\underbrace{(1-\alpha)\bm{M}d\bm{T}}_{\text{2. Taxes}}\;+\;\underbrace{(1-\alpha)\bm{M}^{r}d\bm{r}}_{\text{3. Interest rate}}\\
++ & \;\underbrace{(1-\alpha)\bm{M}d\bm{Y}}_{\text{4. Multiplier}}\;+\;\underbrace{\chi\frac{\alpha}{1-\alpha}d\bm{Q}}_{\text{5. Exp. switching}}\;-\;\underbrace{\alpha\bm{M}d\bm{Q}}_{\text{6. Real income}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Note,
+ with a constant 
+\begin_inset Formula $r$
+\end_inset
+
+-rule,
+ 
+\begin_inset Formula $d\boldsymbol{r}=0$
+\end_inset
+
+ this 
+\emph on
+almost
+\emph default
+ reverts to closed economy Cross:
+\begin_inset Formula 
+\[
+d\bm{Y}=d\bm{G}-(1-\alpha)\bm{M}d\bm{T}+(1-\alpha)\bm{M}d\bm{Y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+In fact 
+\series bold
+isomorphic
+\series default
+ to closed economy Cross with 
+\begin_inset Formula $\bm{\tilde{M}}\equiv(1-\alpha)\bm{M}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d\bm{Y}=d\bm{G}-\bm{\tilde{M}}d\bm{T}+\bm{\tilde{M}}d\bm{Y}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fiscal policy in the open economy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Do we expect fiscal policy to be more or less effective in HANK vs.
+ RANK?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+More effective:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Positive spending shock 
+\begin_inset Formula $d\boldsymbol{G}>0$
+\end_inset
+
+ forces CB to raise 
+\begin_inset Formula $\boldsymbol{r}$
+\end_inset
+
+ implying an appreciation (
+\begin_inset Formula $d\boldsymbol{Q}$
+\end_inset
+
+<0)
+\end_layout
+
+\begin_layout Itemize
+Foreign goods become cheaper,
+ raises real income 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ More demand 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Less effective:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Appreciation of EXR implies expenditure switching,
+ so drop in NX
+\end_layout
+
+\begin_layout Itemize
+Multiplier effect 
+\begin_inset Formula $\bm{M}d\bm{Y}$
+\end_inset
+
+ is weaker in SOE since a share 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ is spend on foreign goods
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Ultimately,
+ a 
+\series bold
+quantitative
+\series default
+ 
+\series bold
+question
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+...
+ but some analytical results in paper,
+ for instance:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In limit 
+\begin_inset Formula $\alpha\rightarrow1$
+\end_inset
+
+ (fully open economy) HANK/RANK equivalence since multiplier effects do not matter
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fiscal spending shocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Main result with deficit financed G shock:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+linewidth]{figs/FiscalIHANKMain.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Relatively similar fiscal multiplier
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HANK produces 
+\series bold
+much 
+\series default
+larger C response
+\end_layout
+
+\begin_layout Itemize
+...
+ But this gets counteracted by larger drop in net exports
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fiscal spending shocks - openness
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How does fiscal multiplier vary with openness 
+\begin_inset Formula $\alpha$
+\end_inset
+
+?
+ (plot IRFs for first and third quartile of 
+\begin_inset Formula $\frac{Imports}{GDP}$
+\end_inset
+
+ across sample of OECD countries.)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/FiscalPolAlpha.png}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Foreign Demand Shocks
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Foreign Demand Shocks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+So far:
+ How HANK affects transmission of 
+\series bold
+policy
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Now:
+ How does HANK affect transmission of 
+\series bold
+shocks/disurbances
+\series default
+?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Focus on a shock to 
+\series bold
+foreign demand for domestic goods
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+E.g.
+ how does a recession in germany affect Denmark via trade spillovers?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Turns out to have important implications for transmission with HA as opposed to RA
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Main ref:
+ Druedahl,
+ Ravn,
+ Sunder-Plassmann,
+ Sundram,
+ & Waldstrøm
+\emph on
+ 
+\emph default
+(2024) 
+\begin_inset Quotes ald
+\end_inset
+
+The Transmission of Foreign Demand Shocks
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Other shocks often studied in open economy context:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Foreign monetary policy shocks
+\end_layout
+
+\begin_layout Itemize
+Capital flow shocks (
+\begin_inset Quotes ald
+\end_inset
+
+sudden stops
+\begin_inset Quotes ard
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Import price shocks
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivaton
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Motivation:
+ Go back to international Kenyesian Cross with foreign demand 
+\begin_inset Formula $\boldsymbol{M}^{*}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d\bm{Y}=(1-\alpha)\bm{M}^{r}d\bm{r}+(1-\alpha)\bm{M}d\bm{Y}+\chi\frac{\alpha}{1-\alpha}d\bm{Q}-\alpha\bm{M}d\bm{Q}+\alpha d\boldsymbol{M}^{\ast}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Can solve this for response of 
+\begin_inset Formula $\boldsymbol{C}$
+\end_inset
+
+ (see appendix):
+ 
+\begin_inset Formula 
+\[
+d\bm{C}=\Big[\underbrace{\bm{M}}_{\text{Labor income (\ensuremath{>0})}}+\underbrace{\frac{\alpha}{1-\alpha}\bm{M}\bm{G}^{Q,Y}}_{\text{Real income of EXR (\ensuremath{\lessgtr0})}}+\underbrace{\bm{M}^{r}\bm{G}^{r,Q}\bm{G}^{Q,Y}}_{\text{Intertemporal sub. (\ensuremath{<0})}}\Big]\mathcal{M}d\bm{M^{\ast}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+RANK with 
+\begin_inset Formula $\bm{M}\approx0$
+\end_inset
+
+ predicts 
+\begin_inset Formula $d\bm{C}>0$
+\end_inset
+
+ in response to a negative foreign demand shock 
+\begin_inset Formula $d\bm{M^{\ast}}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+HANK can potentially get 
+\begin_inset Formula $d\bm{C}<0$
+\end_inset
+
+ (
+\series bold
+co-movement
+\series default
+) if labor income channel is strong enough
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What is sign of 
+\begin_inset Formula $cov\left(d\bm{C},d\bm{M^{\ast}}\right)$
+\end_inset
+
+ empirically?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Empirical estimates of foreign demand shock
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Panel of 38 OECD contries,
+ focus on 31 SOE's 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Trade-weighted country 
+\begin_inset Formula $i$
+\end_inset
+
+ specific "foreign economy" 
+\begin_inset Formula $(Y_{i,t}^{*},\pi_{i,t}^{*},i_{i,t}^{*})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Use 
+\emph on
+sign-restrictions
+\emph default
+ to get foreign demand shock 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $dY_{i,t}^{*},d\pi_{i,t}^{*},di_{i,t}^{*}$
+\end_inset
+
+ all have same sign in first year
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Estimated foreign shock
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/fig_large.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Spillover effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Use estimated shock in foreign trading parters to estimate effects on domestic,
+ SOE economy
+\end_layout
+
+\begin_layout Itemize
+Estimate dyanmic OLS/LP 
+\begin_inset Formula $y_{c,t+h}=\beta_{h}i_{c,t}^{*}+\alpha_{h}\pi_{c,t}^{*}+\Theta_{h}M_{c,t}^{*}$
+\end_inset
+
+ where 
+\begin_inset Formula $y$
+\end_inset
+
+ = domestic outcomes (GDP,C ...) 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/fig_main.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Why foreign demand shocks?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Why focus specifically on a 
+\series bold
+foreign demand shock?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Provides very clean testable implications for HANK and RANK
+\end_layout
+
+\begin_layout Itemize
+domestic 
+\begin_inset Formula $r$
+\end_inset
+
+ increases in response to 
+\begin_inset Formula $d\boldsymbol{M}^{*}<0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Almost always the case since monetary policy does not face output/inflation tradeoff with demand shock
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Not true for foreign monetary policy shock or supply shock
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+What about domestic demand shock (G)?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Identification more difficult 
+\end_layout
+
+\begin_layout Itemize
+Literature ambiguous on whether C increases or decreases 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Next
+\series default
+:
+ Go to medium scale HANK model to see if we can replicate empirical evidence
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Model features:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two sectors (tradeable and non-tradeables) + input-output production structure
+\end_layout
+
+\begin_layout Itemize
+Government
+\end_layout
+
+\begin_layout Itemize
+Sticky prices and wages 
+\end_layout
+
+\begin_layout Itemize
+Dynamic trade elasticities 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Feed in estimated foreign demand shock,
+ compare with empirics
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Household block
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Household problem:
+\begin_inset Formula 
+\begin{alignat*}{1}
+V_{t}(e_{t},a_{t-1},\beta,s) & =\max_{c_{t},a_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\nu\frac{L_{s,t}^{1+\frac{1}{\varphi}}}{1+\frac{1}{\varphi}}+\beta_{t}\mathbb{E}_{t}\left[V_{t+1}(e_{t+1},a_{t},\beta,s)\right]\\
+ & \text{s.t.}\\
+c_{t}+a_{t} & =\left(1+r_{t}^{a}\right)a_{t-1}+\left(1-\tau_{t}\right)w_{s,t}L_{s,t}e_{t}+T_{t}\\
+a_{t} & \geq0\\
+\ln e_{t} & =\rho_{e}\ln e_{t-1}+\epsilon_{t}^{e},\quad\epsilon_{t}^{e}\sim\mathcal{N}\left(0,\sigma_{e}^{2}\right)
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Markov matrix for 
+\begin_inset Formula $s$
+\end_inset
+
+ is 
+\begin_inset Formula $P^{s}=\left[\begin{array}{cc}
+1 & 0\\
+0 & 1
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HHs cannot move sectors.
+ Harsh assumption,
+ but consistent with short-run dynamics.
+ Can alleviate by changing 
+\begin_inset Formula $P^{s}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Itemize
+Could also have endogoues sector choice at HH level 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model fit - floating
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Effects of foreign demand shock with a floating EXR
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{1cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.95
+\backslash
+linewidth]{figs/responses_no_capital_floating.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Decomposition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Decompose 
+\begin_inset Formula $d\boldsymbol{C}$
+\end_inset
+
+ into effects from interest rate,
+ labor income and capital gain effects
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/decomp_no_capital_floating.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model fit - floating /w investment
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+HANK response amplified by investment
+\end_layout
+
+\begin_layout Itemize
+Note:
+ Getting investment response right requires exogenous shock to investment
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/responses_floating.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fixed exchange rate
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+The Taylor rule is crucial to obtain 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$i_t 
+\backslash
+downarrow$
+\end_layout
+
+\end_inset
+
+,
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$r_t 
+\backslash
+downarrow$
+\end_layout
+
+\end_inset
+
+,
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$C_t 
+\backslash
+uparrow$
+\end_layout
+
+\end_inset
+
+ in RANK
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Does this mean that our result changes under a fixed exchange rate?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+No
+\series default
+!
+ UIP condition + Fisher equation:
+ 
+\begin_inset Formula 
+\begin{alignat*}{1}
+1+i_{t}=1+i_{t}^{*}\quad & \Leftrightarrow\quad1+r_{t}=\frac{1+i_{t}^{*}}{1+\pi_{t+1}}
+\end{alignat*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+A foreign demand shock entails a decline in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$i_t^*$
+\end_layout
+
+\end_inset
+
+ (in both model and data).
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+UIP forces central bank in SOE to reduce 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$i_t$
+\end_layout
+
+\end_inset
+
+,
+ so 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+$r_t 
+\backslash
+downarrow$ (unless $
+\backslash
+pi_{t+1} 
+\backslash
+downarrow 
+\backslash
+downarrow$)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model fit - fixed
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Similar outcomes with fixed EXR 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+vspace{0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{figure}[H]     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+centering      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.9
+\backslash
+linewidth]{figs/responses_fixed.pdf}      
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{figure}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Policy
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Foreign demand shock implies domestic recession for HHs in all sectors 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Welfare loss 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Exercise:
+ Calibrate policy shocks (monetary and fiscal policy seperatly) to stabilize agg.
+ 
+\begin_inset Formula $C$
+\end_inset
+
+ following foreign demand shock 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{table}[H]         
+\backslash
+centering         
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{tabular}{lrrr}         
+\backslash
+hline
+\backslash
+hline                            & $C$     & $C_T^{hh}$ & $C_{NT}^{hh}$ 
+\backslash
+
+\backslash
+         
+\backslash
+hline          
+\end_layout
+
+\begin_layout Plain Layout
+
+Foreign demand     & $-1.00$ & $-1.27$    & $-0.91$ 
+\backslash
+
+\backslash
+         
+\end_layout
+
+\begin_layout Plain Layout
+
+Public consumption & $1.00$  & $0.08$     & $1.32$ 
+\backslash
+
+\backslash
+         
+\end_layout
+
+\begin_layout Plain Layout
+
+Monetary policy    & $1.00$  & $1.01$     & $1.00$ 
+\backslash
+
+\backslash
+         
+\backslash
+hline
+\backslash
+hline          
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{tabular}     
+\backslash
+end{table}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Monetary policy has symmetric effects across sectors 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Well suited here
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+Fiscal policy loads on NT sector 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ Very asymmetric effects,
+ barely helps HHs in T sector
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Issues for countries fixed EXRs or in monetary unions 
+\end_layout
+
+\begin_layout Itemize
+Need targeted transfers
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Conclusion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How does heterogeneity affect transmission of shocks and policies in SOEs?
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Monetary policy - Likely to be less effective due to real income channel of EXR
+\end_layout
+
+\begin_layout Itemize
+Fiscal policy - Closer to RANK multipliers due to crowding out of NX
+\end_layout
+
+\begin_layout Itemize
+Foreign demand shocks - larger transmission to domestic spending 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IHANK - litterature
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Covered 3 papers here:
+ Other papers in the litterature on HANK in open economies include:
+\end_layout
+
+\begin_layout Enumerate
+
+\size footnotesize
+Guo,
+ X.,
+ Ottonello,
+ P.,
+ & Perez,
+ D.
+ J.
+ (2023) 
+\emph on
+Monetary policy and redistribution in open economies
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Redistributional effects of monetary policy in SOEs
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+Aggarwal,
+ R.,
+ Auclert,
+ A.,
+ Rognlie,
+ M.,
+ & Straub,
+ L.
+ (2023).
+ 
+\emph on
+Excess savings and twin deficits:
+ The transmission of fiscal stimulus in open economies
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Fiscal stimulus in a multi-country model 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+De Ferra,
+ S.,
+ Mitman,
+ K.,
+ & Romei,
+ F.
+ (2020).
+ 
+\emph on
+Household heterogeneity and the transmission of foreign shocks
+\emph default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Effects of exchange rate depreciations when HHs have foreign currency debt 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\size footnotesize
+Bayer,
+ C.,
+ Kriwoluzky,
+ A.,
+ Müller,
+ G.
+ J.,
+ & Seyrich,
+ F.
+ (2024).
+ 
+\emph on
+A HANK
+\begin_inset Formula $^{2}$
+\end_inset
+
+ model of monetary unions
+\emph default
+.
+ Journal of Monetary Economics 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\size footnotesize
+A 2-country HANK model
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Summary
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary and next week
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Today:
+ 
+\series default
+Small open economy HANK models
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Next week:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Advanced HANK topics (
+\series bold
+research frontier
+\series default
+)
+\end_layout
+
+\begin_layout Itemize
+Q&A
+\end_layout
+
+\begin_layout Itemize
+Exam
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Homework:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Work on assignment 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
