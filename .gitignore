@@ -132,3 +132,4 @@ dmypy.json
 *.lyx~
 *.lyx#
 *.pyc
+.DS_Store
