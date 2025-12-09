@@ -764,7 +764,7 @@ Policy functions (idiosyncratic + aggregate) are functions of states
 \begin_inset Formula 
 \[
 \left[\begin{array}{c}
-\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\mathcal{M}\left(\left[\begin{array}{c}
+\boldsymbol{X}_{t+1},\boldsymbol{Z}_{t+1},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\mathcal{M}\left(\left[\begin{array}{c}
 \boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t}\end{array}\right]^{\prime},\boldsymbol{\epsilon}_{t}\right)
 \]
 
@@ -840,7 +840,7 @@ History of aggregate shocks (without any truncation) determine current states
 \begin_inset Formula 
 \[
 \left[\begin{array}{c}
-\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\tilde{\mathcal{M}}\left(\boldsymbol{\epsilon}_{t},\boldsymbol{\epsilon}_{t-1},\boldsymbol{\epsilon}_{t-2},\dots\right)
+\boldsymbol{X}_{t+1},\boldsymbol{Z}_{t+1},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\tilde{\mathcal{M}}\left(\boldsymbol{\epsilon}_{t},\boldsymbol{\epsilon}_{t-1},\boldsymbol{\epsilon}_{t-2},\dots\right)
 \]
 
 \end_inset
@@ -892,7 +892,7 @@ Linearization in state space:
 \begin_inset Formula 
 \[
 \left[\begin{array}{c}
-\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\boldsymbol{A}\left[\begin{array}{c}
+\boldsymbol{X}_{t+1},\boldsymbol{Z}_{t+1},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\boldsymbol{A}\left[\begin{array}{c}
 \boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t}\end{array}\right]^{\prime}+\boldsymbol{B}\boldsymbol{\epsilon}_{t}
 \]
 
@@ -965,7 +965,7 @@ Insight:
  
 \series default
 \emph on
-The IRF from an MIT shock is 
+The first-order IRF from an MIT shock is 
 \bar under
 equivalent
 \bar default
@@ -1225,6 +1225,19 @@ Taxes:
 \begin_layout Itemize
 
 \series bold
+Unions:
+
+\series default
+ 
+\begin_inset Formula $\ell_{t}=L_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
 Disposable income:
 
 \series default
@@ -1241,7 +1254,7 @@ Disposable income:
 Market clearing:
 \begin_inset Formula 
 \begin{align*}
-d\boldsymbol{Y} & =d\boldsymbol{G}+d\boldsymbol{C}\\
+d\boldsymbol{Y} & =d\boldsymbol{G}+d\boldsymbol{C}^{hh}\\
  & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Z}\\
  & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}\left[d\boldsymbol{Y}-d\boldsymbol{T}\right]
 \end{align*}
@@ -1358,7 +1371,7 @@ Uniqueness:
 Takeaway:
 
 \series default
- iMPCsin 
+ iMPCs in 
 \begin_inset Formula $\boldsymbol{M}$
 \end_inset
 
@@ -2087,6 +2100,11 @@ Glance at the central papers
 Optimize your Assignments I-III
 \end_layout
 
+\begin_layout Enumerate
+Look at the Exam for 2022,
+ 2023 and 2024 (in the Old folder)
+\end_layout
+
 \end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
@@ -2180,7 +2198,15 @@ Jacobians:
 First-order IRFs:
  
 \series default
-.find_IRFs(shocks=shocks)
+.find_IRFs(shocks=shocks) 
+\series bold
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series default
+.IRF 
 \end_layout
 
 \begin_deeper
@@ -2199,7 +2225,15 @@ shocks = {dx:dxpath} set x to ss.x+dxpath
 Non-linear response to MIT shock:
 
 \series default
- .find_transition_path(shocks=shocks)
+ .find_transition_path(shocks=shocks) 
+\series bold
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series default
+.path
 \end_layout
 
 \begin_layout Itemize
@@ -2251,7 +2285,7 @@ Let us look at the code.
 \end_layout
 
 \begin_layout Enumerate
-Compute the linear and non-linear IRF to a AR(1) real rate shock
+Compute the linear and non-linear IRFs to a AR(1) real rate shock
 \end_layout
 
 \begin_layout Enumerate
@@ -2263,7 +2297,7 @@ Plot household Jacobians
 \end_layout
 
 \begin_layout Enumerate
-Plot IRFs manually
+Plot linear and non-linear IRFs manually
 \end_layout
 
 \begin_layout Enumerate
@@ -2291,7 +2325,7 @@ Compute the linear and non-linear IRF to a custom real rate shock
 \end_layout
 
 \begin_layout Enumerate
-Target a specific output response
+Target a specific output response with government spending
 \end_layout
 
 \end_deeper
