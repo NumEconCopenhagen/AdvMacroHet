@@ -1,0 +1,2336 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usetheme[progressbar=frametitle,block=fill]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.6ex}
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\end_preamble
+\options t
+\use_default_options false
+\maintain_unincluded_children no
+\language english
+\language_package default
+\inputencoding utf8
+\fontencoding auto
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 10
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style danish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+title{14.
+ Exam and Perspectives}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+subtitle{Adv.
+ Macro:
+ Heterogenous Agent Models} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+author{Jeppe Druedahl}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{2025}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setbeamertemplate{footline}{} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+maketitle
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+addtocounter{framenumber}{-1}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{frame}<beamer>
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+frametitle{Plan}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents[]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{frame}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Learning outcomes
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Knowledge,
+ Skills and Competencies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+What do you need to know?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Understand and be able to use the 
+\emph on
+computational techniques
+\emph default
+ to solve and simulate heterogeneous agent models
+\end_layout
+
+\begin_layout Enumerate
+Understand and be able to discuss the 
+\emph on
+economic insights
+\emph default
+ heterogeneous agent models can provide
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Next:
+ 
+\series default
+Learning outcomes in Knowledge,
+ Skills and Competencies
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Knowledge
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size small
+Account for,
+ formulate and interpret precautionary saving models 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Account for stochastic and non-stochastic simulation methods 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Account for,
+ formulate and interpret general equilibrium models with ex ante and ex post heterogeneity,
+ idiosyncratic and aggregate risk,
+ and with and without pricing frictions 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Discuss the difference between the stationary equilibrium,
+ the transition path and the dynamic equilibrium 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Discuss the relationship between various equilibrium concepts and their solution methods
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Identify and account for methods for analyzing the dynamic distributional effects of long-run policy (e.g.
+ taxation and social security) and short-run policy (e.g.
+ monetary and fiscal policy)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Skills
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size small
+Solve precautionary saving problems with dynamic programming and simulate behavior with stochastic and non-stochastic techniques 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Solve general equilibrium models with ex ante and ex post heterogeneity,
+ idiosyncratic and aggregate risk,
+ and with and without pricing frictions (stationary equilibrium,
+ transition path,
+ dynamic equilibrium) 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Analyze dynamics of income and wealth inequality 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Analyze transitional and permanent structural changes (e.g.
+ inequality trends and the long-run decline in the interest rate) 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Analyze the dynamic distributional effects of long-run policy (e.g.
+ taxation and social security) and short-run policy (e.g.
+ monetary and fiscal policy)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Competencies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size small
+Independently formulate,
+ discuss and assess research on both the causes and effects of heterogeneity and risk for both long-run and short-run outcomes 
+\end_layout
+
+\begin_layout Enumerate
+
+\size small
+Discuss and assess the importance of how heterogeneity and risk is modeled for questions about both long-run and short-run dynamics
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Overview and perspectives
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Single-agent problems (
+\begin_inset Quotes ald
+\end_inset
+
+partial equilibrium
+\begin_inset Quotes ard
+\end_inset
+
+,
+ PE)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Focus:
+ 
+\series default
+Consumption-saving (and labor supply) of households
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Solution methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Value-Function Iteration (VFI)
+\end_layout
+
+\begin_layout Enumerate
+Endogenous Gridpoint method (EGM)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Simulation methods:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Monte Carlo
+\end_layout
+
+\begin_layout Enumerate
+Histogram
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Perspectives:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Multiple assets (liquidity,
+ riskiness,
+ durables,
+ housing)
+\end_layout
+
+\begin_layout Enumerate
+Similar analysis of 
+\emph on
+firm problems
+\end_layout
+
+\begin_layout Enumerate
+Closer link to 
+\emph on
+empirical observations
+\emph default
+ (life-cycle dynamics,
+ informational frictions,
+ behavioral biases,
+ social preferences,
+ norms)
+\end_layout
+
+\begin_layout Enumerate
+More 
+\emph on
+complex models
+\emph default
+ (solved with e.g.
+ 
+\begin_inset Quotes ald
+\end_inset
+
+deep learning
+\begin_inset Quotes ard
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Stationary equilibrium
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Stationary:
+
+\series default
+ 
+\emph on
+Time-constant aggregate variables and distribution
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Fixed point problem:
+
+\series default
+ Choose all parameters (and normalizations) and search for prices or aggregate quantities
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Combined with calibration:
+ 
+\series default
+Some parameters set residually and/or there are targets beyond market clearing (e.g.
+ MPC)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Comparative statics:
+ 
+\series default
+How does equilibrium outcomes change when one or more parameters change?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Keep all other parameters (and normalizations) fixed
+\end_layout
+
+\begin_layout Enumerate
+Re-solve fixed point problem for prices or aggregate quantities
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Perspective:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Always a good starting point for analyzing dynamics
+\end_layout
+
+\begin_layout Enumerate
+Understanding of average outcomes in 
+\begin_inset Quotes ald
+\end_inset
+
+stable periods
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Deeper 
+\begin_inset Quotes ald
+\end_inset
+
+welfare analysis
+\begin_inset Quotes ard
+\end_inset
+
+ (maximization of social welfare function)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Dynamic equilibrium:
+ Aggregate risk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Canonical state-space form with aggregate risk:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+States summarize all relevant information
+\end_layout
+
+\begin_layout Enumerate
+Policy functions (idiosyncratic + aggregate) are functions of states
+\size small
+
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\mathcal{M}\left(\left[\begin{array}{c}
+\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t}\end{array}\right]^{\prime},\boldsymbol{\epsilon}_{t}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Expectations are hard:
+\end_layout
+
+\begin_layout Itemize
+Depend on current state (high-dimensional)
+\end_layout
+
+\begin_layout Itemize
+Requires knowing 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ (perceived law-of-motion,
+ PLM)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Fluctuations:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Volatility of shocks 
+\begin_inset Formula $\rightarrow0$
+\end_inset
+
+:
+ Deterministic steady state (DSS)
+\end_layout
+
+\begin_layout Enumerate
+Realization of shocks 
+\begin_inset Formula $\rightarrow0$
+\end_inset
+
+:
+ Stochastic steady state (SSS)
+\end_layout
+
+\begin_layout Enumerate
+Otherwise:
+ Convergence to 
+\emph on
+ergodic distribution
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Moving average form:
+ 
+\series default
+History of aggregate shocks (without any truncation) determine current states 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\tilde{\mathcal{M}}\left(\boldsymbol{\epsilon}_{t},\boldsymbol{\epsilon}_{t-1},\boldsymbol{\epsilon}_{t-2},\dots\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\series bold
+Solve on MA form:
+
+\series default
+ Azinovic-Yand and Žemlička (2025,
+ Sep 16)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sequence space
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Linearization in state space:
+\series default
+\size small
+
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\boldsymbol{A}\left[\begin{array}{c}
+\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t}\end{array}\right]^{\prime}+\boldsymbol{B}\boldsymbol{\epsilon}_{t}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Sequence space:
+ 
+\series default
+Perfect foresight wrt.
+ aggregate variables
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Behavior depend on:
+\end_layout
+
+\begin_layout Enumerate
+Idiosyncratic state variables
+\end_layout
+
+\begin_layout Enumerate
+Current value and expected distribution of relevant 
+\begin_inset Quotes ald
+\end_inset
+
+prices
+\begin_inset Quotes ard
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ collapses to sequence (time-path) of relevant 
+\begin_inset Quotes ald
+\end_inset
+
+prices
+\begin_inset Quotes ard
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+MIT shock:
+ 
+\series default
+One-time shock in a perfect foresight model
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Insight:
+ 
+\series default
+\emph on
+The IRF from an MIT shock is 
+\bar under
+equivalent
+\bar default
+ to the IRF in a model with aggregate risk,
+ which is linearized in the aggregate variables
+\emph default
+ (Boppart et.
+ al.,
+ 2018)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+GE and Household Jacobians
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Target equation system 
+\series default
+with implicit truncation
+\begin_inset Formula 
+\[
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=\boldsymbol{0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+First-order IRF to 
+\begin_inset Formula $d\boldsymbol{Z}$
+\end_inset
+
+:
+ 
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=-\boldsymbol{H}_{\boldsymbol{U}}^{-1}\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}
+\end{align*}
+
+\end_inset
+
+All other variables:
+ Easy with 
+\begin_inset Formula $d\boldsymbol{U}$
+\end_inset
+
+ (and 
+\begin_inset Formula $d\boldsymbol{Z}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Non-linear transition path:
+ 
+\series default
+Fully solve 
+\begin_inset Formula $\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z}_{ss}+d\boldsymbol{Z})=\boldsymbol{0}$
+\end_inset
+
+ with quasi-Newton method initially using 
+\begin_inset Formula $\boldsymbol{H}_{\boldsymbol{U}}$
+\end_inset
+
+ for updating guesses
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Calculation of derivatives:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Derivatives of aggregate equations found with numerical derivative
+\end_layout
+
+\begin_layout Enumerate
+Derivatives of household block found with fake-news algorithm
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Backward:
+ Only time to shock matters
+\end_layout
+
+\begin_layout Enumerate
+Forward:
+ Apply chain-rule to reduce computation burden
+\begin_inset Newline newline
+\end_inset
+
+(parallelization is an alternative,
+ especially in more complex models)
+\end_layout
+
+\end_deeper
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Aggregate consumption function
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Household problem
+\series default
+
+\begin_inset Formula 
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
+\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+(1-\tau_{t})w_{t}\ell_{t}z_{t}\\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\\
+a_{t} & \geq0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Consumption function:
+\begin_inset Formula 
+\begin{align*}
+C_{t}^{hh} & =C^{hh}\left(\{r_{s},\tau_{s},w_{s},\ell_{s}\}_{s\geq0}\right)\Rightarrow\\
+\boldsymbol{C}^{hh} & =C^{hh}(\boldsymbol{r},\boldsymbol{\tau},\boldsymbol{w},\boldsymbol{\ell})\Rightarrow\\
+d\boldsymbol{C}^{hh} & =\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}^{\tau}d\boldsymbol{\tau}+\boldsymbol{M}^{w}d\boldsymbol{w}+\boldsymbol{M}^{\ell}d\boldsymbol{\ell}
+\end{align*}
+
+\end_inset
+
+
+\series default
+where 
+\begin_inset Formula $\boldsymbol{M}^{x}=\left[\partial C_{t}/\partial x_{s}\right]_{ts}$
+\end_inset
+
+ or with 
+\begin_inset Formula $Z_{t}\equiv(1-\tau_{t})w_{t}\ell_{t}$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+d\boldsymbol{C}^{hh}=\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Z}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Intertemporal Keynesian Cross I
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Linear production:
+
+\series default
+ 
+\begin_inset Formula $Y_{t}=w_{t}L_{t}$
+\end_inset
+
+ with 
+\begin_inset Formula $\int\ell_{t}d\boldsymbol{D}_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Taxes:
+
+\series default
+ 
+\begin_inset Formula $T_{t}=\tau_{t}w_{t}L_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Disposable income:
+
+\series default
+ 
+\begin_inset Formula $Z_{t}=Y_{t}-T_{t}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Market clearing:
+\begin_inset Formula 
+\begin{align*}
+d\boldsymbol{Y} & =d\boldsymbol{G}+d\boldsymbol{C}\\
+ & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Z}\\
+ & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}\left[d\boldsymbol{Y}-d\boldsymbol{T}\right]
+\end{align*}
+
+\end_inset
+
+
+\series default
+Requirement:
+ 
+\begin_inset Formula $\sum_{t=0}^{\infty}(1+r_{ss})^{-t}(dG_{t}-dT_{t})=0$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Alternative:
+ Specify explicit policy rule for 
+\begin_inset Formula $d\boldsymbol{T}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Intertemporal Keynesian Cross II
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Market clearing:
+\begin_inset Formula 
+\begin{align*}
+d\boldsymbol{Y} & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}\left[d\boldsymbol{Y}-d\boldsymbol{T}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Intertemporal Keynesian Cross:
+ 
+\series default
+
+\begin_inset Formula $d\boldsymbol{r}=0$
+\end_inset
+
+ implies
+\series bold
+
+\begin_inset Formula 
+\begin{align*}
+d\boldsymbol{Y} & =d\boldsymbol{G}+\boldsymbol{M}\left[d\boldsymbol{Y}-d\boldsymbol{T}\right]\Leftrightarrow\\
+\left[\boldsymbol{I}-\boldsymbol{M}\right]d\boldsymbol{Y} & =d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}\Leftrightarrow\\
+d\boldsymbol{Y} & =\mathcal{M}\left[d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+where 
+\begin_inset Formula $\mathcal{M}\left[\boldsymbol{I}-\boldsymbol{M}\right]=\boldsymbol{I}$
+\end_inset
+
+ (left-inverse)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Uniqueness:
+
+\series default
+ Can be proven (single 
+\begin_inset Formula $\mathcal{M}$
+\end_inset
+
+ imply bounded solution)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Takeaway:
+
+\series default
+ iMPCsin 
+\begin_inset Formula $\boldsymbol{M}$
+\end_inset
+
+ (+ policy rule determining 
+\begin_inset Formula $d\boldsymbol{T}$
+\end_inset
+
+) are sufficient statistics for fiscal multipliers.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+From HANC to HANK
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+HANC:
+ 
+\series default
+\emph on
+The real interest must ensure market clearing
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Production:
+ Endogenous labor supply and/or capital accumulation
+\end_layout
+
+\begin_layout Enumerate
+Exchange:
+ Endowment or exogenous labor supply 
+\begin_inset Formula $\div$
+\end_inset
+
+ capital acc.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Canonical HANK with demand-determined labor supply:
+\series default
+\emph on
+
+\begin_inset Newline newline
+\end_inset
+
+CB controls real rate and output adjust to market clearing
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Households and government:
+ Exogenous labor supply without capital accumulation 
+\begin_inset Formula $\sim$
+\end_inset
+
+ HANC exchange economy 
+\end_layout
+
+\begin_layout Enumerate
+Central bank and production:
+ Taylor-rule and New Keynesian Wage Phillips Curve link real rate to output
+\end_layout
+
+\begin_layout Enumerate
+Labor market and union/search-and-matching:
+ Link output to idiosyncratic income process
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Sticky prices,
+ but fully flexible wages
+\series default
+:
+ Empirically unrealistic large wealth effects on labor supply
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+More sticky wages than profits:
+
+\series default
+ Pro-cyclical profits
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Transition path
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Transition path
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Temporary shock:
+ Non-linear IRF
+\end_layout
+
+\begin_layout Enumerate
+Permanent shock:
+ Transition to new stationary equilibrium
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Welfare analysis conditional on initial state
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+Example:
+ Looser borrowing constraint
+\end_layout
+
+\begin_layout Enumerate
+Larger choice set 
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ higher utility
+\end_layout
+
+\begin_layout Enumerate
+Lower utility in stationary equilibrium possible due to dissaving...
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Details:
+
+\series default
+ Policy tools (e.g.
+ restricted by functional forms) and degree of commitment (time-consistency)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+More complex models:
+ 
+\series default
+New mechanisms?
+ Inequality outcomes?
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Life-cycle and demographics
+\end_layout
+
+\begin_layout Enumerate
+Spatial dimension
+\end_layout
+
+\begin_layout Enumerate
+Structural transformation 
+\size footnotesize
+(agriculture 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ manufacturing 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ services)
+\end_layout
+
+\begin_layout Enumerate
+AI and automation
+\end_layout
+
+\begin_layout Enumerate
+Climate
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Computationally:
+ 
+\series default
+\emph on
+Imprecise solution become an issue
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Limitation of sequence space approach
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+First-order approximation:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Around deterministic steady state (DSS)
+\end_layout
+
+\begin_layout Enumerate
+No state and size-dependence of IRFs
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+(the non-linear transition path to a MIT shock has size-dependence)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Second-order approximation:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Around stochastic steady state (SSS)
+\end_layout
+
+\begin_layout Enumerate
+Can be derived from MIT shock 
+\size footnotesize
+(Auclert,
+ Rognlie,
+ Straub,
+ SED2025)
+\end_layout
+
+\begin_layout Enumerate
+Approximation need not be better
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Full dynamic equilibrium:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Distribution affected by previous aggregate shocks
+\begin_inset Newline newline
+\end_inset
+
+(e.g.
+ distribution of fixed rate mortgage contracts)
+\end_layout
+
+\begin_layout Enumerate
+Feedback effects from policy
+\begin_inset Newline newline
+\end_inset
+
+(e.g.
+ lower self-insurance with counter-cyclical UI)
+\end_layout
+
+\begin_layout Enumerate
+Directly allow for fully non-linear dynamics
+\begin_inset Newline newline
+\end_inset
+
+(e.g.
+ zero lower bound,
+ capacity constraints etc.)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Business cycle questions
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Importance of heterogeneity for business cycles:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Some aggregate neutrality results - still distributional concerns
+\end_layout
+
+\begin_layout Enumerate
+Size of mechanisms are different - cash-flow effects important
+\end_layout
+
+\begin_layout Enumerate
+High MPC and precautionary saving become of central importance
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Investment:
+ 
+\series default
+Still not strongly demand-driven
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Positive correlation from investment shocks
+\begin_inset Newline newline
+\end_inset
+
+(due to cash-flow effects and less precautionary saving)
+\end_layout
+
+\begin_layout Enumerate
+Negative correlation from consumption (due higher real rate)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Other open questions:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Imperfect information and behavioral biases 
+\size footnotesize
+(e.g.
+ wage negotiation in inflation surges,
+ experimental/survey evidence)
+\end_layout
+
+\begin_layout Enumerate
+Asymmetric fluctuations 
+\size footnotesize
+(plucking models,
+ efficient unemployment) 
+\end_layout
+
+\begin_layout Enumerate
+Fundamental uncertainty 
+\size footnotesize
+(inflation due to demand or supply?)
+\end_layout
+
+\begin_layout Enumerate
+Coordination problems 
+\size footnotesize
+(Walras 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ search-and-matching 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ ?
+ 
+\begin_inset Formula $\sim$
+\end_inset
+
+ agent-based)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exam
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exam
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Exam:
+ 
+\series default
+Similar to assignment I-II
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\series bold
+Starting point:
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Model definition in .py-files which can run
+\end_layout
+
+\begin_layout Enumerate
+Notebook with pre-defined structure and some plotting functions
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Code questions:
+
+\series default
+ Add a few lines of code in the right place
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Math questions:
+
+\series default
+ Derive analytical expressions
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Economic question:
+
+\series default
+ Interpret analytical and quantitative results
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Grading:
+ 
+\series default
+In relation to learning outcomes
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Correct and well-organized mathematical derivations and code
+\end_layout
+
+\begin_layout Enumerate
+Clear presentation of results (e.g.
+ in figures and tables)
+\end_layout
+
+\begin_layout Enumerate
+Clear and precise text stating the economic conclusions
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Portfolio:
+ 
+\series default
+Assignment I-III test the same learning outcomes 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\sim$
+\end_inset
+
+ floor under not having understood some learning outcome
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Time pressure (36 hours):
+ 
+\series default
+More questions than in previous years
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+More comprehensive starting point
+\end_layout
+
+\begin_layout Enumerate
+More step-by-step questions
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<+->
+\end_layout
+
+\end_inset
+
+
+\series bold
+Code not working:
+ 
+\series default
+Describe in words what you have tried to do
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Hand-in
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename figs/handin.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Preparing for the exam
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Read through slides and study the accompanying code and go through the exercises
+\end_layout
+
+\begin_layout Enumerate
+Read the documentation for GEModelTools
+\end_layout
+
+\begin_layout Enumerate
+Glance at the central papers
+\end_layout
+
+\begin_layout Enumerate
+Optimize your Assignments I-III
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+GEModelTools
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+GEModelTools
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Files:
+ 
+\series default
+MODELNAME.py importing blocks.py,
+ household_problem.py,
+ steady_state.py
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Steady state:
+
+\series default
+ .find_ss() 
+\series bold
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+ 
+\series default
+.ss 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tests:
+ 
+\series default
+.test_ss(),
+ .test_path(),
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Jacobians:
+ 
+\series default
+.compute_jacs(skip_hh=False,skip_shocks=False) 
+\series bold
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\series default
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+.jac and .jac_hh
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+First-order IRFs:
+ 
+\series default
+.find_IRFs(shocks=shocks)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+shocks = ['x'] set x to AR(1) with jump_x and rho_x
+\end_layout
+
+\begin_layout Enumerate
+shocks = {dx:dxpath} set x to ss.x+dxpath
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Non-linear response to MIT shock:
+
+\series default
+ .find_transition_path(shocks=shocks)
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Decomposition of household response:
+
+\series default
+ .decompose_hh_path
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Troubleshooting in GEModelTools:
+
+\series default
+ Check examples in notebook repository + look in documentation or source code
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+HANK-sticky-wages
+\backslash
+simplified
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+Let us look at the code.
+\end_layout
+
+\begin_layout Enumerate
+Compute the linear and non-linear IRF to a AR(1) real rate shock
+\end_layout
+
+\begin_layout Enumerate
+Verify clearing of asset or goods market does not matter
+\end_layout
+
+\begin_layout Enumerate
+Plot household Jacobians
+\end_layout
+
+\begin_layout Enumerate
+Plot IRFs manually
+\end_layout
+
+\begin_layout Enumerate
+Introduce multiple 
+\begin_inset Formula $\beta$
+\end_inset
+
+ types
+\end_layout
+
+\begin_layout Enumerate
+Calibrate 
+\begin_inset Formula $B_{ss}$
+\end_inset
+
+ to an MPC target
+\end_layout
+
+\begin_layout Enumerate
+Change to a balanced budget
+\end_layout
+
+\begin_layout Enumerate
+Compute the linear and non-linear IRF to a custom real rate shock
+\end_layout
+
+\begin_layout Enumerate
+Target a specific output response
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Exam from 2023
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Exam from 2023
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\emph on
+Look at the exam from 2023
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
