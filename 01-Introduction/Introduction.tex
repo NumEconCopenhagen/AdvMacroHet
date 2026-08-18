@@ -1,0 +1,560 @@
+%% LyX 2.5.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[10pt,english,t,10pt]{beamer}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{tocdepth}{1}
+\usepackage{babel}
+\usepackage[authoryear]{natbib}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\ifx\hypersetup\undefined
+  \AtBeginDocument{%
+    \hypersetup{}
+  }
+\else
+  \hypersetup{}
+\fi
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\begin{document}
+\title{1. Introduction\vspace{-2mm}}
+\subtitle{Adv. Macro: Heterogenous Agent Models}
+\author{Raphaël Huleux}
+\date{2026}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+\maketitle
+\end{frame}
+}
+
+\addtocounter{framenumber}{-1}
+
+\begin{frame}<beamer>
+\frametitle{Plan}
+\tableofcontents[]
+\end{frame}
+
+\section{Introduction}
+\begin{frame}{Introduction}
+\vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Teacher: }Raphaël Huleux
+\item <+->\textbf{Central economic questions:}\vspace{1mm}
+\begin{enumerate}
+\item <+->What role does heterogeneity play for understanding consumption-saving
+dynamics in partial equilibrium?\\
+(incl. single-agent problems)\vspace{1mm}
+\item <+->What role does heterogeneity play for understanding\\
+secular trends in general equilibrium?\vspace{1mm}
+\item <+->What explains the level and dynamics of heterogeneity/inequality?\vspace{1mm}
+\item <+->What role does heterogeneity play for understanding business-cycle
+fluctuations in general equilibrium?\vspace{1mm}
+\end{enumerate}
+\item <+->\textbf{Central technical method:} Programming in Python
+
+\textbf{Prerequisite:} \emph{Intro. to Programming and Numerical Analysis}
+
+\textbf{Complicated:} \emph{Close to the research frontier}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Macroeconomic Models with Heterogeneous Agents}
+\begin{itemize}
+\item <+->\vspace{-2mm}\textbf{Model components:}
+\begin{enumerate}
+\item Optimizing individual agents (households + firms)
+\item Idiosyncratic and aggregate risk
+\item Information flows (who knows what when $\Rightarrow$ often everything)
+\item Market clearing (Walras vs. search-and-match)
+\end{enumerate}
+\item <+->\textbf{Insurance/markets:}
+
+\emph{Complete} $\rightarrow$ idiosyncratic risk insured away $\sim$
+representative agent
+
+\emph{Incomplete} $\rightarrow$ agents need to \emph{self-insure}
+\item <+->\textbf{Heterogeneity:}
+
+\emph{Ex ante }in\emph{ }preferences, abilities etc.
+
+\emph{Ex post} after realization of idiosyncratic shocks
+\item <+->\textbf{HANC: }Heterogeneous Agent \emph{Neo-Classical }model\\
+{\footnotesize (Aiyagari-Bewley-Hugget-Imrohoroglu or Standard Incomplete
+Markets model)}{\footnotesize\par}
+\item <+->\textbf{HANK: }Heterogeneous Agent \emph{New Keynesian} model\\
+(i.e. include price and wage setting frictions)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{History of heterogeneous agent macro}
+\begin{enumerate}
+\item Heathcote et al. (2009), >>Quantitative Macroeconomics with Heterogeneous
+Households<<
+\item Kaplan and Violante (2018), >>Microeconomic Heterogeneity and Macroeconomic
+Shocks<<
+\item Cherrier et al. (2023), >>Household Heterogeneity in Macroeconomic
+Models: A Historical Perspective<<
+\item Auclert et. al. (2025), >>Fiscal and Monetary Policy with Heterogeneous
+Agents<<
+\end{enumerate}
+\end{frame}
+%
+
+\section{Structure}
+\begin{frame}{Teaching method}
+\begin{itemize}
+\item <+->\textbf{Lectures: }Tuesday 12-15
+
+\textasciitilde 2 hours of >>normal<< lecture
+
+\textasciitilde 1 hour of code review and problem solving (no exercise
+classes)
+\item <+->\textbf{Content:}
+\begin{enumerate}
+\item Explanation of computational methods
+\item Exposition of central stylized results
+\item Code examples for central methods and mechanisms
+\item Discussion of research papers
+\end{enumerate}
+\item <+->\textbf{Material:}\vspace{1mm}
+
+{\small Web: }\textcolor{DarkRed}{{\small\href{https://sites.google.com/view/numeconcph-advmacrohet/}{sites.google.com/view/numeconcph-advmacrohet/}}}{\small\par}
+
+{\small Git: }\textcolor{DarkRed}{{\small\href{https://github.com/NumEconCopenhagen/AdvMacroHet}{github.com/numeconcopenhagen/adv-macro-het}}}{\small\par}
+\item <+->\textbf{Code:}
+\begin{enumerate}
+\item We provide code you will build upon
+\item Based on the \textcolor{DarkRed}{\href{https://github.com/NumEconCopenhagen/GEModelTools}{GEModelTools}}
+package
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Assignments and exam}
+\begin{itemize}
+\item <+->Individual \textbf{assignments }(hand-in on Absalon)
+\begin{enumerate}
+\item <+->\textbf{Assignment I}
+
+\uline{Deadline}: 23rd of October (\emph{must be approved before exam})
+\item <+->\textbf{Assignment II}
+
+\uline{Deadline}: 20th of November (\emph{must be approved before
+exam})
+\item <+->\textbf{Assignment III} with essay on a relevant model extension
+of own choice and a simple implementation
+
+\uline{Deadline for proposal}: 10th of December
+
+\uline{Deadline for peer feedback}: 14th of December (\emph{exam requirement})
+\end{enumerate}
+\item <+->All\textbf{ feedback }can be used to improve assignments before
+the exam
+\item <+->\textbf{Exam:}
+\begin{enumerate}
+\item Hand-in\textbf{ $3\times$assignments}
+\item \textbf{36 hour take-home:} Programming of new extension \\
++ analysis of model + interpretation of results
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Python}
+\begin{enumerate}
+\item \textbf{Assumed knowledge:} From \textcolor{DarkRed}{\href{https://sites.google.com/view/numeconcph-introprog/home}{Introduction to Programming and Numerical Analysis}}
+you are assumed to know the basics of
+\begin{enumerate}
+\item Python
+\item VSCode
+\item git
+\end{enumerate}
+\item \textbf{Updated Python:} Install (or re-install) newest Anaconda
+\item \textbf{Packages:}\texttt{ }{\small\texttt{pip install quantecon,
+EconModel, consav}}{\small\par}
+\item \textbf{GEMoodel tools:}
+\begin{enumerate}
+\item Clone the \texttt{GEModelTools} repository
+\item Locate repository in command prompt
+\item Run \texttt{pip install -e .}
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Course plan}
+\begin{itemize}
+\item \textbf{Lecture 1-2:} Consumption-saving models
+\item \textbf{Lecture 3-6:} General equilibrium model\\
+(stationary equilibrium + transition path)
+\item \textbf{Lecture 7:} Wealth inequality
+\item \textbf{Lecture 8-13:} HANK
+\item \textbf{Lecture 14:} Exam and perspectives
+\end{itemize}
+\end{frame}
+%
+
+\section{Learning goals}
+\begin{frame}{Knowledge}
+\begin{enumerate}
+\item {\small Account for, formulate and interpret precautionary saving models }{\small\par}
+\item {\small Account for stochastic and non-stochastic simulation methods }{\small\par}
+\item {\small Account for, formulate and interpret general equilibrium models
+with ex ante and ex post heterogeneity, idiosyncratic and aggregate
+risk, and with and without pricing frictions }{\small\par}
+\item {\small Discuss the difference between the stationary equilibrium,
+the transition path and the dynamic equilibrium }{\small\par}
+\item {\small Discuss the relationship between various equilibrium concepts
+and their solution methods}{\small\par}
+\item {\small Identify and account for methods for analyzing the dynamic
+distributional effects of long-run policy (e.g. taxation and social
+security) and short-run policy (e.g. monetary and fiscal policy)}{\small\par}
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Skills}
+\begin{enumerate}
+\item {\small Solve precautionary saving problems with dynamic programming
+and simulate behavior with stochastic and non-stochastic techniques }{\small\par}
+\item {\small Solve general equilibrium models with ex ante and ex post heterogeneity,
+idiosyncratic and aggregate risk, and with and without pricing frictions
+(stationary equilibrium, transition path, dynamic equilibrium) }{\small\par}
+\item {\small Analyze dynamics of income and wealth inequality }{\small\par}
+\item {\small Analyze transitional and permanent structural changes (e.g.
+inequality trends and the long-run decline in the interest rate) }{\small\par}
+\item {\small Analyze the dynamic distributional effects of long-run policy
+(e.g. taxation and social security) and short-run policy (e.g. monetary
+and fiscal policy)}{\small\par}
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Competencies}
+\begin{enumerate}
+\item {\small Independently formulate, discuss and assess research on both
+the causes and effects of heterogeneity and risk for both long-run
+and short-run outcomes }{\small\par}
+\item {\small Discuss and assess the importance of how heterogeneity and
+risk is modeled for questions about both long-run and short-run dynamics}{\small\par}
+\end{enumerate}
+\end{frame}
+%
+
+\section{Programming in Python}
+\begin{frame}[fragile]{Classes}
+\begin{itemize}
+\item A \textbf{class} defines the \textbf{type} of an object
+\begin{itemize}
+\item \lstinline{.attribute}, state
+\item \lstinline{.method()}, action (incl. changing self)
+\end{itemize}
+\item \textbf{Inheritance} (of methods) (\lstinline{class Child(Parent)})
+\end{itemize}
+\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+class Parent:
+    def __init__(self,value): self.value = value
+    def double(self): return self.value * 2
+
+class Child(Parent):
+    def half(self): return self.value / 2
+
+child = Child(10)
+print(child.value) # 10
+print(child.double()) # 20
+print(child.half()) # 5.0
+\end{lstlisting}
+\end{frame}
+%
+\begin{frame}[fragile]{References}
+\begin{itemize}
+\item \textbf{Variables are references to an instance of an object}
+\item \lstinline{=} \textbf{assigns a reference} (\emph{not a copy!})
+\end{itemize}
+\textbf{Question:} What does \lstinline{a} end up as? What if \lstinline{a = [1,2,3]}?
+
+\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+a = np.array([1,2,3])
+b = a
+c = a[1:] # slicing
+b[0] = 3 # indexing
+c[0] = 3
+\end{lstlisting}
+\end{frame}
+%
+\begin{frame}[fragile]{Types and in-place operations}
+\begin{itemize}
+\item \textbf{Atomic types:} \lstinline{int, float, str, bool,} etc.
+\item \textbf{Containers }\lstinline{list, tuple, dict, set, np.array,}
+etc.
+\item \textbf{Mutables} (e.g. \lstinline{list, np.array})\textbf{ }can
+change in-place
+\begin{enumerate}
+\item \textbf{In-place operators} (\lstinline{+=, -=} etc.)
+\item \textbf{Slicing}: \lstinline{x[:] = x + y}
+\end{enumerate}
+\item \textbf{Immutables} (e.g. atomic types and tuples) can never change
+\end{itemize}
+\textbf{Questions: }What does \lstinline{y} end up as?
+
+\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+x = np.array([1,2,3])
+y = x
+x += 1
+x[:] = x + 1
+x = x + 1
+\end{lstlisting}
+\end{frame}
+%
+\begin{frame}[fragile]{Functions and scope}
+\begin{itemize}
+\item \textbf{Functions are objects} (can e.g. be arguments in functions)
+
+Unlike in math:
+\begin{enumerate}
+\item Can change its arguments (side-effects)
+\item Can call itself (recursion)
+\end{enumerate}
+\item Decorators change function behavior (e.g. @numba.njit)
+\item Variables can both be \textbf{local scope }(good) or \textbf{global
+scope} (bad)
+\end{itemize}
+\textbf{Questions: }What is the output?
+
+\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+a = 1
+def f(x):
+	return x+a
+print(f(1))
+a = 2
+print(f(1))
+\end{lstlisting}
+\end{frame}
+%
+\begin{frame}[fragile]{Conditionals and loops}
+\begin{itemize}
+\item \textbf{Comparison }(\lstinline{==, !=, <, <=, not, and, or} etc.)
+\item \textbf{Conditionals }(\lstinline{if, elif, else})
+\item \textbf{Loops} (\lstinline{for, while, continue, break})
+\item \textbf{Convergence} (tolerance in optimizer or root-finder/equation-solver)
+\end{itemize}
+\textbf{Questions: }How could this be implemented with a \lstinline{while}
+loop?
+
+\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+x = x0
+for i in range(n):
+    y = evaluate(x)
+    if check(y): break
+    x = update(x,y)
+else:
+    raise ValueError('did not converge')
+\end{lstlisting}
+\end{frame}
+%
+\begin{frame}[fragile]{Decimal numbers are not exact}
+\begin{itemize}
+\item \textbf{Never use exactness for decimal numbers }
+\begin{itemize}
+\item Order of computation matter
+\item Best with numbers are around 1 (underflow and overflow)
+\end{itemize}
+\item Division, exp, log etc. are (costly) approximations
+\item \textbf{Function approximation and interpolation often needed}
+\end{itemize}
+\textbf{Questions: }Which are \lstinline{True} and which are \lstinline{False}?
+
+\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+print(0.1 + 0.2 == 0.3)
+print(0.5 + 0.5 == 1.0)
+print(np.isclose(0.1+0.2,0.3))
+print(np.isclose(1e-200*1e200*1e200*1e-200,1.0))
+print(np.isinf(1e-200*(1e200*1e200)*1e-200))
+print(np.isclose(1e200*(1e-200*1e-200)*1e200,0.0))
+\end{lstlisting}
+\end{frame}
+%
+\begin{frame}[fragile]{Pseudo random numbers}
+\begin{itemize}
+\item \textbf{Only one seed }(randomness not assured across seeds)
+\item State of random number generator can be reset
+\item \textbf{Monte Carlo} simulation and integration
+\begin{enumerate}
+\item Static alternative: Use \textbf{quadrature rules }
+\item Dynamic alternative: Discretize and derive \textbf{transition matrix}
+\end{enumerate}
+\end{itemize}
+\textbf{Questions: }What is \lstinline{z} equal to?
+
+\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+rng = np.random.default_rng(123)
+s = rng.bit_generator.state
+x = rng.normal(size=5)
+y = rng.normal(size=5)
+rng.bit_generator.state = s
+z = rng.normal(size=5)
+\end{lstlisting}
+\end{frame}
+%
+\begin{frame}{Documentation and debugging}
+\begin{itemize}
+\item \textbf{No code is self-explanatory} (for others, incl. future you)
+\item \textbf{Write documentation} (use \emph{github-copilot})
+\begin{enumerate}
+\item The comments explain humans what the code does.
+\item The code makes the computer do what the comments say
+\end{enumerate}
+\item Important \textbf{design patterns}:
+\begin{enumerate}
+\item Use namespaces (be aware of scope) and meaningful names
+\item No repetition of code-lines $\Rightarrow$ single-purpose functions/methods
+\item Use \lstinline{assert} (also print and plot intermediate results)
+\item Use \lstinline{try-except}
+\end{enumerate}
+\item \textbf{Run from top to bottom} (make \uline{\href{https://sites.google.com/view/numeconcph-introprog/guides/vscode}{shortcut}})
+
+Replication: \uline{\href{https://datacodestandard.org/}{datacodestandard.org}}
+\item \textbf{Debugging} (see 02. Debugging.ipynb)
+\begin{enumerate}
+\item Errors are (almost) always simple
+\item Go through code step-by-step (\emph{manually} or \emph{debugger})
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Numba and EconModelClass}
+\begin{itemize}
+\item \textbf{Numba:} Faster code (03. Numba.ipynb)
+\item \textbf{EconModel} (04. EconModelClass.ipynb)
+\begin{enumerate}
+\item Make it easy to write well-structured code
+\item Provide standard functionality for copying, saving and loading
+\item Provide an easy interface to call numba JIT compilled functions
+\item Provide an easy interface to call C++ functions\\
+(not relevant in this course)
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+
+\section{Consumption-Saving}
+\begin{frame}{Consumption-saving}
+
+\emph{We start on the slides for lecture 2}
+\end{frame}
+%
+
+\end{document}

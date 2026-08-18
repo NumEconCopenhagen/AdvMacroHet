@@ -1,0 +1,579 @@
+%% LyX 2.5.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[10pt,english,t]{beamer}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[authoryear]{natbib}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usetheme[progressbar=frametitle,block=fill]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\colorlet{DarkRed}{red!70!black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setlength{\metropolis@frametitle@padding}{1.6ex}
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{14. Exam and Perspectives}
+\subtitle{Adv. Macro: Heterogenous Agent Models} 
+\author{Raphaël Huleux}
+\date{2026}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+\maketitle
+\end{frame}
+}
+
+\addtocounter{framenumber}{-1}
+
+\begin{frame}<beamer>
+\frametitle{Plan}
+\tableofcontents[]
+\end{frame}
+
+\section{Learning outcomes}
+\begin{frame}{Knowledge, Skills and Competencies}
+\begin{itemize}
+\item \textbf{What do you need to know?}
+\begin{enumerate}
+\item Understand and be able to use the \emph{computational techniques}
+to solve and simulate heterogeneous agent models
+\item Understand and be able to discuss the \emph{economic insights} heterogeneous
+agent models can provide
+\end{enumerate}
+\item \textbf{Next: }Learning outcomes in Knowledge, Skills and Competencies
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Knowledge}
+\begin{enumerate}
+\item {\small Account for, formulate and interpret precautionary saving models }{\small\par}
+\item {\small Account for stochastic and non-stochastic simulation methods }{\small\par}
+\item {\small Account for, formulate and interpret general equilibrium models
+with ex ante and ex post heterogeneity, idiosyncratic and aggregate
+risk, and with and without pricing frictions }{\small\par}
+\item {\small Discuss the difference between the stationary equilibrium,
+the transition path and the dynamic equilibrium }{\small\par}
+\item {\small Discuss the relationship between various equilibrium concepts
+and their solution methods}{\small\par}
+\item {\small Identify and account for methods for analyzing the dynamic
+distributional effects of long-run policy (e.g. taxation and social
+security) and short-run policy (e.g. monetary and fiscal policy)}{\small\par}
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Skills}
+\begin{enumerate}
+\item {\small Solve precautionary saving problems with dynamic programming
+and simulate behavior with stochastic and non-stochastic techniques }{\small\par}
+\item {\small Solve general equilibrium models with ex ante and ex post heterogeneity,
+idiosyncratic and aggregate risk, and with and without pricing frictions
+(stationary equilibrium, transition path, dynamic equilibrium) }{\small\par}
+\item {\small Analyze dynamics of income and wealth inequality }{\small\par}
+\item {\small Analyze transitional and permanent structural changes (e.g.
+inequality trends and the long-run decline in the interest rate) }{\small\par}
+\item {\small Analyze the dynamic distributional effects of long-run policy
+(e.g. taxation and social security) and short-run policy (e.g. monetary
+and fiscal policy)}{\small\par}
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Competencies}
+\begin{enumerate}
+\item {\small Independently formulate, discuss and assess research on both
+the causes and effects of heterogeneity and risk for both long-run
+and short-run outcomes }{\small\par}
+\item {\small Discuss and assess the importance of how heterogeneity and
+risk is modeled for questions about both long-run and short-run dynamics}{\small\par}
+\end{enumerate}
+\end{frame}
+%
+
+\section{Overview and perspectives}
+\begin{frame}{Single-agent problems (>>partial equilibrium<<, PE)}
+\begin{itemize}
+\item \textbf{Focus: }Consumption-saving (and labor supply) of households
+\item \textbf{Solution methods:}
+\begin{enumerate}
+\item Value-Function Iteration (VFI)
+\item Endogenous Gridpoint method (EGM)
+\end{enumerate}
+\item \textbf{Simulation methods:}
+\begin{enumerate}
+\item Monte Carlo
+\item Histogram
+\end{enumerate}
+\item \textbf{Perspectives:}
+\begin{enumerate}
+\item Multiple assets (liquidity, riskiness, durables, housing)
+\item Similar analysis of \emph{firm problems}
+\item Closer link to \emph{empirical observations} (life-cycle dynamics,
+informational frictions, behavioral biases, social preferences, norms)
+\item More \emph{complex models} (solved with e.g. >>deep learning<<)
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Stationary equilibrium}
+\begin{itemize}
+\item \textbf{Stationary:} \emph{Time-constant aggregate variables and distribution}
+\begin{enumerate}
+\item \textbf{Fixed point problem:} Choose all parameters (and normalizations)
+and search for prices or aggregate quantities
+\item \textbf{Combined with calibration: }Some parameters set residually
+and/or there are targets beyond market clearing (e.g. MPC)
+\end{enumerate}
+\item \textbf{Comparative statics: }How does equilibrium outcomes change
+when one or more parameters change?
+\begin{enumerate}
+\item Keep all other parameters (and normalizations) fixed
+\item Re-solve fixed point problem for prices or aggregate quantities
+\end{enumerate}
+\item \textbf{Perspective:}
+\begin{enumerate}
+\item Always a good starting point for analyzing dynamics
+\item Understanding of average outcomes in >>stable periods<<
+\item Deeper >>welfare analysis<< (maximization of social welfare function)
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Dynamic equilibrium: Aggregate risk}
+\begin{itemize}
+\item \textbf{Canonical state-space form with aggregate risk:}
+\begin{enumerate}
+\item States summarize all relevant information
+\item Policy functions (idiosyncratic + aggregate) are functions of states{\small
+\[
+\left[\begin{array}{c}
+\boldsymbol{X}_{t+1},\boldsymbol{Z}_{t+1},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\mathcal{M}\left(\left[\begin{array}{c}
+\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t}\end{array}\right]^{\prime},\boldsymbol{\epsilon}_{t}\right)
+\]
+}{\small\par}
+
+Expectations are hard:
+\begin{itemize}
+\item Depend on current state (high-dimensional)
+\item Requires knowing $\mathcal{M}$ (perceived law-of-motion, PLM)
+\end{itemize}
+\end{enumerate}
+\item \textbf{Fluctuations:}
+\begin{enumerate}
+\item Volatility of shocks $\rightarrow0$: Deterministic steady state (DSS)
+\item Realization of shocks $\rightarrow0$: Stochastic steady state (SSS)
+\item Otherwise: Convergence to \emph{ergodic distribution}
+\end{enumerate}
+\item \textbf{Moving average form: }History of aggregate shocks (without
+any truncation) determine current states $\Rightarrow$
+\[
+\left[\begin{array}{c}
+\boldsymbol{X}_{t+1},\boldsymbol{Z}_{t+1},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\tilde{\mathcal{M}}\left(\boldsymbol{\epsilon}_{t},\boldsymbol{\epsilon}_{t-1},\boldsymbol{\epsilon}_{t-2},\dots\right)
+\]
+
+\textbf{Solve on MA form:} Azinovic-Yand and Žemlička (2025, Sep 16)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Sequence space}
+\begin{itemize}
+\item \textbf{Linearization in state space:}{\small
+\[
+\left[\begin{array}{c}
+\boldsymbol{X}_{t+1},\boldsymbol{Z}_{t+1},\underline{\boldsymbol{D}}_{t+1},\boldsymbol{Y}_{t}\end{array}\right]^{\prime}=\boldsymbol{A}\left[\begin{array}{c}
+\boldsymbol{X}_{t},\boldsymbol{Z}_{t},\underline{\boldsymbol{D}}_{t}\end{array}\right]^{\prime}+\boldsymbol{B}\boldsymbol{\epsilon}_{t}
+\]
+}{\small\par}
+\item \textbf{Sequence space: }Perfect foresight wrt. aggregate variables
+
+Behavior depend on:
+\begin{enumerate}
+\item Idiosyncratic state variables
+\item Current value and expected distribution of relevant >>prices<<\\
+$\Rightarrow$ collapses to sequence (time-path) of relevant >>prices<<
+\end{enumerate}
+\item \textbf{MIT shock: }One-time shock in a perfect foresight model
+\item \textbf{Insight: }\emph{The first-order IRF from an MIT shock is }\emph{\uline{equivalent}}\emph{
+to the IRF in a model with aggregate risk, which is linearized in
+the aggregate variables} (Boppart et. al., 2018)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{GE and Household Jacobians}
+\begin{itemize}
+\item \textbf{Target equation system }with implicit truncation
+\[
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=\boldsymbol{0}
+\]
+\item \textbf{First-order IRF to $d\boldsymbol{Z}$: }
+\begin{align*}
+\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z})=0\Rightarrow\boldsymbol{H}_{\boldsymbol{U}}d\boldsymbol{U}+\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}=0 & \Leftrightarrow d\boldsymbol{U}=-\boldsymbol{H}^{-1}_{\boldsymbol{U}}\boldsymbol{H}_{\boldsymbol{Z}}d\boldsymbol{Z}
+\end{align*}
+All other variables: Easy with $d\boldsymbol{U}$ (and $d\boldsymbol{Z}$)
+\item \textbf{Non-linear transition path: }Fully solve $\boldsymbol{H}(\boldsymbol{U},\boldsymbol{Z}_{ss}+d\boldsymbol{Z})=\boldsymbol{0}$
+with quasi-Newton method initially using $\boldsymbol{H}_{\boldsymbol{U}}$
+for updating guesses
+\item \textbf{Calculation of derivatives:}
+\begin{enumerate}
+\item Derivatives of aggregate equations found with numerical derivative
+\item Derivatives of household block found with fake-news algorithm
+\begin{enumerate}
+\item Backward: Only time to shock matters
+\item Forward: Apply chain-rule to reduce computation burden\\
+(parallelization is an alternative, especially in more complex models)
+\end{enumerate}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Aggregate consumption function}
+\begin{itemize}
+\item \textbf{Household problem}
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c^{1-\sigma}_{t}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
+\text{s.t. }a_{t}+c_{t} & =(1+r_{t})a_{t-1}+(1-\tau_{t})w_{t}\ell_{t}z_{t}\\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\\
+a_{t} & \geq0
+\end{align*}
+\item \textbf{Consumption function:
+\begin{align*}
+C^{hh}_{t} & =C^{hh}\left(\{r_{s},\tau_{s},w_{s},\ell_{s}\}_{s\geq0}\right)\Rightarrow\\
+\boldsymbol{C}^{hh} & =C^{hh}(\boldsymbol{r},\boldsymbol{\tau},\boldsymbol{w},\boldsymbol{\ell})\Rightarrow\\
+d\boldsymbol{C}^{hh} & =\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}^{\tau}d\boldsymbol{\tau}+\boldsymbol{M}^{w}d\boldsymbol{w}+\boldsymbol{M}^{\ell}d\boldsymbol{\ell}
+\end{align*}
+}where $\boldsymbol{M}^{x}=\left[\partial C_{t}/\partial x_{s}\right]_{ts}$
+or with $Z_{t}\equiv(1-\tau_{t})w_{t}\ell_{t}$
+\[
+d\boldsymbol{C}^{hh}=\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Z}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Intertemporal Keynesian Cross I}
+\begin{itemize}
+\item \textbf{Linear production:} $Y_{t}=w_{t}L_{t}$ with $\int\ell_{t}d\boldsymbol{D}_{t}$
+\item \textbf{Taxes:} $T_{t}=\tau_{t}w_{t}L_{t}$
+\item \textbf{Unions:} $\ell_{t}=L_{t}$
+\item \textbf{Disposable income:} $Z_{t}=Y_{t}-T_{t}$
+\item \textbf{Market clearing:
+\begin{align*}
+d\boldsymbol{Y} & =d\boldsymbol{G}+d\boldsymbol{C}^{hh}\\
+ & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}d\boldsymbol{Z}\\
+ & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}\left[d\boldsymbol{Y}-d\boldsymbol{T}\right]
+\end{align*}
+}Requirement: $\sum^{\infty}_{t=0}(1+r_{ss})^{-t}(dG_{t}-dT_{t})=0$
+
+Alternative: Specify explicit policy rule for $d\boldsymbol{T}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Intertemporal Keynesian Cross II}
+\begin{itemize}
+\item \textbf{Market clearing:
+\begin{align*}
+d\boldsymbol{Y} & =d\boldsymbol{G}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}\left[d\boldsymbol{Y}-d\boldsymbol{T}\right]
+\end{align*}
+}
+\item \textbf{Intertemporal Keynesian Cross: }$d\boldsymbol{r}=0$ implies\textbf{
+\begin{align*}
+d\boldsymbol{Y} & =d\boldsymbol{G}+\boldsymbol{M}\left[d\boldsymbol{Y}-d\boldsymbol{T}\right]\Leftrightarrow\\
+\left[\boldsymbol{I}-\boldsymbol{M}\right]d\boldsymbol{Y} & =d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}\Leftrightarrow\\
+d\boldsymbol{Y} & =\mathcal{M}\left[d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}\right]
+\end{align*}
+}
+
+where $\mathcal{M}\left[\boldsymbol{I}-\boldsymbol{M}\right]=\boldsymbol{I}$
+(left-inverse)
+\begin{itemize}
+\item \textbf{Uniqueness:} Can be proven (single $\mathcal{M}$ imply bounded
+solution)
+\item \textbf{Takeaway:} iMPCs in $\boldsymbol{M}$ (+ policy rule determining
+$d\boldsymbol{T}$) are sufficient statistics for fiscal multipliers.
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{From HANC to HANK}
+\begin{itemize}
+\item \textbf{HANC: }\emph{The real interest must ensure market clearing}
+\begin{enumerate}
+\item Production: Endogenous labor supply and/or capital accumulation
+\item Exchange: Endowment or exogenous labor supply $\div$ capital acc.
+\end{enumerate}
+\item \textbf{Canonical HANK with demand-determined labor supply:}\emph{}\\
+\emph{CB controls real rate and output adjust to market clearing}
+\begin{enumerate}
+\item Households and government: Exogenous labor supply without capital
+accumulation $\sim$ HANC exchange economy 
+\item Central bank and production: Taylor-rule and New Keynesian Wage Phillips
+Curve link real rate to output
+\item Labor market and union/search-and-matching: Link output to idiosyncratic
+income process
+\end{enumerate}
+\item \textbf{Sticky prices, but fully flexible wages}: Empirically unrealistic
+large wealth effects on labor supply
+\item \textbf{More sticky wages than profits:} Pro-cyclical profits
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Transition path}
+\begin{itemize}
+\item \textbf{Transition path}
+\begin{enumerate}
+\item Temporary shock: Non-linear IRF
+\item Permanent shock: Transition to new stationary equilibrium
+\end{enumerate}
+\item \textbf{Welfare analysis conditional on initial state}
+
+Example: Looser borrowing constraint
+\begin{enumerate}
+\item Larger choice set $\Rightarrow$ higher utility
+\item Lower utility in stationary equilibrium possible due to dissaving... 
+\end{enumerate}
+\textbf{Details:} Policy tools (e.g. restricted by functional forms)
+and degree of commitment (time-consistency)
+\item \textbf{More complex models: }New mechanisms? Inequality outcomes?
+\begin{enumerate}
+\item Life-cycle and demographics
+\item Spatial dimension
+\item Structural transformation {\footnotesize (agriculture $\rightarrow$
+manufacturing $\rightarrow$ services)}{\footnotesize\par}
+\item AI and automation
+\item Climate
+\end{enumerate}
+\item \textbf{Computationally: }\emph{Imprecise solution become an issue}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Limitation of sequence space approach}
+\begin{itemize}
+\item \textbf{First-order approximation:}
+\begin{enumerate}
+\item Around deterministic steady state (DSS)
+\item No state and size-dependence of IRFs
+
+(the non-linear transition path to a MIT shock has size-dependence)
+\end{enumerate}
+\item \textbf{Second-order approximation:}
+\begin{enumerate}
+\item Around stochastic steady state (SSS)
+\item Can be derived from MIT shock {\footnotesize (Auclert, Rognlie, Straub,
+SED2025)}{\footnotesize\par}
+\item Approximation need not be better
+\end{enumerate}
+\item \textbf{Full dynamic equilibrium:}
+\begin{enumerate}
+\item Distribution affected by previous aggregate shocks\\
+(e.g. distribution of fixed rate mortgage contracts)
+\item Feedback effects from policy\\
+(e.g. lower self-insurance with counter-cyclical UI)
+\item Directly allow for fully non-linear dynamics\\
+(e.g. zero lower bound, capacity constraints etc.)
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Business cycle questions}
+\begin{itemize}
+\item \textbf{Importance of heterogeneity for business cycles:}
+\begin{enumerate}
+\item Some aggregate neutrality results - still distributional concerns
+\item Size of mechanisms are different - cash-flow effects important
+\item High MPC and precautionary saving become of central importance
+\end{enumerate}
+\item \textbf{Investment: }Still not strongly demand-driven
+\begin{enumerate}
+\item Positive correlation from investment shocks\\
+(due to cash-flow effects and less precautionary saving)
+\item Negative correlation from consumption (due higher real rate)
+\end{enumerate}
+\item \textbf{Other open questions:}
+\begin{enumerate}
+\item Imperfect information and behavioral biases {\footnotesize (e.g. wage
+negotiation in inflation surges, experimental/survey evidence)}{\footnotesize\par}
+\item Asymmetric fluctuations {\footnotesize (plucking models, efficient
+unemployment) }{\footnotesize\par}
+\item Fundamental uncertainty {\footnotesize (inflation due to demand or
+supply?)}{\footnotesize\par}
+\item Coordination problems {\footnotesize (Walras $\rightarrow$ search-and-matching
+$\rightarrow$ ? $\sim$ agent-based)}{\footnotesize\par}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+
+\section{Exam}
+\begin{frame}{Exam}
+\begin{itemize}
+\item <+->\textbf{Exam: }Similar to assignment I-II
+\begin{enumerate}
+\item \textbf{Starting point: }
+\begin{enumerate}
+\item Model definition in .py-files which can run
+\item Notebook with pre-defined structure and some plotting functions
+\end{enumerate}
+\item \textbf{Code questions:} Add a few lines of code in the right place
+\item \textbf{Math questions:} Derive analytical expressions
+\item \textbf{Economic question:} Interpret analytical and quantitative
+results
+\end{enumerate}
+\item <+->\textbf{Grading: }In relation to learning outcomes
+\begin{enumerate}
+\item Correct and well-organized mathematical derivations and code
+\item Clear presentation of results (e.g. in figures and tables)
+\item Clear and precise text stating the economic conclusions
+\end{enumerate}
+\item <+->\textbf{Portfolio: }Assignment I-III test the same learning outcomes
+\\
+$\sim$ floor under not having understood some learning outcome
+\item <+->\textbf{Time pressure (36 hours): }More questions than in previous
+years
+\begin{enumerate}
+\item More comprehensive starting point
+\item More step-by-step questions
+\end{enumerate}
+\item <+->\textbf{Code not working: }Describe in words what you have tried
+to do
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Hand-in}
+
+\includegraphics[width=1\textwidth]{figs/handin}
+\end{frame}
+%
+\begin{frame}{Preparing for the exam}
+\begin{enumerate}
+\item Read through slides and study the accompanying code and go through
+the exercises
+\item Read the documentation for GEModelTools
+\item Glance at the central papers
+\item Optimize your Assignments I-III
+\item Look at the Exam for 2022, 2023 and 2024 (in the Old folder)
+\end{enumerate}
+\end{frame}
+%
+
+\section{GEModelTools}
+\begin{frame}{GEModelTools}
+\begin{itemize}
+\item \textbf{Files: }MODELNAME.py importing blocks.py, household\_problem.py,
+steady\_state.py
+\item \textbf{Steady state:} .find\_ss() \textbf{$\Rightarrow$ }.ss 
+\item \textbf{Tests: }.test\_ss(), .test\_path(),
+\item \textbf{Jacobians: }.compute\_jacs(skip\_hh=False,skip\_shocks=False)
+\textbf{$\Rightarrow$} 
+
+.jac and .jac\_hh
+\item \textbf{First-order IRFs: }.find\_IRFs(shocks=shocks) \textbf{$\Rightarrow$
+}.IRF 
+\begin{enumerate}
+\item shocks = {[}'x'{]} set x to AR(1) with jump\_x and rho\_x
+\item shocks = \{dx:dxpath\} set x to ss.x+dxpath
+\end{enumerate}
+\item \textbf{Non-linear response to MIT shock:} .find\_transition\_path(shocks=shocks)
+\textbf{$\Rightarrow$ }.path
+\item \textbf{Decomposition of household response:} .decompose\_hh\_path
+\item \textbf{Troubleshooting in GEModelTools:} Check examples in notebook
+repository + look in documentation or source code
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{HANK-sticky-wages\textbackslash simplified}
+
+\emph{Let us look at the code.}
+\begin{enumerate}
+\item Compute the linear and non-linear IRFs to a AR(1) real rate shock
+\item Verify clearing of asset or goods market does not matter
+\item Plot household Jacobians
+\item Plot linear and non-linear IRFs manually
+\item Introduce multiple $\beta$ types
+\item Calibrate $B_{ss}$ to an MPC target
+\item Change to a balanced budget
+\item Compute the linear and non-linear IRF to a custom real rate shock
+\item Target a specific output response with government spending
+\end{enumerate}
+\end{frame}
+%
+
+\section{Exam from 2023}
+\begin{frame}{Exam from 2023}
+
+\emph{Look at the exam from 2023}
+\end{frame}
+%
+
+\end{document}

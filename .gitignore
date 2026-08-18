@@ -1,3 +1,5 @@
+GEModelTools-notes.md
+CLAUDE.md
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -6,6 +8,7 @@ __pycache__/
 # C extensions
 *.so
 
+*.DS_Store
 # Distribution / packaging
 .Python
 build/
@@ -128,8 +131,29 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# custom 
+# custom
 *.lyx~
 *.lyx#
 *.pyc
 .DS_Store
+
+# LaTeX compilation output
+%AUXDIR%/
+*.synctex.gz
+*.synctex(busy)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+*.xdv

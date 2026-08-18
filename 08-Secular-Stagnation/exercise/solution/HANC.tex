@@ -1,0 +1,444 @@
+%% LyX 2.5.1 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,english]{article}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=3cm}
+\pagestyle{empty}
+\usepackage{setspace}
+\usepackage[authoryear]{natbib}
+\onehalfspacing
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% general
+\usepackage[titletoc]{appendix}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{tikz}
+
+% algorithm
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\IncMargin{2.5cm}
+\DecMargin{2cm}
+\usepackage{fullwidth}
+\usepackage{enumitem}
+\setlist{leftmargin=1.7cm}
+
+% tables
+\usepackage{tabularx, siunitx, multirow, booktabs}
+\begingroup
+% Allow `_` and `:` in macro names (LaTeX3 style)
+\catcode`\_=11
+\catcode`\:=11
+% Internal code of `S`
+\gdef\tabularxcolumn#1{%
+    >{\__siunitx_table_collect_begin:Nn S{} }%
+    p{#1}%  <- this is different (is `c` in normal `S`)
+    <{\__siunitx_table_print:}%
+}
+\endgroup
+
+% figures
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfloat]{position=top}
+
+% footnotes
+\setlength{\skip\footins}{1cm}
+\usepackage[hang,splitrule]{footmisc}
+\setlength{\footnotemargin}{0.3cm} %.5
+\setlength{\footnotesep}{0.4cm}
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+
+% manual
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{{\large\textsc{- GEModelTools -}}\textsc{}\\
+\textsc{Heterogeneous Agent }\\
+\textsc{NeoClassical Model (HANC)}}
+\author{Rapha\"el Huleux}
+\maketitle
+
+\section*{Model}
+
+We consider a \emph{closed} economy with heterogeneous agents and
+\emph{flexible prices} \emph{and wages}.
+
+Time is discrete and indexed by $t$. There is a continuum of households
+indexed $i$.
+
+\paragraph*{Households.}
+
+Households are heterogeneous \emph{ex ante} with respect to their
+discount factor, $\beta_{i}$, and \emph{ex post }with respect to
+their productivity, $z_{it}$, and assets, $a_{it-1}$. Each period
+household exogenously supply $\ell_{it}=z_{it}$ units of labor, and
+choose consumption $c_{it}$ subject to a no-borrowing constraint,
+$a_{it}\geq0$. Households have \emph{perfect foresight} wrt. to the
+interest rate and the wage rate, $\{r_{t},w_{t}\}^{\infty}_{t=0}$,
+and solve the problem
+\begin{align}
+v_{t}(\beta_{i},z_{it},a_{it-1}) & =\max_{a_{it},c_{it}}\frac{c^{1-\sigma}_{it}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(\beta_{i},z_{it+1},a_{it})\right]\label{eq:Bellman}\\
+ & \text{s.t.}\nonumber \\
+\ell_{it} & =z_{it}\nonumber \\
+a_{it}+c_{it} & =(1+r_{t})a_{it-1}+w_{it}z_{it}\nonumber \\
+\log z_{it} & =\rho_{z}\log z_{it-1}+\psi_{it}\,\,\,,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{it}]=1\,\nonumber \\
+a_{it} & \geq0,\nonumber 
+\end{align}
+where implicitly $v_{t}(\beta_{i},z_{it},a_{it-1})=v(\beta_{i},z_{it},a_{it-1},\{r_{\tau},w_{\tau}\}^{\infty}_{\tau=t})$. 
+
+We denote optimal policy functions by $a^{\ast}_{t}(\beta_{i},z_{it},a_{it-1})$,
+$\ell^{\ast}_{t}(\beta_{i},z_{it},a_{it-1})$, and $c^{\ast}_{t}(\beta_{i},z_{it},a_{it-1})$.
+The distribution of households \emph{before} the realization of idiosyncratic
+shocks, i.e. over $\beta_{i}$, $z_{it-1}$ and $a_{it-1}$, is denoted
+$\underline{\boldsymbol{D}}_{t}$. The distribution of households
+\emph{after} the realization idiosyncratic shocks, i.e. over $\beta_{i}$,
+$z_{it}$ and $a_{it-1}$, is denoted $\boldsymbol{D}_{t}$.
+
+Central aggregate variables are
+\begin{align}
+A^{hh}_{t} & =\int a^{\ast}_{t}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\label{eq:A_hh}\\
+ & =\boldsymbol{a}^{\ast\prime}_{t}\boldsymbol{D}_{t}\nonumber \\
+L^{hh}_{t} & =\int\ell^{\ast}_{t}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\label{eq:L_hh}\\
+ & =\boldsymbol{\ell}^{\ast\prime}_{t}\boldsymbol{D}_{t}\nonumber \\
+C^{hh}_{t} & =\int c^{\ast}_{t}(\beta_{i},z_{it},a_{it-1})d\boldsymbol{D}_{t}\label{eq:C_hh}\\
+ & =\boldsymbol{c}^{\ast\prime}_{t}\boldsymbol{D}_{t}.\nonumber 
+\end{align}
+To solve the model, we define the beginning-of-period value function
+as
+\begin{equation}
+\underline{v}_{t}\left(\beta_{i},z_{it-1},a_{it-1}\right)=\mathbb{E}_{t}\left[v_{t}(\beta_{i},z_{it},a_{it-1})\right].\label{eq:beginning-of-period-v}
+\end{equation}
+The \emph{envelope condition} implies
+\begin{equation}
+\underline{v}_{t,a}(\beta_{i}z_{it-1},a_{it-1})=\frac{\partial\underline{v}_{t}(\beta_{i}z_{it-1},a_{it-1})}{\partial a_{it-1}}=\mathbb{E}_{t}\left[(1+r_{t})c^{-\rho}_{it}\right].\label{eq:Envelope}
+\end{equation}
+The \emph{first condition} for consumption implies
+\begin{equation}
+c^{-\rho}_{it}=\beta\underline{v}_{t+1,a}(\beta_{i}z_{it},a_{it}).\label{eq:FOC}
+\end{equation}
+
+
+\paragraph*{Firms. }
+
+A representative firm rent capital, $K_{t-1}$, and hire labor, $L_{t}$,
+to produce goods, with the production function
+\begin{equation}
+Y_{t}=\Gamma_{t}K^{\alpha}_{t-1}L^{1-\alpha}_{t},\,\,\,\alpha\in(0,1),\label{eq:Y}
+\end{equation}
+where $\Gamma_{t}$ is technology and considered an exogenous shock.
+Capital depreciates with the rate $\delta$. Profit maximization by
+\[
+\max_{K_{t-1},L_{t}}Y_{t}-w_{t}L_{t}-r^{k}_{t}K_{t-1}
+\]
+,implies the standard pricing equations\textbf{
+\begin{align}
+r^{k}_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\text{\ensuremath{\alpha}-1}}\label{eq:rk}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha},\label{eq:w}
+\end{align}
+}where $r^{k}_{t}$ is rental rate of capital and $w_{t}$ is the
+wage rate. 
+
+\paragraph*{Mutual fund.}
+
+A zero-profit mutual fund owns all the capital. It take deposits from
+households, $A_{t}$, and pay a real return of $r_{t}=r^{k}_{t}-\delta$.
+It balance sheet is $A_{t}=K_{t}$.
+
+\paragraph*{Market clearing.}
+
+Market clearing requires
+\begin{align}
+\text{Capital: }K_{t} & =A_{t}=A^{hh}_{t}\label{eq:clearing_A}\\
+\text{Labour: }L_{t} & =L^{hh}_{t}=1\label{eq:clearing_L}\\
+\text{Goods: }Y_{t} & =C^{hh}_{t}+\underset{=I_{t}}{\underbrace{K_{t}-K_{t-1}+\delta K_{t-1}},}\label{eq:clearing_Y}
+\end{align}
+where $I_{t}$ is investment.
+
+\newpage{}
+
+\section*{Equation system}
+\begin{enumerate}
+\item Shocks: $\boldsymbol{Z}=\{\boldsymbol{\Gamma}\}$
+\item Unknowns: $\boldsymbol{U}=\{\boldsymbol{K},\boldsymbol{L}\}$
+\item Targets: $\{A_{t}-A^{hh}_{t}\}$ (asset market clearing) and $\{L_{t}-L^{hh}_{t}\}$
+(labor market clearing)
+\item Aggregate variables: $\boldsymbol{X}=\{\boldsymbol{\boldsymbol{\Gamma}},\boldsymbol{K},\boldsymbol{r},\boldsymbol{w},\boldsymbol{L},\boldsymbol{C},\boldsymbol{Y},\boldsymbol{A},\boldsymbol{A}^{hh},\boldsymbol{C}^{hh},\boldsymbol{L}^{hh}\}$
+\item Household inputs: $\boldsymbol{X}^{hh}_{t}=\{\boldsymbol{r},\boldsymbol{w}\}$
+\item Household outputs: $\boldsymbol{Y}^{hh}_{t}=\{\boldsymbol{A}^{hh},\boldsymbol{C}^{hh},\boldsymbol{L}^{hh}\}$
+\end{enumerate}
+This implies the equation system{\small
+\begin{align}
+\boldsymbol{H}(\boldsymbol{K},\boldsymbol{L},\boldsymbol{\Gamma}) & =\boldsymbol{0}\Leftrightarrow\label{eq:H_Ayagari}\\
+\left[\begin{array}{c}
+A_{t}-A^{hh}_{t}\\
+L_{t}-L^{hh}_{t}
+\end{array}\right] & =\left[\begin{array}{c}
+0\end{array}\right],\,\,\,\forall t\in\{0,1,\dots,T-1\},\nonumber 
+\end{align}
+}where we have
+\begin{align*}
+r_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}-\delta\\
+w_{t} & =(1-\alpha)\Gamma_{t}\left(\frac{r_{t}+\delta}{\alpha\Gamma_{t}}\right)^{\frac{\alpha}{\alpha-1}}\\
+A_{t} & =K_{t}\\
+A^{hh}_{t} & =\boldsymbol{a}^{\ast\prime}_{t}\boldsymbol{D}_{t}\\
+L^{hh}_{t} & =\boldsymbol{\ell}^{\ast\prime}_{t}\boldsymbol{D}_{t}\\
+\boldsymbol{D}_{t} & =\Pi^{\prime}_{z}\underline{\boldsymbol{D}}_{t}\\
+\underline{\boldsymbol{D}}_{t+1} & =\Lambda_{t}\boldsymbol{D}_{t}\\
+ & \boldsymbol{\underline{D}}_{0}\text{ is given}.
+\end{align*}
+
+
+\section*{\newpage Implementation}
+
+The \textbf{files }are: \lstinline{block.py}, \lstinline{household_problem.py},
+\lstinline{steady_state.py}, and \lstinline{HANCModel.py}.
+
+The results are produced in the \textbf{notebook} \lstinline{HANC.ipynb}. 
+
+The basic \textbf{model definition} is in \lstinline{HANCModel.py}:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+class HANCModelClass(EconModelClass,GEModelClass):    
+    def settings(self): ...
+    def setup(self): ...
+    def allocate(self): ...
+    prepare_hh_ss = steady_state.prepare_hh_ss
+    find_ss = steady_state.find_ss
+\end{lstlisting}\vspace{2mm}
+
+The \textbf{namespaces} are:
+\begin{itemize}
+\item \lstinline{.par}: All parameters (no $t$ subscript)
+\item \lstinline{.ss} and \lstinline{.path}: All actual variables (with
+$t$ subscript)\\
+Note: The variables in \lstinline{blocks.py} are in \lstinline{.path}
+\end{itemize}
+\textbf{Step 1.} In the \lstinline{.settings} method specify household
+variables, the aggregate shocks, unknowns, targets and blocks, and
+a function for solving the household problem one step backwards:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+def settings(self):
+
+    # a. namespaces (typically not changed)
+    self.namespaces = ['par','ini','sim','ss','path']
+    
+    # b. household
+    self.grids_hh = ['a'] # grids
+    self.pols_hh = ['a'] # policy functions
+    self.inputs_hh = ['r','w'] # direct inputs
+    self.inputs_hh_z = [] # transition matrix inputs
+    self.outputs_hh = ['a','c','l'] # outputs
+    self.intertemps_hh = ['vbeg_a'] # intertemporal variables
+
+    # c. GE
+    self.shocks = ['Gamma'] # exogenous shocks
+    self.unknowns = ['K','L'] # endogenous unknowns
+    self.targets = ['clearing_A','clearing_L'] # targets = 0
+    self.blocks = [ # list of strings to block-functions
+        'blocks.production_firm',
+        'blocks.mutual_fund',
+        'hh', # household block
+        'blocks.market_clearing']
+
+    # d. functions
+    self.solve_hh_backwards = None
+\end{lstlisting}\vspace{2mm}
+
+\textbf{Step 2.} In the \lstinline{.setup} method set all \emph{independent}
+parameters. At the minimum:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+def setup(self):
+    par = self.par
+    par.Nfix = 3 # number of fixed types
+    par.Nz = 7 # number of discrete stochastic states
+    par.Na = 300 # number of asset grid points
+\end{lstlisting}\vspace{2mm}
+
+\textbf{Step 3.} In the \lstinline{.allocate} method set all \emph{dependent}
+parameters. At the minimum:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+def allocate(self):         
+	self.allocate_GE() # allocate on aggregate variables
+\end{lstlisting}\vspace{2mm}
+
+\textbf{Step 4. }Write the \lstinline{blocks.py} file with functions
+in the following format:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+import numba as nb
+@nb.njit
+def block_name(par,ini,ss,input1,input2,...,output1,output2,...):
+    output1[:] = ...
+    output2[:] = ...
+\end{lstlisting}
+\begin{itemize}
+\item \vspace{-4mm}\textbf{Note I:} The order of the function arguments
+does not matter, but good practice is inputs first, and outputs last.
+\item \vspace{-2mm}\textbf{Note II:} All aggregate variables in $\boldsymbol{X}$
+must be set in blocks, except for the outputs of the household block,
+$\boldsymbol{Y}^{hh}_{t}$.
+\item \vspace{-2mm}\textbf{Check:} At this stage it is possible to check,
+that the inputs and outputs of all blocks are derived correctly by
+the code. The DAG can also be produced. Run:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+model = HANCModelClass()
+model.info()
+model.draw_DAG(figsize=(10,10))
+\end{lstlisting}
+\item \vspace{-2mm}\textbf{Explanation: }This works because \lstinline{GEModelTools}
+automatically reads the arguments of the functions \lstinline{blocks.py}
+in the order determined in the \lstinline{.blocks} attribute of the
+model.
+\end{itemize}
+\newpage\textbf{Step 5. }In the \lstinline{household_problem.py}
+file write the function \lstinline{solve_hh_backwards} to solve the
+household problem in the following format:\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+@nb.njit(parallel=True)        
+def solve_hh_backwards(par,z_trans,arguments)
+	
+	# arguments:
+    #  inputs_hh+inputs_hh_z -> r,w [scalars]
+    #  intertemps_hh -> vbeg_a, vbeg_a_plus [shape=(Nfix,Nfix,Na)]
+	#  outputs_hh -> a,c,l [shape=(Nfix,Nfix,Na)]
+	
+	# content of code:
+	#  given r,w and vbeg_a_plus
+	#  derive outputs and vbeg_a
+
+\end{lstlisting}
+
+\textbf{Step 6. }In the \lstinline{steady_state.py} file write the
+function \lstinline{prepare_hh_steady} to set grids, transition matrix
+of stochastic discrete states, initial distribution and initial guesses
+for intertemporal variables. At the minimum:\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+def prepare_hh_ss(model):
+    par = model.par
+    ss = model.ss
+    par.a_grid[:] = ... # shape=(Na)
+    par.z_grid[:] = ... # shape=(Nz)
+	ss.z_trans[:,:,:] = ... # shape=(Nz,Nz)
+	ss.Dbeg[:,:,:] = ... # shape=(Nfix,Nz,Na), sum to 1
+    ss.vbeg_a[:,:,:] = ... # shape=(Nfix,Nz,Na)
+\end{lstlisting}
+\begin{itemize}
+\item \vspace{-4mm}\textbf{Note: }The \lstinline{.prepare_hh_ss} is called
+internally by \lstinline{GEModelTools} \\
+whenever\textbf{ }\lstinline{.solve_hh_ss} is called.
+\item \textbf{Check:} At this stage it is possible to check, that the household
+problem can be solved for steady state values you choose.
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+model.ss.r = 0.02 # arbitrary number
+model.ss.w = 1.0 # arbitrary number
+model.solve_hh_ss(do_print=True) # calls prepare_hh_ss
+model.simulate_hh_ss(do_print=True)
+\end{lstlisting}
+
+And that the solution has converged properly:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+model.test_hh_path()
+\end{lstlisting}
+\end{itemize}
+\newpage\textbf{Step 7. }In the \lstinline{steady_state.py} file
+write the function \lstinline{find_ss} to find the steady state.
+This can be formulated in many ways. The structure could e.g. be:\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+import numba as nb
+def find_ss(model)
+	# a. guess on some variables
+	#  could be e.g. ss.x = par.x_ss.
+	# b. derive some more variables analytically
+	# c. solve household problems
+	model.solve_hh_ss(do_print=do_print)     
+	model.simulate_hh_ss(do_print=do_print)
+	# d. derive more variables analytically
+	# e. check remaning equations -> update par.x_ss and return to step a.?
+\end{lstlisting}
+\begin{itemize}
+\item \vspace{-4mm}\textbf{Note: }The function \lstinline{find_ss} should
+set ALL aggregate variables, $\boldsymbol{X}$, in \lstinline{.ss},
+and it should not dependent on existing values, except through \lstinline{.par}.
+To verify this you can call \lstinline{.set_ss_to_nan()} just before,
+or in the beginning.
+\item \vspace{-2mm}\textbf{Check:} At this stage it is possible to check,
+that the household problem can be solved for steady state values you
+choose.
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+model.test_ss() # check for NaN values in .ss
+model.test_hh_ss() # check for proper convergence of household problem
+model.test_path() # check for consistency of .ss with blocks.py
+model.test_jacs() # test computation of Jacobians
+\end{lstlisting}
+\end{itemize}
+\textbf{Solution: }The non-linear transition path can now be found
+as
+
+\vspace{2mm}\begin{lstlisting}[language=Python,label=lst:setup,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+model.compute_jacs()
+model.find_transition_path(...)
+\end{lstlisting}
+\end{document}
