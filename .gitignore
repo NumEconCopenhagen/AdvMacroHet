@@ -157,3 +157,293 @@ dmypy.json
 *.toc
 *.vrb
 *.xdv
+02-03-Consumption-Saving/old/05_simulation.ipynb
+02-03-Consumption-Saving/old/Consumption-Saving_2025.tex
+02-03-Consumption-Saving/old/Consumption-Saving_handout.pdf
+02-03-Consumption-Saving/old/Consumption-Saving.pdf
+02-03-Consumption-Saving/old/Consumption-Saving.tex
+working-folder/07-Wealth-Inequality/Wealth-Inequality_handout.pdf
+working-folder/07-Wealth-Inequality/Wealth-Inequality.pdf
+working-folder/07-Wealth-Inequality/exercise/blocks.py
+working-folder/07-Wealth-Inequality/exercise/HANC.ipynb
+working-folder/07-Wealth-Inequality/exercise/HANC.pdf
+working-folder/07-Wealth-Inequality/exercise/HANC.tex
+working-folder/07-Wealth-Inequality/exercise/HANCModel.py
+working-folder/07-Wealth-Inequality/exercise/household_problem.py
+working-folder/07-Wealth-Inequality/exercise/root_finding.py
+working-folder/07-Wealth-Inequality/exercise/steady_state.py
+working-folder/07-Wealth-Inequality/exercise/solution/blocks.py
+working-folder/07-Wealth-Inequality/exercise/solution/HANC.ipynb
+working-folder/07-Wealth-Inequality/exercise/solution/HANC.pdf
+working-folder/07-Wealth-Inequality/exercise/solution/HANC.tex
+working-folder/07-Wealth-Inequality/exercise/solution/HANCModel.py
+working-folder/07-Wealth-Inequality/exercise/solution/household_problem.py
+working-folder/07-Wealth-Inequality/exercise/solution/root_finding.py
+working-folder/07-Wealth-Inequality/exercise/solution/steady_state.py
+working-folder/07-Wealth-Inequality/tex/Wealth-Inequality_handout.pdf
+working-folder/07-Wealth-Inequality/tex/Wealth-Inequality_handout.tex
+working-folder/07-Wealth-Inequality/tex/Wealth-Inequality.pdf
+working-folder/07-Wealth-Inequality/tex/DeNardiFella-Figs/2022_10_05_feede24bac33b2bb1aaag-04.jpg
+working-folder/07-Wealth-Inequality/tex/DeNardiFella-Figs/2022_10_05_feede24bac33b2bb1aaag-18.jpg
+working-folder/07-Wealth-Inequality/tex/DeNardiFella-Figs/2022_10_05_feede24bac33b2bb1aaag-19.jpg
+working-folder/07-Wealth-Inequality/tex/DeNardiFella-Figs/Bequest-age-profiles.PNG
+working-folder/07-Wealth-Inequality/tex/DeNardiFella-Figs/Bequests.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/1.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/1.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/2.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/3.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/4.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/4.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/5.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/5.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/6.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/6.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/7.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/7.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/8.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/8.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/9.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/9.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/10.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/10.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/11.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/11.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/12.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/12.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/13.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/13.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/14.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/14.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/15.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/16.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/17.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/fig8_color.eps
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/Fig8_color.PNG
+working-folder/07-Wealth-Inequality/tex/HKS-Figs/table2.png
+working-folder/07-Wealth-Inequality/tex/figs/CEBI.png
+working-folder/07-Wealth-Inequality/tex/figs/Cross-Country-Gini-eps-converted-to.pdf
+working-folder/07-Wealth-Inequality/tex/figs/Cross-Country-Gini.eps
+working-folder/07-Wealth-Inequality/tex/figs/Cross-Country-Gini.PNG
+working-folder/07-Wealth-Inequality/tex/figs/DNRF.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/bach_et_al_fig_2_allocation_gross_wealth.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/bach_et_al_return_net_wealth.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/fagereng_2020_savings_rate_capital_gains.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/gaillard_ranking_pareto_tails_data.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/Gini.PNG
+working-folder/07-Wealth-Inequality/tex/figs_papers/Guvenen_et_al_2023_pareto.PNG
+working-folder/07-Wealth-Inequality/tex/figs_papers/Guvenen_et_al_2023_tableV.PNG
+working-folder/07-Wealth-Inequality/tex/figs_papers/Guvenen_et_al_2023_tableVII.PNG
+working-folder/07-Wealth-Inequality/tex/figs_papers/Ozkan_et_al_2024_fig1.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/pareto.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/policy_functions_standard_model.pdf
+working-folder/07-Wealth-Inequality/tex/figs_papers/Saez_zucman_2020_income_growth_percentile.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/saez_zucman_tax_rates_income_group.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/saez_zucman_top_1_income.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/Straub_2019_shock.PNG
+working-folder/07-Wealth-Inequality/tex/figs_papers/Straub_2019_transition.PNG
+working-folder/07-Wealth-Inequality/tex/figs_papers/table_4_gaillard_results.png
+working-folder/07-Wealth-Inequality/tex/figs_papers/wealth_shares_US_Saez_Zucman_2020.png
+working-folder/08-Secular-Stagnation/Secular-Stagnation_handout.pdf
+working-folder/08-Secular-Stagnation/Secular-Stagnation.pdf
+working-folder/08-Secular-Stagnation/exercise/blocks.py
+working-folder/08-Secular-Stagnation/exercise/HANC.ipynb
+working-folder/08-Secular-Stagnation/exercise/HANC.pdf
+working-folder/08-Secular-Stagnation/exercise/HANC.tex
+working-folder/08-Secular-Stagnation/exercise/HANCModel.py
+working-folder/08-Secular-Stagnation/exercise/household_problem.py
+working-folder/08-Secular-Stagnation/exercise/root_finding.py
+working-folder/08-Secular-Stagnation/exercise/steady_state.py
+working-folder/08-Secular-Stagnation/exercise/solution/blocks.py
+working-folder/08-Secular-Stagnation/exercise/solution/HANC.ipynb
+working-folder/08-Secular-Stagnation/exercise/solution/HANC.pdf
+working-folder/08-Secular-Stagnation/exercise/solution/HANC.tex
+working-folder/08-Secular-Stagnation/exercise/solution/HANCModel.py
+working-folder/08-Secular-Stagnation/exercise/solution/household_problem.py
+working-folder/08-Secular-Stagnation/exercise/solution/root_finding.py
+working-folder/08-Secular-Stagnation/exercise/solution/steady_state.py
+working-folder/08-Secular-Stagnation/tex/Secular-Stagnation.tex
+working-folder/08-Secular-Stagnation/tex/figs/CEBI.png
+working-folder/08-Secular-Stagnation/tex/figs/DNRF.png
+working-folder/08-Secular-Stagnation/tex/figs/Fig1.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig1.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig2.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig2.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig3.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig3.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig4.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig4.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig5-breakdown.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig5-breakdown.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig5.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig5.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig6.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig6.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig7a.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig7b.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig7b.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig7c.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig7c.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig8.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig8.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig9a.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig9a.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig9b.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig9b.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig9c.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig9c.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig9d.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig9d.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig9e.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig9e.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig10.eps
+working-folder/08-Secular-Stagnation/tex/figs/Fig10.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Fig11.PNG
+working-folder/08-Secular-Stagnation/tex/figs/KUSAMFLogo.pdf
+working-folder/08-Secular-Stagnation/tex/figs/KUSAMFtitlelrcorner.pdf
+working-folder/08-Secular-Stagnation/tex/figs/MSS2021Debt.PNG
+working-folder/08-Secular-Stagnation/tex/figs/MSS2021DemandSupply.PNG
+working-folder/08-Secular-Stagnation/tex/figs/MSS2021Fiscal.PNG
+working-folder/08-Secular-Stagnation/tex/figs/MSS2021Ineq.png
+working-folder/08-Secular-Stagnation/tex/figs/MSSMonPol.png
+working-folder/08-Secular-Stagnation/tex/figs/MSSRates.png
+working-folder/08-Secular-Stagnation/tex/figs/straub_2019_fig_6.png
+working-folder/08-Secular-Stagnation/tex/figs/Straub_2019_shock.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Straub_2019_transition.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Straub2019GE.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Straub2019IncomeInequality.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Straub2019Scatter.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Table1.eps
+working-folder/08-Secular-Stagnation/tex/figs/Table1.PNG
+working-folder/08-Secular-Stagnation/tex/figs/Table2.eps
+working-folder/08-Secular-Stagnation/tex/figs/Table2.PNG
+working-folder/08-Secular-Stagnation/tex/figs/TrendGrowth.png
+working-folder/09-10 HANK-Fiscal/HANK-Fiscal-handout.pdf
+working-folder/09-10 HANK-Fiscal/HANK-Fiscal.pdf
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/blocks.py
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/HANK.ipynb
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/HANKModel.py
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/household_problem.py
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/steady_state.py
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/solution/blocks.py
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/solution/HANK.ipynb
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/solution/HANKModel.py
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/solution/household_problem.py
+working-folder/09-10 HANK-Fiscal/Exercise-HANK/solution/steady_state.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/__init__.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/blocks.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/RANK.ipynb
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/RANKModel.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/steady_state.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/solution/__init__.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/solution/blocks.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/solution/RANK.ipynb
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/solution/RANKModel.py
+working-folder/09-10 HANK-Fiscal/Exercise-RANK/solution/steady_state.py
+working-folder/09-10 HANK-Fiscal/tex/HANK-Fiscal.tex
+working-folder/09-10 HANK-Fiscal/tex/figs/CEBI.png
+working-folder/09-10 HANK-Fiscal/tex/figs/DAG_HANK.png
+working-folder/09-10 HANK-Fiscal/tex/figs/DAG.png
+working-folder/09-10 HANK-Fiscal/tex/figs/DNRF.png
+working-folder/09-10 HANK-Fiscal/tex/figs/FREDBC.png
+working-folder/09-10 HANK-Fiscal/tex/figs/IKC.PNG
+working-folder/09-10 HANK-Fiscal/tex/figs/IKCMColumnsFull.png
+working-folder/09-10 HANK-Fiscal/tex/figs/IKCTable1.eps
+working-folder/09-10 HANK-Fiscal/tex/figs/IKCTable1.png
+working-folder/09-10 HANK-Fiscal/tex/figs/iMPC_data.png
+working-folder/09-10 HANK-Fiscal/tex/figs/iMPC_models.eps
+working-folder/09-10 HANK-Fiscal/tex/figs/iMPC_models.png
+working-folder/09-10 HANK-Fiscal/tex/figs/KUSAMFLogo.pdf
+working-folder/09-10 HANK-Fiscal/tex/figs/KUSAMFtitlelrcorner.pdf
+working-folder/09-10 HANK-Fiscal/tex/figs/monpol_irf_sticky_w_p-DESKTOP-G72FK1F.pdf
+working-folder/09-10 HANK-Fiscal/tex/figs/monpol_irf_sticky_w_p.pdf
+working-folder/09-10 HANK-Fiscal/tex/figs/monpol_NKPC_slope.pdf
+working-folder/09-10 HANK-Fiscal/tex/figs/multiplier.eps
+working-folder/09-10 HANK-Fiscal/tex/figs/multiplier.png
+working-folder/09-10 HANK-Fiscal/tex/figs/NK_monpol.pdf
+working-folder/09-10 HANK-Fiscal/tex/figs/NK_TFP.pdf
+working-folder/11-HANK-Monetary/monetary_policy_handout.pdf
+working-folder/11-HANK-Monetary/monetary_policy.pdf
+working-folder/11-HANK-Monetary/Exercise/blocks.py
+working-folder/11-HANK-Monetary/Exercise/HANK.ipynb
+working-folder/11-HANK-Monetary/Exercise/HANKModel.py
+working-folder/11-HANK-Monetary/Exercise/household_problem.py
+working-folder/11-HANK-Monetary/Exercise/steady_state.py
+working-folder/11-HANK-Monetary/Exercise/solution/blocks.py
+working-folder/11-HANK-Monetary/Exercise/solution/HANK.ipynb
+working-folder/11-HANK-Monetary/Exercise/solution/HANKModel.py
+working-folder/11-HANK-Monetary/Exercise/solution/household_problem.py
+working-folder/11-HANK-Monetary/Exercise/solution/steady_state.py
+working-folder/11-HANK-Monetary/tex/HANK-Monetary.tex
+working-folder/11-HANK-Monetary/tex/figs/CEBI.png
+working-folder/11-HANK-Monetary/tex/figs/DNRF.png
+working-folder/11-HANK-Monetary/tex/figs/HANK_Monpol_decomp_cap.pdf
+working-folder/11-HANK-Monetary/tex/figs/HANK_Monpol_decomp.pdf
+working-folder/11-HANK-Monetary/tex/figs/HANK_Monpol_shape.pdf
+working-folder/11-HANK-Monetary/tex/figs/HANK_Monpol.pdf
+working-folder/11-HANK-Monetary/tex/figs/KMVFigure4.png
+working-folder/11-HANK-Monetary/tex/figs/KMVMPCs.png
+working-folder/11-HANK-Monetary/tex/figs/KMVTable1.png
+working-folder/11-HANK-Monetary/tex/figs/KMVTable7.png
+working-folder/11-HANK-Monetary/tex/figs/KUSAMFLogo.pdf
+working-folder/11-HANK-Monetary/tex/figs/KUSAMFtitlelrcorner.pdf
+working-folder/11-HANK-Monetary/tex/figs/m_cap.pdf
+working-folder/11-HANK-Monetary/tex/figs/M_myopic.pdf
+working-folder/11-HANK-Monetary/tex/figs/M_r.pdf
+working-folder/11-HANK-Monetary/tex/figs/M_RE.pdf
+working-folder/11-HANK-Monetary/tex/figs/MJMCFig1.png
+working-folder/11-HANK-Monetary/tex/figs/MJMCFig2.png
+working-folder/11-HANK-Monetary/tex/figs/MJMCFig3.png
+working-folder/11-HANK-Monetary/tex/figs/MJMCFig4.png
+working-folder/11-HANK-Monetary/tex/figs/MJMCFig5.png
+working-folder/11-HANK-Monetary/tex/figs/MJMCFig6.png
+working-folder/11-HANK-Monetary/tex/figs/multiplier.png
+working-folder/12-IHANK/IHANK_handout.pdf
+working-folder/12-IHANK/IHANK.pdf
+working-folder/12-IHANK/tex/IHANK.tex
+working-folder/12-IHANK/tex/figs/AMSS2024MonPolLowTrade.png
+working-folder/12-IHANK/tex/figs/AMSS2024MonPolNeutral.png
+working-folder/12-IHANK/tex/figs/CEBI.png
+working-folder/12-IHANK/tex/figs/DAG.png
+working-folder/12-IHANK/tex/figs/decomp_no_capital_floating.pdf
+working-folder/12-IHANK/tex/figs/DNRF.png
+working-folder/12-IHANK/tex/figs/fig_IRFs_robustness_2.pdf
+working-folder/12-IHANK/tex/figs/fig_large.pdf
+working-folder/12-IHANK/tex/figs/fig_main.pdf
+working-folder/12-IHANK/tex/figs/FiscalIHANKMain.pdf
+working-folder/12-IHANK/tex/figs/FiscalPolAlpha.png
+working-folder/12-IHANK/tex/figs/HH_IRFs.pdf
+working-folder/12-IHANK/tex/figs/KUSAMFLogo.pdf
+working-folder/12-IHANK/tex/figs/KUSAMFtitlelrcorner.pdf
+working-folder/12-IHANK/tex/figs/responses_fixed.pdf
+working-folder/12-IHANK/tex/figs/responses_floating.pdf
+working-folder/12-IHANK/tex/figs/responses_no_capital_floating.pdf
+working-folder/13-HANK-SAM/HANK-SAM.pdf
+working-folder/13-HANK-SAM/HANK-SAM.tex
+working-folder/13-HANK-SAM/Upper envelope.ipynb
+working-folder/13-HANK-SAM/figs/CEBI.png
+working-folder/13-HANK-SAM/figs/DNRF.png
+working-folder/13-HANK-SAM/figs/Eksploratorium.jpeg
+working-folder/13-HANK-SAM/figs/KUSAMFLogo.pdf
+working-folder/13-HANK-SAM/figs/KUSAMFtitlelrcorner.pdf
+working-folder/13-HANK-SAM/figs/model_diagram_3.pdf
+working-folder/13-HANK-SAM/figs/model_diagram.pdf
+working-folder/13-HANK-SAM/figs/model_diagram.tex
+working-folder/13-HANK-SAM/figs/PhD.png
+working-folder/13-HANK-SAM/figs/table4.png
+working-folder/13-HANK-SAM/figs/table5.png
+working-folder/13-HANK-SAM/figs/upper_envelope_next_period.pdf
+working-folder/13-HANK-SAM/figs/upper_envelope_raw.pdf
+working-folder/13-HANK-SAM/figs/upper_envelope.pdf
+working-folder/13-HANK-SAM/figs/upper_envelope.png
+working-folder/13-HANK-SAM/results/policies_tax_titled.pdf
+working-folder/13-HANK-SAM/results/policies_tax.pdf
+working-folder/13-HANK-SAM/results/policies_u_bar_titled.pdf
+working-folder/13-HANK-SAM/results/policies_u_bar.pdf
+working-folder/13-HANK-SAM/results/policies_Y_titled.pdf
+working-folder/13-HANK-SAM/results/policies_Y.pdf
+working-folder/14-Exam-Perspectives/ExamPerspectives.pdf
+working-folder/14-Exam-Perspectives/ExamPerspectives.tex
+working-folder/14-Exam-Perspectives/figs/handin.png
+02-03-Consumption-Saving/.vscode/settings.json
+02-03-Consumption-Saving/.build/Consumption-Saving.pdf
+.vscode/settings.json
