@@ -176,7 +176,7 @@ hl/.style={alt=<2>{draw=DarkRed,very thick,fill=DarkRed!10,text=DarkRed}{}}]
 
 \vspace{1mm}
 \begin{overlayarea}{\textwidth}{1.85cm}
-\only<1>{\textbf{Every block is a set of equations }mapping inputs into outputs.}
+\only<1|handout:0>{\textbf{Every block is a set of equations }mapping inputs into outputs.}
 \only<2>{%
 \textbf{This course focuses on the household block.}
 
@@ -188,23 +188,23 @@ hl/.style={alt=<2>{draw=DarkRed,very thick,fill=DarkRed!10,text=DarkRed}{}}]
 %
 \begin{frame}{Goals for today}
 \begin{itemize}
-\item \textbf{Review consumption-saving theory}
+\item <+->\textbf{Review consumption-saving theory}
 \begin{enumerate}
 \item The permanent income hypothesis, and what it gets wrong
 \item The buffer-stock model: risk and borrowing constraints
 \end{enumerate}
-\item \textbf{Solve the household problem in partial equilibrium}
+\item <+->\textbf{Solve the household problem in partial equilibrium}
 \begin{enumerate}
 \item Basics of dynamic programming
 \item Value function iteration (VFI)
 \item The endogenous grid method (EGM)
 \end{enumerate}
-\item \textbf{Simulate the distribution and aggregate}
+\item <+->\textbf{Simulate the distribution and aggregate}
 \begin{enumerate}
 \item Monte Carlo
 \item The histogram method (Young, 2010)
 \end{enumerate}
-\item \textbf{Note: }partial equilibrium for now, prices are \emph{fixed}.
+\item <+->\textbf{Note: }partial equilibrium for now, prices are \emph{fixed}.
 
 They become equilibrium objects in the next lecture.
 \end{itemize}
@@ -212,7 +212,7 @@ They become equilibrium objects in the next lecture.
 %
 \begin{frame}{Literature}
 \begin{itemize}
-\item \textbf{Generations of models:}
+\item <+->\textbf{Generations of models:}
 \begin{enumerate}
 \item \textbf{Permanent income hypothesis (PIH)} (Friedman, 1957)\\
 or life-cycle model (Modigliani and Brumberg, 1954)
@@ -221,9 +221,9 @@ Deaton (1991, 1992); Carroll (1992, 1997, 2019)
 \item \textbf{Multiple-asset buffer-stock consumption models} \\
 e.g. Kaplan and Violante (2014); Harmenberg and Öberg (2021)
 \end{enumerate}
-\item \textbf{Consumption-and-saving over the life-cycle dynamic }\\
+\item <+->\textbf{Consumption-and-saving over the life-cycle dynamic }\\
 e.g. Gourinchas and Parker (2002); Druedahl and Martinello (2022)
-\item \textbf{Empirical} \textbf{MPCs and income risk}\\
+\item <+->\textbf{Empirical} \textbf{MPCs and income risk}\\
 e.g. Fagereng et al. (2021);\textbf{ }Guvenen et al. (2021)
 \end{itemize}
 \vspace{5mm}\textbf{Book:} {\color{DarkRed}\href{https://global.oup.com/academic/product/the-economics-of-consumption-9780199383153?cc=dk&lang=en&}{The Economics of Consumption}},
@@ -238,14 +238,14 @@ Jappelli and Pistaferri (2017)
 \section{PIH}
 \begin{frame}{Keynes vs Friedman}
 \begin{itemize}
-\item \textbf{Keynesian consumption function:} $C_{t}=a+bY_{t}$
+\item <+->\textbf{Keynesian consumption function:} $C_{t}=a+bY_{t}$
 
 Consumption responds to \emph{current} income. Multiplier is $\frac{1}{1-b}$. \\
 But it lacks micro-foundations!
-\item \textbf{Permanent income hypothesis }(Friedman, 1957)\textbf{:}
+\item <+->\textbf{Permanent income hypothesis }(Friedman, 1957)\textbf{:}
 Consumption responds to the \emph{present value }of income.\\
 Current income matters only through it.
-\item But: PIH implies too low MPCs. We will see how to fix it
+\item <+->But: PIH implies too low MPCs. We will see how to fix it
 \end{itemize}
 \end{frame}
 
@@ -260,14 +260,14 @@ a_{T-1} & \geq0, \quad a_{-1}\  \text{given}
 \end{align*}
 
 \begin{itemize}
-\item \vspace{-3mm}\textbf{Variables:}
+\item <+->\vspace{-3mm}\textbf{Variables:}
 
 Consumption: $c_{t}$
 
 Productivity: $z_{t}$
 
 End-of-period savings: $a_{t}$ (\emph{no debt at death})
-\item \textbf{Parameters:}
+\item <+->\textbf{Parameters:}
 
 Discount factor: $\beta$
 
@@ -280,16 +280,16 @@ Interest rate: $r$ (define $R\equiv1+r$ as interest factor)
 \begin{frame}{IBC}
 
 \begin{itemize}
-\item \textbf{Only the terminal condition really constrains: }without
+\item <+->\textbf{Only the terminal condition really constrains: }without
 $a_{T-1}\geq0$ the household would just borrow more and more
-\item \textbf{Substitution }implies \emph{Intertemporal Budget Constraint}
+\item <+->\textbf{Substitution }implies \emph{Intertemporal Budget Constraint}
 (IBC)
 \begin{align*}
 a_{T-1} & = & Ra_{T-2}+wz_{T-1}-c_{T-1}\\
  & = & R(Ra_{T-3}+wz_{T-2}-c_{T-2})+wz_{T-1}-c_{T-1}\\
  & = & R^{T}a_{-1}+\sum^{T-1}_{t=0}R^{T-1-t}(wz_{t}-c_{t})
 \end{align*}
-\item Use \textbf{terminal condition }$a_{T-1}=0$ (equality due to utility
+\item <+->Use \textbf{terminal condition }$a_{T-1}=0$ (equality due to utility
 max.)
 \begin{align*}
 R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & \sum^{T-1}_{t=0}R^{-t}c_{t}=s_{0}+h_{0}
@@ -305,7 +305,7 @@ and $h_{0}\equiv\sum^{T-1}_{t=0}R^{-t}wz_{t}$ (human capital)
 \mathcal{L}=\sum^{T-1}_{t=0}\beta^{t}u(c_{t})+\lambda\left[s_{0}+h_{0}-\sum^{T-1}_{t=0}R^{-t}c_{t}\right]
 \]
 \begin{itemize}
-\item \vspace{-3mm}\textbf{It is a }\textbf{\emph{static }}\textbf{problem:}
+\item <+->\vspace{-3mm}\textbf{It is a }\textbf{\emph{static }}\textbf{problem:}
 \begin{enumerate}
 \item \textbf{Information: }$s_{0}$ and $h_{0}$ are known at $t=0$
 \item \textbf{Target:} Discounted utility, $\sum^{T-1}_{t=0}\beta^{t}u(c_{t})$
@@ -313,11 +313,11 @@ and $h_{0}\equiv\sum^{T-1}_{t=0}R^{-t}wz_{t}$ (human capital)
 \item \textbf{Solution: }Sequence of consumption \emph{choices} $c^{\ast}_{0},c^{\ast}_{1},\dots,c^{\ast}_{T-1}$
 \end{enumerate}
 
-\item \textbf{First order conditions}:
+\item <+->\textbf{First order conditions}:
 \[
 \forall t:0=\beta^{t}u^{\prime}(c_{t})-\lambda R^{-t}\Leftrightarrow u^{\prime}(c_{t})=\lambda\left(\beta R\right)^{-t}
 \]
-\item \textbf{Euler-equation} for $k\in\{1,2,\dots\}$:
+\item <+->\textbf{Euler-equation} for $k\in\{1,2,\dots\}$:
 \[
 \frac{u^{\prime}(c_{t})}{u^{\prime}(c_{t+k})}=\frac{\lambda\left(\beta R\right)^{-t}}{\lambda\left(\beta R\right)^{-(t+k)}}=\left(\beta R\right)^{k}
 \]
@@ -327,7 +327,7 @@ and $h_{0}\equiv\sum^{T-1}_{t=0}R^{-t}wz_{t}$ (human capital)
 %
 \begin{frame}{Consumption choice}
 \begin{itemize}
-\item \textbf{CRRA:} $u(c_{t})=\frac{c^{1-\sigma}_{t}}{1-\sigma}$ imply
+\item <+->\textbf{CRRA:} $u(c_{t})=\frac{c^{1-\sigma}_{t}}{1-\sigma}$ imply
 Euler-equation
 \[
 \frac{c^{-\sigma}_{0}}{c^{-\sigma}_{t}}=\left(\beta R\right)^{t}\Leftrightarrow c_{t}=(\beta R)^{\frac{t}{\sigma}}c_{0}
@@ -339,7 +339,7 @@ Constant consumption if:
 \item $\frac{1}{\sigma}\rightarrow0$ (zero intertemporal elasticity of
 substitution)
 \end{enumerate}
-\item Insert \textbf{Euler }into\textbf{ IBC} to get consumption choice
+\item <+->Insert \textbf{Euler }into\textbf{ IBC} to get consumption choice
 \begin{align*}
 \sum^{T-1}_{t=0}\left((\beta R)^{1/\sigma}R^{-1}\right)^{t}c_{0} & = && (s_{0}+h_{0})\Leftrightarrow\\
 c^{\ast}_{0} & =  \frac{1-(\beta R)^{1/\sigma}R^{-1}}{1-\left((\beta R)^{1/\sigma}R^{-1}\right)^{T}}&&(s_{0}+h_{0})
@@ -349,7 +349,7 @@ c^{\ast}_{0} & =  \frac{1-(\beta R)^{1/\sigma}R^{-1}}{1-\left((\beta R)^{1/\sigm
 %
 \begin{frame}{Infinite horizon: $T\rightarrow\infty$}
 \begin{itemize}
-\item \textbf{Infinite horizon }for $(\beta R)^{1/\sigma}R^{-1}<1$:
+\item <+->\textbf{Infinite horizon }for $(\beta R)^{1/\sigma}R^{-1}<1$:
 
 Let $T\rightarrow\infty$ to get
 \begin{align*}
@@ -383,56 +383,56 @@ c^{\ast}_{0}= ra_{-1}+w
 
 \textbf{MPC for different types of shocks} (exact derivatives):
 \begin{enumerate}
-\item MPC of \emph{windfall} income: $\frac{\partial c_{0}}{\partial s_{0}}=\frac{r}{1+r}\approx r\%$
-\item MPC of \emph{future} income change: $\frac{\partial c_{0}}{\partial wz_{t}}=\frac{r}{1+r}\left(1+r\right)^{-t}$ $\to$ even smaller
-\item MPC of \emph{permanent} income change: $\frac{\partial c_{0}}{\partial w}=1$
+\item <+->MPC of \emph{windfall} income: $\frac{\partial c_{0}}{\partial s_{0}}=\frac{r}{1+r}\approx r\%$
+\item <+->MPC of \emph{future} income change: $\frac{\partial c_{0}}{\partial wz_{t}}=\frac{r}{1+r}\left(1+r\right)^{-t}$ $\to$ even smaller
+\item <+->MPC of \emph{permanent} income change: $\frac{\partial c_{0}}{\partial w}=1$
 \end{enumerate}
 
 \end{frame}
 %
 \begin{frame}{Connection to the representative agent}
 \begin{itemize}
-\item \textbf{The consumption function is }\emph{linear}\textbf{ in resources}
+\item <+->\textbf{The consumption function is }\emph{linear}\textbf{ in resources}
 \[
 c^{\ast}_{0}=\kappa\left(s_{0}+h_{0}\right),\qquad\kappa\equiv1-\frac{(\beta R)^{1/\sigma}}{R}
 \]
 with the \emph{same} $\kappa$ for every household
-\item \textbf{Exact aggregation: }sum over households $i$
+\item <+->\textbf{Exact aggregation: }sum over households $i$
 \[
 \sum_{i}c^{\ast}_{0,i}=\kappa\left(\sum_{i}s_{0,i}+\sum_{i}h_{0,i}\right)
 \]
-\item \textbf{Implication: }aggregate consumption depends on \emph{aggregate }wealth and \emph{aggregate }income only. The distribution does not enter, and a representative agent gets the aggregates exactly right.
-\item \textbf{This is why the course exists: }\emph{heterogeneity matters for aggregates only once this linearity breaks.}
+\item <+->\textbf{Implication: }aggregate consumption depends on \emph{aggregate }wealth and \emph{aggregate }income only. The distribution does not enter, and a representative agent gets the aggregates exactly right.
+\item <+->\textbf{This is why the course exists: }\emph{heterogeneity matters for aggregates only once this linearity breaks.}
 \end{itemize}
 \end{frame}
 
 \section{Dynamic programming}
 \begin{frame}{Why we need a different method}
 \begin{itemize}
-\item \textbf{What made the sequence approach work:}
+\item <+->\textbf{What made the sequence approach work:}
 \begin{enumerate}
 \item Substitute the budget constraint forward into a single IBC
 \item Impose one terminal condition
 \item Solve the FOCs for the whole path at once
 \end{enumerate}
-\item \textbf{Dynamic programming: }solve the problem \emph{recursively},
+\item <+->\textbf{Dynamic programming: }solve the problem \emph{recursively},
 one period at a time
-\item Will be very useful when we introduce risk and occasionally binding
+\item <+->Will be very useful when we introduce risk and occasionally binding
 constraints
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{Dynamic solution: Bellman's Principle of Optimality}
 \begin{itemize}
-\item \textbf{Go back to a finite horizon }with $T$ periods, and solve it backwards from the terminal condition $v_{T}(\bullet)=0$
-\item \textbf{Principle: }\emph{whatever the initial state and initial decision, the remaining decisions must be optimal given the state that results from the first decision}
-\item \textbf{Value function, $v_{t}$: }defined \emph{recursively} from $v_{T}(\bullet)=0$
+\item <+->\textbf{Go back to a finite horizon }with $T$ periods, and solve it backwards from the terminal condition $v_{T}(\bullet)=0$
+\item <+->\textbf{Principle: }\emph{whatever the initial state and initial decision, the remaining decisions must be optimal given the state that results from the first decision}
+\item <+->\textbf{Value function, $v_{t}$: }defined \emph{recursively} from $v_{T}(\bullet)=0$
 \begin{align*}
 v_{t}(a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta v_{t+1}(a_{t})\\
  & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}, \quad a_{T-1}\geq 0
 \end{align*}
-\item \textbf{Policy function, $c^{\ast}_{t}(a_{t-1})$: }we are looking for a \textbf{function} of \textbf{state variables}, instead of a \textbf{sequence}
-\item \textbf{Euler-equation }(interior choice):
+\item <+->\textbf{Policy function, $c^{\ast}_{t}(a_{t-1})$: }we are looking for a \textbf{function} of \textbf{state variables}, instead of a \textbf{sequence}
+\item <+->\textbf{Euler-equation }(interior choice):
 \begin{enumerate}
 \item FOC: $c^{-\sigma}_{t}=\beta v_{t+1,a}(a_{t})$
 \item Envelope: $v_{t,a}(a_{t-1})=(1+r)c^{-\sigma}_{t}$ (fix $c_{t}$)
@@ -451,9 +451,9 @@ v(a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta v(a_{t})\\
 \end{align*}
 
 \begin{itemize}
-\item \textbf{Contraction mapping result:} \emph{If $\beta$ is low enough (strong enough impatience) then the value and policy functions converge to $v(a_{t-1})$ and $c^{\ast}(a_{t-1})$ for large enough $T$}
-\item Problem becomes \textbf{stationary}
-\item \textbf{In practice: }for an infinite-horizon problem
+\item <+->\textbf{Contraction mapping result:} \emph{If $\beta$ is low enough (strong enough impatience) then the value and policy functions converge to $v(a_{t-1})$ and $c^{\ast}(a_{t-1})$ for large enough $T$}
+\item <+->Problem becomes \textbf{stationary}
+\item <+->\textbf{In practice: }for an infinite-horizon problem
 \begin{enumerate}
 \item Make an arbitrary initial guess (e.g. $v_{T}=0$)
 \item Iterate the backward step until the value (and/or policy) function does not change anymore, relative to a chosen tolerance
@@ -464,11 +464,11 @@ v(a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta v(a_{t})\\
 \section{VFI}
 \begin{frame}{Three numerical problems}
 \begin{enumerate}
-\item \textbf{Discretize the state: }$a_{t-1}$ lives on a continuum, the
+\item <+->\textbf{Discretize the state: }$a_{t-1}$ lives on a continuum, the
 computer needs a \emph{grid}
-\item \textbf{Approximate off the grid: }$v_{t+1}$ is known only at grid
+\item <+->\textbf{Approximate off the grid: }$v_{t+1}$ is known only at grid
 points, but $a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}$ lands between them
-\item \textbf{Maximize: }find $c^{\ast}_{t}$ at every grid point
+\item <+->\textbf{Maximize: }find $c^{\ast}_{t}$ at every grid point
 \end{enumerate}
 \vspace{3mm}
 \textbf{Next lecture adds a fourth: }\emph{numerical integration},
@@ -480,14 +480,14 @@ once income is risky and the continuation value is an expectation.
 %
 \begin{frame}[fragile]{Grids}
 \begin{itemize}
-\item \textbf{Discretization: }the state variable belongs to a discrete set
+\item <+->\textbf{Discretization: }the state variable belongs to a discrete set
 $\equiv$ a \emph{grid}\vspace{-2mm}
 \begin{align*}
 a_{t} & \in\mathcal{G}_{a}=\{a^{0},a^{1},\dots,a^{\#_{a}-1}\},\quad a^{0}=\underline{a}
 \end{align*}
-\item \textbf{Not equally spaced: }the policy function bends most near the
+\item <+->\textbf{Not equally spaced: }the policy function bends most near the
 borrowing constraint, so that is where the points should be
-\item \textbf{ConSav: }\lstinline{grids.nonlinspace}, \lstinline{grids.equilogspace}
+\item <+->\textbf{ConSav: }\lstinline{grids.nonlinspace}, \lstinline{grids.equilogspace}
 \end{itemize}
 
 \vspace{-1mm}
@@ -496,7 +496,7 @@ borrowing constraint, so that is where the points should be
 %
 \begin{frame}[fragile]{Linear interpolation}
 \begin{itemize}
-\item \textbf{Linear interpolation }(function approximation):\vspace{1mm}
+\item <+->\textbf{Linear interpolation }(function approximation):\vspace{1mm}
 \begin{enumerate}
 \item Assume $v_{t+1}$ is known on $\mathcal{G}_{a}$
 \item Evaluate $v_{t+1}(a)$ for arbitrary $a$ by\vspace{-2mm}
@@ -508,7 +508,7 @@ borrowing constraint, so that is where the points should be
  & \iota\equiv\text{largest }i_{a}\in\{0,1,\dots,\#_{a}-2\}\text{ such that }a^{i_{a}}\leq a
 \end{align*}
 \end{enumerate}
-\item \textbf{ConSav: }\lstinline{linear_interp.interp_1d}
+\item <+->\textbf{ConSav: }\lstinline{linear_interp.interp_1d}
 \end{itemize}
 \end{frame}
 %
@@ -519,20 +519,20 @@ borrowing constraint, so that is where the points should be
 %
 \begin{frame}[fragile]{Numerical optimization}
 \begin{itemize}
-\item \textbf{Grid search: }try $\#_{c}$ values of $c_{t}$, keep the best
+\item <+->\textbf{Grid search: }try $\#_{c}$ values of $c_{t}$, keep the best
 \begin{itemize}
 \item Robust, but the accuracy is the spacing of the trial grid
 \end{itemize}
-\item \textbf{Golden section search: }keep a bracket $[\underline{c},\overline{c}]$
+\item <+->\textbf{Golden section search: }keep a bracket $[\underline{c},\overline{c}]$
 known to contain the maximum, place two interior points, discard the
 part that cannot contain it
 \begin{itemize}
 \item Bracket shrinks by $1/\varphi\approx0.618$ per iteration
 \item Requires the objective to be \emph{unimodal}
 \end{itemize}
-\item \textbf{Why derivative-free? }$\breve{v}_{t+1}$ is piecewise linear,
+\item <+->\textbf{Why derivative-free? }$\breve{v}_{t+1}$ is piecewise linear,
 so its derivative is a step function
-\item \textbf{ConSav: }\lstinline{golden_section_search.optimizer}
+\item <+->\textbf{ConSav: }\lstinline{golden_section_search.optimizer}
 
 Note: it \emph{minimizes}, so pass the negative of the value
 \end{itemize}
@@ -540,7 +540,7 @@ Note: it \emph{minimizes}, so pass the negative of the value
 %
 \begin{frame}[fragile]{Value function iteration (VFI)}
 \begin{itemize}
-\item \textbf{Maximize the value-of-choice:}
+\item <+->\textbf{Maximize the value-of-choice:}
 \begin{align*}
 v_{t}(a_{i_{a-}}) & =\max_{c_{t}}v_{t}(a_{i_{a-}}|c_{t})\\
  & \text{with }c_{t}\in\left[0,(1+r)a_{i_{a-}}+wz_{t}-\underline{a}\right]
@@ -550,10 +550,10 @@ v_{t}(a_{i_{a-}}) & =\max_{c_{t}}v_{t}(a_{i_{a-}}|c_{t})\\
 v_{t}(a^{i_{a-}}|c_{t}) & =u(c_{t})+\beta\breve{v}_{t+1}(a_{t})\\
  & \text{with }a_{t}=(1+r)a^{i_{a-}}+wz_{t}-c_{t}
 \end{align*}
-\item \textbf{Inner loop: }for each grid point in $\mathcal{G}_{a}$ find
+\item <+->\textbf{Inner loop: }for each grid point in $\mathcal{G}_{a}$ find
 $c^{\ast}_{t}(a_{t-1})$, and therefore $v_{t}(a_{t-1})$, with a \emph{numerical
 optimizer}
-\item \textbf{Outer loop: }backwards from $t=T-1$ (note $v_{T}=0$, or known)
+\item <+->\textbf{Outer loop: }backwards from $t=T-1$ (note $v_{T}=0$, or known)
 \end{itemize}
 \end{frame}
 %
@@ -576,10 +576,10 @@ Maximum relative error: $3.6\times10^{-3}$ with $\#_{a}=200$.
 \end{center}
 
 \begin{itemize}
-\item \textbf{Doubling the grid roughly halves the error}
-\item \textbf{The bottleneck is interpolating }$v_{t+1}$\textbf{, which is
+\item <+->\textbf{Doubling the grid roughly halves the error}
+\item <+->\textbf{The bottleneck is interpolating }$v_{t+1}$\textbf{, which is
 strongly curved}
-\item $\Rightarrow$ \emph{three more digits would need a grid a thousand
+\item <+->$\Rightarrow$ \emph{three more digits would need a grid a thousand
 times finer}
 \end{itemize}
 \end{frame}
@@ -594,19 +594,19 @@ times finer}
 %
 \begin{frame}{What is missing from the model}
 \begin{itemize}
-\item \textbf{Income risk }with a \emph{prudent }household
+\item <+->\textbf{Income risk }with a \emph{prudent }household
 
 $\Rightarrow$ precautionary saving, relatively larger for the asset
 poor
-\item \textbf{A borrowing constraint that can bind at any date}
+\item <+->\textbf{A borrowing constraint that can bind at any date}
 
 $\Rightarrow$ MPC of one for the constrained, and a kink in the consumption
 function
-\item \textbf{Both break the }\emph{linear}\textbf{ consumption function}
+\item <+->\textbf{Both break the }\emph{linear}\textbf{ consumption function}
 
 $\Rightarrow$ exact aggregation fails, and the distribution starts
 to matter
-\item \textbf{The price: }no closed form.
+\item <+->\textbf{The price: }no closed form.
 
 \emph{That is why we spent the last lecture on numerical methods.}
 \end{itemize}
@@ -625,10 +625,10 @@ a_{t} & \geq-wb\\
 \end{align*}
 
 \begin{itemize}
-\item \vspace{-3mm}\textbf{Stochastic income} from AR-1 process
-\item \textbf{Ad-hoc borrowing limit: }debt of at most $b\geq0$, in units
+\item <+->\vspace{-3mm}\textbf{Stochastic income} from AR-1 process
+\item <+->\textbf{Ad-hoc borrowing limit: }debt of at most $b\geq0$, in units
 of the wage
-\item \textbf{\emph{A true dynamic problem:}}
+\item <+->\textbf{\emph{A true dynamic problem:}}
 \begin{enumerate}
 \item \textbf{Information: }$z_{t}$ is revealed period-by-period
 \item \textbf{Target:} \emph{Expected} discounted utility, $\mathbb{E}_{0}\left[\sum^{\infty}_{t=0}\beta^{t}u(c_{t})\right]$
@@ -648,10 +648,10 @@ v(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\mathbb{E}_{t}\left[v(z_{t+1},a_{t
 \end{align*}
 
 \begin{enumerate}
-\item \vspace{-3mm}\textbf{State variables: }$z_{t}$ \emph{and} $a_{t-1}$
-\item \textbf{Control }(choice)\textbf{ variable:} $c_{t}$
-\item \textbf{Continuation value:} $\beta\mathbb{E}_{t}[v(z_{t+1},a_{t})]$
-\item \textbf{Parameters: }$r$, $w$, and stuff in $u(\bullet)$
+\item <+->\vspace{-3mm}\textbf{State variables: }$z_{t}$ \emph{and} $a_{t-1}$
+\item <+->\textbf{Control }(choice)\textbf{ variable:} $c_{t}$
+\item <+->\textbf{Continuation value:} $\beta\mathbb{E}_{t}[v(z_{t+1},a_{t})]$
+\item <+->\textbf{Parameters: }$r$, $w$, and stuff in $u(\bullet)$
 \end{enumerate}
 \vspace{2mm}
 \textbf{Compare with last lecture: }the \emph{entire }cost of adding
@@ -664,19 +664,19 @@ so the policy function is the same in every period.
 %
 \begin{frame}{IBC}
 \begin{itemize}
-\item \textbf{Substitution }still implies (path-by-path, for any realization
+\item <+->\textbf{Substitution }still implies (path-by-path, for any realization
 of $z_{t}$):
 \begin{align*}
 R^{-(T-1)}a_{T-1}=0 & \Leftrightarrow & \sum^{T-1}_{t=0}R^{-t}c_{t}=s_{0}+h_{0}
 \end{align*}
-\item \textbf{What if $T\rightarrow\infty$? }We must have $\lim_{T\rightarrow\infty}R^{-(T-1)}a_{T-1}=0$
+\item <+->\textbf{What if $T\rightarrow\infty$? }We must have $\lim_{T\rightarrow\infty}R^{-(T-1)}a_{T-1}=0$
 \begin{enumerate}
 \item $\lim_{T\rightarrow\infty}R^{-(T-1)}a_{T-1}>0$: Consumption can be
 increased
 \item $\lim_{T\rightarrow\infty}R^{-(T-1)}a_{T-1}<0$: Violates No-Ponzi
 game condition
 \end{enumerate}
-\item For $T\rightarrow\infty$ we have the\textbf{ IBC}:
+\item <+->For $T\rightarrow\infty$ we have the\textbf{ IBC}:
 \[
 \sum^{\infty}_{t=0}R^{-t}c_{t}=Ra_{-1}+\sum^{\infty}_{t=0}R^{-t}wz_{t}
 \]
@@ -685,8 +685,8 @@ game condition
 %
 \begin{frame}{Natural borrowing limit}
 \begin{itemize}
-\item Denote \textbf{minimum possible productivity }by\textbf{ $\underline{z}$}
-\item \textbf{Consumption must be non-negative} $\Rightarrow$\\
+\item <+->Denote \textbf{minimum possible productivity }by\textbf{ $\underline{z}$}
+\item <+->\textbf{Consumption must be non-negative} $\Rightarrow$\\
 \emph{interest payments must be less than minimum income}
 \[
 c_{t}\geq0\Rightarrow r(-a_{t})\leq w\underline{z}\Leftrightarrow a_{t}\geq-\frac{w\underline{z}}{r}
@@ -699,19 +699,19 @@ a_{1} & =(1+r)a_{0}+w\underline{z}=-\frac{w\underline{z}}{r}-(1+r)\Delta\\
 a_{2} & =(1+r)a_{1}+w\underline{z}=-\frac{w\underline{z}}{r}-(1+r)^{2}\Delta\\
 \vdots
 \end{align*}
-\item \vspace{-2mm}\textbf{Natural borrowing constraint: $a_{t}\geq\underline{a}=-w\min\left\{ b,\frac{\underline{z}}{r}\right\} $}
+\item <+->\vspace{-2mm}\textbf{Natural borrowing constraint: $a_{t}\geq\underline{a}=-w\min\left\{ b,\frac{\underline{z}}{r}\right\} $}
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{Euler-equation with an occasionally binding constraint}
 \begin{itemize}
-\item \textbf{Attach a multiplier }$\mu_{t}\geq0$\textbf{ to }$a_{t}\geq\underline{a}$
+\item <+->\textbf{Attach a multiplier }$\mu_{t}\geq0$\textbf{ to }$a_{t}\geq\underline{a}$
 \begin{align*}
 \text{FOC:} & \,\,\,c^{-\sigma}_{t}=\beta\mathbb{E}_{t}\left[v_{a}(z_{t+1},a_{t})\right]+\mu_{t}\\
 \text{Slackness:} & \,\,\,\mu_{t}\left(a_{t}-\underline{a}\right)=0\\
 \text{Envelope:} & \,\,\,v_{a}(z_{t},a_{t-1})=(1+r)c^{-\sigma}_{t}
 \end{align*}
-\item \textbf{Two cases:}
+\item <+->\textbf{Two cases:}
 \begin{enumerate}
 \item \textbf{Unconstrained }($a_{t}>\underline{a}$, so $\mu_{t}=0$):
 \[
@@ -722,25 +722,25 @@ c^{-\sigma}_{t}=\beta R\,\mathbb{E}_{t}\left[c^{-\sigma}_{t+1}\right]
 c^{-\sigma}_{t}>\beta R\,\mathbb{E}_{t}\left[c^{-\sigma}_{t+1}\right]\,\,\,\text{and}\,\,\,c_{t}=(1+r)a_{t-1}+wz_{t}-\underline{a}
 \]
 \end{enumerate}
-\item \textbf{Why an inequality? }\emph{Lowering $c_{t}$ is always feasible,
+\item <+->\textbf{Why an inequality? }\emph{Lowering $c_{t}$ is always feasible,
 raising it is not.} The household would like to borrow and cannot.
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{Prudence and precautionary saving}
 \begin{itemize}
-\item \textbf{Prudence: }$u^{\prime\prime\prime}(c)>0$, i.e. marginal utility
+\item <+->\textbf{Prudence: }$u^{\prime\prime\prime}(c)>0$, i.e. marginal utility
 is \emph{convex}
 
 CRRA has $u^{\prime\prime\prime}(c)=\sigma(\sigma+1)c^{-\sigma-2}>0$
-\item \textbf{Jensen on the Euler-equation }(take $\beta R=1$, unconstrained):
+\item <+->\textbf{Jensen on the Euler-equation }(take $\beta R=1$, unconstrained):
 \[
 u^{\prime}(c_{t})=\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right]>u^{\prime}\left(\mathbb{E}_{t}\left[c_{t+1}\right]\right)\Leftrightarrow\mathbb{E}_{t}\left[c_{t+1}\right]>c_{t}
 \]
-\item \textbf{Interpretation: }the household \emph{tilts consumption into
+\item <+->\textbf{Interpretation: }the household \emph{tilts consumption into
 the future} to build a buffer. Risk lowers consumption today even
 with no constraint.
-\item \textbf{Two distinct channels, same direction:}
+\item <+->\textbf{Two distinct channels, same direction:}
 \begin{enumerate}
 \item \textbf{Risk }$\times$\textbf{ prudence: }precautionary saving
 \item \textbf{Borrowing constraint: }cannot smooth downwards
@@ -750,63 +750,63 @@ with no constraint.
 %
 \begin{frame}{Special case I: Quadratic utility}
 \begin{itemize}
-\item \textbf{Quadratic utility:} $u(c_{t})=-\frac{1}{2}(\overline{c}-c)^{2}$
+\item <+->\textbf{Quadratic utility:} $u(c_{t})=-\frac{1}{2}(\overline{c}-c)^{2}$
 with $\beta R=1$ and >>large<< $\overline{c}$
-\item \textbf{Euler-equation: }\emph{Consumption = expected future consumption}
+\item <+->\textbf{Euler-equation: }\emph{Consumption = expected future consumption}
 \begin{align*}
 (\overline{c}-c_{t}) & =\mathbb{E}_{t}\left[(\overline{c}-c_{t+k})\right]\Leftrightarrow c_{t}=\mathbb{E}_{t}\left[c_{t+k}\right]
 \end{align*}
-\item Use \textbf{IBC }in expectation\textbf{ }to get \textbf{consumption
+\item <+->Use \textbf{IBC }in expectation\textbf{ }to get \textbf{consumption
 function:}
 \begin{align*}
 \sum_{s=0}^{\infty}R^{-s}\mathbb{E}_{0}\left[c_{s}\right] &=Ra_{-1}+\sum_{s=0}^{\infty}R^{-s}w\mathbb{E}_{0}\left[z_{s}\right]\Rightarrow\\
 c^{\ast}(z_{0},a_{-1})=c_{0} &=ra_{-1}+\frac{r}{R}\sum_{s=0}^{\infty}R^{-s}w\mathbb{E}_{0}\left[z_{s}\right]
 \end{align*}
 where we formally disregard the borrowing constraint
-\item \textbf{Certainty equivalence:} \emph{Only expected income matters}.
+\item <+->\textbf{Certainty equivalence:} \emph{Only expected income matters}.
 No prudence: $u^{\prime\prime\prime}=0$.
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{Special case II: CARA utility}
 \begin{itemize}
-\item \textbf{CARA utility:} $u(c_{t})=-\frac{1}{\alpha}e^{-\alpha c}$
-\item \textbf{Productivity is absolute random walk:}
+\item <+->\textbf{CARA utility:} $u(c_{t})=-\frac{1}{\alpha}e^{-\alpha c}$
+\item <+->\textbf{Productivity is absolute random walk:}
 \begin{align*}
 z_{t} & =z_{t-1}+\psi_{t}\\
 \psi_{t} & \sim\mathcal{N}(0,\sigma^{2}_{\psi})
 \end{align*}
-\item \textbf{Consumption function }({\color{DarkRed}\href{https://www.econ2.jhu.edu/people/ccarroll/public/LectureNotes/Consumption/CARAModelWithYRisk/}{see proof}})\textbf{:}
+\item <+->\textbf{Consumption function }({\color{DarkRed}\href{https://www.econ2.jhu.edu/people/ccarroll/public/LectureNotes/Consumption/CARAModelWithYRisk/}{see proof}})\textbf{:}
 \[
 c^{*}(a_{t-1},z_{t})=ra_{t-1}+wz_{t}-\frac{\frac{1}{\alpha}\log\left(\beta R\right)+\frac{\alpha w^{2}\sigma^{2}_{\psi}}{2}}{r}
 \]
 where we formally disregard the borrowing constraint
-\item \textbf{Precautionary saving: }$\sigma^{2}_{\psi}\uparrow$ implies
+\item <+->\textbf{Precautionary saving: }$\sigma^{2}_{\psi}\uparrow$ implies
 $c^{*}_{t}\downarrow$ for given $z_{t}$ and $a_{t-1}$
 
 $\Rightarrow$ \emph{accumulation of buffer-stock}
-\item \textbf{But: }the MPC is still \emph{constant}. Heterogeneous MPCs
+\item <+->\textbf{But: }the MPC is still \emph{constant}. Heterogeneous MPCs
 need CRRA $+$ a constraint, and then a computer.
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{Buffer-stock behavior}
 \begin{itemize}
-\item \textbf{Two forces on assets:}
+\item <+->\textbf{Two forces on assets:}
 \begin{enumerate}
 \item \textbf{Impatience }($\beta R<1$): pushes assets \emph{down}
 \item \textbf{Prudence }$\times$\textbf{ risk}: pushes assets \emph{up}
 \end{enumerate}
-\item \textbf{Buffer-stock target: }they balance at a level $a^{\ast}$ where
+\item <+->\textbf{Buffer-stock target: }they balance at a level $a^{\ast}$ where
 $\mathbb{E}_{t}\left[a_{t}\right]=a_{t-1}$
 \begin{itemize}
 \item Below $a^{\ast}$: the household builds its buffer
 \item Above $a^{\ast}$: the household runs it down
 \end{itemize}
-\item \textbf{Carroll's impatience condition: }a target exists if the household
+\item <+->\textbf{Carroll's impatience condition: }a target exists if the household
 is impatient enough to decumulate without risk, but prudent enough
 to save against it
-\item \textbf{What to look for in the numerical solution:}
+\item <+->\textbf{What to look for in the numerical solution:}
 \begin{enumerate}
 \item Consumption \emph{concave }in assets
 \item MPC \emph{decreasing }in assets, and one at the constraint
@@ -817,29 +817,29 @@ to save against it
 %
 \begin{frame}{Recursive formulation with $\underline{v}$}
 \begin{itemize}
-\item \textbf{Beginning-of-period value function}
+\item <+->\textbf{Beginning-of-period value function}
 \[
 \underline{v}\left(z_{t},a_{t}\right)=\mathbb{E}\left[v(z_{t+1},a_{t})\,|\,z_{t}\right]
 \]
-\item \textbf{Value function}:
+\item <+->\textbf{Value function}:
 \begin{align*}
 v(z_{t},a_{t-1}) & =\max_{c_{t}}u(c_{t})+\beta\underline{v}\left(z_{t},a_{t}\right)\\
  & \text{s.t. }a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t}\geq\underline{a}
 \end{align*}
-\item \textbf{Why do this? }\emph{Only one interpolation per guess of $c_{t}$}
+\item <+->\textbf{Why do this? }\emph{Only one interpolation per guess of $c_{t}$}
 
 Integrating \emph{inside} the maximization would cost $\#_{z}$ interpolations
 per guess.
-\item \textbf{This is the convention }\lstinline{GEModelTools}\textbf{ uses
+\item <+->\textbf{This is the convention }\lstinline{GEModelTools}\textbf{ uses
 from the next lecture on}
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{What risk costs us numerically}
 \begin{itemize}
-\item \textbf{The state is now two-dimensional: }$\mathcal{G}_{z}\times\mathcal{G}_{a}$
+\item <+->\textbf{The state is now two-dimensional: }$\mathcal{G}_{z}\times\mathcal{G}_{a}$
 (tensor product)
-\item \textbf{The continuation value is an expectation.} Two new jobs:
+\item <+->\textbf{The continuation value is an expectation.} Two new jobs:
 \begin{enumerate}
 \item Turn the AR(1) into a \emph{finite Markov chain}
 \item Turn $\mathbb{E}_{t}$ into a \emph{sum}\vspace{-1mm}
@@ -848,26 +848,26 @@ from the next lecture on}
 \]
 which is one matrix multiplication
 \end{enumerate}
-\item \textbf{Everything else from last lecture carries over unchanged: }grids,
+\item <+->\textbf{Everything else from last lecture carries over unchanged: }grids,
 interpolation, the optimizer
 \end{itemize}
 \end{frame}
 %
 \begin{frame}[fragile]{Discretizing an AR(1)}
 \begin{itemize}
-\item \textbf{Income process:}
+\item <+->\textbf{Income process:}
 \[
 \log z_{t}=\rho_{z}\log z_{t-1}+\psi_{t},\,\,\,\psi_{t}\sim\mathcal{N}(0,\sigma^{2}_{\psi}),\,\,\,\mathbb{E}\left[z_{t}\right]=1
 \]
-\item \textbf{Tauchen (1986): }evenly spaced grid spanning the unconditional
+\item <+->\textbf{Tauchen (1986): }evenly spaced grid spanning the unconditional
 distribution, match the transition probabilities by integrating the
 normal density
-\item \textbf{Rouwenhorst (1995): }build the transition matrix by recursion,
+\item <+->\textbf{Rouwenhorst (1995): }build the transition matrix by recursion,
 matching the persistence and the unconditional variance \emph{exactly}
 \begin{itemize}
 \item Preferred at high $\rho_{z}$, where Tauchen needs many nodes
 \end{itemize}
-\item \textbf{ConSav: }\lstinline{markov.log_rouwenhorst}, \lstinline{markov.tauchen}
+\item <+->\textbf{ConSav: }\lstinline{markov.log_rouwenhorst}, \lstinline{markov.tauchen}
 \end{itemize}
 
 \vspace{-4mm}
@@ -878,7 +878,7 @@ matching the persistence and the unconditional variance \emph{exactly}
 %
 \begin{frame}[fragile]{VFI with risk}
 \begin{itemize}
-\item \textbf{Maximize the value-of-choice:}
+\item <+->\textbf{Maximize the value-of-choice:}
 \begin{align*}
 v(z^{i_{z}},a^{i_{a-}}) & =\max_{c_{t}}v(z^{i_{z}},a^{i_{a-}}|c_{t})\\
  & \text{with }c_{t}\in\left[0,(1+r)a^{i_{a-}}+wz^{i_{z}}-\underline{a}\right]
@@ -888,12 +888,12 @@ v(z^{i_{z}},a^{i_{a-}}) & =\max_{c_{t}}v(z^{i_{z}},a^{i_{a-}}|c_{t})\\
 v(z^{i_{z}},a^{i_{a-}}|c_{t}) & =u(c_{t})+\beta\breve{\underline{v}}(z^{i_{z}},a_{t})\\
  & \text{with }a_{t}=(1+r)a^{i_{a-}}+wz^{i_{z}}-c_{t}
 \end{align*}
-\item \textbf{Expectation step: }$\underline{v}=\Pi_{z}v$, before the maximization
-\item \textbf{Inner loop: }over $\mathcal{G}_{z}\times\mathcal{G}_{a}$ instead
+\item <+->\textbf{Expectation step: }$\underline{v}=\Pi_{z}v$, before the maximization
+\item <+->\textbf{Inner loop: }over $\mathcal{G}_{z}\times\mathcal{G}_{a}$ instead
 of $\mathcal{G}_{a}$
-\item \textbf{Outer loop: }iterate until $v$ stops moving, instead of backwards
+\item <+->\textbf{Outer loop: }iterate until $v$ stops moving, instead of backwards
 from $T$
-\item \textbf{Notebook: }\texttt{03\_vfi\_bufferstock.ipynb}
+\item <+->\textbf{Notebook: }\texttt{03\_vfi\_bufferstock.ipynb}
 \end{itemize}
 \end{frame}
 %
@@ -951,7 +951,7 @@ but not everybody has a buffer against it.
 %
 \begin{frame}{Economic insights}
 \begin{itemize}
-\item \textbf{Consumption lower than under PIH and concave in assets}
+\item <+->\textbf{Consumption lower than under PIH and concave in assets}
 
 \textbf{Intuition:} \emph{Precautionary saving motive is relatively
 larger for asset poor households because income risk is the same for
@@ -972,7 +972,7 @@ $\beta R<1$
 %
 \begin{frame}{Taking stock}
 \begin{itemize}
-\item \textbf{Value Function Iteration (VFI)}
+\item <+->\textbf{Value Function Iteration (VFI)}
 \begin{enumerate}
 \item Solves all consumption-saving models
 \item Accurate with dense enough grids
@@ -987,8 +987,8 @@ $\beta R<1$
 \section{EGM}
 \begin{frame}{We can do better}
 \begin{itemize}
-\item \textbf{Replace numerical optimization with root-finding}
-\item \textbf{Time iteration:} For each $a_{t-1}$ and $z_{t}$ find $c_{t}$
+\item <+->\textbf{Replace numerical optimization with root-finding}
+\item <+->\textbf{Time iteration:} For each $a_{t-1}$ and $z_{t}$ find $c_{t}$
 to solve the Euler-equation
 \[
 c^{-\sigma}_{t}=\beta(1+r)\mathbb{E}_{t}[c^{-\sigma}_{t+1}]
@@ -996,25 +996,25 @@ c^{-\sigma}_{t}=\beta(1+r)\mathbb{E}_{t}[c^{-\sigma}_{t+1}]
 
 Note: \emph{Necessary and sufficient} (for interior choices, else
 $a_{t}=\underline{a}$)
-\item \textbf{EGM:} No need for any numerical optimization \emph{or} root-finding
+\item <+->\textbf{EGM:} No need for any numerical optimization \emph{or} root-finding
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{Endogenous grid-point method (EGM)}
 \begin{enumerate}
-\item Calculate\textbf{ post-decision marginal value of cash:}\vspace{-1mm}
+\item <+->Calculate\textbf{ post-decision marginal value of cash:}\vspace{-1mm}
 \[
 q(z^{i_{z}},a^{i_{a}})=\sum^{\#_{z}-1}_{i_{z+}=0}\pi_{i_{z},i_{z+}}c^{\ast}_{+}(z^{i_{z+}},a^{i_{a}})^{-\sigma}
 \]
-\item \vspace{-2mm}\textbf{Invert Euler-equation:}\vspace{-1mm}
+\item <+->\vspace{-2mm}\textbf{Invert Euler-equation:}\vspace{-1mm}
 \[
 c(z^{i_{z}},a^{i_{a}})=(\beta(1+r)q(z^{i_{z}},a^{i_{a}}))^{-\frac{1}{\sigma}}
 \]
-\item \vspace{-1mm}\textbf{Endogenous cash-on-hand:}\vspace{-1mm}
+\item <+->\vspace{-1mm}\textbf{Endogenous cash-on-hand:}\vspace{-1mm}
 \[
 m(z^{i_{z}},a^{i_{a}})=a^{i_{a}}+c(z^{i_{z}},a^{i_{a}})
 \]
-\item \vspace{-1mm}\textbf{Consumption function:} Calculate $m=(1+r)a^{i_{a-}}+wz^{i_{z}}$\vspace{1mm}
+\item <+->\vspace{-1mm}\textbf{Consumption function:} Calculate $m=(1+r)a^{i_{a-}}+wz^{i_{z}}$\vspace{1mm}
 \begin{enumerate}
 \item Binding constraint: If $m\leq m(z^{i_{z}},a^{0})$ then\vspace{-1mm}
 \[
@@ -1030,24 +1030,24 @@ c^{\ast}(z^{i_{z}},a^{i_{a-}})=\text{interpolate }m(z^{i_{z}},\bullet)\rightarro
 %
 \begin{frame}{Why it works}
 \begin{itemize}
-\item \textbf{Fix }$a_{t}$\textbf{ instead of }$m_{t}$\textbf{.} Then the
+\item <+->\textbf{Fix }$a_{t}$\textbf{ instead of }$m_{t}$\textbf{.} Then the
 expectation is taken \emph{before} the choice, and the FOC inverts
 in closed form.
 \begin{enumerate}
 \item No optimizer, no root-finder
 \item One interpolation per grid point
 \end{enumerate}
-\item \textbf{It also interpolates the }\emph{policy}\textbf{ function rather
+\item <+->\textbf{It also interpolates the }\emph{policy}\textbf{ function rather
 than the }\emph{value}\textbf{ function}
 
 $\Rightarrow$ much more accurate, because $c^{\ast}$ is close to
 linear while $v$ is strongly curved
-\item \textbf{Where it breaks: }non-concave problems and discrete choices,
+\item <+->\textbf{Where it breaks: }non-concave problems and discrete choices,
 where the FOC is not sufficient
 \begin{itemize}
 \item Fix: the \emph{upper envelope} method, see lecture 13
 \end{itemize}
-\item \textbf{Notebook: }\texttt{04\_egm.ipynb}
+\item <+->\textbf{Notebook: }\texttt{04\_egm.ipynb}
 \end{itemize}
 \end{frame}
 %
@@ -1059,12 +1059,12 @@ where the FOC is not sufficient
 
 \vspace{-1mm}
 \begin{itemize}
-\item \textbf{Same model, same MPC, computed the same way }(first difference
+\item <+->\textbf{Same model, same MPC, computed the same way }(first difference
 of $c$ along the grid)
-\item \textbf{Left, VFI: }ragged. $\breve{v}$ is piecewise linear, so $a_{t}$
+\item <+->\textbf{Left, VFI: }ragged. $\breve{v}$ is piecewise linear, so $a_{t}$
 gets pinned at grid points
-\item \textbf{Right, EGM: }clean
-\item \textbf{On the deterministic problem: }EGM is exact at $\#_{a}=25$,
+\item <+->\textbf{Right, EGM: }clean
+\item <+->\textbf{On the deterministic problem: }EGM is exact at $\#_{a}=25$,
 VFI needs hundreds of points for three digits
 \end{itemize}
 \end{frame}
@@ -1072,28 +1072,28 @@ VFI needs hundreds of points for three digits
 \section{Simulation and aggregation}
 \begin{frame}{From policy functions to aggregates}
 \begin{itemize}
-\item \textbf{What we have: }$c^{\ast}(z_{t},a_{t-1})$ and $a^{\ast}(z_{t},a_{t-1})$,
+\item <+->\textbf{What we have: }$c^{\ast}(z_{t},a_{t-1})$ and $a^{\ast}(z_{t},a_{t-1})$,
 what \emph{one} household does in every state
-\item \textbf{What the next lecture needs: }aggregates, e.g.\vspace{-1mm}
+\item <+->\textbf{What the next lecture needs: }aggregates, e.g.\vspace{-1mm}
 \[
 A^{hh}_{t}=\sum_{i_{z}}\sum_{i_{a-}}\boldsymbol{D}_{t}(z^{i_{z}},a^{i_{a-}})\,a^{\ast}(z^{i_{z}},a^{i_{a-}})
 \]
 where $\boldsymbol{D}_{t}$ is the \emph{distribution} of households
 over $\mathcal{G}_{z}\times\mathcal{G}_{a}$
-\item \textbf{So we need to simulate the distribution forward. }Two ways:
+\item <+->\textbf{So we need to simulate the distribution forward. }Two ways:
 \begin{enumerate}
 \item Monte Carlo: simulate $N$ households, average
 \item Histogram (Young, 2010): iterate on $\boldsymbol{D}_{t}$ itself
 \end{enumerate}
-\item \textbf{Notebook: }\texttt{05\_simulation.ipynb}
+\item <+->\textbf{Notebook: }\texttt{05\_simulation.ipynb}
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{Monte Carlo simulation}
 \begin{itemize}
-\item \textbf{Initial distribution: }draw $z_{i,-1}$ and $a_{i,-1}$ for
+\item <+->\textbf{Initial distribution: }draw $z_{i,-1}$ and $a_{i,-1}$ for
 $i\in\{0,1,\dots,N-1\}$
-\item \textbf{Simulation: }forwards in time from $t=0$, in each period
+\item <+->\textbf{Simulation: }forwards in time from $t=0$, in each period
 \begin{enumerate}
 \item Draw $z_{it}$ given $z_{it-1}$ from the transition probabilities
 \item Use linear interpolation to evaluate\vspace{-1mm}
@@ -1101,12 +1101,12 @@ $i\in\{0,1,\dots,N-1\}$
 a_{it}=a^{\ast}(z_{it},a_{it-1})
 \]
 \end{enumerate}
-\item \textbf{Aggregation: }sample averages, $A^{hh}_{t}=\frac{1}{N}\sum_{i}a_{it}$
+\item <+->\textbf{Aggregation: }sample averages, $A^{hh}_{t}=\frac{1}{N}\sum_{i}a_{it}$
 \begin{itemize}
 \item Law of large numbers: correct as $N\rightarrow\infty$
 \end{itemize}
-\item \textbf{Pro: }simple to implement, works for any model
-\item \textbf{Con: }computationally costly, and \emph{random}
+\item <+->\textbf{Pro: }simple to implement, works for any model
+\item <+->\textbf{Con: }computationally costly, and \emph{random}
 \end{itemize}
 \end{frame}
 %
@@ -1118,11 +1118,11 @@ a_{it}=a^{\ast}(z_{it},a_{it-1})
 
 \vspace{-1mm}
 \begin{itemize}
-\item \textbf{Left: }$A^{hh}_{t}$ never settles, it keeps fluctuating around
+\item <+->\textbf{Left: }$A^{hh}_{t}$ never settles, it keeps fluctuating around
 its stationary level
-\item \textbf{Right: }the error falls like $1/\sqrt{N}$: quadrupling $N$
+\item <+->\textbf{Right: }the error falls like $1/\sqrt{N}$: quadrupling $N$
 halves it
-\item \textbf{Why this hurts: }next lecture we root-find on asset market
+\item <+->\textbf{Why this hurts: }next lecture we root-find on asset market
 clearing, $A^{hh}(r)-K(r)=0$. A stochastic $A^{hh}$ puts a floor
 on the achievable tolerance
 \end{itemize}
@@ -1130,40 +1130,40 @@ on the achievable tolerance
 %
 \begin{frame}{The distribution as an object}
 \begin{itemize}
-\item \textbf{Idea: }stop tracking households, track \emph{probability mass}
-\item \textbf{Histogram: }an array $\boldsymbol{D}$ on $\mathcal{G}_{z}\times\mathcal{G}_{a}$,
+\item <+->\textbf{Idea: }stop tracking households, track \emph{probability mass}
+\item <+->\textbf{Histogram: }an array $\boldsymbol{D}$ on $\mathcal{G}_{z}\times\mathcal{G}_{a}$,
 summing to $1$
 \begin{itemize}
 \item $\underline{\boldsymbol{D}}_{t}$: beginning-of-period, over $(z_{t-1},a_{t-1})$
 \item $\boldsymbol{D}_{t}$: after the productivity draw, over $(z_{t},a_{t-1})$
 \end{itemize}
-\item \textbf{The productivity transition is exact:}\vspace{-1mm}
+\item <+->\textbf{The productivity transition is exact:}\vspace{-1mm}
 \[
 \boldsymbol{D}_{t}(z^{i_{z}},a^{i_{a-}})=\sum_{i_{z-}}\pi_{i_{z-},i_{z}}\underline{\boldsymbol{D}}_{t}(z^{i_{z-}},a^{i_{a-}})\iff\boldsymbol{D}_{t}=\Pi^{\prime}_{z}\underline{\boldsymbol{D}}_{t}
 \]
-\item \textbf{The problem: }all mass at $(z^{i_{z}},a^{i_{a-}})$ saves $a^{\ast}(z^{i_{z}},a^{i_{a-}})$,
+\item <+->\textbf{The problem: }all mass at $(z^{i_{z}},a^{i_{a-}})$ saves $a^{\ast}(z^{i_{z}},a^{i_{a-}})$,
 which falls \emph{between} grid points
 \end{itemize}
 \end{frame}
 %
 \begin{frame}{The savings lottery}
 \begin{itemize}
-\item \textbf{Split the mass between the two neighbors. }Find $i$ such that
+\item <+->\textbf{Split the mass between the two neighbors. }Find $i$ such that
 $a^{i}\leq a^{\ast}\leq a^{i+1}$ and set\vspace{-1mm}
 \[
 \omega=\frac{a^{i+1}-a^{\ast}}{a^{i+1}-a^{i}}\in[0,1]
 \]
-\item \textbf{Assign }share $\omega$ to $a^{i}$ and $1-\omega$ to $a^{i+1}$
+\item <+->\textbf{Assign }share $\omega$ to $a^{i}$ and $1-\omega$ to $a^{i+1}$
 \begin{itemize}
 \item The lottery has mean \emph{exactly} $a^{\ast}$: aggregate savings
 are not distorted by the grid
 \end{itemize}
-\item \textbf{One full period:}\vspace{-1mm}
+\item <+->\textbf{One full period:}\vspace{-1mm}
 \[
 \underline{\boldsymbol{D}}_{t}\overset{\Pi^{\prime}_{z}}{\longrightarrow}\boldsymbol{D}_{t}\overset{\Lambda^{\prime}}{\longrightarrow}\underline{\boldsymbol{D}}_{t+1}
 \]
 where $\Lambda$ collects the lottery weights
-\item \textbf{Both maps are linear and deterministic: }simulation becomes
+\item <+->\textbf{Both maps are linear and deterministic: }simulation becomes
 matrix algebra. No draws, no noise
 \end{itemize}
 \end{frame}
@@ -1182,11 +1182,11 @@ cost: the distribution lives \emph{on the grid}.
 %
 \begin{frame}{Aggregation}
 \begin{itemize}
-\item \textbf{Aggregates are sums over the grid:}\vspace{-1mm}
+\item <+->\textbf{Aggregates are sums over the grid:}\vspace{-1mm}
 \[
 A^{hh}=\sum_{i_{z},i_{a-}}\boldsymbol{D}(z^{i_{z}},a^{i_{a-}})\,a^{\ast}(z^{i_{z}},a^{i_{a-}}),\qquad C^{hh}=\sum_{i_{z},i_{a-}}\boldsymbol{D}\,c^{\ast}
 \]
-\item \textbf{Stationary distribution: }iterate the forward step until $\underline{\boldsymbol{D}}$ stops moving (526 iterations, $0.01$ secs)
+\item <+->\textbf{Stationary distribution: }iterate the forward step until $\underline{\boldsymbol{D}}$ stops moving (526 iterations, $0.01$ secs)
 \end{itemize}
 \end{frame}
 
@@ -1194,17 +1194,17 @@ A^{hh}=\sum_{i_{z},i_{a-}}\boldsymbol{D}(z^{i_{z}},a^{i_{a-}})\,a^{\ast}(z^{i_{z
 
 \begin{frame}{The household block in practice}
 \begin{enumerate}
-\item \textbf{Backward step (EGM): }iterate\vspace{-1mm}
+\item <+->\textbf{Backward step (EGM): }iterate\vspace{-1mm}
 \[
 \underline{v}_{a}\rightarrow c^{\ast}(z_{t},a_{t-1}),\,a^{\ast}(z_{t},a_{t-1})
 \]
 until the policy functions converge $\Rightarrow$ \lstinline{solve_hh_backwards}
-\item \textbf{Forward step (histogram): }build the lottery from $a^{\ast}$, iterate\vspace{-1mm}
+\item <+->\textbf{Forward step (histogram): }build the lottery from $a^{\ast}$, iterate\vspace{-1mm}
 \[
 \underline{\boldsymbol{D}}_{t}\overset{\Pi^{\prime}_{z}}{\longrightarrow}\boldsymbol{D}_{t}\overset{\Lambda^{\prime}}{\longrightarrow}\underline{\boldsymbol{D}}_{t+1}
 \]
 until the distribution converges $\Rightarrow$ \lstinline{simulate_hh_forwards}
-\item \textbf{Aggregate: }$A^{hh}=\sum\boldsymbol{D}\,a^{\ast}$, $C^{hh}=\sum\boldsymbol{D}\,c^{\ast}$
+\item <+->\textbf{Aggregate: }$A^{hh}=\sum\boldsymbol{D}\,a^{\ast}$, $C^{hh}=\sum\boldsymbol{D}\,c^{\ast}$
 \end{enumerate}
 \vspace{2mm}
 \textbf{This pair is the household block. }Next lecture
@@ -1213,11 +1213,11 @@ until the distribution converges $\Rightarrow$ \lstinline{simulate_hh_forwards}
 %
 \begin{frame}{What you should remember}
 \begin{enumerate}
-\item \textbf{The PIH gives an MPC of about }$2\%$\textbf{; the data say
+\item <+->\textbf{The PIH gives an MPC of about }$2\%$\textbf{; the data say
 }$40-50\%$
-\item \textbf{Uncertainty plus a borrowing constraint fixes it}
-\item \textbf{EGM solves the household problem fast and accurately}
-\item \textbf{The histogram method gives a precise distribution, }without simulation noise
+\item <+->\textbf{Uncertainty plus a borrowing constraint fixes it}
+\item <+->\textbf{EGM solves the household problem fast and accurately}
+\item <+->\textbf{The histogram method gives a precise distribution, }without simulation noise
 \end{enumerate}
 \vspace{3mm}
 \textbf{Next: }\emph{Stationary equilibrium}
@@ -1225,8 +1225,8 @@ until the distribution converges $\Rightarrow$ \lstinline{simulate_hh_forwards}
 \vspace{3mm}
 \textbf{You should:}
 \begin{enumerate}
-\item Study the code from this lecture
-\item Glance at Aiyagari (1994), \\
+\item <+->Study the code from this lecture
+\item <+->Glance at Aiyagari (1994), \\
 >>Uninsured Idiosyncratic Risk and Aggregate Saving<<
 \end{enumerate}
 \end{frame}
@@ -1234,12 +1234,12 @@ until the distribution converges $\Rightarrow$ \lstinline{simulate_hh_forwards}
 \section{Misc}
 \begin{frame}{1. Life-cycle (I)}
 \begin{itemize}
-\item \textbf{Basically:}
+\item <+->\textbf{Basically:}
 \begin{enumerate}
 \item Born, working, retired, die
 \item Age-varying parameters (esp. income)
 \end{enumerate}
-\item \textbf{Add-ons:}
+\item <+->\textbf{Add-ons:}
 \begin{enumerate}
 \item Labor supply, human capital, occupation
 \item Portfolio choice and entrepreneurship
@@ -1247,7 +1247,7 @@ until the distribution converges $\Rightarrow$ \lstinline{simulate_hh_forwards}
 \item Health, mortality
 \item []etc.
 \end{enumerate}
-\item \textbf{Good starting example:} >>Life‐Cycle Consumption and Children:
+\item <+->\textbf{Good starting example:} >>Life‐Cycle Consumption and Children:
 Evidence from a Structural Estimation<<, Jørgensen (2017)
 \end{itemize}
 \end{frame}
@@ -1262,9 +1262,9 @@ Evidence from a Structural Estimation<<, Jørgensen (2017)
 
 \emph{Life-cycle consumption-saving model with retirement}
 \begin{itemize}
-\item Young households: \\
+\item <+->Young households: \\
 Save for precautionary reasons (buffer)
-\item Older households:\\
+\item <+->Older households:\\
 Save for retirement (life-cycle)
 \end{itemize}
 \end{column}
@@ -1280,8 +1280,8 @@ Save for retirement (life-cycle)
 %
 \begin{frame}{1. Life-cycle (III)}
 \begin{itemize}
-\item \textbf{Natural experiment:} Wealth depletion after sudden inheritance
-\item \textbf{Results:}
+\item <+->\textbf{Natural experiment:} Wealth depletion after sudden inheritance
+\item <+->\textbf{Results:}
 \begin{enumerate}
 \item Life-cycle profile of wealth fitted for many levels of risk-aversion\\
 (by varying the discount factor)
@@ -1321,13 +1321,13 @@ v_{t}\left(z_{t},m_{t}\right) & = & \max_{c_{t}}\left[\left(1-\beta\right)\cdot 
 \end{align*}
 
 \begin{itemize}
-\item \vspace{-4mm}\textbf{Preferences:}
+\item <+->\vspace{-4mm}\textbf{Preferences:}
 \begin{enumerate}
 \item Patience: $\beta$
 \item Intertemporal substitution: $\sigma$
 \item Risk-aversion: $\rho$
 \end{enumerate}
-\item \textbf{Euler-equation:} $c^{-\sigma}_{t}=\beta R\cdot\mathbb{E}_{t}\left[c^{-\sigma}_{t+1}\cdot\left(\frac{w_{t+1}}{v_{t+1}}\right)^{\rho-\sigma}\right]$\vspace{2mm}
+\item <+->\textbf{Euler-equation:} $c^{-\sigma}_{t}=\beta R\cdot\mathbb{E}_{t}\left[c^{-\sigma}_{t+1}\cdot\left(\frac{w_{t+1}}{v_{t+1}}\right)^{\rho-\sigma}\right]$\vspace{2mm}
 \begin{enumerate}
 \item FOC: $0=v^{\sigma}_{t}\cdot\left[\left(1-\beta\right)\cdot c^{-\sigma}_{t}-\beta R\cdot w^{\rho-\sigma}_{t+1}\cdot\mathbb{E}_{t}\left[v^{-\rho}_{t+1}\cdot\frac{\partial v_{t+1}}{\partial m_{t+1}}\right]\right]$\vspace{1mm}
 \item Envelope condition: $\frac{\partial v_{t}\left(z_{t},m_{t}\right)}{\partial m_{t}}=v^{\sigma}_{t}\cdot\left(1-\beta\right)\cdot c^{-\sigma}_{t}$
@@ -1337,21 +1337,21 @@ v_{t}\left(z_{t},m_{t}\right) & = & \max_{c_{t}}\left[\left(1-\beta\right)\cdot 
 %
 \begin{frame}{4. Deep learning}
 \begin{itemize}
-\item \textbf{Curse of dimensionality: }
+\item <+->\textbf{Curse of dimensionality: }
 \begin{enumerate}
 \item Many states
 \item Many choices
 \item Many shocks
 \end{enumerate}
-\item \textbf{Deep (reinforcement) learning:}
+\item <+->\textbf{Deep (reinforcement) learning:}
 \begin{enumerate}
 \item Approximate value and policy functions with \emph{neural networks}
 \item Approximate on simulation sample rather than on grid
 \item Automatic differentiation (backpropagation) and GPUs for speed
 \end{enumerate}
-\item \textbf{Examples:} Maliar and Maliar (2021) and Azinovic and Scheidegger
+\item <+->\textbf{Examples:} Maliar and Maliar (2021) and Azinovic and Scheidegger
 (2022)
-\item \textbf{Working paper:} Druedahl and Røpke (2025)
+\item <+->\textbf{Working paper:} Druedahl and Røpke (2025)
 
 Python package: {\color{DarkRed}\href{https://github.com/NumEconCopenhagen/EconDLSolvers}{EconDLSolvers}}
 \end{itemize}
