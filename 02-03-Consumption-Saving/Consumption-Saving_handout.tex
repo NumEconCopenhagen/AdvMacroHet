@@ -461,9 +461,7 @@ To solve the problem in finite horizon, we use \textbf{backward
 induction}.\\
 Let's start from the end. In the last period, \(t=T-1\), we have \[
 v_{T-1}(a_{T-2})=\max_{c_{T-1}} u(c_{T-1}) + \beta v_{T}(a_{T-1})
-\] There is no period \(T\), so \(v_{T}(a_{T-1})=0\), and with
-\(a_{T-1}\geq0\) the household consumes everything,
-\(c_{T-1}=(1+r)a_{T-2}+wz_{T-1}\). Thus: \[
+\] There is no period \(T\), so \(v_{T}(a_{T-1})=0\), and with \(a_{T-1}\geq0\) the household consumes everything, \(c_{T-1}=(1+r)a_{T-2}+wz_{T-1}\). Thus: \[
 v_{T-1}(a_{T-2}) = u\big((1+r)a_{T-2}+wz_{T-1}\big)
 \] We can then go backward in time, and solve \(v_{T-2}(a_{T-3})\), etc,
 until \(v_0(a_{-1})\).
@@ -473,9 +471,8 @@ until \(v_0(a_{-1})\).
 \protect\phantomsection\label{euler-equation-and-envelope-condition}
 For \(t<T-1\), substitute the budget constraint into the objective \[
 v_{t}(a_{t-1}) = \max_{a_{t}} \Big[u\big((1+r)a_{t-1}+wz_{t}-a_{t}\big)+\beta v_{t+1}(a_{t})\Big]
-\] The first-order condition is \(u'(c_{t}) = \beta v'_{t+1}(a_{t})\).
-To obtain \(v'_{t+1}\), differentiate with respect to the \emph{state},
-\(a_{t-1}\): \[
+\]The first-order condition is \(u'(c_{t}) = \beta v'_{t+1}(a_{t})\). \\
+To obtain \(v'_{t+1}\), differentiate with respect to the \emph{state}, \(a_{t-1}\): \[
 \begin{aligned}
     v'_{t}(a_{t-1}) &= u'(c_{t}) \left(1+r-\frac{\partial a_{t}}{\partial a_{t-1}} \right) + \beta v'_{t+1}(a_{t}) \frac{\partial a_{t}}{\partial a_{t-1}}  \\
     &= u'(c_{t})(1+r) + \frac{\partial a_{t}}{\partial a_{t-1}} \underbrace{\Big(u'(c_{t}) -\beta v'_{t+1}(a_{t})\Big)}_{=0} = u'(c_{t})(1+r)
@@ -494,17 +491,13 @@ Start at \(t=T-1\) with \(v_{T}(\bullet)=0\). For every possible
 
 \begin{enumerate}
 \tightlist
-\item
-  Maximize \(u(c_t)+ \beta v_{t+1}(a_{t})\) to get
-  \(c_t^{\ast}(a_{t-1})\)
-\item
-  Compute \(v_t(a_{t-1})=u(c_{t}^{\ast})+\beta v_{t+1}(a_{t}^{\ast})\)
+\item Maximize \(u(c_t)+ \beta v_{t+1}(a_{t})\) to get \(c_t^{\ast}(a_{t-1})\)
+\item Compute \(v_t(a_{t-1})=u(c_{t}^{\ast}(a_{t-1}))+\beta v_{t+1}(a_{t}^{\ast})\)
 \end{enumerate}
 
 Go backward in time, until \(t=0\).
 
-We have obtained a sequence of policy functions \(c_t^{\ast}(a_{t-1})\)
-and value functions \(v_t(a_{t-1})\)!
+We have obtained a sequence of policy functions \(c_t^{\ast}(a_{t-1})\) and value functions \(v_t(a_{t-1})\)!
 \end{frame}
 
 \begin{frame}{We need three computational tools}
@@ -513,15 +506,9 @@ To do this on a computer, we need a couple of things: \vspace{5mm}
 
 \begin{enumerate}
 \tightlist
-\item
-  How do we loop over all possible \(a_{t-1}\)? -\textgreater{}
-  \textbf{Create a grid}
-\item
-  We don't have an analytical expression for \(v_{t+1}(a_t)\). How do we
-  approximate it? -\textgreater{} \textbf{Use linear interpolation}
-\item
-  How do we maximize a function? -\textgreater{} \textbf{grid search or
-  golden section search!}
+\item How do we loop over all possible \(a_{t-1}\)? $\to$ \textbf{Create a grid}
+\item We don't have an analytical expression for \(v_{t+1}(a_t)\). How do we approximate it? $\to$ \textbf{Use linear interpolation}
+\item How do we maximize a function? $\to$ \textbf{grid search or golden section search!}
 \end{enumerate}
 \end{frame}
 
@@ -534,49 +521,31 @@ To do this on a computer, we need a couple of things: \vspace{5mm}
 
 \begin{frame}{Infinite Horizon: Convergence}
 \protect\phantomsection\label{infinite-horizon-convergence}
-Bellman's principle of optimality:
-
-\vspace{5mm}
-
-\begin{quote}
-An optimal policy has the property that whatever the initial state and
-initial decision are, the remaining decisions must constitute an optimal
-policy with regard to the state resulting from the first decision.
-\end{quote}
-
-\vspace{5mm}
 
 What about the infinite horizon, \(T\rightarrow\infty\)?\\
-Under some regularity conditions, it turns out that
-\(v_t(a_{t-1})\to v(a_{t-1})\)\\
-\(\Rightarrow\) The problem becomes \textbf{stationary}, that is, it
-does not depend on time.
+
+Under some regularity conditions, it turns out that \(v_t(a_{t-1})\to v(a_{t-1})\)\\
+
+\(\Rightarrow\) The problem becomes \textbf{stationary}, that is, it does not depend on time.
 \end{frame}
 
 \begin{frame}{Infinite Horizon: Value Function Iteration}
 \protect\phantomsection\label{infinite-horizon-value-function-iteration}
 How can we use this computationally?
 
-Start from a guess \(v^{0}(a_{t-1})\), e.g.~\(v^{0}=0\) as in the last
-period of life.
+Start from a guess \(v^{0}(a_{t-1})\), e.g.~\(v^{0}=0\) as in the last period of life.
 
 Then, given the current guess \(v^{n}\), for all \(a_{t-1}\):
 
 \begin{itemize}
 \tightlist
-\item
-  Find optimal consumption \(c_t^{\ast}\) by maximizing
-  \(u(c_t)+\beta v^{n}(a_{t})\)
-\item
-  Update the guess on the value function,
-  \(v^{n+1}(a_{t-1})=u(c_{t}^{\ast}) + \beta v^{n}(a_{t}^{\ast})\)
+\item Find optimal consumption \(c_t^{\ast}\) by maximizing \(u(c_t)+\beta v^{n}(a_{t})\)
+\item Update the guess on the value function,  \(v^{n+1}(a_{t-1})=u(c_{t}^{\ast}) + \beta v^{n}(a_{t}^{\ast})\)
 \end{itemize}
 
-Iterate until \(\max|v^{n+1}-v^{n}|< \epsilon\). This is \textbf{value
-function iteration} (VFI). \vspace{5mm}
+Iterate until \(\max|v^{n+1}-v^{n}|< \epsilon\). This is \textbf{value function iteration} (VFI). \vspace{5mm}
 
-We will sometimes call this the \textbf{backward step}: given a
-continuation value, what is optimal today.
+We will sometimes call this the \textbf{backward step}: given a continuation value, what is optimal today.
 \end{frame}
 
 \begin{frame}{}
@@ -592,8 +561,7 @@ continuation value, what is optimal today.
 \protect\phantomsection\label{mpcs-in-the-data-are-high}
 \includegraphics[width=1\textwidth]{figs/Fagereng_MPCs}
 
-\textbf{Source:} Fagereng et al.~(2021). \textbf{PIH says}
-\(\frac{r}{1+r}\approx2\%\).
+\textbf{Source:} Fagereng et al.~(2021). \textbf{PIH says} \(\frac{r}{1+r}\approx2\%\).
 \end{frame}
 
 \begin{frame}{What is missing from the model}
@@ -602,23 +570,17 @@ We make two changes to the PIH model
 
 \begin{enumerate}
 \tightlist
-\item
-  Introduce uninsurable \textbf{income risk}
-\item
-  A \textbf{borrowing constraint}
+\item Introduce uninsurable \textbf{income risk}
+\item A \textbf{borrowing constraint}
 \end{enumerate}
 
 This gives us:
 
 \begin{enumerate}
 \tightlist
-\item
-  A precautionary savings motive (on top of consumption smoothing)
-\item
-  Higher MPCs when households are close to the borrowing constraint
-\item
-  Break the linearity of the consumption function \(\Rightarrow\)
-  distribution starts to matter
+\item A precautionary savings motive (on top of consumption smoothing)
+\item Higher MPCs when households are close to the borrowing constraint
+\item Break the linearity of the consumption function \(\Rightarrow\) distribution starts to matter
 \end{enumerate}
 \end{frame}
 
@@ -1128,6 +1090,29 @@ PIH it was \(\frac{r}{1+r}\) for everybody.
 \end{tabular}
 \end{frame}
 
+\begin{frame}[fragile]{Exercise: permanent productivity types}
+\protect\phantomsection\label{exercise-permanent-productivity-types}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Add permanent types:} \(\xi\in\{0.5,1,1.5\}\), fixed for life, income \(w\xi z_{t}\)
+\item
+  \textbf{Write} \texttt{solve\_hh\_backwards\_fix} with the extra leading dimension, \texttt{a[i\_fix,i\_z,:]}, exactly the layout of \texttt{household\_problem.py} in lecture 04
+\item
+  \textbf{Plot} the consumption functions of the three types
+\item
+  \textbf{Check homogeneity:} with CRRA and \(\underline{a}=0\),
+  \[
+  c^{\ast}(z,a_{-1};\xi)=\xi\,c^{\ast}(z,a_{-1}/\xi;1)
+  \]
+  What does it imply for wealth-to-income ratios across types?
+\end{itemize}
+
+\vspace{2mm}
+
+\textbf{Notebook:} \texttt{04\_egm.ipynb}, last section
+\end{frame}
+
 \section{Simulation and aggregation}\label{simulation-and-aggregation}
 
 \begin{frame}[fragile]{From policy functions to aggregates}
@@ -1285,6 +1270,30 @@ PIH it was \(\frac{r}{1+r}\) for everybody.
 \end{itemize}
 \end{frame}
 
+\begin{frame}{One period forward, in pictures}
+\protect\phantomsection\label{one-period-forward-in-pictures}
+\begin{center}
+\includegraphics[width=\textwidth]{figs/sim_young_method}
+\end{center}
+
+\vspace{-2mm}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Productivity draw:} the mass at \((z^{1},a^{2})\) is spread
+  over the column \(a^{2}\), with the weights of row \(1\) of
+  \(\Pi_{z}\). Assets do not move
+\item
+  \textbf{Savings lottery:} those who drew \(z^{2}\) save
+  \(a^{\ast}\in[a^{4},a^{5}]\). Their mass moves along the row, split
+  \(\omega\) and \(1-\omega\). Productivity does not move
+\item
+  \textbf{Every cell does both,} and the two maps are the matrices
+  \(\Pi_{z}^{\prime}\) and \(\Lambda^{\prime}\)
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Monte Carlo vs histogram}
 \protect\phantomsection\label{monte-carlo-vs-histogram}
 \begin{center}
@@ -1314,7 +1323,123 @@ cost: the distribution lives \emph{on the grid}.
 \end{itemize}
 \end{frame}
 
-\section{Summary}\label{summary}
+\begin{frame}[fragile]{Exercise: death}
+\protect\phantomsection\label{exercise-death}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Perpetual youth:} after saving, die with probability \(\delta=0.02\). Replaced by a newborn with \(a=0\) and ergodic \(z\). No annuities, the assets of the dead are lost.
+\item
+  \textbf{Backward:} \(\beta\rightarrow\beta(1-\delta)\). No new code, use \texttt{par.\_replace}
+\item
+  \textbf{Forward:} add a death step to \texttt{simulate\_hh\_forwards}. Where exactly?
+\item
+  \textbf{Compare} the CDF of assets and \(A^{hh}\) with the baseline
+\item
+  \(C^{hh}=rA^{hh}+w\) \textbf{now fails.} Derive the identity that replaces it and check it
+\end{itemize}
+
+\vspace{2mm}
+
+\textbf{Notebook:} \texttt{05\_simulation.ipynb}, last section
+\end{frame}
+
+\section{Recap}\label{recap}
+
+\begin{frame}{Recap I: buffer-stock theory}
+\protect\phantomsection\label{recap-i-buffer-stock-theory}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{PIH:} consume the annuity value of total wealth, \(\text{MPC}=\frac{r}{1+r}\approx2\%\), consumption linear in wealth, the distribution is irrelevant. \textbf{Data:} \(40\)-\(50\%\).
+\item
+  \textbf{Two ingredients fix it:} uninsurable income risk and a borrowing constraint.
+\item
+  \textbf{Euler-equation with an occasionally binding constraint:}
+  \[
+  u^{\prime}(c_{t})\geq\beta R\,\mathbb{E}_{t}\left[u^{\prime}(c_{t+1})\right],\quad\text{with equality if }a_{t}>\underline{a}
+  \]
+\item
+  \textbf{Prudence} (\(u^{\prime\prime\prime}>0\)) \(\times\) \textbf{risk} \(\Rightarrow\) \textbf{precautionary saving}: consume less today, tilt consumption into the future.
+\item
+  \textbf{Policy functions:} consumption \emph{concave} in assets. MPC one at the constraint, falling with wealth. Net savings cross zero: a \textbf{buffer-stock target}, even with \(\beta R<1\).
+\item
+  \textbf{Consequence:} who holds what matters. The aggregate MPC is a property of the \emph{distribution}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Recap II: EGM}
+\protect\phantomsection\label{recap-ii-egm}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{VFI:} an optimizer at every grid point, interpolating the \emph{value} function. Slow and ragged policies.
+\item
+  \textbf{EGM:} iterate on the Euler-equation, with the grid on the \emph{choice} \(a_{t}\) instead of the state \(a_{t-1}\). Given \(\underline{v}_{a}(z_{t},a_{t})\):
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Invert the FOC: \(c(z_{t},a_{t})=\left[\beta\underline{v}_{a}(z_{t},a_{t})\right]^{-1/\sigma}\)
+  \item
+    Endogenous grid from the budget: \(a_{t-1}=\frac{a_{t}+c-wz_{t}}{1+r}\)
+  \item
+    Interpolate \(a^{\ast}\) back on the fixed grid, impose \(a^{\ast}\geq\underline{a}\), get \(c^{\ast}\) from the budget
+  \item
+    Envelope + expectation: \(\underline{v}_{a}=\Pi_{z}\left[(1+r)(c^{\ast})^{-\sigma}\right]\)
+  \end{enumerate}
+\item
+  \textbf{No optimizer, one interpolation per} \(z\): \(\approx15\times\) faster per step, same number of steps (contraction with modulus \(\beta\)).
+\item
+  \textbf{Smoother:} interpolates the \emph{policy} function, which is close to linear. Clean MPCs.
+\item
+  \texttt{solve\_hh\_backwards} is the backward step of \texttt{GEModelTools}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Recap III: the histogram method}
+\protect\phantomsection\label{recap-iii-the-histogram-method}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{To aggregate we need the distribution} \(\boldsymbol{D}\) over \(\mathcal{G}_{z}\times\mathcal{G}_{a}\).
+\item
+  \textbf{Monte Carlo:} simulate \(N\) households. Burn-in, and noise \(\propto1/\sqrt{N}\) that never goes away: fatal for root-finding on market clearing.
+\item
+  \textbf{Histogram (Young, 2010):} track probability mass, not households. Two deterministic transitions:
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Productivity: \(\boldsymbol{D}_{t}=\Pi_{z}^{\prime}\,\underline{\boldsymbol{D}}_{t}\)
+  \item
+    Savings lottery: \(a^{\ast}\in[a^{i},a^{i+1}]\), share \(\omega=\frac{a^{i+1}-a^{\ast}}{a^{i+1}-a^{i}}\) to \(a^{i}\), \(1-\omega\) to \(a^{i+1}\). Mean-preserving, so aggregate savings are not distorted.
+  \end{enumerate}
+\item
+  \textbf{Iterate until} \(\boldsymbol{D}\) \textbf{stops moving:} the stationary distribution. Exact given the grid, no random numbers, a fraction of the time.
+\item
+  \texttt{simulate\_hh\_forwards} is the forward step of \texttt{GEModelTools}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recap IV: aggregation}
+\protect\phantomsection\label{recap-iv-aggregation}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Aggregates are sums over the grid:}
+  \[
+  A^{hh}=\sum_{i_{z}}\sum_{i_{a-}}\boldsymbol{D}(z^{i_{z}},a^{i_{a-}})\,a^{\ast}(z^{i_{z}},a^{i_{a-}}),\qquad C^{hh}=\sum\boldsymbol{D}\,c^{\ast}
+  \]
+  with \(\boldsymbol{D}\) \emph{after} the productivity draw, so it lines up with the policy functions.
+\item
+  \textbf{Check:} in the stationary distribution \(C^{hh}=rA^{hh}+w\).
+\item
+  \textbf{Aggregate MPC:} \(\sum\boldsymbol{D}\,\text{MPC}\approx0.33\), against \(0.02\) under the PIH. A quarter of households sit at the constraint.
+\item
+  \textbf{Same recipe next lecture,} but \(r\) and \(w\) will be chosen so that \(A^{hh}\) clears the asset market.
+\end{itemize}
+\end{frame}
 
 \begin{frame}[fragile]{The household block in practice}
 \protect\phantomsection\label{the-household-block-in-practice}
@@ -1378,6 +1503,32 @@ equilibrium objects.
   Glance at Aiyagari (1994),``Uninsured Idiosyncratic Risk and Aggregate
   Saving''
 \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: endogenous labor supply}
+\protect\phantomsection\label{exercise-endogenous-labor-supply}
+\[
+v(z_{t},a_{t-1})=\max_{c_{t},n_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi\frac{n_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v(z_{t+1},a_{t})\right]
+\]
+\[
+\text{s.t.}\quad a_{t}=(1+r)a_{t-1}+wz_{t}n_{t}-c_{t}\geq0
+\]
+
+\begin{enumerate}
+\tightlist
+\item
+  \textbf{FOCs:} show that \(\varphi n_{t}^{\nu}=wz_{t}c_{t}^{-\sigma}\), constrained or not
+\item
+  \textbf{EGM, unconstrained:} Euler gives \(c\), the intratemporal FOC gives \(n\), the budget gives \(a_{t-1}\). One extra line
+\item
+  \textbf{EGM, constrained:} \(a^{\ast}=0\), but \(c\) and \(n\) must be found together. Newton on one equation in \(n\)
+\item
+  \textbf{Policy functions:} does labor supply fall with wealth? With \(z\)?
+\item
+  \textbf{Simulate and aggregate:} \(L^{hh}=\sum\boldsymbol{D}\,z\,n^{\ast}\), check \(C^{hh}=rA^{hh}+wL^{hh}\). Share at the constraint?
+\end{enumerate}
+
+\textbf{Notebook:} \texttt{06\_egm\_endogenous\_labor.ipynb}
 \end{frame}
 
 \section{Misc}\label{misc}
