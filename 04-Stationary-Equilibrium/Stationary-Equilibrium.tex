@@ -124,17 +124,17 @@ lbl/.style={font=\scriptsize},
 new/.style={draw=DarkRed,text=DarkRed}]
 
 \node[block] (hh) at (0,0) {Households};
-\node[block,visible on=<2->,alt=<2>{new,fill=DarkRed!10}{}] (firm) at (6.8,0) {Firms};
+\node[block,visible on=<2->,alt=<2|handout:0>{new,fill=DarkRed!10}{}] (firm) at (6.8,0) {Firms};
 \node[block,visible on=<3->,new,fill=DarkRed!10] (asset) at (3.4,1.85) {Asset market\\$A_{t}=K_{t}$};
 \node[block,visible on=<3->,new,fill=DarkRed!10] (goods) at (3.4,-1.85) {Goods market\\$Y_{t}=C_{t}+I_{t}$};
 
-\draw[->,thick,alt=<2>{new}{}] ([yshift=2.5mm]firm.west) -- node[lbl,above]{\alt<1>{$r_{t}$ given}{$r_{t}=F_{K}(K_{t-1},L_{t})-\delta$}} ([yshift=2.5mm]hh.east);
-\draw[->,thick,alt=<2>{new}{}] ([yshift=-2.5mm]firm.west) -- node[lbl,below]{\alt<1>{$w_{t}$ given}{$w_{t}=F_{L}(K_{t-1},L_{t})$}} ([yshift=-2.5mm]hh.east);
+\draw[->,thick,alt=<2|handout:0>{new}{}] ([yshift=2.5mm]firm.west) -- node[lbl,above]{\alt<1|handout:0>{$r_{t}$ given}{$r_{t}=F_{K}(K_{t-1},L_{t})-\delta$}} ([yshift=2.5mm]hh.east);
+\draw[->,thick,alt=<2|handout:0>{new}{}] ([yshift=-2.5mm]firm.west) -- node[lbl,below]{\alt<1|handout:0>{$w_{t}$ given}{$w_{t}=F_{L}(K_{t-1},L_{t})$}} ([yshift=-2.5mm]hh.east);
 
 \draw[->,thick] (hh.north) |- node[lbl,pos=0.25,left]{$A_{t}$} (asset.west);
 \draw[->,thick] (hh.south) |- node[lbl,pos=0.25,left]{$C_{t}$} (goods.west);
-\draw[->,thick,visible on=<2->,alt=<2>{new}{}] (asset.east) -| node[lbl,pos=0.75,right]{$K_{t-1}$} (firm.north);
-\draw[->,thick,visible on=<2->,alt=<2>{new}{}] (firm.south) |- node[lbl,pos=0.25,right]{$Y_{t}$, $I_{t}$} (goods.east);
+\draw[->,thick,visible on=<2->,alt=<2|handout:0>{new}{}] (asset.east) -| node[lbl,pos=0.75,right]{$K_{t-1}$} (firm.north);
+\draw[->,thick,visible on=<2->,alt=<2|handout:0>{new}{}] (firm.south) |- node[lbl,pos=0.25,right]{$Y_{t}$, $I_{t}$} (goods.east);
 
 \end{tikzpicture}
 \end{center}
