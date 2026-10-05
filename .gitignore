@@ -447,3 +447,8 @@ working-folder/14-Exam-Perspectives/figs/handin.png
 02-03-Consumption-Saving/.vscode/settings.json
 02-03-Consumption-Saving/.build/Consumption-Saving.pdf
 .vscode/settings.json
+.claude/settings.local.json
+
+# Assignment I solution (public repo)
+Assignments/Assignment-I-Tobin-Q/solution/
+Assignments/Assignment-I-Tobin-Q/.build/

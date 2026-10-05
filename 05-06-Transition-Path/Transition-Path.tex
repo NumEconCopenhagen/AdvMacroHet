@@ -806,7 +806,7 @@ What we have seen so far:
 \end{enumerate}
 \end{frame}
 
-\section{Linear transitions and aggregate uncertainty}
+\section[Linear transitions]{Linear transitions and aggregate uncertainty}
 
 \begin{frame}{Reminder of model class}
 
@@ -914,33 +914,51 @@ This gives us the endogenous response $d\boldsymbol{K}$ for any shock $d\boldsym
 
 
 \begin{frame}{Simulating a time-series using the linearized solution}
-\vspace{-2mm}
-We can also simulate the economy following a sequence of shocks: \pause
+\textbf{Idea:} in a linear model, the response to many shocks is the sum of the responses to each shock alone \pause
 \begin{itemize}
-\item <+->\textbf{Shocks: }Write the shocks as an $MA(\infty)$ with coefficients
-$d\boldsymbol{Z}_{s}$ for $s\in\{0,1,\dots\}$ driven by the innovation
-$\boldsymbol{\epsilon}_{t}$.
-\begin{itemize}
-\item EX: If shock $\boldsymbol{Z}$ follows an AR(1) then $d\boldsymbol{Z}_{s}=\rho^{s}$
+\item <+->$\text{IRF}^X_s$: effect on $X$ of a unit innovation $\epsilon$, $s$ periods after it hit
+\item <+->\textbf{Scaling:} an innovation of size $\epsilon_0$ moves $X$ by $\text{IRF}^X_s\,\epsilon_0$ after $s$ periods
+\item <+->\textbf{Timing:} an innovation at date 1 has the same effect, one period later
+\item <+->\textbf{Adding up:} today's $dX_t$ is the sum of the effects of all past innovations
 \end{itemize}
-\item <+->\textbf{Linearized simulation:}
-\begin{enumerate}
-\item <+->Draw time series of innovations, $\tilde{\boldsymbol{\epsilon}}_{t}$
-\item <+->Calculate the time series of shocks as $d\tilde{\boldsymbol{Z}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}$
+\end{frame}
 
-Note: $d\boldsymbol{Z}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}=$ effect
-of shock $s$ periods ago today
-\item <+->Calculate the time series of other aggregate variables as
+\begin{frame}{Simulating a time-series: an example}
+$\text{IRF}^X=(1,0.5,0.25,0,\dots)$, innovations $\epsilon_0=1$, $\epsilon_1=-2$, $\epsilon_2=0.5$
+\begin{center}
+\begin{tabular}{lcccc}
+ & $t=0$ & $t=1$ & $t=2$ & $t=3$\tabularnewline
+\hline
+effect of $\epsilon_0=1$ & $1$ & $0.5$ & $0.25$ & $0$\tabularnewline
+effect of $\epsilon_1=-2$ &  & $-2$ & $-1$ & $-0.5$\tabularnewline
+effect of $\epsilon_2=0.5$ &  &  & $0.5$ & $0.25$\tabularnewline
+\hline
+$dX_t$ & $1$ & $-1.5$ & $-0.25$ & $-0.25$\tabularnewline
+\end{tabular}
+\end{center}
+Each row is the IRF, started at the date of its innovation and scaled by its size \pause
+
+\textbf{In general}, adding up the effects of all past innovations:
 \[
-d\tilde{\boldsymbol{X}}_{t}=\sum_{s=0}^{T-1}d\boldsymbol{X}_{s}\tilde{\boldsymbol{\epsilon}}_{t-s}
+dX_t=\sum_{s=0}^{T-1}\text{IRF}^X_s\,\epsilon_{t-s}
 \]
-where $d\boldsymbol{X}_{s}$ is the IRF to a \emph{unit-shock} after
-$s$ periods (just needs jacobian of $\boldsymbol{X}$ w.r.t shocks
-$\boldsymbol{Z}$)
+$s$ is the \emph{age} of a shock: $\epsilon_{t-s}$ hit $s$ periods ago, and $\text{IRF}^X_s$ is how much a shock that old still moves $X$ today
+\end{frame}
+
+\begin{frame}{Simulating a time-series in practice}
+\begin{enumerate}
+\item <+->\textbf{IRF to a unit innovation:} for an AR(1) shock, $dZ_s=\rho^s$, and $\text{IRF}^X=G_X d\boldsymbol{Z}$ (one matrix product)
+\item <+->\textbf{Draw innovations:} $\epsilon_t\sim\mathcal{N}(0,\sigma_\epsilon^2)$
+\item <+->\textbf{Sum:} $dX_t=\sum_{s=0}^{T-1}\text{IRF}^X_s\,\epsilon_{t-s}$ (a convolution)
 \end{enumerate}
-\item <+->\textbf{Intuition:} Sum of first order effects from all previous
-shocks
-\end{itemize}
+\pause
+\vspace{3mm}
+\textbf{Moments without simulating:} innovations are independent, so
+\[
+\text{var}(dX_t)=\sigma_\epsilon^2\sum_{s=0}^{T-1}\left(\text{IRF}^X_s\right)^2
+\]
+\pause
+\textbf{Why is this allowed?} Each $\epsilon_t$ is a surprise when it hits, like an MIT shock, and to first order the response does not depend on when it hits
 \end{frame}
 
 \begin{frame}
@@ -1258,5 +1276,48 @@ Same model. Your choice of $\tau_{ss}.$ New questions:
 Answers available at this \href{https://github.com/NumEconCopenhagen/GEModelToolsNotebooks/tree/master/HANC-gov}{\underline{link}}
 \end{frame}
 
+
+\section[Recap]{Full Recap}
+
+\begin{frame}{Recap: consumption-saving}
+\begin{itemize}
+\item The buffer-stock model: income risk and a borrowing constraint give precautionary saving, a concave consumption function, and high MPCs at low wealth
+\item The solution is a pair of policy functions $a^{\ast}(z,a_{-1})$ and $c^{\ast}(z,a_{-1})$
+\item EGM (backward step): grid on the choice $a_t$, invert the Euler equation, endogenous grid from the budget constraint, interpolate back, impose the constraint
+\item Histogram method (forward step): the distribution is mass on the grid, moved by the productivity transition $\Pi_z'$ and the savings lottery $\Lambda'$
+\item Aggregates are sums of policies over the distribution, $A^{hh}=\sum\boldsymbol{D}\,a^{\ast}$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recap: stationary equilibrium}
+\begin{itemize}
+\item In general equilibrium, prices are endogenous and set by market clearing
+\item HANC = buffer-stock households + firms + mutual fund + markets
+\item The definition of the stationary equilibrium
+\item Solving it is a one-dimensional root-finding problem: guess $K$, get $(r,w)$, solve backward, simulate forward, return $A^{hh}_{ss}-K$
+\item Bisection is safe but slow, Newton is fast but needs $f'$ and can diverge; \texttt{brentq} combines the two
+\item Precautionary saving pushes $r_{ss}$ below $1/\beta-1$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recap: transition path}
+\begin{itemize}
+\item Transitory vs permanent transitions, and their initial and terminal conditions
+\item Nonlinear vs linear solutions
+\item Perfect foresight (MIT shocks) and truncation at $T$
+\item The equilibrium in sequence space: $\boldsymbol{H}(\boldsymbol{K},\boldsymbol{\Gamma})=\boldsymbol{A}^{hh}(\boldsymbol{r},\boldsymbol{w})-\boldsymbol{K}=\boldsymbol{0}$
+\item The household impulse response: backward from $\underline{v}_{a,T}$, forward from $\underline{\boldsymbol{D}}_0$
+\item Newton's method needs the sequence-space Jacobian, built with the chain rule along the DAG
+\item Linear solution: $d\boldsymbol{U}=\boldsymbol{G}\,d\boldsymbol{Z}$, and simulation as a sum of past shocks
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Recap: additional topics}
+\begin{itemize}
+\item To first order, the IRF to an MIT shock is the IRF of the model with aggregate risk (certainty equivalence)
+\item Fake news algorithm: policies only depend on the distance to the shock, so one backward pass gives the whole Jacobian
+\item With perceived aggregate risk, the distribution becomes a state variable: Krusell-Smith, state-space perturbation, deep learning
+\end{itemize}
+\end{frame}
 
 \end{document}
