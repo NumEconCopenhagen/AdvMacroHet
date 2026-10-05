@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1cm,bmargin=2.7cm,lmargin=2.7cm,rmargin=2cm}
+\pagestyle{empty}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+\onehalfspacing
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\date{}
+\author{}
+\newcommand{\solution}[1]{}
+\newcommand{\hint}[1]{\par\smallskip{\small\textit{Hint:} #1}\par}
+
+\begin{document}
+
+\title{\textsc{Assignment I: Trickle-Down vs Capital Gains}}
+\maketitle
+\vspace{-3mm}\thispagestyle{empty}
+
+\textbf{Objective:} This project teaches you to solve a heterogeneous agent model with a thick upper tail of wealth and imperfect competition, and to use it to study how rising labor income inequality shapes the distribution of wealth under perfect and imperfect competition, in steady state and along transitions.
+\begin{itemize}
+\item \textbf{Problem:} The problem consists of
+\begin{enumerate}
+\item A number of questions (page 2)
+\item A model (page 3 onward, incl. calibration and numerical implementation)
+\item Some code files you can start from
+\end{enumerate}
+\item \textbf{Code:} The problem is designed to be solved with the \texttt{GEModelTools} package.
+\item \textbf{Figures and tables:} Please use the provided functions to plot figures and tables.
+\item \textbf{Structure:} Your project should consist of
+\begin{enumerate}
+\item A single self-contained pdf-file with all results
+\item A single Jupyter notebook showing how the results are produced
+\item Well-documented \texttt{.py} files
+\end{enumerate}
+\item \textbf{Hand-in:} Upload a single zip-file on Absalon (and nothing else)
+\item \textbf{Deadline:} 26 October 2026
+\item \textbf{Exam:} This project will be a part of your exam portfolio.
+You can incorporate feedback before handing in the final version.
+\end{itemize}
+
+\newpage
+
+\input{questions}
+
+\newpage
+
+\section{Model}
+
+\paragraph*{Households.}
+The model is annual. There is a continuum of households with permanent labor productivity $z_i$ from five groups (bottom 50\%, next 40\%, top 10--1\%, top 1--0.1\% and top 0.1\% of labor income), and idiosyncratic productivity $e$ with $\log e'=\rho_e\log e+\epsilon'$.
+Households supply one unit of labor inelastically, with efficiency $z_i e$, and aggregate efficiency units are normalized to one.
+Each period a household dies with probability $\xi$ and is replaced by a newborn of the same permanent type, whose idiosyncratic productivity continues from its parent's.
+Households value consumption and end-of-period wealth:
+\begin{align*}
+v_t(z_i,e,a_{-}) & =\max_{c,a}\frac{c^{1-\sigma}}{1-\sigma}+\gamma\frac{(a+\bar a)^{1-\Sigma}}{1-\Sigma}+\beta(1-\xi)\mathbb{E}\left[v_{t+1}(z_i,e',a)\right]\\
+\text{s.t. } & a+c=(1+r^B_t)a_{-}+cg_t\,s(a_{-})a_{-}+(1-\tau_l)w_t z_i e,\qquad a\geq0.
+\end{align*}
+Since $\Sigma<\sigma$, wealth is a luxury good, and $\bar a$ makes the taste for wealth weaker for poor households.
+A newborn has no wealth of its own and receives the bequest $b_t z_i$ instead of $(1+r^B_t)a_{-}+cg_t\,s(a_{-})a_{-}$.
+
+\paragraph*{Bequests.}
+The wealth of the dead is taxed at rate $\tau_E$ and the rest is given to newborns in proportion to their permanent productivity. Since death is independent of wealth, the dead hold a share $\xi$ of wealth and $b_t=(1-\tau_E)(1+r^a_t)A_{t-1}$.
+
+\paragraph*{Final-good producer.}
+A competitive final-good producer combines labor $L_t$ and a CES bundle of intermediate goods $x_{j,t}$, $j\in[0,1]$:
+$$Y_t=\Gamma L_t^{1-\alpha}X_t^{\alpha},\qquad X_t=\left(\int_0^1 x_{j,t}^{1/\mu}\,dj\right)^{\mu},$$
+where $\mu\geq1$, so that the elasticity of substitution between varieties is $\mu/(\mu-1)$. The final good is the numéraire.
+Maximizing $Y_t-w_tL_t-\int_0^1 p_{j,t}x_{j,t}\,dj$ gives the wage $w_t=(1-\alpha)Y_t/L_t$ and the demand for each variety
+$$x_{j,t}=X_t\left(\frac{p_{j,t}}{P^X_t}\right)^{-\frac{\mu}{\mu-1}},\qquad P^X_t=\alpha\frac{Y_t}{X_t},$$
+so that spending on intermediate goods is $\int_0^1 p_{j,t}x_{j,t}\,dj=\alpha Y_t$. The final-good producer makes no profits.
+
+\paragraph*{Intermediate producers.}
+Each intermediate producer $j$ owns its capital stock $k_{j,t-1}$, chosen in the previous period, and produces $x_{j,t}=k_{j,t-1}$. It sets its price $p_{j,t}$ given the demand curve above, invests, and pays the dividend
+$$d_{j,t}=p_{j,t}x_{j,t}-\left[k_{j,t}-(1-\delta)k_{j,t-1}\right].$$
+Its ex-dividend value $q_{j,t}$ satisfies the no-arbitrage condition
+$$q_{j,t-1}(1+r_t)=(1-\tau_d)d_{j,t}+q_{j,t},$$
+where $r_t$ is the after-tax return on wealth between $t-1$ and $t$, and shareholders pay the dividend tax $\tau_d$. The producer chooses its price and its investment to maximize its value, taking the demand curve and $P^X_t$ as given. You do not need to derive the first-order conditions, which are:
+\begin{itemize}
+\item \emph{Pricing.} The price is a markup $\mu$ over the marginal cost of capital (the user cost),
+$$p_{j,t}=\mu\left(r_t+\delta\right).$$
+\item \emph{Investment.} One unit of the final good invested in period $t$ yields the marginal revenue $p_{j,t+1}/\mu$ and the undepreciated capital $1-\delta$ in period $t+1$, so
+$$1+r_{t+1}=\frac{p_{j,t+1}}{\mu}+1-\delta.$$
+\end{itemize}
+The dividend tax does not enter the investment condition, since it scales all dividends by the same factor.
+
+\paragraph*{Symmetric equilibrium.}
+All intermediate producers make the same choices, so $x_{j,t}=X_t=K_{t-1}$ and $p_{j,t}=P^X_t=\alpha Y_t/K_{t-1}$. With $L_t=1$,
+$$Y_t=\Gamma K_{t-1}^{\alpha},\qquad w_t=(1-\alpha)Y_t,\qquad r_t=\frac{\alpha}{\mu}\frac{Y_t}{K_{t-1}}-\delta.$$
+Intermediate producers earn $\alpha Y_t$, of which the rents are $\alpha(1-1/\mu)Y_t$, and aggregate dividends and firm value $q_t=\int_0^1 q_{j,t}\,dj$ satisfy
+$$d_t=\alpha Y_t-I_t,\qquad I_t=K_t-(1-\delta)K_{t-1},\qquad q_{t-1}(1+r_t)=(1-\tau_d)d_t+q_t.$$
+Under perfect competition ($\mu=1$), intermediate producers earn no rents and $q_t=(1-\tau_d)K_t$.
+
+\paragraph*{Mutual fund.}
+A mutual fund holds all equity and government bonds $B$, $A_t=q_t+B$. Absent surprises, all wealth earns $r^B_t=r_t$.
+When the economy is hit by an unexpected shock in period 0, bonds pay the return expected when they were bought, $r^B_0=r_{-1}$, while equity earns an unexpected capital gain.
+This gain is paid to households in proportion to their equity exposure $s(a_{-})a_{-}$, where the equity share of wealth follows the portfolio rule estimated on the SCF by Elina and Huleux,
+$$s(a)=\min\left\{\frac{\psi_0}{1+\exp\left(-\psi_1\left(\log(a/A_{1970})-\psi_2\right)\right)},1\right\},$$
+where $A_{1970}$ is aggregate wealth in the 1970 steady state.
+The capital gain per unit of exposure is
+$$cg_0=\frac{(1-\tau_d)d_0+q_0-(1+r_{-1})q_{-1}}{\int s(a_{-})a_{-}\,d\boldsymbol{D}_0},$$
+and $cg_t=0$ for $t\geq1$. Households' return on wealth is $r^B_t+cg_t\,s(a_{-})$, so the rich, who hold more equity, receive a larger share of the gain.
+The average return on wealth is $r^a_t$, with $1+r^a_0=\left[(1-\tau_d)d_0+q_0+(1+r_{-1})B\right]/(q_{-1}+B)$.
+
+\paragraph*{Government.}
+Debt is constant and spending adjusts:
+$$G_t=\tau_l w_t+\tau_d d_t+\tau_E\,\xi(1+r^a_t)A_{t-1}-r^B_t B.$$
+
+\paragraph*{Market clearing.}
+\begin{enumerate}
+\item Asset market: $A_t=q_t+B=A^{hh}_t$
+\item Goods market: $Y_t=C^{hh}_t+I_t+G_t$
+\end{enumerate}
+
+\section{Calibration}
+
+\begin{table}[h]
+\centering
+\caption{Parameters}
+\small
+\begin{tabularx}{\textwidth}{lXll}
+\toprule
+ & Parameter & Value & Source \\
+\midrule
+$\sigma$ & CRRA on consumption & 2.0 & \\
+$\xi$, $\Sigma$ & death probability, curvature of taste for wealth & & question 1(a) \\
+$\beta$, $\gamma$, $\bar a$ & discount factor, taste for wealth & & question 1(c) \\
+$z_i$ & permanent productivity & & PSZ labor income shares \\
+$\rho_e$, $\sigma_e$ & persistence and std. of $\log e$ & 0.95, 0.545 & Storesletten et al. \\
+$\alpha$ & capital share & 1/3 & \\
+$\mu$ & markup & 1.2 & \\
+$\Gamma$, $\delta$ & technology, depreciation & & $Y=1$, $r=3\%$, $W/Y=3.7$ \\
+$B$ & government debt & 0.19 & \\
+$\tau_l$ & labor income tax & 0.30 & \\
+$\tau_E$ & estate tax & 0.30 & \\
+$\tau_d$ & dividend tax & 0.30 & \\
+$\psi_0$, $\psi_1$, $\psi_2$ & portfolio rule & 1.0, 0.374, 2.598 & Elina and Huleux, SCF \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+To calibrate the 1970 steady state, set $Y=1$, $r=3\%$ and $W/Y=3.7$.
+This gives $q=W-B$, $K$ from Tobin's Q, $\Gamma$ from output and $\delta$ from the investment condition.
+Then solve for $\beta$, $\gamma$ and $\bar a$ (question 1(c)).
+The economy with $\mu=1$ keeps all these parameters except $\beta$ (question 1(e)).
+
+\section{Numerical implementation}
+
+\begin{itemize}
+\item \textbf{States.} The five permanent types are fixed states (\texttt{Nfix = 5}). Idiosyncratic productivity is discretized with the Rouwenhorst method with 4 states.
+Death is handled as an extra exogenous state: the household is either alive or newborn, $4\times2=8$ states. A newborn does not use $a_{-}$ in its budget.
+\item \textbf{Asset grid.} 500 points between 0 and $10^{10}$, finest around $a=5$. Because the grid spans many orders of magnitude, rounding errors in savings at the top of the grid are about $10^{-7}$, so the tolerance when solving the household problem is $10^{-6}$.
+\item \textbf{Distribution.} The top of the wealth distribution converges slowly, so the tolerance when simulating the distribution is very tight ($10^{-17}$).
+\item \textbf{Transitions.} The only unknown is $K$, with asset market clearing as the target. Use $T=300$. A transition from an old steady state needs \texttt{ini} to contain \texttt{Dbeg}, \texttt{K}, \texttt{q} and \texttt{r}. GEModelTools prints a warning that some terminal values differ slightly from the steady state; this is expected, since the top of the distribution converges slowly.
+\item \textbf{Helper functions.} \texttt{tails.py} computes wealth shares and the average wealth of top groups.
+\end{itemize}
+
+\section{Derivations (optional)}
+
+This section derives the Euler equation and the approximations used in questions 1(a), 1(b) and 1(d). You are not asked to reproduce them.
+
+\paragraph*{Policy functions.} In steady state ($r^B=r$, $cg=0$) the Euler equation of a surviving household is
+$$c_t^{-\sigma}=\beta(1-\xi)(1+r)c_{t+1}^{-\sigma}+\gamma(a_t+\bar a)^{-\Sigma},$$
+where $1-\xi$ appears because wealth is worth nothing to a household that dies. For a wealthy household, $a_t\gg\bar a$ and labor income is negligible. Guess that $c=Ba_{-}^{\Sigma/\sigma}$. If $\Sigma<\sigma$, consumption relative to wealth, $c/a_{-}=Ba_{-}^{\Sigma/\sigma-1}$, goes to zero, so the budget constraint gives $a_t\approx(1+r)a_{-}$ and net savings are $a_t-a_{-}\approx ra_{-}$. Next period's consumption is then $c_{t+1}=Ba_t^{\Sigma/\sigma}=B(1+r)^{\Sigma/\sigma}a_{-}^{\Sigma/\sigma}$. Substituting into the Euler equation,
+$$B^{-\sigma}a_{-}^{-\Sigma}=\beta(1-\xi)(1+r)B^{-\sigma}(1+r)^{-\Sigma}a_{-}^{-\Sigma}+\gamma(1+r)^{-\Sigma}a_{-}^{-\Sigma}.$$
+The powers of $a_{-}$ cancel, which verifies the guess, and
+$$B=\left[\frac{\gamma(1+r)^{-\Sigma}}{1-\beta(1-\xi)(1+r)^{1-\Sigma}}\right]^{-1/\sigma},$$
+which requires $\beta(1-\xi)(1+r)^{1-\Sigma}<1$.
+
+\paragraph*{Pareto tail of wealth.} At the top, the wealth of a surviving household grows at the gross rate $1+r$, and each period a household dies with probability $\xi$ and its dynasty restarts from the bequest. A household that has survived $n$ periods since the restart has wealth $x\propto(1+r)^n$, and the share of households that have survived at least $n$ periods is $(1-\xi)^n$. With $n=\log x/\log(1+r)$,
+$$P(a>x)\propto(1-\xi)^{\log x/\log(1+r)}=x^{\log(1-\xi)/\log(1+r)},$$
+so wealth has a Pareto tail with coefficient $\zeta_a=-\log(1-\xi)/\log(1+r)$.
+
+\paragraph*{Pareto tail of consumption.} Since $c=Ba^{\Sigma/\sigma}$ at the top,
+$$P(c>y)=P\left(a>(y/B)^{\sigma/\Sigma}\right)\propto y^{-\zeta_a\sigma/\Sigma},$$
+so consumption has a Pareto tail with coefficient $\zeta_c=\frac{\sigma}{\Sigma}\zeta_a$.
+
+\section*{References}
+\begin{itemize}
+\item Elina, E. and R. Huleux. \emph{From Income to Wealth Inequality: Trickle-Down vs Capital Gains}. Working paper.
+\item Gaillard, A., C. Hellwig, P. Wangner and N. Werquin (2024). \emph{Consumption, Wealth, and Income Inequality: A Tale of Tails}. Working paper.
+\item Piketty, T., E. Saez and G. Zucman (2018). Distributional National Accounts: Methods and Estimates for the United States. \emph{Quarterly Journal of Economics} 133(2), 553--609.
+\item Storesletten, K., C. Telmer and A. Yaron (2004). Consumption and Risk Sharing over the Life Cycle. \emph{Journal of Monetary Economics} 51(3), 609--633.
+\end{itemize}
+
+\end{document}

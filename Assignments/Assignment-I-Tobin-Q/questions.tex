@@ -1,0 +1,80 @@
+\section*{Questions}
+
+\begin{enumerate}
+\item \textbf{Calibration.}
+\begin{enumerate}
+\item \emph{Pareto tails.} For wealthy households, the saving rate out of income tends to one when $\Sigma<\sigma$, and wealth and consumption have Pareto tails with coefficients (the derivation is in Section 4)
+$$\zeta_a=-\frac{\log(1-\xi)}{\log(1+r)},\qquad \zeta_c=\frac{\sigma}{\Sigma}\zeta_a.$$
+Explain the intuition behind each formula. Gaillard et al.\ (2024) estimate $\zeta_a=1.35$ and $\zeta_c=3.02$ in US data. With $r=3\%$ and $\sigma=2$, find $\xi$ and $\Sigma$.
+\solution{1a}
+\item \emph{Household problem.} Complete the inversion of the Euler equation (\texttt{c\_endo} and \texttt{m\_endo}) in \texttt{solve\_hh\_backwards} in \texttt{household\_problem.py}.
+\hint{The Euler equation of a surviving household is in Section 4. Death is an exogenous state, so the expectation step \texttt{z\_trans@v\_a} already includes the survival probability: the marginal value of $a_{-}$ is zero for a newborn, since its $a_{-}$ is the wealth of the parent who died, which goes to the bequest pool.}
+\solution{1b}
+\item \emph{Wealth distribution.} Complete \texttt{blocks\_ss} and \texttt{find\_ss\_calibrate} in \texttt{steady\_state.py}. Calibrate $\beta$, $\gamma$ and $\bar a$ such that the asset market clears and the model matches the bottom 50\% and top 10\% wealth shares in 1970 (\texttt{wealth\_psz.csv}).
+\hint{Given $Y=1$, $r$ and $W/Y$, the formula for Tobin's Q in question 2(b) gives $K$. Then use \texttt{obj\_ss}, which returns the asset market clearing error for a given $K$, inside a root-finder over $(\beta,\log\gamma,\log\bar a)$, starting from $\beta=0.9$, $\gamma=2$ and $\bar a=5$; you should find $\beta\approx0.84$, $\gamma\approx1.92$ and $\bar a\approx5.48$.}
+\solution{1c}
+\item \emph{Policy functions.} For wealthy households ($a_{-}\gg\bar a$ and labor income negligible), consumption and net savings are approximately
+$$c\approx Ba_{-}^{\Sigma/\sigma},\qquad B=\left[\frac{\gamma(1+r)^{-\Sigma}}{1-\beta(1-\xi)(1+r)^{1-\Sigma}}\right]^{-1/\sigma},\qquad a-a_{-}\approx ra_{-}$$
+(the derivation is in Section 4).
+Plot the consumption function and net savings $a-a_{-}$ of the calibrated model as functions of $a_{-}$, in logs, together with these approximations.
+Why do the rich save so much in this model? How does this depend on $\Sigma$ relative to $\sigma$?
+How would the policy functions look for high values of wealth in a homothetic model without taste for wealth ($\gamma=0$)?
+\solution{1d}
+\item \emph{Perfect competition.} Construct an economy with $\mu=1$ that keeps all the other parameters of the $\mu=1.2$ economy, including $\Gamma$, $\delta$, $\gamma$ and $\bar a$, except $\beta$, which you re-solve such that $r=3\%$ (complete \texttt{find\_ss\_beta} in \texttt{steady\_state.py}). How do $Y$, $w$, $K/Y$, $W/Y$, $Q$, $\beta$ and the 1970 wealth distribution differ from the economy with $\mu=1.2$? Why?
+\hint{$K$ follows from the investment condition at $r=3\%$. Then find $\beta$ with \texttt{optimize.brentq} on $[0.5,0.95]$, using \texttt{obj\_ss} at this $K$.}
+\solution{1e}
+\end{enumerate}
+
+\item \textbf{Steady-state impact of rising permanent income inequality.}
+\begin{enumerate}
+\item Define the stationary equilibrium of the model in Section 1. Show that the goods market clears when the asset market clears (Walras' law).
+\solution{2a}
+\item \emph{Tobin's Q.} Show that in steady state
+$$Q\equiv\frac{q}{K}=(1-\tau_d)\left[1+\alpha\left(1-\frac{1}{\mu}\right)\frac{Y/K}{r}\right].$$
+Interpret the two terms. What is $Q$ under perfect competition, $\mu=1$?
+\solution{2b}
+\item \emph{Linear approximation.} Let $\partial\log A$ be the partial equilibrium change in log asset demand when the permanent income grid moves from 1970 to 2019 (\texttt{labor\_psz.csv}) and households face the 1970 prices, $\varepsilon^A=\partial\log A/\partial r$ the semi-elasticity of asset demand (with $w$ and bequests moving with $r$ as in steady state), $\varepsilon^q=-\partial\log(q+B)/\partial r$ the semi-elasticity of asset supply and $\varepsilon^K=-\partial\log K/\partial r$.
+\begin{enumerate}[label=(\roman*)]
+\item Show that, to first order,
+$$dr=-\frac{\partial\log A}{\varepsilon^A+\varepsilon^q},\qquad d\log w=-\alpha\varepsilon^K dr,\qquad d\log\frac{W}{Y}=\frac{\varepsilon^q-\alpha\varepsilon^K}{\varepsilon^A+\varepsilon^q}\partial\log A.$$
+\hint{Write the steady-state asset market clearing condition as a function of $r$ and the permanent income grid, $\log A(r,\{z_i\})=\log\left(q(r)+B\right)$, where $w$ and the bequest are themselves functions of $r$. Then take the total derivative.}
+\item Interpret the formulas.
+\item Compute $\partial\log A$ and the elasticities in the model for $\mu=1.2$ and $\mu=1$, and use the formulas to predict the changes in $r$, $w$ and $W/Y$. Why do markups dampen the fall in $r$?
+\end{enumerate}
+\solution{2c}
+\item \emph{Rising permanent income inequality.}
+\begin{enumerate}[label=(\roman*)]
+\item Replace the 1970 permanent income grid by the 2019 grid and compute the new steady state of both economies, $\mu=1.2$ and $\mu=1$.
+\item Compare the changes in $r$, $w$, $K/Y$, $W/Y$, $Q=q/K$ and the wealth shares in the two economies. How close is the linear approximation of question 2(c)?
+\item Solve the household problem with the 1970 permanent income grid and the 2019 prices (markets do not have to clear). Compare the average wealth of the top 1\% and of the top 0.1\% relative to output (the 2019 output, which goes with the 2019 prices), and the top 1\% wealth share, to 1970. What is the impact of the change in prices on wealth inequality under perfect and under imperfect competition? Why?
+\end{enumerate}
+\hint{For (iii), copy the 2019 model, give it the 1970 grid, and call \texttt{solve\_hh\_ss} and \texttt{simulate\_hh\_ss}.}
+\solution{2d}
+\end{enumerate}
+
+\item \textbf{One-time shock.} Assume that the rise in permanent income inequality is an unexpected permanent shock in 1970, after which households and firms have perfect foresight.
+\begin{enumerate}
+\item \emph{Firm value.} Complete \texttt{production\_firm} and the computation of $q_t$ in \texttt{mutual\_fund} in \texttt{blocks.py}. Why is $q_t$ computed backwards in time?
+\hint{Use the no-arbitrage condition in Section 1. Start from the terminal condition $q_T=q_{ss}$, the firm value in the new steady state, and iterate backwards to $t=0$. \texttt{next(q,t,ss.q)} returns $q_{t+1}$, and $q_{ss}$ in the last period.}
+\solution{3a}
+\item Compute the transition from the 1970 to the 2019 steady state for $\mu=1.2$ and $\mu=1$. Plot the return on wealth, average Tobin's Q ($q_t/K_t$), the wealth-output ratio and the top 1\% wealth share, in deviations from 1970.
+Explain the return on wealth in the first period. Why is there no capital gain under perfect competition?
+\solution{3b}
+\item \emph{(Hard)} Along the transition, decompose the change since 1970 in the average wealth of the top 1\% and of the top 0.1\%, relative to output, into
+\begin{itemize}
+\item a partial equilibrium effect: households have the 2019 permanent income grid and face the 1970 prices (divide by 1970 output),
+\item a general equilibrium effect: households have the 1970 permanent income grid and face the realized paths of $r^B_t$, $cg_t$, $w_t$ and $b_t$ (divide by realized output).
+\end{itemize}
+Compare the general equilibrium effect under $\mu=1$ and $\mu=1.2$. Does its sign change over time?
+\hint{Use \texttt{decompose\_hh\_path}, starting from the 1970 distribution (\texttt{Dbeg}). For the partial equilibrium effect, call it on a copy of the 1970 model with the 2019 grid and \texttt{use\_inputs=[]}; for the general equilibrium effect, call it on the 1970 model with \texttt{use\_inputs} set to the four prices and their realized paths in \texttt{custom\_paths}.}
+\solution{3c}
+\item \emph{Conclusion.} Given your answers to questions 2 and 3, discuss who benefits from the change in prices caused by the rise in permanent income inequality, under perfect and under imperfect competition, in the short run and in the long run.
+\solution{3d}
+\end{enumerate}
+
+\item \textbf{Myopic expectations (optional).}
+Assume instead that the permanent income grid moves every 5 years along a linear path from the 1970 to the 2019 grid, in 10 steps, and that each time households and firms believe the new grid is permanent.
+Compute the resulting path as a sequence of unexpected shocks, and compare the return on wealth, average Tobin's Q and the average wealth of the top 0.1\% to question 3.
+\hint{Each step is a transition from the current state to the steady state households now believe in. Five years after a shock, the next one starts from \texttt{ini = \{'Dbeg':path.Dbeg[5], 'K':path.K[4,0], 'q':path.q[4,0], 'r':path.r[5,0]\}}: the bonds held in year 5 were bought in year 4 and pay the return $r_5$ expected then.}
+\solution{4}
+\end{enumerate}
