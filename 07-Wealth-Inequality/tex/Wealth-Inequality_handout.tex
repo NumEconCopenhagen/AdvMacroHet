@@ -1,0 +1,1185 @@
+\documentclass[10pt,english,10pt,handout]{beamer}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{tocdepth}{1}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[authoryear]{natbib}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+\usepackage{booktabs}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+\newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{10pt}}{\enditemize}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\usepackage{babel}
+\begin{document}
+\title{7. Wealth Inequality \vspace{-2mm}}
+\subtitle{Adv. Macro: Heterogeneous Agent Models}
+\author{Raphaël Huleux}
+\date{2026}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+
+\maketitle
+
+\end{frame}
+}
+
+\addtocounter{framenumber}{-1}
+
+\begin{frame}{Roadmap for the rest of the class}
+
+\begin{itemize}
+\item We are done with the "computational" part of the class!
+\item We can switch to "economics" :-)
+\end{itemize}
+
+Now:
+\begin{itemize}
+\item[7.] Today: Wealth Inequality
+\item[8.] Next week: Secular Stagnation
+\end{itemize}
+After this, fiscal and monetary policy in HANK, SAM, I-HANK...
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Wealth inequality}
+\begin{itemize}
+\item \textbf{Goal for today:} understand wealth inequality through the lens of heterogeneous agent models
+\item \textbf{Central economic questions:}
+\begin{enumerate}
+\item Why are some people so rich?
+\item What explains the rise in wealth inequality since 1980?
+\item What can taxes do about it?
+\end{enumerate}
+\item \textbf{Plan for today:}
+\begin{enumerate}
+\item Facts on wealth inequality
+\item Pareto tails, random growth, and why the buffer-stock model fails
+\item Mechanisms that fix it: Gaillard et al. (2024), Guvenen et al. (2023)
+\item Drivers of the rise: Hubmer, Krusell and Smith (2021), Moll, Rachel and Restrepo (2022)
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\section[Data]{Wealth inequality in the data}
+
+\begin{frame}{Earnings and wealth inequality}
+\begin{itemize}
+\item US data on the distribution of earnings and wealth (SCF, 1989)
+\end{itemize}
+
+\begin{center}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lccccc}
+\toprule
+ & Top 1\% & Top 5\% & Top 20\% & Top 40\% & Zero or negative \\
+\midrule
+Wealth & 29 & 53 & 80 & 93 & 6 \\
+Earnings & 6 & 19 & 48 & 72 & 8 \\
+\bottomrule
+\end{tabular}}
+\end{center}
+
+\pause
+\begin{itemize}
+\item Wealth is far more concentrated than earnings
+\item Skewed distributions with thick upper tails
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wealth more concentrated than earnings}
+Not only in the US, but in almost all countries, Denmark included
+\begin{center}
+\includegraphics[width=0.65\textwidth]{figs/Cross-Country-Gini.eps}
+\end{center}
+$\to$ Denmark: very unequal wealth despite equal incomes
+\end{frame}
+
+\begin{frame}{Wealth has a Pareto tail}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{figs_papers/Guvenen_et_al_2023_pareto.PNG}
+\caption{US wealth above \$1M, Guvenen et al. (2023)}
+\end{figure}
+$\log P(a>x)$ is linear in $\log x$, with slope $\approx -1.5$, from \$1M to \$50B
+\end{frame}
+
+\begin{frame}{Ranking of Pareto tails}
+Empirical ranking of Pareto coefficients (US, PSID):
+$$\zeta_{ra} < \zeta_a < \zeta_y < \zeta_c$$
+capital income $>$ wealth $>$ labor income $>$ consumption in concentration
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{figs_papers/gaillard_ranking_pareto_tails_data.png}
+\caption{Table 1 from Gaillard et al. (2024)}
+\end{figure}
+Adjusted for under-reporting: 1.20, 1.38, 2.25, 3.06
+\end{frame}
+
+\begin{frame}{Richer households hold riskier assets}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{figs_papers/bach_et_al_fig_2_allocation_gross_wealth.png}
+\caption{Figure 2 from Bach, Calvet and Sodini (2020), Swedish registers}
+\end{figure}
+Bottom: cash and pensions. Middle: housing. Top: equity and private equity.
+\end{frame}
+
+\begin{frame}{Richer households have higher returns}
+\begin{figure}
+\centering
+\includegraphics[width=0.85\linewidth]{figs_papers/bach_et_al_return_net_wealth.png}
+\caption{Figure 3 from Bach, Calvet and Sodini (2020)}
+\end{figure}
+\begin{itemize}
+\item Expected returns rise with net worth. Returns also differ within asset classes, are persistent and correlated across generations (Fagereng, Guiso, Malacrino and Pistaferri, 2020)
+\item Still a debate: higher risk or higher skill?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Why do the rich earn more: risk or skill?}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\textbf{Risk:} Bach, Calvet and Sodini (2020, AER), Sweden
+\begin{itemize}
+\item Expected returns rise with net worth, driven mainly by \emph{systematic risk}: the rich hold more equity and private equity
+\item Top 0.01\%: excess return $\approx$ the equity premium
+\item Idiosyncratic risk is transitory, but creates large long-run dispersion at the top
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\textbf{Skill:} Fagereng, Guiso, Malacrino and Pistaferri (2020, Ecta), Norway
+\begin{itemize}
+\item Returns differ even \emph{within} narrow asset classes
+\item p10 to p90 of net worth: +18 pp (+10 pp after tax)
+\item Persistent: partly risk and scale, but also sophistication, information and entrepreneurial talent
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{2mm}
+\begin{itemize}
+\item Why it matters: with skill, high returns mark productive households, a persistent type; a wealth tax then shifts the burden away from them (Guvenen et al., 2023)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The rich save more, because of capital gains}
+\begin{figure}
+\centering
+\includegraphics[width=0.65\linewidth]{figs_papers/fagereng_2020_savings_rate_capital_gains.png}
+\caption{Figure 1 from Fagereng, Holm, Moll and Natvik (2019), Norway}
+\end{figure}
+Gross saving rates rise to 50\% at the top, net saving rates are flat:\\
+the rich save by not consuming their capital gains
+\end{frame}
+
+\begin{frame}{How do people become rich?}
+\begin{itemize}
+\item Hubmer, Halvorsen, Salgado and Ozkan (forthcoming, Econometrica): Norwegian registers, 1993 to 2019
+\item Budget constraint, with $s_{it}$ the gross saving rate out of total income:
+\[
+a_{it}=a_{it-1}+\left(r_{it}a_{it-1}+L_{it}+H_{it}\right)s_{it}
+\]
+returns $r$ (incl. capital gains), labor income $L$, inheritances and gifts $H$
+\item Decomposition: replace one component by the average of the middle 50\% of the same age, simulate wealth, average over all orderings (Shapley-Owen)
+\item Wealth at age 20 counts as inheritance
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The top 0.1\%: saving, inheritances and returns}
+\begin{columns}
+\begin{column}{0.55\textwidth}
+\includegraphics[width=\linewidth]{figs_papers/Hubmer_et_al_2026_fig11_top01.png}
+\end{column}
+\begin{column}{0.45\textwidth}
+At age 50, the top 0.1\% hold 124 $\times$ average wealth. Share of their gap to the middle 50\%:
+\begin{itemize}
+\item saving rates: 39\%
+\item inheritances: 33\%
+\item returns: 25\%
+\item labor income: 3\%
+\end{itemize}
+\end{column}
+\end{columns}
+{\footnotesize Figure 11 from Hubmer et al. (forthcoming)}
+\end{frame}
+
+\begin{frame}{Old Money and New Money}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{figs_papers/Hubmer_et_al_2026_fig12_old_new_money.png}
+\end{figure}
+\vspace{-3mm}
+{\small
+\begin{itemize}
+\item \textbf{Old Money} (a quarter, already top 0.1\% in their mid-20s): inheritances 42\%, saving 31\%, returns 26\%, labor 1\%
+\item \textbf{New Money} (a quarter, start with negative wealth): saving 50\%, returns 38\%, labor 13\%, inheritances $-1\%$
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{How do people become rich? Takeaways}
+\begin{itemize}
+\item Saving rates are the largest channel (saving includes retained business profits)
+\item Family money matters, once transfers early in life are counted
+\item Self-made New Money: high saving, high returns from private businesses, and high labor income
+\item Labor income matters little, except for New Money
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Top wealth shares: US and Europe}
+\begin{figure}
+\centering
+\includegraphics[width=0.85\linewidth]{figs/top1_wealth_share.pdf}
+\end{figure}
+\begin{itemize}
+\item U-shape: large fall until 1980, rise since, much stronger in the US
+\item Europe was more unequal than the US before 1914
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Top income shares: US and Europe}
+\begin{figure}
+\centering
+\includegraphics[width=0.85\linewidth]{figs/top1_income_share.pdf}
+\end{figure}
+\begin{itemize}
+\item US top 1\%: from about 10\% around 1980 to about 20\% today
+\item Europe: a smaller rise, to 10--13\%
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Income growth by percentile in the US}
+\begin{figure}
+\centering
+\includegraphics[width=0.75\linewidth]{figs_papers/Saez_zucman_2020_income_growth_percentile.png}
+\caption{Figure 4 from Saez and Zucman (2020)}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Average tax rates by income groups (US)}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{figs_papers/saez_zucman_tax_rates_income_group.png}
+\caption{Figure 5 from Saez and Zucman (2020)}
+\end{figure}
+Top 400: about 70\% in 1950, about 23\% in 2018
+\end{frame}
+
+\begin{frame}{Taking stock}
+\begin{itemize}
+\item Wealth is more concentrated than income, with a Pareto tail
+\item Ranking of tails: capital income $>$ wealth $>$ labor income $>$ consumption
+\item Returns are heterogeneous, and higher for richer households
+\item The rich save more, mostly through capital gains
+\item Wealth and income inequality have increased since 1980
+\item Taxes became less progressive (at least in the US)
+\end{itemize}
+\end{frame}
+
+\section[Pareto tails]{Pareto tails and random growth}
+
+\begin{frame}{Pareto distribution}
+\begin{itemize}
+\item Wealth $a$ is Pareto with minimum $a_{0}$ and tail index $\zeta$ if
+\[
+P\left(a>x\right)=\left(\frac{x}{a_{0}}\right)^{-\zeta},\quad x\geq a_{0}
+\]
+\item Pareto tail: $P(a>x)\approx Cx^{-\zeta}$ for large $x$. Lower $\zeta$ = fatter tail
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Properties of the Pareto distribution}
+\begin{itemize}
+\item \textbf{P1. Moments:} $E\left[a^{\theta}\right]=\frac{\zeta a_{0}^{\theta}}{\zeta-\theta}$ if $\theta<\zeta$, $\infty$ otherwise (mean wealth is finite only if $\zeta>1$)
+\item \textbf{P2. Van der Wijk's law:} above $x$, $a$ is Pareto with minimum $x$, so
+\[
+E\left[a\mid a>x\right]=\frac{\zeta}{\zeta-1}x
+\]
+\item \textbf{P3. Top shares:} the top fraction $q$ holds
+\[
+S(q)=q^{1-1/\zeta}
+\]
+\begin{itemize}
+\item $\zeta=1.5$: top 1\% holds $0.01^{1/3}\approx22\%$
+\end{itemize}
+\item \textbf{Power rule:} if $X=a^{b}$ with $b>0$, then $\zeta_{X}=\zeta_{a}/b$
+\begin{itemize}
+\item proof: $P(X>x)=P(a>x^{1/b})\propto x^{-\zeta_{a}/b}$
+\item concave functions of wealth ($b<1$) have thinner tails, convex ones ($b>1$) fatter tails
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Wealth as a random growth process}
+\begin{itemize}
+\item Budget constraint: $a_{it}=(1+r_{it})a_{it-1}+wz_{it}-c_{it}$
+\item Let households save a share $s_{it}$ of cash-on-hand:
+\[
+a_{it}=G_{it}a_{it-1}+y_{it},\qquad G_{it}=s_{it}(1+r_{it}),\qquad y_{it}=s_{it}wz_{it}
+\]
+\item $G_{it}$: growth factor, scales with wealth
+\item $y_{it}$: saved labor income, does not scale with wealth
+\item Assume $(G_{it},y_{it})\geq0$ i.i.d. over time and households, independent of $a_{it-1}$
+\item Two routes to a Pareto tail of wealth:
+\begin{enumerate}
+\item Pareto labor income: $y_{it}$ has a Pareto tail
+\item Random growth: $G_{it}$ random
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Route 1: Pareto labor income}
+\begin{itemize}
+\item $G\in(0,1)$ constant, $y_{it}$ i.i.d. with a Pareto tail, $P(y>x)\approx Cx^{-\zeta_{y}}$
+\item Wealth is a weighted sum of past incomes:
+\[
+a_{it}=\sum_{k\geq0}G^{k}y_{i,t-k}
+\]
+\item Large when one term is large:
+\[
+P(a_{it}>x)\approx\sum_{k}C\left(\frac{x}{G^{k}}\right)^{-\zeta_{y}}\propto x^{-\zeta_{y}}
+\]
+\item Wealth inherits the labor income tail: $\zeta_{a}=\zeta_{y}$
+\item Data: $\zeta_{a}=1.38<\zeta_{y}=2.25$ $\Rightarrow$ labor income alone cannot explain the wealth tail, we need random growth (Stachurski and Toda, 2019)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=route2]{Route 2: random growth}
+\begin{itemize}
+\item $G_{it}$ i.i.d., random through returns or saving rates, with
+\begin{itemize}
+\item $P(G>1)>0$: some households grow by luck
+\item $E[\ln G]<0$: something stops them (they shrink on average, or die)
+\item $y_{it}$ thin-tailed (e.g. lognormal), positive with positive probability
+\end{itemize}
+\item One can show (Kesten, 1973) that wealth has a Pareto tail, $P(a>x)\approx Cx^{-\zeta}$, where $\zeta>0$ solves
+\[
+E\left[G^{\zeta}\right]=1
+\]
+\item Lognormal $G$, $\ln G\sim\mathcal{N}(\mu_{G},\sigma_{G}^{2})$ with $\mu_{G}<0$:
+\[
+\zeta=-\frac{2\mu_{G}}{\sigma_{G}^{2}}
+\]
+\begin{itemize}
+\item $\zeta$ = pull back down ($-\mu_{G}$) relative to luck ($\sigma_{G}^{2}/2$): more luck or less shrinking gives a fatter tail
+\end{itemize}
+\end{itemize}
+\hfill\hyperlink{route2-proof}{\beamerbutton{Proof}}
+\end{frame}
+
+\begin{frame}{Constant $\bar{G}$ + reset model}
+\begin{itemize}
+\item Survivors' wealth grows by a constant $\bar{G}>1$; each period households die with i.i.d. probability $\xi$ and are replaced by newborns with wealth $a_{0}$
+\item Exact solution by age: wealth at age $s$ is $a_{0}\bar{G}^{s}$, and the share aged $s$ or more is $(1-\xi)^{s}$, so
+\[
+P(a>x)=P\left(\text{age}\geq\frac{\ln(x/a_{0})}{\ln\bar{G}}\right)=(1-\xi)^{\ln(x/a_{0})/\ln\bar{G}}=\left(\frac{x}{a_{0}}\right)^{-\zeta}
+\]
+\[
+\zeta=-\frac{\ln(1-\xi)}{\ln\bar{G}}\approx\frac{\xi}{\ln\bar{G}}\qquad\Leftrightarrow\qquad(1-\xi)\bar{G}^{\zeta}=1
+\]
+\item Fatter tail when the rich grow faster or live longer. $\xi=0.02$, $\bar{G}=1.013$: $\zeta\approx1.56$
+\end{itemize}
+{\footnotesize Source: Jones (2015), \emph{Pareto and Piketty}, JEP}
+\end{frame}
+
+\begin{frame}{Growth, returns and taxes}
+\begin{itemize}
+\item Add economic growth: wages and average wealth grow at rate $g$, $w_{t}=(1+g)^{t}w_{0}$. Also add risky returns (mean $\bar{r}$, std. $\sigma_{r}$), consumption share of the rich $\bar{c}$, and taxes on capital income $\tau_{k}$, wealth $\tau_{w}$, labor income $\tau_{\ell}$:
+\[
+a_{it}=\left(1+(1-\tau_{k})r_{it}-\tau_{w}\right)a_{it-1}+(1-\tau_{\ell})w_{t}z_{it}-c_{it}
+\]
+\item Relative to the average, $\hat{a}_{it}=a_{it}/(1+g)^{t}$:
+\[
+\hat{a}_{it}=G_{it}\hat{a}_{it-1}+y_{it},\qquad G_{it}=\frac{(1-\bar{c})\left(1+(1-\tau_{k})r_{it}-\tau_{w}\right)}{1+g}
+\]
+\item Lognormal returns and $\ln(1+x)\approx x$ in $\zeta=-2\mu_{G}/\sigma_{G}^{2}$:
+\[
+\zeta\approx1-\frac{(1-\tau_{k})\bar{r}-\tau_{w}-g-\bar{c}}{(1-\tau_{k})^{2}\sigma_{r}^{2}/2}
+\]
+\end{itemize}
+{\footnotesize Discrete-time version of Moll (2014), \emph{Why Piketty says r$-$g matters for inequality}}
+\end{frame}
+
+\begin{frame}{Piketty's $r-g$ and taxes}
+\[
+\zeta\approx1-\frac{(1-\tau_{k})\bar{r}-\tau_{w}-g-\bar{c}}{(1-\tau_{k})^{2}\sigma_{r}^{2}/2}
+\]
+\begin{itemize}
+\item Top inequality $1/\zeta$ rises with $\bar{r}-g$: Piketty's (2014) $r>g$
+\item But what matters is $\bar{r}-g-\bar{c}$: the return net of growth and of what the rich consume
+\item Return risk is essential: without it, no Pareto tail. $r>g$ is neither necessary nor sufficient
+\item $\zeta>1$ needs $(1-\tau_{k})\bar{r}-\tau_{w}-\bar{c}<g$: on average the rich grow slower than the economy, only the lucky ones climb
+\item Taxes:
+\begin{itemize}
+\item wealth tax: lowers mean growth one for one
+\item capital income tax: lowers mean growth and risk
+\item labor income tax: only enters $y$, does not change $\zeta$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Taking stock}
+
+\begin{itemize}
+    \item Labor income inequality alone cannot generate the relative Pareto tails of wealth / income
+    \item Random growth mechanisms can generate the Pareto tails observed in the data
+    \item The spread $r-g$ increases wealth inequality
+\end{itemize}    
+
+But we miss two key features:
+\begin{itemize}
+    \item Microfoundations: what determines $G$, etc?
+    \item General equilibrium: $r$, $g$ are endogenous to behaviors and the economy
+\end{itemize}
+\end{frame}
+\subsection{Failure of the buffer-stock model}
+
+\begin{frame}{Aiyagari model}
+\[
+\max_{\left\{ c_{t}\right\} }E_{0}\sum_{t=0}^{\infty}\beta^{t}\frac{c_{t}^{1-\sigma}}{1-\sigma}\quad\text{s.t.}\quad a_{t}=(1+r)a_{t-1}+wz_{t}-c_{t},\quad a_{t}\geq0
+\]
+with $\ln z_{t}$ an AR(1) estimated on panel data (Floden and Lind\'e, 2001)
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & Wealth Gini & Top 1\% & Top 5\% & Top 20\% \\
+\midrule
+US data (SCF, 1989) & 0.78 & 29 & 53 & 80 \\
+Aiyagari baseline & 0.38 & 3.2 & 12.2 & 41.0 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\pause
+$\to$ misses the top by a factor of ten
+\end{frame}
+
+\begin{frame}{Policies in the buffer-stock model}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{figs/policy_functions_wide.pdf}
+\end{figure}
+\begin{itemize}
+\item Above some wealth, every household dissaves, even the most productive
+\item The top type stops at $a\approx640$, about 40 times average wealth: wealth is bounded, so no Pareto tail
+\end{itemize}
+{\footnotesize Lecture 4 HANC calibration (quarterly): $\sigma=1$, $\beta(1+r)=0.993$, $\rho_{z}=0.9$, $\sigma_{\psi}=0.5$}
+\end{frame}
+
+\begin{frame}{Why the buffer-stock model fails}
+\begin{itemize}
+\item Precautionary saving: once the buffer-stock target is reached, households dissave (Carroll, 1997)
+\item At the top, $c=\bar{c}m$ and the Euler equation $c_{t}^{-\sigma}=\beta(1+r)c_{t+1}^{-\sigma}$ give
+\[
+G_{\text{top}}=(1+r)(1-\bar{c})=\left(\beta(1+r)\right)^{1/\sigma}<1
+\]
+since $\beta(1+r)<1$ in equilibrium
+\item No route 1: an AR(1) gives labor income a thin tail
+\item No route 2: $G<1$ and deterministic at the top
+\item The rich dissave in the model, but save more in the data (Dynan, Skinner and Zeldes, 2004; De Nardi, French and Jones, 2010)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+\LARGE Let's code!
+\end{center}
+\end{frame}
+
+\begin{frame}{Takeaway: more income risk does not fix the Aiyagari model}
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{figs/income_risk_wealth.pdf}
+\end{figure}
+{\small
+\begin{itemize}
+\item Std. of log income from 0.2 to 0.4. \textbf{PE} ($r$, $w$ fixed): everyone saves more for precaution, the poor most, so wealth inequality \emph{falls} (Gini 0.50 to 0.41)
+\item \textbf{GE}: the lower $r$ undoes most of the extra saving ($K$ = 3.4, against 12.0 in PE), and inequality ends slightly \emph{above} the baseline (Gini 0.52)
+\item Still no Pareto tail: income risk is additive, while a fat tail needs multiplicative risk (route 2) or fat-tailed income (route 1)
+\end{itemize}}
+\end{frame}
+
+\section[Explaining wealth inequality]{Explaining wealth inequality}
+
+\begin{frame}{Four main mechanisms}
+Each gives some households $G>1$:
+\begin{enumerate}
+\item \textbf{Bequests (or taste for wealth)}
+\begin{itemize}
+\item Kotlikoff and Summers (1981), Gale and Scholz (1994), De Nardi (2004)
+\end{itemize}
+\item \textbf{Heterogeneous preferences}
+\begin{itemize}
+\item Krusell and Smith (1998), Druedahl and Jørgensen (2015)
+\end{itemize}
+\item \textbf{Entrepreneurship}
+\begin{itemize}
+\item Quadrini (2000), Cagetti and De Nardi (2006), Guvenen et al. (2023)
+\end{itemize}
+\item \textbf{Idiosyncratic rates of returns}
+\begin{itemize}
+\item Benhabib, Bisin and Zhu (2011), Hubmer, Krusell and Smith (2021)
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Explaining wealth inequality}
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\beta^{t}\left(\left(1-d_{t}\right)\frac{c_{t}^{1-\sigma}}{1-\sigma}+\textcolor{blue}{d_{t}\phi\left(a_{t-1}\right)}\right)\\
+c_{t}+a_{t}=y_{t}+(1+r)a_{t-1}+\textcolor{blue}{b_{t}},\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+\begin{enumerate}
+\item \textbf{Bequests (or taste for wealth)}: $d_{t}=1$ at death, warm glow $\phi(a)$, or $\kappa\frac{a^{1-\nu}}{1-\nu}$ with $\nu<\sigma$
+\begin{itemize}
+\item wealth is a luxury good: $\bar{c}\to0$ at the top, so $G_{\text{top}}\to1+r$
+\item inheritances $b_{t}$ also weaken the reset at death
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Explaining wealth inequality}
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\textcolor{blue}{\beta_{i}}^{t}\left(1-d_{t}\right)\frac{c_{t}^{1-\textcolor{blue}{\sigma_{i}}}}{1-\textcolor{blue}{\sigma_{i}}}\\
+c_{t}+a_{t}=y_{t}+(1+r)a_{t-1},\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+\begin{enumerate}
+\setcounter{enumi}{1}
+\item \textbf{Heterogeneous preferences}: patient households have a lower $\bar{c}$
+\begin{itemize}
+\item random $\beta$ makes saving rates random (route 2)
+\item often chosen residually to match wealth (lecture 4, HKS 2021)
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Explaining wealth inequality}
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\beta^{t}\left(1-d_{t}\right)\frac{c_{t}^{1-\sigma}}{1-\sigma}\\
+c_{t}+a_{t}=\textcolor{blue}{\left[l_{e}f\left(\theta_{t},k_{t-1}\right)+\left(1-l_{e}\right)y_{t}\right]}+(1+r)\left(a_{t-1}-k_{t-1}\right),\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item \textbf{Entrepreneurship}: high, risky, persistent returns on own wealth, $k\leq\lambda a$
+\begin{itemize}
+\item reduced form: "superstar" earnings state (Castañeda et al., 2003), which works through route 1
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Explaining wealth inequality}
+\[
+\begin{gathered}\max_{\left\{ c_{t}\right\} _{t=0}^{T}}E\sum_{t=0}^{T}\beta^{t}\left(1-d_{t}\right)\frac{c_{t}^{1-\sigma}}{1-\sigma}\\
+c_{t}+a_{t}=y_{t}+\left(1+\textcolor{blue}{r_{t}^{i}}\right)a_{t-1},\quad a_{t}\geq\underline{a}
+\end{gathered}
+\]
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item \textbf{Idiosyncratic rates of returns}: random growth (route 2) directly
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Return heterogeneity: type vs scale dependence}
+\begin{itemize}
+\item \textbf{Type dependence:} $r(z_{it})$, the return depends on a persistent type
+\begin{itemize}
+\item capital income is linear in wealth within a type
+\item $\zeta_{ra}=\zeta_{a}$ far in the tail
+\end{itemize}
+\item \textbf{Scale dependence:} $r\,S(a)$ with $S(a)=1+\psi a^{\eta}$
+\begin{itemize}
+\item the rich grow faster because they are rich
+\item capital income $\propto a^{1+\eta}$, so $\zeta_{ra}=\zeta_{a}/(1+\eta)$
+\end{itemize}
+\item Returns rise with wealth in the data, but richer households may also be higher types
+\begin{itemize}
+\item panel data on returns help separate the two (Fagereng, Guiso, Malacrino and Pistaferri, 2020)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Gaillard, Hellwig, Wangner and Werquin (2024)}
+
+\begin{frame}{Gaillard et al. (2024)}
+\begin{itemize}
+\item \textbf{Question:} many models generate high wealth inequality. Which ones match the ranking
+\[
+\zeta_{ra}<\zeta_{a}<\zeta_{y}<\zeta_{c}\qquad(1.20,\;1.38,\;2.25,\;3.06)
+\]
+\item \textbf{Answer:} two ingredients
+\begin{enumerate}
+\item non-homothetic preferences: decouple consumption from wealth
+\item scale-dependent returns: decouple capital income from wealth
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Empirical result: a strict ranking of Pareto tails}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{figs_papers/gaillard_fig4_pareto_tails.png}
+\end{figure}
+\vspace{-3mm}
+{\small
+\begin{itemize}
+\item Each dot: $\hat{\zeta}$ estimated on households above the threshold $\underline{x}$ (a quantile); lines: preferred estimates. PSID 2005--2021, raw (left) and adjusted for under-reporting (right)
+\item The ranking $\zeta_{c}>\zeta_{y}>\zeta_{a}>\zeta_{ra}$ holds at every threshold
+\end{itemize}}
+{\footnotesize Figure 4 from Gaillard et al. (2024)}
+\end{frame}
+
+\begin{frame}{Model}
+\[
+\begin{aligned}V(y,z,a)= & \max_{c,\,a'\geq0}\frac{c^{1-\gamma}}{1-\gamma}+\textcolor{blue}{\kappa\frac{(a/A)^{1-\nu}}{1-\nu}}+\beta(1-\xi)E\left[V(y',z',a')\right]\\
+\text{s.t.}\quad & c+a'=wy-T(wy)+(1-\tau_{K})r\textcolor{blue}{zS(a)}a+a
+\end{aligned}
+\]
+\begin{itemize}
+\item \textbf{Taste for wealth}, $\nu<\gamma$: wealth is a luxury good
+\item \textbf{Return type} $z\in\{1,z_{H}\}$, worker or entrepreneur: enter with probability 0.02, exit with 0.2
+\item \textbf{Scale dependence} $S(a)=1+\psi a^{\eta}$: the return per unit of wealth rises with wealth
+\item Labor productivity: AR(1), with a Pareto tail ($\zeta_{h}=2.25$) at the top; HSV labor tax
+\item Death $\xi=0.02$, bequests fully taxed: death resets wealth
+\item Cobb-Douglas firms; capital is effective wealth, $K=\int zS(a)a\,dF$
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Intuition: two ingredients, two tails}
+\begin{itemize}
+\item Power rule: if $X\propto a^{b}$ at the top, then $\zeta_{X}=\zeta_{a}/b$
+\begin{itemize}
+\item concave in wealth: thinner tail; convex: fatter tail
+\end{itemize}
+\item \textbf{Consumption} needs to be concave in wealth to have $\zeta_{c}>\zeta_{a}$
+\begin{itemize}
+\item homothetic preferences: the rich consume a constant share of wealth, $c\propto a$, so $\zeta_{c}=\zeta_{a}$
+\item taste for wealth: the rich save most of their income, $c$ is concave in $a$, so $\zeta_{c}>\zeta_{a}$
+\end{itemize}
+\item \textbf{Capital income} needs to be convex in wealth to have $\zeta_{ra}<\zeta_{a}$
+\begin{itemize}
+\item same return for all: capital income $\propto a$, so $\zeta_{ra}=\zeta_{a}$
+\item scale dependence: capital income $\propto a^{1+\eta}$, so $\zeta_{ra}=\zeta_{a}/(1+\eta)$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Calibration}
+\begin{itemize}
+\item \textbf{Fixed:} $\beta=0.90$, $\gamma=2$, $\xi=0.02$, $\alpha=0.33$, $\delta=0.08$, $\tau_{L}=0.14$, $\tau_{K}=0.15$
+\item \textbf{Estimated (SMM):}
+\end{itemize}
+\begin{center}
+\begin{tabular}{ccccc}
+\toprule
+$\kappa$ & $\nu$ & $z_{H}$ & $\eta$ & $\psi$\\
+\midrule
+0.14 & 0.76 & 4.10 & 0.24 & 0.15\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item \textbf{Targets:} the ratios of Pareto tails ($\zeta_{ra}/\zeta_{a}$, $\zeta_{c}/\zeta_{a}$, $\zeta_{a}/\zeta_{y}$), $K/Y=3.8$, top 1\% wealth share
+\item Tails in the model are estimated as in the data, on simulated PSID-like samples
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+\begin{center}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lcccc}
+\toprule
+ & $\zeta_{c}$ & $\zeta_{a}$ & $\zeta_{ra}$ & Top 1\%\\
+\midrule
+Data (adjusted PSID) & 3.06 & 1.38 & 1.20 & 35\%\\
+\midrule
+(1) Homothetic, homogeneous returns & 3.04 & 2.42 & 2.42 & 9\%\\
+(2) Homothetic, type dependence & 2.65 & 1.32 & 1.02 & 29\%\\
+(3) Homothetic, scale dependence & 2.56 & 1.30 & 1.16 & 32\%\\
+(4) Homothetic, type and scale & 2.65 & 1.34 & 1.08 & 35\%\\
+(5) Non-homothetic, type dependence & 3.08 & 1.37 & 1.19 & 34\%\\
+(6) Non-homothetic, type and scale & 3.06 & 1.36 & 1.18 & 35\%\\
+\bottomrule
+\end{tabular}}
+\end{center}
+{\footnotesize Table 4 from Gaillard et al. (2024), each model re-estimated}
+\end{frame}
+
+\begin{frame}{What we learn}
+\begin{itemize}
+\item \textbf{(1) Aiyagari with Pareto earnings:} wealth inherits the labor income tail (route 1). Far too thin: the top 1\% hold 9\%
+\item \textbf{(2) Entrepreneurs (type dependence):} high returns for some create random growth (route 2), which fixes the wealth tail
+\begin{itemize}
+\item but the rich consume a constant share of their wealth: consumption is as unequal as wealth at the top
+\end{itemize}
+\item \textbf{(3)-(4) Scale dependence:} also fixes wealth, but makes consumption even more unequal: the richest earn higher returns and consume them
+\item \textbf{(5)-(6) Taste for wealth:} the rich save most of their income, so consumption is much less unequal than wealth
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What we learn (continued)}
+\begin{itemize}
+\item Many models match wealth inequality; the \textbf{other tails} discipline them
+\item The consumption tail says: the rich save because they value wealth (or bequests), not only because their returns are high
+\item Type and scale dependence look the same in the PSID: only the very top separates them. Within the top 1\%:
+\begin{itemize}
+\item without scale dependence (5): $\zeta_{ra}=\zeta_{a}=1.56$
+\item with scale dependence (6): $\zeta_{ra}=1.39<\zeta_{a}=1.47$
+\item Saez and Zucman data: $1.28<1.55$
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Guvenen et al. (2023)}
+
+\begin{frame}{Wealth taxation}
+\begin{itemize}
+\item Guvenen et al. (2023): \emph{Use It or Lose It: Efficiency and Redistributional Effects of Wealth Taxation}
+\item Without return heterogeneity, a wealth tax and a capital income tax are equivalent:
+\[
+a+(1-\tau_{k})ra=(1-\tau_{w})a+ra\quad\text{if}\quad\tau_{w}=r\tau_{k}
+\]
+\item With heterogeneous returns $r_{i}$:
+\begin{itemize}
+\item capital income tax: falls on productive (high $r_{i}$) households, distortionary
+\item wealth tax: same tax for the same wealth, shifts the burden to unproductive households
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Model}
+\[
+a_{t}+c_{t}=\mathcal{W}(a_{t-1},z_{t})+w_{t}e_{t}\ell_{t}
+\]
+\[
+\mathcal{W}(a_{t-1},z_{t})=\begin{cases}
+a_{t-1}+\left(\pi(a_{t-1},z_{t})+ra_{t-1}\right)(1-\tau_{k}) & \text{capital tax}\\
+a_{t-1}(1-\tau_{w})+\pi(a_{t-1},z_{t})+ra_{t-1} & \text{wealth tax}
+\end{cases}
+\]
+\begin{itemize}
+\item Entrepreneurial profits: $\pi(a,z)=\max_{k\leq\lambda a}\left\{ pzk-(r+\delta)k\right\} $
+\item Ability $z\in\{0,z_{L},z_{H}\}$: workers, unproductive and productive entrepreneurs
+\item Warm-glow bequests, matches the Pareto tail of US wealth
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+Replace $\tau_{k}=25\%$ by a revenue-neutral wealth tax ($\tau_{w}=1.2\%$)
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{figs_papers/Guvenen_et_al_2023_tableV.PNG}
+\end{figure}
+\begin{itemize}
+\item Capital, productivity, output, consumption and wages increase
+\item Welfare gain of about 7\% in consumption-equivalent terms
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Optimal taxation}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{figs_papers/Guvenen_et_al_2023_tableVII.PNG}
+\end{figure}
+\begin{itemize}
+\item Optimal wealth tax: $\tau_{w}=3.03\%$, welfare gain of 9\%
+\item Optimal capital income tax: a subsidy of 13.6\%, welfare gain of 4.2\%
+\item $\to$ the source of inequality matters for policy
+\end{itemize}
+\end{frame}
+
+\section[Drivers]{Drivers of the rise in inequality}
+
+\begin{frame}{Gabaix, Lasry, Lions and Moll (2016)}
+\begin{itemize}
+\item Top income inequality in the US has risen fast since 1980
+\item Standard random growth models explain the Pareto tail, but their transitions are too slow
+\item Two fixes:
+\begin{itemize}
+\item scale dependence, e.g. changes in skill prices
+\item type dependence: "high-growth types", superstar entrepreneurs or managers
+\end{itemize}
+\item Both are ingredients of Gaillard et al. (2024) for wealth
+\end{itemize}
+\end{frame}
+
+\subsection{Hubmer, Krusell and Smith (2021)}
+
+\begin{frame}{Hubmer, Krusell and Smith (2021)}
+\begin{itemize}
+\item \emph{Sources of US wealth inequality: past, present, and future}
+\item \textbf{Question:} can the observed changes in taxes, earnings and asset returns since 1967 explain the rise in US wealth inequality?
+\item \textbf{Method:}
+\begin{enumerate}
+\item an Aiyagari model with return heterogeneity, calibrated so that 1967 is a steady state
+\item feed in the measured changes, 1967 to 2012
+\item compare the path of top wealth shares with the data
+\item counterfactuals: one change at a time
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Household problem}
+\[
+\begin{aligned}v_{t}(\omega_{t},a_{t-1})= & \max_{a_{t}\geq\underline{a}}\frac{c_{t}^{1-\gamma}}{1-\gamma}+\textcolor{blue}{\beta_{t}}E_{t}\left[v_{t+1}(\omega_{t+1},a_{t})\right]\\
+\text{s.t.}\quad & c_{t}+a_{t}=a_{t-1}+y_{t}-\textcolor{blue}{\tau_{t}(y_{t})}+(1-\tilde{\tau}_{t})\tilde{y}_{t}+T_{t}\\
+ & y_{t}=\big(r_{t}+\textcolor{blue}{r_{t}^{X}(a_{t-1})}\big)a_{t-1}+w_{t}z_{t}\\
+ & \tilde{y}_{t}=\textcolor{blue}{\sigma^{X}(a_{t-1})}\eta_{t}a_{t-1}
+\end{aligned}
+\]
+{\small
+\begin{itemize}
+\item $y_{t}$: labor income and expected capital income, taxed progressively by $\tau_{t}(\cdot)$
+\item $\tilde{y}_{t}$: random capital income, $\eta_{t}\sim\mathcal{N}(0,1)$ i.i.d., taxed at a flat rate $\tilde{\tau}_{t}$
+\item \textbf{Returns} $r_{t}^{X}(a)$, $\sigma^{X}(a)$ rise with wealth (Swedish portfolio data)
+\item State $\omega_{t}=(z_{t},\beta_{t},\eta_{t})$: $z_{t}$ has persistent and transitory parts and a Pareto tail; $\beta_{t}$ is AR(1)
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Equilibrium: two market-clearing conditions}
+\begin{itemize}
+\item Two aggregate unknowns, $K_{t}$ and $r_{t}$, and two conditions:
+\begin{enumerate}
+\item \textbf{capital}, as usual:
+\[
+K_{t}=\int a\,d\Gamma_{t}
+\]
+\item \textbf{capital income}: what households earn equals what firms pay
+\[
+\big(F_{K}(K_{t},L)-\delta\big)K_{t}=\int\big(r_{t}+r_{t}^{X}(a)\big)a\,d\Gamma_{t}
+\]
+\end{enumerate}
+\item The schedule $r_{t}^{X}(\cdot)$ is exogenous: only its shape matters, $r_{t}$ adjusts its level
+\item Without excess returns ($r^{X}=0$), condition 2 is $r_{t}=F_{K}-\delta$: the usual Aiyagari model
+\item Return shocks $\sigma^{X}(a)\eta$ have mean zero and drop out; government: $T_{t}$ = 60\% of tax revenue
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Schedule of excess returns}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{HKS-Figs/4}
+{\footnotesize\caption*{Data sources: Bach, Calvet, Sodini (2019); Kartashova (2014); Jorda et al. (2019); Case-Shiller.}}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Steady state fit (1967)}
+\begin{center}
+\begin{tabular}{lcccc}
+\toprule
+ & Top 10\% & Top 1\% & Top 0.1\% & Top 0.01\%\\
+\midrule
+Data & 70.8 & 27.8 & 9.4 & 3.1\\
+Single-$\beta$ model & 66.6 & 23.7 & 11.2 & 7.2\\
+Benchmark model & 73.8 & 27.4 & 8.4 & 3.2\\
+\bottomrule
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item $\beta$ heterogeneity chosen residually to match the 1967 distribution
+\item Return heterogeneity is the key ingredient for the top
+\item Progressive taxes and labor income risk dampen concentration
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What drives steady-state inequality?}
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Channel & Top 10\% & Top 1\% & Top 0.1\% & Top 0.01\% & Gini\\
+\midrule
+$\beta$ heterogeneity & 8.8 & 7.7 & 3.8 & 2.0 & 0.050\\
+Earnings heterogeneity & $-27.5$ & $-17.8$ & $-9.5$ & $-6.4$ & $-0.173$\\
+\quad persistent & $-5.0$ & $-7.5$ & $-4.2$ & $-2.9$ & 0.009\\
+\quad transitory & $-11.6$ & $-4.3$ & $-1.7$ & $-0.9$ & $-0.109$\\
+Tax progressivity & $-21.3$ & $-61.8$ & $-71.2$ & $-67.1$ & $-0.148$\\
+Return heterogeneity & 29.5 & 18.4 & 6.6 & 2.8 & 0.192\\
+\quad mean differences & 25.8 & 16.7 & 6.0 & 2.6 & 0.174\\
+\quad return risk & 0.7 & 2.2 & 3.3 & 2.5 & 0.004\\
+\bottomrule
+\end{tabular}
+\end{center}
+{\small
+\begin{itemize}
+\item Benchmark minus the model without the channel, in pp of wealth
+\item \textbf{Tax progressivity:} with a flat tax, the top 1\% share goes from 27\% to 89\%
+\begin{itemize}
+\item rich households save $\approx\big(\beta(1+r(1-\tau'(y)))\big)^{1/\gamma}$: progressivity lowers $G_{\text{top}}$
+\end{itemize}
+\item \textbf{Earnings risk reduces} top shares: more precautionary saving at the bottom, and a lower $r$
+\end{itemize}}
+\end{frame}
+
+\begin{frame}{Main experiment: the 1967--2012 transition}
+\begin{itemize}
+\item Start in the 1967 steady state. Only the 1967 distribution is targeted
+\item In 1967, households learn the whole future path of four exogenous changes:
+\begin{enumerate}
+\item \textbf{taxes} $\tau_{t}(\cdot)$, $\tilde{\tau}_{t}$: progressivity falls from the late 1970s
+\item \textbf{earnings risk}: the variances of the shocks to $z_{t}$ rise (Heathcote, Perri and Violante, 2010)
+\item \textbf{top earnings}: the Pareto tail of $z_{t}$ gets fatter (Piketty and Saez)
+\item \textbf{excess returns} by asset class: 10-year moving averages
+\end{enumerate}
+\item Fixed: preferences, portfolio weights by wealth, return dispersion
+\item Perfect-foresight transition: $K_{t}$, $r_{t}$, $T_{t}$ clear markets every year
+\begin{itemize}
+\item same results with myopic households who expect today's environment to last forever
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Transition: four observed changes, 1967 to 2012}
+\begin{figure}
+\centering
+\subfloat[Tax progressivity]{\includegraphics[width=0.38\textwidth]{HKS-Figs/5}}
+\subfloat[Labor income risk]{\includegraphics[width=0.38\textwidth]{HKS-Figs/6}}\\
+\subfloat[Top labor income shares]{\includegraphics[width=0.38\textwidth]{HKS-Figs/7}}
+\subfloat[Return premia]{\includegraphics[width=0.38\textwidth]{HKS-Figs/8}}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Historical evolution}
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{HKS-Figs/fig8_color}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Decomposition}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{HKS-Figs/14}
+\end{figure}
+\begin{itemize}
+\item Lower tax progressivity alone more than explains the rise of the top 10\% and top 1\% shares (157\% and 115\%), less at the very top
+\item Return premia explain the U-shape
+\item Higher earnings risk lowers wealth inequality: more precautionary saving at the bottom
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hubmer, Krusell and Smith: what we learn}
+\begin{itemize}
+\item Return heterogeneity, across and within wealth groups, is enough to match 1967 wealth inequality and its Pareto tail
+\begin{itemize}
+\item $\beta$ heterogeneity only plays a small, residual role
+\end{itemize}
+\item Tax progressivity is the main brake on wealth concentration
+\begin{itemize}
+\item its fall since the late 1970s is the main driver of the rise
+\end{itemize}
+\item Swings in asset returns explain the U-shape: low stock and private equity returns in the 1970s, then a recovery
+\item Higher earnings inequality does not explain the rise: more earnings risk even lowers top shares
+\item The transition is far from over: with today's taxes, top shares keep rising for decades (slow random growth, as in Gabaix et al.)
+\item Limit: the model explains only about 30\% of the rise of the top 0.01\%
+\end{itemize}
+\end{frame}
+
+\subsection{Moll, Rachel and Restrepo (2022)}
+
+\begin{frame}{Moll, Rachel and Restrepo (2022): model}
+\textbf{Households} with skill $z$ (wage percentile, population share $\ell_{z}$), continuous time:
+\[
+\max\int_{0}^{\infty}e^{-\rho t}\frac{c_{t}^{1-\sigma}}{1-\sigma}dt\quad\text{s.t.}\quad\dot{a}_{t}=w_{z}+ra_{t}-c_{t}
+\]
+\vspace{-4mm}
+\begin{itemize}
+\item same return $r$ for everyone, no income risk
+\item \textcolor{blue}{dissipation shock} at rate $\xi$: wealth reset to 0 (death without bequest, failed business, \ldots); $\rho$ includes $\xi$
+\end{itemize}
+\textbf{Firms}: tasks done by labor or capital; a share $\alpha_{z}$ of the tasks of skill $z$ is \textcolor{blue}{automated}
+\[
+Y=AK^{\alpha}\prod_{z}(\psi_{z}\ell_{z})^{(1-\alpha_{z})\eta_{z}},\qquad\alpha=\sum_{z}\alpha_{z}\eta_{z}
+\]
+\vspace{-4mm}
+\begin{itemize}
+\item factor prices: $w_{z}\ell_{z}=(1-\alpha_{z})\eta_{z}Y$ and $r+\delta=\alpha Y/K$
+\item \textbf{automation}: $\alpha_{z}$ rises, tasks move from skill $z$ to capital
+\end{itemize}
+\textbf{Equilibrium}: $K$ = household wealth, summed over skills and over time since the last reset
+\end{frame}
+
+\begin{frame}{Key result: top inequality = net capital share}
+\begin{itemize}
+\item Saving is linear in total wealth $x=a+w/r$, which grows at $g=\frac{r-\rho}{\sigma}$: the constant $\bar{G}$ + reset model, so
+\[
+\frac{1}{\zeta}=\frac{g}{\xi}
+\]
+\item Steady state: wealth added by savers = wealth lost to resets, with $\bar{w}=\sum_{z}w_{z}\ell_{z}$ the wage bill
+\[
+g\Big(K+\frac{\bar{w}}{r}\Big)=\xi K\quad\Rightarrow\quad\frac{1}{\zeta}=\frac{g}{\xi}=\frac{rK}{rK+\bar{w}}=\alpha_{net}
+\]
+\item \textbf{Top inequality = net capital share}
+\begin{itemize}
+\item all capital is rebuilt from savings: the more capital the economy needs, the faster savers must grow, the fatter the tail
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Application: automation}
+\begin{itemize}
+\item Automation shifts tasks from labor to capital: more demand for capital
+\begin{itemize}
+\item $r$ and $\alpha_{net}$ rise: fortunes grow faster, fatter tail
+\item part of the productivity gain goes to capital: wages can fall
+\end{itemize}
+\item Experiment: automation of routine jobs, 1980--2014, calibrated to the rise of the capital share from 34.5\% to 42.8\%
+\item Results (steady states of the extended model, with risky capital and growth, so $1/\zeta$ is no longer exactly $\alpha_{net}$):
+\begin{itemize}
+\item top income tail $1/\zeta$ from 0.54 to 0.65, about 70\% of the observed rise
+\item wages fall below the 80th percentile; incomes $+20$ to $+55\%$ within the top 1\%, mostly capital income
+\end{itemize}
+\item Caveat: like all random growth models, the transition is too slow (Gabaix et al.)
+\end{itemize}
+\end{frame}
+
+\section{Exercise}
+
+\begin{frame}{Exercise: HANC model with return heterogeneity}
+\[
+\begin{aligned}v_{t}(e_{it},r_{it}^{X},a_{it-1})= & \max_{c_{it},a_{it}}\frac{c_{it}^{1-\sigma}}{1-\sigma}+\beta E_{t}\left[v_{t+1}(e_{it+1},r_{it+1}^{X},a_{it})\right]\\
+\text{s.t.}\quad & a_{it}+c_{it}=(1+r_{t}+r_{it}^{X})a_{it-1}+w_{t}e_{it},\qquad a_{it}\geq0\\
+ & \log e_{it}=\rho_{e}\log e_{it-1}+\psi_{it},\qquad\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}^{2})\\
+ & r_{it}^{X}=(1-\rho_{r})\bar{r}^{X}+\rho_{r}r_{it-1}^{X}+\epsilon_{it},\quad\epsilon_{it}\sim\mathcal{N}(0,\sigma_{r}^{2})
+\end{aligned}
+\]
+\begin{itemize}
+\item \textbf{Q1:} solve the household problem in partial equilibrium. What are average returns? Are they equal to $r+\bar{r}^{X}$?
+\item \textbf{Q2:} why do we need a new market-clearing condition? Write it down
+\item \textbf{Q3:} calibrate the HANC model with return heterogeneity in general equilibrium
+\item \textbf{Q4:} calibrate a standard HANC model without return heterogeneity and compare the two wealth distributions
+\end{itemize}
+\end{frame}
+
+\section{Summary}
+
+\begin{frame}{Summary and next week}
+\begin{itemize}
+\item \textbf{Today:} wealth inequality
+\begin{enumerate}
+\item Pareto tails come from random growth, stopped by a reset
+\item Buffer-stock model fails: the rich dissave
+\item Fixes: taste for wealth, return heterogeneity, entrepreneurs, bequests
+\item Rise since 1980: taxes, return premia, automation
+\end{enumerate}
+\item \textbf{Homework exercise:} HANC model with return heterogeneity
+\begin{itemize}
+\item see \texttt{07-Wealth-Inequality/exercise-het-return} on GitHub
+\end{itemize}
+\item \textbf{Next week:} Secular stagnation
+\end{itemize}
+\end{frame}
+
+\appendix
+
+\begin{frame}[label=route2-proof]{Appendix: why $E[G^{\zeta}]=1$}
+\small
+\textbf{Guess and verify:} guess $P(a>x)\approx Cx^{-\zeta}$ for large $x$
+\begin{enumerate}
+\item \textbf{Who is above $x$ tomorrow?} For large $x$, $y$ is negligible, so $a_{it}>x$ iff $a_{it-1}>x/G_{it}$
+\item \textbf{Pareto scaling:} with the guess, the number above $x/G$ is $G^{\zeta}$ times the number above $x$ (only a power law scales this way)
+\[
+P\left(a>x/G\right)\approx C\left(\frac{x}{G}\right)^{-\zeta}=G^{\zeta}\,Cx^{-\zeta}
+\]
+\item \textbf{Average over $G$} (independent of $a_{it-1}$):
+\[
+P(a_{it}>x)\approx E\left[G^{\zeta}\right]\,P(a_{it-1}>x)
+\]
+$E[G^{\zeta}]$: factor by which the number of households above $x$ changes in one period
+\item \textbf{Stationarity:} this number must not change, at any large $x$: $\boxed{E\left[G^{\zeta}\right]=1}$
+\end{enumerate}
+{Lognormal $G$, $\ln G\sim\mathcal{N}(\mu_{G},\sigma_{G}^{2})$: $E[G^{\zeta}]=e^{\zeta\mu_{G}+\zeta^{2}\sigma_{G}^{2}/2}=1$, so $\zeta=-2\mu_{G}/\sigma_{G}^{2}$}
+\hfill\hyperlink{route2}{\beamerreturnbutton{Back}}
+\end{frame}
+
+\begin{frame}{Appendix: a counting example}
+\begin{itemize}
+\item Each year, half of the rich grow by 20\% ($G=1.2$), half shrink by 30\% ($G=0.7$). $N$ households are above \$1M today
+\item Above \$1M next year:
+\begin{itemize}
+\item lucky half: those above \$833k today, $\frac{1}{2}1.2^{\zeta}N$
+\item unlucky half: those above \$1.43M today, $\frac{1}{2}0.7^{\zeta}N$
+\end{itemize}
+\item Stationarity: $\frac{1}{2}1.2^{\zeta}+\frac{1}{2}0.7^{\zeta}=1$
+\end{itemize}
+{
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+$\zeta$ & $1.2^{\zeta}$ & $0.7^{\zeta}$ & $E[G^{\zeta}]$\\
+\midrule
+2 & 1.44 & 0.49 & 0.97: tail shrinks\\
+3 & 1.73 & 0.34 & 1.04: tail grows\\
+2.6 & 1.61 & 0.40 & 1.00: steady state\\
+\bottomrule
+\end{tabular}
+\end{center}}
+{Same counting at \$10M or \$1B: one $\zeta$ for the whole tail}
+\hfill\hyperlink{route2}{\beamerreturnbutton{Back}}
+\end{frame}
+
+\end{document}

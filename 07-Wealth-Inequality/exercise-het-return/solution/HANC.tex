@@ -1,0 +1,360 @@
+\documentclass[12pt,english]{article}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=3cm}
+\pagestyle{empty}
+\usepackage{setspace}
+\usepackage[authoryear]{natbib}
+\onehalfspacing
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+% general
+\usepackage[titletoc]{appendix}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{tikz}
+
+% algorithm
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\IncMargin{2.5cm}
+\DecMargin{2cm}
+\usepackage{fullwidth}
+\usepackage{enumitem}
+\setlist{leftmargin=1.7cm}
+
+% tables
+\usepackage{tabularx, siunitx, multirow, booktabs}
+\begingroup
+% Allow `_` and `:` in macro names (LaTeX3 style)
+\catcode`\_=11
+\catcode`\:=11
+% Internal code of `S`
+\gdef\tabularxcolumn#1{%
+    >{\__siunitx_table_collect_begin:Nn S{} }%
+    p{#1}%  <- this is different (is `c` in normal `S`)
+    <{\__siunitx_table_print:}%
+}
+\endgroup
+
+% figures
+\usepackage{subfig}
+\usepackage{caption}
+\captionsetup[subfloat]{position=top}
+
+% footnotes
+\setlength{\skip\footins}{1cm}
+\usepackage[hang,splitrule]{footmisc}
+\setlength{\footnotemargin}{0.3cm} %.5
+\setlength{\footnotesep}{0.4cm}
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+
+% manual
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{{\large\textsc{- GEModelTools -}}\\
+\textsc{HANC Model}\\
+\textsc{with Heterogeneous Returns}}
+\author{Rapha\"el Huleux}
+\maketitle
+
+\section*{Model}
+
+We consider a \emph{closed} economy with heterogeneous agents and
+\emph{flexible prices} \emph{and wages}. Relative to the standard
+HANC model, households now differ in the return they earn on their
+wealth.
+
+Time is discrete and indexed by $t$. There is a continuum of households
+indexed $i$.
+
+\paragraph*{Households.}
+
+Households are heterogeneous \emph{ex post} with respect to their
+labor productivity, $e_{it}$, their excess return, $r^{X}_{it}$,
+and their assets, $a_{it-1}$. All households share the discount factor
+$\beta$. Each period households exogenously supply $\ell_{it}=e_{it}$
+units of labor, earn the individual return $r_{t}+r^{X}_{it}$ on
+the assets they bring into the period, and choose consumption $c_{it}$
+subject to a no-borrowing constraint, $a_{it}\geq0$. Households have
+\emph{perfect foresight} wrt. the interest rate and the wage rate,
+$\{r_{t},w_{t}\}^{\infty}_{t=0}$, and solve the problem
+\begin{align}
+v_{t}(e_{it},r^{X}_{it},a_{it-1}) & =\max_{a_{it},c_{it}}\frac{c^{1-\sigma}_{it}}{1-\sigma}+\beta\mathbb{E}_{t}\left[v_{t+1}(e_{it+1},r^{X}_{it+1},a_{it})\right]\label{eq:Bellman}\\
+ & \text{s.t.}\nonumber \\
+a_{it}+c_{it} & =(1+r_{t}+r^{X}_{it})a_{it-1}+w_{t}e_{it}\nonumber \\
+\log e_{it} & =\rho_{e}\log e_{it-1}+\psi_{it},\,\,\,\psi_{it}\sim\mathcal{N}(\mu_{\psi},\sigma^{2}_{\psi}),\,\,\,\mathbb{E}[e_{it}]=1\nonumber \\
+r^{X}_{it} & =(1-\rho_{r})\bar{r}^{X}+\rho_{r}r^{X}_{it-1}+\epsilon_{it},\,\,\,\epsilon_{it}\sim\mathcal{N}(0,\sigma^{2}_{r})\nonumber \\
+a_{it} & \geq0,\nonumber
+\end{align}
+where $\psi_{it}$ and $\epsilon_{it}$ are independent, and implicitly
+\[
+v_{t}(e_{it},r^{X}_{it},a_{it-1})=v(e_{it},r^{X}_{it},a_{it-1},\{r_{\tau},w_{\tau}\}^{\infty}_{\tau=t}).
+\]
+The excess return $r^{X}_{it}$ is known at the beginning of period
+$t$, and has the unconditional mean $\bar{r}^{X}$.
+
+We denote optimal policy functions by $a^{\ast}_{t}(e_{it},r^{X}_{it},a_{it-1})$
+and $c^{\ast}_{t}(e_{it},r^{X}_{it},a_{it-1})$. The distribution
+of households \emph{before} the realization of idiosyncratic shocks,
+i.e. over $e_{it-1}$, $r^{X}_{it-1}$ and $a_{it-1}$, is denoted
+$\underline{\boldsymbol{D}}_{t}$. The distribution of households
+\emph{after} the realization of idiosyncratic shocks, i.e. over $e_{it}$,
+$r^{X}_{it}$ and $a_{it-1}$, is denoted $\boldsymbol{D}_{t}$.
+
+Central aggregate variables are
+\begin{align}
+A^{hh}_{t} & =\int a^{\ast}_{t}(e_{it},r^{X}_{it},a_{it-1})d\boldsymbol{D}_{t}=\boldsymbol{a}^{\ast\prime}_{t}\boldsymbol{D}_{t}\label{eq:A_hh}\\
+C^{hh}_{t} & =\int c^{\ast}_{t}(e_{it},r^{X}_{it},a_{it-1})d\boldsymbol{D}_{t}=\boldsymbol{c}^{\ast\prime}_{t}\boldsymbol{D}_{t}\label{eq:C_hh}\\
+RETURNS^{hh}_{t} & =\int(r_{t}+r^{X}_{it})a_{it-1}d\boldsymbol{D}_{t}\label{eq:RETURNS_hh}\\
+L^{hh}_{t} & =\int e_{it}d\boldsymbol{D}_{t}=1.\label{eq:L_hh}
+\end{align}
+$RETURNS^{hh}_{t}$ is the total capital income received by households.
+In the standard HANC model it equals $r_{t}A^{hh}_{t-1}$. Here it
+does not equal $(r_{t}+\bar{r}^{X})A^{hh}_{t-1}$ in general, because
+households with a high $r^{X}_{it}$ accumulate more wealth.
+
+To solve the model, we define the beginning-of-period value function
+as
+\begin{equation}
+\underline{v}_{t}\left(e_{it-1},r^{X}_{it-1},a_{it-1}\right)=\mathbb{E}_{t}\left[v_{t}(e_{it},r^{X}_{it},a_{it-1})\right].\label{eq:beginning-of-period-v}
+\end{equation}
+The \emph{envelope condition} implies
+\begin{equation}
+\underline{v}_{t,a}(e_{it-1},r^{X}_{it-1},a_{it-1})=\frac{\partial\underline{v}_{t}(e_{it-1},r^{X}_{it-1},a_{it-1})}{\partial a_{it-1}}=\mathbb{E}_{t}\left[(1+r_{t}+r^{X}_{it})c^{-\sigma}_{it}\right].\label{eq:Envelope}
+\end{equation}
+Note that the return $r^{X}_{it}$ sits \emph{inside} the expectation.
+The \emph{first order condition} for consumption implies
+\begin{equation}
+c^{-\sigma}_{it}=\beta\underline{v}_{t+1,a}(e_{it},r^{X}_{it},a_{it}).\label{eq:FOC}
+\end{equation}
+
+\paragraph*{Firms. }
+
+A representative firm rents capital, $K_{t-1}$, and hires labor, $L_{t}$,
+to produce goods, with the production function
+\begin{equation}
+Y_{t}=\Gamma_{t}K^{\alpha}_{t-1}L^{1-\alpha}_{t},\,\,\,\alpha\in(0,1),\label{eq:Y}
+\end{equation}
+where $\Gamma_{t}$ is technology. Capital depreciates with the rate
+$\delta$. Profit maximization
+\[
+\max_{K_{t-1},L_{t}}Y_{t}-w_{t}L_{t}-r^{k}_{t}K_{t-1}
+\]
+implies the standard pricing equations
+\begin{align}
+r^{k}_{t} & =\alpha\Gamma_{t}(K_{t-1}/L_{t})^{\alpha-1}\label{eq:rk}\\
+w_{t} & =(1-\alpha)\Gamma_{t}(K_{t-1}/L_{t})^{\alpha},\label{eq:w}
+\end{align}
+where $r^{k}_{t}$ is the rental rate of capital and $w_{t}$ is the
+wage rate.
+
+\paragraph*{Mutual fund.}
+
+A zero-profit mutual fund owns all the capital. It takes deposits
+from households, $A_{t}=K_{t}$, earns $r_{t}=r^{k}_{t}-\delta$ per
+unit of capital, and pays household $i$ the return $r_{t}+r^{X}_{it}$.
+Zero profit requires that the fund pays out exactly what it earns,
+\begin{equation}
+RETURNS^{hh}_{t}=r_{t}K_{t-1}.\label{eq:zero_profit}
+\end{equation}
+Given $A^{hh}_{t-1}=K_{t-1}$, this is the same as $\int r^{X}_{it}a_{it-1}d\boldsymbol{D}_{t}=0$:
+the excess returns only redistribute capital income across households,
+and the \emph{wealth-weighted} average return equals $r_{t}$.
+
+\paragraph*{Market clearing.}
+
+Market clearing requires
+\begin{align}
+\text{Capital: }K_{t} & =A_{t}=A^{hh}_{t}\label{eq:clearing_A}\\
+\text{Labour: }L_{t} & =L^{hh}_{t}=1\label{eq:clearing_L}\\
+\text{Goods: }Y_{t} & =C^{hh}_{t}+\underset{=I_{t}}{\underbrace{K_{t}-K_{t-1}+\delta K_{t-1}}},\label{eq:clearing_Y}
+\end{align}
+where $I_{t}$ is investment.
+
+\newpage{}
+
+\section*{Steady state and calibration}
+
+We only study the steady state. We normalize $Y=1$ and $L=1$, and
+target $K/Y=3$ and $r=0.04$. This gives directly
+\begin{align*}
+K & =3,\,\,\,\Gamma=\frac{Y}{K^{\alpha}L^{1-\alpha}},\,\,\,r^{k}=\alpha\Gamma(K/L)^{\alpha-1},\,\,\,\delta=r^{k}-r,\,\,\,w=(1-\alpha)\Gamma(K/L)^{\alpha}.
+\end{align*}
+Given $r$ and $w$, we solve for the two unknowns $\beta$ and $\bar{r}^{X}$
+such that
+\begin{align*}
+A^{hh}-K & =0\,\,\,\text{(capital market clearing)}\\
+RETURNS^{hh}-rK & =0\,\,\,\text{(the fund makes zero profit)}.
+\end{align*}
+Because wealth is concentrated among households with high
+$r^{X}_{it}$, the calibrated $\bar{r}^{X}$ is negative.
+
+The remaining parameters are
+\begin{center}
+\begin{tabular}{llc}
+\toprule
+Parameter & Description & Value\tabularnewline
+\midrule
+$\sigma$ & CRRA coefficient & 2.0\tabularnewline
+$\alpha$ & Capital share & 0.36\tabularnewline
+$\rho_{e}$ & Persistence of $\log e_{it}$ & 0.95\tabularnewline
+$\sigma_{\psi}$ & Std. of $\psi_{it}$ & $0.30\sqrt{1-\rho^{2}_{e}}$\tabularnewline
+$\rho_{r}$ & Persistence of $r^{X}_{it}$ & 0.8\tabularnewline
+$\sigma_{r}$ & Std. of $\epsilon_{it}$ & 0.019\tabularnewline
+$N_{e}$ & Grid points for $e_{it}$ & 5\tabularnewline
+$N_{r}$ & Grid points for $r^{X}_{it}$ & 7\tabularnewline
+\bottomrule
+\end{tabular}
+\par\end{center}
+
+As a benchmark, we also solve the model without return heterogeneity,
+$\sigma_{r}=0$. The calibration then gives $\bar{r}^{X}=0$.
+
+\section*{\newpage Implementation}
+
+The \textbf{files} are: \lstinline{blocks.py}, \lstinline{household_problem.py},
+\lstinline{steady_state.py}, and \lstinline{HANCModel.py}.
+
+The results are produced in the \textbf{notebook} \lstinline{HANC.ipynb}.
+
+\textbf{Two exogenous states.} \lstinline{GEModelTools} only has
+one stochastic discrete state, $z$. We stack $r^{X}$ and $e$ into
+one state with $N_{z}=N_{r}N_{e}$ points. With $\Pi_{r}$ and $\Pi_{e}$
+the two transition matrices, the joint transition matrix and ergodic
+distribution are the Kronecker products
+\[
+\Pi_{z}=\Pi_{r}\otimes\Pi_{e},\,\,\,\pi_{z}=\pi_{r}\otimes\pi_{e}.
+\]
+With $r^{X}$ first, the state \lstinline{i_z} maps to \lstinline{i_r = i_z // Ne}
+and \lstinline{i_e = i_z % Ne}.
+
+\textbf{Step 1.} In the \lstinline{.settings} method the household
+block now also returns the capital income of each household:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+self.grids_hh = ['a'] # grids
+self.pols_hh = ['a'] # policy functions
+self.inputs_hh = ['r','w'] # direct inputs
+self.inputs_hh_z = [] # transition matrix inputs
+self.outputs_hh = ['a','c','returns'] # outputs
+self.intertemps_hh = ['vbeg_a'] # intertemporal variables
+\end{lstlisting}\vspace{2mm}
+
+\textbf{Step 2.} In the \lstinline{.setup} method the sizes of the
+exogenous grids are:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+par.Nfix = 1 # number of fixed states
+par.Nr = 7 # number of points in r grid
+par.Ne = 5 # number of productivity states
+par.Nz = par.Ne*par.Nr # number of stochastic discrete states
+\end{lstlisting}\vspace{2mm}
+
+\textbf{Step 3.} In the \lstinline{steady_state.py} file the function
+\lstinline{prepare_hh_ss} sets the two grids and combines them:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+par.e_grid[:],e_trans,e_ergodic,_,_ = log_rouwenhorst(par.rho_e,par.sigma_psi,par.Ne)
+par.r_grid[:],r_trans,r_ergodic,_,_ = rouwenhorst(par.rX_mean*(1-par.rho_r),par.rho_r,par.sigma_r,par.Nr)
+ss.z_trans[0,:,:] = np.kron(r_trans,e_trans) # shape=(Nz,Nz)
+ss.Dbeg[0,:,0] = np.kron(r_ergodic,e_ergodic) # all start at a_lag = 0
+\end{lstlisting}\vspace{2mm}
+
+\textbf{Step 4.} In the \lstinline{household_problem.py} file the
+function \lstinline{solve_hh_backwards} uses the individual return
+in the cash-on-hand, in the capital income and in the envelope condition:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+for i_z in range(par.Nz):
+    i_r = i_z // par.Ne
+    i_e = i_z % par.Ne
+    r_eff = r + par.r_grid[i_r]
+    ... # EGM step as in the standard model, with r_eff and e_grid[i_e]
+    returns[0,i_z] = r_eff*par.a_grid
+    v_a[i_z] = (1+r_eff)*c[0,i_z]**(-par.sigma)
+vbeg_a[0] = z_trans[0]@v_a
+\end{lstlisting}\vspace{2mm}
+\begin{itemize}
+\item \vspace{-4mm}\textbf{Note:} $v_{a}$ must be computed for all
+$i_{z}$ \emph{before} taking the expectation, since $1+r_{t}+r^{X}_{it}$
+differs across states.
+\item \vspace{-2mm}\textbf{Check:} Solve the household problem in partial
+equilibrium:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+model.ss.r = 0.04
+model.ss.w = 0.64
+model.par.beta = 0.89
+model.par.rX_mean = 0.0
+model.solve_hh_ss(do_print=True) # calls prepare_hh_ss
+model.simulate_hh_ss(do_print=True)
+model.ss.RETURNS_hh/model.ss.A_hh # average return
+\end{lstlisting}
+\end{itemize}
+\textbf{Step 5.} In the \lstinline{steady_state.py} file the function
+\lstinline{find_ss} sets the targets and closed forms, then solves
+for $\beta$ and $\bar{r}^{X}$ with \lstinline{scipy.optimize.root},
+using the two conditions above:
+
+\vspace{2mm}\begin{lstlisting}[language=Python,basicstyle=\linespread{1.3}\ttfamily\footnotesize,
+numbers=left,frame=single,backgroundcolor=\color{background}]
+def obj_ss(x,model):
+    par.beta = x[0]
+    par.rX_mean = x[1]
+    model.solve_hh_ss() # calls prepare_hh_ss, which rebuilds the r grid
+    model.simulate_hh_ss()
+    ss.clearing_A = ss.A-ss.A_hh
+    clearing_returns = ss.RETURNS_hh-ss.r*ss.K
+    return np.array([ss.clearing_A,clearing_returns])
+\end{lstlisting}
+\end{document}
