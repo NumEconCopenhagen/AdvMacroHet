@@ -1,0 +1,940 @@
+%% LyX 2.4.3 created this file.  For more info, see https://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[10pt,english,10pt,handout]{beamer}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{tocdepth}{1}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[authoryear]{natbib}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% AMRS (2025) Figures 9 and 10
+\definecolor{amrsTeal}{HTML}{7FBFBF}
+\definecolor{amrsGreen}{HTML}{7FBF7F}
+\definecolor{amrsOrange}{HTML}{FFD27F}
+\definecolor{amrsBrown}{HTML}{D29494}
+\definecolor{amrsPink}{HTML}{FFDFE5}
+\definecolor{amrsPurple}{HTML}{BF7FBF}
+\definecolor{amrsBlue}{HTML}{7F7FFF}
+\definecolor{amrsRed}{HTML}{FF7F7F}
+\newcommand{\legbox}[1]{\textcolor{#1}{\rule{1.4ex}{1.4ex}}}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% section page shows the long title, the footer keeps the short one
+\setbeamertemplate{section page}{
+  \centering
+  \begin{minipage}{22em}
+    \raggedright
+    \usebeamercolor[fg]{section title}
+    \usebeamerfont{section title}
+    \insertsection\\[-1ex]
+    \usebeamertemplate*{progress bar in section page}
+    \par
+  \end{minipage}
+  \par
+  \vspace{\baselineskip}
+}
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+% Automatically create vspace between items
+% See: https://tex.stackexchange.com/questions/369504/beamer-vertically-stretching-level-1-list-items-in-a-nested-list-environment
+%\usepackage{xpatch} 
+%\xpatchcmd{\itemize}   
+%	{\def\makelabel}   
+%	{\ifnum\@itemdepth=1\relax      
+%		\setlength\itemsep{\fill} % separation for first level    
+%		\fi\def\makelabel   
+%	}{}{} 
+%\xpatchcmd{\enditemize}   
+%	{\endlist}   
+%	{\endlist\ifnum\@itemdepth<2\else\vfil\fi}{}{}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\usepackage{babel}
+\begin{document}
+\title{8. Secular Stagnation \vspace{-2mm}}
+\subtitle{Adv. Macro: Heterogeneous Agent Models} 
+\author{Raphaël Huleux}
+\date{2026}
+
+{
+\setbeamertemplate{footline}{} 
+\begin{frame}
+
+\maketitle
+
+\end{frame}
+}
+
+\addtocounter{framenumber}{-1}
+
+
+\section{Introduction\protect 
+%
+}\begin{frame}{Secular Stagnation }
+\vspace{-2mm}
+\begin{itemize}
+\item <+->\textbf{Today: }Can we explain \emph{secular stagnation} through
+the lens of heterogeneous agent models?\vfill
+\item <+->\textbf{Central economic questions:}
+\begin{enumerate}
+\item Why have real interest rates fallen since the 1950s?
+\item What role did aging and rising inequality play?
+\item What happens next, and what does it mean for public debt?\vfill
+\end{enumerate}
+\item <+->\textbf{Plan for today:}
+\begin{enumerate}
+\item Income inequality and saving (Straub 2019)
+\item The race between asset supply and asset demand (Auclert, Malmberg, Rognlie and Straub 2025)
+\item Indebted demand (Mian, Straub and Sufi 2021)
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Secular Stagnation}
+\begin{itemize}
+\item \textbf{Secular stagnation}: A state in which private demand is structurally
+low 
+\begin{itemize}
+\item Low level of growth in the economy 
+\item Low interest rates 
+\item Low level of inflation 
+\end{itemize}
+\item Large literature suggests that advanced economies have been in this
+state over the past $\approx$ 20 years
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Declining interest rates}
+
+Various interest rates from Mian, Straub and Sufi (2021)
+
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.65\linewidth]{figs/MSSRates.png}      
+\end{figure}
+\end{frame}
+%
+\begin{frame}{Declining growth}
+
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.65\linewidth]{figs/TrendGrowth.png}      
+\end{figure}
+\end{frame}
+
+
+\begin{frame}{Rising saving rates and declining $r$}
+
+  Mankiw (2022) writes a simple Solow model to think about secular stagnation \pause
+\begin{itemize}
+  \item Recall that, on the BGP $r=\alpha \frac{n+g+\delta}{s}-\delta$  \pause 
+  \item An increase in savings implies $dr/ds = -\alpha \frac{n+g+\delta}{s^{2}}<0$ \pause
+  \item Assume $\alpha=1/3$, $n=0.01$, $g=0.02$, $\delta=0.05$, $s=0.24$, this yields $dr/ds = -0.46$ p.p. \pause
+  \item But population and GDP growth have declined as well! $dr/d(n+g) = 1.39$ p.p. \pause
+\end{itemize}
+Other potential culprit: rising markups. \\ \pause 
+Implications for fiscal and monetary policy? Low $r$ means more likely to hit ZLB and fiscal stimulus cheap and powerful.
+\end{frame}
+
+\begin{frame}{Explanations}
+
+Large literature on potential explanations
+\begin{itemize}
+\item <+->Increases in market power of firms 
+\begin{itemize}
+\item Liu, Mian \& Sufi (2022), Aghion, Bergeaud, Boppart, Klenow \& Li
+(2023)
+\end{itemize}
+\item <+->Declining relative price of investment (/reduced innovation)
+\begin{itemize}
+\item Eichengreen (2015), Eggertsson, Mehrotra \& Robbins (2019)
+\end{itemize}
+\item <+->\textbf{Aging population (Demographics)}
+\begin{itemize}
+\item Auclert, Malmberg, Martenet \& Rognlie (2024), Gagnon, Johannsen \&
+López-Salido (2021)
+\end{itemize}
+\item <+->\textbf{Increasing income inequality }
+\begin{itemize}
+\item Straub (2019), Mian, Straub \& Sufi (2021), Auclert \& Rognlie (2020)
+\end{itemize}
+\item <+->All of these in one framework: Auclert, Malmberg, Rognlie \& Straub (2025)
+\end{itemize}
+\end{frame}
+%
+
+\section[Inequality and saving]{Inequality and saving \\ Straub (2019)}
+\begin{frame}{Secular stagnation and income inequality}
+\begin{itemize}
+\item <+->A literature explains the decline in $r$ through \emph{rising} income/wealth
+\textbf{inequality }
+\begin{itemize}
+\item See e.g. Mian, Straub and Sufi (2021): \emph{What explains the decline
+in r{*}? Rising income inequality versus demographic shifts}
+\end{itemize}
+\item <+->\textbf{Example}: If saving rates increase with income (richer
+save more) then:
+\begin{itemize}
+\item Redistribution from poor to rich households \emph{increase} the aggregate
+supply of savings $\Rightarrow$ lower rates in GE
+\item Suggests link between increasing income inequality and secular stagnation 
+\item Straub (2019, WP) tests this hypothesis 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Stylized model}
+
+\begin{itemize}
+  \item Deterministic model with one-period lived households \pause
+  \item Constant wage $w$, return $R$ \pause
+  \item Get utility from consumption $c_t$ and wealth $a_{t+1}$ \pause 
+\end{itemize}
+$$\begin{aligned}
+\max_{c_t,a_{t+1}} u(c_t)+\beta U(a_{t+1}) \\
+c_t +R^{-1} a_{t+1}\leq a_t + w_t   
+\end{aligned}$$
+with $u(c)=\frac{c^{1-\sigma}}{1-\sigma}$ and $U(a)=\frac{a^{1-\Sigma}}{1-\Sigma}$ \\ \pause
+We can show that $c_t \approx k(a_t+w)^\phi$, with $\phi=\frac{\Sigma}{\sigma}$
+\end{frame}
+
+
+%
+\begin{frame}{Empirical estimate}
+\begin{itemize}
+\item <+->We can check in the data the empirical relationship between permanent income and consumption
+\item <+->If $\phi<1$ consumption rises \emph{less} than proportionally
+with income
+\begin{itemize}
+\item I.e. savings rise \emph{more $\Rightarrow$ }Richer HHs save more 
+\item Opposite for $\phi>1$
+\end{itemize}
+\item <+->Two questions
+\begin{itemize}
+\item What does this elasticity look like empirically?
+\item If $\phi\neq1$ how can we accommodate this in a HA model?
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Empirical estimate}
+\begin{itemize}
+\item <+->Use US panel survey data (PSID)
+\item <+->Regress $\log c_{it}$ on controls (year, age, HH size, location)
+and 9 year average of income
+\item <+->Binned scatter:\\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.5\linewidth]{figs/Straub2019Scatter.PNG}      
+\end{figure}
+\item <+->More detailed estimates in paper, suggest $\phi\approx0.7$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Permanent redistribution in the canonical HA model}
+\begin{itemize}
+
+\item <+->Consider standard HA model with permanent income state $p:$
+\[
+\begin{aligned}V\left(a_{t-1},z_{t},p\right)= & \max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]\\
+ & \text{ subject to }\\
+ & c_{t}+a_{t}=Ra_{t-1}+z_{t}p\\
+ & a_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+\item <+->Note: preferences are \emph{homothetic }(homogeneous of degree
+1)
+\begin{itemize}
+\item >>Scale independent<<
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+%
+\begin{frame}{Homothetic household problem I}
+\begin{itemize}
+\item <+->Normalize constraints by $p$ and Bellman by $p^{1-\sigma}$
+\[
+\begin{aligned}\frac{V\left(a_{t-1},z_{t},p\right)}{p^{1-\sigma}}= & \max_{c_{t}}\frac{\frac{c_{t}^{1-\sigma}}{1-\sigma}}{p^{1-\sigma}}+\beta\frac{\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]}{p^{1-\sigma}}\\
+ & \text{ subject to }\\
+ & \frac{c_{t}}{p}+\frac{a_{t}}{p}=R\frac{a_{t-1}}{p}+z_{t}\frac{p}{p}\\
+ & \frac{a_{t}}{p}\geq\frac{0}{p}
+\end{aligned}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Homothetic household problem II}
+Define $\tilde{c}_{t}=\frac{c_{t}}{p}$,$\tilde{a}_{t}=\frac{a_{t}}{p}$,$\tilde{V}_{t}=\frac{V_{t}}{p^{1-\sigma}}$
+to get:
+\[
+\begin{aligned}\tilde{V}\left(\tilde{a}_{t-1},z_{t}\right)= & \max_{\tilde{c}_{t}}\frac{\tilde{c}_{t}^{1-\sigma}}{1-\sigma}+\beta\mathbb{E}\left[\tilde{V}\left(\tilde{a}_{t},z_{t+1}\right)\right]\\
+ & \text{ subject to }\\
+ & \tilde{c}_{t}+\tilde{a}_{t}=R\tilde{a}_{t-1}+z_{t}\\
+ & \tilde{a}_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+Then HH problem is independent of $p$ up to scale!
+\begin{itemize}
+\item Solution is ``scale independent'': $1\%$ more permanent income raises $c_{t}$ and $a_{t}$ by $1\%$ \pause
+\item Homothetic preferences imply $\phi=1$, since $\tilde{c}_{t}=c_{t}/p$ \pause
+\item Permanent redistribution has \emph{no effect} on aggregates: the lower saving of one group exactly offsets the higher saving of the other
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Non-homothetic HA model}
+\begin{itemize}
+\item <+->Extend standard HA model with\emph{ taste for wealth }(>>status<<)
+\[
+\begin{aligned}V\left(a_{t-1},z_{t},p\right)= & \max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\phi_{a}\frac{a_{t}^{1-\sigma_{a}}}{1-\sigma_{a}}+\beta\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]\\
+ & \text{ subject to }\\
+ & c_{t}+a_{t}=a_{t-1}\left(1+r\right)+z_{t}p\\
+ & a_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+\item <+->Note: Still homothetic as long as $\sigma=\sigma_{a}$, but non-homothetic
+if $\sigma\neq\sigma_{a}$:
+\begin{align*}
+\tilde{V}\left(\tilde{a}_{t-1},z_{t},p\right) & =\frac{\tilde{c}_{t}^{1-\sigma}}{1-\sigma}+p^{\sigma-\sigma_{a}}\phi_{a}\frac{\tilde{a}_{t}^{1-\sigma_{a}}}{1-\sigma_{a}}+\beta\mathbb{E}\left[\tilde{V}\left(\tilde{a}_{t},z_{t+1},p\right)\right]
+\end{align*}
+\item <+->If $\sigma\neq\sigma_{a}$, the weight $p^{\sigma-\sigma_{a}}$ on wealth depends on $p$: richer households put more weight on wealth when $\sigma>\sigma_{a}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Applications}
+\begin{itemize}
+\item <+->Calibrate a life-cycle HA model with non-homothetic preferences
+to estimate $\phi=0.7$
+\begin{itemize}
+\item Note: In paper there is a second source of non-homotheticity where
+$\sigma$ varies across age 
+\end{itemize}
+\item <+->Segment HHs into 3 permanent income groups corresponding to poorest
+90\%, next 9\% and richest 1\% 
+\item <+->Feed in evolution of income inequality from Piketty and Saez
+(2003), keeping aggregate income unchanged in PE (so permanent redistribution
+between rich and poor HHs) \\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.6\linewidth]{figs/Straub2019IncomeInequality.PNG}      
+\end{figure}
+\item <+->Solve for GE (Supply side as in HANC)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Results}
+\begin{figure}
+ \includegraphics[width=\linewidth]{figs/straub_2019_fig_6.png} 
+\end{figure}
+
+\end{frame}
+\begin{frame}{GE implications of rising income inequality }
+\begin{itemize}
+\item Compare effects in homothetic and non-homothetic models: \\
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.7\linewidth]{figs/Straub2019GE.PNG}      
+\end{figure}
+\end{itemize}
+\begin{itemize}
+\item Note: >>Fixed K<< is Lucas-tree economy, where wealth grows due to rising asset prices
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Trickle down economics?}
+
+\begin{itemize}
+\item In model with perfect competition: $\uparrow A \to \uparrow K \to \uparrow Y, w$ \pause
+\item The GE effect benefits to everybody! \pause 
+\item How realistic is this? Need to account for imperfect competition \pause
+\item In this case: $r_t=\frac{\alpha}{\mu} K_t^{(\alpha-1)}-\delta$, and $q_t =\frac{p_{t+1}+q_{t+1}}{1+r_t}$ \pause
+\item Increase in savings might not finance more physical capital, but just higher prices of financial assets!
+\end{itemize} 
+\end{frame}
+
+\section[Asset supply and demand]{Asset supply and demand \\ Auclert, Malmberg, Rognlie and Straub (2025)}
+\begin{frame}{The race between asset supply and asset demand}
+\begin{itemize}
+\item <+->Auclert, Malmberg, Rognlie and Straub (2025), AMRS below. The U.S. since 1950:
+\begin{itemize}
+\item fertility fell from over 3 children per woman to 1.6: the population ages
+\item income inequality has risen sharply since the 1970s
+\item government debt and the value of private assets rose, net foreign assets at a record low
+\end{itemize}
+\vfill
+\item <+->Two questions:
+\begin{enumerate}
+\item How did these shifts affect interest rates and wealth over the last 75 years?
+\item What happens over the next 75 years, and what does it mean for public debt?
+\end{enumerate}
+\vfill
+\item <+->Method: long-run asset supply and demand, measured with \emph{sufficient statistics} from a life-cycle model
+\begin{itemize}
+\item extends Auclert, Malmberg, Martenet and Rognlie (2024), who study demographics only
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Falling returns and rising wealth}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{figs/AMRS_fig2.png}
+\end{center}
+\begin{itemize}
+\item Average return $r=\bar{s}r^{f}+(1-\bar{s})r^{r}$: safe rate on government bonds $r^{f}$ and return on private assets $r^{r}$, with $\bar{s}=0.11$
+\item Since the 1950s, $r$ fell by about 2 pp and wealth rose by about 300\% of GDP, mostly after 1980
+\end{itemize}
+{\footnotesize Source: AMRS (2025), Figure 2}
+\end{frame}
+%
+\begin{frame}{Realized asset supply and demand, 1950-2024}
+\begin{center}
+\includegraphics[width=0.85\linewidth]{figs/AMRS_fig3.png}
+\end{center}
+\begin{itemize}
+\item Supply: government debt $B$, capital $K$, capitalized profits and rents $\Pi$. Demand: households $A^{h}$ and foreigners $-NFA$
+\item $B$, $K$, $Y$ from the national accounts, $A^{h}$ and $NFA$ from the financial accounts, $\Pi$ as the residual
+\item Supply rose through government debt and profits, demand through households and foreigners
+\end{itemize}
+{\footnotesize Source: AMRS (2025), Figure 3}
+\end{frame}
+%
+\begin{frame}{Asset market equilibrium}
+\begin{itemize}
+\item <+->The long-run rate $r^{*}$ clears the market for assets, relative to GDP:
+\[
+\mathcal{A}^{s}(r^{*})=\mathcal{A}^{d}(r^{*})
+\]
+\item <+->\textbf{Asset supply}: domestic assets available to hold, decreasing in $r$ (less capital, profits worth less)
+\[
+\mathcal{A}^{s}=\underbrace{\frac{B}{Y}}_{\text{gov. debt}}+\underbrace{\frac{K}{Y}}_{\text{capital}}+\underbrace{\frac{\Pi}{Y}}_{\text{profits and rents}}
+\]
+\item <+->\textbf{Asset demand}: assets that households and foreigners want to hold, increasing in $r$
+\[
+\mathcal{A}^{d}=\underbrace{\frac{A^{h}}{Y}}_{\text{households}}+\underbrace{\left(-\frac{NFA}{Y}\right)}_{\text{foreigners}}
+\]
+\item <+->Vocabulary: household saving is a \emph{demand} for assets. Same diagram as Aiyagari (lectures 3-4), with $B$ and $\Pi$ added
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Measuring the shifts}
+\begin{itemize}
+\item <+->Let $\eta$ shift both curves, and define the semi-elasticities
+\[
+\epsilon^{s}\equiv-\frac{\partial\log\mathcal{A}^{s}}{\partial r}>0,\qquad\epsilon^{d}\equiv\frac{\partial\log\mathcal{A}^{d}}{\partial r}>0
+\]
+\item <+->Take logs of $\mathcal{A}^{s}(r^{*},\eta)=\mathcal{A}^{d}(r^{*},\eta)$ and differentiate:
+\[
+dr^{*}=\frac{\partial\log\mathcal{A}^{s}-\partial\log\mathcal{A}^{d}}{\epsilon^{s}+\epsilon^{d}},\qquad d\log\frac{A}{Y}=\frac{\epsilon^{d}\,\partial\log\mathcal{A}^{s}+\epsilon^{s}\,\partial\log\mathcal{A}^{d}}{\epsilon^{s}+\epsilon^{d}}
+\]
+where $\partial\log\mathcal{A}$ is the shift of a curve at a given $r$
+\begin{itemize}
+\item $r^{*}$ falls if and only if demand shifts more than supply
+\end{itemize}
+\item <+->Invert: the observed $dr$ and $d\log(A/Y)$ reveal the shifts
+\[
+\partial\log\mathcal{A}^{s}=d\log\frac{A}{Y}+\epsilon^{s}dr,\qquad\partial\log\mathcal{A}^{d}=d\log\frac{A}{Y}-\epsilon^{d}dr
+\]
+\item <+->Only two numbers needed: $\epsilon^{s}\approx20$ and $\epsilon^{d}\approx9$ (from the model below)
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Who won the race?}
+\begin{center}
+\includegraphics[width=0.95\linewidth]{figs/AMRS_fig1.png}
+\end{center}
+\begin{itemize}
+\item <+->Asset supply shifts out: $A/Y$ up and $r^{*}$ up
+\item <+->Asset demand shifts out: $A/Y$ up and $r^{*}$ down
+\item <+->Data: $A/Y$ up and $r$ down $\Rightarrow$ asset demand won the race
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Model: overview}
+\begin{itemize}
+\item <+->Long run only: compare balanced growth paths, no transitions
+\item <+->\textbf{Firms}: Cobb-Douglas, markup $\mu$, tax $\tau$ on income net of depreciation
+\item <+->\textbf{Government}: debt $B$, consumption $G$, social security $T$, tax $\tau$ on all net income
+\item <+->\textbf{Households}: overlapping generations (ages $j=0,\dots,J$) and permanent types $\theta$
+\begin{itemize}
+\item life-cycle consumption-saving problem, bequest motive, taxes and social security
+\end{itemize}
+\item <+->\textbf{Two assets}: safe bonds ($r^{f}$) and risky private assets ($r^{r}$)
+\begin{itemize}
+\item risk premium $rp=r^{r}-r^{f}$ taken as given, households only care about the average return $r$
+\end{itemize}
+\item <+->Growth: $1+g=(1+n)(1+\gamma)$, with population growth $n$ and productivity growth $\gamma$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Model: asset supply}
+\begin{itemize}
+\item <+->Solve the firm's problem from the FOC: Cobb-Douglas, markup $\mu$, tax $\tau$ on profits net of depreciation. Capital FOC: $\frac{\alpha}{\mu}\frac{Y}{K}=\frac{r^{r}}{1-\tau}+\delta$, profits are a share $1-1/\mu$ of output
+\item <+->Asset supply in closed form, with $r^{r}=r+\bar{s}\,rp$ the return on risky assets:
+\[
+\mathcal{A}^{s}(r)=\underbrace{\frac{\alpha}{\mu}\frac{1}{\frac{r^{r}}{1-\tau}+\delta}}_{K/Y\text{: capital}}+\underbrace{(1-\tau)(1+g)\frac{1-1/\mu}{r^{r}-g}}_{\Pi/Y\text{: value of profits and rents}}+\underbrace{\frac{B}{Y}}_{\text{gov. debt}}
+\]
+\begin{itemize}
+\item $\Pi/Y$: profits $(1-1/\mu)Y$ grow at $g$ and are discounted at $r^{r}$
+\item $B/Y$: set by the government, does not respond to $r$
+\end{itemize}
+\vfill
+\item <+->Semi-elasticity:
+\[
+\epsilon^{s}=\underbrace{\frac{K}{A}\frac{1}{r^{r}+(1-\tau)\delta}}_{\text{lower }r\text{: more capital}}+\underbrace{\frac{\Pi}{A}\frac{1}{r^{r}-g}}_{\text{lower }r\text{: rents worth more}}\approx20
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Model: shifters of asset supply}
+\begin{itemize}
+\item <+->\textbf{Public debt} $B/Y$: from the data. Going forward, aging raises deficits (pensions, health care)
+\item <+->\textbf{Markups} $\mu$: less capital, but more profits to capitalize. With $r^{r}-g$ small, the second effect wins
+\item <+->\textbf{Capital share} $\alpha$: technology (automation, AI), cheaper investment goods
+\item <+->\textbf{Depreciation} $\delta$: shift toward short-lived capital (equipment, software) raises the user cost, less $K/Y$
+\item <+->\textbf{Taxes} $\tau$: raise the user cost and lower after-tax profits
+\item <+->\textbf{Growth} $1+g=(1+n)(1+\gamma)$: exogenous, from the data. Slower growth lowers the value of rents
+\begin{itemize}
+\item slower population growth $n$: the demographic effect on asset supply
+\end{itemize}
+\item <+->\textbf{Risk premium} $rp$: at a given $r$, a higher $rp$ raises $r^{r}$: less capital, profits worth less
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Model: households}
+\begin{itemize}
+\item <+->Overlapping generations, each solving a deterministic life-cycle problem:
+\[
+\max_{\{\tilde{c}_{j},a_{j+1}\}}\sum_{j=0}^{J}\Phi_{j}\tilde{\beta}_{j}\frac{\tilde{c}_{j}^{1-1/\sigma}}{1-1/\sigma}\quad\text{s.t.}\quad\tilde{c}_{j}+\phi_{j}a_{j+1}=y_{j}(\theta)+(1+r)a_{j}
+\]
+\begin{itemize}
+\item $\phi_{j}$: survival probability from $j$ to $j+1$, $\Phi_{j}=\prod_{k<j}\phi_{k}$. Start with $a_{0}=0$
+\item $\tilde{c}_{j}$: consumption, including end-of-life spending and bequests
+\item $y_{j}(\theta)=(1-\tau)\,w\,\lambda(\theta)\left(\bar{e}_{j}+T\bar{t}_{j}\right)$: after-tax labor income and social security
+\end{itemize}
+\vfill
+\item <+->Two sources of heterogeneity:
+\begin{enumerate}
+\item \textbf{Age} $j$: income and wealth follow the life cycle
+\item \textbf{Permanent income} $\lambda(\theta)$: scales the whole income profile
+\end{enumerate}
+No idiosyncratic income risk: the only risk is mortality
+\vfill
+\item <+->Preferences $\tilde{\beta}_{j}$ are set to match the observed profiles of consumption and wealth, by age and by income
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Model: households in the data}
+\begin{itemize}
+\item <+->\textbf{Wealth by age and type} is read from the data, not computed:
+\begin{itemize}
+\item by age: 2016 profiles of net worth $a_{j}$ and labor income $we_{j}$ (SCF)
+\item by type: $\theta$ is the percentile of labor income at ages 25-44, $\lambda(\theta)$ from DINA. In the PSID, log wealth on log labor income has a slope of 1.61, so $\bar{a}_{j}(\theta)=\bar{a}_{j}\lambda(\theta)^{0.61}$
+\end{itemize}
+\item <+->\textbf{Moments for $\epsilon^{d}$}, from $\pi_{j}$, $a_{j}$ and effective consumption $\tilde{c}_{j}$ (PSID consumption plus end-of-life spending):
+\[
+A^{h}=\sum_{j}\pi_{j}a_{j},\qquad\tilde{C}=\sum_{j}\pi_{j}\tilde{c}_{j},\qquad\mathbb{E}Age_{a}=\frac{\sum_{j}\pi_{j}a_{j}\,j}{A^{h}}
+\]
+\[
+\mathbb{E}Age_{\tilde{c}}=\frac{\sum_{j}\pi_{j}\tilde{c}_{j}\,j}{\tilde{C}},\qquad\mathrm{Var}Age_{\tilde{c}}=\frac{\sum_{j}\pi_{j}\tilde{c}_{j}\left(j-\mathbb{E}Age_{\tilde{c}}\right)^{2}}{\tilde{C}}
+\]
+\item <+->\textbf{Interpretation}:
+\begin{itemize}
+\item $\mathbb{E}Age_{a}$: age of the owner of the average dollar of wealth
+\item $\mathbb{E}Age_{\tilde{c}}$: age at which the average dollar is consumed
+\item $\mathrm{Var}Age_{\tilde{c}}$: spread of consumption over the life cycle, the room to substitute
+\end{itemize}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{The slope of asset demand}
+\begin{block}{Proposition 2 (with $r=g$)}
+\[
+\epsilon^{d}=\frac{1}{1+r}\Big(\underbrace{\sigma\frac{\tilde{C}}{(1+g)A^{h}}\mathrm{Var}Age_{\tilde{c}}}_{\text{substitution}}+\underbrace{\mathbb{E}Age_{\tilde{c}}-\mathbb{E}Age_{a}}_{\text{income}}\Big)
+\]
+$Age_{\tilde{c}}$, $Age_{a}$: age of a random unit of consumption or of wealth in the population
+\end{block}
+\begin{itemize}
+\item <+->Depends only on the \textbf{age} structure of consumption and wealth, plus the EIS $\sigma$
+\item <+->\textbf{Substitution} ($\sigma\times50.2$): a higher $r$ tilts consumption toward old age, so households save more when young
+\item <+->\textbf{Income} ($-7.4$): wealth is about 7 years older than consumption. A higher return means less saving is needed for retirement
+\item <+->With $\sigma=1/3$, $\epsilon^{d}\approx9$. Representative agent: $\epsilon^{d}=\infty$, so asset demand shifters cannot move $r^{*}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Model: shifters of asset demand}
+\begin{itemize}
+\item <+->\textbf{Compositional}: change the weights on ages and types, not behavior. Reweight the 2016 data profiles
+\begin{itemize}
+\item $+$ \textbf{Demographics}: an older population puts more weight on asset-rich, low-income ages
+\item $+$ \textbf{Productivity growth}: slower growth across cohorts makes older cohorts relatively richer, like aging
+\item $+$ \textbf{Inequality}: income moves to the rich, who hold more wealth relative to their income, as in Straub (2019)
+\end{itemize}
+\vfill
+\item <+->\textbf{Life-cycle}: change saving behavior, measured with first-order formulas
+\begin{itemize}
+\item $-$ \textbf{Social security}: more generous pensions, less saving for retirement
+\item \textbf{Longevity}: dropped, since most assets are not annuitized
+\end{itemize}
+\vfill
+\item <+->$+$ \textbf{Foreigners}: $-NFA/Y$ taken from the data
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Asset demand won the race}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figs/AMRS_fig4.png}
+\end{center}
+\begin{itemize}
+\item <+->Each year, two observations ($dr$, $d\log A/Y$ since 1950) and two unknown shifts:
+\[
+\partial\log\mathcal{A}^{s}=d\log\frac{A}{Y}+\epsilon^{s}dr,\qquad\partial\log\mathcal{A}^{d}=d\log\frac{A}{Y}-\epsilon^{d}dr
+\]
+change in $A/Y$ = shift of the curve + move along it caused by $dr$
+\item <+->$r$ fell by about 2 pp. Along supply, $A/Y$ rises by $\epsilon^{s}\times0.02\approx40$ log points, most of the observed rise $\Rightarrow$ small supply shift
+\item <+->Along demand, $A/Y$ falls by $\epsilon^{d}\times0.02\approx18$ log points, yet $A/Y$ rose $\Rightarrow$ large demand shift
+\end{itemize}
+{\footnotesize Source: AMRS (2025), Figure 4}
+\end{frame}
+%
+\begin{frame}{Which shifters moved $r^{*}$?}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+\centering
+\textbf{Asset supply}\\[1mm]
+\includegraphics[width=\linewidth]{figs/AMRS_fig9b.png}\\[1mm]
+{\scriptsize
+\begin{tabular}{@{}ll@{}}
+\legbox{amrsTeal} Government debt & \legbox{amrsBrown} Markups and rents\\
+\legbox{amrsGreen} Demographics & \legbox{amrsPink} Taxes\\
+\legbox{amrsOrange} Productivity growth & \legbox{amrsPurple} Risk premium\\
+ & \legbox{amrsBlue} Capital intensity\\
+\end{tabular}
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\textbf{Asset demand}\\[1mm]
+\includegraphics[width=\linewidth]{figs/AMRS_fig10b.png}\\[1mm]
+{\scriptsize
+\begin{tabular}{@{}ll@{}}
+\legbox{amrsGreen} Demographics & \legbox{amrsBlue} Social security\\
+\legbox{amrsOrange} Productivity growth & \legbox{amrsBrown} Labor share\\
+\legbox{amrsRed} Inequality & \legbox{amrsPink} Taxes\\
+\legbox{amrsPurple} NFA & \\
+\end{tabular}
+}
+\end{column}
+\end{columns}
+\vspace{2mm}
+{\footnotesize Contribution of each shifter to $dr^{*}=\left(\partial\log\mathcal{A}^{s}-\partial\log\mathcal{A}^{d}\right)/(\epsilon^{s}+\epsilon^{d})$, in pp. Solid: sum of the shifters. Dashed: shift backed out from the data\par}
+\vspace{1mm}
+{\footnotesize Source: AMRS (2025), Figures 9(b) and 10(b)}
+\end{frame}
+%
+\begin{frame}{The race behind us, 1950-2024}
+\begin{columns}[T]
+\begin{column}{0.5\textwidth}
+{\scriptsize
+\textbf{Asset supply}\\[1mm]
+\begin{tabular}{lrr}
+\toprule
+ & \% GDP & bp\\
+\midrule
+Government debt & 23 & 15\\
+Demographics & $-65$ & $-43$\\
+Productivity growth & $-82$ & $-55$\\
+Markups and rents & 170 & 114\\
+Taxes & $-10$ & $-7$\\
+Risk premium & 45 & 30\\
+Capital intensity & $-14$ & $-9$\\
+\midrule
+Total explained & 67 & 45\\
+Total data & 31 & 27\\
+\bottomrule
+\end{tabular}
+}
+\end{column}
+\begin{column}{0.5\textwidth}
+{\scriptsize
+\textbf{Asset demand}\\[1mm]
+\begin{tabular}{lrr}
+\toprule
+ & \% GDP & bp\\
+\midrule
+Demographics & 145 & $-103$\\
+Productivity growth & 90 & $-63$\\
+Inequality & 129 & $-91$\\
+NFA & 79 & $-66$\\
+Social security & $-70$ & 49\\
+Labor share & $-48$ & 34\\
+Taxes & $-15$ & 11\\
+\midrule
+Total explained & 310 & $-229$\\
+Total data & 415 & $-256$\\
+\bottomrule
+\end{tabular}
+}
+\end{column}
+\end{columns}
+{\scriptsize Shift of each curve (\% of GDP) and contribution to $dr^{*}$ (bp)\par}
+\vspace{2mm}
+\begin{itemize}
+\item <+->Demographics and inequality: about $-1$ pp each. Slower growth and foreign inflows: about $-0.7$ pp each
+\item <+->Markups and rents held $r^{*}$ up by more than 1 pp: capitalized profits are an asset that households must hold
+\end{itemize}
+{\footnotesize Source: AMRS (2025), Tables 1 and 2}
+\end{frame}
+%
+\begin{frame}{The race ahead}
+\begin{center}
+\includegraphics[width=\linewidth]{figs/AMRS_fig15.png}
+\end{center}
+\begin{itemize}
+\item <+->Aging keeps raising asset demand: with fixed supply, $r^{*}$ falls by 1.2 pp by 2100
+\item <+->But old-age spending rises from 11\% to 20\% of GDP: without adjustment, debt grows by 500\% of GDP and supply wins
+\item <+->Debt stabilized in 2100 (figure): 250\% of GDP at today's $r$, but it needs an adjustment of about 12\% of GDP
+\end{itemize}
+{\footnotesize Source: AMRS (2025), Figure 15}
+\end{frame}
+%
+\begin{frame}{Takeaways}
+\begin{itemize}
+\item <+->$r^{*}$ is set by a race between asset supply (debt, capital, profits) and asset demand (households, foreigners)
+\item <+->Heterogeneity makes asset demand imperfectly elastic, so aging and inequality move $r^{*}$
+\item <+->1950-2024: asset demand won by far (aging, inequality, slower growth, foreign inflows), and $r^{*}$ fell
+\item <+->Going forward: aging raises asset demand, but also deficits. There is room to borrow, but a large fiscal adjustment is unavoidable
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Higher interest rates and inflation: a new normal?}
+\vspace{2mm}
+\makebox[\linewidth][l]{\hspace{-4mm}\includegraphics[width=0.95\paperwidth]{figs/real_rates_inflation.pdf}}
+\end{frame}
+%
+
+\section[Indebted demand]{Indebted demand \\ Mian, Straub and Sufi (2021)}
+
+\begin{frame}{Introduction}
+
+\begin{itemize}
+  \item Build on the non-homothetic preferences \pause 
+  \item Highlights role of increasing household debt and connect to returns \pause 
+\begin{figure}[H]     
+\centering      
+\includegraphics[width=0.6\linewidth]{figs/MSS2021Debt.PNG}      
+\end{figure}
+  \item Argue that income inequality and less financial regulation leads to more borrowing and lower returns in GE \pause
+  \item \textbf{Note}: Would normally expect the opposite \pause
+  \begin{itemize}
+    \item If I want to borrow more, I will have to compensate savers by paying \textbf{higher} interest rate, not \textbf{lower} \pause
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Model}
+\begin{itemize}
+  \item Model \pause
+  \begin{itemize}
+    \item \textbf{Continuous} time \pause
+    \item Endowment economy with $Y=1$ \pause
+  \end{itemize}
+  \item Savers $s$ are unconstrained and maximize utility $$\int_0^\infty e^{-\rho t} \log (c_t^s)+\upsilon(a_t^s)dt$$ \pause
+  \item Borrowers $b$ are constrained. They hold debt $d_t>0$ up to a share $\ell$ of collateral $p_t=\int_t^\infty e^{-rt} \omega^bYdt = \frac{\omega^b Y}{r}$ $$d_t =\frac{\ell\omega^b Y}{r}$$ \pause
+  \item Equilibrium: debt owed by borrowing equal savings by savers: $$d_t =a_t^s$$  \pause
+\end{itemize}  
+\end{frame}
+
+\begin{frame}{Non-homothetic model}
+\begin{itemize}
+  \item Calibration \pause
+  \begin{itemize}
+    \item Interpret savers at top 1\% of income distribution \pause
+    \item Calibrate $\upsilon(a)$ such that savers have long-run MPC of 0.01 \pause
+  \end{itemize}
+  \item \textbf{Non-homotheticity}: Large differences in SR across the two types \pause
+  \item Core insight of the paper: if savings is luxury good for rich, $\upsilon''(a_t^s)>0$, saving schedule $a_t^s(r)$ is \emph{downward sloping} \pause
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figs/MSS2021DemandSupply.PNG} \pause
+  \end{figure}
+  \item Why? Assume rich agent consumes fixed amount $\bar{c}^s$ and saves the rest. Then $\bar{c}^s=r_ta_t^s\Leftrightarrow a_t^s = \frac{\bar{c}^s}{r_t}$ \pause
+  \begin{itemize}
+    \item Higher $r$ in the long run crowd out $a_t^s$ in the long run \pause
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+  \begin{itemize}
+    \item Increase in income inequality: increase in debt and lower interest rates \pause
+    \item Increase in financial deregulation $\to$ relax borrowing constraint: \\ more borrowing and lower interest rates \pause
+    \begin{itemize}
+      \item Note: standard GE argument would imply higher rates \pause
+      \item Lower rates arise due to downward sloping savings schedule of rich savers\pause
+    \end{itemize}
+
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Results}
+  \begin{itemize}
+    \item Increase in income inequality moves supply curve to the left \pause
+    \item Inequality increases $\to$ saving by rich increase $\to$ lower $r$ $\to$ incentive to take more debt $d$ \pause
+  \end{itemize}
+
+  \begin{figure}
+    \centering
+    \includegraphics[width=0.6\linewidth]{figs/MSS2021Ineq.png}
+  \end{figure}
+
+\end{frame}
+
+\begin{frame}{Results - Monetary and fiscal policy}
+\begin{itemize}
+  \item A permanent increase in public debt due to deficit spending shock \pause
+  \item Short run: $r$ increase to induce more saving by rich savers to finance gov. debt \pause
+  \item Long run: the government pays $rB$ to savers, financed by lower $G$ or taxes on borrowers. Savers barely spend it, so demand falls and $r$ must fall. Lower $r$ crowds in household debt \pause
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{figs/MSS2021Fiscal.PNG}
+\end{figure} \pause
+\item Opposite of AMRS, where more $B$ raises $r^{*}$: there asset demand slopes up ($\epsilon^{d}>0$), here the rich savers' demand slopes down \pause
+\item For monetary policy: lower $r$ means ZLB more likely, ``less ammunition''
+\end{itemize}  
+\end{frame}
+%
+
+\section{Exercise}
+\begin{frame}{Exercise}
+\begin{itemize}
+\item Consider the following PE HA model:
+\[
+\begin{aligned}V\left(a_{t-1},z_{t},p\right)= & \max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}+\phi_{a}\frac{a_{t}^{1-\sigma_{a}}}{1-\sigma_{a}}+\beta\mathbb{E}\left[V\left(a_{t},z_{t+1},p\right)\right]\\
+ & \text{ subject to }\\
+ & c_{t}+a_{t}=a_{t-1}\left(1+r\right)+z_{t}p\\
+ & a_{t}\geq0\\
+\ln z_{t} & =\rho\ln z_{t-1}+\epsilon_{t}
+\end{aligned}
+\]
+\item {\footnotesize\textbf{Q1}}{\footnotesize : Derive the Euler equation
+of the model }{\footnotesize\par}
+\item {\footnotesize\textbf{Q2: }}{\footnotesize Update the EGM algorithm
+in }{\footnotesize\emph{household\_problem.py}}{\footnotesize{} with
+the new Euler }{\footnotesize\par}
+\item {\footnotesize\textbf{Q3: }}{\footnotesize Solve the model with 1)
+$\phi_{a}=0$, 2) $\phi_{a}=0.1,\sigma=\sigma_{a}=1$, 3) $\phi_{a}=0.1,\sigma=1,\sigma_{a}=0.7$}{\footnotesize\par}
+\begin{itemize}
+\item {\footnotesize Compare the normalized policy function $c/p$}{\footnotesize\par}
+\end{itemize}
+\item {\footnotesize\textbf{Q4: }}{\footnotesize Conduct an experiment where
+you permanently redistribute resources across households (change $p$).
+What are the aggregate effects across the models?}{\footnotesize\par}
+\end{itemize}
+\end{frame}
+%
+
+\section{Summary}
+\begin{frame}{Summary and next week}
+\begin{itemize}
+\item <+->\textbf{Previously: }Long run wealth inequality
+\item <+->\textbf{Today: }Explaining secular stagnation through HA models
+\begin{itemize}
+\item Inequality and saving: non-homothetic preferences (Straub)
+\item The race between asset supply and demand: aging, inequality, growth and debt (Auclert, Malmberg, Rognlie and Straub)
+\item Indebted demand (Mian, Straub and Sufi)
+\end{itemize}
+\item <+->From now on: \textbf{Business cycles}
+\item <+->Next lecture\textbf{: New Keynesian model + HANK }
+\end{itemize}
+\end{frame}
+%
+
+\end{document}
