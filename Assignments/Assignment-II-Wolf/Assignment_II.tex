@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{mathpazo}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1cm,bmargin=2.7cm,lmargin=2.7cm,rmargin=2cm}
+\pagestyle{empty}
+\usepackage{setspace}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=1cm}
+\setlist[itemize]{leftmargin=0.5cm}
+\onehalfspacing
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{3em}
+\date{}
+\author{}
+\newcommand{\hint}[1]{\par\smallskip{\small\textit{Hint:} #1}\par}
+\newcommand{\solution}[1]{}
+
+\begin{document}
+
+\title{\textsc{Assignment II: Rate Cuts versus Stimulus Payments}}
+\maketitle
+\vspace{-3mm}\thispagestyle{empty}
+
+\textbf{Objective:} This project teaches you when uniform transfers can give the same output path as a rate cut, and why the two policies help different people. It follows Wolf (2025), \emph{Interest Rate Cuts versus Stimulus Payments: An Equivalence Result}, Journal of Political Economy. You do not need to read the paper: all you need is in this document.
+\begin{itemize}
+\item \textbf{Problem:} The problem consists of
+\begin{enumerate}
+\item A number of questions (page 2)
+\item A model (page 5 onward, incl. calibration and numerical implementation)
+\item Some code files you can start from
+\end{enumerate}
+\item \textbf{Code:} The problem is designed to be solved with the \texttt{GEModelTools} package.
+\item \textbf{Figures and tables:} All plotting and printing code is given in the notebook. Use the provided plotting and printing functions for all figures and tables.
+\item \textbf{Structure:} Your project should consist of
+\begin{enumerate}
+\item A single self-contained pdf-file with all results
+\item A single Jupyter notebook showing how the results are produced
+\item Well-documented \texttt{.py} files
+\end{enumerate}
+\item \textbf{Hand-in:} Upload a single zip-file on Absalon (and nothing else)
+\item \textbf{Deadline:} 24 November 2026
+\item \textbf{Exam:} This project will be a part of your exam portfolio.
+You can incorporate feedback before handing in the final version.
+\end{itemize}
+
+\newpage
+
+\input{questions}
+
+\newpage
+
+\input{model}
+
+\end{document}

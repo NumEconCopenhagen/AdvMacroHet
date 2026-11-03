@@ -1,0 +1,102 @@
+\section{Model}
+
+The model is the HANK model of the lectures on fiscal and monetary policy, with a real rate rule, real bonds and a uniform transfer. Time is discrete and annual, as in the lectures. A bold letter is a path, and $d\boldsymbol{x}=(dx_0,dx_1,\ldots)'$ is the deviation of the path from steady state. $\boldsymbol{L}$ is the lag matrix, so $(\boldsymbol{L}d\boldsymbol{x})_t=dx_{t-1}$, and $\boldsymbol{q}$ is the vector of discount factors, $q_s=(1+r_{ss})^{-s}$. All responses in Questions 1 to 3 are linear.
+
+\paragraph*{Households.}
+Households have idiosyncratic productivity $z_{t}$ and save in real government bonds:
+\begin{align*}
+v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi\frac{\ell_{t}^{1+\nu}}{1+\nu}+\beta\mathbb{E}_{t}\left[v_{t+1}(z_{t+1},a_{t})\right]\\
+\text{s.t. }a_{t}+c_{t} & =(1+r_{t-1})a_{t-1}+(1-\tau_{t})w_{t}\ell_{t}z_{t}+\chi_{t}\\
+\log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1},\quad\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}^{2}),\quad\mu_{\psi}\text{ such that }\mathbb{E}[z_{t}]=1\\
+a_{t} & \geq0
+\end{align*}
+$r_{t}$ is the real rate from $t$ to $t+1$: it is known at $t$ and paid at $t+1$. Hours $\ell_{t}=L_{t}$ are set by the union and are the same for all households, so they are not a choice. $\tau_{t}$ is the labor tax rate and $\chi_{t}$ a transfer, the same for all households. Aggregate consumption and assets are $C_{t}^{hh}=\int c_{t}d\mathcal{D}_{t}$ and $A_{t}^{hh}=\int a_{t}d\mathcal{D}_{t}$.
+
+The consumption function is $\boldsymbol{C}^{hh}=C^{hh}(\boldsymbol{Z},\boldsymbol{r},\boldsymbol{\chi})$, with post-tax labor income $Z_{t}=(1-\tau_{t})w_{t}L_{t}$. To first order,
+\begin{equation}
+d\boldsymbol{C}^{hh}=\boldsymbol{M}d\boldsymbol{Z}+\boldsymbol{M}^{r}d\boldsymbol{r}+\boldsymbol{M}^{\chi}d\boldsymbol{\chi}.\label{eq:cons}
+\end{equation}
+$\boldsymbol{M}$ is the matrix of intertemporal MPCs (iMPCs) of the lectures, $M_{t,s}=\partial C_{t}^{hh}/\partial Z_{s}$, and $\boldsymbol{M}^{r}$ is the Jacobian with respect to $\boldsymbol{r}$. $\boldsymbol{M}^{\chi}$ is new: $M^{\chi}_{t,s}=\partial C_{t}^{hh}/\partial\chi_{s}$ is the change in consumption at date $t$ after a change in the transfer at date $s$. It differs from $\boldsymbol{M}$ because $\chi_{t}$ is the same for all households, while $Z_{t}$ is scaled by $z_{t}$. Its first entry $M^{\chi}_{0,0}$ is the MPC on impact: the share of a transfer paid at $t=0$ that is spent at $t=0$.
+
+\paragraph*{Present values.}
+The household budget pins down the present value of the consumption response. Summed over households, the budget is $C_{t}^{hh}+A_{t}^{hh}=(1+r_{t-1})A_{t-1}^{hh}+Z_{t}+\chi_{t}$. Change only $\boldsymbol{r}$ and linearize:
+$$dC_{t}^{hh}+dA_{t}^{hh}=(1+r_{ss})dA_{t-1}^{hh}+A_{ss}\,dr_{t-1}.$$
+Multiply by $q_{t}$ and sum over $t$. Since $q_{t}(1+r_{ss})=q_{t-1}$, the asset terms cancel, because $dA_{-1}^{hh}=0$ and assets return to steady state. With $A_{ss}=B_{ss}$, this gives
+\begin{equation}
+\boldsymbol{q}'\boldsymbol{M}^{r}d\boldsymbol{r}=B_{ss}\boldsymbol{q}'\boldsymbol{L}d\boldsymbol{r}:\label{eq:pv_r}
+\end{equation}
+in present value, households spend exactly the change in their interest income. The same steps with a change in $Z_{s}$ or $\chi_{s}$ give $\boldsymbol{q}'\boldsymbol{M}=\boldsymbol{q}'\boldsymbol{M}^{\chi}=\boldsymbol{q}'$: a unit of income is eventually spent in full.
+
+\paragraph*{Firms and unions.}
+Firms produce with labor only, $Y_{t}=L_{t}$, with no price markup, $\mu=1$, so $w_{t}=1$ and $\pi_{t}=\pi^{w}_{t}$. Unions set wages as in the lectures, with $h(\ell)=\varphi\frac{\ell^{1+\nu}}{1+\nu}$ and $u(c)=\frac{c^{1-\sigma}}{1-\sigma}$. This gives the wage Phillips curve (W-NKPC)
+\begin{equation}
+\pi^{w}_{t}=\kappa\left(h'\left(L_{t}\right)-\frac{1-\tau_{ss}}{\mu^{w}}u'\left(C_{t}^{hh}\right)\right)+\beta\pi^{w}_{t+1},\label{eq:nkwc}
+\end{equation}
+and households work the hours that firms demand. The tax wedge is kept at its steady-state value, so the W-NKPC depends only on $L_{t}$ and $C_{t}^{hh}$. With $\tau_{t}$ instead, it would also depend on the tax rate, which moves after a rate cut but not after a transfer shock.
+
+\paragraph*{Central bank.}
+The central bank sets the real rate, $r_{t}=r_{ss}+\epsilon^{r}_{t}$. The \emph{rate cut} is $\epsilon^{r}_{0}=-0.0025$ with $\epsilon^{r}_{t}=\rho_{r}\epsilon^{r}_{t-1}$. Since bonds pay the rate set in the previous period, the return at $t=0$ does not move.
+
+\paragraph*{Government.}
+Government spending $G$ is constant. The government has two instruments. Labor taxes $T_{t}=\tau_{t}Y_{t}$ cover spending and the interest on steady-state debt,
+\begin{equation}
+T_{t}=G+r_{t-1}B_{ss},\quad\text{so}\quad d\boldsymbol{T}=B_{ss}\boldsymbol{L}d\boldsymbol{r}.\label{eq:taxes}
+\end{equation}
+As in the lecture on monetary policy, a rate cut lowers the interest bill, and taxes fall with it. Transfers $\chi_{t}$ are a path chosen at $t=0$, paid for with debt:
+\begin{equation}
+B_{t}=(1+r_{t-1})B_{t-1}+G+\chi_{t}-T_{t},\quad\text{so to first order}\quad dB_{t}=(1+r_{ss})dB_{t-1}+d\chi_{t}.\label{eq:gov}
+\end{equation}
+After the rate cut, debt is constant. Debt returns to steady state if the transfers have zero present value, $\boldsymbol{q}'d\boldsymbol{\chi}=0$. Post-tax labor income is $Z_{t}=Y_{t}-T_{t}$.
+
+\paragraph*{Market clearing.}
+The asset market clears, $B_{t}=A^{hh}_{t}$, and the goods market clears, $Y_{t}=C^{hh}_{t}+G$.
+
+\paragraph*{RANK.}
+In RANK, a representative household with the same preferences, $\beta(1+r_{ss})=1$ and no borrowing constraint replaces the households above. It solves
+\begin{align*}
+\max_{C_{t},A_{t}} & \sum_{t=0}^{\infty}\beta^{t}\left[u\left(C_{t}\right)-h\left(L_{t}\right)\right]\\
+\text{s.t. }C_{t}+A_{t} & =\left(1+r_{t-1}\right)A_{t-1}+Z_{t}+\chi_{t},
+\end{align*}
+which gives the Euler equation
+\begin{equation}
+u'\left(C_{t}\right)=\beta\left(1+r_{t}\right)u'\left(C_{t+1}\right).\label{eq:euler}
+\end{equation}
+Everything else is unchanged.
+
+\section{Calibration}
+
+\begin{table}[h]
+\centering
+\caption{Parameters}
+\small
+\begin{tabularx}{\textwidth}{lXl}
+\toprule
+ & Parameter & Value \\
+\midrule
+$\sigma$ & inverse elasticity of intertemporal substitution & 2.0 \\
+$\nu$ & inverse Frisch elasticity & 1.0 \\
+$\rho_z$, $\sigma_\psi$ & income process & $0.95^{4}$, 0.186 \\
+$\mu^{w}$ & wage markup & 1.2 \\
+$\kappa$ & slope of the W-NKPC & 0.16 \\
+$G$ & government spending & 0.20 \\
+$B_{ss}$ & government bonds, annual output & 0.25 \\
+$r_{ss}$ & steady-state real rate & 0.02 \\
+$\rho_r$ & persistence of the rate cut & 0.4 \\
+$\beta$ & discount factor & asset market clearing \\
+$\varphi$ & disutility of work & $L=1$ in steady state \\
+$\tau_{ss}$ & labor tax rate in steady state & government budget \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+There are no transfers in steady state, $\chi_{ss}=0$, and $Y_{ss}=1$.
+
+\section{Numerical implementation}
+
+\begin{itemize}
+\item The code is the HANK code of the lectures. The two shocks are \texttt{eps\_r} and \texttt{chi}.
+\item As in the lecture code, the household input is the return paid at $t$, \texttt{ra}, so \texttt{ra[t]} is $r_{t-1}$, and \texttt{r[t]} is $r_{t}$.
+\item The Jacobians are in \texttt{model.jac\_hh}: \texttt{model.jac\_hh[('C\_hh','Z')]} is $\boldsymbol{M}$ and \texttt{model.jac\_hh[('C\_hh','chi')]} is $\boldsymbol{M}^{\chi}$. \texttt{model.jac\_hh[('C\_hh','ra')]} is $\boldsymbol{M}^{ra}$, the Jacobian with respect to the return paid at $t$, $d\boldsymbol{r}^{a}=\boldsymbol{L}d\boldsymbol{r}$. In the code, work with \texttt{dra} $=d\boldsymbol{r}^{a}$ instead of $d\boldsymbol{r}$: $\boldsymbol{M}^{r}d\boldsymbol{r}=\boldsymbol{M}^{ra}d\boldsymbol{r}^{a}$ and $\boldsymbol{L}d\boldsymbol{r}=d\boldsymbol{r}^{a}$, so no lag matrix is needed.
+\item Linear responses come from \texttt{find\_IRFs}. The household problem also returns the utility of consumption \texttt{u}, aggregated to \texttt{U\_hh}. Question 4 feeds the responses into the household problem to get the welfare of each wealth quintile.
+\item The horizon is $T=500$. Productivity is discretized with the Rouwenhorst method with 7 states. The asset grid has 500 points between 0 and 50.
+\end{itemize}

@@ -1,0 +1,71 @@
+\section*{Questions}
+
+The two experiments are defined in Section 1. The \emph{rate cut} is a surprise cut of 25 basis points in the real rate, with persistence $\rho_r=0.4$. The \emph{transfer shock} is a path $d\boldsymbol{\chi}$ of uniform transfers, announced at $t=0$, with the rate constant.
+
+\begin{enumerate}
+\item \textbf{The Intertemporal Keynesian Cross (IKC).} These questions are pen and paper.
+\begin{enumerate}
+\item Combine the goods market, the consumption function \eqref{eq:cons}, $d\boldsymbol{Z}=d\boldsymbol{Y}-d\boldsymbol{T}$ and the tax rule \eqref{eq:taxes} to show that, for a rate shock, the output response is given by
+\begin{equation}
+(\boldsymbol{I}-\boldsymbol{M})d\boldsymbol{Y}=\left(\boldsymbol{M}^{r}-B_{ss}\boldsymbol{M}\boldsymbol{L}\right)d\boldsymbol{r},\label{eq:ikc_monetary}
+\end{equation}
+and for a transfer shock, the output response is given by
+\begin{equation}
+(\boldsymbol{I}-\boldsymbol{M})d\boldsymbol{Y}=\boldsymbol{M}^{\chi}d\boldsymbol{\chi}.\label{eq:ikc_transfer}
+\end{equation}
+\solution{1a}
+\item Explain each equation in words. What is the effect due to $\boldsymbol{M}$ on the left-hand side? Why does $B_{ss}\boldsymbol{M}\boldsymbol{L}$ appear? What is the difference between $\boldsymbol{M}$ and $\boldsymbol{M}^{\chi}$?
+\solution{1b}
+\item Assume that each IKC has a unique solution that returns to steady state, and that $\boldsymbol{M}^{\chi}$ can be inverted. Show that the rate cut and the transfer shock give the same $d\boldsymbol{Y}$ if
+\begin{equation}
+d\boldsymbol{\chi}=(\boldsymbol{M}^{\chi})^{-1}\left(\boldsymbol{M}^{r}-B_{ss}\boldsymbol{M}\boldsymbol{L}\right)d\boldsymbol{r}.\label{eq:equiv}
+\end{equation}
+Use the W-NKPC \eqref{eq:nkwc} to show that inflation is then the same as well.
+\solution{1c}
+\item Note that $\boldsymbol{q}'\boldsymbol{M}^{r}d\boldsymbol{r}=B_{ss}\boldsymbol{q}'\boldsymbol{L}d\boldsymbol{r}$ and $\boldsymbol{q}'\boldsymbol{M}=\boldsymbol{q}'\boldsymbol{M}^{\chi}=\boldsymbol{q}'$, as shown in Section 1. Show that the transfers computed with \eqref{eq:equiv}, which reproduce the output path of a rate cut $d\boldsymbol{r}$, have zero net present value: $\boldsymbol{q}'d\boldsymbol{\chi}=0$.
+\solution{1d}
+\end{enumerate}
+
+\item \textbf{RANK.} We now ask whether \eqref{eq:equiv} can be used in RANK, defined at the end of Section 1. In RANK, a transfer is income like any other, so $\boldsymbol{M}^{\chi}=\boldsymbol{M}=\boldsymbol{M}^{RA}$, as derived in the lecture on fiscal policy. Since $\beta(1+r_{ss})=1$ in RANK, $q_{s}=\beta^{s}$.
+\begin{enumerate}
+\item \emph{The transfer shock.} Recall from the lecture that
+$$M^{RA}_{t,s}=(1-\beta)\beta^{s}\qquad\text{for all }t,\qquad\text{so}\qquad\boldsymbol{M}^{RA}=(1-\beta)\boldsymbol{1}\boldsymbol{q}'.$$
+Show that $\boldsymbol{M}^{\chi}d\boldsymbol{\chi}=\boldsymbol{0}$ for any transfer shock with zero present value, and use \eqref{eq:ikc_transfer} to find the output response. Assume that output returns to steady state.
+\solution{2a}
+\item \emph{The rate cut.} Use the Euler equation \eqref{eq:euler} to show that output after the rate cut is
+$$dY_t=-\beta\frac{C_{ss}}{\sigma}\sum_{k=t}^{\infty}dr_k.$$
+How much does output rise on impact?
+\hint{Use $C_{ss}=Y_{ss}-G$ and the geometric sum of $dr_k$.}
+\solution{2b}
+\item \emph{Conclude.} Can a transfer shock with zero net present value reproduce the output response to a rate cut in RANK? Why?
+\solution{2c}
+\end{enumerate}
+
+\item \textbf{HANK.} The model code in \texttt{blocks.py} is given. Read it and check that it matches Section 1.
+\begin{enumerate}
+\item \emph{The Jacobians.} Compute the Jacobians $\boldsymbol{M}$, $\boldsymbol{M}^{\chi}$ and $\boldsymbol{M}^{ra}$ (see Section 3), and plot their columns $s=0,5,10,20$. How do $\boldsymbol{M}^{\chi}$ and $\boldsymbol{M}$ differ from RANK?
+\solution{3a}
+\item \emph{The rate cut.} Compute the output response to the rate cut with \texttt{find\_IRFs}, and check that the IKC \eqref{eq:ikc_monetary} gives the same response.
+\hint{Check: output rises by 0.173\% on impact.}
+\solution{3b}
+\item \emph{The transfer shock.} Compute the transfer path $d\boldsymbol{\chi}$ from \eqref{eq:equiv}. Then, compute the output response to this shock, and show that output and inflation coincide with the rate cut. Why does this work in HANK and not in RANK?
+\solution{3c}
+\item \emph{The size of the transfers.} How large is the transfer shock, and how large is the rise in debt? In which year does $d\chi_{t}$ turn negative? Check that the transfer shock has zero present value.
+\solution{3d}
+\end{enumerate}
+
+\item \textbf{Welfare.} The two shocks give the same output. We now ask who benefits. To keep things simple, we measure welfare with the utility of consumption only, and ignore the disutility of work. The household problem returns $u_{t}=\frac{c_{t}^{1-\sigma}}{1-\sigma}$, and its aggregate $U_{t}=\int u_{t}d\mathcal{D}_{t}$ is \texttt{U\_hh}. The welfare of a group of households with mass one, who start at $t=0$ with the distribution $\mathcal{D}_{0}$, is
+$$W=\sum_{t=0}^{T-1}\beta^{t}U_{t},$$
+where $\mathcal{D}_{t}$ follows the group forward in time. Let $W_{ss}$ be its welfare when all inputs stay at steady state and $W_{0}$ its welfare after a shock. The consumption equivalent $\lambda$ is the permanent rise in consumption, as a fraction (the notebook reports it in percent), that gives the group the same welfare in steady state as after the shock:
+$$(1+\lambda)^{1-\sigma}W_{ss}=W_{0}.$$
+Complete \texttt{welfare} in the notebook, and use the provided code to print the welfare change $\lambda$ from the rate cut and the transfer shock by wealth quintile, from Q1 (the poorest) to Q5 (the richest). Who benefits most from each shock, who benefits least, and why? \texttt{model.decompose\_hh\_path} solves and simulates the households from a given initial distribution \texttt{Dbeg}, along the paths of inputs given in \texttt{custom\_paths}. The notebook builds \texttt{custom\_paths} for you: the paths are in levels, $X_{ss}+dX_{t}$, for the three household inputs, \texttt{Z}, \texttt{ra} and \texttt{chi}. List the same three inputs in \texttt{use\_inputs}. \texttt{path.U\_hh} has shape $(T,1)$.
+\hint{Check: after the rate cut, $\lambda$ is 0.053\% in Q1 and 0.014\% in Q5. Think about who receives what, and who pays later.}
+\solution{4}
+
+\item \textbf{Conclusion.} Suppose that the central bank cannot cut the rate because it is at a lower bound. Based on your results, can transfers replace the rate cut? Outside a lower bound, which of the two would you use, and why? What does the model leave out that could change your answer?
+\solution{5}
+
+\item \textbf{Capital gains.} In the current model, we have abstracted from capital gains by assuming no price markup, $\mu=1$. How do you think capital gains would affect the distribution of welfare following a rate cut? Who would benefit from capital gains? No code is needed.
+\solution{6}
+
+\end{enumerate}
