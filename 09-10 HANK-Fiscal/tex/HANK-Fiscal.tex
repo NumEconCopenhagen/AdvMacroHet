@@ -176,7 +176,7 @@
 \item <+->Macro variables relatively volatile around long-run trends \\
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.65\linewidth]{figs/FREDBC.png}
+\includegraphics[width=0.8\linewidth]{figs/FREDBC.png}
 \end{figure}
 \item <+->Rest of the course:
 \begin{itemize}
@@ -726,7 +726,7 @@ d\boldsymbol{Y}-d\boldsymbol{G} & =\boldsymbol{M}(d\boldsymbol{G}-d\boldsymbol{T
 \item <+->We only observe the first column: Fagereng et al., lottery winnings\\
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.46\linewidth]{figs/iMPC_data.png}
+\includegraphics[width=0.6\linewidth]{figs/iMPC_data.png}
 \end{figure}
 \item <+->Annual MPC above 0.5, then 0.18 the year after
 \item <+->{\footnotesize{}Other columns (announcements) are very hard to estimate. So we need models: RANK, TANK and HANK are different microfoundations of $\boldsymbol{M}$}{\footnotesize\par}
@@ -800,7 +800,7 @@ M_{t,s}=(1-\beta)\beta^{s}\quad\Rightarrow\quad\boldsymbol{M}^{RA}=(1-\beta)\bol
 \]
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\linewidth]{figs/iMPC_RANK.pdf}
+\includegraphics[width=0.7\linewidth]{figs/iMPC_RANK.pdf}
 \end{figure}
 \item <+->Flat and very low, about $0.02$ per year: far from the data
 \end{itemize}
@@ -870,7 +870,7 @@ C_{t}^{hh}=\lambda Z_{t}+(1-\lambda)C_{t}^{R}
 \item <+->$C_{t}$ overweights income at date $t$, but only at that same date\\
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.7\linewidth]{figs/iMPC_TANK.pdf}
+\includegraphics[width=0.85\linewidth]{figs/iMPC_TANK.pdf}
 \end{figure}
 \item <+->{\footnotesize{}Here $\lambda$ is set to match the annual MPC of baseline HANK}{\footnotesize\par}
 \end{itemize}
@@ -969,38 +969,37 @@ v_{t}(z_{t},a_{t-1}) & =\max_{c_{t}}\frac{c_{t}^{1-\sigma}}{1-\sigma}-\varphi\fr
 \log z_{t+1} & =\rho_{z}\log z_{t}+\psi_{t+1}\,\,\,,\psi_{t}\sim\mathcal{N}(\mu_{\psi},\sigma_{\psi}),\,\mathbb{E}[z_{t}]=1\\
 a_{t} & \geq0
 \end{align*}
-\item \textbf{Active decisions:} Consumption-saving, $c_{t}$ (and $a_{t}$)
-\item \textbf{Union decision:} Labor supply, $\ell_{t}$
-\item \textbf{Aggregate Consumption: $C_{t}^{hh}=\int c_{t}d\mathcal{D}_{t}$}
-\item \textbf{Consumption function: $\boldsymbol{C}^{hh}=C^{hh}(\boldsymbol{Z},\boldsymbol{r}^{p})$} with $Z_{t}=\left(1-\tau_{t}\right)w_{t}\ell_{t}$ and transfers $\chi_{t}=0$ at baseline
+\item \textbf{Active decisions:} consumption-saving, $c_{t}$ (and $a_{t}$). Labor supply $\ell_{t}$ is set by the union
+\item \textbf{Consumption function:} $\boldsymbol{C}^{hh}=C^{hh}(\boldsymbol{Z},\boldsymbol{r}^{p})$, with $C_{t}^{hh}=\int c_{t}d\mathcal{D}_{t}$, $Z_{t}=\left(1-\tau_{t}\right)w_{t}\ell_{t}$ and $\chi_{t}=0$ at baseline
+\item <+->Same block picture as RANK and TANK: only the red box changes, now computed from the distribution
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Block representation}
-\ikcdag{Heterogeneous}{$C^{hh}(\boldsymbol{Z})$}
-\begin{itemize}
-\item <+->$C^{hh}(\boldsymbol{Z})$ is unchanged as an object
-\item <+->We now compute it from the distribution of households
-\end{itemize}
+\begin{frame}{HANK: three questions}
+\begin{enumerate}
+\item <+->\textbf{What does $\boldsymbol{M}$ look like?} Front-loaded and discounted, as in the data
+\item <+->\textbf{Why does a deficit raise output on impact?} Timing: income today counts more than taxes later
+\item <+->\textbf{Why is the cumulative multiplier above 1?} Debt: households must be willing to hold it
+\end{enumerate}
 \end{frame}
 %
-\begin{frame}{iMPC in HANK}
+\begin{frame}{1. iMPCs in HANK}
 \begin{itemize}
 \item <+->$\boldsymbol{M}$ is computed numerically: the household Jacobian with respect to $Z$, as in lectures 5-6\\
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\linewidth]{figs/iMPC_compare.pdf}
+\includegraphics[width=1\linewidth]{figs/iMPC_compare.pdf}
 \end{figure}
-\item <+->Spending is spread around the date of the income: anticipated before, gradual after
-\item <+->Past and future income matter at all horizons, not only the same date
+\item <+->\textbf{Front-loaded:} income is spent soon after it arrives, then gradually
+\item <+->\textbf{Discounted:} news about income far in the future moves spending today only a little
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{iMPCs in the data: yes!}
+\begin{frame}{1. iMPCs in the data: yes!}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.45\linewidth]{figs/iMPC_data.png}
-\includegraphics[width=0.45\linewidth]{figs/iMPC_annual.pdf}
+\includegraphics[width=0.49\linewidth]{figs/iMPC_data.png}
+\includegraphics[width=0.49\linewidth]{figs/iMPC_annual.pdf}
 \end{figure}
 \begin{itemize}
 \item <+->Same shape: high on impact, then a gradual decline
@@ -1010,47 +1009,39 @@ a_{t} & \geq0
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Consumption function in HANK}
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.48\linewidth]{figs/M_row.pdf}
-\end{figure}
+\begin{frame}{2. Consumption function: timing matters}
 \begin{itemize}
-\item <+->Present value weights $M_{3,s}(1+r)^{s}$ peak at date 3. They are flat in RANK
-\item <+->Two properties:
-\begin{enumerate}
-\item \textbf{Front-loaded:} income is spent soon after it arrives
-\item \textbf{Discounted:} households react less to future changes than the present value implies
-\end{enumerate}
-\end{itemize}
-\end{frame}
-%
-\begin{frame}{Why this breaks Ricardian equivalence}
-\begin{itemize}
-\item <+->With $D_{s}=dG_{s}-dT_{s}$, the first round of spending is
+\item <+->A row of $\boldsymbol{M}$: with $D_{s}=dG_{s}-dT_{s}$, the first round of spending at date $t$ is
 \[
 \sum_{s}M_{t,s}D_{s}=\sum_{s}\underset{\text{weight}}{\underbrace{M_{t,s}(1+r_{ss})^{s}}}q_{s}D_{s}
 \]
+\end{itemize}
+\vspace{-3mm}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\linewidth]{figs/M_row.pdf}
+\end{figure}
+\vspace{-3mm}
+\begin{itemize}
 \item <+->\textbf{Flat weights (RANK):} the sum is proportional to $\boldsymbol{q}^{\prime}\boldsymbol{D}=0$, so deficits are neutral
-\item <+->\textbf{Peaked weights (HANK):} larger weights on the early deficit than on the later repayment give a boost
-\item <+->So the timing of income matters, not just its present value
+\item <+->\textbf{Peaked weights (HANK):} the deficit today weighs more than the repayment later, so output rises on impact
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{HANK: deficit-financed spending shock}
+\begin{frame}{2. Deficit-financed spending shock}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\linewidth]{figs/fiscal_irf.pdf}
+\includegraphics[width=1\linewidth]{figs/fiscal_irf.pdf}
 \end{figure}
 \vspace{-2mm}
 \begin{itemize}
 \item <+->Output rises by twice the spending on impact: consumption rises as much as $G$
 \item <+->Taxes rise slowly, so debt keeps rising for two years, then decays
-\item <+->Consumption stays high as long as debt is high: a persistent boom
+\item <+->Consumption stays high long after $G$ is back to normal
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Rounds of spending}
+\begin{frame}{2. Rounds of spending}
 \begin{itemize}
 \item <+->My income is your spending, spread over time:
 \[
@@ -1059,7 +1050,7 @@ d\boldsymbol{C}=\sum_{k\geq1}\boldsymbol{M}^{k}(d\boldsymbol{G}-d\boldsymbol{T})
 \end{itemize}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.58\linewidth]{figs/rounds.pdf}
+\includegraphics[width=0.75\linewidth]{figs/rounds.pdf}
 \end{figure}
 \begin{itemize}
 \item <+->The first round explains most of the impact
@@ -1067,10 +1058,10 @@ d\boldsymbol{C}=\sum_{k\geq1}\boldsymbol{M}^{k}(d\boldsymbol{G}-d\boldsymbol{T})
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Multipliers and debt persistence}
+\begin{frame}{3. Multipliers and debt persistence}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\linewidth]{figs/multipliers_rho_B.pdf}
+\includegraphics[width=0.7\linewidth]{figs/multipliers_rho_B.pdf}
 \end{figure}
 \vspace{-2mm}
 \begin{itemize}
@@ -1079,16 +1070,17 @@ d\boldsymbol{C}=\sum_{k\geq1}\boldsymbol{M}^{k}(d\boldsymbol{G}-d\boldsymbol{T})
 \item <+->Aggregate estimates are 0.6-0.8, and the data does not reject up to 1.5 (Ramey, 2019)
 \end{itemize}
 \end{frame}
+
 %
-\begin{frame}{Why is the cumulative multiplier above 1?}
+\begin{frame}{3. Cumulative multiplier above 1: debt needs a boom}
 \begin{itemize}
-\item <+->\textbf{TANK:} Ricardian households hold any amount of debt at $r_{ss}$. Debt needs no boom, so $\boldsymbol{q}^{\prime}d\boldsymbol{C}=0$
-\item <+->\textbf{HANK:} households must want to hold the extra debt. At fixed $r$, only higher income makes them want more assets
+\item <+->The debt rule keeps $B_{t}$ high for a long time. Households must hold it, and at fixed $r$ they only want more assets if their disposable income $Y_{t}-T_{t}$ is higher
 \item <+->So \textbf{persistent debt needs a persistent boom}
 \begin{itemize}
 \item Baseline with $\rho_{B}=0.9$: long after $dG_{t}$ is gone, $dY_{t}\approx0.47\,dB_{t}$
 \item More persistent debt lasts longer, so the boom lasts longer
 \end{itemize}
+\item <+->\textbf{TANK:} Ricardian households hold any amount of debt at $r_{ss}$. Debt needs no boom, so $\boldsymbol{q}^{\prime}d\boldsymbol{C}=0$
 \end{itemize}
 \end{frame}
 %
@@ -1108,6 +1100,8 @@ d\boldsymbol{C}=\sum_{k\geq1}\boldsymbol{M}^{k}(d\boldsymbol{G}-d\boldsymbol{T})
 \end{center}
 \vspace{2mm}
 \begin{itemize}
+\item <+->Impact above 1: timing, from front-loaded and discounted iMPCs
+\item <+->Cumulative above 1: persistent debt, which households only hold during a boom
 \item <+->Same macro blocks: only the household block, and so $\boldsymbol{M}$, changes
 \end{itemize}
 \end{frame}
@@ -1115,7 +1109,41 @@ d\boldsymbol{C}=\sum_{k\geq1}\boldsymbol{M}^{k}(d\boldsymbol{G}-d\boldsymbol{T})
 
 \section{Self-financing deficits}
 
-\begin{frame}{Self-financing deficits}
+\begin{frame}{Self-financing: a two-period example}
+\begin{itemize}
+\item <+->Two periods (Angeletos, Lian and Wolf, 2024). At $t=0$, a debt-financed transfer $\varepsilon$ with rigid prices. At $t=1$, taxes rise to repay the debt
+\item <+->Households spend a share MPC of disposable income at $t=0$ and ignore the $t=1$ tax hike. Income tax $\tau$
+\item <+->Keynesian cross at $t=0$:
+\[
+y=\text{MPC}\left((1-\tau)y+\varepsilon\right)\quad\Rightarrow\quad y=\frac{\text{MPC}}{1-\text{MPC}(1-\tau)}\varepsilon
+\]
+\item <+->The boom brings in $\tau y$ of revenue. Share of the deficit it repays:
+\[
+\nu\equiv\frac{\tau y}{\varepsilon}=\frac{\tau\times\text{MPC}}{1-\text{MPC}(1-\tau)}
+\]
+\item <+->$\nu\to1$ as $\text{MPC}\to1$: the multiplier becomes $1/\tau$, so each dollar of transfer brings back one dollar of revenue
+\item <+->Full model: MPC becomes the cumulative MPC before the tax hike, which tends to 1 as the hike is delayed
+\end{itemize}
+\end{frame}
+%
+
+\begin{frame}{Self-financing deficits: definition}
+\begin{itemize}
+\item <+->A deficit-financed $d\boldsymbol{G}$ must be repaid in present value: $\boldsymbol{q}^{\prime}d\boldsymbol{T}=\boldsymbol{q}^{\prime}d\boldsymbol{G}$
+\item <+->Tax revenue $T_{t}=\tau_{t}Y_{t}$ rises for two reasons:
+\[
+dT_{t}\approx\underset{\text{larger tax base}}{\underbrace{\tau_{ss}dY_{t}}}+\underset{\text{tax hikes}}{\underbrace{Y_{ss}d\tau_{t}}}
+\]
+\item <+->\textbf{Degree of self-financing} (Angeletos, Lian and Wolf, 2024): the share of the deficit repaid by the larger tax base
+\[
+\nu\equiv\frac{\tau_{ss}\boldsymbol{q}^{\prime}d\boldsymbol{Y}}{\boldsymbol{q}^{\prime}d\boldsymbol{G}}=\tau_{ss}\times\text{cumulative multiplier}
+\]
+\item <+->The rest, $1-\nu$, is repaid by tax hikes. \textbf{Full self-financing:} $\nu=1$, no tax hike is ever needed
+\item <+->{\footnotesize{}With nominal debt, inflation also erodes the debt and counts in $\nu$. Here $r$ is fixed, so only the tax base is left}{\footnotesize\par}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Full self-financing without fiscal adjustment}
 \begin{itemize}
 \item <+->So far the debt path is chosen and the tax rate adjusts. Now the reverse (Angeletos, Lian and Wolf, 2024): \textbf{$\tau$ stays fixed and debt adjusts}
 \item <+->A rise in $G$ is financed by debt, and no tax hike ever comes: $d\boldsymbol{T}=\tau d\boldsymbol{Y}$
@@ -1132,35 +1160,31 @@ d\boldsymbol{Y}=d\boldsymbol{G}+(1-\tau)\boldsymbol{M}d\boldsymbol{Y}\quad\Leftr
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{Self-financing deficits: illustration}
+\begin{frame}{Full self-financing: illustration}
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.62\linewidth]{figs/self_financing.pdf}
+\includegraphics[width=0.8\linewidth]{figs/self_financing.pdf}
 \end{figure}
 \begin{itemize}
 \item <+->Debt rises, then returns to steady state without any tax hike
 \item <+->This needs rows of $\boldsymbol{M}$ that decline. In RANK, output rises forever and debt never returns
-\item <+->{\footnotesize{}Holds at constant $r$. With nominal debt, inflation also erodes part of the debt}{\footnotesize\par}
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{How much of a deficit is self-financed?}
+\begin{frame}{How much is self-financed with a debt rule?}
 \begin{itemize}
-\item <+->For any debt path, taxes must repay the spending: $\boldsymbol{q}^{\prime}d\boldsymbol{T}=\boldsymbol{q}^{\prime}d\boldsymbol{G}$
-\item <+->Taxes rise with the tax base and with the tax rate: $dT_{t}\approx\tau_{ss}dY_{t}+Y_{ss}d\tau_{t}$, so
-\[
-Y_{ss}\boldsymbol{q}^{\prime}d\boldsymbol{\tau}=\left(1-\tau_{ss}\times\frac{\boldsymbol{q}^{\prime}d\boldsymbol{Y}}{\boldsymbol{q}^{\prime}d\boldsymbol{G}}\right)\boldsymbol{q}^{\prime}d\boldsymbol{G}
-\]
-\item <+->\textbf{Self-financed share:} $\tau_{ss}\times$ cumulative multiplier
-\item <+->\textbf{Cumulative multiplier above $1/\tau_{ss}$:} the deficit is fully self-financed, and the tax rate can even fall
-\item <+->\textbf{Baseline:} $1/\tau_{ss}\approx4.9$
+\item <+->Back to the debt rule $dB_{t}=\rho_{B}(dB_{t-1}+dG_{t})$, with the tax rate $\tau_{t}$ adjusting
+\end{itemize}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\linewidth]{figs/self_financed_share.pdf}
+\end{figure}
+\vspace{-2mm}
 \begin{itemize}
-\item $\rho_{B}=0.75$: multiplier 1.8, so 37\% is self-financed
-\item $\rho_{B}=0.9$: multiplier 5.4, so 110\%
+\item <+->$\nu=1$ needs a cumulative multiplier of $1/\tau_{ss}\approx4.9$
+\item <+->$\rho_{B}=0.75$: multiplier 1.8, so $\nu=37\%$. $\rho_{B}=0.9$: multiplier 5.4, so $\nu=110\%$, and the tax rate falls on average
 \end{itemize}
-\item <+->Persistent debt is what makes self-financing possible
-\item <+->\textbf{How robust is this?} All of this is at a constant $r$. With a Taylor rule, the cumulative multiplier falls (to 0.43 in the canonical model, see later), and so does self-financing
-\end{itemize}
+$\Rightarrow$ Realistic? In practice, multipliers likely to be lower because of central bank reaction, open economy, etc...
 \end{frame}
 %
 
@@ -1222,20 +1246,29 @@ Y_{ss}\boldsymbol{q}^{\prime}d\boldsymbol{\tau}=\left(1-\tau_{ss}\times\frac{\bo
 \item <+->We now drop these assumptions one at a time, starting each time from the IKC:
 \begin{enumerate}
 \item \textbf{Markups:} $\mu>1$, so $p>0$ and capital gains
-\item \textbf{Taylor rule:} inflation moves $r$, so we need the W-NKPC
 \item \textbf{Nominal bonds:} surprise inflation revalues debt at $t=0$
+\item \textbf{Taylor rule:} inflation moves $r$ at all dates
 \end{enumerate}
 \item <+->Then we put all of them together
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{1. Markups: consumption depends on capital gains}
+\begin{frame}{1. Markups: income and the stock price}
 \begin{itemize}
 \item <+->With $\mu>1$, income is split in two:
 \[
-Z_{t}=\frac{1}{\mu}\left(Y_{t}-T_{t}\right),\quad d_{t}=\left(1-\frac{1}{\mu}\right)\left(Y_{t}-T_{t}\right)
+Z_{t}=\frac{1}{\mu}\left(Y_{t}-T_{t}\right),\quad d_{t}=\left(1-\frac{1}{\mu}\right)\left(Y_{t}-T_{t}\right),\quad A_{t}=p_{t}+B_{t}
+\]
+\item <+->Value of the firm is given by
+\[
+p_{t}=\frac{d_{t}+p_{t+1}}{1+r_{t}}
 \]
 \item <+->Households receive $Z_{t}$ directly. Dividends go through the mutual fund: a shock at $t=0$ changes all expected dividends, so the stock price jumps
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{1. Markups: consumption depends on capital gains}
+\begin{itemize}
 \item <+->\textbf{Capital gain:} the first-period return pays this out in one go, with real bonds
 \[
 \text{cap}_{0}\equiv A_{ss}dr_{0}^{p}=dp_{0}+dd_{0}
@@ -1280,71 +1313,177 @@ d\boldsymbol{Y}=d\boldsymbol{G}+\bar{\boldsymbol{M}}\left(d\boldsymbol{Y}-d\bold
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{2. Taylor rule: $r$ moves}
+\begin{frame}{2. Nominal bonds: who gains, who loses}
 \begin{itemize}
-\item <+->Back to $\mu=1$ and real bonds, now with $i_{t}=i_{ss}+\phi\pi_{t}$
-\item <+->\textbf{Real rate:} from the Taylor rule and Fisher, with $\boldsymbol{F}$ the lead matrix:
+\item <+->Back to $\mu=1$ and the real rate rule, now with nominal bonds
+\item <+->\textbf{Surprise inflation:} debt issued at $t=-1$ pays the nominal rate $i_{ss}$, so its real return at $t=0$ is
 \[
-d\boldsymbol{r}=\left(\phi\boldsymbol{I}-(1+r_{ss})\boldsymbol{F}\right)d\boldsymbol{\pi}
+1+r_{0}^{b}=\frac{1+i_{ss}}{1+\pi_{0}}\quad\Rightarrow\quad dr_{0}^{b}\approx-(1+r_{ss})d\pi_{0}
 \]
-\item <+->\textbf{Consumption} reacts to $r$, with $\boldsymbol{M}^{r}=\partial\boldsymbol{C}^{hh}/\partial\boldsymbol{r}$:
+After $t=0$, the nominal rate prices in inflation, so only $t=0$ is affected
+\item <+->\textbf{Bondholders lose:} $\text{cap}_{0}=B_{ss}dr_{0}^{b}$
+\item <+->\textbf{Taxpayers gain:} the government pays less at $t=0$, with $\boldsymbol{e}_{0}$ the first unit vector:
 \[
-d\boldsymbol{Y}=d\boldsymbol{G}+\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol{T}\right)+\boldsymbol{M}^{r}d\boldsymbol{r}
+d\boldsymbol{T}=d\boldsymbol{T}^{0}+\boldsymbol{e}_{0}B_{ss}dr_{0}^{b},\quad d\boldsymbol{T}^{0}\equiv d\boldsymbol{G}-\left(\boldsymbol{I}-(1+r_{ss})\boldsymbol{L}\right)d\boldsymbol{B}
 \]
-\item <+->\textbf{Taxes} also pay the interest on debt, which is now moving:
+with $d\boldsymbol{T}^{0}$ the taxes under real bonds
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{2. Nominal bonds: IKC}
+\begin{itemize}
+\item <+->\textbf{IKC:} consumption reacts to income and to the capital loss:
 \[
-d\boldsymbol{T}=d\boldsymbol{G}-\left(\boldsymbol{I}-(1+r_{ss})\boldsymbol{L}\right)d\boldsymbol{B}+B_{ss}\boldsymbol{L}d\boldsymbol{r}
+d\boldsymbol{Y}=d\boldsymbol{G}+\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol{T}\right)+\boldsymbol{m}\text{cap}_{0}
 \]
+\item <+->Replace $d\boldsymbol{T}$ and $\text{cap}_{0}$:
+\[
+d\boldsymbol{Y}=d\boldsymbol{G}+\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol{T}^{0}\right)+\left(\boldsymbol{m}-\boldsymbol{M}\boldsymbol{e}_{0}\right)B_{ss}dr_{0}^{b}
+\]
+\item <+->Inflation redistributes from savers (iMPCs $\boldsymbol{m}$) to taxpayers (iMPCs $\boldsymbol{M}\boldsymbol{e}_{0}$, higher): demand rises
+\item <+->The deficit no longer has zero present value: $\boldsymbol{q}^{\prime}(d\boldsymbol{G}-d\boldsymbol{T})=-B_{ss}dr_{0}^{b}>0$. Inflation pays part of it
+\item <+->$d\pi_{0}$ comes from the W-NKPC, derived in the next part
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{3. Taylor rule: the real rate}
+\begin{itemize}
+\item <+->Back to $\mu=1$ and real bonds. The central bank now sets the nominal rate:
+\[
+\text{Taylor rule:}\quad i_{t}=i_{ss}+\phi\pi_{t},\qquad\text{Fisher:}\quad1+r_{t}=\frac{1+i_{t}}{1+\pi_{t+1}}
+\]
+\item <+->\textbf{Step 1:} linearize Fisher around $\pi_{ss}=0$ and $i_{ss}=r_{ss}$:
+\[
+dr_{t}=di_{t}-(1+r_{ss})d\pi_{t+1}
+\]
+\item <+->\textbf{Step 2:} use the Taylor rule, $di_{t}=\phi d\pi_{t}$:
+\[
+dr_{t}=\phi d\pi_{t}-(1+r_{ss})d\pi_{t+1}
+\]
+\item <+->\textbf{Step 3:} stack over $t$, with $\boldsymbol{F}$ the lead matrix, $(\boldsymbol{F}\boldsymbol{x})_{t}=x_{t+1}$:
+\[
+d\boldsymbol{r}=\boldsymbol{\Phi}d\boldsymbol{\pi},\quad\boldsymbol{\Phi}\equiv\phi\boldsymbol{I}-(1+r_{ss})\boldsymbol{F}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{3. Taylor rule: consumption and taxes}
+\begin{itemize}
+\item <+->\textbf{Consumption} now also reacts to $r$, with $\boldsymbol{M}^{r}=\partial\boldsymbol{C}^{hh}/\partial\boldsymbol{r}$:
+\[
+d\boldsymbol{C}=\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol{T}\right)+\boldsymbol{M}^{r}d\boldsymbol{r}
+\]
+\item <+->\textbf{Taxes} also pay the interest on debt:
+\[
+T_{t}=G_{t}+(1+r_{t-1})B_{t-1}-B_{t}
+\]
+\item <+->Linearize and stack, with $d\boldsymbol{T}^{0}$ the taxes at constant $r$ from part 2:
+\[
+d\boldsymbol{T}=d\boldsymbol{T}^{0}+B_{ss}\boldsymbol{L}d\boldsymbol{r},\quad d\boldsymbol{T}^{0}\equiv d\boldsymbol{G}-\left(\boldsymbol{I}-(1+r_{ss})\boldsymbol{L}\right)d\boldsymbol{B}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{3. Taylor rule: output}
+\begin{itemize}
+\item <+->Use $d\boldsymbol{Y}=d\boldsymbol{C}+d\boldsymbol{G}$ and $d\boldsymbol{r}=\boldsymbol{\Phi}d\boldsymbol{\pi}$:
+\[
+d\boldsymbol{Y}=\underset{\text{IKC at constant }r}{\underbrace{d\boldsymbol{G}+\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol{T}^{0}\right)}}+\underset{\text{effect of the real rate}}{\underbrace{\left(\boldsymbol{M}^{r}-B_{ss}\boldsymbol{M}\boldsymbol{L}\right)\boldsymbol{\Phi}d\boldsymbol{\pi}}}
+\]
+\item <+->A higher $r$ hits demand twice:
+\begin{itemize}
+\item directly through households ($\boldsymbol{M}^{r}$)
+\item through higher taxes to pay the interest ($-B_{ss}\boldsymbol{M}\boldsymbol{L}$)
+\end{itemize}
 \item <+->Output now depends on inflation, so the W-NKPC is no longer a side equation
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{2. Taylor rule: two vector equations}
+\begin{frame}{3. Taylor rule: the W-NKPC}
 \begin{itemize}
-\item <+->\textbf{Linearize the W-NKPC} around steady state, with $Y_{ss}=1$:
+\item <+->\textbf{Step 1:} W-NKPC, with $\pi_{t}=\pi_{t}^{w}$ since the real wage is fixed:
 \[
-d\boldsymbol{\pi}=\boldsymbol{K}\left(\nu d\boldsymbol{Y}+\frac{\sigma}{C_{ss}}\left(d\boldsymbol{Y}-d\boldsymbol{G}\right)+\frac{d\boldsymbol{\tau}}{1-\tau_{ss}}\right),\quad\boldsymbol{K}\equiv\kappa h'(1)\left(\boldsymbol{I}-\beta\boldsymbol{F}\right)^{-1}
+\pi_{t}=\kappa\left(h'\left(L_{t}\right)-\frac{1-\tau_{t}}{\mu\mu^{w}}u'\left(C_{t}\right)\right)+\beta\pi_{t+1}
 \]
-with $\nu$ the inverse Frisch elasticity, $\sigma$ the inverse EIS, $d\boldsymbol{\tau}=d\boldsymbol{T}-\tau_{ss}d\boldsymbol{Y}$
-\item <+->\textbf{Two vector equations in $d\boldsymbol{Y},d\boldsymbol{\pi}$:} this one and the IKC, after replacing $d\boldsymbol{r}$ and $d\boldsymbol{T}$
+\item <+->\textbf{Step 2:} linearize, with
 \begin{itemize}
-\item One stacked linear system, of size $2T$
+\item $L_{t}=Y_{t}$ and $Y_{ss}=1$
+\item $h'(L)=\varphi L^{\nu}$ and $u'(C)=C^{-\sigma}$
+\item $h'(1)=\frac{1-\tau_{ss}}{\mu\mu^{w}}u'(C_{ss})$ in steady state
 \end{itemize}
-\item <+->\textbf{Mechanism:} $G$ raises $Y$, so wages and $\pi$ rise, the central bank raises $r$, and $C$ is crowded out
-\item <+->\textbf{Special case:} with $\kappa=0$, $d\boldsymbol{\pi}=\boldsymbol{0}$ and we are back to the IKC
-\item <+->Higher $\kappa$ or $\phi$ means more crowding out
+\[
+d\pi_{t}=\kappa h'(1)\left(\nu dY_{t}+\frac{\sigma}{C_{ss}}dC_{t}+\frac{d\tau_{t}}{1-\tau_{ss}}\right)+\beta d\pi_{t+1}
+\]
 \end{itemize}
 \end{frame}
 %
-\begin{frame}{2. Taylor rule: government spending shock}
+\begin{frame}{3. Taylor rule: inflation}
+\begin{itemize}
+\item <+->\textbf{Step 3:} stack over $t$ and invert $\boldsymbol{I}-\beta\boldsymbol{F}$, with $d\boldsymbol{C}=d\boldsymbol{Y}-d\boldsymbol{G}$:
+\[
+d\boldsymbol{\pi}=\boldsymbol{K}\left(\nu d\boldsymbol{Y}+\frac{\sigma}{C_{ss}}\left(d\boldsymbol{Y}-d\boldsymbol{G}\right)+\frac{d\boldsymbol{\tau}}{1-\tau_{ss}}\right),\quad\boldsymbol{K}\equiv\kappa h'(1)\left(\boldsymbol{I}-\beta\boldsymbol{F}\right)^{-1}
+\]
+\item <+->\textbf{Step 4:} the tax rate is $\tau_{t}=T_{t}/Y_{t}$, so with the taxes above:
+\[
+d\boldsymbol{\tau}=d\boldsymbol{T}-\tau_{ss}d\boldsymbol{Y}=d\boldsymbol{T}^{0}+B_{ss}\boldsymbol{L}\boldsymbol{\Phi}d\boldsymbol{\pi}-\tau_{ss}d\boldsymbol{Y}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{3. Taylor rule: two vector equations}
+\begin{itemize}
+\item <+->\textbf{Output}, from the IKC:
+\[
+\left(\boldsymbol{I}-\boldsymbol{M}\right)d\boldsymbol{Y}=d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}^{0}+\left(\boldsymbol{M}^{r}-B_{ss}\boldsymbol{M}\boldsymbol{L}\right)\boldsymbol{\Phi}d\boldsymbol{\pi}
+\]
+\item <+->\textbf{Inflation}, from the W-NKPC after replacing $d\boldsymbol{\tau}$:
+\[
+d\boldsymbol{\pi}=\boldsymbol{K}\left(\left(\nu+\frac{\sigma}{C_{ss}}-\frac{\tau_{ss}}{1-\tau_{ss}}\right)d\boldsymbol{Y}-\frac{\sigma}{C_{ss}}d\boldsymbol{G}+\frac{d\boldsymbol{T}^{0}+B_{ss}\boldsymbol{L}\boldsymbol{\Phi}d\boldsymbol{\pi}}{1-\tau_{ss}}\right)
+\]
+\item <+->One stacked linear system in $(d\boldsymbol{Y},d\boldsymbol{\pi})$, of size $2T$
+\item <+->\textbf{Mechanism:} $G$ raises $Y$, so wages and $\pi$ rise, the central bank raises $r$, and $C$ is crowded out
+\item <+->\textbf{Special case:} with $\kappa=0$, $d\boldsymbol{\pi}=\boldsymbol{0}$ and we are back to the IKC. Higher $\kappa$ or $\phi$ means more crowding out
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{3. Taylor rule: output as a function of inflation}
+\begin{itemize}
+\item <+->Assume $\boldsymbol{I}-\boldsymbol{M}$ is invertible. \textbf{Step 1:} solve the IKC for output:
+\[
+d\boldsymbol{Y}=d\boldsymbol{Y}^{0}+\boldsymbol{\Omega}d\boldsymbol{\pi}
+\]
+\item <+->\textbf{Response at constant $r$:}
+\[
+d\boldsymbol{Y}^{0}\equiv(\boldsymbol{I}-\boldsymbol{M})^{-1}\left(d\boldsymbol{G}-\boldsymbol{M}d\boldsymbol{T}^{0}\right)
+\]
+\item <+->\textbf{Crowding out from inflation:}
+\[
+\boldsymbol{\Omega}\equiv(\boldsymbol{I}-\boldsymbol{M})^{-1}\left(\boldsymbol{M}^{r}-B_{ss}\boldsymbol{M}\boldsymbol{L}\right)\boldsymbol{\Phi}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{3. Taylor rule: solving for inflation}
+\begin{itemize}
+\item <+->\textbf{Step 2:} plug into the W-NKPC and collect $d\boldsymbol{\pi}$, with $a\equiv\nu+\frac{\sigma}{C_{ss}}-\frac{\tau_{ss}}{1-\tau_{ss}}$:
+\[
+\left(\boldsymbol{I}-a\boldsymbol{K}\boldsymbol{\Omega}-\frac{B_{ss}}{1-\tau_{ss}}\boldsymbol{K}\boldsymbol{L}\boldsymbol{\Phi}\right)d\boldsymbol{\pi}=\boldsymbol{K}\left(a\,d\boldsymbol{Y}^{0}-\frac{\sigma}{C_{ss}}d\boldsymbol{G}+\frac{d\boldsymbol{T}^{0}}{1-\tau_{ss}}\right)
+\]
+\item <+->\textbf{Right-hand side:} inflation at constant $r$, known from the shock
+\item <+->\textbf{Left-hand side:} the feedback loop. Inflation raises $r$, which lowers output ($\boldsymbol{\Omega}$) and raises the tax rate ($\boldsymbol{L}\boldsymbol{\Phi}$)
+\item <+->\textbf{Step 3:} invert the $T\times T$ matrix to get $d\boldsymbol{\pi}$, then $d\boldsymbol{Y}=d\boldsymbol{Y}^{0}+\boldsymbol{\Omega}d\boldsymbol{\pi}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{3. Taylor rule: government spending shock}
 \begin{itemize}
 \item <+->Canonical HANK model, real bonds:\\
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.68\linewidth]{figs/HANK_G_taylor.pdf}
+\includegraphics[width=0.85\linewidth]{figs/HANK_G_taylor.pdf}
 \end{figure}
 \item <+->$G$ raises demand, so wages and inflation rise. The Taylor rule raises $r$, which crowds out $C$
 \item <+->Impact multiplier falls from 1.63 to 1.17, cumulative from 1.23 to 0.43
-\end{itemize}
-\end{frame}
-%
-\begin{frame}{3. Nominal bonds}
-\vspace{-1mm}
-\begin{itemize}
-\item <+->Back to $\mu=1$ and the real rate rule, now with nominal bonds
-\item <+->\textbf{Surprise inflation} lowers the return on debt at $t=0$ only: $dr_{0}^{b}\approx-(1+r_{ss})d\pi_{0}$
-\item <+->\textbf{Bondholders lose:} $\text{cap}_{0}=B_{ss}dr_{0}^{b}$
-\item <+->\textbf{Taxpayers gain:} the government pays less at $t=0$, with $\boldsymbol{e}_{0}$ the first unit vector:
-\[
-d\boldsymbol{T}=d\boldsymbol{G}-\left(\boldsymbol{I}-(1+r_{ss})\boldsymbol{L}\right)d\boldsymbol{B}+\boldsymbol{e}_{0}B_{ss}dr_{0}^{b}
-\]
-\item <+->\textbf{IKC:} with $d\boldsymbol{T}^{real}$ the taxes under real bonds,
-\[
-d\boldsymbol{Y}=d\boldsymbol{G}+\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol{T}^{real}\right)+\left(\boldsymbol{m}-\boldsymbol{M}\boldsymbol{e}_{0}\right)B_{ss}dr_{0}^{b}
-\]
-\item <+->Inflation redistributes from savers (iMPCs $\boldsymbol{m}$) to taxpayers (iMPCs $\boldsymbol{M}\boldsymbol{e}_{0}$, higher): demand rises
-\item <+->The deficit no longer has zero present value: $\boldsymbol{q}^{\prime}(d\boldsymbol{G}-d\boldsymbol{T})=-B_{ss}dr_{0}^{b}>0$. Inflation pays part of it
-\item <+->$d\pi_{0}$ comes from the W-NKPC, so again two vector equations
 \end{itemize}
 \end{frame}
 %
@@ -1376,7 +1515,7 @@ d\boldsymbol{Y}=d\boldsymbol{G}+\boldsymbol{M}\left(d\boldsymbol{Y}-d\boldsymbol
 \item <+->In the data profits are \emph{pro-cyclical}. With sticky prices, wages rise more than prices in a boom, so profits fall. With sticky wages, they do not\\
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.5\linewidth]{figs/monpol_irf_sticky_w_p.pdf}
+\includegraphics[width=0.58\linewidth]{figs/monpol_irf_sticky_w_p.pdf}
 \end{figure}
 \end{itemize}
 \end{frame}

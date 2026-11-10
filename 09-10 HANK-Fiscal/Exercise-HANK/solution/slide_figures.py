@@ -214,6 +214,22 @@ ax.legend()
 fig.tight_layout()
 fig.savefig(f'{folder}/multipliers_rho_B.pdf')
 
+"""
+Self-financed share and debt persistence
+"""
+
+share_self = 100*ss.tau*np.array(cumulative)
+
+fig, ax = plt.subplots(figsize=(7, 3.6))
+ax.set_axisbelow(True)
+bars = ax.bar([str(rho_B) for rho_B in rhos_B], share_self, width=0.6)
+ax.bar_label(bars, fmt='%.0f%%', padding=2)
+ax.axhline(100, color='black', ls='--', lw=1, label='Fully self-financed')
+ax.set(xlabel=r'Persistence of debt $\rho_B$', ylabel='Self-financed share (%)', ylim=(0, 125))
+ax.legend(loc='upper left')
+fig.tight_layout()
+fig.savefig(f'{folder}/self_financed_share.pdf')
+
 dates = [5, 10, 20, 30, 40]
 print(f'dY/dB at {dates} = {np.round(Y_rho[dates]/debt[dates], 4)}, dG/dB = {np.round(G[dates]/debt[dates], 4)}')
 
