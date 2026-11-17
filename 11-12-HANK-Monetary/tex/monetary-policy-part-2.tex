@@ -1,0 +1,509 @@
+\documentclass[10pt,english]{beamer}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{tocdepth}{1}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage[authoryear]{natbib}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{appendixnumberbeamer}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+
+\usetheme[progressbar=frametitle,block=fill,subsectionpage=progressbar]{metropolis}
+
+% margin
+\setbeamersize{text margin right=1.5cm}
+
+% colors
+%\colorlet{DarkRed}{red!70!black}
+\definecolor{DarkRed}{rgb}{0.7,0,0}
+
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=DarkRed}
+\setbeamercolor{progress bar}{fg=DarkRed}
+\setbeamercolor{button}{bg=DarkRed}
+
+% width of seperators
+\makeatletter
+\setlength{\metropolis@titleseparator@linewidth}{1pt}
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\setlength{\metropolis@progressinheadfoot@linewidth}{1pt}
+\makeatother
+
+% new alert block
+\newlength\origleftmargini
+\setlength\origleftmargini\leftmargini
+\setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{4mm}}
+\let\oldalertblock\alertblock
+\let\oldendalertblock\endalertblock
+\def\alertblock{\begingroup \setbeamertemplate{itemize/enumerate body begin}{\setlength{\leftmargini}{\origleftmargini}} \oldalertblock}
+\def\endalertblock{\oldendalertblock \endgroup}
+\setbeamertemplate{mini frame}{}
+\setbeamertemplate{mini frame in current section}{}
+\setbeamertemplate{mini frame in current subsection}{}
+\setbeamercolor{section in head/foot}{fg=normal text.bg, bg=structure.fg}
+\setbeamercolor{subsection in head/foot}{fg=normal text.bg, bg=structure.fg}
+
+% footer
+\makeatletter
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}{section in head/foot}
+      \vskip1pt\insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll \insertframenumber{} / \inserttotalframenumber \hskip2pt}\vskip3pt% 
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+}
+\makeatother
+
+% toc
+\setbeamertemplate{section in toc}{\hspace*{1em}\inserttocsectionnumber.~\inserttocsection\par}
+\setbeamertemplate{subsection in toc}{\hspace*{2em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\par}
+
+
+
+% code
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{background}{HTML}{F5F5F5}
+\definecolor{keyword}{HTML}{4B69C6}
+\definecolor{string}{HTML}{448C27}
+\definecolor{comment}{HTML}{448C27}
+
+\usepackage{inconsolata}
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{comment},
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,
+	showlines=true
+}
+
+\lstset{style=mystyle}
+% Added by lyx2lyx
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+
+\makeatother
+
+\newcommand{\ikcdag}[2]{%
+\begin{center}
+\begin{tikzpicture}[blk/.style={draw,rounded corners=3pt,minimum width=21mm,minimum height=11mm,align=center,font=\small},lab/.style={font=\small,inner sep=2pt},ext/.style={font=\small,align=center,text=DarkRed},arr/.style={->,>=stealth,thick},scale=0.82,every node/.append style={transform shape}]
+\node[ext] (sh) at (0,0) {Shock\\$\boldsymbol{r}$};
+\node[blk] (go) at (2.6,0) {Government};
+\node[blk,fill=DarkRed!20,draw=DarkRed,very thick] (hh) at (5.5,0) {#1\\#2};
+\node[blk] (mc) at (8.4,0) {Goods market\\$\boldsymbol{Y}=\boldsymbol{C}+\boldsymbol{G}$};
+\node[ext] (tg) at (10.9,0) {Target:\\goods};
+\node[ext] (unk) at (6.95,1.75) {Unknown $\boldsymbol{Y}$};
+\draw[arr] (sh)--(go);
+\draw[arr] (go)--node[lab,above]{$\boldsymbol{T}$}(hh);
+\draw[arr] (hh)--node[lab,above]{$\boldsymbol{C}$}(mc);
+\draw[arr] (mc)--(tg);
+\draw[arr] (unk)--(hh);
+\draw[arr] (unk)--(mc);
+\draw[arr] (sh.south)--(0,-1.5)--node[lab,below]{$\boldsymbol{r}$}(5.5,-1.5)--(hh.south);
+\end{tikzpicture}
+\end{center}}
+\newcommand{\blockdag}[2]{%
+\begin{center}
+\begin{tikzpicture}[blk/.style={draw,rounded corners=3pt,minimum height=11mm,align=center,font=\small},lab/.style={font=\small,inner sep=2pt},ext/.style={font=\small,align=center,text=DarkRed},arr/.style={->,>=stealth,thick},scale=0.82,every node/.append style={transform shape}]
+\node[ext] (unk) at (-0.2,0) {Unknowns\\$\boldsymbol{\pi}^{w},\boldsymbol{L}$};
+\node[blk,dashed,inner sep=5pt] (ma) at (3.2,0) {\begin{tabular}{ll}Firms & $\boldsymbol{Y},\boldsymbol{\pi},\boldsymbol{d}$\\Central bank & $\boldsymbol{r}$\\Government & $\boldsymbol{\tau},\boldsymbol{T}$\\Mutual fund & $\boldsymbol{r}^{p}$\end{tabular}};
+\node[blk,fill=DarkRed!20,draw=DarkRed,very thick] (hh) at (7.3,0) {#1\\#2};
+\node[blk] (tg) at (10.9,0) {Goods market\\W-NKPC};
+\node[ext] (sh) at (3.2,2.05) {Shocks $\boldsymbol{G},\boldsymbol{B},\boldsymbol{\epsilon}^{i}$};
+\node[ext] (ok) at (10.9,-1.95) {Targets};
+\draw[arr] (unk)--(ma);
+\draw[arr] (sh)--(ma);
+\draw[arr] (ma)--node[lab,above]{$\boldsymbol{Z},\boldsymbol{r}^{p}$}(hh);
+\draw[arr] (hh)--node[lab,above]{$\boldsymbol{C}$}(tg);
+\draw[arr] (tg)--(ok);
+\draw[arr] (sh)-|node[lab,pos=0.25,above]{$\boldsymbol{G}$}(tg);
+\draw[arr] (ma.south) |- node[lab,pos=0.75,below]{$\boldsymbol{Y},\boldsymbol{\pi}^{w},\boldsymbol{L},\boldsymbol{\tau}$} (9.9,-1.3)--(9.9,-0.56);
+\end{tikzpicture}
+\end{center}}
+
+\usepackage{babel}
+\begin{document}
+\title{12. Monetary Policy in HANK, part 2\vspace{-2mm}}
+\subtitle{Adv. Macro: Heterogeneous Agent Models}
+\author{Raphaël Huleux}
+\date{2026}
+
+{
+\setbeamertemplate{footline}{}
+\begin{frame}
+
+\maketitle
+
+\end{frame}
+}
+
+\addtocounter{framenumber}{-1}
+
+\section{Recap}
+
+\begin{frame}{Second session}
+\begin{itemize}
+\item <+->\textbf{So far:}
+\begin{itemize}
+\item RANK is intertemporal substitution, HANK is income feedback
+\item Same aggregate response in the benchmark (Werning, 2015)
+\item The full model: capital gains, nominal bonds, unequal incidence
+\item Forward guidance: as strong as in RANK unless income risk is cyclical
+\end{itemize}
+\item <+->\textbf{Now:} two places where the benchmark is not enough
+\begin{enumerate}
+\item Redistribution: who wins and who loses from a rate cut (Auclert, 2019)?
+\item Dynamics: why is the data response hump-shaped?
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+
+\section{Auclert (2019)}
+
+\begin{frame}{From the aggregate to the cross-section}
+\begin{itemize}
+\item <+->Equivalence assumes that everybody's income moves in proportion
+\item <+->A rate cut does not do that. Its direct effect sums over households with very different MPCs and balance sheets
+\item <+->\textbf{Tobin (1982):} aggregation would not matter if the MPCs of creditors and debtors were the same
+\item <+->Redistribution then matters for aggregates if winners and losers have different MPCs
+\item <+->\textbf{Auclert (2019):} winners from a monetary expansion have higher MPCs, so redistribution is a \emph{channel} of monetary policy, not a side effect
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Three channels: one household}
+\begin{itemize}
+\item <+->Household budget, with $r_{t}^{p}$ the return on assets from $t-1$ to $t$:
+\[
+c_{it}+a_{it}=(1+r_{t}^{p})a_{i,t-1}+Z_{t}z_{it}
+\]
+\item <+->One-time shock at $t=0$: income, the surprise return $dr_{0}^{p}$ and the rate $dr_{0}$. To first order:
+\begin{align*}
+dc_{i0}= & MPC_{i}\Big(\underbrace{z_{i0}dZ_{0}}_{\text{income}}+\underbrace{Z_{ss}dz_{i0}}_{\text{earnings}}+\underbrace{a_{i,-1}dr_{0}^{p}}_{\text{Fisher}}+\underbrace{\frac{a_{i0}dr_{0}}{1+r_{ss}}}_{\text{interest rate}}\Big)\\
+ & -\underbrace{\frac{1}{\sigma}\left(1-MPC_{i}\right)\frac{c_{i0}dr_{0}}{1+r_{ss}}}_{\text{substitution}}
+\end{align*}
+\item <+->\textbf{Earnings:} the share $z_{i0}$ moves, with $\mathbb{E}[dz_{i0}]=0$
+\item <+->\textbf{Fisher:} surprise inflation lowers the return, $dr_{0}^{p}\approx-(1+r_{ss})d\pi_{0}$
+\item <+->\textbf{Interest rate:} assets invested at $r_{0}$ earn more or less at $t=1$
+\item <+->\textbf{Substitution:} constrained households, $MPC_{i}=1$, do not substitute
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Three channels: adding up}
+\vspace{-1mm}
+\begin{itemize}
+\item <+->Average over households, with $\boldsymbol{M}$ and taxes $dT_{0}=B_{ss}dr_{0}^{p}$, $dT_{1}=B_{ss}dr_{0}$:
+{\small
+\begin{align*}
+dC_{0}= & M_{0,0}dY_{0}+\underbrace{\text{cov}\left(MPC_{i},Z_{ss}dz_{i0}\right)}_{\text{earnings}}+\underbrace{\text{cov}\left(MPC_{i},a_{i,-1}-z_{i0}B_{ss}\right)dr_{0}^{p}}_{\text{Fisher}}\\
+ & +\underbrace{\left(\frac{\mathbb{E}\left[MPC_{i}a_{i0}\right]}{1+r_{ss}}-B_{ss}M_{0,1}\right)dr_{0}}_{\text{interest rate}}-\underbrace{\frac{1}{\sigma}\frac{\mathbb{E}\left[\left(1-MPC_{i}\right)c_{i0}\right]}{1+r_{ss}}dr_{0}}_{\text{substitution}}
+\end{align*}
+}
+\item <+->Transfers net to zero, so what remains is how MPCs differ between winners and losers
+\item <+->\textbf{Example:} move 100 from a saver with MPC 0.1 to a borrower with MPC 0.6: demand rises by 50
+\item <+->\textbf{The point:} a rate cut raises demand if winners have higher MPCs. Auclert finds they do
+\item <+->\textbf{RANK:} one MPC, so the transfers cancel
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Interest rate exposure}
+\begin{itemize}
+\item <+->\textbf{Who is exposed to $r_{0}$?} Whoever must invest or borrow at it today
+\item <+->\textbf{In our model:} bonds are one-period, so all assets mature. What is left to invest is
+\[
+a_{i0}=(1+r_{ss})a_{i,-1}+Z_{ss}z_{i0}-c_{i0}
+\]
+\item <+->\textbf{In the data:} holding assets is not enough, they must mature now
+\begin{itemize}
+\item Saver in short-term deposits: exposed, loses
+\item Adjustable-rate mortgage holder: negative exposure, gains
+\item Fixed-rate mortgage holder, annuitized retiree: no exposure, the rate is locked in
+\end{itemize}
+\item <+->\textbf{Link with $\boldsymbol{M}^{r}$:} interest rate plus substitution is its first entry
+\[
+M_{0,0}^{r}=\frac{1}{1+r_{ss}}\left(\mathbb{E}\left[MPC_{i}a_{i0}\right]-\frac{1}{\sigma}\mathbb{E}\left[\left(1-MPC_{i}\right)c_{i0}\right]\right)
+\]
+\end{itemize}
+\vspace{1mm}
+{\footnotesize In Auclert (2019), $a_{i0}$ is $URE_{i}$, $a_{i,-1}$ is $NNP_{i}$, $\frac{dr_{0}}{1+r_{ss}}$ is $\frac{dR}{R}$ and $d\pi_{0}$ is $\frac{dP}{P}$.}
+\end{frame}
+%
+
+\section[Micro Jumps]{Micro Jumps, Macro Humps}
+
+\begin{frame}{The problem}
+\begin{itemize}
+\item <+->Auclert, Rognlie and Straub (2020): estimate a HANK model on the causal effects of monetary policy
+\item <+->\textbf{Micro:} consumption jumps after an income shock (iMPCs). \textbf{Macro:} $C$ and $Y$ respond with a hump\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.55\linewidth]{figs/MJMCFig1.png}
+\end{figure}
+\item <+->The standard model gives no hump, whatever the shape of the shock:\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.6\linewidth]{figs/HANK_Monpol_shape.pdf}
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{The solution in RANK, and why it fails}
+\begin{itemize}
+\item <+->Solution in the RANK literature: habits
+\begin{align*}
+\sum_{t=0}^{\infty} & \beta^{t}u\left(C_{t}-\gamma C_{t-1}\right)\\
+\Rightarrow u'\left(C_{t}-\gamma C_{t-1}\right)= & \beta R_{t+1}u'\left(C_{t+1}-\gamma C_{t}\right)
+\end{align*}
+\item <+->Generates persistence: households do not want to deviate from last period's consumption
+\item <+->\textbf{However:} does not work in HANK, because it kills the iMPCs\\
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\linewidth]{figs/MJMCFig2.png}
+\end{figure}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Non-rational expectations in the sequence space}
+\begin{itemize}
+\item <+->\textbf{Solution:} deviate from rational expectations (RE)
+\item <+->Households have imperfect expectations about \textbf{aggregates} ($Z,r$) only
+\begin{itemize}
+\item Steady state is unaffected
+\item Still RE about idiosyncratic income shocks
+\item First-order only: non-linear is much harder
+\end{itemize}
+\item <+->Take $d\boldsymbol{C}=\boldsymbol{M}d\boldsymbol{Z}$ under RE:
+\[
+\boldsymbol{M}=\begin{bmatrix}\frac{\partial C_{0}}{\partial Z_{0}} & \frac{\partial C_{0}}{\partial Z_{1}} & \frac{\partial C_{0}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{1}}{\partial Z_{0}} & \frac{\partial C_{1}}{\partial Z_{1}} & \frac{\partial C_{1}}{\partial Z_{2}} & \cdots\\
+\frac{\partial C_{2}}{\partial Z_{0}} & \frac{\partial C_{2}}{\partial Z_{1}} & \frac{\partial C_{2}}{\partial Z_{2}} & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+\item <+->Only entries \textbf{above the diagonal} involve the future, so only they depend on expectations
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Expectations matrix}
+\begin{itemize}
+\item <+->Introduce the expectations matrix $\boldsymbol{E}$:
+\[
+\boldsymbol{E}=\begin{bmatrix}1 & * & * & * & \cdots\\
+1 & 1 & * & * & \cdots\\
+1 & 1 & 1 & * & \cdots\\
+1 & 1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+\item <+->$E_{t,s}$ is the average date-$t$ expectation about a shock to $Z$ at date $s$
+\begin{itemize}
+\item $E_{t,s}dZ_{s}$ is the expected value of $dZ_{s}$ at date $t$
+\item First column: expectations at all dates about $dZ_{0}$
+\item Second column: expectations at all dates about $dZ_{1}$
+\end{itemize}
+\item <+->How do we get the Jacobian $\hat{\boldsymbol{M}}$ implied by $\boldsymbol{E}$?
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Stylized example}
+\vspace{-1mm}
+\begin{itemize}
+\item <+->Take $\boldsymbol{E}=\begin{bmatrix}1 & 0.4 & 0.3 & \cdots\\
+1 & 1 & 0.6 & \cdots\\
+1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}$
+\item <+->Period 0: expected shocks are simply scaled
+\[
+d\hat{C}_{0}=\frac{\partial C_{0}}{\partial Z_{0}}dZ_{0}+0.4\frac{\partial C_{0}}{\partial Z_{1}}dZ_{1}+0.3\frac{\partial C_{0}}{\partial Z_{2}}dZ_{2}+\ldots
+\]
+\item <+->Period 1: {\footnotesize
+\[
+d\hat{C}_{1}=\underbrace{\frac{\partial C_{1}}{\partial Z_{0}}dZ_{0}}_{\text{Past shock}}+\underbrace{0.4\frac{\partial C_{1}}{\partial Z_{1}}dZ_{1}+\left(1-0.4\right)\frac{\partial C_{0}}{\partial Z_{0}}dZ_{1}}_{\text{Shock today}}+\underbrace{0.3\frac{\partial C_{1}}{\partial Z_{2}}dZ_{2}+\left(0.6-0.3\right)\frac{\partial C_{0}}{\partial Z_{1}}dZ_{2}}_{\text{Future shock}}
+\]
+}{\footnotesize\par}
+\item <+->Past shock: fully known, standard effect
+\item <+->Shock today: average of the forward-looking part and a myopic surprise
+\item <+->Future shock: initial RE part plus the revision of expectations, weight $0.6-0.3$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{General formula}
+\begin{itemize}
+\item <+->General formula for $\hat{\boldsymbol{M}}$ given $\boldsymbol{E}$:
+\[
+\hat{M}_{t,s}=\sum_{\tau=0}^{\min\left\{ t,s\right\} }\underbrace{\left(E_{\tau,s}-E_{\tau-1,s}\right)M_{t-\tau,s-\tau}}_{\text{date-\ensuremath{t} effect of date-\ensuremath{\tau} revision about date-\ensuremath{s} shock}}
+\]
+\item <+->with $E_{-1,s}=0$ by convention
+\item <+->\textbf{Fast} and \textbf{easy} to implement
+\item <+->Solve general equilibrium with $\hat{\boldsymbol{M}},\hat{\boldsymbol{M}}^{r}$ in place of $\boldsymbol{M},\boldsymbol{M}^{r}$:
+\[
+d\boldsymbol{Y}=\hat{\boldsymbol{M}}\left(d\boldsymbol{Y}-d\boldsymbol{T}\right)+\hat{\boldsymbol{M}}^{r}d\boldsymbol{r}
+\]
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Examples and Jacobians}
+\vspace{-2mm}
+\begin{itemize}
+\item <+->Two extremes:{\footnotesize
+\[
+\boldsymbol{E}^{\text{RE}}=\begin{bmatrix}1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & \cdots\\
+1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix},\quad\boldsymbol{E}^{\text{Myopic}}=\begin{bmatrix}1 & 0 & 0 & \cdots\\
+1 & 1 & 0 & \cdots\\
+1 & 1 & 1 & \cdots\\
+\vdots & \vdots & \vdots & \ddots
+\end{bmatrix}
+\]
+}{\footnotesize\par}
+\item <+->\textbf{Rational:} fully informed about the future path of $Z$ from the moment of the shock
+\item <+->\textbf{Myopic:} not forward looking about aggregates, every change in $Z$ is a surprise\\
+\begin{minipage}{0.42\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figs/M_RE.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.42\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figs/M_myopic.pdf}
+\end{minipage}
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Sticky expectations}
+\begin{itemize}
+\item <+->\textbf{Sticky information} (Mankiw and Reis, 2002): only a fraction $1-\theta$ of households update each period, and those learn the full path
+\[
+\boldsymbol{E}=\begin{pmatrix}1 & 1-\theta & 1-\theta & \dots\\
+1 & 1 & 1-\theta^{2} & \dots\\
+1 & 1 & 1 & \dots\\
+\vdots & \vdots & \vdots & \ddots
+\end{pmatrix}
+\]
+\item <+->Response of $C_{0}$ to $Z_{1}$: $\left(1-\theta\right)\frac{\partial C_{0}}{\partial Z_{1}}$
+\item <+->Response of $C_{1}$ to $Z_{1}$: $\left(1-\theta\right)\frac{\partial C_{1}}{\partial Z_{1}}+\theta\frac{\partial C_{0}}{\partial Z_{0}}$
+\item <+->$\theta=0$ is RE, $\theta=1$ is myopic
+\item <+->Households observe income \textbf{today and in the past}, so iMPCs are preserved, unlike with habits
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Estimation and results (I)}
+\begin{itemize}
+\item <+->Full HANK with investment, sticky wages and prices, government, matched to Romer and Romer shocks
+\item <+->Estimate $\theta=0.935$: a \textbf{large} deviation from RE\\
+\begin{minipage}{0.46\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figs/MJMCFig3.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.46\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figs/MJMCFig4.png}
+\end{minipage}
+\item <+->Sticky expectations are needed to match the empirical response
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Estimation and results (II)}
+\begin{itemize}
+\item <+->Same decomposition as in the first session, in the estimated model\\
+\begin{minipage}{0.46\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figs/MJMCFig6.png}
+\end{minipage}
+\hfill
+\begin{minipage}{0.46\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figs/MJMCFig5.png}
+\end{minipage}
+\item <+->With sticky expectations, the indirect effect is by far the main driver of consumption
+\item <+->Part of it comes from \textbf{investment}: a channel missing from equivalence
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Non-RE in GEModelTools}
+\begin{itemize}
+\item <+->No built-in way, so a workaround (see exercise):
+\begin{enumerate}
+\item <+->Compute all household Jacobians: \lstinline{model._compute_jac_hh()}
+\item <+->Construct $\boldsymbol{E}$ and compute $\hat{\boldsymbol{M}}$ from the RE Jacobians in \lstinline{model.jac_hh}
+\item <+->Overwrite \lstinline{model.jac_hh} with $\hat{\boldsymbol{M}}$ for each output and input of the household block
+\item <+->Compute Jacobians with respect to unknowns and shocks, but \textbf{not} the household block: \lstinline{model.compute_jacs(skip_hh=True,skip_shocks=False)}
+\item <+->Solve for IRFs: \lstinline{model.find_IRFs(shocks=[x])}
+\end{enumerate}
+\end{itemize}
+\end{frame}
+%
+
+\section{Summary}
+
+\begin{frame}{One equivalence result to close}
+\begin{itemize}
+\item <+->Wolf (2025), >>Interest Rate Cuts vs. Stimulus Payments<<
+\item <+->A rate cut raises demand through $\boldsymbol{M}^{r}d\boldsymbol{r}-\boldsymbol{M}d\boldsymbol{T}$, with $d\boldsymbol{T}=B_{ss}\boldsymbol{L}d\boldsymbol{r}$. A uniform transfer raises it through $\boldsymbol{M}^{\chi}d\boldsymbol{\chi}$
+\item <+->So if $\boldsymbol{M}^{\chi}$ is invertible, a transfer path replicates the rate cut:
+\[
+\boldsymbol{M}^{\chi}d\boldsymbol{\chi}=\left(\boldsymbol{M}^{r}-B_{ss}\boldsymbol{M}\boldsymbol{L}\right)d\boldsymbol{r}\quad\Rightarrow\quad d\boldsymbol{\chi}=(\boldsymbol{M}^{\chi})^{-1}\left(\boldsymbol{M}^{r}-B_{ss}\boldsymbol{M}\boldsymbol{L}\right)d\boldsymbol{r}
+\]
+\item <+->Same $d\boldsymbol{Y}$ and $d\boldsymbol{\pi}$. In RANK this fails: $\boldsymbol{M}^{\chi}=\boldsymbol{M}^{RA}$ has rank 1
+\item <+->The two parts of the course meet: fiscal policy through $\boldsymbol{M}$, monetary policy through $\boldsymbol{M}^{r}$
+\end{itemize}
+\end{frame}
+%
+\begin{frame}{Exercises: second session}
+\begin{enumerate}
+\item <+->Solve for a monetary policy shock in HANK and RANK with myopic expectations w.r.t. $\boldsymbol{r},\boldsymbol{Z}$, only $\boldsymbol{r}$ and only $\boldsymbol{Z}$
+\item <+->Do the same with sticky expectations
+\item <+->Compare with rational expectations. Which case gives a hump in $C$?
+\end{enumerate}
+\end{frame}
+%
+\begin{frame}{Summary and next week}
+\begin{itemize}
+\item <+->\textbf{HANK for fiscal policy:} multipliers change
+\item <+->\textbf{HANK for monetary policy:} the mechanism changes, and aggregates change only away from the benchmark
+\item <+->The benchmark fails through cyclical risk and liquidity, redistribution and expectations
+\item <+->\textbf{Next week:} open economy and unemployment risk
+\end{itemize}
+\end{frame}
+%
+
+\end{document}
