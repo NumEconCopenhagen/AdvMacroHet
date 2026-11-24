@@ -345,3 +345,33 @@ ax.set(xlabel='Years', title='Direct response to a rate cut at date $s$')
 ax.legend(ncol=2, fontsize=9, loc='upper right')
 fig.tight_layout()
 fig.savefig(f'{fig_folder}/fg_Mr_far.pdf')
+
+"""
+Lecture 12: investment Jacobians (slide timing, r_t from t to t+1)
+"""
+
+# a. ARS (2024) calibration, annual, with mu = 1 and Y = 1
+r_inv, delta, epsilon_I, K_Y = 0.05, 0.08, 4.0, 2.26
+alpha_mu = (r_inv + delta)*K_Y
+T_inv = 300
+
+# b. linearized capital condition stacked over t = 0..T-1, with dK_{-1} = dK_T = 0
+a_inv = delta*epsilon_I*(r_inv + delta)
+A = (2 + r_inv + a_inv)*np.eye(T_inv) - (1 + r_inv)*np.eye(T_inv, k=-1) - np.eye(T_inv, k=1)
+net_investment = np.eye(T_inv) - (1 - delta)*np.eye(T_inv, k=-1)
+I_Y = delta*epsilon_I*alpha_mu*net_investment@np.linalg.solve(A, np.eye(T_inv, k=1))
+I_r = -delta*epsilon_I*K_Y*net_investment@np.linalg.inv(A)
+
+# c. columns
+years = np.arange(16)
+fig, axes = plt.subplots(1, 2, figsize=(11, 3.6))
+
+for s in [1, 5, 10]:
+    axes[0].plot(years, I_Y[:len(years), s], label=f's = {s}')
+    axes[1].plot(years, -I_r[:len(years), s], label=f's = {s}')
+
+axes[0].set(xlabel='Years', ylabel='$\\partial I_t/\\partial Y_s$', title='Columns of $I^{Y}$: news that $Y_s$ rises')
+axes[1].set(xlabel='Years', ylabel='% of steady state output', title='Columns of $-I^{r}$: news of a 1pp cut in $r_s$')
+axes[0].legend()
+fig.tight_layout()
+fig.savefig(f'{fig_folder}/inv_jacobians.pdf')

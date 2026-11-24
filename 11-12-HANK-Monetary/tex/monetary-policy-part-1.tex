@@ -1,4 +1,4 @@
-\documentclass[10pt,english,handout]{beamer}
+\documentclass[10pt,english]{beamer}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -699,13 +699,13 @@ dr_{0}^{b}\approx-(1+r_{ss})d\pi_{0}
 \]
 \item <+->\textbf{Bondholders lose} $B_{ss}dr_{0}^{b}$, and \textbf{taxpayers gain} the same amount:
 \[
-d\boldsymbol{T}=B_{ss}\left(\boldsymbol{L}d\boldsymbol{r}+\boldsymbol{e}_{0}dr_{0}^{b}\right)
+d\boldsymbol{T}=B_{ss}\left(\boldsymbol{L}d\boldsymbol{r}+d\boldsymbol{r}^{b}\right),\quad d\boldsymbol{r}^{b}=(dr_{0}^{b},0,0,\dots)^{\prime}
 \]
 \item <+->\textbf{IKC:}
 \[
-d\boldsymbol{Y}=\boldsymbol{M}\left(d\boldsymbol{Y}-B_{ss}\boldsymbol{L}d\boldsymbol{r}\right)+\boldsymbol{M}^{r}d\boldsymbol{r}+\left(\boldsymbol{m}-\boldsymbol{M}\boldsymbol{e}_{0}\right)B_{ss}dr_{0}^{b}
+d\boldsymbol{Y}=\boldsymbol{M}\left(d\boldsymbol{Y}-B_{ss}\boldsymbol{L}d\boldsymbol{r}\right)+\boldsymbol{M}^{r}d\boldsymbol{r}+B_{ss}\left(\boldsymbol{m}dr_{0}^{b}-\boldsymbol{M}d\boldsymbol{r}^{b}\right)
 \]
-\item <+->A rate cut raises $Y$, the W-NKPC gives $d\pi_{0}>0$, and inflation moves wealth from savers ($\boldsymbol{m}$) to taxpayers ($\boldsymbol{M}\boldsymbol{e}_{0}$, higher): demand rises
+\item <+->A rate cut raises $Y$, the W-NKPC gives $d\pi_{0}>0$, and inflation moves wealth from savers ($\boldsymbol{m}$) to taxpayers ($\boldsymbol{M}d\boldsymbol{r}^{b}$, higher MPCs): demand rises
 \item <+->\textbf{Inflation is no longer irrelevant for output:} we need the W-NKPC, and $\kappa$ matters again
 \end{itemize}
 \end{frame}
@@ -739,15 +739,15 @@ d\boldsymbol{Y}=\tilde{\boldsymbol{M}}\left(d\boldsymbol{Y}-d\boldsymbol{T}\righ
 d\boldsymbol{Y}=\bar{\boldsymbol{M}}\left(d\boldsymbol{Y}-d\boldsymbol{T}\right)+\bar{\boldsymbol{M}}^{r}d\boldsymbol{r}+\boldsymbol{m}B_{ss}dr_{0}^{b}
 \]
 \[
-d\boldsymbol{T}=B_{ss}\left(\boldsymbol{L}d\boldsymbol{r}+\boldsymbol{e}_{0}dr_{0}^{b}\right),\quad dr_{0}^{b}\approx-(1+r_{ss})d\pi_{0}
+d\boldsymbol{T}=B_{ss}\left(\boldsymbol{L}d\boldsymbol{r}+d\boldsymbol{r}^{b}\right),\quad dr_{0}^{b}\approx-(1+r_{ss})d\pi_{0}
 \]
 \item <+->Each feature is one term:
 \begin{itemize}
 \item \textbf{Markups:} $\bar{\boldsymbol{M}}$ and $\bar{\boldsymbol{M}}^{r}$, the capital gain on stocks
-\item \textbf{Nominal bonds:} $\left(\boldsymbol{m}-\boldsymbol{M}\boldsymbol{e}_{0}\right)B_{ss}dr_{0}^{b}$, savers' MPCs against taxpayers' MPCs
+\item \textbf{Nominal bonds:} $B_{ss}\left(\boldsymbol{m}dr_{0}^{b}-\boldsymbol{M}d\boldsymbol{r}^{b}\right)$, savers' MPCs against taxpayers' MPCs
 \item \textbf{Unequal incidence:} $\tilde{\boldsymbol{M}}$ in place of $\boldsymbol{M}$, also inside $\bar{\boldsymbol{M}}$
 \end{itemize}
-\item <+->In RANK none of this matters: one household gets all transfers, so $\boldsymbol{m}=\boldsymbol{M}\boldsymbol{e}_{0}$ and $\bar{\boldsymbol{M}}=\tilde{\boldsymbol{M}}=\boldsymbol{M}$
+\item <+->In RANK none of this matters: one household gets all transfers, so $\boldsymbol{m}dr_{0}^{b}=\boldsymbol{M}d\boldsymbol{r}^{b}$ and $\bar{\boldsymbol{M}}=\tilde{\boldsymbol{M}}=\boldsymbol{M}$
 \item <+->\textbf{Second session:} Auclert (2019) reads these terms as redistribution between winners and losers with different MPCs
 \end{itemize}
 \end{frame}
